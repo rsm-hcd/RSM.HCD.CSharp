@@ -1,7 +1,9 @@
+after_script:
+  - bash <(curl -s https://codecov.io/bash)
 dotnet: 2.2.1
 language: csharp
 mono: none
 script:
   - dotnet restore
-  - dotnet test
+  - dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=75
 solution: All.sln
