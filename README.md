@@ -10,12 +10,16 @@ dotnet add [<PROJECT>] package AndcultureCode.CSharp.Extensions
 After installation, simply import the extensions namespace to gain access
 to all of the available extension methods
 ```csharp
-// using System, System.Collection.Generic, etc...
+using System;
+using System.Collection.Generic;
 using AndcultureCode.CSharp.Extensions;
 
 public class Program
 {
-    new List<string>().IsEmpty(); // returns true
+    public static int Main(string[] args)
+    {
+        new List<string>().IsEmpty(); // returns true
+    }
 }
 ```
 
