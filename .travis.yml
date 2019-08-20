@@ -1,0 +1,7 @@
+dotnet: 2.2.1
+language: csharp
+mono: none
+script:
+  - dotnet restore
+  - dotnet test
+solution: All.sln

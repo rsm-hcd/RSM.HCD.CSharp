@@ -9,4 +9,4 @@ One of the easiest ways to contribute is to participate in discussions on GitHub
 * Automated tests for new and/ or changed code paths
 
 ## General feedback and discussions?
-Start a discussion on the [repository issue tracker](https://https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/issues).
+Start a discussion on the [repository issue tracker](https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/issues).
