@@ -1,5 +1,5 @@
 # AndcultureCode.CSharp.Extensions [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Extensions.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Extensions)
-Commonly used CSharp extension methods used at Andculture.
+Commonly used CSharp extension methods used at andculture.
 
 ## Getting Started
 This package is installed via NuGet
