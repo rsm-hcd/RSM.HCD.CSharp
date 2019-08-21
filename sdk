@@ -21,8 +21,8 @@ var colors = {
         warning: chalk.keyword("orange"),
     },
     projectName = "AndcultureCode.CSharp.Extensions",
-    nugetUrl    = "https://api.nuget.org/v3/index.json",
-    version     = "0.0.3";
+    nugetUrl = "https://api.nuget.org/v3/index.json",
+    version = "0.0.6";
 
 
 /**************************************************************************************************
@@ -98,7 +98,8 @@ var dotnet = {
         });
 
         // Update version number in this file
-        shell.sed("-i", "version = \"[0-9]*\.[0-9]*\.[0-9]*\";", `version = "${publishVersion}";`, "sdk");
+        const property = "version";
+        shell.sed("-i", `${property} = \"(.*)\"`, `${property} = "${publishVersion}"`, "sdk");
 
         // Create new nupkg file
         if (ops.exec("dotnet pack").code !== 0) {
