@@ -31,18 +31,28 @@ public class Program
 * Run `./sdk` and if all is right, you'll see the help output
 
 ### Building project
-
-```
-./sdk -b
-./sdk --build
-```
+* Run the build command
+    ```
+    ./sdk -b
+    ./sdk --build
+    ```
 
 ### Running tests along with code coverage
-```
-./sdk -t
-./sdk --test
-```
-Then open the `coverage/index.htm` file in your browser to see the results
+* Run the test command
+    ```
+    ./sdk -t
+    ./sdk --test
+    ```
+* Open the `coverage/index.htm` file in your browser
+
+### Publishing a new version
+* Update the `sdk` version variable
+* Run the publish command
+    ```
+    ./sdk -p
+    ./sdk --publish
+    ```
+
 
 Contributing
 ======

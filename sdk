@@ -20,7 +20,7 @@ var colors = {
         success: chalk.bold.green,
         warning: chalk.keyword("orange"),
     },
-    version = "0.0.2";
+    version = "0.0.3";
 
 
 /**************************************************************************************************
@@ -87,6 +87,30 @@ var dotnet = {
         }
     },
 
+    publish() {
+        ops.echo(`Publishing version '${version}'...`);
+
+        // Update version number in .csproj files
+        shell.ls("**/*.csproj").forEach(function (file) {
+            shell.sed("-i", "<Version>(.*)</Version>", `<Version>${version}</Version>`, file);
+        });
+
+        // Create new nupkg file
+        if (ops.exec("dotnet pack").code !== 0) {
+            ops.echoError("Failed to pack dotnet project");
+            shell.exit(1);
+        }
+
+        // Push nupkg to nuget servers
+        const nupkgFile = `src/AndcultureCode.CSharp.Extensions/bin/Debug/AndcultureCode.CSharp.Extensions.${version}.nupkg`;
+        if (ops.exec(`dotnet nuget push ${nupkgFile} -s https://api.nuget.org/v3/index.json`).code !== 0) {
+            ops.echoError("Failed to publish to nuget");
+            shell.exit(1);
+        }
+
+        ops.echoSuccess(`Successfully published version ${version}`);
+    },
+
     test() {
         if (ops.exec("dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover").code !== 0) {
             ops.echoError("Dotnet tests failed");
@@ -108,8 +132,9 @@ var dotnet = {
 program
     .version(version)
     .usage("[options]")
-    .option("-b, --build", "Simple wrapper to build dotnet")
-    .option("-t, --test",  "Run tests along with coverage")
+    .option("-b, --build",   "Simple wrapper to build dotnet")
+    .option("-t, --test",    "Run tests along with coverage")
+    .option("-p, --publish", "New version to publish")
     .parse(process.argv);
 
 
@@ -119,6 +144,11 @@ program
 
 if (program.build) {
     dotnet.build();
+    shell.exit(0);
+}
+
+if (program.publish) {
+    dotnet.publish(program.publishversion);
     shell.exit(0);
 }
 
