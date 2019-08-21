@@ -1,0 +1,19 @@
+after_script:
+- bash <(curl -s https://codecov.io/bash)
+dotnet: 2.2.1
+env:
+  global:
+  - DOTNET_CLI_TELEMETRY_OPTOUT: 1
+language: csharp
+mono: none
+notifications:
+  slack:
+    on_failure: always
+    on_pull_requests: true
+    on_success: always
+    rooms:
+      secure:
+script:
+- dotnet restore
+- dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=100
+solution: All.sln

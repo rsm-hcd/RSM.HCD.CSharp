@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Authors>andculture</Authors>
+    <Company>andculture</Company>
+    <Description>Commonly used interfaces, patterns and utilities by andculture engineering</Description>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/32297579?s=460&amp;v=4</PackageIconUrl>
+    <PackageId>AndcultureCode.CSharp.Core</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp.Core</PackageProjectUrl>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+
+</Project>
