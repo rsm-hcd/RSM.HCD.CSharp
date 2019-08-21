@@ -1,0 +1,19 @@
+{
+  "name": "AndcultureCode.CSharp.Extensions",
+  "version": "0.0.1",
+  "description": "Simple nodejs tooling for managing the project",
+  "main": "sdk.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:AndcultureCode/AndcultureCode.CSharp.Extensions.git"
+  },
+  "author": "andculture",
+  "license": "ISC",
+  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions#readme",
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "shelljs": "^0.8.2"
+  }
+}

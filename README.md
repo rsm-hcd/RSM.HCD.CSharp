@@ -23,6 +23,27 @@ public class Program
 }
 ```
 
+## Development Setup
+
+* Install Dotnet Core 2.x
+* Install NodeJS
+* Run `npm install` to ensure proper tooling is installed for the project
+* Run `./sdk` and if all is right, you'll see the help output
+
+### Building project
+
+```
+./sdk -b
+./sdk --build
+```
+
+### Running tests along with code coverage
+```
+./sdk -t
+./sdk --test
+```
+Then open the `coverage/index.htm` file in your browser to see the results
+
 Contributing
 ======
 

@@ -4,8 +4,10 @@
 .\#*
 
 # Coverlet
+coverage
 coverage.json
 coverage.opencover.xml
+lcov.info
 
 
 ## Below Ignores Visual Studio temporary files, build results, and
