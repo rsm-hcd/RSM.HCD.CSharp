@@ -20,7 +20,9 @@ var colors = {
         success: chalk.bold.green,
         warning: chalk.keyword("orange"),
     },
-    version = "0.0.3";
+    projectName = "AndcultureCode.CSharp.Extensions",
+    nugetUrl    = "https://api.nuget.org/v3/index.json",
+    version     = "0.0.3";
 
 
 /**************************************************************************************************
@@ -87,13 +89,16 @@ var dotnet = {
         }
     },
 
-    publish() {
-        ops.echo(`Publishing version '${version}'...`);
+    publish(publishVersion) {
+        ops.echo(`Publishing version '${publishVersion}'...`);
 
         // Update version number in .csproj files
         shell.ls("**/*.csproj").forEach(function (file) {
-            shell.sed("-i", "<Version>(.*)</Version>", `<Version>${version}</Version>`, file);
+            shell.sed("-i", "<Version>(.*)</Version>", `<Version>${publishVersion}</Version>`, file);
         });
+
+        // Update version number in this file
+        shell.sed("-i", "version = \"[0-9]*\.[0-9]*\.[0-9]*\";", `version = "${publishVersion}";`, "sdk");
 
         // Create new nupkg file
         if (ops.exec("dotnet pack").code !== 0) {
@@ -102,13 +107,13 @@ var dotnet = {
         }
 
         // Push nupkg to nuget servers
-        const nupkgFile = `src/AndcultureCode.CSharp.Extensions/bin/Debug/AndcultureCode.CSharp.Extensions.${version}.nupkg`;
-        if (ops.exec(`dotnet nuget push ${nupkgFile} -s https://api.nuget.org/v3/index.json`).code !== 0) {
+        const nupkgFile = `src/${projectName}/bin/Debug/${projectName}.${publishVersion}.nupkg`;
+        if (ops.exec(`dotnet nuget push ${nupkgFile} -s ${nugetUrl}`).code !== 0) {
             ops.echoError("Failed to publish to nuget");
             shell.exit(1);
         }
 
-        ops.echoSuccess(`Successfully published version ${version}`);
+        ops.echoSuccess(`Successfully published version ${publishVersion}`);
     },
 
     test() {
@@ -132,9 +137,9 @@ var dotnet = {
 program
     .version(version)
     .usage("[options]")
-    .option("-b, --build",   "Simple wrapper to build dotnet")
-    .option("-t, --test",    "Run tests along with coverage")
-    .option("-p, --publish", "New version to publish")
+    .option("-b, --build",             "Simple wrapper to build dotnet")
+    .option("-t, --test",              "Run tests along with coverage")
+    .option("-p, --publish [version]", "New version to publish")
     .parse(process.argv);
 
 
@@ -148,7 +153,7 @@ if (program.build) {
 }
 
 if (program.publish) {
-    dotnet.publish(program.publishversion);
+    dotnet.publish(program.publish);
     shell.exit(0);
 }
 

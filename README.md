@@ -46,11 +46,10 @@ public class Program
 * Open the `coverage/index.htm` file in your browser
 
 ### Publishing a new version
-* Update the `sdk` version variable
-* Run the publish command
+* Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
     ```
-    ./sdk -p
-    ./sdk --publish
+    ./sdk -p [version]
+    ./sdk --publish [version]
     ```
 
 
