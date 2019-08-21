@@ -15,5 +15,5 @@ notifications:
       - secure: v0yEfcPf+QQmywA3ZRxPfwZj0bbkPsMCipDk9XjrkZDOkRHqi77lEYDw/XN77z7LJ3S0C/MHtUhwSi1m7H8tUhXarcEmLFZVgapiWEKS1eItxebqNbDPAxM9K4FEOkuL8xWnmRW3NbEZLY9YCBC6aoFb3cDR5DTEtZXZgaYgssnuUolZ2KjkH6i1eU4w93NjRULada6bF/lmoyYMAK2uFifm2gtiMZVOe7GlKeEBfnUQ271Anxh9IoGJka7S2qML9pqGoL/i9vJkgk2HU+s5ARGY2+Qe1Yroup4Sta+ggu0ATPWiAWzP2bB181Y+LFZwqubZCMlfduEFbFxtshS5Q4Oz1N7A2S0NDdszZjOiWfExIOLO3RYyeP+/AkWF4KC3ub726NSRInH++QDJc5yrvz1oSr+drV/1aXBfWJ0dHRXOi7dEefViS6/WsQr4y5ZLarJlzd3ntjBeB/J/IKlpUrnZFdLk7vooZR9y0/3O6Q/PUo++TLBS5EEwmNiSrJvUQvovOx2axz+x7nhGJ1zLtABUDTozU000yK2oL8NvYKhkPzwFZf0exnOQ9QDgQAgYGdKWd5Bj7bQhLwa2YbTHffEHTqd6e31qovVvgcqGQpiJlPcfApJLNlB3ReqxtgMzX00V1c3Jy75RioxZvwlF+9mZeZ2q/8fFUTqArPyw5T0=
 script:
 - dotnet restore
-- dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=75
+- dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=100
 solution: All.sln

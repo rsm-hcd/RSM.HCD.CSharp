@@ -90,17 +90,20 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void IsNullOrEmpty_Given_Predicate_When_Null_Returns_True()
         {
-            EnumerableExtensions             // Arrange
-                .IsNullOrEmpty<string>(null) // Act
-                    .ShouldBeTrue();         // Assert
+            EnumerableExtensions                         // Arrange
+                .IsNullOrEmpty<string>(                  // Act
+                        source:    null,
+                        predicate: e => true
+                    )
+                    .ShouldBeTrue();                     // Assert
         }
 
         [Fact]
         public void IsNullOrEmpty_Given_Predicate_When_Empty_Returns_True()
         {
-            new List<string>()       // Arrange
-                .IsNullOrEmpty()     // Act
-                    .ShouldBeTrue(); // Assert
+            new List<string>()            // Arrange
+                .IsNullOrEmpty(e => true) // Act
+                    .ShouldBeTrue();      // Assert
         }
 
         [Fact]
