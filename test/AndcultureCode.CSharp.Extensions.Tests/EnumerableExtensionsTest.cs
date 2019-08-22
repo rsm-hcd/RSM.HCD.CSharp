@@ -123,6 +123,64 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion IsNullOrEmpty (Given Predicate)
+
+
+        #region Join IEnumerable (Delimiter)
+
+        [Fact]
+        public void Join_IEnumerable_Given_Delimiter_When_Null_Returns_Null()
+        {
+            EnumerableExtensions.Join(list: (IEnumerable<string>)null, delimiter: "test").ShouldBeNull();
+        }
+
+        [Fact]
+        public void Join_IEnumerable_Given_Delimiter_When_Empty_Returns_Empty_String()
+        {
+            ((IEnumerable<string>)new List<string>()).Join(delimiter: "test").ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Join_IEnumerable_Given_Delimiter_When_Single_Value_Returns_Value_Without_Delimiter()
+        {
+            ((IEnumerable<string>)new List<string> { "value1" }).Join(delimiter: "test").ShouldBe("value1");
+        }
+
+        [Fact]
+        public void Join_IEnumerable_Given_Delimiter_When_Multiple_Values_Returns_Values_With_Delimiter()
+        {
+            ((IEnumerable<string>)new List<string> { "value1", "value2" }).Join(delimiter: ":").ShouldBe("value1:value2");
+        }
+
+        #endregion Join IEnumerable (Delimiter)
+
+
+        #region Join List of Strings (Delimiter)
+
+        [Fact]
+        public void Join_List_Of_Strings_Given_Delimiter_When_Null_Returns_Null()
+        {
+            EnumerableExtensions.Join(list: null, delimiter: "test").ShouldBeNull();
+        }
+
+        [Fact]
+        public void Join_List_Of_Strings_Given_Delimiter_When_Empty_Returns_Empty_String()
+        {
+            new List<string>().Join(delimiter: "test").ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Join_List_Of_Strings_Given_Delimiter_When_Single_Value_Returns_Value_Without_Delimiter()
+        {
+            new List<string> { "value1" }.Join(delimiter: "test").ShouldBe("value1");
+        }
+
+        [Fact]
+        public void Join_List_Of_Strings_Given_Delimiter_When_Multiple_Values_Returns_Values_With_Delimiter()
+        {
+            new List<string> { "value1", "value2" }.Join(delimiter: ":").ShouldBe("value1:value2");
+        }
+
+        #endregion Join List of Strings (Delimiter)
     }
 
 }
