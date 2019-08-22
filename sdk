@@ -22,7 +22,7 @@ var colors = {
     },
     projectName = "AndcultureCode.CSharp.Testing",
     nugetUrl = "https://api.nuget.org/v3/index.json",
-    version = "0.0.1";
+    version = "0.0.2";
 
 
 /**************************************************************************************************
