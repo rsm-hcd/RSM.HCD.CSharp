@@ -26,30 +26,27 @@ public class Program
 ## Development Setup
 
 * Install Dotnet Core 2.x
-* Install NodeJS
-* Run `npm install` to ensure proper tooling is installed for the project
-* Run `./sdk` and if all is right, you'll see the help output
+* Install the `and-cli` tooling found at [AndcultureCode.Cli](https://github.com/AndcultureCode/AndcultureCode.Cli)
+
+Below are a few basics to get you started, but there are many more commands and options for managing this and other projects found in the `and-cli`.
 
 ### Building project
 * Run the build command
     ```
-    ./sdk -b
-    ./sdk --build
+    and-cli dotnet
     ```
 
 ### Running tests along with code coverage
 * Run the test command
     ```
-    ./sdk -t
-    ./sdk --test
+    and-cli dotnet-test
     ```
 * Open the `coverage/index.htm` file in your browser
 
 ### Publishing a new version
 * Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
     ```
-    ./sdk -p [version]
-    ./sdk --publish [version]
+    and-cli nuget --publish <version>
     ```
 
 
