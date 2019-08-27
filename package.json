@@ -2,7 +2,8 @@
   "name": "AndcultureCode.CSharp.Testing",
   "version": "0.0.1",
   "description": "Simple nodejs tooling for managing the project",
-  "main": "sdk.js",
+  "main": "npx and-cli",
+  "private": true,
   "scripts": {},
   "repository": {
     "type": "git",
@@ -12,8 +13,6 @@
   "license": "ISC",
   "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing#readme",
   "devDependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.15.1",
-    "shelljs": "^0.8.2"
+    "and-cli": "0.0.4"
   }
 }
