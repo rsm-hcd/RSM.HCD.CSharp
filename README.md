@@ -33,7 +33,7 @@ Below are a few basics to get you started, but there are many more commands and 
 ### Building project
 * Run the build command
     ```
-    and-cli dotnet
+    and-cli dotnet --build
     ```
 
 ### Running tests along with code coverage
