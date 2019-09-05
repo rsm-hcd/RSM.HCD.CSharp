@@ -53,10 +53,10 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <returns></returns>
         IResult<IQueryable<T>> FindAll(
             Dictionary<string, string> nextLinkParams,
-            Expression<Func<T, bool>> filter = null,
+            Expression<Func<T , bool>> filter                 = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            bool? ignoreQueryFilters = false,
-            bool asNoTracking = false
+            bool?              ignoreQueryFilters             = false,
+            bool               asNoTracking                   = false
         );
 
         /// <summary>
