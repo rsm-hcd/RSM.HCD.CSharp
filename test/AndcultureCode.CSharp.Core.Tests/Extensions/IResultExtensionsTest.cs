@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using System.Linq;
-using LMS.Core.Utilities;
 using AndcultureCode.CSharp.Testing;
 using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Core.Models;
