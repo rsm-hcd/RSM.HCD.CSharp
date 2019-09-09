@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Testing.Constants;
 using Moq.Language;
 using Moq.Language.Flow;
+using System.Collections.Generic;
 
 namespace AndcultureCode.CSharp.Testing.Extensions.Mocks
 {

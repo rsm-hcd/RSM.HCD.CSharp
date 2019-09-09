@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using Moq;
 using Moq.Language.Flow;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
 {

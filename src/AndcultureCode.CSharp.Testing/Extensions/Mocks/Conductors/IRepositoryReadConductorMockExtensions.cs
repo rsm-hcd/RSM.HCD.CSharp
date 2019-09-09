@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models;
@@ -10,6 +6,10 @@ using AndcultureCode.CSharp.Testing.Constants;
 using Moq;
 using Moq.Language;
 using Moq.Language.Flow;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
 {
