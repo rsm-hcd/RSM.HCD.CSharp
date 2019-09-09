@@ -4,7 +4,7 @@ using AndcultureCode.CSharp.Core.Models;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace LMS.Core.Utilities
+namespace AndcultureCode.CSharp.Core
 {
     public class Do<T>
     {
