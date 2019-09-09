@@ -1,0 +1,224 @@
+using System.Collections.Generic;
+using System.Linq;
+using AndcultureCode.CSharp.Core.Interfaces;
+using AndcultureCode.CSharp.Core.Interfaces.Conductors;
+using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using AndcultureCode.CSharp.Core.Models;
+using AndcultureCode.CSharp.Core.Models.Entities;
+using AndcultureCode.CSharp.Testing;
+using Moq;
+using Shouldly;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace AndcultureCode.CSharp.Business.Conductors.Tests
+{
+    public class RepositoryConductorTest : UnitTestBase
+    {
+        #region Setup
+        public RepositoryConductorTest(ITestOutputHelper output) : base(output)
+        {
+        }
+        #endregion
+
+        const string BASIC_ERROR_KEY     = "TESTERRORKEY";
+        const string BASIC_ERROR_MESSAGE = "TESTERRORMESSAGE";
+
+        private IRepositoryConductor<Entity> SetupSut(
+            Mock<IRepositoryCreateConductor<Entity>> createConductor = null,
+            Mock<IRepositoryReadConductor<Entity>>   readConductor   = null,
+            Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null,
+            Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null
+        )
+        {
+            return new RepositoryConductor<Entity>(
+                createConductor?.Object,
+                readConductor?.Object,
+                updateConductor?.Object,
+                deleteConductor?.Object
+            );
+        }
+
+        #region CreateOrUpdate
+        
+        [Fact]
+        public void BulkCreateOrUpdate_When_Items_Is_Null_Then_Returns_Null()
+        {
+            // Arrange
+        
+            // Act
+            var bulkCreateOrUpdateResponse = SetupSut().BulkCreateOrUpdate(null);
+        
+            // Assert
+            bulkCreateOrUpdateResponse.ResultObject.ShouldBeNull();
+        }
+
+        [Fact]
+        public void BulkCreateOrUpdate_When_Items_Is_Empty_Then_Returns_Empty()
+        {
+            // Arrange
+        
+            // Act
+            var bulkCreateOrUpdateResponse = SetupSut().BulkCreateOrUpdate(new List<TestEntity>());
+        
+            // Assert
+            bulkCreateOrUpdateResponse.ResultObject.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void BulkCreateOrUpdate_When_BulkUpdate_Has_Errors_Then_Result_Has_Errors_For_BulkUpdate()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+
+            var entities = new List<TestEntity>();
+            entities.Add(new TestEntity(){Id = 1, Name = "hello-world"});
+            mockUpdateConductor.Setup(e => e.BulkUpdate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                    Errors = new List<IError> {
+                        new Error(){
+                            Key = BASIC_ERROR_KEY, 
+                            Message = BASIC_ERROR_MESSAGE}
+                    },
+                    ResultObject = false
+                });
+
+             var sut = SetupSut(
+                 updateConductor: mockUpdateConductor
+             );
+        
+            // Act
+            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
+        
+            // Assert
+            bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
+            bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+        }
+
+        [Fact]
+        public void BulkCreateOrUpdate_When_BulkCreate_Has_Errors_Then_Result_Has_Errors_For_BulkCreate()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+
+            var entities = new List<Entity>();
+            var entity = new TestEntity(){Id = 0, Name = "hello-world"};
+            entities.Add(entity);
+
+            mockUpdateConductor.Setup(e => e.BulkUpdate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                    ResultObject = false
+            });
+            mockCreateConductor.Setup(e => e.BulkCreate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                Errors = new List<IError> {
+                        new Error(){
+                            Key = BASIC_ERROR_KEY, 
+                            Message = BASIC_ERROR_MESSAGE}
+                    },
+                ResultObject = new List<Entity>{ entity }
+            });
+
+             var sut = SetupSut(
+                 createConductor: mockCreateConductor,
+                 updateConductor: mockUpdateConductor
+             );
+        
+            // Act
+            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
+        
+            // Assert
+            bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
+            bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+        }
+        [Fact]
+        public void BulkCreateOrUpdate_When_BulkCreate_Returns_Null_Then_Result_Has_Errors()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+
+            var entities = new List<Entity>();
+            var entity = new TestEntity(){Id = 0, Name = "hello-world"};
+            entities.Add(entity);
+
+            mockUpdateConductor.Setup(e => e.BulkUpdate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                    ResultObject = false
+            });
+            mockCreateConductor.Setup(e => e.BulkCreate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                Errors = new List<IError> {
+                        new Error(){
+                            Key = BASIC_ERROR_KEY, 
+                            Message = BASIC_ERROR_MESSAGE}
+                    },
+                ResultObject = null
+            });
+
+             var sut = SetupSut(
+                 createConductor: mockCreateConductor,
+                 updateConductor: mockUpdateConductor
+             );
+            // Act
+            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
+        
+            // Assert
+            bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
+            bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+        }
+        [Fact]
+        public void BulkCreateOrUpdate_When_CreateResult_Is_Not_Null_Then_Returns_List_With_Entity()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+
+            var entities = new List<Entity>();
+            var entity = new TestEntity(){Id = 0, Name = "hello-world"};
+            entities.Add(entity);
+
+            mockUpdateConductor.Setup(e => e.BulkUpdate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                    ResultObject = false
+            });
+            mockCreateConductor.Setup(e => e.BulkCreate(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                ResultObject = entities
+            });
+
+             var sut = SetupSut(
+                 createConductor: mockCreateConductor,
+                 updateConductor: mockUpdateConductor
+             );
+            // Act
+            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
+        
+            // Assert
+            bulkCreateOrUpdateResponse.HasErrors.ShouldBeFalse();
+            bulkCreateOrUpdateResponse.ResultObject.ShouldNotBeNull();
+            bulkCreateOrUpdateResponse.ResultObject.Count().ShouldBe(1);
+        }
+
+
+        #endregion
+
+
+
+    }
+}

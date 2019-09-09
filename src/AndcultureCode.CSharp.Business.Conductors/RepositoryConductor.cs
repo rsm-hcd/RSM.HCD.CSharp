@@ -39,12 +39,12 @@ namespace AndcultureCode.CSharp.Business.Conductors
 
         public RepositoryConductor(
             IRepositoryCreateConductor<T> createConductor,
-            IRepositoryReadConductor<T> readConductor,
+            IRepositoryReadConductor<T>   readConductor,
             IRepositoryUpdateConductor<T> updateConductor,
             IRepositoryDeleteConductor<T> deleteConductor)
         {
             _createConductor = createConductor;
-            _readConductor = readConductor;
+            _readConductor   = readConductor;
             _updateConductor = updateConductor;
             _deleteConductor = deleteConductor;
         }
