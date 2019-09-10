@@ -1,0 +1,26 @@
+{
+  "name": "andculturecode.csharp.conductors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "npx and-cli",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "and-cli": "0.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:AndcultureCode/AndcultureCode.CSharp.Conductors.git"
+  },
+  "author": "andculture",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/issues"
+  },
+  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors#readme"
+}
