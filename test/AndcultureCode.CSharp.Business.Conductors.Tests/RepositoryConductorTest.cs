@@ -21,12 +21,12 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
         }
         #endregion
 
-        const string BASIC_ERROR_KEY     = "TESTERRORKEY";
+        const string BASIC_ERROR_KEY = "TESTERRORKEY";
         const string BASIC_ERROR_MESSAGE = "TESTERRORMESSAGE";
 
         private IRepositoryConductor<Entity> SetupSut(
             Mock<IRepositoryCreateConductor<Entity>> createConductor = null,
-            Mock<IRepositoryReadConductor<Entity>>   readConductor   = null,
+            Mock<IRepositoryReadConductor<Entity>> readConductor = null,
             Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null,
             Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null
         )
@@ -40,15 +40,15 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
         }
 
         #region CreateOrUpdate
-        
+
         [Fact]
         public void BulkCreateOrUpdate_When_Items_Is_Null_Then_Returns_Null()
         {
             // Arrange
-        
+
             // Act
             var bulkCreateOrUpdateResponse = SetupSut().BulkCreateOrUpdate(null);
-        
+
             // Assert
             bulkCreateOrUpdateResponse.ResultObject.ShouldBeNull();
         }
@@ -57,10 +57,10 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
         public void BulkCreateOrUpdate_When_Items_Is_Empty_Then_Returns_Empty()
         {
             // Arrange
-        
+
             // Act
             var bulkCreateOrUpdateResponse = SetupSut().BulkCreateOrUpdate(new List<TestEntity>());
-        
+
             // Assert
             bulkCreateOrUpdateResponse.ResultObject.ShouldBeEmpty();
         }
@@ -72,26 +72,27 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
 
             var entities = new List<TestEntity>();
-            entities.Add(new TestEntity(){Id = 1, Name = "hello-world"});
+            entities.Add(new TestEntity() { Id = 1, Name = "hello-world" });
             mockUpdateConductor.Setup(e => e.BulkUpdate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool> {
-                    Errors = new List<IError> {
+            )).Returns(new Result<bool>
+            {
+                Errors = new List<IError> {
                         new Error(){
-                            Key = BASIC_ERROR_KEY, 
+                            Key = BASIC_ERROR_KEY,
                             Message = BASIC_ERROR_MESSAGE}
                     },
-                    ResultObject = false
-                });
+                ResultObject = false
+            });
 
-             var sut = SetupSut(
-                 updateConductor: mockUpdateConductor
-             );
-        
+            var sut = SetupSut(
+                updateConductor: mockUpdateConductor
+            );
+
             // Act
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
-        
+
             // Assert
             bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
             bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
@@ -105,35 +106,37 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
 
             var entities = new List<Entity>();
-            var entity = new TestEntity(){Id = 0, Name = "hello-world"};
+            var entity = new TestEntity() { Id = 0, Name = "hello-world" };
             entities.Add(entity);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool> {
-                    ResultObject = false
+            )).Returns(new Result<bool>
+            {
+                ResultObject = false
             });
             mockCreateConductor.Setup(e => e.BulkCreate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>> {
+            )).Returns(new Result<List<Entity>>
+            {
                 Errors = new List<IError> {
                         new Error(){
-                            Key = BASIC_ERROR_KEY, 
+                            Key = BASIC_ERROR_KEY,
                             Message = BASIC_ERROR_MESSAGE}
                     },
-                ResultObject = new List<Entity>{ entity }
+                ResultObject = new List<Entity> { entity }
             });
 
-             var sut = SetupSut(
-                 createConductor: mockCreateConductor,
-                 updateConductor: mockUpdateConductor
-             );
-        
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor
+            );
+
             // Act
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
-        
+
             // Assert
             bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
             bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
@@ -146,34 +149,36 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
 
             var entities = new List<Entity>();
-            var entity = new TestEntity(){Id = 0, Name = "hello-world"};
+            var entity = new TestEntity() { Id = 0, Name = "hello-world" };
             entities.Add(entity);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool> {
-                    ResultObject = false
+            )).Returns(new Result<bool>
+            {
+                ResultObject = false
             });
             mockCreateConductor.Setup(e => e.BulkCreate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>> {
+            )).Returns(new Result<List<Entity>>
+            {
                 Errors = new List<IError> {
                         new Error(){
-                            Key = BASIC_ERROR_KEY, 
+                            Key = BASIC_ERROR_KEY,
                             Message = BASIC_ERROR_MESSAGE}
                     },
                 ResultObject = null
             });
 
-             var sut = SetupSut(
-                 createConductor: mockCreateConductor,
-                 updateConductor: mockUpdateConductor
-             );
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor
+            );
             // Act
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
-        
+
             // Assert
             bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
             bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
@@ -186,29 +191,31 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
 
             var entities = new List<Entity>();
-            var entity = new TestEntity(){Id = 0, Name = "hello-world"};
+            var entity = new TestEntity() { Id = 0, Name = "hello-world" };
             entities.Add(entity);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool> {
-                    ResultObject = false
+            )).Returns(new Result<bool>
+            {
+                ResultObject = false
             });
             mockCreateConductor.Setup(e => e.BulkCreate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>> {
+            )).Returns(new Result<List<Entity>>
+            {
                 ResultObject = entities
             });
 
-             var sut = SetupSut(
-                 createConductor: mockCreateConductor,
-                 updateConductor: mockUpdateConductor
-             );
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor
+            );
             // Act
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
-        
+
             // Assert
             bulkCreateOrUpdateResponse.HasErrors.ShouldBeFalse();
             bulkCreateOrUpdateResponse.ResultObject.ShouldNotBeNull();
@@ -223,13 +230,14 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
         {
             // Arrange
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entity              = new TestEntity() {Id = 0, Name = "Hello-world"};
-            var createdByUserId     = 1;
+            var entity = new TestEntity() { Id = 0, Name = "Hello-world" };
+            var createdByUserId = 1;
 
             mockCreateConductor.Setup(e => e.Create(
                 It.IsAny<Entity>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<Entity> {
+            )).Returns(new Result<Entity>
+            {
                 Errors = new List<IError>() {
                     new Error() {
                     Key     = BASIC_ERROR_KEY,
@@ -251,14 +259,15 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
         {
             // Arrange
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entity              = new TestEntity() { Id = 0, Name = "Hello-world" };
-            var created             = new TestEntity() { Id = 1, Name = "Hello-world" };
-            var createdByUserId     = 1;
+            var entity = new TestEntity() { Id = 0, Name = "Hello-world" };
+            var created = new TestEntity() { Id = 1, Name = "Hello-world" };
+            var createdByUserId = 1;
 
             mockCreateConductor.Setup(e => e.Create(
                 It.IsAny<Entity>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<Entity> {
+            )).Returns(new Result<Entity>
+            {
                 ResultObject = created
             });
             var sut = SetupSut(createConductor: mockCreateConductor);
@@ -267,15 +276,15 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
 
             // Assert
             result.HasErrors.ShouldBeFalse();
-            result.ResultObject.ShouldBe(created);            
+            result.ResultObject.ShouldBe(created);
         }
         [Fact]
         public void CreateOrUpdate_When_item_Id_Is_Greater_Than_0_And_Update_Has_Errors_Then_Returns_Null_With_Errors()
         {
             // Arrange
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var entityToUpdate      = new TestEntity() { Id = 1, Name = "Hello-world" };
-            var createdByUserId     = 1;
+            var entityToUpdate = new TestEntity() { Id = 1, Name = "Hello-world" };
+            var createdByUserId = 1;
 
             mockUpdateConductor.Setup(e => e.Update(
                 It.IsAny<Entity>(),
@@ -303,8 +312,8 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
         {
             // Arrange
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var entityToUpdate      = new TestEntity() { Id = 1, Name = "Hello-world" };
-            var createdByUserId     = 1;
+            var entityToUpdate = new TestEntity() { Id = 1, Name = "Hello-world" };
+            var createdByUserId = 1;
 
             mockUpdateConductor.Setup(e => e.Update(
                 It.IsAny<Entity>(),
@@ -322,5 +331,5 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
             result.ResultObject.ShouldBe(entityToUpdate);
         }
         #endregion
-
+    }
 }
