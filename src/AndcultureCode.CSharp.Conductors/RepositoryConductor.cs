@@ -22,13 +22,13 @@ namespace AndcultureCode.CSharp.Conductors
             {
                 _createConductor.CommandTimeout = value;
                 _deleteConductor.CommandTimeout = value;
-                _readConductor.CommandTimeout = value;
+                _readConductor.CommandTimeout   = value;
                 _updateConductor.CommandTimeout = value;
             }
         }
 
         protected readonly IRepositoryCreateConductor<T> _createConductor;
-        protected readonly IRepositoryReadConductor<T> _readConductor;
+        protected readonly IRepositoryReadConductor<T>   _readConductor;
         protected readonly IRepositoryUpdateConductor<T> _updateConductor;
         protected readonly IRepositoryDeleteConductor<T> _deleteConductor;
 
@@ -151,6 +151,16 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion CreateOrUpdate
 
+        #region Delete
+
+        public virtual IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true) => _deleteConductor.BulkDelete(items, deletedById, soft);
+        public virtual IResult<bool> Delete(long id, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(id, deletedById, soft);
+        public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(o, deletedById, soft);
+
+        public virtual IResult<bool> Restore(T o) => _deleteConductor.Restore(o);
+        public virtual IResult<bool> Restore(long id) => _deleteConductor.Restore(id);
+
+        #endregion Delete
 
         #region FindAll
 
@@ -211,17 +221,7 @@ namespace AndcultureCode.CSharp.Conductors
         #endregion Update
 
 
-        #region Delete
-
-        public virtual IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true) => _deleteConductor.BulkDelete(items, deletedById, soft);
-        public virtual IResult<bool> Delete(long id, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(id, deletedById, soft);
-        public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(o, deletedById, soft);
-
-        public virtual IResult<bool> Restore(T o) => _deleteConductor.Restore(o);
-        public virtual IResult<bool> Restore(long id) => _deleteConductor.Restore(id);
-
-        #endregion Delete
-
+        
         #endregion Public Methods
     }
 }
