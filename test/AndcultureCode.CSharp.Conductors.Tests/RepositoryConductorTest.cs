@@ -5,6 +5,7 @@ using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Testing;
+using AndcultureCode.CSharp.Testing.Extensions;
 using Moq;
 using Shouldly;
 using Xunit;
@@ -95,8 +96,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
 
             // Assert
-            bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
-            bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            bulkCreateOrUpdateResponse.ShouldHaveErrors();
+            bulkCreateOrUpdateResponse.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
         }
 
         [Fact]
@@ -141,9 +142,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
 
             // Assert
-            bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
-            bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            bulkCreateOrUpdateResponse.ShouldHaveErrors();
+            bulkCreateOrUpdateResponse.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
         }
+
         [Fact]
         public void BulkCreateOrUpdate_When_BulkCreate_Returns_Null_Then_Result_Has_Errors()
         {
@@ -181,13 +183,15 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor
             );
+
             // Act
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
 
             // Assert
-            bulkCreateOrUpdateResponse.HasErrors.ShouldBeTrue();
-            bulkCreateOrUpdateResponse.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            bulkCreateOrUpdateResponse.ShouldHaveErrors();
+            bulkCreateOrUpdateResponse.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
         }
+
         [Fact]
         public void BulkCreateOrUpdate_When_CreateResult_Is_Not_Null_Then_Returns_List_With_Entity()
         {
@@ -218,18 +222,20 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor
             );
+
             // Act
             var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
 
             // Assert
-            bulkCreateOrUpdateResponse.HasErrors.ShouldBeFalse();
+            bulkCreateOrUpdateResponse.ShouldNotHaveErrors();
             bulkCreateOrUpdateResponse.ResultObject.ShouldNotBeNull();
             bulkCreateOrUpdateResponse.ResultObject.Count().ShouldBe(1);
         }
 
-
         #endregion
+
         #region CreateOrUpdate
+
         [Fact]
         public void CreateOrUpdate_When_item_Id_Is_0_And_Create_Result_Has_Errors_Then_Returns_Null_With_Errors()
         {
@@ -252,14 +258,15 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 ResultObject = null
             });
             var sut = SetupSut(createConductor: mockCreateConductor);
+
             // Act
             var result = sut.CreateOrUpdate(entity, createdByUserId);
 
             // Assert
-            result.HasErrors.ShouldBeTrue();
-            result.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
             result.ResultObject.ShouldBeNull();
         }
+
         [Fact]
         public void CreateOrUpdate_When_item_Id_Is_0_And_Create_Is_Successful_Then_Returns_Created_Object()
         {
@@ -277,13 +284,15 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 ResultObject = created
             });
             var sut = SetupSut(createConductor: mockCreateConductor);
+
             // Act
             var result = sut.CreateOrUpdate(entity, createdByUserId);
 
             // Assert
-            result.HasErrors.ShouldBeFalse();
+            result.ShouldNotHaveErrors();
             result.ResultObject.ShouldBe(created);
         }
+
         [Fact]
         public void CreateOrUpdate_When_item_Id_Is_Greater_Than_0_And_Update_Has_Errors_Then_Returns_Null_With_Errors()
         {
@@ -307,12 +316,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 ResultObject = false
             });
             var sut = SetupSut(updateConductor: mockUpdateConductor);
+
             // Act
             var result = sut.CreateOrUpdate(entityToUpdate, createdByUserId);
 
             // Assert
-            result.HasErrors.ShouldBeTrue();
-            result.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
             result.ResultObject.ShouldBeNull();
         }
         [Fact]
@@ -331,11 +340,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 ResultObject = true
             });
             var sut = SetupSut(updateConductor: mockUpdateConductor);
+
             // Act
             var result = sut.CreateOrUpdate(entityToUpdate, createdByUserId);
 
             // Assert
-            result.HasErrors.ShouldBeFalse();
+            result.ShouldNotHaveErrors();
             result.ResultObject.ShouldBe(entityToUpdate);
         }
 
@@ -378,9 +388,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.CreateOrUpdate(entities, currentUserId);
             
             // Assert
-            result.HasErrors.ShouldBeTrue();
+            result.ShouldHaveErrors();
             result.ResultObject.ShouldBeEmpty<Entity>();
         }
+        
         [Fact]
         public void CreateOrUpdate_When_Items_To_Update_And_No_Items_To_Create_And_Update_Is_Successful_Then_Returns_Null()
         {
@@ -413,9 +424,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.CreateOrUpdate(entities, currentUserId);
             
             // Assert
-            result.HasErrors.ShouldBeFalse();
+            result.ShouldNotHaveErrors();
             result.ResultObject.ShouldBeEmpty();
         }
+
         [Fact]
         public void CreateOrUpdate_When_Items_To_Update_Do_Not_Exist_And_Items_To_Create_Exist_And_Create_Has_Errors_Then_Returns_Null_With_Error()
         {
@@ -453,8 +465,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.CreateOrUpdate(entities, currentUserId);
             
             // Assert
-            result.HasErrors.ShouldBeTrue();
-            result.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            
+            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
             result.ResultObject.ShouldBeEmpty();
         }
         
@@ -494,7 +506,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.CreateOrUpdate(entities, currentUserId);
         
             // Assert
-            result.HasErrors.ShouldBeFalse();
+            result.ShouldNotHaveErrors();
             result.ResultObject.ShouldBe(createdEntities);
         }
 
