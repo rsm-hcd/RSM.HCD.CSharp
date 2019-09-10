@@ -71,16 +71,18 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
 
             var entities = new List<TestEntity>();
-            entities.Add(new TestEntity() { Id = 1, Name = "hello-world" });
+            entities.Add(new TestEntity { Id = 1, Name = "hello-world" });
             mockUpdateConductor.Setup(e => e.BulkUpdate(
                 It.IsAny<IEnumerable<Entity>>(),
                 It.IsAny<long?>()
             )).Returns(new Result<bool>
             {
                 Errors = new List<IError> {
-                        new Error(){
+                        new Error
+                        {
                             Key     = BASIC_ERROR_KEY,
-                            Message = BASIC_ERROR_MESSAGE}
+                            Message = BASIC_ERROR_MESSAGE
+                        }
                     },
                 ResultObject = false
             });
@@ -105,7 +107,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
 
             var entities = new List<Entity>();
-            var entity   = new TestEntity() { Id = 0, Name = "hello-world" };
+            var entity   = new TestEntity { Id = 0, Name = "hello-world" };
             entities.Add(entity);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
@@ -121,9 +123,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<List<Entity>>
             {
                 Errors = new List<IError> {
-                        new Error(){
+                        new Error
+                        {
                             Key     = BASIC_ERROR_KEY,
-                            Message = BASIC_ERROR_MESSAGE}
+                            Message = BASIC_ERROR_MESSAGE
+                        }
                     },
                 ResultObject = new List<Entity> { entity }
             });
@@ -148,7 +152,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
 
             var entities = new List<Entity>();
-            var entity   = new TestEntity() { Id = 0, Name = "hello-world" };
+            var entity   = new TestEntity{ Id = 0, Name = "hello-world" };
             entities.Add(entity);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
@@ -164,9 +168,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<List<Entity>>
             {
                 Errors = new List<IError> {
-                        new Error(){
+                        new Error
+                        {
                             Key     = BASIC_ERROR_KEY,
-                            Message = BASIC_ERROR_MESSAGE}
+                            Message = BASIC_ERROR_MESSAGE
+                        }
                     },
                 ResultObject = null
             });
@@ -190,7 +196,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
 
             var entities = new List<Entity>();
-            var entity   = new TestEntity() { Id = 0, Name = "hello-world" };
+            var entity   = new TestEntity { Id = 0, Name = "hello-world" };
             entities.Add(entity);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
@@ -238,10 +244,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<Entity>
             {
                 Errors = new List<IError>() {
-                    new Error() {
-                    Key     = BASIC_ERROR_KEY,
-                    Message = BASIC_ERROR_MESSAGE
-                }},
+                    new Error
+                    {
+                        Key     = BASIC_ERROR_KEY,
+                        Message = BASIC_ERROR_MESSAGE
+                    }},
                 ResultObject = null
             });
             var sut = SetupSut(createConductor: mockCreateConductor);
@@ -258,8 +265,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         {
             // Arrange
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entity              = new TestEntity() { Id = 0, Name = "Hello-world" };
-            var created             = new TestEntity() { Id = 1, Name = "Hello-world" };
+            var entity              = new TestEntity { Id = 0, Name = "Hello-world" };
+            var created             = new TestEntity { Id = 1, Name = "Hello-world" };
             var createdByUserId     = 1;
 
             mockCreateConductor.Setup(e => e.Create(
@@ -282,7 +289,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         {
             // Arrange
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var entityToUpdate      = new TestEntity() { Id = 1, Name = "Hello-world" };
+            var entityToUpdate      = new TestEntity { Id = 1, Name = "Hello-world" };
             var createdByUserId     = 1;
 
             mockUpdateConductor.Setup(e => e.Update(
@@ -291,10 +298,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<bool>
             {
                 Errors = new List<IError>() {
-                    new Error() {
-                    Key     = BASIC_ERROR_KEY,
-                    Message = BASIC_ERROR_MESSAGE
-                }},
+                    new Error
+                    {
+                        Key     = BASIC_ERROR_KEY,
+                        Message = BASIC_ERROR_MESSAGE
+                    }
+                },
                 ResultObject = false
             });
             var sut = SetupSut(updateConductor: mockUpdateConductor);
@@ -311,7 +320,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         {
             // Arrange
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var entityToUpdate = new TestEntity() { Id = 1, Name = "Hello-world" };
+            var entityToUpdate = new TestEntity { Id = 1, Name = "Hello-world" };
             var createdByUserId = 1;
 
             mockUpdateConductor.Setup(e => e.Update(
@@ -337,8 +346,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
             var entities = new List<Entity>() {
-                new TestEntity() { Id = 1, Name = "Test-1" },
-                new TestEntity() { Id = 2, Name = "Test-2" }
+                new TestEntity { Id = 1, Name = "Test-1" },
+                new TestEntity { Id = 2, Name = "Test-2" }
             };
             var currentUserId = 1;
             mockUpdateConductor.Setup(e => e.Update(
@@ -346,7 +355,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 It.IsAny<long?>()
             )).Returns(new Result<bool> {
                 Errors = new List<IError>() {
-                    new Error() {
+                    new Error
+                    {
                         Key = BASIC_ERROR_KEY,
                         Message = BASIC_ERROR_MESSAGE
                     }
@@ -378,8 +388,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
             var entities = new List<Entity>() {
-                new TestEntity() { Id = 1, Name = "Test-1" },
-                new TestEntity() { Id = 2, Name = "Test-2" }
+                new TestEntity { Id = 1, Name = "Test-1" },
+                new TestEntity { Id = 2, Name = "Test-2" }
             };
             var currentUserId = 1;
             mockUpdateConductor.Setup(e => e.Update(
@@ -413,8 +423,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
             var entities = new List<Entity>() {
-                new TestEntity() { Id = 0, Name = "Test-1" },
-                new TestEntity() { Id = 0, Name = "Test-2" }
+                new TestEntity { Id = 0, Name = "Test-1" },
+                new TestEntity { Id = 0, Name = "Test-2" }
             };
             var currentUserId = 1;
             mockUpdateConductor.Setup(e => e.Update(
@@ -455,12 +465,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
             var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
             var entities = new List<Entity>() {
-                new TestEntity() { Id = 0, Name = "Test-1" },
-                new TestEntity() { Id = 0, Name = "Test-2" }
+                new TestEntity { Id = 0, Name = "Test-1" },
+                new TestEntity { Id = 0, Name = "Test-2" }
             };
             var createdEntities = new List<Entity>() {
-                new TestEntity() { Id = 1, Name = "Test-1" },
-                new TestEntity() { Id = 2, Name = "Test-2" }
+                new TestEntity { Id = 1, Name = "Test-1" },
+                new TestEntity { Id = 2, Name = "Test-2" }
             };
             var currentUserId = 1;
             mockUpdateConductor.Setup(e => e.Update(
