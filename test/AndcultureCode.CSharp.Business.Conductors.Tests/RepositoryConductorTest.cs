@@ -330,6 +330,167 @@ namespace AndcultureCode.CSharp.Business.Conductors.Tests
             result.HasErrors.ShouldBeFalse();
             result.ResultObject.ShouldBe(entityToUpdate);
         }
+
+        [Fact]
+        public void CreateOrUpdate_When_Exists_Items_To_Update_And_No_Items_To_Create_And_Update_HasErrors_Then_Returns_Empty_List_And_Error()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var entities = new List<Entity>() {
+                new TestEntity() {Id = 1, Name = "Test-1"},
+                new TestEntity() {Id = 2, Name = "Test-2"}
+            };
+            var currentUserId = 1;
+            mockUpdateConductor.Setup(e => e.Update(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                Errors = new List<IError>() {
+                    new Error() {
+                        Key = BASIC_ERROR_KEY,
+                        Message = BASIC_ERROR_MESSAGE
+                    }
+                },
+                ResultObject = false
+            });
+            mockCreateConductor.Setup(e => e.Create(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                ResultObject = null
+            });
+            
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor);
+
+            // Act
+            var result = sut.CreateOrUpdate(entities, currentUserId);
+            
+            // Assert
+            result.HasErrors.ShouldBeTrue();
+            result.ResultObject.ShouldBeEmpty<Entity>();
+        }
+        [Fact]
+        public void CreateOrUpdate_When_Items_To_Update_And_No_Items_To_Create_And_Update_Is_Successful_Then_Returns_Null()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var entities = new List<Entity>() {
+                new TestEntity() {Id = 1, Name = "Test-1"},
+                new TestEntity() {Id = 2, Name = "Test-2"}
+            };
+            var currentUserId = 1;
+            mockUpdateConductor.Setup(e => e.Update(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                ResultObject = true
+            });
+            mockCreateConductor.Setup(e => e.Create(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                ResultObject = null
+            });
+            
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor);
+
+            // Act
+            var result = sut.CreateOrUpdate(entities, currentUserId);
+            
+            // Assert
+            result.HasErrors.ShouldBeFalse();
+            result.ResultObject.ShouldBeEmpty();
+        }
+        [Fact]
+        public void CreateOrUpdate_When_Items_To_Update_Do_Not_Exist_And_Items_To_Create_Exist_And_Create_Has_Errors_Then_Returns_Null_With_Error()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var entities = new List<Entity>() {
+                new TestEntity() {Id = 0, Name = "Test-1"},
+                new TestEntity() {Id = 0, Name = "Test-2"}
+            };
+            var currentUserId = 1;
+            mockUpdateConductor.Setup(e => e.Update(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                ResultObject = true
+            });
+            mockCreateConductor.Setup(e => e.Create(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                Errors = new List<IError>() {
+                    new Error() {
+                    Key     = BASIC_ERROR_KEY,
+                    Message = BASIC_ERROR_MESSAGE
+                }},
+                ResultObject = null
+            });
+            
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor);
+
+            // Act
+            var result = sut.CreateOrUpdate(entities, currentUserId);
+            
+            // Assert
+            result.HasErrors.ShouldBeTrue();
+            result.Errors.FirstOrDefault().Key.ShouldBe(BASIC_ERROR_KEY);
+            result.ResultObject.ShouldBeEmpty();
+        }
+        
+        [Fact]
+        public void CreateOrUpdate_When_Items_To_Update_Do_Not_Exist_And_Items_To_Create_Exist_And_Create_is_Successful_Then_Returns_Created_Entities()
+        {
+            // Arrange
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var entities = new List<Entity>() {
+                new TestEntity() {Id = 0, Name = "Test-1"},
+                new TestEntity() {Id = 0, Name = "Test-2"}
+            };
+            var createdEntities = new List<Entity>() {
+                new TestEntity() { Id = 1, Name = "Test-1" },
+                new TestEntity() { Id = 2, Name = "Test-2" }
+            };
+            var currentUserId = 1;
+            mockUpdateConductor.Setup(e => e.Update(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<bool> {
+                ResultObject = true
+            });
+            mockCreateConductor.Setup(e => e.Create(
+                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<long?>()
+            )).Returns(new Result<List<Entity>> {
+                ResultObject = createdEntities
+            });
+            
+            var sut = SetupSut(
+                createConductor: mockCreateConductor,
+                updateConductor: mockUpdateConductor);
+
+            // Act
+            var result = sut.CreateOrUpdate(entities, currentUserId);
+        
+            // Assert
+            result.HasErrors.ShouldBeFalse();
+            result.ResultObject.ShouldBe(createdEntities);
+        }
+        
+        
+        
         #endregion
     }
 }
