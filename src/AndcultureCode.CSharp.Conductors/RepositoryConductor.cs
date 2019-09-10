@@ -8,7 +8,7 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models.Entities;
 
-namespace AndcultureCode.CSharp.Business.Conductors
+namespace AndcultureCode.CSharp.Conductors
 {
     public class RepositoryConductor<T> : Conductor, IRepositoryConductor<T>
     where T : Entity

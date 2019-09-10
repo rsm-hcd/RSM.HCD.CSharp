@@ -1,5 +1,5 @@
 {
-  "name": "andculturecode.csharp.business.conductors",
+  "name": "andculturecode.csharp.conductors",
   "version": "1.0.0",
   "description": "",
   "main": "npx and-cli",
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/AndcultureCode/AndcultureCode.CSharp.Business.Conductors.git"
+    "url": "git@github.com:AndcultureCode/AndcultureCode.CSharp.Conductors.git"
   },
   "author": "andculture",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues"
+    "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/issues"
   },
-  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Core#readme"
+  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors#readme"
 }

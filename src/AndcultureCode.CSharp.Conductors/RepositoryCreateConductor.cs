@@ -5,7 +5,7 @@ using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Business.Conductors
+namespace AndcultureCode.CSharp.Conductors
 {
     public class RepositoryCreateConductor<T> : Conductor, IRepositoryCreateConductor<T>
         where T : class, IEntity

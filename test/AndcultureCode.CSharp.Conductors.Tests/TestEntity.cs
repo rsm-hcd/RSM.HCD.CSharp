@@ -1,7 +1,7 @@
 using System;
 using AndcultureCode.CSharp.Core.Models.Entities;
 
-namespace AndcultureCode.CSharp.Business.Conductors.Tests
+namespace AndcultureCode.CSharp.Conductors.Tests
 {
     public class TestEntity : Entity
     {

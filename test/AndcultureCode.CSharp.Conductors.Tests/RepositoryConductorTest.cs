@@ -10,7 +10,7 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Business.Conductors.Tests
+namespace AndcultureCode.CSharp.Conductors.Tests
 {
     public class RepositoryConductorTest : UnitTestBase
     {

@@ -7,7 +7,7 @@ using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Business.Conductors
+namespace AndcultureCode.CSharp.Conductors
 {
     public class RepositoryReadConductor<T> : Conductor, IRepositoryReadConductor<T>
         where T : class, IEntity

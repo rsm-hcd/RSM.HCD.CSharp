@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AndcultureCode.CSharp.Business.Conductors\AndcultureCode.CSharp.Business.Conductors.csproj" />
+    <ProjectReference Include="..\..\src\AndcultureCode.CSharp.Conductors\AndcultureCode.CSharp.Conductors.csproj" />
   </ItemGroup>
 
 </Project>
