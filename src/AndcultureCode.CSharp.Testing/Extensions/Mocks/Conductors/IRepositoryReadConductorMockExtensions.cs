@@ -216,11 +216,11 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
             }
 
             public static Mock<IRepositoryReadConductor<T>> SetupFindAllCommittedReturnsGivenResult<T>(this Mock<IRepositoryReadConductor<T>> mock,
-                string includeProperties                          = null,
-                int? skip                                         = null,
-                int? take                                         = null,
-                bool? ignoreQueryFilters                          = false,
-                IList<T> resultObject                             = null
+                string   includeProperties  = null,
+                int?     skip               = null,
+                int?     take               = null,
+                bool?    ignoreQueryFilters = false,
+                IList<T> resultObject       = null
             ) where T : Entity
             {
                 mock
@@ -242,7 +242,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
             ) where T : Entity
             {
                 var includePropertiesParam  = includeProperties != null ? includeProperties : It.IsAny<string>();
-                var skipParam               = skip.HasValue ? skip :  It.IsAny<int?>();
+                var skipParam               = skip.HasValue ? skip : It.IsAny<int?>();
                 var takeParam               = take.HasValue ? take : It.IsAny<int?>();
                 var ignoreQueryFiltersParam = ignoreQueryFilters.HasValue ? ignoreQueryFilters : It.IsAny<bool?>();
 

@@ -11,6 +11,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
     public static class IRepositoryCreateConductorMockExtensions
     {
         #region Create(T item, createdById = null)
+
         public static ISetup<IRepositoryCreateConductor<T>, IResult<T>> SetupCreate<T>(this Mock<IRepositoryCreateConductor<T>> mock,
             T     item        = null,
             long? createdById = null
@@ -60,6 +61,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
                 .ReturnsGivenResult(returned ?? item ?? null);
             return mock;
         }
+        
         #endregion Create(T item, createdById = null)
 
         #region Create(IEnumerable<T> item, createdById = null)

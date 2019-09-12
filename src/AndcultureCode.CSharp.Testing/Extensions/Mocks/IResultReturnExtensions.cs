@@ -21,6 +21,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks
                     ResultObject = resultObject
                 });
         }
+        
          public static ISetupSequentialResult<IResult<TResult>> ReturnsBasicErrorSequentialResult<TResult>(this ISetupSequentialResult<IResult<TResult>> setup,
             TResult resultObject = default(TResult)
         )
