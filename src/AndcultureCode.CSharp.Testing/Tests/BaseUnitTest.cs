@@ -4,11 +4,11 @@ using Xunit.Abstractions;
 namespace AndcultureCode.CSharp.Testing.Tests
 {
     [Trait("Category", "Unit")]
-    public class AndcultureCodeUnitTest : AndcultureCodeTest
+    public class BaseUnitTest : BaseTest
     {
         #region Constructor
 
-        public AndcultureCodeUnitTest(
+        public BaseUnitTest(
             ITestOutputHelper output
         ) : base(output)
         {

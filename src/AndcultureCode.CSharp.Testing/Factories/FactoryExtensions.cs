@@ -5,7 +5,7 @@ using AndcultureCode.CSharp.Testing.Exceptions;
 
 namespace AndcultureCode.CSharp.Testing.Factories
 {
-    public static class AndcultureCodeFactory
+    public static class FactoryExtensions
     {
         #region Private Members
 

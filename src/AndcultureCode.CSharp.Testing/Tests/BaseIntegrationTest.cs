@@ -14,7 +14,7 @@ using Xunit.Abstractions;
 namespace AndcultureCode.CSharp.Testing.Tests
 {
     [Trait("Category", "Integration")]
-    public abstract class AndcultureCodeIntegrationTest : AndcultureCodeTest
+    public abstract class BaseIntegrationTest : BaseTest
     {
         #region Member Variables
 
@@ -29,7 +29,7 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
         #region Constructor
 
-        public AndcultureCodeIntegrationTest(
+        public BaseIntegrationTest(
             ITestOutputHelper output,
             IContext context = null,
             IRepository<Entity> repository = null
@@ -75,17 +75,53 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
         #endregion Factories
 
-        #region Create
+        #region Virtual Methods
 
+        /// <summary>
+        /// Defines generic creation of T Entity using repository conductors. Must be overridden by inheriting classes.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="item"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>NotImplementedException when not overridden</returns>
         public virtual T Create<T>(IContext context, T item) where T : Entity => throw new NotImplementedException();
 
         #endregion
 
         #region Conductors
 
-        public virtual IntegrationTestConductors<T> GetRepositoryConductorDeps<T>(IContext customContext = null) where T : Entity => throw new NotImplementedException();
+        /// <summary>
+        /// Sets up an object containing conductor dependencies for a given Entity T returned as a composed model.
+        /// </summary>
+        /// <param name="repository"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        protected IntegrationTestConductors<T> GetRepositoryConductorDeps<T>(IRepository<T> repository) where T : Entity
+        {
+            var create     = new RepositoryCreateConductor<T>(repository);
+            var delete     = new RepositoryDeleteConductor<T>(repository);
+            var read       = new RepositoryReadConductor<T>  (repository);
+            var update     = new RepositoryUpdateConductor<T>(repository);
+            var conductor  = new RepositoryConductor<T>(create, read, update, delete);
 
-        protected IRepositoryConductor<T> SetupRepositoryConductor<T>(IContext customContext = null) where T : Entity => GetRepositoryConductorDeps<T>(customContext).Conductor;
+            return new IntegrationTestConductors<T>
+            {
+                Conductor  = conductor,
+                Create     = create,
+                Delete     = delete,
+                Read       = read,
+                Repository = repository,
+                Update     = update
+            };
+        }
+
+        /// <summary>
+        /// Helper method to return Conductor property of IntegrationTestConductors<T>
+        /// </summary>
+        /// <param name="customContext"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        protected IRepositoryConductor<T> SetupRepositoryConductor<T>(IRepository<T> customRepository = null) where T : Entity => GetRepositoryConductorDeps<T>(customRepository).Conductor;
 
         #endregion Conductors
 
