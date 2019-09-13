@@ -4,7 +4,7 @@ using Xunit.Abstractions;
 namespace AndcultureCode.CSharp.Testing.Tests
 {
     [Trait("Category", "Routing")]
-    public class BaseRoutingTest : AndcultureCodeTest
+    public class BaseRoutingTest : BaseTest
     {
         #region Constructor
 

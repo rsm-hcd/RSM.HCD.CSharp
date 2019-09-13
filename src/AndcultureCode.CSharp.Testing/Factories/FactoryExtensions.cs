@@ -76,7 +76,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
             var keyName = GetKeyName<T>(name);
             if (!namedBuilders.ContainsKey(keyName))
             {
-                throw new MissingFactoryException(name + " is not yet registered as a factory (LMS\\Tests\\Testing\\Factories).  You can only build objects for factories that have been created");
+                throw new MissingFactoryException(name + " is not yet registered as a factory (Tests\\Testing\\Factories).  You can only build objects for factories that have been created");
             }
             var builder = namedBuilders[keyName];
             var result  = (T)builder.BuildCallback();
