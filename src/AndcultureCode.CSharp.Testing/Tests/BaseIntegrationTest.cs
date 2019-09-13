@@ -5,7 +5,6 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Core.Models.Entities;
-using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Testing.Models.Setup;
 using AutoMapper;
 using Xunit;
