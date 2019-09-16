@@ -25,6 +25,12 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
 
         #region Methods
 
+        /// <summary>
+        /// Perform a DbContext.BulkInsert on an enumeration of T within a single transaction
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="createdById"></param>
+        /// <returns></returns>
         IResult<List<T>> BulkCreate(IEnumerable<T> items, long? createdById = null);
 
         /// <summary>
@@ -37,7 +43,26 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="createdById">Id of the user creating the entity</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
+        
+        /// <summary>
+        /// Calls BulkCreate() after selecting a subset of 'items' based on the distinct value of 'property'
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="property"></param>
+        /// <param name="createdById"></param>
+        /// <typeparam name="TKey"></typeparam>
+        /// <returns></returns>
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
+
+        /// <summary>
+        /// Calls BulkDelete() with a de-duped list of objects as determined by the
+        /// property (or properties) of the object for the 'property' argument
+        /// NOTE: Bulking is generally faster than batching, but locks the table.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="deletedById"></param>
+        /// <param name="soft"></param>
+        /// <returns></returns>
         IResult<bool>    BulkDelete(IEnumerable<T> items, long? deletedById = null, bool soft = true);
         IResult<bool>    BulkUpdate(IEnumerable<T> entities, long? updatedBy = default(long?));
         IResult<T>       Create(T item, long? createdById = null);
@@ -56,7 +81,30 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<List<T>>       CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
         IResult<bool>          Delete(long id, long? deletedById = null, bool soft = true);
         IResult<bool>          Delete(T o, long? deletedById = null, bool soft = true);
+
+        /// <summary>
+        /// Find all filtered, sorted and paged
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <param name="ignoreQueryFilters"></param>
+        /// <param name="asNoTracking"></param>
+        /// <returns></returns>
         IResult<IQueryable<T>> FindAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false);
+
+        /// <summary>
+        /// Find all filtered, sorted and paged and converts to an IList<T>
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <param name="ignoreQueryFilters"></param>
+        /// <returns></returns>
         IResult<IList<T>>      FindAllCommitted(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false);
         IResult<T>             FindById(long id, bool? ignoreQueryFilters = false);
         IResult<T>             FindById(long id, params Expression<Func<T, object>>[] includeProperties);
@@ -64,7 +112,16 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<T>             FindById(long id, params string[] includeProperties);
         IResult<bool>          Restore(T o);
         IResult<bool>          Restore(long id);
+
         IResult<bool>          Update(T item, long? updatedBy = null);
+        
+        /// <summary>
+        /// Calls Update one-by-one for each item in the enumerated entities. 
+        /// For large operations, BulkUpdate() is more efficient.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="updatedBy"></param>
+        /// <returns>True if entities updated without any exceptions. False if an exception was thrown.</returns>
         IResult<bool>          Update(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         #endregion Methods
