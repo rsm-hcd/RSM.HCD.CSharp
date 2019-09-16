@@ -17,8 +17,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 EmailAddress = "developer@andculture.com"
             };
 
-            var jsonEntity = Newtonsoft.Json.JsonConvert.SerializeObject(entity);
-            response.Content = new StringContent(jsonEntity);
+            var jsonEntity       = Newtonsoft.Json.JsonConvert.SerializeObject(entity);
+                response.Content = new StringContent(jsonEntity);
 
             // Act
             var result = response.FromJson<TestEntity>();
