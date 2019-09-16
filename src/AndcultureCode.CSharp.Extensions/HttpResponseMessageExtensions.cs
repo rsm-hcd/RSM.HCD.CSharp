@@ -17,5 +17,5 @@ namespace AndcultureCode.CSharp.Extensions
             return JsonConvert.DeserializeObject<T>(body);
         }
     }
-    
+
 }
