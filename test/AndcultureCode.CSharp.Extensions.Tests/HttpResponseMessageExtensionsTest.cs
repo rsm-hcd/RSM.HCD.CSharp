@@ -32,15 +32,13 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void FromJson_When_Content_Is_Not_Object_Then_Returns_Parsing_Error()
         {
             // Arrange
-            var response = new HttpResponseMessage();
-            response.Content = new StringContent("Hello-World");
-            
-            // Act
-            // Assert
-            Should.Throw<Newtonsoft.Json.JsonReaderException>(() => response.FromJson<TestEntity>());
+            var response         = new HttpResponseMessage();
+                response.Content = new StringContent("Hello-World");
 
+            // Act & Assert
+            Should.Throw<Newtonsoft.Json.JsonReaderException>(() => response.FromJson<TestEntity>());
         }
-        
+
 
     }
 }
