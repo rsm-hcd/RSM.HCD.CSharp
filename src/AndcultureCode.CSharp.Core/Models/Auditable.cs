@@ -15,6 +15,6 @@ namespace AndcultureCode.CSharp.Core.Models
         public long?           UpdatedById { get; set; }
         public DateTimeOffset? UpdatedOn   { get; set; }
 
-        #endregion
+        #endregion IAuditable Implementation
     }
 }

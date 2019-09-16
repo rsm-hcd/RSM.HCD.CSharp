@@ -55,7 +55,9 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         /// <summary>
-        /// 
+        /// Calls BulkDelete() with a de-duped list of objects as determined by the
+        /// property (or properties) of the object for the 'property' argument
+        /// NOTE: Bulking is generally faster than batching, but locks the table.
         /// </summary>
         /// <param name="items"></param>
         /// <param name="deletedById"></param>
@@ -94,7 +96,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<IQueryable<T>> FindAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false);
 
         /// <summary>
-        /// Find all filtered, sorted and paged
+        /// Find all filtered, sorted and paged and converts to an IList<T>
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
@@ -111,13 +113,15 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<bool>          Restore(T o);
         IResult<bool>          Restore(long id);
 
+        IResult<bool>          Update(T item, long? updatedBy = null);
+        
         /// <summary>
-        /// Updates an enumerable of entities in the database.
+        /// Calls Update one-by-one for each item in the enumerated entities. 
+        /// For large operations, BulkUpdate() is more efficient.
         /// </summary>
         /// <param name="entities"></param>
         /// <param name="updatedBy"></param>
         /// <returns>True if entities updated without any exceptions. False if an exception was thrown.</returns>
-        IResult<bool>          Update(T item, long? updatedBy = null);
         IResult<bool>          Update(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         #endregion Methods
