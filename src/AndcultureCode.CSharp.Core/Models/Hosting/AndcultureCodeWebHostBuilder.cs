@@ -8,9 +8,6 @@ namespace AndcultureCode.CSharp.Core.Models.Hosting
     {
         #region Properties
 
-        /// <summary>
-        /// The command line args to dotnet process. Ultimately piped to AspNetCore WebHost.
-        /// </summary>
         public string[] Args { get; set; }
 
         #endregion Properties
