@@ -34,6 +34,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Constructors
 
+        public AmazonEBConfigurationProvider() {}
         public AmazonEBConfigurationProvider(bool stdoutEnabled = false)
         {
             StdoutEnabled = stdoutEnabled;
@@ -51,11 +52,11 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Public Methods
 
-        public string Get(string key) => ReadConfiguration()[key];
+        public string Get(string key) => Has(key) ? ReadConfiguration()[key] : null;
 
         public bool Has(string key) => ReadConfiguration().ContainsKey(key);
 
-        public IDictionary<string, string> ReadConfiguration()
+        public virtual IDictionary<string, string> ReadConfiguration()
         {
             if (CachedConfiguration != null)
             {
