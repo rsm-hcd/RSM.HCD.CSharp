@@ -8,7 +8,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
     {
         #region Constants
 
-        private const string ASPNETCORE_ENVIRONMENT = "ASPNETCORE_ENVIRONMENT";
+        public const string ASPNETCORE_ENVIRONMENT = "ASPNETCORE_ENVIRONMENT";
 
         #endregion Constants
 
@@ -22,9 +22,12 @@ namespace AndcultureCode.CSharp.Core.Extensions
         /// <param name="builder"></param>
         /// <param name="stdoutEnabled">Should errors be output to standard output for debugging being this could be run before logging starts</param>
         /// <returns></returns>
-        public static IAndcultureCodeWebHostBuilder PreloadAmazonElasticBeanstalk(this IAndcultureCodeWebHostBuilder builder, bool stdoutEnabled = false)
+        public static IAndcultureCodeWebHostBuilder PreloadAmazonElasticBeanstalk(
+            this IAndcultureCodeWebHostBuilder builder,
+            bool                               stdoutEnabled = false,
+            AmazonEBConfigurationProvider      configurationProvider = null)
         {
-            var ebProvider = new AmazonEBConfigurationProvider(stdoutEnabled);
+            var ebProvider = configurationProvider ?? new AmazonEBConfigurationProvider(stdoutEnabled);
             if (ebProvider.Has(ASPNETCORE_ENVIRONMENT))
             {
                 var ebEnvironment = ebProvider.Get(ASPNETCORE_ENVIRONMENT);

@@ -52,9 +52,9 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Public Methods
 
-        public string Get(string key) => Has(key) ? ReadConfiguration()[key] : null;
+        public virtual string Get(string key) => Has(key) ? ReadConfiguration()[key] : null;
 
-        public bool Has(string key) => ReadConfiguration().ContainsKey(key);
+        public virtual bool Has(string key) => ReadConfiguration().ContainsKey(key);
 
         public virtual IDictionary<string, string> ReadConfiguration()
         {
