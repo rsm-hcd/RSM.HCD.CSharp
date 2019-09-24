@@ -9,6 +9,8 @@ using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
+using Microsoft.Extensions.Configuration;
+using Moq;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 {
@@ -23,10 +25,30 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #region AddAmazonElasticBeanstalk
 
-        [Fact(Skip = "TODO: NFPA-84")]
-        public void AddAmazonElasticBeanstalk_Write_Tests()
+        [Fact]
+        public void AddAmazonElasticBeanstalk_Returns_Original_Builder()
         {
-            true.ShouldBeFalse();
+            // Arrange
+            var mockBuilder = new Mock<IConfigurationBuilder>();
+
+            // Act
+            var result = IConfigurationBuilderExtensions.AddAmazonElasticBeanstalk(mockBuilder.Object);
+
+            // Assert
+            result.ShouldBe(mockBuilder.Object);
+        }
+
+        [Fact]
+        public void AddAmazonElasticBeanstalk_Appends_New_ConfigurationSource()
+        {
+            // Arrange
+            var mockBuilder = new Mock<IConfigurationBuilder>();
+
+            // Act
+            var result = IConfigurationBuilderExtensions.AddAmazonElasticBeanstalk(mockBuilder.Object);
+
+            // Assert
+            mockBuilder.Verify(e => e.Add(It.IsAny<IConfigurationSource>()), Times.Once);
         }
 
         #endregion AddAmazonElasticBeanstalk
