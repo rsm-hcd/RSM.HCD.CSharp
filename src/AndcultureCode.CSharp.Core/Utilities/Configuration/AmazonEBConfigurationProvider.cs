@@ -45,7 +45,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Properties
 
-        public static IDictionary<string, string> CachedConfiguration { get; set; }
+        public IDictionary<string, string> CachedConfiguration { get; set; }
 
         #endregion Properties
 

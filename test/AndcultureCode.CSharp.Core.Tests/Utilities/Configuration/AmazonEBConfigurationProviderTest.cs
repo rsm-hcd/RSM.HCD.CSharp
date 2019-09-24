@@ -95,24 +95,6 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         #endregion Has
 
 
-        #region Load
-
-        [Fact(Skip = "TODO: NFPA-84")]
-        public void Load_When_NoConfigurationData_Returns_With_Data_NotNull()
-        {
-            // // Arrange
-            // var sut = new AmazonEBConfigurationProvider();
-
-            // // Act
-            // sut.Load();
-
-            // // Assert
-            // sut.Data.ShouldNotBeNull();
-        }
-
-        #endregion Load
-
-
         #region ReadConfiguration
 
         [Fact(Skip = "TODO: NFPA-84")]
