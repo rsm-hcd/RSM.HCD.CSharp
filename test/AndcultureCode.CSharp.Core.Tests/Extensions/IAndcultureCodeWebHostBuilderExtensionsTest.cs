@@ -45,7 +45,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void PreloadAmazonElasticBeanstalk_When_Contains_AspNetCore_Environment_Sets_Global_EnvironmentVariable()
         {
             // Arrange
-            var expected     = Random.String();
+            var expected     = $"testValue{Random.Int()}";
             var mockBuilder  = new Mock<IAndcultureCodeWebHostBuilder>();
             var mockProvider = new Mock<AmazonEBConfigurationProvider>();
             mockProvider.Setup(e => e.Has(IAndcultureCodeWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(true);
