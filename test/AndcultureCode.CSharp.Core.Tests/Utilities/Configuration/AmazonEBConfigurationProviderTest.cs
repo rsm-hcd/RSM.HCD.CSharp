@@ -97,6 +97,67 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         #endregion Has
 
 
+        #region Load
+
+        [Fact]
+        public void Load_When_Configuration_DoesNotExist_DoesNotThrow()
+        {
+            // Arrange
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: "file-that-does-not-exist");
+
+            // Act
+            var result = Record.Exception(() => sut.Load());
+
+            // Assert
+            result.ShouldBeNull();
+        }
+
+        [Fact]
+        public void Load_When_Configuration_Exists_Without_Values_DoesNotThrow()
+        {
+            // Arrange
+            var filePath = $"test-file-{Random.Int()}";
+            File.WriteAllText(filePath, "{}");
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
+
+            // Act
+            var result = Record.Exception(() => sut.Load());
+
+            // Assert
+            result.ShouldBeNull();
+        }
+
+        [Fact]
+        public void Load_When_Configuration_Exists_With_Values_DoesNotThrow()
+        {
+            // Arrange
+            var filePath             = $"test-file-{Random.Int()}";
+            var testPropertyName     = "testProperty";
+            var testPropertyValue    = Random.Int().ToString();
+            var expected = new
+            {
+                iis = new
+                {
+                    env = new string []
+                    {
+                        $"{testPropertyName}={testPropertyValue}"
+                    }
+                }
+            };
+
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(expected, Formatting.Indented));
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
+
+            // Act
+            var result = Record.Exception(() => sut.Load());
+
+            // Assert
+            result.ShouldBeNull();
+        }
+
+        #endregion Load
+
+
         #region Read
 
         [Fact]
