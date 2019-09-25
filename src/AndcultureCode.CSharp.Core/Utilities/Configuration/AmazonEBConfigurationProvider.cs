@@ -54,11 +54,11 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Public Methods
 
-        public virtual string Get(string key) => Has(key) ? ReadConfiguration()[key] : null;
+        public virtual string Get(string key) => Has(key) ? Read()[key] : null;
 
-        public virtual bool Has(string key) => ReadConfiguration().ContainsKey(key);
+        public virtual bool Has(string key) => Read().ContainsKey(key);
 
-        public virtual IDictionary<string, string> ReadConfiguration()
+        public virtual IDictionary<string, string> Read()
         {
             if (CachedConfiguration != null)
             {
@@ -112,7 +112,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
         /// </summary>
         public override void Load()
         {
-            foreach (var entry in ReadConfiguration())
+            foreach (var entry in Read())
             {
                 Data[entry.Key] = entry.Value;
             }

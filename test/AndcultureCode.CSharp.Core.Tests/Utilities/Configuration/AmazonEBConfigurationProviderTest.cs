@@ -49,7 +49,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             var sutMock       = new Mock<AmazonEBConfigurationProvider>() { CallBase = true };
             var sut           = sutMock.Object;
 
-            sutMock.Setup(e => e.ReadConfiguration()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue }});
+            sutMock.Setup(e => e.Read()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue }});
 
             // Act
             var result = sut.Get(expectedKey);
@@ -85,7 +85,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             var sutMock       = new Mock<AmazonEBConfigurationProvider>() { CallBase = true };
             var sut           = sutMock.Object;
 
-            sutMock.Setup(e => e.ReadConfiguration()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue }});
+            sutMock.Setup(e => e.Read()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue }});
 
             // Act
             var result = sut.Has(expectedKey);
@@ -97,10 +97,10 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         #endregion Has
 
 
-        #region ReadConfiguration
+        #region Read
 
         [Fact]
-        public void ReadConfiguration_When_CachedConfiguration_Set_Returns_CachedConfiguration()
+        public void Read_When_CachedConfiguration_Set_Returns_CachedConfiguration()
         {
             // Arrange
             var expected = new Dictionary<string, string>();
@@ -108,20 +108,20 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             sut.CachedConfiguration = expected;
 
             // Act
-            var result = sut.ReadConfiguration();
+            var result = sut.Read();
 
             // Assert
             result.ShouldBe(expected);
         }
 
         [Fact]
-        public void ReadConfiguration_When_ConfigurationFilePath_DoesNotExist_Returns_Empty_Dictionary()
+        public void Read_When_ConfigurationFilePath_DoesNotExist_Returns_Empty_Dictionary()
         {
             // Arrange
             var sut = new AmazonEBConfigurationProvider(configurationFilePath: "/file-that-does-not-exist");
 
             // Act
-            var result = sut.ReadConfiguration();
+            var result = sut.Read();
 
             // Assert
             result.ShouldNotBeNull();
@@ -129,7 +129,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         }
 
         [Fact]
-        public void ReadConfiguration_When_ConfigurationFilePath_InvalidJson_Returns_Empty_Dictionary()
+        public void Read_When_ConfigurationFilePath_InvalidJson_Returns_Empty_Dictionary()
         {
             // Arrange
             var filePath = $"test-file-{Random.Int()}";
@@ -137,7 +137,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
 
             // Act
-            var result = sut.ReadConfiguration();
+            var result = sut.Read();
 
             // Assert
             File.Delete(filePath);
@@ -146,7 +146,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         }
 
         [Fact]
-        public void ReadConfiguration_When_ConfigurationFilePath_Without_Env_Variable_Returns_Empty_Dictionary()
+        public void Read_When_ConfigurationFilePath_Without_Env_Variable_Returns_Empty_Dictionary()
         {
             // Arrange
             var filePath = $"test-file-{Random.Int()}";
@@ -154,7 +154,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
 
             // Act
-            var result = sut.ReadConfiguration();
+            var result = sut.Read();
 
             // Assert
             File.Delete(filePath);
@@ -163,7 +163,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         }
 
         [Fact]
-        public void ReadConfiguration_When_ConfigurationFilePath_With_Env_Variable_Returns_Dictionary_With_Value()
+        public void Read_When_ConfigurationFilePath_With_Env_Variable_Returns_Dictionary_With_Value()
         {
             // Arrange
             var filePath             = $"test-file-{Random.Int()}";
@@ -187,7 +187,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
 
             // Act
-            var result = sut.ReadConfiguration();
+            var result = sut.Read();
 
             // Assert
             File.Delete(filePath);
@@ -198,7 +198,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         }
 
         [Fact]
-        public void ReadConfiguration_When_ConfigurationFilePath_With_Env_Variable_Containing_Double_Underscores_Returns_Dictionary_With_Value_Containing_Colon()
+        public void Read_When_ConfigurationFilePath_With_Env_Variable_Containing_Double_Underscores_Returns_Dictionary_With_Value_Containing_Colon()
         {
             // Arrange
             var filePath             = $"test-file-{Random.Int()}";
@@ -222,7 +222,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
 
             // Act
-            var result = sut.ReadConfiguration();
+            var result = sut.Read();
 
             // Assert
             File.Delete(filePath);
@@ -232,7 +232,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
             result[testPropertyNameTwo.Replace("__", ":")].ShouldBe(testPropertyValueTwo);
         }
 
-        #endregion ReadConfiguration
+        #endregion Read
 
 
     }
