@@ -20,14 +20,15 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
         /// <summary>
         /// Absolute path to the AWS Elastic Beanstalk windows instance configuration file
         /// </summary>
-        private const string CONFIGURATION_FILE_PATH = @"C:\Program Files\Amazon\ElasticBeanstalk\config\containerconfiguration";
+        public const string CONFIGURATION_FILE_PATH = @"C:\Program Files\Amazon\ElasticBeanstalk\config\containerconfiguration";
 
         #endregion Constants
 
 
         #region Properties
 
-        private bool StdoutEnabled { get; set; }
+        public string ConfigurationFilePath { get; set; }
+        public bool   StdoutEnabled         { get; set; }
 
         #endregion Properties
 
@@ -35,9 +36,10 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
         #region Constructors
 
         public AmazonEBConfigurationProvider() {}
-        public AmazonEBConfigurationProvider(bool stdoutEnabled = false)
+        public AmazonEBConfigurationProvider(bool stdoutEnabled = false, string configurationFilePath = null)
         {
-            StdoutEnabled = stdoutEnabled;
+            ConfigurationFilePath = string.IsNullOrWhiteSpace(configurationFilePath) ? CONFIGURATION_FILE_PATH : configurationFilePath;
+            StdoutEnabled         = stdoutEnabled;
         }
 
         #endregion Constructors
@@ -65,27 +67,27 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
             var result = new Dictionary<string, string>();
 
-            if (!File.Exists(CONFIGURATION_FILE_PATH))
+            if (!File.Exists(ConfigurationFilePath))
             {
-                LogIfEnabled($"File '{CONFIGURATION_FILE_PATH}' does not exist");
+                LogIfEnabled($"File '{ConfigurationFilePath}' does not exist");
                 return result;
             }
 
             string configJson;
+            JArray env;
             try
             {
-                configJson = File.ReadAllText(CONFIGURATION_FILE_PATH);
+                configJson = File.ReadAllText(ConfigurationFilePath);
+                var config = JObject.Parse(configJson);
+                env        = (JArray)config["iis"]?["env"];
             }
             catch(Exception ex)
             {
-                LogIfEnabled($"Failed to read file contents '{CONFIGURATION_FILE_PATH}' - {ex.Message}");
+                LogIfEnabled($"Failed to read file contents '{ConfigurationFilePath}' - {ex.Message}");
                 return result;
             }
 
-            var config = JObject.Parse(configJson);
-            var env    = (JArray)config["iis"]["env"];
-
-            if (env.Count == 0)
+            if (env == null || env.Count == 0)
             {
                 LogIfEnabled("No environment variables found");
                 return result;

@@ -1,5 +1,6 @@
 using Shouldly;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
@@ -11,6 +12,7 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using Moq;
+using Newtonsoft.Json;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
 {
@@ -97,12 +99,141 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
 
         #region ReadConfiguration
 
-        [Fact(Skip = "TODO: NFPA-84")]
-        public void ReadConfiguration_Write_Tests()
+        [Fact]
+        public void ReadConfiguration_When_CachedConfiguration_Set_Returns_CachedConfiguration()
         {
-            true.ShouldBeFalse();
+            // Arrange
+            var expected = new Dictionary<string, string>();
+            var sut      = new AmazonEBConfigurationProvider();
+            sut.CachedConfiguration = expected;
+
+            // Act
+            var result = sut.ReadConfiguration();
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Fact]
+        public void ReadConfiguration_When_ConfigurationFilePath_DoesNotExist_Returns_Empty_Dictionary()
+        {
+            // Arrange
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: "/file-that-does-not-exist");
+
+            // Act
+            var result = sut.ReadConfiguration();
+
+            // Assert
+            result.ShouldNotBeNull();
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void ReadConfiguration_When_ConfigurationFilePath_InvalidJson_Returns_Empty_Dictionary()
+        {
+            // Arrange
+            var filePath = $"test-file-{Random.Int()}";
+            File.WriteAllText(filePath, "<invalid>xml</invalid>");
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
+
+            // Act
+            var result = sut.ReadConfiguration();
+
+            // Assert
+            File.Delete(filePath);
+            result.ShouldNotBeNull();
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void ReadConfiguration_When_ConfigurationFilePath_Without_Env_Variable_Returns_Empty_Dictionary()
+        {
+            // Arrange
+            var filePath = $"test-file-{Random.Int()}";
+            File.WriteAllText(filePath, "{}");
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
+
+            // Act
+            var result = sut.ReadConfiguration();
+
+            // Assert
+            File.Delete(filePath);
+            result.ShouldNotBeNull();
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void ReadConfiguration_When_ConfigurationFilePath_With_Env_Variable_Returns_Dictionary_With_Value()
+        {
+            // Arrange
+            var filePath             = $"test-file-{Random.Int()}";
+            var testPropertyName     = "testProperty";
+            var testPropertyNameTwo  = "testPropertyTwo";
+            var testPropertyValue    = Random.Int().ToString();
+            var testPropertyValueTwo = Random.Int().ToString();
+            var expected = new
+            {
+                iis = new
+                {
+                    env = new string []
+                    {
+                        $"{testPropertyName}={testPropertyValue}",
+                        $"{testPropertyNameTwo}={testPropertyValueTwo}"
+                    }
+                }
+            };
+
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(expected, Formatting.Indented));
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
+
+            // Act
+            var result = sut.ReadConfiguration();
+
+            // Assert
+            File.Delete(filePath);
+            result.ShouldNotBeNull();
+            result.ShouldNotBeEmpty();
+            result[testPropertyName].ShouldBe(testPropertyValue);
+            result[testPropertyNameTwo].ShouldBe(testPropertyValueTwo);
+        }
+
+        [Fact]
+        public void ReadConfiguration_When_ConfigurationFilePath_With_Env_Variable_Containing_Double_Underscores_Returns_Dictionary_With_Value_Containing_Colon()
+        {
+            // Arrange
+            var filePath             = $"test-file-{Random.Int()}";
+            var testPropertyName     = "test__Property";
+            var testPropertyNameTwo  = "test__Property__Two";
+            var testPropertyValue    = Random.Int().ToString();
+            var testPropertyValueTwo = Random.Int().ToString();
+            var expected = new
+            {
+                iis = new
+                {
+                    env = new string []
+                    {
+                        $"{testPropertyName}={testPropertyValue}",
+                        $"{testPropertyNameTwo}={testPropertyValueTwo}"
+                    }
+                }
+            };
+
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(expected, Formatting.Indented));
+            var sut = new AmazonEBConfigurationProvider(configurationFilePath: filePath);
+
+            // Act
+            var result = sut.ReadConfiguration();
+
+            // Assert
+            File.Delete(filePath);
+            result.ShouldNotBeNull();
+            result.ShouldNotBeEmpty();
+            result[testPropertyName.Replace("__", ":")].ShouldBe(testPropertyValue);
+            result[testPropertyNameTwo.Replace("__", ":")].ShouldBe(testPropertyValueTwo);
         }
 
         #endregion ReadConfiguration
+
+
     }
 }
