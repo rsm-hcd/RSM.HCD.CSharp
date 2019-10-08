@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Shouldly;
 using Xunit;
 
@@ -181,6 +183,72 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion Join List of Strings (Delimiter)
+
+
+        #region PickRandom
+
+        [Fact]
+        public void PickRandom_List_Is_Empty_Returns_Null()
+        {
+            new List<string>().PickRandom().ShouldBeNull();
+        }
+
+        [Fact]
+        public void PickRandom_When_One_Item_Returns_That_Item()
+        {
+            new List<string> { "expected" }.PickRandom().ShouldBe("expected");
+        }
+
+        [Fact]
+        public void PickRandom_When_Multiple_Items_Returns_Single_Item()
+        {
+            // Arrange
+            var expected = "abcded90120423".Split("").ToList();
+
+            for (var i = 0; i <= 100; i++)
+            {
+                // Act
+                var result = expected.PickRandom();
+
+                // Assert
+                expected.ShouldContain(result);
+            }
+        }
+
+        #endregion PickRandom
+
+
+        #region PickRandom (count)
+
+        [Fact]
+        public void PickRandom_Overload_With_Count_List_Is_Empty_Returns_EmptyList()
+        {
+            new List<string>().PickRandom(count: 2).ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void PickRandom_Overload_With_Count_When_Count_LessThan_LengthOf_Enumeration_Returns_Records_Matching_LengthOf_Enumeration()
+        {
+            new List<string> { "expected" }.PickRandom(count: 2).Count().ShouldBe(1);
+        }
+
+        [Fact]
+        public void PickRandom_Overload_With_Count_When_Multiple_Items_Returns_Requested_NumberOf_Items()
+        {
+            // Arrange
+            var expected = "abcded90120423".Split("").ToList();
+
+            for (var i = 0; i <= expected.Count; i++)
+            {
+                // Act
+                var result = expected.PickRandom(count: i);
+
+                // Assert
+                result.Count().ShouldBe(i);
+            }
+        }
+
+        #endregion PickRandom (count)
     }
 
 }

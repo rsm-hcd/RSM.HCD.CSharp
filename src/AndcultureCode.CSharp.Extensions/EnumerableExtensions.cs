@@ -44,5 +44,26 @@ namespace AndcultureCode.CSharp.Extensions
         {
             return list == null ? null : string.Join(delimiter, list);
         }
+
+        /// <summary>
+        /// Returns a random value in the related IEnumerable list
+        /// </summary>
+        /// <param name="source"></param>
+        /// <typeparam name="T"></typeparam>
+        public static T PickRandom<T>(this IEnumerable<T> source) => source.PickRandom(1).SingleOrDefault();
+
+        /// <summary>
+        /// Returns X number of random values in the related IEnumerable list
+        /// </summary>
+        /// <param name="source"></param>
+        /// <typeparam name="T"></typeparam>
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count) => source.Shuffle().Take(count);
+
+        /// <summary>
+        /// Returns source enumerable in randomized order
+        /// </summary>
+        /// <param name="source"></param>
+        /// <typeparam name="T"></typeparam>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.OrderBy(x => Guid.NewGuid());
     }
 }
