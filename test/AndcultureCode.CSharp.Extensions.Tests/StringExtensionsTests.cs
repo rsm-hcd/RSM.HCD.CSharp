@@ -104,8 +104,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             email.IsValidEmail().ShouldBeTrue();
         }
 
-
-
         #endregion IsValidEmail
 
 
