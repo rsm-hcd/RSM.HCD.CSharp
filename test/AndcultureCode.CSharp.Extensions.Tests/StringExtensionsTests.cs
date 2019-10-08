@@ -1,9 +1,6 @@
-using System;
-using System.Linq;
 using Newtonsoft.Json;
 using Shouldly;
 using Xunit;
-using Xunit.Sdk;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
@@ -16,10 +13,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var jsonString = null as string;
-            // Assert
-            var result = jsonString.AsIndentedJson();
+            
             // Act
-            result.ShouldBe(null);
+            var result = jsonString.AsIndentedJson();
+            
+            // Assert
+            result.ShouldBeNull();
         }
 
         [Fact]
@@ -27,10 +26,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var jsonString = "";
-            // Assert
-            var result = jsonString.AsIndentedJson();
+            
             // Act
-            result.ShouldBe("");
+            var result = jsonString.AsIndentedJson();
+            
+            // Assert
+            result.ShouldBeEmpty();
         }
 
         [Fact]
@@ -38,7 +39,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var jsonString = @"{ ""property"": }";
-            // Assert & Act
+            
+            // Act & Assert
             Should.Throw<JsonReaderException>(() => jsonString.AsIndentedJson());
         }
 
@@ -54,13 +56,15 @@ namespace AndcultureCode.CSharp.Extensions.Tests
     ""prop"": 13
   }
 }";
-            // Assert
+            
+            // Act
             var result = jsonString.AsIndentedJson();
-            // Act            
+            
+            // Assert            
             result.ShouldBe(expected);
         }
 
-        #endregion
+        #endregion AsIndentedJson
 
         #region ToBoolean
 
@@ -73,10 +77,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void ToBoolean_When_String_Is_Null_Or_WhiteSpace_Then_Returns_False(string input)
         {
             // Arrange
-            // Assert
-            var result = input.ToBoolean();
+            
             // Act
-            result.ShouldBe(false);
+            var result = input.ToBoolean();
+            // Assert
+            result.ShouldBeFalse();
         }
 
         [Theory]
@@ -88,10 +93,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [InlineData("f", false)]
         public void ToBoolean_When_String_Is_Explicit_Boolean_Then_Returns_Expected_Value(string input, bool expected)
         {
-            // Arrange
-            // Assert
-            var result = input.ToBoolean();
             // Act
+            var result = input.ToBoolean();
+            // Assert
             result.ShouldBe(expected);
         }
 
@@ -100,13 +104,15 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var input = "lorem ipsum";
-            // Assert
+            
+            // Act
             var result = input.ToBoolean();
-            // Act         
-            result.ShouldBe(false);
+            
+            // Assert         
+            result.ShouldBeFalse();
         }
 
-        #endregion
+        #endregion ToBoolean
 
         #region ToEnumerable
 
@@ -118,11 +124,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [InlineData("\r\n")]
         public void ToEnumerable_When_String_Is_Null_Or_WhiteSpace_Then_Returns_Null(string input)
         {
-            // Arrange
-            // Assert
+           // Act
             var result = input.ToEnumerable<int>();
-            // Act
-            result.ShouldBe(null);
+            
+            // Assert
+            result.ShouldBeNull();
         }
 
         [Fact]
@@ -131,9 +137,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "42";
             var expected = new[] { 42 };
-            // Assert
-            var result = input.ToEnumerable<int>();
+            
             // Act
+            var result = input.ToEnumerable<int>();
+            
+            // Assert
             result.ShouldBe(expected);
         }
 
@@ -143,9 +151,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "1,2,3";
             var expected = new[] { 1, 2, 3 };
-            // Assert
-            var result = input.ToEnumerable<int>();
+            
             // Act
+            var result = input.ToEnumerable<int>();
+            
+            // Assert
             result.ShouldBe(expected);
         }
 
@@ -155,9 +165,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "4;5;6";
             var expected = new[] { 4, 5, 6 };
-            // Assert
-            var result = input.ToEnumerable<int>(';');
+            
             // Act
+            var result = input.ToEnumerable<int>(';');
+            
+            // Assert
             result.ShouldBe(expected);
         }
 
@@ -167,9 +179,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "7,a,8,9";
             var expected = new[] { 7, 8, 9 };
-            // Assert
-            var result = input.ToEnumerable<int>();
+            
             // Act
+            var result = input.ToEnumerable<int>();
+            
+            // Assert
             result.ShouldBe(expected);
         }
 
@@ -179,13 +193,15 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "true,false,true";
             var expected = new[] { true, false, true };
-            // Assert
+            
+            // Act
             var result = input.ToEnumerable<bool>();
-            // Act            
+            
+            // Assert            
             result.ShouldBe(expected);
         }
 
-        #endregion
+        #endregion ToEnumerable
         
         #region ToInt
 
@@ -194,9 +210,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var input = "123";
-            // Assert
-            var result = input.ToInt();
+            
             // Act
+            var result = input.ToInt();
+            
+            // Assert
             result.ShouldBe(123);
         }
 
@@ -205,9 +223,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var input = "abc";
-            // Assert
-            var result = input.ToInt();
+            
             // Act
+            var result = input.ToInt();
+            
+            // Assert
             result.ShouldBe(0);
         }
 
@@ -217,12 +237,14 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "abc";
             var defaultValue = 1024;
-            // Assert
-            var result = input.ToInt(1024);
+            
             // Act
+            var result = input.ToInt(1024);
+            
+            // Assert
             result.ShouldBe(defaultValue);
         }
 
-        #endregion
+        #endregion ToInt
     }
 }
