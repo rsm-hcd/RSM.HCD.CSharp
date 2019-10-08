@@ -13,10 +13,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var jsonString = null as string;
-            
+
             // Act
             var result = jsonString.AsIndentedJson();
-            
+
             // Assert
             result.ShouldBeNull();
         }
@@ -26,10 +26,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var jsonString = "";
-            
+
             // Act
             var result = jsonString.AsIndentedJson();
-            
+
             // Assert
             result.ShouldBeEmpty();
         }
@@ -39,7 +39,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var jsonString = @"{ ""property"": }";
-            
+
             // Act & Assert
             Should.Throw<JsonReaderException>(() => jsonString.AsIndentedJson());
         }
@@ -56,15 +56,58 @@ namespace AndcultureCode.CSharp.Extensions.Tests
     ""prop"": 13
   }
 }";
-            
+
             // Act
             var result = jsonString.AsIndentedJson();
-            
-            // Assert            
+
+            // Assert
             result.ShouldBe(expected);
         }
 
         #endregion AsIndentedJson
+
+
+        #region IsValidEmail
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsValidEmail_When_Email_NullOrWhiteSpace_Returns_False(string email)
+        {
+            StringExtensions.IsValidEmail(email: email).ShouldBeFalse();
+        }
+
+        [Theory]
+        [InlineData("j.@server1.proseware.com")]
+        [InlineData("j..s@proseware.com")]
+        [InlineData("js*@proseware.com")]
+        [InlineData("js@proseware..com")]
+        public void IsValidEmail_When_InvalidEmail_Returns_False(string email)
+        {
+            email.IsValidEmail().ShouldBeFalse();
+        }
+
+        [Theory]
+        [InlineData("david.jones@proseware.com")]
+        [InlineData("d.j@server1.proseware.com")]
+        [InlineData("jones@ms1.proseware.com")]
+        [InlineData("j@proseware.com9")]
+        [InlineData("js#internal@proseware.com")]
+        [InlineData("j_9@[129.126.118.1]")]
+        [InlineData("js@proseware.com9")]
+        [InlineData("j.s@server1.proseware.com")]
+        [InlineData("\"j\\\"s\\\"\"@proseware.com")]
+        [InlineData("js@contoso.中国")]
+        public void IsValidEmail_When_ValidEmail_Returns_True(string email)
+        {
+            email.IsValidEmail().ShouldBeTrue();
+        }
+
+
+
+        #endregion IsValidEmail
+
 
         #region ToBoolean
 
@@ -76,10 +119,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [InlineData("\r\n")]
         public void ToBoolean_When_String_Is_Null_Or_WhiteSpace_Then_Returns_False(string input)
         {
-            // Arrange
-            
             // Act
             var result = input.ToBoolean();
+
             // Assert
             result.ShouldBeFalse();
         }
@@ -95,6 +137,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Act
             var result = input.ToBoolean();
+
             // Assert
             result.ShouldBe(expected);
         }
@@ -104,11 +147,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var input = "lorem ipsum";
-            
+
             // Act
             var result = input.ToBoolean();
-            
-            // Assert         
+
+            // Assert
             result.ShouldBeFalse();
         }
 
@@ -126,7 +169,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
            // Act
             var result = input.ToEnumerable<int>();
-            
+
             // Assert
             result.ShouldBeNull();
         }
@@ -137,10 +180,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "42";
             var expected = new[] { 42 };
-            
+
             // Act
             var result = input.ToEnumerable<int>();
-            
+
             // Assert
             result.ShouldBe(expected);
         }
@@ -151,10 +194,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "1,2,3";
             var expected = new[] { 1, 2, 3 };
-            
+
             // Act
             var result = input.ToEnumerable<int>();
-            
+
             // Assert
             result.ShouldBe(expected);
         }
@@ -165,10 +208,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "4;5;6";
             var expected = new[] { 4, 5, 6 };
-            
+
             // Act
             var result = input.ToEnumerable<int>(';');
-            
+
             // Assert
             result.ShouldBe(expected);
         }
@@ -179,10 +222,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "7,a,8,9";
             var expected = new[] { 7, 8, 9 };
-            
+
             // Act
             var result = input.ToEnumerable<int>();
-            
+
             // Assert
             result.ShouldBe(expected);
         }
@@ -193,16 +236,16 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "true,false,true";
             var expected = new[] { true, false, true };
-            
+
             // Act
             var result = input.ToEnumerable<bool>();
-            
-            // Assert            
+
+            // Assert
             result.ShouldBe(expected);
         }
 
         #endregion ToEnumerable
-        
+
         #region ToInt
 
         [Fact]
@@ -210,10 +253,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var input = "123";
-            
+
             // Act
             var result = input.ToInt();
-            
+
             // Assert
             result.ShouldBe(123);
         }
@@ -223,10 +266,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var input = "abc";
-            
+
             // Act
             var result = input.ToInt();
-            
+
             // Assert
             result.ShouldBe(0);
         }
@@ -237,10 +280,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var input = "abc";
             var defaultValue = 1024;
-            
+
             // Act
             var result = input.ToInt(1024);
-            
+
             // Assert
             result.ShouldBe(defaultValue);
         }
