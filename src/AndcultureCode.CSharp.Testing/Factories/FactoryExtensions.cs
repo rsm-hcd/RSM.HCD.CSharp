@@ -12,8 +12,10 @@ namespace AndcultureCode.CSharp.Testing.Factories
         private static readonly string                              NAME_DELIMITER = "-";
         private static readonly IDictionary<string, FactoryBuilder> namedBuilders  = new Dictionary<string, FactoryBuilder>();
 
-        #endregion
+        #endregion Private Members
 
+
+        #region Public Methods
 
         #region Build
 
@@ -27,7 +29,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
         public static T Build<T>(string name, List<Action<T>> properties)       => BuildObject   (properties, name);
         public static T Build<T>(string name, params Action<T>[] properties)    => BuildObject   (properties.ToList(), name);
 
-        #endregion
+        #endregion Build
 
 
         #region Define
@@ -52,21 +54,23 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
         public static IEnumerable<string> DefinedFactories => namedBuilders.Select(x => x.Key);
 
-        #endregion
+        #endregion Define
 
 
         #region Get
 
         public static string GetKeyName<T>(string name) => GetKeyForType<T>() + "_" + name;
 
-        #endregion
+        #endregion Get
 
 
         #region Reset
 
         public static void ClearFactoryDefinitions() => namedBuilders.Clear();
 
-        #endregion
+        #endregion Reset
+
+        #endregion Public Methods
 
 
         #region Private Methods
@@ -96,7 +100,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
         {
             if (namedBuilders.ContainsKey(key))
             {
-                Console.WriteLine($"WARNING: [Application] {key} is already registered. You can only register one factory per type/name.");
+                OutputWarning($"{key} is already registered. You can only register one factory per type/name.");
                 return;
             }
 
@@ -112,7 +116,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
             var key = string.Join(NAME_DELIMITER, names.OrderBy(e => e));
             if (namedBuilders.ContainsKey(key))
             {
-                Console.WriteLine($"WARNING: [Application] {key} is already registered. You can only register one factory per type/name.");
+                OutputWarning($"{key} is already registered. You can only register one factory per type/name.");
                 return;
             }
 
@@ -125,7 +129,17 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
         private static string GetKeyForType<T>() => typeof(T).FullName;
 
-        #endregion
+        private static void OutputWarning(string message)
+        {
+            if (!FactorySettings.Instance.Debug)
+            {
+                return;
+            }
+
+            Console.WriteLine($"WARNING: [Factories] {message}");
+        }
+
+        #endregion Private Methods
 
     }
 }

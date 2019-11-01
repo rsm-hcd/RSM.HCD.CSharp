@@ -35,6 +35,19 @@ Below are a few basics to get you started, but there are many more commands and 
     ```
 
 
+## Features
+
+### Factories
+
+TODO: In-depth documentation on test factories
+
+#### Configuration
+Using the `FactorySettings` singleton class you can configure test factories. To access properties use the singleton instance `FactorySettings.Instance.{property|method};`
+
+##### Debug (default: false)
+To enable debug output set the `Debug` setting to `true`. Now warnings will be output via standard out for troubleshooting purposes. By default, only exceptional cases will be output.
+
+
 Contributing
 ======
 
