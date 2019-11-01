@@ -5,17 +5,13 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Testing.Tests.Factories
 {
-
     public class FactorySettingsTest : BaseUnitTest
     {
         #region Setup
 
-        public FactorySettingsTest(ITestOutputHelper output) : base(output)
-        {
-        }
+        public FactorySettingsTest(ITestOutputHelper output) : base(output) {}
 
         #endregion Setup
-
 
 
         #region Instance
@@ -38,5 +34,4 @@ namespace AndcultureCode.CSharp.Testing.Tests.Factories
 
         #endregion Instance
     }
-
 }

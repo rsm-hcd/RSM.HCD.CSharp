@@ -30,7 +30,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
         /// <value></value>
         public static FactorySettings Instance { get => _lazyInstance.Value; }
 
-        #endregion Public fProperties
+        #endregion Public Properties
 
 
         #region Constructors
