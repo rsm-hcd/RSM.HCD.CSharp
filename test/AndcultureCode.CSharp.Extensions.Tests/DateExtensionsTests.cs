@@ -56,5 +56,34 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion
+
+        #region CalculateAge
+
+        [Fact]
+        public void CalculateAge_Returns_Correct_Age_If_Birthday_Has_Happened_This_Year()
+        {
+            // Arrange
+            var birthdate = new DateTime(1986, 3, 1);
+
+            // Act
+            var result = birthdate.CalculateAge();
+
+            // Assert
+            result.ShouldBe(33);
+        }
+
+        [Fact]
+        public void CalculateAge_Returns_Correct_Age_If_Birthday_Has_Not_Happened_This_Year()
+        {
+            // Arrange
+            var birthdate = new DateTime(1986, 12, 1);
+
+            // Act
+            var result = birthdate.CalculateAge();
+
+            // Assert
+            result.ShouldBe(32);
+        }
+        #endregion
     }
 }
