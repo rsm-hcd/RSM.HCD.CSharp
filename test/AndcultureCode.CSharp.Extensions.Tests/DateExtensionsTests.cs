@@ -86,6 +86,98 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Assert
             result.ShouldBe(5);
         }
+
+        #endregion
+
+        #region SubtractWeekdays -- DateTime
+
+
+        [Fact]
+        public void SubtractWeekdays_Returns_Correctly_When_Day_Is_In_The_Same_Week()
+        {
+            // Arrange
+            var day = new DateTime(2019, 11, 14);
+
+            // Act
+            var result = day.SubtractWeekdays(3);
+
+            // Assert
+            result.DayOfWeek.ShouldBe(DayOfWeek.Monday);
+        }
+
+        [Fact]
+        public void SubtractWeekdays_Returns_Correctly_When_Day_Is_In_A_Different_Week()
+        {
+            // Arrange
+            var day = new DateTime(2019, 11, 14);
+
+            // Act
+            var result = day.SubtractWeekdays(5);
+
+            // Assert
+            result.DayOfWeek.ShouldBe(DayOfWeek.Thursday);
+        }
+
+        [Fact]
+        public void SubtractWeekdays_Returns_Correctly_When_Starting_Point_Is_A_Weekend_Day()
+        {
+            // Arrange
+            var day = new DateTime(2019, 11, 16);
+
+            // Act
+            var result = day.SubtractWeekdays(5);
+
+            // Assert
+            result.DayOfWeek.ShouldBe(DayOfWeek.Monday);
+        }
+
+        #endregion
+
+        #region SubtractWeekdays -- DateTimeOffset
+
+
+        [Fact]
+        public void SubtractWeekdays_With_Offset_Returns_Correctly_When_Day_Is_In_The_Same_Week()
+        {
+            // Arrange
+            var day = new DateTime(2019, 11, 14);
+            var dateWithOffset = new DateTimeOffset(day);
+
+            // Act
+            var result = dateWithOffset.SubtractWeekdays(3);
+
+            // Assert
+            result.DayOfWeek.ShouldBe(DayOfWeek.Monday);
+        }
+
+        [Fact]
+        public void SubtractWeekdays_With_Offset_Returns_Correctly_When_Day_Is_In_A_Different_Week()
+        {
+            // Arrange
+            var day = new DateTime(2019, 11, 14);
+            var dateWithOffset = new DateTimeOffset(day);
+
+            // Act
+            var result = dateWithOffset.SubtractWeekdays(5);
+
+            // Assert
+            result.DayOfWeek.ShouldBe(DayOfWeek.Thursday);
+        }
+
+        [Fact]
+        public void SubtractWeekdays_With_Offset_Returns_Correctly_When_Starting_Point_Is_A_Weekend_Day()
+        {
+            // Arrange
+            var day = new DateTime(2019, 11, 16);
+            var dateWithOffset = new DateTimeOffset(day);
+
+            // Act
+            var result = dateWithOffset.SubtractWeekdays(5);
+
+            // Assert
+            result.DayOfWeek.ShouldBe(DayOfWeek.Monday);
+        }
+
         #endregion
     }
 }
