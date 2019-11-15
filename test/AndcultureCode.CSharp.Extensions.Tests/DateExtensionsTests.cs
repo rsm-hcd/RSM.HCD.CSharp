@@ -179,5 +179,193 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion
+
+        #region IsBetweenDates -- No Default
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_Between_Min_And_Max_And_Inclusive_Is_True()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date.AddDays(3);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, true);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_Between_Min_And_Max_And_Inclusive_Is_False()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date.AddDays(3);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, false);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_False_When_Date_Is_Not_Between_Min_And_Max_And_Inclusive_Is_True()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date.AddDays(-1);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, true);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_False_When_Date_Is_Not_Between_Min_And_Max_And_Inclusive_Is_False()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date.AddDays(-1);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, false);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Max_And_Inclusive_Is_True()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date;
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, true);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_False_When_Date_Is_The_Same_As_Max_And_Inclusive_Is_False()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date;
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, false);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Min_And_Inclusive_Is_True()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date;
+            var maxDate = date.AddDays(3);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, true);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_False_When_Date_Is_The_Same_As_Min_And_Inclusive_Is_False()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date;
+            var maxDate = date.AddDays(3);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate, false);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        #endregion
+
+        #region IsBetweenDates -- Inclusive Default
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_Between_Min_And_Max()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date.AddDays(3);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_False_When_Date_Is_Not_Between_Min_And_Max()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date.AddDays(-1);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Max()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date.AddDays(-3);
+            var maxDate = date;
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Min()
+        {
+            // Arrange
+            var date = DateTimeOffset.Now;
+            var minDate = date;
+            var maxDate = date.AddDays(3);
+
+            // Act
+            var result = date.IsBetweenDates(minDate, maxDate);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        #endregion
     }
 }

@@ -67,5 +67,41 @@ namespace AndcultureCode.CSharp.Extensions
             }
             return tmpDate;
         }
+
+        /// <summary>
+        /// Convenience method to default the inclusive parameter
+        /// LINQ doesn't like optional parameters on methods used in expressions
+        /// </summary>
+        public static bool IsBetweenDates(this DateTimeOffset date, DateTimeOffset minDate, DateTimeOffset maxDate)
+        {
+            return date.IsBetweenDates(minDate, maxDate, true);
+        }
+
+        /// <summary>
+        /// Provides filtering method for date ranges (excluding time portions)
+        /// </summary>
+        public static bool IsBetweenDates(this DateTimeOffset date, DateTimeOffset minDate, DateTimeOffset maxDate, bool inclusive)
+        {
+            if (inclusive)
+            {
+                return date.IsBetweenDatesInclusive(minDate, maxDate);
+            }
+
+            return date.IsBetweenDatesExclusive(minDate, maxDate);
+        }
+
+        #region Private Methods
+
+        private static bool IsBetweenDatesInclusive(this DateTimeOffset date, DateTimeOffset minDate, DateTimeOffset maxDate)
+        {
+            return minDate <= date && date <= maxDate;
+        }
+
+        private static bool IsBetweenDatesExclusive(this DateTimeOffset date, DateTimeOffset minDate, DateTimeOffset maxDate)
+        {
+            return minDate < date && date < maxDate;
+        }
+
+        #endregion
     }
 }
