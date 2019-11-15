@@ -32,7 +32,10 @@ namespace AndcultureCode.CSharp.Extensions
             var age = DateTime.Today.Year - birthdate.Year;
             // Subtract a year if the birthday has not happened yet this year
             // https://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-in-c
-            if (birthdate > DateTime.Today.AddYears(-age)) age--;
+            if (birthdate > DateTime.Today.AddYears(-age))
+            {
+                age--;
+            }
             return age;
         }
 
@@ -41,13 +44,15 @@ namespace AndcultureCode.CSharp.Extensions
         /// </summary>
         public static DateTime SubtractWeekdays(this DateTime originalDate, int weekdays)
         {
-            DateTime tmpDate = originalDate;
+            var tmpDate = originalDate;
             while (weekdays > 0)
             {
                 tmpDate = tmpDate.AddDays(-1);
                 if (tmpDate.DayOfWeek < DayOfWeek.Saturday &&
                     tmpDate.DayOfWeek > DayOfWeek.Sunday)
+                {
                     weekdays--;
+                }
             }
             return tmpDate;
         }
@@ -57,13 +62,15 @@ namespace AndcultureCode.CSharp.Extensions
         /// </summary>
         public static DateTimeOffset SubtractWeekdays(this DateTimeOffset originalDate, int weekdays)
         {
-            DateTimeOffset tmpDate = originalDate;
+            var tmpDate = originalDate;
             while (weekdays > 0)
             {
                 tmpDate = tmpDate.AddDays(-1);
                 if (tmpDate.DayOfWeek < DayOfWeek.Saturday &&
                     tmpDate.DayOfWeek > DayOfWeek.Sunday)
+                {
                     weekdays--;
+                }
             }
             return tmpDate;
         }

@@ -55,7 +55,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             result.Day.ShouldBe(testDate.Day);
         }
 
-        #endregion
+        #endregion AtMidnight
 
         #region CalculateAge
 
@@ -87,7 +87,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             result.ShouldBe(5);
         }
 
-        #endregion
+        #endregion CalculateAge
 
         #region SubtractWeekdays -- DateTime
 
@@ -178,12 +178,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             result.DayOfWeek.ShouldBe(DayOfWeek.Monday);
         }
 
-        #endregion
+        #endregion SubtractWeekdays
 
         #region IsBetweenDates -- No Default
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_Between_Min_And_Max_And_Inclusive_Is_True()
+        public void IsBetweenDates_NoDefault_Overload_Returns_True_When_Date_Is_Between_Min_And_Max_And_Inclusive_Is_True()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -198,7 +198,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_Between_Min_And_Max_And_Inclusive_Is_False()
+        public void IsBetweenDates_NoDefault_Overload_Returns_True_When_Date_Is_Between_Min_And_Max_And_Inclusive_Is_False()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -213,7 +213,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_False_When_Date_Is_Not_Between_Min_And_Max_And_Inclusive_Is_True()
+        public void IsBetweenDates_NoDefault_Overload_Returns_False_When_Date_Is_Not_Between_Min_And_Max_And_Inclusive_Is_True()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -228,7 +228,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_False_When_Date_Is_Not_Between_Min_And_Max_And_Inclusive_Is_False()
+        public void IsBetweenDates_NoDefault_Overload_Returns_False_When_Date_Is_Not_Between_Min_And_Max_And_Inclusive_Is_False()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -243,7 +243,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Max_And_Inclusive_Is_True()
+        public void IsBetweenDates_NoDefault_Overload_Returns_True_When_Date_Is_The_Same_As_Max_And_Inclusive_Is_True()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -258,7 +258,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_False_When_Date_Is_The_Same_As_Max_And_Inclusive_Is_False()
+        public void IsBetweenDates_NoDefault_Overload_Returns_False_When_Date_Is_The_Same_As_Max_And_Inclusive_Is_False()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -273,7 +273,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Min_And_Inclusive_Is_True()
+        public void IsBetweenDates_NoDefault_Overload_Returns_True_When_Date_Is_The_Same_As_Min_And_Inclusive_Is_True()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -288,7 +288,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_False_When_Date_Is_The_Same_As_Min_And_Inclusive_Is_False()
+        public void IsBetweenDates_NoDefault_Overload_Returns_False_When_Date_Is_The_Same_As_Min_And_Inclusive_Is_False()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -302,12 +302,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             result.ShouldBeFalse();
         }
 
-        #endregion
+        #endregion IsBetweenDates -- No Default
 
         #region IsBetweenDates -- Inclusive Default
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_Between_Min_And_Max()
+        public void IsBetweenDates_InclusiveDefault_Overload_Returns_True_When_Date_Is_Between_Min_And_Max()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -322,7 +322,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_False_When_Date_Is_Not_Between_Min_And_Max()
+        public void IsBetweenDates_InclusiveDefault_Overload_Returns_False_When_Date_Is_Not_Between_Min_And_Max()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -337,7 +337,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Max()
+        public void IsBetweenDates_InclusiveDefault_Overload_Returns_True_When_Date_Is_The_Same_As_Max()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -352,7 +352,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsBetweenDates_Returns_True_When_Date_Is_The_Same_As_Min()
+        public void IsBetweenDates_InclusiveDefault_OverloadRa_Returns_True_When_Date_Is_The_Same_As_Min()
         {
             // Arrange
             var date = DateTimeOffset.Now;
@@ -366,6 +366,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             result.ShouldBeTrue();
         }
 
-        #endregion
+        #endregion -- Inclusive Default
     }
 }
