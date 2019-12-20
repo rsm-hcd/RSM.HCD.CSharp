@@ -73,7 +73,7 @@ namespace AndcultureCode.CSharp.Extensions
         }
 
         /// <summary>
-        ///Determine if supplied string is a valid Guid
+        /// Determine if supplied string is a valid Guid
         /// </summary>
         /// <param name="guidString"></param>
         /// <returns></returns>

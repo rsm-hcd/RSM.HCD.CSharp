@@ -111,7 +111,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         #region IsNotValidGuid
 
         [Fact]
-        public void IsNotValidGuid_With_Valid_Guid_Returns_False()
+        public void IsNotValidGuid_When_Valid_Guid_Returns_False()
         {
             // Arrange
             var guidString = Guid.NewGuid().ToString();
@@ -124,7 +124,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsNotValidGuid_With_Invalid_Guid_Returns_True()
+        public void IsNotValidGuid_When_Invalid_Guid_Returns_True()
         {
             //Arrange
             var guidString = "I'm not a Guid";
@@ -137,7 +137,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsNotValidGuid_With_Empty_String_Returns_True()
+        public void IsNotValidGuid_When_Empty_String_Returns_True()
         {
             //Arrange
             var guidString = String.Empty;
@@ -155,7 +155,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         #region IsValidGuid
 
         [Fact]
-        public void IsValidGuid_With_Valid_Guid_Returns_True()
+        public void IsValidGuid_When_Valid_Guid_Returns_True()
         {
             // Arrange
             var guidString = Guid.NewGuid().ToString();
@@ -168,7 +168,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsValidGuid_With_Invalid_Guid_Returns_False()
+        public void IsValidGuid_When_Invalid_Guid_Returns_False()
         {
             //Arrange
             var guidString = "I'm not a Guid";
@@ -181,7 +181,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsValidGuid_With_Empty_String_Returns_False()
+        public void IsValidGuid_When_Empty_String_Returns_False()
         {
             //Arrange
             var guidString = String.Empty;
