@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Shouldly;
+using System;
 using Xunit;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
@@ -105,6 +106,94 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion IsValidEmail
+
+
+        #region IsNotValidGuid
+
+        [Fact]
+        public void IsNotValidGuid_With_Valid_Guid_Returns_False()
+        {
+            // Arrange
+            var guidString = Guid.NewGuid().ToString();
+
+            //Act
+            var result = guidString.IsNotValidGuid();
+
+            //Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsNotValidGuid_With_Invalid_Guid_Returns_True()
+        {
+            //Arrange
+            var guidString = "I'm not a Guid";
+
+            //Act
+            var result = guidString.IsNotValidGuid();
+
+            //Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsNotValidGuid_With_Empty_String_Returns_True()
+        {
+            //Arrange
+            var guidString = String.Empty;
+
+            //Act
+            var result = guidString.IsNotValidGuid();
+
+            //Assert
+            result.ShouldBeTrue();
+        }
+
+        #endregion IsNotValidGuid
+
+
+        #region IsValidGuid
+
+        [Fact]
+        public void IsValidGuid_With_Valid_Guid_Returns_True()
+        {
+            // Arrange
+            var guidString = Guid.NewGuid().ToString();
+
+            //Act
+            var result = guidString.IsValidGuid();
+
+            //Assert
+            result.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsValidGuid_With_Invalid_Guid_Returns_False()
+        {
+            //Arrange
+            var guidString = "I'm not a Guid";
+
+            //Act
+            var result = guidString.IsValidGuid();
+
+            //Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsValidGuid_With_Empty_String_Returns_False()
+        {
+            //Arrange
+            var guidString = String.Empty;
+
+            //Act
+            var result = guidString.IsValidGuid();
+
+            //Assert
+            result.ShouldBeFalse();
+        }
+
+        #endregion IsValidGuid
 
 
         #region ToBoolean
