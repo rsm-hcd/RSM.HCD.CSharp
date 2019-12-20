@@ -73,6 +73,24 @@ namespace AndcultureCode.CSharp.Extensions
         }
 
         /// <summary>
+        ///
+        /// </summary>
+        /// <param name="guidString"></param>
+        /// <returns></returns>
+        public static bool IsValidGuid(this string guidString)
+        {
+            try
+            {
+                new Guid(guidString);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Converts a string representation of a boolean into an actual boolean
         /// </summary>
         public static bool ToBoolean(this string booleanAsString)
