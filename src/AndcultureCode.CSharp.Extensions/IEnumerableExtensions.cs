@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AndcultureCode.CSharp.Extensions
 {
-    public static class EnumerableExtensions
+    public static class IEnumerableExtensions
     {
         /// <summary>
         /// Determines if the source list is empty
@@ -13,7 +13,7 @@ namespace AndcultureCode.CSharp.Extensions
         /// <param name="predicate"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static bool IsEmpty<T>(this IEnumerable<T> source)                          => !source.Any();
+        public static bool IsEmpty<T>(this IEnumerable<T> source) => !source.Any();
         public static bool IsEmpty<T>(this IEnumerable<T> source, Func<T, bool> predicate) => !source.Any(predicate);
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace AndcultureCode.CSharp.Extensions
         /// <param name="predicate"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)                          => source == null || source.IsEmpty();
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source) => source == null || source.IsEmpty();
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> source, Func<T, bool> predicate) => source == null || source.IsEmpty(predicate);
 
         /// <summary>
