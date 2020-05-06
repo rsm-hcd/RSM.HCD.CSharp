@@ -16,10 +16,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         public const string AT_GMAIL_DOT_COM = "@gmail.com";
         public const string AT_YAHOO_DOT_COM = "@yahoo.com";
-        public const string DOE              = "Doe";
-        public const string JANE             = "Jane";
-        public const string JOHN             = "John";
-        public const string SMITH            = "Smith";
+        public const string DOE = "Doe";
+        public const string JANE = "Jane";
+        public const string JOHN = "John";
+        public const string SMITH = "Smith";
 
         #endregion Constants
 
@@ -37,9 +37,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_Returns_Expression()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var entities = new List<TestEntity>();
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var entities = new List<UserStub>();
 
             // Act
             var filter = smithNameFilter.AndAlso(yahooEmailFilter);
@@ -53,20 +53,20 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_When_Both_Expressions_Evaluate_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var janeSmith = Build<TestEntity>(
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var janeSmith = Build<UserStub>(
                 // This is the important setup - entity should have 'Smith' in the name
                 // as well as an '@yahoo.com' email
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JANE}{SMITH}"
             );
-            var johnSmith = Build<TestEntity>(
+            var johnSmith = Build<UserStub>(
                 // Same setup as above
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JOHN}{SMITH}"
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeSmith,
                 johnSmith,
@@ -85,19 +85,19 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_When_One_Expression_Evaluates_As_False_Returns_False()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var janeDoe = Build<TestEntity>(
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var janeDoe = Build<UserStub>(
                 // This is the important setup - entity does NOT have 'Smith' in the name and
                 // should not be returned even though it has an '@yahoo.com' email
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JANE}{DOE}"
             );
-            var johnSmith = Build<TestEntity>(
+            var johnSmith = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JOHN}{SMITH}"
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnSmith,
@@ -120,12 +120,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_WithNavigationProperty_Returns_Expression()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var entities = new List<TestEntity>();
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -136,27 +136,27 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_WithNavigationProperty_Returns_True_When_Both_Expressions_Evaluate_As_True()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var janeSmith = Build<TestEntity>(
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var janeSmith = Build<UserStub>(
                 // This is the important setup - main entity should have 'Smith' in the name
                 // and the RelatedTestEntity should have an '@yahoo.com' email
                 (e) => e.Name = $"{JANE}{SMITH}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var johnSmith = Build<TestEntity>(
+            var johnSmith = Build<UserStub>(
                 // Same setup as above
                 (e) => e.Name = $"{JOHN}{SMITH}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeSmith,
                 johnSmith,
             };
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -168,26 +168,26 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_WithNavigationProperty_Returns_False_When_One_Expression_Evaluates_As_False()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var janeDoe = Build<TestEntity>(
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var janeDoe = Build<UserStub>(
                 // This is the important setup - main entity does NOT have 'Smith' in the name and
                 // should not be returned even though the RelatedTestEntity has an '@yahoo.com' email
                 (e) => e.Name = $"{JANE}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var johnSmith = Build<TestEntity>(
+            var johnSmith = Build<UserStub>(
                 (e) => e.Name = $"{JOHN}{SMITH}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnSmith,
             };
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -203,9 +203,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_Returns_Expression()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var entities = new List<TestEntity>();
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var entities = new List<UserStub>();
 
             // Act
             var filter = smithNameFilter.Or(yahooEmailFilter);
@@ -219,19 +219,19 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var janeDoe = Build<TestEntity>(
+            var janeDoe = Build<UserStub>(
                 TestEntityFactory.WITH_GMAIL_EMAIL,
                 (e) => e.Name = $"{JANE}{DOE}"
             );
             // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var johnSmith = Build<TestEntity>(
+            var johnSmith = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JOHN}{SMITH}"
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnSmith,
@@ -250,18 +250,18 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<TestEntity>(
+            var janeDoe = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JANE}{DOE}"
             );
-            var johnDoe = Build<TestEntity>(
+            var johnDoe = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JOHN}{DOE}"
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnDoe,
@@ -283,12 +283,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_WithNavigationProperty_Returns_Expression()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var entities = new List<TestEntity>();
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.Or(yahooEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.Or(yahooEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -299,26 +299,26 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_WithNavigationProperty_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var janeSmith = Build<TestEntity>(
+            var janeSmith = Build<UserStub>(
                 (e) => e.Name = $"{JANE}{SMITH}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
             // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var johnDoe = Build<TestEntity>(
+            var johnDoe = Build<UserStub>(
                 (e) => e.Name = $"{JOHN}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_GMAIL_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_GMAIL_EMAIL)
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeSmith,
                 johnDoe,
             };
 
             // Act
-            var filter = smithNameFilter.Or(gmailEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.Or(gmailEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -330,25 +330,25 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_WithNavigationProperty_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<TestEntity>(
+            var janeDoe = Build<UserStub>(
                 (e) => e.Name = $"{JANE}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var johnDoe = Build<TestEntity>(
+            var johnDoe = Build<UserStub>(
                 (e) => e.Name = $"{JOHN}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnDoe,
             };
 
             // Act
-            var filter = smithNameFilter.Or(gmailEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.Or(gmailEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -363,9 +363,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_Returns_Expression()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var entities = new List<TestEntity>();
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var entities = new List<UserStub>();
 
             // Act
             var filter = smithNameFilter.OrElse(yahooEmailFilter);
@@ -379,19 +379,19 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var janeDoe = Build<TestEntity>(
+            var janeDoe = Build<UserStub>(
                 TestEntityFactory.WITH_GMAIL_EMAIL,
                 (e) => e.Name = $"{JANE}{DOE}"
             );
             // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var johnSmith = Build<TestEntity>(
+            var johnSmith = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JOHN}{SMITH}"
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnSmith,
@@ -410,18 +410,18 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<TestEntity>(
+            var janeDoe = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JANE}{DOE}"
             );
-            var johnDoe = Build<TestEntity>(
+            var johnDoe = Build<UserStub>(
                 TestEntityFactory.WITH_YAHOO_EMAIL,
                 (e) => e.Name = $"{JOHN}{DOE}"
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnDoe,
@@ -443,12 +443,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_WithNavigationProperty_Returns_Expression()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
-            var entities = new List<TestEntity>();
+            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
+            var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.OrElse(yahooEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.OrElse(yahooEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -459,26 +459,26 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_WithNavigationProperty_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var janeSmith = Build<TestEntity>(
+            var janeSmith = Build<UserStub>(
                 (e) => e.Name = $"{JANE}{SMITH}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
             // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var johnDoe = Build<TestEntity>(
+            var johnDoe = Build<UserStub>(
                 (e) => e.Name = $"{JOHN}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_GMAIL_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_GMAIL_EMAIL)
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeSmith,
                 johnDoe,
             };
 
             // Act
-            var filter = smithNameFilter.OrElse(gmailEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.OrElse(gmailEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -490,25 +490,25 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_WithNavigationProperty_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<TestEntity, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<TestEntity, bool>> smithNameFilter  = (e) => e.Name.Contains(SMITH);
+            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.Name.Contains(SMITH);
             // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<TestEntity>(
+            var janeDoe = Build<UserStub>(
                 (e) => e.Name = $"{JANE}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var johnDoe = Build<TestEntity>(
+            var johnDoe = Build<UserStub>(
                 (e) => e.Name = $"{JOHN}{DOE}",
-                (e) => e.RelatedTestEntity = Build<TestEntity>(TestEntityFactory.WITH_YAHOO_EMAIL)
+                (e) => e.RelatedTestEntity = Build<UserStub>(TestEntityFactory.WITH_YAHOO_EMAIL)
             );
-            var entities = new List<TestEntity>
+            var entities = new List<UserStub>
             {
                 janeDoe,
                 johnDoe,
             };
 
             // Act
-            var filter = smithNameFilter.OrElse(gmailEmailFilter, (e) => e.RelatedTestEntity);
+            var filter = smithNameFilter.OrElse(gmailEmailFilter, (e) => e.RelatedStubUser);
             var result = entities.Where(filter.Compile());
 
             // Assert

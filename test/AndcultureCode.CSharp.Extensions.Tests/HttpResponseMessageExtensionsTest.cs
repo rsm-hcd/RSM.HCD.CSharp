@@ -11,20 +11,20 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var response = new HttpResponseMessage();
-            var entity = new TestEntity
+            var entity = new UserStub
             {
-                Name         = "andculture engineering",
+                Name = "andculture engineering",
                 EmailAddress = "developer@andculture.com"
             };
 
-            var jsonEntity       = Newtonsoft.Json.JsonConvert.SerializeObject(entity);
-                response.Content = new StringContent(jsonEntity);
+            var jsonEntity = Newtonsoft.Json.JsonConvert.SerializeObject(entity);
+            response.Content = new StringContent(jsonEntity);
 
             // Act
-            var result = response.FromJson<TestEntity>();
+            var result = response.FromJson<UserStub>();
 
             // Assert
-            result.ShouldBeOfType(typeof(TestEntity));
+            result.ShouldBeOfType(typeof(UserStub));
             result.Name.ShouldBe(entity.Name);
             result.EmailAddress.ShouldBe(entity.EmailAddress);
         }
@@ -32,11 +32,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void FromJson_When_Content_Is_Not_Object_Then_Returns_Parsing_Error()
         {
             // Arrange
-            var response         = new HttpResponseMessage();
-                response.Content = new StringContent("Hello-World");
+            var response = new HttpResponseMessage();
+            response.Content = new StringContent("Hello-World");
 
             // Act & Assert
-            Should.Throw<Newtonsoft.Json.JsonReaderException>(() => response.FromJson<TestEntity>());
+            Should.Throw<Newtonsoft.Json.JsonReaderException>(() => response.FromJson<UserStub>());
         }
 
 

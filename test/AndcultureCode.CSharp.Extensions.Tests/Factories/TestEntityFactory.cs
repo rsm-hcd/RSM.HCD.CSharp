@@ -19,19 +19,19 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Factories
             var name = faker.Person.FullName;
             var emailAddress = faker.Person.Email;
 
-            this.DefineFactory(() => new TestEntity
+            this.DefineFactory(() => new UserStub
             {
                 Name = name,
                 EmailAddress = emailAddress,
             });
 
-            this.DefineFactory(WITH_GMAIL_EMAIL, () => new TestEntity
+            this.DefineFactory(WITH_GMAIL_EMAIL, () => new UserStub
             {
                 Name = name,
                 EmailAddress = $"{name}@gmail.com",
             });
 
-            this.DefineFactory(WITH_YAHOO_EMAIL, () => new TestEntity
+            this.DefineFactory(WITH_YAHOO_EMAIL, () => new UserStub
             {
                 Name = name,
                 EmailAddress = $"{name}@yahoo.com",
