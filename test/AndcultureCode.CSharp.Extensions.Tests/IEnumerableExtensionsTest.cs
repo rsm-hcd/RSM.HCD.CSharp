@@ -6,7 +6,7 @@ using Xunit;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
-    public class EnumerableExtensionsTest
+    public class IEnumerableExtensionsTest
     {
         #region IsEmpty (No Arguments)
 
@@ -92,9 +92,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void IsNullOrEmpty_Given_Predicate_When_Null_Returns_True()
         {
-            EnumerableExtensions                         // Arrange
+            IEnumerableExtensions                         // Arrange
                 .IsNullOrEmpty<string>(                  // Act
-                        source:    null,
+                        source: null,
                         predicate: e => true
                     )
                     .ShouldBeTrue();                     // Assert
@@ -132,7 +132,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void Join_IEnumerable_Given_Delimiter_When_Null_Returns_Null()
         {
-            EnumerableExtensions.Join(list: (IEnumerable<string>)null, delimiter: "test").ShouldBeNull();
+            IEnumerableExtensions.Join(list: (IEnumerable<string>)null, delimiter: "test").ShouldBeNull();
         }
 
         [Fact]
@@ -161,7 +161,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void Join_List_Of_Strings_Given_Delimiter_When_Null_Returns_Null()
         {
-            EnumerableExtensions.Join(list: null, delimiter: "test").ShouldBeNull();
+            IEnumerableExtensions.Join(list: null, delimiter: "test").ShouldBeNull();
         }
 
         [Fact]
