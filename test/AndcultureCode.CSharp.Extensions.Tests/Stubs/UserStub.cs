@@ -7,13 +7,13 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Stubs
         public long   Id                  { get; set; }
         public string EmailAddress        { get; set; }
         public string Name                { get; set; }
-        public long?  RelatedStubUserId   { get; set; }
+        public long?  RelatedUserStubId   { get; set; }
 
         #endregion Public Properties
 
         #region Navigation Properties
 
-        public UserStub RelatedStubUser { get; set; }
+        public UserStub RelatedUserStub { get; set; }
 
         #endregion Navigation Properties
     }
