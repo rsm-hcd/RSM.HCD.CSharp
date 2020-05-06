@@ -5,7 +5,7 @@ using Xunit;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
-    public class QueryableExtensionsTest
+    public class IQueryableExtensionsTest
     {
         #region IsEmpty (No Arguments)
 

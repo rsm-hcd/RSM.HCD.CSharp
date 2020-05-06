@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace AndcultureCode.CSharp.Extensions
 {
-    public static class QueryableExtensions
+    public static class IQueryableExtensions
     {
         /// <summary>
         /// Determines if the source list is empty
