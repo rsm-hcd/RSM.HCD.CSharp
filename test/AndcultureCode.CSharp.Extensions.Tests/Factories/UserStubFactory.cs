@@ -21,14 +21,14 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Factories
 
             this.DefineFactory(WITH_GMAIL_EMAIL, () =>
             {
-                var userStub = BuildDefaultUserStub();
+                var userStub          = BuildDefaultUserStub();
                 userStub.EmailAddress = $"{userStub.Name}@gmail.com";
                 return userStub;
             });
 
             this.DefineFactory(WITH_YAHOO_EMAIL, () =>
             {
-                var userStub = BuildDefaultUserStub();
+                var userStub          = BuildDefaultUserStub();
                 userStub.EmailAddress = $"{userStub.Name}@yahoo.com";
                 return userStub;
             });
@@ -40,12 +40,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Factories
 
         private UserStub BuildDefaultUserStub()
         {
-            var faker = new Faker();
-            var name = faker.Person.FullName;
+            var faker        = new Faker();
+            var name         = faker.Person.FullName;
             var emailAddress = faker.Person.Email;
             return new UserStub
             {
-                Name = name,
+                Name         = name,
                 EmailAddress = emailAddress,
             };
         }
