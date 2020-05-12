@@ -47,4 +47,3 @@ namespace AndcultureCode.CSharp.Core.Models
         #endregion Private Methods
     }
 }
-}
