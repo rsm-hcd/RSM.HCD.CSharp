@@ -25,7 +25,6 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
         {
         }
 
-
         #endregion Setup
 
         #region Lock
