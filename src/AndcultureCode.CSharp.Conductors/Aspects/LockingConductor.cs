@@ -64,10 +64,12 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (readResult.ResultObject == null)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_LOCK_RECORD_NOT_FOUND,
-                                 $"Read Result of {typeof(T).Name} id: {id} was null",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_LOCK_RECORD_NOT_FOUND,
+                    $"Read Result of {typeof(T).Name} id: {id} was null",
+                    id
+                );
                 return null;
             }
 
@@ -75,10 +77,12 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (record.IsLocked)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_LOCK_RECORD_ALREADY_LOCKED,
-                                 $"{typeof(T).Name} id: {id} is already locked",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_LOCK_RECORD_ALREADY_LOCKED,
+                    $"{typeof(T).Name} id: {id} is already locked",
+                    id
+                );
                 return null;
             }
 
@@ -86,10 +90,12 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (lockUntil < now)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_LOCK_TIME_IN_PAST,
-                                 $"LockedUntil time is in the past",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_LOCK_TIME_IN_PAST,
+                    $"LockedUntil time is in the past",
+                    id
+                );
                 return null;
             }
 
@@ -120,10 +126,12 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (readResult.ResultObject == null)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_UNLOCK_RECORD_NOT_FOUND,
-                                 $"Read Result of {typeof(T).Name} id: {id} was null",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_UNLOCK_RECORD_NOT_FOUND,
+                    $"Read Result of {typeof(T).Name} id: {id} was null",
+                    id
+                );
                 return null;
             }
 
@@ -156,10 +164,12 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (readResult.ResultObject == null)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_EXTEND_LOCK_RECORD_NOT_FOUND,
-                                 $"Read Result of {typeof(T).Name} id: {id} was null",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_EXTEND_LOCK_RECORD_NOT_FOUND,
+                    $"Read Result of {typeof(T).Name} id: {id} was null",
+                    id
+                );
                 return null;
             }
 
@@ -167,19 +177,23 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (!record.IsLocked)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_EXTEND_LOCK_RECORD_NOT_LOCKED,
-                                 $"{typeof(T).Name} id: {id} is not currently locked",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_EXTEND_LOCK_RECORD_NOT_LOCKED,
+                    $"{typeof(T).Name} id: {id} is not currently locked",
+                    id
+                );
                 return null;
             }
 
             if (!updatedById.HasValue || record.LockedById != updatedById)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_EXTEND_LOCK_LOCKED_BY_DIFFERENT_USER,
-                                 $"{typeof(T).Name} id: {id} is locked by a different user",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_EXTEND_LOCK_LOCKED_BY_DIFFERENT_USER,
+                    $"{typeof(T).Name} id: {id} is locked by a different user",
+                    id
+                );
                 return null;
             }
 
@@ -187,10 +201,12 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
 
             if (lockUntil < now)
             {
-                r.AddErrorAndLog(_logger,
-                                 ERROR_EXTEND_LOCK_LOCK_TIME_IN_PAST,
-                                 "LockedUntil time is in the past",
-                                 id);
+                r.AddErrorAndLog(
+                    _logger,
+                    ERROR_EXTEND_LOCK_LOCK_TIME_IN_PAST,
+                    "LockedUntil time is in the past",
+                    id
+                );
                 return null;
             }
 
@@ -211,23 +227,29 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
         {
             if (item == null)
             {
-                r.AddErrorAndLog(_logger,
+                r.AddErrorAndLog(
+                    _logger,
                     ERROR_VALIDATE_LOCK_ITEM_IS_NULL,
-                    $"{typeof(T).Name} was null");
+                    $"{typeof(T).Name} was null"
+                );
                 return false;
             }
 
             if (!item.IsLocked)
             {
-                r.AddValidationError(ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED,
-                    $"{typeof(T).Name} no longer has a valid lock");
+                r.AddValidationError(
+                    ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED,
+                    $"{typeof(T).Name} no longer has a valid lock"
+                );
                 return false;
             }
 
             if (!currentUserId.HasValue || item.LockedById != currentUserId)
             {
-                r.AddValidationError(ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER,
-                    $"{typeof(T).Name} is locked by another user");
+                r.AddValidationError(
+                    ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER,
+                    $"{typeof(T).Name} is locked by another user"
+                );
                 return false;
             }
 
