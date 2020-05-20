@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.1.1" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.3.0" />
     <PackageReference Include="AndcultureCode.CSharp.Testing" Version="0.2.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\AndcultureCode.CSharp.Conductors\AndcultureCode.CSharp.Conductors.csproj" />
-    <ProjectReference Include="..\..\..\AndcultureCode.CSharp.Core\src\AndcultureCode.CSharp.Core\AndcultureCode.CSharp.Core.csproj" />
   </ItemGroup>
 
 </Project>
