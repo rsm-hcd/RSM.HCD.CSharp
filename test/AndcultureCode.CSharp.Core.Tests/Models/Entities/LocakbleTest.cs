@@ -50,6 +50,5 @@ namespace AndcultureCode.CSharp.Core.Tests.Models.Entities
         }
 
         #endregion IsLocked
-
     }
 }
