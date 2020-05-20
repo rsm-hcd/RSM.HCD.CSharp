@@ -413,12 +413,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             // Arrange
             var record = new LockableEntity() { LockedUntil = null };
 
-            var repositoryReadConductor = new Mock<IRepositoryReadConductor<Lockable>>()
+            var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
 
              var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
-                repositoryReadConductor: null,
+                repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
             );
 
@@ -579,7 +579,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(LockingConductor<Lockable>.ERROR_VALIDATE_LOCK_ITEM_IS_NULL);
+            result.ShouldHaveErrorsFor(LockingConductor<LockableEntity>.ERROR_VALIDATE_LOCK_ITEM_IS_NULL);
             result.ResultObject.ShouldBeFalse();
         }
 
@@ -607,7 +607,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(LockingConductor<Lockable>.ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED);
+            result.ShouldHaveErrorsFor(LockingConductor<LockableEntity>.ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED);
         }
 
         [Fact]
@@ -634,7 +634,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(LockingConductor<Lockable>.ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER);
+            result.ShouldHaveErrorsFor(LockingConductor<LockableEntity>.ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER);
         }
 
         #endregion ValidateLock
