@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Conductors.Tests.Stubs;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Models.Entities;
-using AndcultureCode.CSharp.Testing;
 using AndcultureCode.CSharp.Testing.Extensions;
+using AndcultureCode.CSharp.Testing.Tests;
 using Moq;
 using Shouldly;
 using Xunit;
@@ -13,7 +14,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Conductors.Tests
 {
-    public class RepositoryConductorTest : UnitTestBase
+    public class RepositoryConductorTest : BaseUnitTest
     {
         #region Setup
         public RepositoryConductorTest(ITestOutputHelper output) : base(output)
@@ -379,19 +380,19 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<List<Entity>> {
                 ResultObject = null
             });
-            
+
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
             var result = sut.CreateOrUpdate(entities, currentUserId);
-            
+
             // Assert
             result.ShouldHaveErrors();
             result.ResultObject.ShouldBeEmpty<Entity>();
         }
-        
+
         [Fact]
         public void CreateOrUpdate_When_Items_To_Update_And_No_Items_To_Create_And_Update_Is_Successful_Then_Returns_Null()
         {
@@ -415,14 +416,14 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<List<Entity>> {
                 ResultObject = null
             });
-            
+
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
             var result = sut.CreateOrUpdate(entities, currentUserId);
-            
+
             // Assert
             result.ShouldNotHaveErrors();
             result.ResultObject.ShouldBeEmpty();
@@ -456,20 +457,20 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 }},
                 ResultObject = null
             });
-            
+
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
             var result = sut.CreateOrUpdate(entities, currentUserId);
-            
+
             // Assert
-            
+
             result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
             result.ResultObject.ShouldBeEmpty();
         }
-        
+
         [Fact]
         public void CreateOrUpdate_When_Items_To_Update_Do_Not_Exist_And_Items_To_Create_Exist_And_Create_is_Successful_Then_Returns_Created_Entities()
         {
@@ -497,14 +498,14 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             )).Returns(new Result<List<Entity>> {
                 ResultObject = createdEntities
             });
-            
+
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
             var result = sut.CreateOrUpdate(entities, currentUserId);
-        
+
             // Assert
             result.ShouldNotHaveErrors();
             result.ResultObject.ShouldBe(createdEntities);
