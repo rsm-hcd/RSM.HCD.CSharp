@@ -9,9 +9,9 @@ namespace AndcultureCode.CSharp.Core.Models
 
         #region Public Members
 
+        public long? LockedById { get; set; }
         public DateTimeOffset? LockedOn { get; set; }
         public DateTimeOffset? LockedUntil { get; set; }
-        public long? LockedById { get; set; }
 
         #endregion Public Members
 

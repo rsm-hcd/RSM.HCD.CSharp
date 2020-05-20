@@ -7,6 +7,16 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
        where T : class, ILockable, IEntity
     {
         /// <summary>
+        /// Updates the LockedUntil field for the record, allowing the user that locked
+        /// it to have the lock for a longer amount of time.
+        /// </summary>
+        /// <param name="id">The record id</param>
+        /// <param name="lockUntil">The time the record should be locked until</param>
+        /// <param name="updatedById">The id of the user updating the record's lock time</param>
+        /// <returns>the updated record if the lock is successfully extended, null otherwise</returns>
+        IResult<T> ExtendLock(long id, DateTimeOffset lockUntil, long? updatedById = null);
+
+        /// <summary>
         /// Updates the locking fields to be set, which denotes that the user locking the record should
         /// have exclusive access to modifying it for the lock's duration. This, however, does
         /// not prohibit the record from being modified by others. When a record is locked, the
@@ -27,16 +37,6 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="unlockedById">The id of the user unlocking the record</param>
         /// <returns>the updated record if it is successfully unlocked, null otherwise</returns>
         IResult<T> Unlock(long id, long? unlockedById = null);
-
-        /// <summary>
-        /// Updates the LockedUntil field for the record, allowing the user that locked
-        /// it to have the lock for a longer amount of time.
-        /// </summary>
-        /// <param name="id">The record id</param>
-        /// <param name="lockUntil">The time the record should be locked until</param>
-        /// <param name="updatedById">The id of the user updating the record's lock time</param>
-        /// <returns>the updated record if the lock is successfully extended, null otherwise</returns>
-        IResult<T> ExtendLock(long id, DateTimeOffset lockUntil, long? updatedById = null);
 
         /// <summary>
         /// Used to determine whether or not the user attempting to update the record is the
