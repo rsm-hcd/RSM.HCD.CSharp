@@ -3,8 +3,8 @@ using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
 namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 {
-     public interface ILockingConductor<T>
-        where T : class, ILockable, IEntity
+    public interface ILockingConductor<T>
+       where T : class, ILockable, IEntity
     {
         /// <summary>
         /// Updates the locking fields to be set, which denotes that the user locking the record should
