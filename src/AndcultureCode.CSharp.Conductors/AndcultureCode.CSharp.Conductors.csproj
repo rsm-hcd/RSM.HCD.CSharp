@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.1.1" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.3.0" />
   </ItemGroup>
-
 </Project>
