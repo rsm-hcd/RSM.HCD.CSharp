@@ -7,11 +7,11 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Core.Tests.Models.Entities
 {
-    public class LocakbleTest : UnitTestBase
+    public class LockableTest : UnitTestBase
     {
         #region Setup
 
-        public LocakbleTest(ITestOutputHelper output) : base(output)
+        public LockableTest(ITestOutputHelper output) : base(output)
         {
         }
 
