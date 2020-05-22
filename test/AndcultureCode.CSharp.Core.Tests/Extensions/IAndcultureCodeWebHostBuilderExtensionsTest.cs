@@ -19,7 +19,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
     {
         #region Setup
 
-        public IAndcultureCodeWebHostBuilderExtensionsTest(ITestOutputHelper output) : base(output) {}
+        public IAndcultureCodeWebHostBuilderExtensionsTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
@@ -45,8 +45,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void PreloadAmazonElasticBeanstalk_When_Contains_AspNetCore_Environment_Sets_Global_EnvironmentVariable()
         {
             // Arrange
-            var expected     = $"testValue{Random.Int()}";
-            var mockBuilder  = new Mock<IAndcultureCodeWebHostBuilder>();
+            var expected = $"testValue{Random.Int()}";
+            var mockBuilder = new Mock<IAndcultureCodeWebHostBuilder>();
             var mockProvider = new Mock<AmazonEBConfigurationProvider>();
             mockProvider.Setup(e => e.Has(IAndcultureCodeWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(true);
             mockProvider.Setup(e => e.Get(IAndcultureCodeWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(expected);
@@ -55,7 +55,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var result = IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(
                 mockBuilder.Object,
                 stdoutEnabled: false,
-                configurationProvider: mockProvider.Object
+                mockProvider.Object
             );
 
             // Assert

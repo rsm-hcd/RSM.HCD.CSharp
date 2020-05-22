@@ -24,8 +24,8 @@ namespace AndcultureCode.CSharp.Core.Extensions
         /// <returns></returns>
         public static IAndcultureCodeWebHostBuilder PreloadAmazonElasticBeanstalk(
             this IAndcultureCodeWebHostBuilder builder,
-            bool                               stdoutEnabled = false,
-            AmazonEBConfigurationProvider      configurationProvider = null)
+            bool stdoutEnabled = false,
+            AmazonEBConfigurationProvider configurationProvider = null)
         {
             var ebProvider = configurationProvider ?? new AmazonEBConfigurationProvider(stdoutEnabled);
             if (ebProvider.Has(ASPNETCORE_ENVIRONMENT))

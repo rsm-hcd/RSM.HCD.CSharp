@@ -20,9 +20,20 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
     {
         #region Setup
 
-        public AndcultureEBConfigurationProviderTest(ITestOutputHelper output) : base(output) {}
+        public AndcultureEBConfigurationProviderTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
+
+
+        #region Teardown
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            AmazonEBConfigurationProvider.CachedConfiguration = null;
+        }
+
+        #endregion Teardown
 
 
         #region Get
@@ -44,12 +55,12 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         public void Get_When_Key_DoesExist_Returns_ExpectedValue()
         {
             // Arrange
-            var expectedKey   = Random.String();
+            var expectedKey = Random.String();
             var expectedValue = Random.String();
-            var sutMock       = new Mock<AmazonEBConfigurationProvider>() { CallBase = true };
-            var sut           = sutMock.Object;
+            var sutMock = new Mock<AmazonEBConfigurationProvider>() { CallBase = true };
+            var sut = sutMock.Object;
 
-            sutMock.Setup(e => e.Read()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue }});
+            sutMock.Setup(e => e.Read()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue } });
 
             // Act
             var result = sut.Get(expectedKey);
@@ -80,12 +91,12 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         public void Has_When_Key_DoesExist_Returns_True()
         {
             // Arrange
-            var expectedKey   = Random.String();
+            var expectedKey = Random.String();
             var expectedValue = Random.String();
-            var sutMock       = new Mock<AmazonEBConfigurationProvider>() { CallBase = true };
-            var sut           = sutMock.Object;
+            var sutMock = new Mock<AmazonEBConfigurationProvider>() { CallBase = true };
+            var sut = sutMock.Object;
 
-            sutMock.Setup(e => e.Read()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue }});
+            sutMock.Setup(e => e.Read()).Returns(new Dictionary<string, string> { { expectedKey, expectedValue } });
 
             // Act
             var result = sut.Has(expectedKey);
@@ -131,14 +142,14 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         public void Load_When_Configuration_Exists_With_Values_DoesNotThrow()
         {
             // Arrange
-            var filePath             = $"test-file-{Random.Int()}";
-            var testPropertyName     = "testProperty";
-            var testPropertyValue    = Random.Int().ToString();
+            var filePath = $"test-file-{Random.Int()}";
+            var testPropertyName = "testProperty";
+            var testPropertyValue = Random.Int().ToString();
             var expected = new
             {
                 iis = new
                 {
-                    env = new string []
+                    env = new string[]
                     {
                         $"{testPropertyName}={testPropertyValue}"
                     }
@@ -165,8 +176,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         {
             // Arrange
             var expected = new Dictionary<string, string>();
-            var sut      = new AmazonEBConfigurationProvider();
-            sut.CachedConfiguration = expected;
+            var sut = new AmazonEBConfigurationProvider();
+            AmazonEBConfigurationProvider.CachedConfiguration = expected;
 
             // Act
             var result = sut.Read();
@@ -227,16 +238,16 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         public void Read_When_ConfigurationFilePath_With_Env_Variable_Returns_Dictionary_With_Value()
         {
             // Arrange
-            var filePath             = $"test-file-{Random.Int()}";
-            var testPropertyName     = "testProperty";
-            var testPropertyNameTwo  = "testPropertyTwo";
-            var testPropertyValue    = Random.Int().ToString();
+            var filePath = $"test-file-{Random.Int()}";
+            var testPropertyName = "testProperty";
+            var testPropertyNameTwo = "testPropertyTwo";
+            var testPropertyValue = Random.Int().ToString();
             var testPropertyValueTwo = Random.Int().ToString();
             var expected = new
             {
                 iis = new
                 {
-                    env = new string []
+                    env = new string[]
                     {
                         $"{testPropertyName}={testPropertyValue}",
                         $"{testPropertyNameTwo}={testPropertyValueTwo}"
@@ -262,16 +273,16 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         public void Read_When_ConfigurationFilePath_With_Env_Variable_Containing_Double_Underscores_Returns_Dictionary_With_Value_Containing_Colon()
         {
             // Arrange
-            var filePath             = $"test-file-{Random.Int()}";
-            var testPropertyName     = "test__Property";
-            var testPropertyNameTwo  = "test__Property__Two";
-            var testPropertyValue    = Random.Int().ToString();
+            var filePath = $"test-file-{Random.Int()}";
+            var testPropertyName = "test__Property";
+            var testPropertyNameTwo = "test__Property__Two";
+            var testPropertyValue = Random.Int().ToString();
             var testPropertyValueTwo = Random.Int().ToString();
             var expected = new
             {
                 iis = new
                 {
-                    env = new string []
+                    env = new string[]
                     {
                         $"{testPropertyName}={testPropertyValue}",
                         $"{testPropertyNameTwo}={testPropertyValueTwo}"
