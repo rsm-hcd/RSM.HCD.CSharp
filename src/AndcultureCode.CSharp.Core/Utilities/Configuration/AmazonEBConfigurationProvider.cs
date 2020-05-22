@@ -54,7 +54,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Public Methods
 
-        public virtual string Get(string key) => this.Has(key) ? this.Read()[key] : null;
+        public virtual string Get(string key) => Has(key) ? Read()[key] : null;
 
         public virtual bool Has(string key) => Read().ContainsKey(key);
 
