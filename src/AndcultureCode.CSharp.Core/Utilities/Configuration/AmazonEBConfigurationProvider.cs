@@ -28,18 +28,18 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
         #region Properties
 
         public string ConfigurationFilePath { get; set; }
-        public bool   StdoutEnabled         { get; set; }
+        public bool StdoutEnabled { get; set; }
 
         #endregion Properties
 
 
         #region Constructors
 
-        public AmazonEBConfigurationProvider() {}
+        public AmazonEBConfigurationProvider() { }
         public AmazonEBConfigurationProvider(bool stdoutEnabled = false, string configurationFilePath = null)
         {
             ConfigurationFilePath = string.IsNullOrWhiteSpace(configurationFilePath) ? CONFIGURATION_FILE_PATH : configurationFilePath;
-            StdoutEnabled         = stdoutEnabled;
+            StdoutEnabled = stdoutEnabled;
         }
 
         #endregion Constructors
@@ -47,7 +47,10 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Properties
 
-        public IDictionary<string, string> CachedConfiguration { get; set; }
+        /// <summary>
+        /// Must be static to cache initially loaded configuration across multiple requests
+        /// </summary>
+        public static IDictionary<string, string> CachedConfiguration { get; set; }
 
         #endregion Properties
 
@@ -79,9 +82,9 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
             {
                 configJson = File.ReadAllText(ConfigurationFilePath);
                 var config = JObject.Parse(configJson);
-                env        = (JArray)config["iis"]?["env"];
+                env = (JArray)config["iis"]?["env"];
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogIfEnabled($"Failed to read file contents '{ConfigurationFilePath}' - {ex.Message}");
                 return result;
@@ -96,9 +99,9 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
             foreach (var item in env.Select(i => (string)i))
             {
                 int eqIndex = item.IndexOf('=');
-                var key     = item.Substring(0, eqIndex);
-                var value   = item.Substring(eqIndex + 1);
-                key         = key.Replace("__", ":"); // Need to translate so inheritance is respected (addition to fix the gist in github)
+                var key = item.Substring(0, eqIndex);
+                var value = item.Substring(eqIndex + 1);
+                key = key.Replace("__", ":"); // Need to translate so inheritance is respected (addition to fix the gist in github)
                 result[key] = value;
             }
 
