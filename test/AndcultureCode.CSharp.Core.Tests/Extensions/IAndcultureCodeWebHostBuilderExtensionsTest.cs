@@ -53,9 +53,9 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
             // Act
             var result = IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(
-                mockBuilder.Object,
+                builder: mockBuilder.Object,
                 stdoutEnabled: false,
-                mockProvider.Object
+                configurationProvider: mockProvider.Object
             );
 
             // Assert

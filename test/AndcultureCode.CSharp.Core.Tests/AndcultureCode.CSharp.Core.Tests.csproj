@@ -22,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include=".\xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <DotNetCliToolReference Include="dotnet-reportgenerator-cli" Version="4.2.11" />
   </ItemGroup>
 

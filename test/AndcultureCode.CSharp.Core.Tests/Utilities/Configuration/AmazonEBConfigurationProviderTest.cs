@@ -16,6 +16,9 @@ using Newtonsoft.Json;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
 {
+    /// <summary>
+    /// Test fixture MUST NOT be run in parallel
+    /// </summary>
     public class AndcultureEBConfigurationProviderTest : UnitTestBase
     {
         #region Setup
