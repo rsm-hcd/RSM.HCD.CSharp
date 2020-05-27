@@ -4,6 +4,7 @@
     <Authors>andculture</Authors>
     <Company>andculture</Company>
     <Description>Commonly used interfaces, patterns and utilities by andculture engineering</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/32297579?s=460&amp;v=4</PackageIconUrl>
     <PackageId>AndcultureCode.CSharp.Core</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>

@@ -47,6 +47,9 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Properties
 
+        /// <summary>
+        /// Must be static to cache initially loaded configuration across multiple requests
+        /// </summary>
         public static IDictionary<string, string> CachedConfiguration { get; set; }
 
         #endregion Properties
