@@ -237,7 +237,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             var errorMessage = localizer[errorKey, arguments];
             var logMessage = localizer.Default(errorKey, arguments);
             var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
-            result.AddErrorsAndLog<T>(logger, errorKey: errorKey, errorMessage: errorMessage, logMessage, null, null, methodName);
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, null, null, methodName);
         }
 
         /// <summary>
