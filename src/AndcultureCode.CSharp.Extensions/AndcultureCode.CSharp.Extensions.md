@@ -24,6 +24,11 @@
   - [GetForwardedIpAddress(httpRequest)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetForwardedIpAddress-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetForwardedIpAddress(Microsoft.AspNetCore.Http.HttpRequest)')
 - [HttpResponseMessageExtensions](#T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions')
   - [FromJson\`\`1(response)](#M-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage- 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)')
+- [IConfigurationRootExtensions](#T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions')
+  - [DEFAULT_DATABASE_KEY](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-DEFAULT_DATABASE_KEY 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.DEFAULT_DATABASE_KEY')
+  - [GetDatabaseConnectionString(configuration,databaseKey)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseConnectionString-Microsoft-Extensions-Configuration-IConfigurationRoot,System-String- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseConnectionString(Microsoft.Extensions.Configuration.IConfigurationRoot,System.String)')
+  - [GetDatabaseName(configuration)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseName(Microsoft.Extensions.Configuration.IConfigurationRoot)')
+  - [GetVersion(configuration,isDevelopment)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetVersion(Microsoft.Extensions.Configuration.IConfigurationRoot,System.Boolean)')
 - [IEnumerableExtensions](#T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions')
   - [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})')
   - [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})')
@@ -385,6 +390,69 @@ Deserializes http response into supplied object
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions'></a>
+## IConfigurationRootExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extension methods for IConfigurationRoot
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-DEFAULT_DATABASE_KEY'></a>
+### DEFAULT_DATABASE_KEY `constants`
+
+##### Summary
+
+Default connection string database key
+
+<a name='M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseConnectionString-Microsoft-Extensions-Configuration-IConfigurationRoot,System-String-'></a>
+### GetDatabaseConnectionString(configuration,databaseKey) `method`
+
+##### Summary
+
+Retrieves web application's primary database connection string
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+| databaseKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot-'></a>
+### GetDatabaseName(configuration) `method`
+
+##### Summary
+
+Retrieves the database name of the primary database connection string
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean-'></a>
+### GetVersion(configuration,isDevelopment) `method`
+
+##### Summary
+
+Loads and conditionally updates the Version number based upon environment
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+| isDevelopment | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions'></a>
 ## IEnumerableExtensions `type`
