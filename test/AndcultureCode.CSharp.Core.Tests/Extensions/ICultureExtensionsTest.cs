@@ -64,6 +64,18 @@ namespace AndcultureCode.CSharp.Core.Tests.Extensions
         #region Exists
 
         [Fact]
+        public void Exists_When_Cultures_IsNull_Returns_False()
+        {
+            ICultureExtensions.Exists(cultures: null, cultureCode: "does-not-matter").ShouldBeFalse();
+        }
+
+        [Fact]
+        public void Exists_When_Cultures_IsEmpty_Returns_False()
+        {
+            new List<ICulture>().Exists(cultureCode: "does-not-matter").ShouldBeFalse();
+        }
+
+        [Fact]
         public void Exists_When_CultureCode_DoesNotExist_Returns_False()
         {
             new List<ICulture> { new CultureStub() }.Exists("404").ShouldBeFalse();
