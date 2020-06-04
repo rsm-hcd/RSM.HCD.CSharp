@@ -7,6 +7,7 @@ using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Extensions;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace AndcultureCode.CSharp.Core.Extensions
@@ -14,6 +15,16 @@ namespace AndcultureCode.CSharp.Core.Extensions
     public static class IResultExtensions
     {
         #region AddError
+
+        /// <summary>
+        /// Add translated error record of type Error
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="localizer"></param>
+        /// <param name="key">Error key found in culture files</param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static IError AddError<T>(this IResult<T> result, IStringLocalizer localizer, string key, params object[] arguments)
+            => result.AddError(key, localizer[key, arguments]);
 
         public static IError AddError<T>(this IResult<T> result, IError error)
         {
@@ -40,14 +51,24 @@ namespace AndcultureCode.CSharp.Core.Extensions
             var error = new Error
             {
                 ErrorType = errorType,
-                Key       = key,
-                Message   = message
+                Key = key,
+                Message = message
             };
 
             result.Errors.Add(error);
 
             return error;
         }
+
+        /// <summary>
+        /// Add translated error record
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="localizer"></param>
+        /// <param name="key">Error key found in culture files</param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static IError AddError<T>(this IResult<T> result, IStringLocalizer localizer, ErrorType type, string key, params object[] arguments)
+            => result.AddError(type, key, localizer[key, arguments]);
 
         public static IError AddError<T>(this IResult<T> result, string key, string message) => result.AddError(ErrorType.Error, key, message);
 
@@ -60,16 +81,18 @@ namespace AndcultureCode.CSharp.Core.Extensions
         /// <returns></returns>
         public static IError AddError<T>(this IResult<T> result, string message)
         {
-            var frame      = new StackFrame(1);
-            var method     = frame.GetMethod();
-            var className  = method.DeclaringType.Name;
+            var frame = new StackFrame(1);
+            var method = frame.GetMethod();
+            var className = method.DeclaringType.Name;
             var methodName = Regex.Replace(method.Name, "<|>.*", ""); // Method name without wrapper
-            var key        = $"{className}.{methodName}";
+            var key = $"{className}.{methodName}";
 
             return result.AddError(ErrorType.Error, key, message);
         }
 
-        public static IError AddValidationError<T>(this IResult<T> result, string key, string message) => result.AddError(ErrorType.ValidationError, key, message);
+        #endregion AddError
+
+        #region AddExceptionError
 
         public static IError AddExceptionError<T>(this IResult<T> result, string key, Exception exception)
         {
@@ -77,8 +100,23 @@ namespace AndcultureCode.CSharp.Core.Extensions
             return result.AddError(ErrorType.Error, key, message);
         }
 
-        #endregion AddError
+        #endregion AddExceptionError
 
+        #region AddValidationError
+
+        public static IError AddValidationError<T>(this IResult<T> result, string key, string message) => result.AddError(ErrorType.ValidationError, key, message);
+
+        /// <summary>
+        /// Add translated error record of type Validation
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="localizer"></param>
+        /// <param name="key">Error key found in culture files</param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static IError AddValidationError<T>(this IResult<T> result, IStringLocalizer localizer, string key, params object[] arguments)
+            => result.AddValidationError(key, localizer[key, arguments]);
+
+        #endregion AddValidationError
 
         #region AddErrors
 
@@ -120,29 +158,42 @@ namespace AndcultureCode.CSharp.Core.Extensions
 
         #endregion AddErrors
 
-
         #region AddErrorsAndLog
 
         public static void AddErrorAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long? resourceIdentifier = null)
         {
             var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
-            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, resourceIdentifier?.ToString(), null, methodName);
+            var logMessage = errorMessage;
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, resourceIdentifier?.ToString(), null, methodName);
         }
 
         public static void AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long resourceIdentifier, IEnumerable<IError> errors = null)
         {
             var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
-            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, resourceIdentifier.ToString(), errors, methodName);
+            var logMessage = errorMessage;
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, resourceIdentifier.ToString(), errors, methodName);
         }
 
         public static void AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long? resourceIdentifier, IEnumerable<IError> errors = null)
         {
             var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
+            var logMessage = errorMessage;
             var resourceIdentifierString = resourceIdentifier != null ? resourceIdentifier.ToString() : null;
-            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, resourceIdentifierString, errors, methodName);
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, resourceIdentifierString, errors, methodName);
         }
 
-        public static void AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, string resourceIdentifier, IEnumerable<IError> errors = null, string methodName = null)
+        /// <summary>
+        /// Add error record and log message
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="logger"></param>
+        /// <param name="errorKey">Error key found in culture files</param>
+        /// <param name="errorMessage">Translated error message</param>
+        /// <param name="logMessage">Log message - commonly un-translated version of errorMessage</param>
+        /// <param name="resourceIdentifier"></param>
+        /// <param name="errors">Additional errors to forward. These are assumed to have already been translated.</param>
+        /// <param name="methodName">Name of calling method for use in log message for improved debugging</param>
+        public static void AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, string logMessage, string resourceIdentifier, IEnumerable<IError> errors = null, string methodName = null)
         {
             if (string.IsNullOrWhiteSpace(errorMessage))
             {
@@ -159,10 +210,9 @@ namespace AndcultureCode.CSharp.Core.Extensions
             if (errors != null && errors.Any())
             {
                 result.AddErrors(errors);
-                errorMessage += " - " + result.ListErrors();
             }
 
-            var identifierText = !string.IsNullOrWhiteSpace(resourceIdentifier) ? $" resource ({resourceIdentifier}) -" : "";
+            var identifierText = !string.IsNullOrWhiteSpace(resourceIdentifier) ? $" ({resourceIdentifier}) -" : "";
 
             // If not provided, try to detect method name
             if (string.IsNullOrWhiteSpace(methodName))
@@ -171,11 +221,78 @@ namespace AndcultureCode.CSharp.Core.Extensions
             }
 
             // Log all of the above
-            logger.LogError($"[{methodName}]{identifierText} {errorMessage}");
+            logger.LogError($"[{methodName}]{identifierText} {logMessage}");
+        }
+
+        /// <summary>
+        /// Add translated error record and log un-translated message
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="logger"></param>
+        /// <param name="localizer"></param>
+        /// <param name="errorKey">Error key found in culture files</param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static void AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, params object[] arguments)
+        {
+            var errorMessage = localizer[errorKey, arguments];
+            var logMessage = localizer.Default(errorKey, arguments);
+            var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
+            result.AddErrorsAndLog<T>(logger, errorKey: errorKey, errorMessage: errorMessage, logMessage, null, null, methodName);
+        }
+
+        /// <summary>
+        /// Add translated error record and log un-translated message
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="logger"></param>
+        /// <param name="localizer"></param>
+        /// <param name="errorKey">Error key found in culture files</param>
+        /// <param name="resourceIdentifier"></param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static void AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long? resourceIdentifier, params object[] arguments)
+        {
+            var errorMessage = localizer[errorKey, arguments];
+            var logMessage = localizer.Default(errorKey, arguments);
+            var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, resourceIdentifier?.ToString(), null, methodName);
+        }
+
+        /// <summary>
+        /// Add translated error record and log un-translated message
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="logger"></param>
+        /// <param name="localizer"></param>
+        /// <param name="errorKey">Error key found in culture files</param>
+        /// <param name="resourceIdentifier"></param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static void AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, params object[] arguments)
+        {
+            var errorMessage = localizer[errorKey, arguments];
+            var logMessage = localizer.Default(errorKey, arguments);
+            var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, resourceIdentifier.ToString(), null, methodName);
+        }
+
+        /// <summary>
+        /// Add translated error record and log un-translated message
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="logger"></param>
+        /// <param name="localizer"></param>
+        /// <param name="errorKey">Error key found in culture files</param>
+        /// <param name="resourceIdentifier"></param>
+        /// <param name="errors">Additional errors to forward. These are assumed to have already been translated.</param>
+        /// <param name="arguments">The values with which to format the translated error message</param>
+        public static void AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, IEnumerable<IError> errors = null, params object[] arguments)
+        {
+            var errorMessage = localizer[errorKey, arguments];
+            var logMessage = localizer.Default(errorKey, arguments);
+            var methodName = new StackTrace().GetFrame(1).GetMethod().Name;
+            result.AddErrorsAndLog<T>(logger, errorKey, errorMessage, logMessage, resourceIdentifier.ToString(), errors, methodName);
         }
 
         #endregion AddErrorsAndLog
-
 
         #region AddNextLinkParam
 
@@ -208,7 +325,6 @@ namespace AndcultureCode.CSharp.Core.Extensions
         public static Dictionary<string, string> AddNextLinkParam<T>(this IResult<T> result, string key, int value) => result.AddNextLinkParam(key, value.ToString());
 
         #endregion AddNextLinkParam
-
 
         #region AddNextLinkParams
 
@@ -243,20 +359,18 @@ namespace AndcultureCode.CSharp.Core.Extensions
 
         #endregion AddNextLinkParams
 
-
         #region DoesNotHaveErrors
 
-        public static bool DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType) => ! result.HasErrors(errorType);
-        public static bool DoesNotHaveErrors<T>(this IResult<T> result, string key)          => ! result.HasErrors(key);
+        public static bool DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType) => !result.HasErrors(errorType);
+        public static bool DoesNotHaveErrors<T>(this IResult<T> result, string key) => !result.HasErrors(key);
 
         #endregion DoesNotHaveErrors
-
 
         #region GetErrors
 
         public static List<IError> GetErrors<T>(this IResult<T> result, ErrorType errorType)
         {
-            if (! result.HasErrors(errorType))
+            if (!result.HasErrors(errorType))
             {
                 return null;
             }
@@ -266,7 +380,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
 
         public static List<IError> GetErrors<T>(this IResult<T> result, string key)
         {
-            if (! result.HasErrors(key))
+            if (!result.HasErrors(key))
             {
                 return null;
             }
@@ -277,7 +391,6 @@ namespace AndcultureCode.CSharp.Core.Extensions
         public static List<IError> GetValidationErrors<T>(this IResult<T> result) => result.GetErrors(ErrorType.ValidationError);
 
         #endregion GetErrors
-
 
         #region HasErrors
 
@@ -306,7 +419,6 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.HasErrors(ErrorType.ValidationError);
 
         #endregion HasErrors
-
 
         #region ListErrors
 
@@ -348,7 +460,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
 
         #region ThrowIfAnyErrors
 
-        public static IResult<T> ThrowIfAnyErrors<T>(this IResult<T> result, Exception customException  = null)
+        public static IResult<T> ThrowIfAnyErrors<T>(this IResult<T> result, Exception customException = null)
         {
             if (!result.HasErrors)
             {
@@ -364,18 +476,18 @@ namespace AndcultureCode.CSharp.Core.Extensions
 
         public static IResult<T> ThrowIfAnyErrorsOrResultIsNull<T>(
             this IResult<T> result,
-            Exception       hasErrorsException  = null,
-            Exception       resultNullException = null)
+            Exception hasErrorsException = null,
+            Exception resultNullException = null)
         {
             if (result.HasErrors)
             {
-                throw hasErrorsException    == null ? new Exception(result.ListErrors()) :
+                throw hasErrorsException == null ? new Exception(result.ListErrors()) :
                                                       hasErrorsException;
             }
 
             if (result.ResultObject == null)
             {
-                throw resultNullException   == null ? new Exception($"Result object for IResult returning {typeof(T).Name} is null!") :
+                throw resultNullException == null ? new Exception($"Result object for IResult returning {typeof(T).Name} is null!") :
                                                       resultNullException;
             }
 
@@ -388,8 +500,8 @@ namespace AndcultureCode.CSharp.Core.Extensions
 
         public static IResult<bool> ThrowIfAnyErrorsOrResultIsFalse(
             this IResult<bool> result,
-            Exception       hasErrorsException  = null,
-            Exception       resultNullException = null)
+            Exception hasErrorsException = null,
+            Exception resultNullException = null)
         {
             if (result.HasErrors)
             {
