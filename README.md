@@ -7,6 +7,10 @@ This package is installed via NuGet
 dotnet add [<PROJECT>] package AndcultureCode.CSharp.Core
 ```
 
+## Documentation
+
+[Full API Documentation](src/AndcultureCode.CSharp.Core/AndcultureCode.CSharp.Core.md)
+
 
 ## Development Setup
 
