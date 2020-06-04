@@ -10,6 +10,8 @@
   - [IsBetweenDates()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-IsBetweenDates-System-DateTimeOffset,System-DateTimeOffset,System-DateTimeOffset,System-Boolean- 'AndcultureCode.CSharp.Extensions.DateExtensions.IsBetweenDates(System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,System.Boolean)')
   - [SubtractWeekdays()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTime,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SubtractWeekdays(System.DateTime,System.Int32)')
   - [SubtractWeekdays()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTimeOffset,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SubtractWeekdays(System.DateTimeOffset,System.Int32)')
+- [DictionaryExtensions](#T-AndcultureCode-CSharp-Extensions-DictionaryExtensions 'AndcultureCode.CSharp.Extensions.DictionaryExtensions')
+  - [Merge\`\`2(left,right,takeLastKey)](#M-AndcultureCode-CSharp-Extensions-DictionaryExtensions-Merge``2-System-Collections-Generic-Dictionary{``0,``1},System-Collections-Generic-Dictionary{``0,``1},System-Boolean- 'AndcultureCode.CSharp.Extensions.DictionaryExtensions.Merge``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.Dictionary{``0,``1},System.Boolean)')
 - [ExpressionExtensions](#T-AndcultureCode-CSharp-Extensions-ExpressionExtensions 'AndcultureCode.CSharp.Extensions.ExpressionExtensions')
   - [AndAlso\`\`1(expr1,expr2)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-AndAlso``1-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.AndAlso``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})')
   - [AndAlso\`\`2(expr1,expr2,navigationProperty)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-AndAlso``2-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``1,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,``1}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.AndAlso``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}})')
@@ -123,6 +125,41 @@ Convenience method to subtract weekdays
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Extensions-DictionaryExtensions'></a>
+## DictionaryExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+<a name='M-AndcultureCode-CSharp-Extensions-DictionaryExtensions-Merge``2-System-Collections-Generic-Dictionary{``0,``1},System-Collections-Generic-Dictionary{``0,``1},System-Boolean-'></a>
+### Merge\`\`2(left,right,takeLastKey) `method`
+
+##### Summary
+
+'Merges' two dictionaries into one. If duplicate keys are encountered, either the first
+or last occurrence will be used. See 'takeLastKey'
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| left | [System.Collections.Generic.Dictionary{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.Dictionary 'System.Collections.Generic.Dictionary{``0,``1}') | Dictionary to be merged into. |
+| right | [System.Collections.Generic.Dictionary{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.Dictionary 'System.Collections.Generic.Dictionary{``0,``1}') | Dictionary to be merged into the left dictionary. |
+| takeLastKey | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Determines whether the value of the last occurrence of a key is used as the final value
+when duplicates are encountered. If false, uses the value of the first occurrence. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TKey |  |
+| TValue |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-ExpressionExtensions'></a>
 ## ExpressionExtensions `type`
