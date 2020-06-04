@@ -23,6 +23,41 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion Setup
 
+        #region AddError(IError)
+
+        [Fact]
+        public void AddError_IError_Overload_When_Result_Errors_IsNull_Result_Contains_Error()
+        {
+            // Arrange
+            var sut = new Result<bool>();
+            sut.Errors = null; // <------------ while defaulted, ensuring null in setup
+            var expected = new Error();
+
+            // Act
+            var result = sut.AddError(error: expected);
+
+            // Assert
+            sut.Errors.ShouldNotBeNull();
+            sut.Errors.ShouldContain(expected);
+        }
+
+        [Fact]
+        public void AddError_IError_Overload_When_Result_Errors_IsNull_Returns_Error()
+        {
+            // Arrange
+            var sut = new Result<bool>();
+            sut.Errors = null; // <------------ while defaulted, ensuring null in setup
+            var expected = new Error();
+
+            // Act
+            var result = sut.AddError(error: expected);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        #endregion AddError(IError)
+
         #region AddError(message)
 
         [Fact]
@@ -257,6 +292,57 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion AddErrorsAndReturnDefault
+
+        #region AddExceptionError
+
+        [Fact]
+        public void AddExceptionError_Given_Key_Returns_Error_With_Key()
+        {
+            // Arrange
+            var expectedKey = Random.String();
+            var sut = new Result<bool>();
+
+            // Act
+            var result = sut.AddExceptionError(expectedKey, new Exception());
+
+            // Assert
+            result.ShouldNotBeNull();
+            result.Key.ShouldBe(expectedKey);
+        }
+
+        [Fact]
+        public void AddExceptionError_Given_Exception_Returns_Error_With_Exception_Message()
+        {
+            // Arrange
+            var expectedMessage = Random.String();
+            var sut = new Result<bool>();
+            var exception = new Exception(expectedMessage);
+
+            // Act
+            var result = sut.AddExceptionError(Random.String(), exception);
+
+            // Assert
+            result.ShouldNotBeNull();
+            result.Message.ShouldContain(expectedMessage);
+        }
+
+        [Fact]
+        public void AddExceptionError_Appends_Created_Error_To_Result_Errors()
+        {
+            // Arrange
+            var sut = new Result<bool>();
+            sut.AddError(key: Random.String(), message: Random.String());
+
+            // Act
+            var result = sut.AddExceptionError(Random.String(), new Exception());
+
+            // Assert
+            result.ShouldNotBeNull();
+            sut.Errors.Count.ShouldBe(2);
+            sut.Errors.ShouldContain(result);
+        }
+
+        #endregion AddExceptionError
 
         #region AddNextLinkParam (string, int)
 
