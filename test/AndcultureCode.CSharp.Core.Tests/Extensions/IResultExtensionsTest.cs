@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
+using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.CSharp.Testing;
 using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
+using Microsoft.Extensions.Localization;
+using Moq;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 {
@@ -16,10 +19,44 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
     {
         #region Setup
 
-        public IResultExtensionsTest(ITestOutputHelper output) : base(output) {}
+        public IResultExtensionsTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
+        #region AddError(IError)
+
+        [Fact]
+        public void AddError_IError_Overload_When_Result_Errors_IsNull_Result_Contains_Error()
+        {
+            // Arrange
+            var sut = new Result<bool>();
+            sut.Errors = null; // <------------ while defaulted, ensuring null in setup
+            var expected = new Error();
+
+            // Act
+            var result = sut.AddError(error: expected);
+
+            // Assert
+            sut.Errors.ShouldNotBeNull();
+            sut.Errors.ShouldContain(expected);
+        }
+
+        [Fact]
+        public void AddError_IError_Overload_When_Result_Errors_IsNull_Returns_Error()
+        {
+            // Arrange
+            var sut = new Result<bool>();
+            sut.Errors = null; // <------------ while defaulted, ensuring null in setup
+            var expected = new Error();
+
+            // Act
+            var result = sut.AddError(error: expected);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        #endregion AddError(IError)
 
         #region AddError(message)
 
@@ -28,7 +65,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var expectedMessage   = Random.String();
+            var expectedMessage = Random.String();
 
             // Act
             destinationResult.AddError(expectedMessage);
@@ -41,7 +78,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void AddError_MessageOnly_Overload_Adds_Error_With_Key_Containing_Caller_ClassName()
         {
             // Arrange
-            var destinationResult = new Result<object> ();
+            var destinationResult = new Result<object>();
             var expectedClassName = this.GetType().Name;
 
             // Act
@@ -55,7 +92,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void AddError_MessageOnly_Overload_Adds_Error_With_Key_Containing_Caller_MethodName()
         {
             // Arrange
-            var destinationResult  = new Result<object> ();
+            var destinationResult = new Result<object>();
             var expectedMethodName = "AddError_MessageOnly_Overload_Adds_Error_With_Key_Containing_Caller_MethodName";
 
             // Act
@@ -70,7 +107,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
 
             // Arrange
-            var destinationResult = new Result<object> ();
+            var destinationResult = new Result<object>();
             var expectedClassName = typeof(IResultExtensionsTest).Name;
 
             // Act
@@ -81,7 +118,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
             return true;
 
-        }).Catch<Exception>((ex, r) => {
+        }).Catch<Exception>((ex, r) =>
+        {
             throw ex; // re-throw for test runner
         }).Result;
 
@@ -89,7 +127,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public IResult<bool> AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_MethodName() => Do<bool>.Try((r) =>
         {
             // Arrange
-            var destinationResult  = new Result<object> ();
+            var destinationResult = new Result<object>();
             var expectedMethodName = "AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_MethodName";
 
             // Act
@@ -100,12 +138,106 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
             return true;
 
-        }).Catch<Exception>((ex, r) => {
+        }).Catch<Exception>((ex, r) =>
+        {
             throw ex; // re-throw for test runner
         }).Result;
 
         #endregion AddError(message)
 
+        #region AddError(localizer, type, key, arguments)
+
+        [Fact]
+        public void AddError_Localizer_And_ErrorType_Overload_When_No_Translation_Exists_Adds_Untranslated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey = Random.String();
+            var expectedMessage = Random.String();
+            var expectedType = new List<ErrorType> { ErrorType.Error, ErrorType.ValidationError }.PickRandom();
+            var localizer = Mock.Of<IStringLocalizer>();
+
+            // Act
+            destinationResult.AddError(localizer, expectedType, expectedKey);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+                e.ErrorType == expectedType &&
+                e.Key == expectedKey &&
+                e.Message == null // <---- added message with null
+            );
+        }
+
+        [Fact]
+        public void AddError_Localizer_And_ErrorType_Overload_Adds_Translated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey = Random.String();
+            var expectedMessage = Random.String();
+            var expectedType = new List<ErrorType> { ErrorType.Error, ErrorType.ValidationError }.PickRandom();
+
+            var localizedString = new LocalizedString(expectedKey, expectedMessage);
+            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+
+            // Act
+            destinationResult.AddError(localizer, expectedType, expectedKey);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+                e.ErrorType == expectedType &&
+                e.Key == expectedKey &&
+                e.Message == expectedMessage
+            );
+        }
+
+        #endregion AddError(localizer, type, key, arguments)
+
+        #region AddError(localizer, key, arguments)
+
+        [Fact]
+        public void AddError_Localizer_Without_ErrorType_Overload_When_No_Translation_Exists_Adds_Untranslated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey = Random.String();
+            var expectedMessage = Random.String();
+            var localizer = Mock.Of<IStringLocalizer>();
+
+            // Act
+            destinationResult.AddError(localizer, expectedKey);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+                e.ErrorType == ErrorType.Error && // <---- Error
+                e.Key == expectedKey &&
+                e.Message == null // <---- added message with null
+            );
+        }
+
+        [Fact]
+        public void AddError_Localizer_Without_ErrorType_Overload_Adds_Translated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey = Random.String();
+            var expectedMessage = Random.String();
+
+            var localizedString = new LocalizedString(expectedKey, expectedMessage);
+            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+
+            // Act
+            destinationResult.AddError(localizer, expectedKey);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+                e.ErrorType == ErrorType.Error && // <---- Error
+                e.Key == expectedKey &&
+                e.Message == expectedMessage
+            );
+        }
+
+        #endregion AddError(localizer, key, arguments)
 
         #region AddErrorsAndReturnDefault
 
@@ -114,8 +246,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationErrorMessage = "destination error message";
-            var sourceErrorMessage      = "source error message";
-            var destinationResult       = new Result<int>(destinationErrorMessage);
+            var sourceErrorMessage = "source error message";
+            var destinationResult = new Result<int>(destinationErrorMessage);
 
             // Act
             var result = destinationResult.AddErrorsAndReturnDefault(new Result<string>(sourceErrorMessage));
@@ -132,7 +264,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationErrorMessage = "destination error message";
-            var destinationResult       = new Result<int>(destinationErrorMessage);
+            var destinationResult = new Result<int>(destinationErrorMessage);
 
             // Act
             var result = destinationResult.AddErrorsAndReturnDefault((IResult<string>)null);
@@ -148,7 +280,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationErrorMessage = "destination error message";
-            var destinationResult       = new Result<int>(destinationErrorMessage);
+            var destinationResult = new Result<int>(destinationErrorMessage);
 
             // Act
             var result = destinationResult.AddErrorsAndReturnDefault(new Result<string>());
@@ -161,6 +293,56 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion AddErrorsAndReturnDefault
 
+        #region AddExceptionError
+
+        [Fact]
+        public void AddExceptionError_Given_Key_Returns_Error_With_Key()
+        {
+            // Arrange
+            var expectedKey = Random.String();
+            var sut = new Result<bool>();
+
+            // Act
+            var result = sut.AddExceptionError(expectedKey, new Exception());
+
+            // Assert
+            result.ShouldNotBeNull();
+            result.Key.ShouldBe(expectedKey);
+        }
+
+        [Fact]
+        public void AddExceptionError_Given_Exception_Returns_Error_With_Exception_Message()
+        {
+            // Arrange
+            var expectedMessage = Random.String();
+            var sut = new Result<bool>();
+            var exception = new Exception(expectedMessage);
+
+            // Act
+            var result = sut.AddExceptionError(Random.String(), exception);
+
+            // Assert
+            result.ShouldNotBeNull();
+            result.Message.ShouldContain(expectedMessage);
+        }
+
+        [Fact]
+        public void AddExceptionError_Appends_Created_Error_To_Result_Errors()
+        {
+            // Arrange
+            var sut = new Result<bool>();
+            sut.AddError(key: Random.String(), message: Random.String());
+
+            // Act
+            var result = sut.AddExceptionError(Random.String(), new Exception());
+
+            // Assert
+            result.ShouldNotBeNull();
+            sut.Errors.Count.ShouldBe(2);
+            sut.Errors.ShouldContain(result);
+        }
+
+        #endregion AddExceptionError
 
         #region AddNextLinkParam (string, int)
 
@@ -211,7 +393,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var expectedKey       = Random.String();
+            var expectedKey = Random.String();
 
             // Act
             var result = destinationResult.AddNextLinkParam(key: expectedKey, value: null);
@@ -225,8 +407,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var expectedKey       = Random.String();
-            var expectedValue     = Random.Int();
+            var expectedKey = Random.String();
+            var expectedValue = Random.Int();
 
             // Act
             var result = destinationResult.AddNextLinkParam(key: expectedKey, value: expectedValue);
@@ -236,7 +418,6 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion AddNextLinkParam (string, int)
-
 
         #region AddNextLinkParam (string, string)
 
@@ -287,7 +468,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var key               = Random.String();
+            var key = Random.String();
 
             // Act
             var result = destinationResult.AddNextLinkParam(key: key, value: null);
@@ -297,7 +478,6 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion AddNextLinkParam (string, string)
-
 
         #region AddNextLinkParams
 
@@ -327,7 +507,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object> { NextLinkParams = null }; // <------------ destination null
-            var sourceResult      = new Result<object> { NextLinkParams = null }; // <------------ source null
+            var sourceResult = new Result<object> { NextLinkParams = null }; // <------------ source null
 
             // Act
             var result = destinationResult.AddNextLinkParams(sourceResult: sourceResult);
@@ -357,9 +537,9 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object> { NextLinkParams = null }; // <----------- destination null
-            var sourceTestKey     = Random.String();
-            var sourceTestValue   = Random.String();
-            var sourceResult      = new Result<object>();
+            var sourceTestKey = Random.String();
+            var sourceTestValue = Random.String();
+            var sourceResult = new Result<object>();
             sourceResult.AddNextLinkParam(sourceTestKey, sourceTestValue);
 
             // Act
@@ -390,14 +570,14 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void AddNextLinkParams_When_DestinationResult_NextLinkParams_HasEntries_Given_SourceResult_NextListParams_HasEntries_Returns_Dictionary_With_BothEntries()
         {
             // Arrange
-            var destinationTestKey   = "testKeyFromDestination";
+            var destinationTestKey = "testKeyFromDestination";
             var destinationTestValue = "testValueFromDestination";
-            var destinationResult    = new Result<object>();
+            var destinationResult = new Result<object>();
             destinationResult.AddNextLinkParam(destinationTestKey, destinationTestValue);
 
-            var sourceTestKey   = "testKeyFromSource";
+            var sourceTestKey = "testKeyFromSource";
             var sourceTestValue = "testValueFromSource";
-            var sourceResult    = new Result<object>();
+            var sourceResult = new Result<object>();
             sourceResult.AddNextLinkParam(sourceTestKey, sourceTestValue);
 
             // Act
@@ -405,208 +585,251 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             result.ShouldContainKeyAndValue(destinationTestKey, destinationTestValue);
-            result.ShouldContainKeyAndValue(sourceTestKey,      sourceTestValue);
+            result.ShouldContainKeyAndValue(sourceTestKey, sourceTestValue);
         }
 
         #endregion AddNextLinkParams
 
+        #region AddValidationError(localizer, key, arguments)
+
+        [Fact]
+        public void AddValidationError_Localizer_Without_ErrorType_Overload_When_No_Translation_Exists_Adds_Untranslated_ValidationError()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey = Random.String();
+            var expectedMessage = Random.String();
+            var localizer = Mock.Of<IStringLocalizer>();
+
+            // Act
+            destinationResult.AddValidationError(localizer, expectedKey);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+                e.ErrorType == ErrorType.ValidationError && // <---- ValidationError
+                e.Key == expectedKey &&
+                e.Message == null // <---- added message with null
+            );
+        }
+
+        [Fact]
+        public void AddValidationError_Localizer_Without_ErrorType_Overload_Adds_Translated_ValidationError()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey = Random.String();
+            var expectedMessage = Random.String();
+
+            var localizedString = new LocalizedString(expectedKey, expectedMessage);
+            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+
+            // Act
+            destinationResult.AddValidationError(localizer, expectedKey);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+                e.ErrorType == ErrorType.ValidationError && // <---- ValidationError
+                e.Key == expectedKey &&
+                e.Message == expectedMessage
+            );
+        }
+
+        #endregion AddValidationError(localizer, key, arguments)
 
         #region HasErrors
 
-            #region HasErrors (IEnumerable<IResult<T>>)
+        #region HasErrors (IEnumerable<IResult<T>>)
 
-            [Fact]
-            public void HasErrors_EnumerableList_When_List_IsNull_Returns_False()
-            {
-                IResultExtensions.HasErrors<bool>(resultList: null).ShouldBeFalse();
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_When_List_IsNull_Returns_False()
+        {
+            IResultExtensions.HasErrors<bool>(resultList: null).ShouldBeFalse();
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_When_List_IsEmpty_Returns_False()
-            {
-                new List<IResult<bool>>().HasErrors().ShouldBeFalse();
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_When_List_IsEmpty_Returns_False()
+        {
+            new List<IResult<bool>>().HasErrors().ShouldBeFalse();
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_When_List_Without_Errors_Returns_False()
-            {
-                new List<IResult<bool>> { new Result<bool>() } // Arrange
-                    .HasErrors()                               // Act
-                        .ShouldBeFalse();                      // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_When_List_Without_Errors_Returns_False()
+        {
+            new List<IResult<bool>> { new Result<bool>() } // Arrange
+                .HasErrors()                               // Act
+                    .ShouldBeFalse();                      // Assert
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_When_List_With_Errors_Returns_True()
-            {
-                new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                    .HasErrors()                                                         // Act
-                        .ShouldBeTrue();                                                 // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_When_List_With_Errors_Returns_True()
+        {
+            new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
+                .HasErrors()                                                         // Act
+                    .ShouldBeTrue();                                                 // Assert
+        }
 
-            #endregion HasErrors (no arguments)
+        #endregion HasErrors (no arguments)
 
-            #region HasErrors (IEnumerable<IResult<T>>, ErrorType)
+        #region HasErrors (IEnumerable<IResult<T>>, ErrorType)
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_IsNull_Returns_False()
-            {
-                IResultExtensions.HasErrors<bool>(resultList: null, errorType: ErrorType.Error).ShouldBeFalse();
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_IsNull_Returns_False()
+        {
+            IResultExtensions.HasErrors<bool>(resultList: null, errorType: ErrorType.Error).ShouldBeFalse();
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_IsEmpty_Returns_False()
-            {
-                new List<IResult<bool>>().HasErrors(ErrorType.Error).ShouldBeFalse();
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_IsEmpty_Returns_False()
+        {
+            new List<IResult<bool>>().HasErrors(ErrorType.Error).ShouldBeFalse();
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_Without_Errors_Returns_False()
-            {
-                new List<IResult<bool>> { new Result<bool>() } // Arrange
-                    .HasErrors(ErrorType.Error)                // Act
-                        .ShouldBeFalse();                      // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_Without_Errors_Returns_False()
+        {
+            new List<IResult<bool>> { new Result<bool>() } // Arrange
+                .HasErrors(ErrorType.Error)                // Act
+                    .ShouldBeFalse();                      // Assert
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_With_Errors_Returns_True()
-            {
-                new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                    .HasErrors(ErrorType.Error)                                          // Act
-                        .ShouldBeTrue();                                                 // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_With_Errors_Returns_True()
+        {
+            new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
+                .HasErrors(ErrorType.Error)                                          // Act
+                    .ShouldBeTrue();                                                 // Assert
+        }
 
-            #endregion HasErrors (IEnumerable<IResult<T>>, ErrorType)
+        #endregion HasErrors (IEnumerable<IResult<T>>, ErrorType)
 
 
-            #region HasErrors (IEnumerable<IResult<T>>, string)
+        #region HasErrors (IEnumerable<IResult<T>>, string)
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_IsNull_Returns_False()
-            {
-                IResultExtensions.HasErrors<bool>(resultList: null, key: Random.String()).ShouldBeFalse();
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_IsNull_Returns_False()
+        {
+            IResultExtensions.HasErrors<bool>(resultList: null, key: Random.String()).ShouldBeFalse();
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_IsEmpty_Returns_False()
-            {
-                new List<IResult<bool>>().HasErrors(key: Random.String()).ShouldBeFalse();
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_IsEmpty_Returns_False()
+        {
+            new List<IResult<bool>>().HasErrors(key: Random.String()).ShouldBeFalse();
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_Without_Errors_Returns_False()
-            {
-                new List<IResult<bool>> { new Result<bool>() } // Arrange
-                    .HasErrors(key: Random.String())           // Act
-                        .ShouldBeFalse();                      // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_Without_Errors_Returns_False()
+        {
+            new List<IResult<bool>> { new Result<bool>() } // Arrange
+                .HasErrors(key: Random.String())           // Act
+                    .ShouldBeFalse();                      // Assert
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_With_Errors_When_Key_DoesNotMatch_Returns_False()
-            {
-                new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                    .HasErrors(key: "404")                                               // Act
-                        .ShouldBeFalse();                                                // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_With_Errors_When_Key_DoesNotMatch_Returns_False()
+        {
+            new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
+                .HasErrors(key: "404")                                               // Act
+                    .ShouldBeFalse();                                                // Assert
+        }
 
-            [Fact]
-            public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_With_Errors_When_Key_Matches_Returns_True()
-            {
-                new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                    .HasErrors(key: "errorkey")                                          // Act
-                        .ShouldBeTrue();                                                 // Assert
-            }
+        [Fact]
+        public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_With_Errors_When_Key_Matches_Returns_True()
+        {
+            new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
+                .HasErrors(key: "errorkey")                                          // Act
+                    .ShouldBeTrue();                                                 // Assert
+        }
 
-            #endregion HasErrors (IEnumerable<IResult<T>>, string)
+        #endregion HasErrors (IEnumerable<IResult<T>>, string)
 
         #endregion HasErrors
 
-
         #region ListErrors
 
-            #region ListErrors (IEnumerable<IResult<T>>, string)
+        #region ListErrors (IEnumerable<IResult<T>>, string)
 
-            [Fact]
-            public void ListErrors_When_List_IsNull_Returns_Null()
-            {
-                IResultExtensions.ListErrors<bool>(resultList: null).ShouldBeNull();
-            }
+        [Fact]
+        public void ListErrors_When_List_IsNull_Returns_Null()
+        {
+            IResultExtensions.ListErrors<bool>(resultList: null).ShouldBeNull();
+        }
 
-            [Fact]
-            public void ListErrors_When_List_IsEmpty_Returns_Null()
-            {
-                new List<IResult<bool>>().ListErrors().ShouldBeNull();
-            }
+        [Fact]
+        public void ListErrors_When_List_IsEmpty_Returns_Null()
+        {
+            new List<IResult<bool>>().ListErrors().ShouldBeNull();
+        }
 
-            [Fact]
-            public void ListErrors_When_List_DoesNot_HaveErrors_Returns_Null()
-            {
-                new List<IResult<bool>> { new Result<bool>() } // Arrange
-                    .ListErrors()                              // Act
-                        .ShouldBeNull();                       // Assert
-            }
+        [Fact]
+        public void ListErrors_When_List_DoesNot_HaveErrors_Returns_Null()
+        {
+            new List<IResult<bool>> { new Result<bool>() } // Arrange
+                .ListErrors()                              // Act
+                    .ShouldBeNull();                       // Assert
+        }
 
-            [Fact]
-            public void ListErrors_When_List_Has_OneError_Returns_Error_Key_And_Message()
-            {
-                // Arrange
-                var sut = new List<IResult<bool>> { new Result<bool>("testkey", "testmessage") };
+        [Fact]
+        public void ListErrors_When_List_Has_OneError_Returns_Error_Key_And_Message()
+        {
+            // Arrange
+            var sut = new List<IResult<bool>> { new Result<bool>("testkey", "testmessage") };
 
-                // Act
-                var result = sut.ListErrors();
+            // Act
+            var result = sut.ListErrors();
 
-                // Assert
-                result.ShouldNotBeEmpty();
-                result.ShouldContain("testkey");
-                result.ShouldContain("testmessage");
-            }
+            // Assert
+            result.ShouldNotBeEmpty();
+            result.ShouldContain("testkey");
+            result.ShouldContain("testmessage");
+        }
 
-            [Fact]
-            public void ListErrors_When_List_Has_MultipleErrors_Returns_Error_Keys_And_Messages()
-            {
-                // Arrange
-                var sut = new List<IResult<bool>>
+        [Fact]
+        public void ListErrors_When_List_Has_MultipleErrors_Returns_Error_Keys_And_Messages()
+        {
+            // Arrange
+            var sut = new List<IResult<bool>>
                 {
                     new Result<bool>("testkey1", "testmessage1"),
                     new Result<bool>("testkey2", "testmessage2")
                 };
 
-                // Act
-                var result = sut.ListErrors();
+            // Act
+            var result = sut.ListErrors();
 
-                // Assert
-                result.ShouldNotBeEmpty();
-                result.ShouldContain("testkey1");
-                result.ShouldContain("testmessage1");
-                result.ShouldContain("testkey2");
-                result.ShouldContain("testmessage2");
-            }
+            // Assert
+            result.ShouldNotBeEmpty();
+            result.ShouldContain("testkey1");
+            result.ShouldContain("testmessage1");
+            result.ShouldContain("testkey2");
+            result.ShouldContain("testmessage2");
+        }
 
-            [Fact]
-            public void ListErrors_When_List_Has_MultipleErrors_Given_CustomDelimiter_Returns_Error_Keys_And_Messages_With_Delimiter()
-            {
-                // Arrange
-                var sut = new List<IResult<bool>>
+        [Fact]
+        public void ListErrors_When_List_Has_MultipleErrors_Given_CustomDelimiter_Returns_Error_Keys_And_Messages_With_Delimiter()
+        {
+            // Arrange
+            var sut = new List<IResult<bool>>
                 {
                     new Result<bool>("testkey1", "testmessage1"),
                     new Result<bool>("testkey2", "testmessage2")
                 };
 
-                // Act
-                var result = sut.ListErrors(delimiter: "delimiter");
+            // Act
+            var result = sut.ListErrors(delimiter: "delimiter");
 
-                // Assert
-                result.ShouldNotBeEmpty();
-                result.ShouldContain("testkey1");
-                result.ShouldContain("testmessage1");
-                result.ShouldContain("testkey2");
-                result.ShouldContain("testmessage2");
-                result.ShouldContain("delimiter");
-            }
+            // Assert
+            result.ShouldNotBeEmpty();
+            result.ShouldContain("testkey1");
+            result.ShouldContain("testmessage1");
+            result.ShouldContain("testkey2");
+            result.ShouldContain("testmessage2");
+            result.ShouldContain("delimiter");
+        }
 
-            #endregion ListErrors (IEnumerable<IResult<T>>, string)
+        #endregion ListErrors (IEnumerable<IResult<T>>, string)
 
         #endregion ListErrors
-
 
         #region ThrowIfAnyErrorsOrResultIsNull
 
