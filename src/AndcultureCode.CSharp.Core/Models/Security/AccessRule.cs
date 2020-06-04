@@ -7,19 +7,16 @@ namespace AndcultureCode.CSharp.Core.Models.Security
     {
         #region Properties
 
-        public string Resource { get; set; }
-        public string Verb { get; set; }
-        public string Subject { get; set; }
-
         public abstract Permission Permission { get; }
+        public string Resource { get; set; }
+        public string Subject { get; set; }
+        public string Verb { get; set; }
 
         #endregion Properties
 
         #region Constructor
 
-        protected AccessRule(string resource,
-            string verb,
-            string subject)
+        protected AccessRule(string resource, string verb, string subject)
         {
             Resource = resource;
             Verb = verb;
@@ -31,12 +28,10 @@ namespace AndcultureCode.CSharp.Core.Models.Security
         #region IEquatable<AccessRule> Implementation
 
         bool IEquatable<AccessRule>.Equals(AccessRule other)
-        {
-            return other.Resource == Resource
-                && other.Verb == Verb
-                && other.Subject == Subject
-                && other.Permission == Permission;
-        }
+            => other.Resource == Resource &&
+                other.Verb == Verb &&
+                other.Subject == Subject &&
+                other.Permission == Permission;
 
         #endregion IEquatable<AccessRule> Implementation
     }

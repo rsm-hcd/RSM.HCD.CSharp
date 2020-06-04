@@ -33,6 +33,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
             {
                 items.Add(key, values = new List<TValue>());
             }
+
             values.Add(value);
         }
 
@@ -47,22 +48,26 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
                         break;
                     }
                 }
+
+                return;
             }
-            else
+
+            if (EqualityComparer<TValue>.Default.Equals(value, default(TValue)))
             {
-                if (EqualityComparer<TValue>.Default.Equals(value, default(TValue)))
-                    items.Remove(key);
-                else
+                items.Remove(key);
+                return;
+            }
+
+            ICollection<TValue> values;
+            if (items.TryGetValue(key, out values))
+            {
+                values.Remove(value);
+                if (values.Count == 0)
                 {
-                    ICollection<TValue> values;
-                    if (items.TryGetValue(key, out values))
-                    {
-                        values.Remove(value);
-                        if (values.Count == 0)
-                            items.Remove(key);
-                    }
+                    items.Remove(key);
                 }
             }
+
         }
 
         public IEnumerator<TValue> GetEnumerator()
@@ -70,104 +75,63 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
             foreach (KeyValuePair<TKey, ICollection<TValue>> values in items)
             {
                 foreach (TValue value in values.Value)
+                {
                     yield return value;
+                }
             }
         }
 
         #region IDictionary<TKey,IEnumerable<TValue>> Members
 
-        void IDictionary<TKey, ICollection<TValue>>.Add(TKey key, ICollection<TValue> value)
-        {
-            items.Add(key, value);
-        }
+        void IDictionary<TKey, ICollection<TValue>>.Add(TKey key, ICollection<TValue> value) => items.Add(key, value);
 
-        public bool ContainsKey(TKey key)
-        {
-            return items.ContainsKey(key);
-        }
+        public bool ContainsKey(TKey key) => items.ContainsKey(key);
 
-        public ICollection<TKey> Keys
-        {
-            get { return items.Keys; }
-        }
+        public ICollection<TKey> Keys { get => items.Keys; }
 
-        bool IDictionary<TKey, ICollection<TValue>>.Remove(TKey key)
-        {
-            return items.Remove(key);
-        }
+        bool IDictionary<TKey, ICollection<TValue>>.Remove(TKey key) => items.Remove(key);
 
-        public bool TryGetValue(TKey key, out ICollection<TValue> value)
-        {
-            return items.TryGetValue(key, out value);
-        }
+        public bool TryGetValue(TKey key, out ICollection<TValue> value) => items.TryGetValue(key, out value);
 
-        ICollection<ICollection<TValue>> IDictionary<TKey, ICollection<TValue>>.Values
-        {
-            get { return items.Values; }
-        }
+        ICollection<ICollection<TValue>> IDictionary<TKey, ICollection<TValue>>.Values { get => items.Values; }
 
         public ICollection<TValue> this[TKey key]
         {
-            get { return items[key]; }
-            set { items[key] = value; }
+            get => items[key];
+            set => items[key] = value;
         }
 
         #endregion IDictionary<TKey,IEnumerable<TValue>> Members
 
         #region ICollection<KeyValuePair<TKey,IEnumerable<TValue>>> Members
 
-        void ICollection<KeyValuePair<TKey, ICollection<TValue>>>.Add(KeyValuePair<TKey, ICollection<TValue>> item)
-        {
-            items.Add(item);
-        }
+        void ICollection<KeyValuePair<TKey, ICollection<TValue>>>.Add(KeyValuePair<TKey, ICollection<TValue>> item) => items.Add(item);
 
-        public void Clear()
-        {
-            items.Clear();
-        }
+        public void Clear() => items.Clear();
 
-        bool ICollection<KeyValuePair<TKey, ICollection<TValue>>>.Contains(KeyValuePair<TKey, ICollection<TValue>> item)
-        {
-            return items.Contains(item);
-        }
+        bool ICollection<KeyValuePair<TKey, ICollection<TValue>>>.Contains(KeyValuePair<TKey, ICollection<TValue>> item) => items.Contains(item);
 
         void ICollection<KeyValuePair<TKey, ICollection<TValue>>>.CopyTo(KeyValuePair<TKey, ICollection<TValue>>[] array, int arrayIndex)
-        {
-            items.CopyTo(array, arrayIndex);
-        }
+            => items.CopyTo(array, arrayIndex);
 
-        public int Count
-        {
-            get { return items.Count; }
-        }
+        public int Count { get => items.Count; }
 
-        public bool IsReadOnly
-        {
-            get { return items.IsReadOnly; }
-        }
+        public bool IsReadOnly { get => items.IsReadOnly; }
 
-        bool ICollection<KeyValuePair<TKey, ICollection<TValue>>>.Remove(KeyValuePair<TKey, ICollection<TValue>> item)
-        {
-            return items.Remove(item);
-        }
+        bool ICollection<KeyValuePair<TKey, ICollection<TValue>>>.Remove(KeyValuePair<TKey, ICollection<TValue>> item) => items.Remove(item);
 
         #endregion ICollection<KeyValuePair<TKey,IEnumerable<TValue>>> Members
 
         #region IEnumerable<KeyValuePair<TKey,IEnumerable<TValue>>> Members
 
         IEnumerator<KeyValuePair<TKey, ICollection<TValue>>> IEnumerable<KeyValuePair<TKey, ICollection<TValue>>>.GetEnumerator()
-        {
-            return items.GetEnumerator();
-        }
+            => items.GetEnumerator();
 
         #endregion IEnumerable<KeyValuePair<TKey,IEnumerable<TValue>>> Members
 
         #region IEnumerable Members
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return items.GetEnumerator();
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => items.GetEnumerator();
 
         #endregion IEnumerable Members
 
