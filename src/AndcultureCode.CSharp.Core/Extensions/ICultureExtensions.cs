@@ -15,7 +15,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         public static ICulture Default(this IEnumerable<ICulture> cultures)
         {
             var matches = cultures?.Where(e => e.IsDefault).ToList();
-            var matchesCount = matches == null ? 0 : matches.Count();
+            var matchesCount = matches?.Count() ?? 0;
 
             if (matchesCount != 1)
             {
