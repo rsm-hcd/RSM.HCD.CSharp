@@ -7,6 +7,10 @@ This package is installed via NuGet
 dotnet add [<PROJECT>] package AndcultureCode.CSharp.Conductors
 ```
 
+## Documentation
+
+[Full API Documentation](src/AndcultureCode.CSharp.Conductors/AndcultureCode.CSharp.Conductors.md)
+
 
 ## Development Setup
 
