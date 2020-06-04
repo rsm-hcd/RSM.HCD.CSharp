@@ -1,4 +1,4 @@
-namespace AndcultureCode.GB.Business.Core.Constants.Localization
+namespace AndcultureCode.CSharp.Core.Constants
 {
     /// <summary>
     /// RFC-4646 Language Codes
