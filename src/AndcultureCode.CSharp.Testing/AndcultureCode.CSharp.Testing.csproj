@@ -4,14 +4,18 @@
     <Authors>andculture</Authors>
     <Company>andculture</Company>
     <Description>Common CSharp testing code used at andculture</Description>
+    <DocumentationFile>$(MSBuildProjectDirectory)/AndcultureCode.CSharp.Testing.xml</DocumentationFile>
+    <DocumentationMarkdown>$(MSBuildProjectDirectory)/AndcultureCode.CSharp.Testing.md</DocumentationMarkdown>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IsPackable>true</IsPackable>
+    <IsTestProject>false</IsTestProject>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/32297579?s=460&amp;v=4</PackageIconUrl>
     <PackageId>AndcultureCode.CSharp.Testing</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing</PackageProjectUrl>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>0.2.1</Version>
-    <IsTestProject>false</IsTestProject>
+    <VsxmdAutoDeleteXml>true</VsxmdAutoDeleteXml>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +27,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Moq" Version="4.12.0" />
     <PackageReference Include="Shouldly" Version="3.0.2" />
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
   </ItemGroup>
 
