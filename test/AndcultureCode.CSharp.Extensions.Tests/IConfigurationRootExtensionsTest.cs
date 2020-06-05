@@ -183,7 +183,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void GetVersion_Given_Configuration_Set_When_Version_IsNotTemplate_Returns_VersionValue()
+        public void GetVersion_When_Version_IsNotTemplate_Returns_VersionValue()
         {
             // Arrange
             var expected = Random.String();
@@ -201,7 +201,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void GetVersion_Given_Configuration_Set_When_Version_IsTemplate_When_IsDevelopment_False_Returns_VersionValue()
+        public void GetVersion_When_Version_IsTemplate_When_IsDevelopment_False_Returns_VersionValue()
         {
             // Arrange
             var staticPortion = Random.String();
@@ -222,7 +222,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void GetVersion_Given_Configuration_Set_When_Version_IsTemplate_When_IsDevelopment_True_Returns_VersionValue_With_DevelopmentToken()
+        public void GetVersion_When_Version_IsTemplate_When_IsDevelopment_True_Returns_VersionValue_With_DevelopmentToken()
         {
             // Arrange
             var staticPortion = Random.String();
