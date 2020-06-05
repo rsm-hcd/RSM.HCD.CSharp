@@ -64,7 +64,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetTypeName_Object_Overload_Given_InstaceOf_Object_Returns_FullName()
+        public void GetTypeName_Object_Overload_Given_InstanceOf_Object_Returns_FullName()
         {
             // Arrange
             var type = new GetTypeNameTestStub();
@@ -77,7 +77,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetTypeName_Object_Overload_Given_InstaceOf_Object_Returns_AssemblyQualifiedName()
+        public void GetTypeName_Object_Overload_Given_InstanceOf_Object_Returns_AssemblyQualifiedName()
         {
             // Arrange
             var type = new GetTypeNameTestStub();
@@ -100,7 +100,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetTypeName_Type_Overload_Given_InstaceOf_Object_Returns_FullName()
+        public void GetTypeName_Type_Overload_Given_InstanceOf_Object_Returns_FullName()
         {
             // Arrange
             var type = typeof(GetTypeNameTestStub);
@@ -113,7 +113,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetTypeName_Type_Overload_Given_InstaceOf_Object_Returns_AssemblyQualifiedName()
+        public void GetTypeName_Type_Overload_Given_InstanceOf_Object_Returns_AssemblyQualifiedName()
         {
             // Arrange
             var type = typeof(GetTypeNameTestStub);
