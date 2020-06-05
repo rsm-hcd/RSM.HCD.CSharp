@@ -7,6 +7,11 @@ This package is installed via NuGet
 dotnet add [<PROJECT>] package AndcultureCode.CSharp.Testing
 ```
 
+## Documentation
+
+[Full API Documentation](src/AndcultureCode.CSharp.Testing/AndcultureCode.CSharp.Testing.md)
+
+
 
 ## Development Setup
 
