@@ -29,7 +29,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
             var configurationMock = new Mock<IConfigurationRoot>();
 
             // Act & Assert
-            IConfigurationRootExtensions.GetDatabaseConnectionString(configurationMock.Object).ShouldBeNull();
+            configurationMock.Object.GetDatabaseConnectionString().ShouldBeNull();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
                 .SetupGet(e => e["ConnectionStrings:Other"]).Returns("unexpected");
 
             // Act & Assert
-            IConfigurationRootExtensions.GetDatabaseConnectionString(configurationMock.Object).ShouldBeNull();
+            configurationMock.Object.GetDatabaseConnectionString().ShouldBeNull();
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
                 .Returns(connectionsConfigurationSectionMock.Object);
 
             // Act
-            var result = IConfigurationRootExtensions.GetDatabaseConnectionString(configurationMock.Object);
+            var result = configurationMock.Object.GetDatabaseConnectionString();
 
             // Assert
             result.ShouldBe(expected);
@@ -89,7 +89,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
             var configurationMock = new Mock<IConfigurationRoot>();
 
             // Act & Assert
-            IConfigurationRootExtensions.GetDatabaseName(configurationMock.Object).ShouldBeNull();
+            configurationMock.Object.GetDatabaseName().ShouldBeNull();
         }
 
         [Fact]
@@ -101,7 +101,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
                 .SetupGet(e => e["ConnectionStrings:Other"]).Returns("unexpected");
 
             // Act & Assert
-            IConfigurationRootExtensions.GetDatabaseName(configurationMock.Object).ShouldBeNull();
+            configurationMock.Object.GetDatabaseName().ShouldBeNull();
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
                 .Returns(connectionsConfigurationSectionMock.Object);
 
             // Act
-            var result = IConfigurationRootExtensions.GetDatabaseName(configurationMock.Object);
+            var result = configurationMock.Object.GetDatabaseName();
 
             // Assert
             result.ShouldBeNull();
@@ -159,7 +159,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
                 .Returns(connectionsConfigurationSectionMock.Object);
 
             // Act
-            var result = IConfigurationRootExtensions.GetDatabaseName(configurationMock.Object);
+            var result = configurationMock.Object.GetDatabaseName();
 
             // Assert
             result.ShouldBe(expected);

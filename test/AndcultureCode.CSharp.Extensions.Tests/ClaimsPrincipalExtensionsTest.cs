@@ -238,7 +238,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
 
             // Assert
             result.ShouldNotBeNull();
-            result.Count().ShouldBe(0);
             result.ShouldBeEmpty();
         }
 
