@@ -68,6 +68,12 @@
   - [ToEnumerable\`\`1(input,separator)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToEnumerable``1-System-String,System-Char- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToEnumerable``1(System.String,System.Char)')
   - [ToInt(number,defaultValue)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToInt-System-String,System-Int32- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToInt(System.String,System.Int32)')
   - [TryChangeType(value,conversionType)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-TryChangeType-System-Object,System-Type- 'AndcultureCode.CSharp.Extensions.StringExtensions.TryChangeType(System.Object,System.Type)')
+- [TypeExtensions](#T-AndcultureCode-CSharp-Extensions-TypeExtensions 'AndcultureCode.CSharp.Extensions.TypeExtensions')
+  - [GetPublicConstantValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicConstantValues``1-System-Type- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetPublicConstantValues``1(System.Type)')
+  - [GetTypeName(obj)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Object- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetTypeName(System.Object)')
+  - [GetTypeName(type)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Type- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetTypeName(System.Type)')
+  - [WhereWithAttribute\`\`1()](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithAttribute``1-System-Collections-Generic-IEnumerable{System-Type}- 'AndcultureCode.CSharp.Extensions.TypeExtensions.WhereWithAttribute``1(System.Collections.Generic.IEnumerable{System.Type})')
+  - [WhereWithoutAttribute\`\`1()](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithoutAttribute``1-System-Collections-Generic-IEnumerable{System-Type}- 'AndcultureCode.CSharp.Extensions.TypeExtensions.WhereWithoutAttribute``1(System.Collections.Generic.IEnumerable{System.Type})')
 
 <a name='T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes'></a>
 ## ApiClaimTypes `type`
@@ -1057,3 +1063,83 @@ Returns true or false if the value can be converted
 | ---- | ---- | ----------- |
 | value | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
 | conversionType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+
+<a name='T-AndcultureCode-CSharp-Extensions-TypeExtensions'></a>
+## TypeExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extensions for Type
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicConstantValues``1-System-Type-'></a>
+### GetPublicConstantValues\`\`1() `method`
+
+##### Summary
+
+Retrieve all constant values for given type whose value matches type T
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Object-'></a>
+### GetTypeName(obj) `method`
+
+##### Summary
+
+Returns the name the underlying type of any object
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| obj | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Type-'></a>
+### GetTypeName(type) `method`
+
+##### Summary
+
+Returns the full name of the type as well as the assembly qualified name
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithAttribute``1-System-Collections-Generic-IEnumerable{System-Type}-'></a>
+### WhereWithAttribute\`\`1() `method`
+
+##### Summary
+
+Filters the provided list of types to only those that are
+decorated with the TAttribute attribute at the class level.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithoutAttribute``1-System-Collections-Generic-IEnumerable{System-Type}-'></a>
+### WhereWithoutAttribute\`\`1() `method`
+
+##### Summary
+
+Filters the provided list of types to only those that aren't
+decorated with the TAttribute attribute at the class level.
+
+##### Parameters
+
+This method has no parameters.
