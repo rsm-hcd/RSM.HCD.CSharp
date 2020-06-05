@@ -3,6 +3,19 @@
 
 ## Contents
 
+- [ApiClaimTypes](#T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes')
+  - [IS_SUPER_ADMIN](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-IS_SUPER_ADMIN 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.IS_SUPER_ADMIN')
+  - [ROLE_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_ID')
+  - [ROLE_IDS](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_IDS')
+  - [ROLE_TYPE](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_TYPE')
+  - [USER_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_ID')
+- [ClaimsPrincipalExtensions](#T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions')
+  - [IsAuthenticated(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsAuthenticated-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsAuthenticated(System.Security.Claims.ClaimsPrincipal)')
+  - [IsSuperAdmin(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsSuperAdmin-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsSuperAdmin(System.Security.Claims.ClaimsPrincipal)')
+  - [IsUnauthenticated(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsUnauthenticated-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsUnauthenticated(System.Security.Claims.ClaimsPrincipal)')
+  - [RoleId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleId(System.Security.Claims.ClaimsPrincipal)')
+  - [RoleIds(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleIds-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleIds(System.Security.Claims.ClaimsPrincipal)')
+  - [UserId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.UserId(System.Security.Claims.ClaimsPrincipal)')
 - [DateExtensions](#T-AndcultureCode-CSharp-Extensions-DateExtensions 'AndcultureCode.CSharp.Extensions.DateExtensions')
   - [AtMidnight(date)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-AtMidnight-System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.AtMidnight(System.DateTimeOffset)')
   - [CalculateAge()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-CalculateAge-System-DateTime- 'AndcultureCode.CSharp.Extensions.DateExtensions.CalculateAge(System.DateTime)')
@@ -10,6 +23,8 @@
   - [IsBetweenDates()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-IsBetweenDates-System-DateTimeOffset,System-DateTimeOffset,System-DateTimeOffset,System-Boolean- 'AndcultureCode.CSharp.Extensions.DateExtensions.IsBetweenDates(System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,System.Boolean)')
   - [SubtractWeekdays()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTime,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SubtractWeekdays(System.DateTime,System.Int32)')
   - [SubtractWeekdays()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTimeOffset,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SubtractWeekdays(System.DateTimeOffset,System.Int32)')
+- [DictionaryExtensions](#T-AndcultureCode-CSharp-Extensions-DictionaryExtensions 'AndcultureCode.CSharp.Extensions.DictionaryExtensions')
+  - [Merge\`\`2(left,right,takeLastKey)](#M-AndcultureCode-CSharp-Extensions-DictionaryExtensions-Merge``2-System-Collections-Generic-Dictionary{``0,``1},System-Collections-Generic-Dictionary{``0,``1},System-Boolean- 'AndcultureCode.CSharp.Extensions.DictionaryExtensions.Merge``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.Dictionary{``0,``1},System.Boolean)')
 - [ExpressionExtensions](#T-AndcultureCode-CSharp-Extensions-ExpressionExtensions 'AndcultureCode.CSharp.Extensions.ExpressionExtensions')
   - [AndAlso\`\`1(expr1,expr2)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-AndAlso``1-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.AndAlso``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})')
   - [AndAlso\`\`2(expr1,expr2,navigationProperty)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-AndAlso``2-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``1,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,``1}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.AndAlso``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}})')
@@ -17,8 +32,19 @@
   - [OrElse\`\`2(expr1,expr2,navigationProperty)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-OrElse``2-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``1,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,``1}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.OrElse``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}})')
   - [Or\`\`1(expr1,expr2)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-Or``1-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})')
   - [Or\`\`2(expr1,expr2,navigationProperty)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-Or``2-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``1,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,``1}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.Or``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}})')
+- [HttpRequestExtensions](#T-AndcultureCode-CSharp-Extensions-HttpRequestExtensions 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions')
+  - [X_FORWARDED_FOR](#F-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-X_FORWARDED_FOR 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.X_FORWARDED_FOR')
+  - [GetForwardedIpAddress(httpRequest)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetForwardedIpAddress-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetForwardedIpAddress(Microsoft.AspNetCore.Http.HttpRequest)')
 - [HttpResponseMessageExtensions](#T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions')
   - [FromJson\`\`1(response)](#M-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage- 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)')
+- [IConfigurationRootExtensions](#T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions')
+  - [CONFIGURATION_VERSION_DEVELOPMENT_VALUE](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_DEVELOPMENT_VALUE 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.CONFIGURATION_VERSION_DEVELOPMENT_VALUE')
+  - [CONFIGURATION_VERSION_KEY](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_KEY 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.CONFIGURATION_VERSION_KEY')
+  - [CONFIGURATION_VERSION_TEMPLATE](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_TEMPLATE 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.CONFIGURATION_VERSION_TEMPLATE')
+  - [DEFAULT_DATABASE_KEY](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-DEFAULT_DATABASE_KEY 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.DEFAULT_DATABASE_KEY')
+  - [GetDatabaseConnectionString(configuration,databaseKey)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseConnectionString-Microsoft-Extensions-Configuration-IConfigurationRoot,System-String- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseConnectionString(Microsoft.Extensions.Configuration.IConfigurationRoot,System.String)')
+  - [GetDatabaseName(configuration)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseName(Microsoft.Extensions.Configuration.IConfigurationRoot)')
+  - [GetVersion(configuration,isDevelopment)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetVersion(Microsoft.Extensions.Configuration.IConfigurationRoot,System.Boolean)')
 - [IEnumerableExtensions](#T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions')
   - [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})')
   - [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})')
@@ -42,6 +68,167 @@
   - [ToEnumerable\`\`1(input,separator)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToEnumerable``1-System-String,System-Char- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToEnumerable``1(System.String,System.Char)')
   - [ToInt(number,defaultValue)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToInt-System-String,System-Int32- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToInt(System.String,System.Int32)')
   - [TryChangeType(value,conversionType)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-TryChangeType-System-Object,System-Type- 'AndcultureCode.CSharp.Extensions.StringExtensions.TryChangeType(System.Object,System.Type)')
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes'></a>
+## ApiClaimTypes `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Commonly used Claim types for APIs
+
+ TODO: Migrate to AndcultureCode.CSharp.Core
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-IS_SUPER_ADMIN'></a>
+### IS_SUPER_ADMIN `constants`
+
+##### Summary
+
+Is the current user elevated to super admin
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_ID'></a>
+### ROLE_ID `constants`
+
+##### Summary
+
+Active Role Id
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS'></a>
+### ROLE_IDS `constants`
+
+##### Summary
+
+Available Role Ids
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE'></a>
+### ROLE_TYPE `constants`
+
+##### Summary
+
+Active Role Type
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID'></a>
+### USER_ID `constants`
+
+##### Summary
+
+Current User Id
+
+<a name='T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions'></a>
+## ClaimsPrincipalExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extension methods for ClaimsPrincipal
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsAuthenticated-System-Security-Claims-ClaimsPrincipal-'></a>
+### IsAuthenticated(principal) `method`
+
+##### Summary
+
+Whether the current user is authenticated
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsSuperAdmin-System-Security-Claims-ClaimsPrincipal-'></a>
+### IsSuperAdmin(principal) `method`
+
+##### Summary
+
+Retrieves whether the user is a super admin by way of their identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsUnauthenticated-System-Security-Claims-ClaimsPrincipal-'></a>
+### IsUnauthenticated(principal) `method`
+
+##### Summary
+
+Whether the current user is unauthenticated
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleId-System-Security-Claims-ClaimsPrincipal-'></a>
+### RoleId(principal) `method`
+
+##### Summary
+
+Retrieves user's current role id by way of their identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleIds-System-Security-Claims-ClaimsPrincipal-'></a>
+### RoleIds(principal) `method`
+
+##### Summary
+
+Retrieves user's role ids by way of their identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserId-System-Security-Claims-ClaimsPrincipal-'></a>
+### UserId(principal) `method`
+
+##### Summary
+
+Retrieves user's id by way of identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-DateExtensions'></a>
 ## DateExtensions `type`
@@ -123,6 +310,41 @@ Convenience method to subtract weekdays
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Extensions-DictionaryExtensions'></a>
+## DictionaryExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+<a name='M-AndcultureCode-CSharp-Extensions-DictionaryExtensions-Merge``2-System-Collections-Generic-Dictionary{``0,``1},System-Collections-Generic-Dictionary{``0,``1},System-Boolean-'></a>
+### Merge\`\`2(left,right,takeLastKey) `method`
+
+##### Summary
+
+'Merges' two dictionaries into one. If duplicate keys are encountered, either the first
+or last occurrence will be used. See 'takeLastKey'
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| left | [System.Collections.Generic.Dictionary{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.Dictionary 'System.Collections.Generic.Dictionary{``0,``1}') | Dictionary to be merged into. |
+| right | [System.Collections.Generic.Dictionary{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.Dictionary 'System.Collections.Generic.Dictionary{``0,``1}') | Dictionary to be merged into the left dictionary. |
+| takeLastKey | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Determines whether the value of the last occurrence of a key is used as the final value
+when duplicates are encountered. If false, uses the value of the first occurrence. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TKey |  |
+| TValue |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-ExpressionExtensions'></a>
 ## ExpressionExtensions `type`
@@ -281,6 +503,41 @@ Adds another expression filter to original expression using Or operator
 | T | Type of object in the main filter |
 | TNav | Type of the navigation property (can be deeply nested) |
 
+<a name='T-AndcultureCode-CSharp-Extensions-HttpRequestExtensions'></a>
+## HttpRequestExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extension methods for HttpRequest
+
+<a name='F-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-X_FORWARDED_FOR'></a>
+### X_FORWARDED_FOR `constants`
+
+##### Summary
+
+Standard X-Header for forwarding IP addresses in varying infrastructures
+
+<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetForwardedIpAddress-Microsoft-AspNetCore-Http-HttpRequest-'></a>
+### GetForwardedIpAddress(httpRequest) `method`
+
+##### Summary
+
+Retrieves the client's forwarded IP address, if present. Returns null otherwise.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| httpRequest | [Microsoft.AspNetCore.Http.HttpRequest](#T-Microsoft-AspNetCore-Http-HttpRequest 'Microsoft.AspNetCore.Http.HttpRequest') |  |
+
 <a name='T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions'></a>
 ## HttpResponseMessageExtensions `type`
 
@@ -310,6 +567,90 @@ Deserializes http response into supplied object
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions'></a>
+## IConfigurationRootExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extension methods for IConfigurationRoot
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_DEVELOPMENT_VALUE'></a>
+### CONFIGURATION_VERSION_DEVELOPMENT_VALUE `constants`
+
+##### Summary
+
+Version value when application is run in development environment
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_KEY'></a>
+### CONFIGURATION_VERSION_KEY `constants`
+
+##### Summary
+
+Key value for build version number
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_TEMPLATE'></a>
+### CONFIGURATION_VERSION_TEMPLATE `constants`
+
+##### Summary
+
+Template string replaced with current version number
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-DEFAULT_DATABASE_KEY'></a>
+### DEFAULT_DATABASE_KEY `constants`
+
+##### Summary
+
+Default connection string database key
+
+<a name='M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseConnectionString-Microsoft-Extensions-Configuration-IConfigurationRoot,System-String-'></a>
+### GetDatabaseConnectionString(configuration,databaseKey) `method`
+
+##### Summary
+
+Retrieves web application's primary database connection string
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+| databaseKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot-'></a>
+### GetDatabaseName(configuration) `method`
+
+##### Summary
+
+Retrieves the database name of the primary database connection string
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean-'></a>
+### GetVersion(configuration,isDevelopment) `method`
+
+##### Summary
+
+Loads and conditionally updates the Version number based upon environment
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+| isDevelopment | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions'></a>
 ## IEnumerableExtensions `type`
