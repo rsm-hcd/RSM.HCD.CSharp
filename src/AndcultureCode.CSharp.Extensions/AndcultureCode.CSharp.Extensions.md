@@ -38,6 +38,9 @@
 - [HttpResponseMessageExtensions](#T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions')
   - [FromJson\`\`1(response)](#M-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage- 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)')
 - [IConfigurationRootExtensions](#T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions')
+  - [CONFIGURATION_VERSION_DEVELOPMENT_VALUE](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_DEVELOPMENT_VALUE 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.CONFIGURATION_VERSION_DEVELOPMENT_VALUE')
+  - [CONFIGURATION_VERSION_KEY](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_KEY 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.CONFIGURATION_VERSION_KEY')
+  - [CONFIGURATION_VERSION_TEMPLATE](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_TEMPLATE 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.CONFIGURATION_VERSION_TEMPLATE')
   - [DEFAULT_DATABASE_KEY](#F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-DEFAULT_DATABASE_KEY 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.DEFAULT_DATABASE_KEY')
   - [GetDatabaseConnectionString(configuration,databaseKey)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseConnectionString-Microsoft-Extensions-Configuration-IConfigurationRoot,System-String- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseConnectionString(Microsoft.Extensions.Configuration.IConfigurationRoot,System.String)')
   - [GetDatabaseName(configuration)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseName(Microsoft.Extensions.Configuration.IConfigurationRoot)')
@@ -575,6 +578,27 @@ AndcultureCode.CSharp.Extensions
 ##### Summary
 
 Extension methods for IConfigurationRoot
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_DEVELOPMENT_VALUE'></a>
+### CONFIGURATION_VERSION_DEVELOPMENT_VALUE `constants`
+
+##### Summary
+
+Version value when application is run in development environment
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_KEY'></a>
+### CONFIGURATION_VERSION_KEY `constants`
+
+##### Summary
+
+Key value for build version number
+
+<a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-CONFIGURATION_VERSION_TEMPLATE'></a>
+### CONFIGURATION_VERSION_TEMPLATE `constants`
+
+##### Summary
+
+Template string replaced with current version number
 
 <a name='F-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-DEFAULT_DATABASE_KEY'></a>
 ### DEFAULT_DATABASE_KEY `constants`

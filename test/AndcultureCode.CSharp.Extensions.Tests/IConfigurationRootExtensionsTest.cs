@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using Shouldly;
@@ -166,5 +167,80 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         #endregion GetDatabaseName
+
+        #region GetVersion
+
+        [Fact]
+        public void GetVersion_Given_Configuration_IsNull_Returns_Null()
+        {
+            IConfigurationRootExtensions.GetVersion(null).ShouldBeNull();
+        }
+
+        [Fact]
+        public void GetVersion_Given_Configuration_IsEmpty_Returns_Null()
+        {
+            new ConfigurationBuilder().Build().GetVersion().ShouldBeNull();
+        }
+
+        [Fact]
+        public void GetVersion_Given_Configuration_Set_When_Version_IsNotTemplate_Returns_VersionValue()
+        {
+            // Arrange
+            var expected = Random.String();
+            var configuration = new Dictionary<string, string>
+            {
+                { IConfigurationRootExtensions.CONFIGURATION_VERSION_KEY, expected }
+            };
+            var sut = new ConfigurationBuilder().AddInMemoryCollection(configuration).Build();
+
+            // Act
+            var result = sut.GetVersion();
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Fact]
+        public void GetVersion_Given_Configuration_Set_When_Version_IsTemplate_When_IsDevelopment_False_Returns_VersionValue()
+        {
+            // Arrange
+            var staticPortion = Random.String();
+            var versionTemplate = $"{staticPortion}.{IConfigurationRootExtensions.CONFIGURATION_VERSION_TEMPLATE}";
+            var expected = versionTemplate;
+            var configuration = new Dictionary<string, string>
+            {
+                { IConfigurationRootExtensions.CONFIGURATION_VERSION_KEY, versionTemplate }
+            };
+            var sut = new ConfigurationBuilder().AddInMemoryCollection(configuration).Build();
+
+            // Act
+            var result = sut.GetVersion(isDevelopment: false);
+
+            // Assert
+            result.ShouldContain(staticPortion);
+            result.ShouldContain(IConfigurationRootExtensions.CONFIGURATION_VERSION_TEMPLATE);
+        }
+
+        [Fact]
+        public void GetVersion_Given_Configuration_Set_When_Version_IsTemplate_When_IsDevelopment_True_Returns_VersionValue_With_DevelopmentToken()
+        {
+            // Arrange
+            var staticPortion = Random.String();
+            var versionTemplate = $"{staticPortion}.{IConfigurationRootExtensions.CONFIGURATION_VERSION_TEMPLATE}";
+            var expected = $"{staticPortion}.{IConfigurationRootExtensions.CONFIGURATION_VERSION_DEVELOPMENT_VALUE}";
+            var configuration = new Dictionary<string, string>
+            {
+                { IConfigurationRootExtensions.CONFIGURATION_VERSION_KEY, versionTemplate }
+            };
+            var sut = new ConfigurationBuilder().AddInMemoryCollection(configuration).Build();
+
+            // Act
+            var result = sut.GetVersion(isDevelopment: true);
+
+            // Assert
+            result.ShouldContain(expected);
+        }
+
+        #endregion GetVersion
     }
 }
