@@ -3,6 +3,19 @@
 
 ## Contents
 
+- [ApiClaimTypes](#T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes')
+  - [IS_SUPER_ADMIN](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-IS_SUPER_ADMIN 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.IS_SUPER_ADMIN')
+  - [ROLE_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_ID')
+  - [ROLE_IDS](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_IDS')
+  - [ROLE_TYPE](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_TYPE')
+  - [USER_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_ID')
+- [ClaimsPrincipalExtensions](#T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions')
+  - [IsAuthenticated(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsAuthenticated-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsAuthenticated(System.Security.Claims.ClaimsPrincipal)')
+  - [IsSuperAdmin(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsSuperAdmin-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsSuperAdmin(System.Security.Claims.ClaimsPrincipal)')
+  - [IsUnauthenticated(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsUnauthenticated-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsUnauthenticated(System.Security.Claims.ClaimsPrincipal)')
+  - [RoleId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleId(System.Security.Claims.ClaimsPrincipal)')
+  - [RoleIds(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleIds-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleIds(System.Security.Claims.ClaimsPrincipal)')
+  - [UserId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.UserId(System.Security.Claims.ClaimsPrincipal)')
 - [DateExtensions](#T-AndcultureCode-CSharp-Extensions-DateExtensions 'AndcultureCode.CSharp.Extensions.DateExtensions')
   - [AtMidnight(date)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-AtMidnight-System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.AtMidnight(System.DateTimeOffset)')
   - [CalculateAge()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-CalculateAge-System-DateTime- 'AndcultureCode.CSharp.Extensions.DateExtensions.CalculateAge(System.DateTime)')
@@ -52,6 +65,167 @@
   - [ToEnumerable\`\`1(input,separator)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToEnumerable``1-System-String,System-Char- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToEnumerable``1(System.String,System.Char)')
   - [ToInt(number,defaultValue)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToInt-System-String,System-Int32- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToInt(System.String,System.Int32)')
   - [TryChangeType(value,conversionType)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-TryChangeType-System-Object,System-Type- 'AndcultureCode.CSharp.Extensions.StringExtensions.TryChangeType(System.Object,System.Type)')
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes'></a>
+## ApiClaimTypes `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Commonly used Claim types for APIs
+
+ TODO: Migrate to AndcultureCode.CSharp.Core
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-IS_SUPER_ADMIN'></a>
+### IS_SUPER_ADMIN `constants`
+
+##### Summary
+
+Is the current user elevated to super admin
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_ID'></a>
+### ROLE_ID `constants`
+
+##### Summary
+
+Active Role Id
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS'></a>
+### ROLE_IDS `constants`
+
+##### Summary
+
+Available Role Ids
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE'></a>
+### ROLE_TYPE `constants`
+
+##### Summary
+
+Active Role Type
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID'></a>
+### USER_ID `constants`
+
+##### Summary
+
+Current User Id
+
+<a name='T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions'></a>
+## ClaimsPrincipalExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extension methods for ClaimsPrincipal
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsAuthenticated-System-Security-Claims-ClaimsPrincipal-'></a>
+### IsAuthenticated(principal) `method`
+
+##### Summary
+
+Whether the current user is authenticated
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsSuperAdmin-System-Security-Claims-ClaimsPrincipal-'></a>
+### IsSuperAdmin(principal) `method`
+
+##### Summary
+
+Retrieves whether the user is a super admin by way of their identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsUnauthenticated-System-Security-Claims-ClaimsPrincipal-'></a>
+### IsUnauthenticated(principal) `method`
+
+##### Summary
+
+Whether the current user is unauthenticated
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleId-System-Security-Claims-ClaimsPrincipal-'></a>
+### RoleId(principal) `method`
+
+##### Summary
+
+Retrieves user's current role id by way of their identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleIds-System-Security-Claims-ClaimsPrincipal-'></a>
+### RoleIds(principal) `method`
+
+##### Summary
+
+Retrieves user's role ids by way of their identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserId-System-Security-Claims-ClaimsPrincipal-'></a>
+### UserId(principal) `method`
+
+##### Summary
+
+Retrieves user's id by way of identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-DateExtensions'></a>
 ## DateExtensions `type`
