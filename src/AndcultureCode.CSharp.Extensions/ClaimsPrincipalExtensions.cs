@@ -69,7 +69,7 @@ namespace AndcultureCode.CSharp.Extensions
                 return null;
             }
 
-            var roleIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.ROLE_IDS);
+            var roleIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.ROLE_ID);
             if (roleIdClaim == null)
             {
                 return null;
