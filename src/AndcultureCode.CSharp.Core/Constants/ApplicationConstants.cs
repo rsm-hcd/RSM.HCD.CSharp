@@ -11,5 +11,4 @@ namespace AndcultureCode.CSharp.Core.Constants
         /// </summary>
         public const string DATABASE_API_CONFIGURATION_KEY = "Api";
     }
-
 }
