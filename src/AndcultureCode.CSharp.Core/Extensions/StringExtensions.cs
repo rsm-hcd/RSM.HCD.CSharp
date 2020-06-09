@@ -1,15 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using AndcultureCode.CSharp.Core;
-using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models.Localization;
 using Newtonsoft.Json;
 
 namespace AndcultureCode.CSharp.Core.Extensions
 {
+    /// <summary>
+    /// String extension methods
+    /// </summary>
     public static class StringExtensions
     {
         #region Public Methods
