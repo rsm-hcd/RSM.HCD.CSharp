@@ -9,14 +9,37 @@
   - [Load()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Load 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Load')
 - [AndcultureCodeWebHost](#T-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost')
   - [Preload()](#M-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost-Preload-System-String[]- 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost.Preload(System.String[])')
+- [ApplicationConstants](#T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants')
+  - [API_DATABASE_CONFIGURATION_KEY](#F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-API_DATABASE_CONFIGURATION_KEY 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants.API_DATABASE_CONFIGURATION_KEY')
+- [BasicAuthenticationConfiguration](#T-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration')
+  - [IsEnabled](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.IsEnabled')
+  - [Password](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.Password')
+  - [UserName](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-UserName 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.UserName')
+- [BitwiseOperator](#T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator 'AndcultureCode.CSharp.Core.Enumerations.BitwiseOperator')
 - [CultureTranslation](#T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation')
   - [FilePath](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-FilePath 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.FilePath')
   - [Key](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Key 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Key')
   - [Value](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Value 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Value')
+- [DataConfiguration](#T-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration')
+  - [IP_ADDRESS_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-IP_ADDRESS_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.IP_ADDRESS_LENGTH')
+  - [URL_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-URL_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.URL_LENGTH')
 - [Do\`1](#T-AndcultureCode-CSharp-Core-Do`1 'AndcultureCode.CSharp.Core.Do`1')
   - [Finally(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Finally-Microsoft-Extensions-Logging-ILogger,System-Action{AndcultureCode-CSharp-Core-Interfaces-IResult{`0}}- 'AndcultureCode.CSharp.Core.Do`1.Finally(Microsoft.Extensions.Logging.ILogger,System.Action{AndcultureCode.CSharp.Core.Interfaces.IResult{`0}})')
   - [Try(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
   - [Try(logger,workload,retry)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-UInt32,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.UInt32,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
+- [EmailProviderBase](#T-AndcultureCode-CSharp-Core-Providers-EmailProviderBase 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase')
+  - [Send(message)](#M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase.Send(MimeKit.MimeMessage)')
+  - [SendLater(message)](#M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-SendLater-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase.SendLater(MimeKit.MimeMessage)')
+- [EmailSettings](#T-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings')
+  - [ERROR_MISSING_PROPERTY](#F-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-ERROR_MISSING_PROPERTY 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.ERROR_MISSING_PROPERTY')
+  - [CustomHeaders](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-CustomHeaders 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.CustomHeaders')
+  - [CustomHeadersAsDictionary](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-CustomHeadersAsDictionary 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.CustomHeadersAsDictionary')
+  - [DeveloperEmailAddress](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-DeveloperEmailAddress 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.DeveloperEmailAddress')
+  - [SendTestEmail](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-SendTestEmail 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.SendTestEmail')
+  - [TestEmailAddress](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-TestEmailAddress 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.TestEmailAddress')
+  - [TestEmailEnvironmentToken](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-TestEmailEnvironmentToken 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.TestEmailEnvironmentToken')
+  - [GetDeveloperEmailAddress(environmentName)](#M-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-GetDeveloperEmailAddress-System-String- 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.GetDeveloperEmailAddress(System.String)')
+  - [GetRecipientEmailOrTest(email,environmentName,isProduction)](#M-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-GetRecipientEmailOrTest-System-String,System-String,System-Boolean- 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.GetRecipientEmailOrTest(System.String,System.String,System.Boolean)')
 - [EnumerableExtensions](#T-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)')
   - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
@@ -29,14 +52,27 @@
   - [PreloadAmazonElasticBeanstalk(builder,stdoutEnabled)](#M-AndcultureCode-CSharp-Core-Extensions-IAndcultureCodeWebHostBuilderExtensions-PreloadAmazonElasticBeanstalk-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder,System-Boolean,AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider- 'AndcultureCode.CSharp.Core.Extensions.IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder,System.Boolean,AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider)')
 - [IConfigurationBuilderExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions 'AndcultureCode.CSharp.Core.Extensions.IConfigurationBuilderExtensions')
   - [AddAmazonElasticBeanstalk(configurationBuilder)](#M-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions-AddAmazonElasticBeanstalk-Microsoft-Extensions-Configuration-IConfigurationBuilder- 'AndcultureCode.CSharp.Core.Extensions.IConfigurationBuilderExtensions.AddAmazonElasticBeanstalk(Microsoft.Extensions.Configuration.IConfigurationBuilder)')
+- [IConnection](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection')
+  - [AdditionalParameters](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-AdditionalParameters 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection.AdditionalParameters')
+  - [Database](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-Database 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection.Database')
+  - [Datasource](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-Datasource 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection.Datasource')
+  - [Password](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-Password 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection.Password')
+  - [UserId](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-UserId 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection.UserId')
+  - [ToString()](#M-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-ToString-System-String- 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection.ToString(System.String)')
 - [ICulture](#T-AndcultureCode-CSharp-Core-Interfaces-ICulture 'AndcultureCode.CSharp.Core.Interfaces.ICulture')
   - [Code](#P-AndcultureCode-CSharp-Core-Interfaces-ICulture-Code 'AndcultureCode.CSharp.Core.Interfaces.ICulture.Code')
   - [IsDefault](#P-AndcultureCode-CSharp-Core-Interfaces-ICulture-IsDefault 'AndcultureCode.CSharp.Core.Interfaces.ICulture.IsDefault')
+- [IEmailProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider')
+  - [Send(message)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider.Send(MimeKit.MimeMessage)')
+  - [SendLater(message)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-SendLater-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider.SendLater(MimeKit.MimeMessage)')
 - [ILockingConductor\`1](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1')
   - [ExtendLock(id,lockUntil,updatedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-ExtendLock-System-Int64,System-DateTimeOffset,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.ExtendLock(System.Int64,System.DateTimeOffset,System.Nullable{System.Int64})')
   - [Lock(id,lockUntil,lockedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-Lock-System-Int64,System-DateTimeOffset,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.Lock(System.Int64,System.DateTimeOffset,System.Nullable{System.Int64})')
   - [Unlock(id,unlockedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-Unlock-System-Int64,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.Unlock(System.Int64,System.Nullable{System.Int64})')
   - [ValidateLock(item,currentUserId)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-ValidateLock-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.ValidateLock(`0,System.Nullable{System.Int64})')
+- [IProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.IProvider')
+  - [Implemented](#P-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider-Implemented 'AndcultureCode.CSharp.Core.Interfaces.Providers.IProvider.Implemented')
+  - [Name](#P-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider-Name 'AndcultureCode.CSharp.Core.Interfaces.Providers.IProvider.Name')
 - [IRepositoryConductor\`1](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor`1')
   - [CommandTimeout](#P-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1-CommandTimeout 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor`1.CommandTimeout')
   - [BulkCreateOrUpdate()](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1-BulkCreateOrUpdate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor`1.BulkCreateOrUpdate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
@@ -88,6 +124,9 @@
 - [Lockable](#T-AndcultureCode-CSharp-Core-Models-Lockable 'AndcultureCode.CSharp.Core.Models.Lockable')
   - [IsLocked](#P-AndcultureCode-CSharp-Core-Models-Lockable-IsLocked 'AndcultureCode.CSharp.Core.Models.Lockable.IsLocked')
   - [DetermineIfLocked()](#M-AndcultureCode-CSharp-Core-Models-Lockable-DetermineIfLocked 'AndcultureCode.CSharp.Core.Models.Lockable.DetermineIfLocked')
+- [Provider](#T-AndcultureCode-CSharp-Core-Providers-Provider 'AndcultureCode.CSharp.Core.Providers.Provider')
+  - [Implemented](#P-AndcultureCode-CSharp-Core-Providers-Provider-Implemented 'AndcultureCode.CSharp.Core.Providers.Provider.Implemented')
+  - [Name](#P-AndcultureCode-CSharp-Core-Providers-Provider-Name 'AndcultureCode.CSharp.Core.Providers.Provider.Name')
 - [Queue](#T-AndcultureCode-CSharp-Core-Constants-Queue 'AndcultureCode.CSharp.Core.Constants.Queue')
   - [ALL](#F-AndcultureCode-CSharp-Core-Constants-Queue-ALL 'AndcultureCode.CSharp.Core.Constants.Queue.ALL')
   - [DEFAULT](#F-AndcultureCode-CSharp-Core-Constants-Queue-DEFAULT 'AndcultureCode.CSharp.Core.Constants.Queue.DEFAULT')
@@ -157,6 +196,68 @@ From here extensions methods can but hung off of IAndcultureCodeWebHostBuilder
 
 This method has no parameters.
 
+<a name='T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants'></a>
+## ApplicationConstants `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Common application constants
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-API_DATABASE_CONFIGURATION_KEY'></a>
+### API_DATABASE_CONFIGURATION_KEY `constants`
+
+##### Summary
+
+Key name used to identify the API web application's primary
+database in the 'ConnectionStrings' section
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration'></a>
+## BasicAuthenticationConfiguration `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Configuration
+
+##### Summary
+
+Configuration properties available when setting up Basic HTTP authentication
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-IsEnabled'></a>
+### IsEnabled `property`
+
+##### Summary
+
+Is basic auth enabled for this environment?
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password'></a>
+### Password `property`
+
+##### Summary
+
+Password for users to use when authenticating
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-UserName'></a>
+### UserName `property`
+
+##### Summary
+
+Username for users to use when authenticating
+
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator'></a>
+## BitwiseOperator `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Simple Bitwise enumeration
+
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`
 
@@ -190,6 +291,32 @@ Unique key identifying the translation
 ##### Summary
 
 Translation of message for this culture
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration'></a>
+## DataConfiguration `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Configuration
+
+##### Summary
+
+Commonly used string lengths for various types of data
+
+<a name='F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-IP_ADDRESS_LENGTH'></a>
+### IP_ADDRESS_LENGTH `constants`
+
+##### Summary
+
+Maximum storage length for IP address columns.
+IPv4 is 15 characters and IPv6 is 39 characters
+
+<a name='F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-URL_LENGTH'></a>
+### URL_LENGTH `constants`
+
+##### Summary
+
+IE has a max of 2083
 
 <a name='T-AndcultureCode-CSharp-Core-Do`1'></a>
 ## Do\`1 `type`
@@ -253,6 +380,148 @@ Tries to run the given workload the indicated number of times
 | workload | [System.UInt32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.UInt32 'System.UInt32') | Workload to be performed |
 | retry | [System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{\`0},\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0}') | Number of retries that should be performed. If value is
         zero, will not retry |
+
+<a name='T-AndcultureCode-CSharp-Core-Providers-EmailProviderBase'></a>
+## EmailProviderBase `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Providers
+
+##### Summary
+
+Base abstract class to provide email provider functionality
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-Send-MimeKit-MimeMessage-'></a>
+### Send(message) `method`
+
+##### Summary
+
+Deliver a message now
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [MimeKit.MimeMessage](#T-MimeKit-MimeMessage 'MimeKit.MimeMessage') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-SendLater-MimeKit-MimeMessage-'></a>
+### SendLater(message) `method`
+
+##### Summary
+
+Deliver a message later (via background jobs likely)
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [MimeKit.MimeMessage](#T-MimeKit-MimeMessage 'MimeKit.MimeMessage') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings'></a>
+## EmailSettings `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Mail
+
+##### Summary
+
+Commonly used email settings
+
+<a name='F-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-ERROR_MISSING_PROPERTY'></a>
+### ERROR_MISSING_PROPERTY `constants`
+
+##### Summary
+
+Required property is not supplied
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-CustomHeaders'></a>
+### CustomHeaders `property`
+
+##### Summary
+
+Comma-separated list of custom X-Headers
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-CustomHeadersAsDictionary'></a>
+### CustomHeadersAsDictionary `property`
+
+##### Summary
+
+Transforms 'CustomHeaders' into a dictionary
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-DeveloperEmailAddress'></a>
+### DeveloperEmailAddress `property`
+
+##### Summary
+
+This email address is for global use of background jobs and other processes
+that warrant developer attention if it fails or succeeds
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-SendTestEmail'></a>
+### SendTestEmail `property`
+
+##### Summary
+
+Should a test email be used?
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-TestEmailAddress'></a>
+### TestEmailAddress `property`
+
+##### Summary
+
+This email address is used for automated testing
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-TestEmailEnvironmentToken'></a>
+### TestEmailEnvironmentToken `property`
+
+##### Summary
+
+Test email's environment token
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-GetDeveloperEmailAddress-System-String-'></a>
+### GetDeveloperEmailAddress(environmentName) `method`
+
+##### Summary
+
+Returns developer account email address for specified environment
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| environmentName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-GetRecipientEmailOrTest-System-String,System-String,System-Boolean-'></a>
+### GetRecipientEmailOrTest(email,environmentName,isProduction) `method`
+
+##### Summary
+
+Handles determining if we are sending a test e-mail or not, and creates a list containing the appropriate address.
+
+##### Returns
+
+Returns a list containing the appropriate address. Returns an empty list if we're not on production and environment variables don't indicate to send a test e-mail.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| email | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The intended recipient e-mail |
+| environmentName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| isProduction | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions'></a>
 ## EnumerableExtensions `type`
@@ -423,6 +692,67 @@ new ConfigurationBuilder()
     .AddEnvironmentVariables();
 ```
 
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection'></a>
+## IConnection `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Data
+
+##### Summary
+
+Describes standard database connection
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-AdditionalParameters'></a>
+### AdditionalParameters `property`
+
+##### Summary
+
+Additional custom configuration parameters
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-Database'></a>
+### Database `property`
+
+##### Summary
+
+Name of database
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-Datasource'></a>
+### Datasource `property`
+
+##### Summary
+
+Url/Name for server
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-Password'></a>
+### Password `property`
+
+##### Summary
+
+Hopefully a secure password
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-UserId'></a>
+### UserId `property`
+
+##### Summary
+
+User identifier
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection-ToString-System-String-'></a>
+### ToString() `method`
+
+##### Summary
+
+Single flattened string representation for the connection
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-ICulture'></a>
 ## ICulture `type`
 
@@ -443,6 +773,43 @@ RFC-4646 5-character Culture code (xx-XX)
 ##### Summary
 
 Is this the default locale in the application? There can only be one
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider'></a>
+## IEmailProvider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Providers.Mail
+
+##### Summary
+
+Generic email provider
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-Send-MimeKit-MimeMessage-'></a>
+### Send(message) `method`
+
+##### Summary
+
+Send an email immediately
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [MimeKit.MimeMessage](#T-MimeKit-MimeMessage 'MimeKit.MimeMessage') | The message to be sent |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-SendLater-MimeKit-MimeMessage-'></a>
+### SendLater(message) `method`
+
+##### Summary
+
+Send an email via a background job
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [MimeKit.MimeMessage](#T-MimeKit-MimeMessage 'MimeKit.MimeMessage') | The message to be sent |
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1'></a>
 ## ILockingConductor\`1 `type`
@@ -531,6 +898,31 @@ true if the lock is still active and is locked by the current user, false otherw
 | ---- | ---- | ----------- |
 | item | [\`0](#T-`0 '`0') | The item |
 | currentUserId | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | The current user id |
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider'></a>
+## IProvider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Providers
+
+##### Summary
+
+Foundation configuration for providers
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider-Implemented'></a>
+### Implemented `property`
+
+##### Summary
+
+Specify whether the provider has been implemented
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider-Name'></a>
+### Name `property`
+
+##### Summary
+
+Name of the provider
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1'></a>
 ## IRepositoryConductor\`1 `type`
@@ -1257,6 +1649,31 @@ true if LockedUntil is not null and is set to a time in the future, false otherw
 
 This method has no parameters.
 
+<a name='T-AndcultureCode-CSharp-Core-Providers-Provider'></a>
+## Provider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Providers
+
+##### Summary
+
+Base implementation for Providers
+
+<a name='P-AndcultureCode-CSharp-Core-Providers-Provider-Implemented'></a>
+### Implemented `property`
+
+##### Summary
+
+Specify whether the provider has been implemented
+
+<a name='P-AndcultureCode-CSharp-Core-Providers-Provider-Name'></a>
+### Name `property`
+
+##### Summary
+
+Name of the provider
+
 <a name='T-AndcultureCode-CSharp-Core-Constants-Queue'></a>
 ## Queue `type`
 
@@ -1297,6 +1714,10 @@ See https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(
 ##### Namespace
 
 AndcultureCode.CSharp.Core.Extensions
+
+##### Summary
+
+String extension methods
 
 <a name='M-AndcultureCode-CSharp-Core-Extensions-StringExtensions-LoadTranslations-System-String,System-String,Newtonsoft-Json-JsonSerializerSettings-'></a>
 ### LoadTranslations() `method`
