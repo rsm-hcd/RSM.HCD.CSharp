@@ -27,9 +27,9 @@
   - [Finally(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Finally-Microsoft-Extensions-Logging-ILogger,System-Action{AndcultureCode-CSharp-Core-Interfaces-IResult{`0}}- 'AndcultureCode.CSharp.Core.Do`1.Finally(Microsoft.Extensions.Logging.ILogger,System.Action{AndcultureCode.CSharp.Core.Interfaces.IResult{`0}})')
   - [Try(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
   - [Try(logger,workload,retry)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-UInt32,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.UInt32,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
-- [EmailProviderBase](#T-AndcultureCode-CSharp-Core-Models-Mail-EmailProviderBase 'AndcultureCode.CSharp.Core.Models.Mail.EmailProviderBase')
-  - [Send(message)](#M-AndcultureCode-CSharp-Core-Models-Mail-EmailProviderBase-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Models.Mail.EmailProviderBase.Send(MimeKit.MimeMessage)')
-  - [SendLater(message)](#M-AndcultureCode-CSharp-Core-Models-Mail-EmailProviderBase-SendLater-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Models.Mail.EmailProviderBase.SendLater(MimeKit.MimeMessage)')
+- [EmailProviderBase](#T-AndcultureCode-CSharp-Core-Providers-EmailProviderBase 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase')
+  - [Send(message)](#M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase.Send(MimeKit.MimeMessage)')
+  - [SendLater(message)](#M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-SendLater-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase.SendLater(MimeKit.MimeMessage)')
 - [EmailSettings](#T-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings')
   - [ERROR_MISSING_PROPERTY](#F-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-ERROR_MISSING_PROPERTY 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.ERROR_MISSING_PROPERTY')
   - [CustomHeaders](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-CustomHeaders 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.CustomHeaders')
@@ -381,18 +381,18 @@ Tries to run the given workload the indicated number of times
 | retry | [System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{\`0},\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0}') | Number of retries that should be performed. If value is
         zero, will not retry |
 
-<a name='T-AndcultureCode-CSharp-Core-Models-Mail-EmailProviderBase'></a>
+<a name='T-AndcultureCode-CSharp-Core-Providers-EmailProviderBase'></a>
 ## EmailProviderBase `type`
 
 ##### Namespace
 
-AndcultureCode.CSharp.Core.Models.Mail
+AndcultureCode.CSharp.Core.Providers
 
 ##### Summary
 
 Base abstract class to provide email provider functionality
 
-<a name='M-AndcultureCode-CSharp-Core-Models-Mail-EmailProviderBase-Send-MimeKit-MimeMessage-'></a>
+<a name='M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-Send-MimeKit-MimeMessage-'></a>
 ### Send(message) `method`
 
 ##### Summary
@@ -409,7 +409,7 @@ Deliver a message now
 | ---- | ---- | ----------- |
 | message | [MimeKit.MimeMessage](#T-MimeKit-MimeMessage 'MimeKit.MimeMessage') |  |
 
-<a name='M-AndcultureCode-CSharp-Core-Models-Mail-EmailProviderBase-SendLater-MimeKit-MimeMessage-'></a>
+<a name='M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-SendLater-MimeKit-MimeMessage-'></a>
 ### SendLater(message) `method`
 
 ##### Summary

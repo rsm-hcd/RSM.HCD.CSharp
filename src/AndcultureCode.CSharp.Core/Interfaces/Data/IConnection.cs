@@ -34,7 +34,6 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
 
         #endregion Properties
 
-
         #region Methods
 
         /// <summary>
@@ -43,6 +42,6 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <returns></returns>
         string ToString(string delimiter = ";");
 
-        #endregion
+        #endregion Methods
     }
 }

@@ -1,9 +1,8 @@
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Mail;
-using AndcultureCode.CSharp.Core.Providers;
 using MimeKit;
 
-namespace AndcultureCode.CSharp.Core.Models.Mail
+namespace AndcultureCode.CSharp.Core.Providers
 {
     /// <summary>
     /// Base abstract class to provide email provider functionality
