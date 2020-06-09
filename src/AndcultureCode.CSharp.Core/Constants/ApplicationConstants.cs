@@ -9,6 +9,6 @@ namespace AndcultureCode.CSharp.Core.Constants
         /// Key name used to identify the API web application's primary
         /// database in the 'ConnectionStrings' section
         /// </summary>
-        public const string DATABASE_API_CONFIGURATION_KEY = "Api";
+        public const string API_DATABASE_CONFIGURATION_KEY = "Api";
     }
 }

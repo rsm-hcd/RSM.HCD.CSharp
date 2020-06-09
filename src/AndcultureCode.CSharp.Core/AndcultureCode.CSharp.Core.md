@@ -10,7 +10,7 @@
 - [AndcultureCodeWebHost](#T-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost')
   - [Preload()](#M-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost-Preload-System-String[]- 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost.Preload(System.String[])')
 - [ApplicationConstants](#T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants')
-  - [DATABASE_API_CONFIGURATION_KEY](#F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-DATABASE_API_CONFIGURATION_KEY 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants.DATABASE_API_CONFIGURATION_KEY')
+  - [API_DATABASE_CONFIGURATION_KEY](#F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-API_DATABASE_CONFIGURATION_KEY 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants.API_DATABASE_CONFIGURATION_KEY')
 - [BasicAuthenticationConfiguration](#T-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration')
   - [IsEnabled](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.IsEnabled')
   - [Password](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.Password')
@@ -207,8 +207,8 @@ AndcultureCode.CSharp.Core.Constants
 
 Common application constants
 
-<a name='F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-DATABASE_API_CONFIGURATION_KEY'></a>
-### DATABASE_API_CONFIGURATION_KEY `constants`
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-API_DATABASE_CONFIGURATION_KEY'></a>
+### API_DATABASE_CONFIGURATION_KEY `constants`
 
 ##### Summary
 
