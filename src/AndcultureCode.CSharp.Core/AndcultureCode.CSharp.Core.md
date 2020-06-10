@@ -16,6 +16,14 @@
   - [Password](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.Password')
   - [UserName](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-UserName 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.UserName')
 - [BitwiseOperator](#T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator 'AndcultureCode.CSharp.Core.Enumerations.BitwiseOperator')
+- [Connection](#T-AndcultureCode-CSharp-Core-Models-Connection 'AndcultureCode.CSharp.Core.Models.Connection')
+  - [AdditionalParameters](#P-AndcultureCode-CSharp-Core-Models-Connection-AdditionalParameters 'AndcultureCode.CSharp.Core.Models.Connection.AdditionalParameters')
+  - [Database](#P-AndcultureCode-CSharp-Core-Models-Connection-Database 'AndcultureCode.CSharp.Core.Models.Connection.Database')
+  - [Datasource](#P-AndcultureCode-CSharp-Core-Models-Connection-Datasource 'AndcultureCode.CSharp.Core.Models.Connection.Datasource')
+  - [Password](#P-AndcultureCode-CSharp-Core-Models-Connection-Password 'AndcultureCode.CSharp.Core.Models.Connection.Password')
+  - [UserId](#P-AndcultureCode-CSharp-Core-Models-Connection-UserId 'AndcultureCode.CSharp.Core.Models.Connection.UserId')
+  - [ToString(delimiter)](#M-AndcultureCode-CSharp-Core-Models-Connection-ToString-System-String- 'AndcultureCode.CSharp.Core.Models.Connection.ToString(System.String)')
+  - [ValidParameter(value)](#M-AndcultureCode-CSharp-Core-Models-Connection-ValidParameter-System-String- 'AndcultureCode.CSharp.Core.Models.Connection.ValidParameter(System.String)')
 - [CultureTranslation](#T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation')
   - [FilePath](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-FilePath 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.FilePath')
   - [Key](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Key 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Key')
@@ -257,6 +265,86 @@ AndcultureCode.CSharp.Core.Enumerations
 ##### Summary
 
 Simple Bitwise enumeration
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Connection'></a>
+## Connection `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models
+
+##### Summary
+
+Breaks out standard connection string params into easy to consume object
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-AdditionalParameters'></a>
+### AdditionalParameters `property`
+
+##### Summary
+
+Additional configuration details
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-Database'></a>
+### Database `property`
+
+##### Summary
+
+Database name
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-Datasource'></a>
+### Datasource `property`
+
+##### Summary
+
+Data host
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-Password'></a>
+### Password `property`
+
+##### Summary
+
+Hopefully a secure password
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-UserId'></a>
+### UserId `property`
+
+##### Summary
+
+User identifier for the connectiong
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Connection-ToString-System-String-'></a>
+### ToString(delimiter) `method`
+
+##### Summary
+
+Return the data to the form from which it came, a semi-colon delimited connection string
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Connection-ValidParameter-System-String-'></a>
+### ValidParameter(value) `method`
+
+##### Summary
+
+Determines if the supplied value is a valid param
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`
