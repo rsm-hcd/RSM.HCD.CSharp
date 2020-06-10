@@ -1,7 +1,7 @@
 using System.Linq;
 using AndcultureCode.CSharp.Core.Models.Entities;
 
-namespace AndcultureCode.GB.Business.Core.Interfaces.Data
+namespace AndcultureCode.CSharp.Core.Interfaces.Data
 {
     /// <summary>
     /// Base application context containing commonly leveraged system-level entities

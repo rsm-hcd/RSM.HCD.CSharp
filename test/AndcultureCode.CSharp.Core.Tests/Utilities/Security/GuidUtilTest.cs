@@ -5,7 +5,7 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.GB.Business.Core.Tests.Unit.Utilities.Security
+namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
 {
     public class GuidUtilsTest : UnitTestBase
     {
