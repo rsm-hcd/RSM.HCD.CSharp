@@ -1,13 +1,14 @@
 using System;
 using AndcultureCode.CSharp.Core.Utilities.Security;
 using AndcultureCode.CSharp.Testing;
+using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
 {
-    public class GuidUtilsTest : UnitTestBase
+    public class GuidUtilsTest : CoreUnitTest
     {
         #region Setup
 

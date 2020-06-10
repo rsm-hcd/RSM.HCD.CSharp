@@ -10,14 +10,15 @@ using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Models.Hosting;
+using AndcultureCode.CSharp.Testing.Tests;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Models.Hosting
 {
-    public class AndcultureCodeWebHostBuilderTest : UnitTestBase
+    public class AndcultureCodeWebHostBuilderTest : CoreUnitTest
     {
         #region Setup
 
-        public AndcultureCodeWebHostBuilderTest(ITestOutputHelper output) : base(output) {}
+        public AndcultureCodeWebHostBuilderTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 

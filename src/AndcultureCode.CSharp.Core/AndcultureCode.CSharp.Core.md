@@ -68,8 +68,8 @@
   - [CreateDefaultBuilder()](#M-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder-CreateDefaultBuilder 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder.CreateDefaultBuilder')
 - [IAndcultureCodeWebHostBuilderExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IAndcultureCodeWebHostBuilderExtensions 'AndcultureCode.CSharp.Core.Extensions.IAndcultureCodeWebHostBuilderExtensions')
   - [PreloadAmazonElasticBeanstalk(builder,stdoutEnabled)](#M-AndcultureCode-CSharp-Core-Extensions-IAndcultureCodeWebHostBuilderExtensions-PreloadAmazonElasticBeanstalk-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder,System-Boolean,AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider- 'AndcultureCode.CSharp.Core.Extensions.IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder,System.Boolean,AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider)')
-- [IApplicationContext](#T-AndcultureCode-GB-Business-Core-Interfaces-Data-IApplicationContext 'AndcultureCode.GB.Business.Core.Interfaces.Data.IApplicationContext')
-  - [Acls](#P-AndcultureCode-GB-Business-Core-Interfaces-Data-IApplicationContext-Acls 'AndcultureCode.GB.Business.Core.Interfaces.Data.IApplicationContext.Acls')
+- [IApplicationContext](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext 'AndcultureCode.CSharp.Core.Interfaces.Data.IApplicationContext')
+  - [Acls](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext-Acls 'AndcultureCode.CSharp.Core.Interfaces.Data.IApplicationContext.Acls')
 - [IConfigurationBuilderExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions 'AndcultureCode.CSharp.Core.Extensions.IConfigurationBuilderExtensions')
   - [AddAmazonElasticBeanstalk(configurationBuilder)](#M-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions-AddAmazonElasticBeanstalk-Microsoft-Extensions-Configuration-IConfigurationBuilder- 'AndcultureCode.CSharp.Core.Extensions.IConfigurationBuilderExtensions.AddAmazonElasticBeanstalk(Microsoft.Extensions.Configuration.IConfigurationBuilder)')
 - [IConnection](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection')
@@ -918,18 +918,18 @@ is started up. Namely, reading of ASPNET environment
 | builder | [AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder](#T-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder') |  |
 | stdoutEnabled | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Should errors be output to standard output for debugging being this could be run before logging starts |
 
-<a name='T-AndcultureCode-GB-Business-Core-Interfaces-Data-IApplicationContext'></a>
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext'></a>
 ## IApplicationContext `type`
 
 ##### Namespace
 
-AndcultureCode.GB.Business.Core.Interfaces.Data
+AndcultureCode.CSharp.Core.Interfaces.Data
 
 ##### Summary
 
 Base application context containing commonly leveraged system-level entities
 
-<a name='P-AndcultureCode-GB-Business-Core-Interfaces-Data-IApplicationContext-Acls'></a>
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext-Acls'></a>
 ### Acls `property`
 
 ##### Summary

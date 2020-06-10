@@ -1,12 +1,13 @@
 using AndcultureCode.CSharp.Core.Utilities.Network;
 using AndcultureCode.CSharp.Testing;
+using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Network
 {
-    public class UriUtilsTest : UnitTestBase
+    public class UriUtilsTest : CoreUnitTest
     {
         #region Setup
 

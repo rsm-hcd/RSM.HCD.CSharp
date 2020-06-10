@@ -10,14 +10,15 @@ using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Utilities.Hosting;
+using AndcultureCode.CSharp.Testing.Tests;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
 {
-    public class AndcultureCodeWebHostTest : UnitTestBase
+    public class AndcultureCodeWebHostTest : CoreUnitTest
     {
         #region Setup
 
-        public AndcultureCodeWebHostTest(ITestOutputHelper output) : base(output) {}
+        public AndcultureCodeWebHostTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
@@ -33,7 +34,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         [Fact]
         public void Preload_When_Args_Empty_Array_Returns_Builder()
         {
-            AndcultureCodeWebHost.Preload(args: new string[] {}).ShouldNotBeNull();
+            AndcultureCodeWebHost.Preload(args: new string[] { }).ShouldNotBeNull();
         }
 
         [Fact]

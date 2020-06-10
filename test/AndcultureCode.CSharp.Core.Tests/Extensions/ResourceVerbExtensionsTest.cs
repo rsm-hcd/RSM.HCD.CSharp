@@ -4,10 +4,11 @@ using Xunit;
 using Xunit.Abstractions;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Testing;
+using AndcultureCode.CSharp.Testing.Tests;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 {
-    public class ResourceVerbExtensionsTest : UnitTestBase
+    public class ResourceVerbExtensionsTest : CoreUnitTest
     {
 
         #region Properties

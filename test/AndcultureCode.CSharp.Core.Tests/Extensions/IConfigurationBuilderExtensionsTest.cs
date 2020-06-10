@@ -11,14 +11,15 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
 using Microsoft.Extensions.Configuration;
 using Moq;
+using AndcultureCode.CSharp.Testing.Tests;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 {
-    public class IConfigurationBuilderExtensionsTest : UnitTestBase
+    public class IConfigurationBuilderExtensionsTest : CoreUnitTest
     {
         #region Setup
 
-        public IConfigurationBuilderExtensionsTest(ITestOutputHelper output) : base(output) {}
+        public IConfigurationBuilderExtensionsTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
