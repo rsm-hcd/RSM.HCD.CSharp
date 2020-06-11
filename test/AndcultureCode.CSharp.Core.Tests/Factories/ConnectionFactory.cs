@@ -8,7 +8,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Factories
     {
         public override void Define()
         {
-            var faker = new Faker();
+            var faker = new Faker(); // TODO: Abstract into our base Factory in AndcultureCode.CSharp.Testing
 
             this.DefineFactory(() => new Connection
             {

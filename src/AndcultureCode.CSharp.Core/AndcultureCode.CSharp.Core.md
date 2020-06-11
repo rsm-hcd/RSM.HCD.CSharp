@@ -15,7 +15,6 @@
   - [IsEnabled](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.IsEnabled')
   - [Password](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.Password')
   - [UserName](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-UserName 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.UserName')
-- [BitwiseOperator](#T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator 'AndcultureCode.CSharp.Core.Enumerations.BitwiseOperator')
 - [ConfigurationUtils](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils')
   - [Builder](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-Builder 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.Builder')
   - [GetConfiguration()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-GetConfiguration 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.GetConfiguration')
@@ -174,6 +173,7 @@
 - [Lockable](#T-AndcultureCode-CSharp-Core-Models-Lockable 'AndcultureCode.CSharp.Core.Models.Lockable')
   - [IsLocked](#P-AndcultureCode-CSharp-Core-Models-Lockable-IsLocked 'AndcultureCode.CSharp.Core.Models.Lockable.IsLocked')
   - [DetermineIfLocked()](#M-AndcultureCode-CSharp-Core-Models-Lockable-DetermineIfLocked 'AndcultureCode.CSharp.Core.Models.Lockable.DetermineIfLocked')
+- [LogicalOperator](#T-AndcultureCode-CSharp-Core-Enumerations-LogicalOperator 'AndcultureCode.CSharp.Core.Enumerations.LogicalOperator')
 - [Provider](#T-AndcultureCode-CSharp-Core-Providers-Provider 'AndcultureCode.CSharp.Core.Providers.Provider')
   - [Implemented](#P-AndcultureCode-CSharp-Core-Providers-Provider-Implemented 'AndcultureCode.CSharp.Core.Providers.Provider.Implemented')
   - [Name](#P-AndcultureCode-CSharp-Core-Providers-Provider-Name 'AndcultureCode.CSharp.Core.Providers.Provider.Name')
@@ -302,17 +302,6 @@ Password for users to use when authenticating
 ##### Summary
 
 Username for users to use when authenticating
-
-<a name='T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator'></a>
-## BitwiseOperator `type`
-
-##### Namespace
-
-AndcultureCode.CSharp.Core.Enumerations
-
-##### Summary
-
-Simple Bitwise enumeration
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils'></a>
 ## ConfigurationUtils `type`
@@ -2349,6 +2338,17 @@ true if LockedUntil is not null and is set to a time in the future, false otherw
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-LogicalOperator'></a>
+## LogicalOperator `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Simple Bitwise enumeration
 
 <a name='T-AndcultureCode-CSharp-Core-Providers-Provider'></a>
 ## Provider `type`

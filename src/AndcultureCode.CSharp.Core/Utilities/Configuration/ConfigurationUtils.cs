@@ -9,11 +9,15 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
     /// </summary>
     public static class ConfigurationUtils
     {
-        #region Properties
+        #region Private Properties
 
         private static IConfigurationBuilder _builder;
         private static IConfigurationRoot _configurationRoot;
         private static string _connectionString;
+
+        #endregion Private Properties
+
+        #region Public Properties
 
         /// <summary>
         /// Returns current instance of configuration builder
@@ -34,7 +38,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
             }
         }
 
-        #endregion Properties
+        #endregion Public Properties
 
         #region Public Methods
 

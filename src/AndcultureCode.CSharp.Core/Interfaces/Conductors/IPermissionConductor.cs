@@ -38,7 +38,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="resourceVerbs">A list of actions as ResourceVerb objects.</param>
         /// <param name="subject">The ID for the Role that we're checking permissions for.</param>
         /// <returns></returns>
-        IResult<bool> IsAllowed(BitwiseOperator op, IEnumerable<ResourceVerb> resourceVerbs, string subject);
+        IResult<bool> IsAllowed(LogicalOperator op, IEnumerable<ResourceVerb> resourceVerbs, string subject);
 
         /// <summary>
         /// Determine if a given Role is allowed to perform either:
@@ -50,6 +50,6 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="resourcePrefix">The resource prefix that we use to get the actions to check permissions on.</param>
         /// <param name="subject">The ID for the Role that we're checking permissions for.</param>
         /// <returns></returns>
-        IResult<bool> IsAllowed(BitwiseOperator op, string resourcePrefix, string subject);
+        IResult<bool> IsAllowed(LogicalOperator op, string resourcePrefix, string subject);
     }
 }

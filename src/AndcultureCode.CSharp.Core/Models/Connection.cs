@@ -69,7 +69,7 @@ namespace AndcultureCode.CSharp.Core.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        protected bool ValidParameter(string value) => !string.IsNullOrEmpty(value);
+        protected bool ValidParameter(string value) => !string.IsNullOrWhiteSpace(value);
 
         #endregion Protected Methods
     }

@@ -64,7 +64,5 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Network
         }
 
         #endregion IsValidHttpUrl
-
-
     }
 }

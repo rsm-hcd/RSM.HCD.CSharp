@@ -3,7 +3,6 @@ using AndcultureCode.CSharp.Core.Models.Entities.Worker;
 using System;
 using System.Linq.Expressions;
 
-
 namespace AndcultureCode.CSharp.Core.Interfaces.Providers.Worker
 {
     /// <summary>

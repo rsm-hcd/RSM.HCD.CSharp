@@ -8,7 +8,7 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Models.Entities
+namespace AndcultureCode.CSharp.Core.Tests.Models
 {
     public class ConnectionTest : CoreUnitTest
     {
@@ -48,6 +48,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Models.Entities
             // Assert
             result.ShouldNotBeEmpty();
             result.ToLower().ShouldNotContain("database");
+            result.ShouldNotContain("; ;");
         }
 
         [Fact]
