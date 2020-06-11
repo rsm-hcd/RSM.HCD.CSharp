@@ -12,10 +12,11 @@ using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Interfaces.Hosting;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using Moq;
+using AndcultureCode.CSharp.Testing.Tests;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 {
-    public class IAndcultureCodeWebHostBuilderExtensionsTest : UnitTestBase
+    public class IAndcultureCodeWebHostBuilderExtensionsTest : CoreUnitTest
     {
         #region Setup
 

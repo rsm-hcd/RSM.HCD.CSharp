@@ -15,7 +15,20 @@
   - [IsEnabled](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.IsEnabled')
   - [Password](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.Password')
   - [UserName](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-UserName 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.UserName')
-- [BitwiseOperator](#T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator 'AndcultureCode.CSharp.Core.Enumerations.BitwiseOperator')
+- [ConfigurationUtils](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils')
+  - [Builder](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-Builder 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.Builder')
+  - [GetConfiguration()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-GetConfiguration 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.GetConfiguration')
+  - [GetConnectionString(name)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-GetConnectionString-System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.GetConnectionString(System.String)')
+  - [SetConfiguration(configuration)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-SetConfiguration-Microsoft-Extensions-Configuration-IConfigurationRoot- 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.SetConfiguration(Microsoft.Extensions.Configuration.IConfigurationRoot)')
+  - [SetConnectionString(connectionString)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-SetConnectionString-System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.SetConnectionString(System.String)')
+- [Connection](#T-AndcultureCode-CSharp-Core-Models-Connection 'AndcultureCode.CSharp.Core.Models.Connection')
+  - [AdditionalParameters](#P-AndcultureCode-CSharp-Core-Models-Connection-AdditionalParameters 'AndcultureCode.CSharp.Core.Models.Connection.AdditionalParameters')
+  - [Database](#P-AndcultureCode-CSharp-Core-Models-Connection-Database 'AndcultureCode.CSharp.Core.Models.Connection.Database')
+  - [Datasource](#P-AndcultureCode-CSharp-Core-Models-Connection-Datasource 'AndcultureCode.CSharp.Core.Models.Connection.Datasource')
+  - [Password](#P-AndcultureCode-CSharp-Core-Models-Connection-Password 'AndcultureCode.CSharp.Core.Models.Connection.Password')
+  - [UserId](#P-AndcultureCode-CSharp-Core-Models-Connection-UserId 'AndcultureCode.CSharp.Core.Models.Connection.UserId')
+  - [ToString(delimiter)](#M-AndcultureCode-CSharp-Core-Models-Connection-ToString-System-String- 'AndcultureCode.CSharp.Core.Models.Connection.ToString(System.String)')
+  - [ValidParameter(value)](#M-AndcultureCode-CSharp-Core-Models-Connection-ValidParameter-System-String- 'AndcultureCode.CSharp.Core.Models.Connection.ValidParameter(System.String)')
 - [CultureTranslation](#T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation')
   - [FilePath](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-FilePath 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.FilePath')
   - [Key](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Key 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Key')
@@ -45,11 +58,17 @@
   - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)')
   - [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)')
+- [GuidUtils](#T-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils')
+  - [IsInvalid()](#M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsInvalid-System-String- 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils.IsInvalid(System.String)')
+  - [IsValid()](#M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsValid-System-String- 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils.IsValid(System.String)')
+- [HttpVerb](#T-AndcultureCode-CSharp-Core-Enumerations-HttpVerb 'AndcultureCode.CSharp.Core.Enumerations.HttpVerb')
 - [IAndcultureCodeWebHostBuilder](#T-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder')
   - [Args](#P-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder-Args 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder.Args')
   - [CreateDefaultBuilder()](#M-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder-CreateDefaultBuilder 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder.CreateDefaultBuilder')
 - [IAndcultureCodeWebHostBuilderExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IAndcultureCodeWebHostBuilderExtensions 'AndcultureCode.CSharp.Core.Extensions.IAndcultureCodeWebHostBuilderExtensions')
   - [PreloadAmazonElasticBeanstalk(builder,stdoutEnabled)](#M-AndcultureCode-CSharp-Core-Extensions-IAndcultureCodeWebHostBuilderExtensions-PreloadAmazonElasticBeanstalk-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder,System-Boolean,AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider- 'AndcultureCode.CSharp.Core.Extensions.IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder,System.Boolean,AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider)')
+- [IApplicationContext](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext 'AndcultureCode.CSharp.Core.Interfaces.Data.IApplicationContext')
+  - [Acls](#P-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext-Acls 'AndcultureCode.CSharp.Core.Interfaces.Data.IApplicationContext.Acls')
 - [IConfigurationBuilderExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions 'AndcultureCode.CSharp.Core.Extensions.IConfigurationBuilderExtensions')
   - [AddAmazonElasticBeanstalk(configurationBuilder)](#M-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions-AddAmazonElasticBeanstalk-Microsoft-Extensions-Configuration-IConfigurationBuilder- 'AndcultureCode.CSharp.Core.Extensions.IConfigurationBuilderExtensions.AddAmazonElasticBeanstalk(Microsoft.Extensions.Configuration.IConfigurationBuilder)')
 - [IConnection](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IConnection 'AndcultureCode.CSharp.Core.Interfaces.Data.IConnection')
@@ -70,9 +89,14 @@
   - [Lock(id,lockUntil,lockedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-Lock-System-Int64,System-DateTimeOffset,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.Lock(System.Int64,System.DateTimeOffset,System.Nullable{System.Int64})')
   - [Unlock(id,unlockedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-Unlock-System-Int64,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.Unlock(System.Int64,System.Nullable{System.Int64})')
   - [ValidateLock(item,currentUserId)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-ValidateLock-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.ValidateLock(`0,System.Nullable{System.Int64})')
+- [IPermissionConductor](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor')
+  - [GetAcls(resource,verb)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-GetAcls-System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.GetAcls(System.String,System.String)')
+  - [IsAllowed(resource,verb,subject)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-IsAllowed-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.IsAllowed(System.String,System.String,System.String)')
 - [IProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.IProvider')
   - [Implemented](#P-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider-Implemented 'AndcultureCode.CSharp.Core.Interfaces.Providers.IProvider.Implemented')
   - [Name](#P-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider-Name 'AndcultureCode.CSharp.Core.Interfaces.Providers.IProvider.Name')
+- [IRemoteAccessDetails](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IRemoteAccessDetails 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IRemoteAccessDetails')
+  - [Url](#P-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IRemoteAccessDetails-Url 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IRemoteAccessDetails.Url')
 - [IRepositoryConductor\`1](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor`1')
   - [CommandTimeout](#P-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1-CommandTimeout 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor`1.CommandTimeout')
   - [BulkCreateOrUpdate()](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1-BulkCreateOrUpdate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor`1.BulkCreateOrUpdate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
@@ -117,22 +141,54 @@
   - [HasErrors](#P-AndcultureCode-CSharp-Core-Interfaces-IResult`1-HasErrors 'AndcultureCode.CSharp.Core.Interfaces.IResult`1.HasErrors')
   - [NextLinkParams](#P-AndcultureCode-CSharp-Core-Interfaces-IResult`1-NextLinkParams 'AndcultureCode.CSharp.Core.Interfaces.IResult`1.NextLinkParams')
   - [ResultObject](#P-AndcultureCode-CSharp-Core-Interfaces-IResult`1-ResultObject 'AndcultureCode.CSharp.Core.Interfaces.IResult`1.ResultObject')
+- [IStorageProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider')
+  - [Copy(srcRelativeProviderPath,srcStorageContainer,destRelativeProviderPath,destStorageContainer,srcPathToCopy,destPathToCopy)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-Copy-System-String,System-String,System-String,System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.Copy(System.String,System.String,System.String,System.String,System.String,System.String)')
+  - [Download(relativeProviderPath,storageContainer,pathToSave)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-Download-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.Download(System.String,System.String,System.String)')
+  - [FileExists(relativeProviderPath,storageContainer)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-FileExists-System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.FileExists(System.String,System.String)')
+  - [GetFile(relativeProviderPath,storageContainer)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-GetFile-System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.GetFile(System.String,System.String)')
+  - [GetRemoteAccessDetails(relativeProviderPath,storageContainer,expiryTime,httpVerb,contentType)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-GetRemoteAccessDetails-System-String,System-String,System-Nullable{System-DateTimeOffset},AndcultureCode-CSharp-Core-Enumerations-HttpVerb,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.GetRemoteAccessDetails(System.String,System.String,System.Nullable{System.DateTimeOffset},AndcultureCode.CSharp.Core.Enumerations.HttpVerb,System.String)')
 - [IStringLocalizerExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IStringLocalizerExtensions 'AndcultureCode.CSharp.Core.Extensions.IStringLocalizerExtensions')
   - [Default(localizer,key,arguments)](#M-AndcultureCode-CSharp-Core-Extensions-IStringLocalizerExtensions-Default-Microsoft-Extensions-Localization-IStringLocalizer,System-String,System-Object[]- 'AndcultureCode.CSharp.Core.Extensions.IStringLocalizerExtensions.Default(Microsoft.Extensions.Localization.IStringLocalizer,System.String,System.Object[])')
+- [IWorkerProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider')
+  - [Delete(id)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Delete-System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Delete(System.String)')
+  - [DeletedCount()](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-DeletedCount 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.DeletedCount')
+  - [Enqueue(methodCall)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Enqueue-System-Linq-Expressions-Expression{System-Action}- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Enqueue(System.Linq.Expressions.Expression{System.Action})')
+  - [Enqueue\`\`1(methodCall)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Enqueue``1-System-Linq-Expressions-Expression{System-Action{``0}}- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Enqueue``1(System.Linq.Expressions.Expression{System.Action{``0}})')
+  - [EnqueuedCount(queue)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-EnqueuedCount-System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.EnqueuedCount(System.String)')
+  - [Recur(identifier,methodCall,recurringOptions)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Recur-System-String,System-Linq-Expressions-Expression{System-Action},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Recur(System.String,System.Linq.Expressions.Expression{System.Action},AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption)')
+  - [Recur\`\`1(identifier,methodCall,chronExpression)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Recur``1(System.String,System.Linq.Expressions.Expression{System.Action{``0}},System.String)')
+  - [Recur\`\`1(identifier,methodCall,recurringOptions)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Recur``1(System.String,System.Linq.Expressions.Expression{System.Action{``0}},AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption)')
+  - [RecurringCount()](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-RecurringCount 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.RecurringCount')
+  - [RemoveRecurrence(identifier)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-RemoveRecurrence-System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.RemoveRecurrence(System.String)')
+  - [Schedule(methodCall,delay)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-TimeSpan- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Schedule(System.Linq.Expressions.Expression{System.Action},System.TimeSpan)')
+  - [Schedule(methodCall,enqueueOn)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-DateTimeOffset- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Schedule(System.Linq.Expressions.Expression{System.Action},System.DateTimeOffset)')
+  - [Schedule\`\`1(methodCall,delay)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-TimeSpan- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Schedule``1(System.Linq.Expressions.Expression{System.Action{``0}},System.TimeSpan)')
+  - [Schedule\`\`1(methodCall,enqueueOn)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-DateTimeOffset- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Schedule``1(System.Linq.Expressions.Expression{System.Action{``0}},System.DateTimeOffset)')
+- [JobStatus](#T-AndcultureCode-CSharp-Core-Enumerations-JobStatus 'AndcultureCode.CSharp.Core.Enumerations.JobStatus')
+- [LocalConfigurationProvider](#T-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider')
+  - [#ctor(basePath)](#M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-#ctor-System-String- 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider.#ctor(System.String)')
+  - [GetConfiguration()](#M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-GetConfiguration 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider.GetConfiguration')
 - [LocalizationUtils](#T-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils')
   - [Cultures](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-Cultures 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.Cultures')
 - [Lockable](#T-AndcultureCode-CSharp-Core-Models-Lockable 'AndcultureCode.CSharp.Core.Models.Lockable')
   - [IsLocked](#P-AndcultureCode-CSharp-Core-Models-Lockable-IsLocked 'AndcultureCode.CSharp.Core.Models.Lockable.IsLocked')
   - [DetermineIfLocked()](#M-AndcultureCode-CSharp-Core-Models-Lockable-DetermineIfLocked 'AndcultureCode.CSharp.Core.Models.Lockable.DetermineIfLocked')
+- [LogicalOperator](#T-AndcultureCode-CSharp-Core-Enumerations-LogicalOperator 'AndcultureCode.CSharp.Core.Enumerations.LogicalOperator')
 - [Provider](#T-AndcultureCode-CSharp-Core-Providers-Provider 'AndcultureCode.CSharp.Core.Providers.Provider')
   - [Implemented](#P-AndcultureCode-CSharp-Core-Providers-Provider-Implemented 'AndcultureCode.CSharp.Core.Providers.Provider.Implemented')
   - [Name](#P-AndcultureCode-CSharp-Core-Providers-Provider-Name 'AndcultureCode.CSharp.Core.Providers.Provider.Name')
 - [Queue](#T-AndcultureCode-CSharp-Core-Constants-Queue 'AndcultureCode.CSharp.Core.Constants.Queue')
   - [ALL](#F-AndcultureCode-CSharp-Core-Constants-Queue-ALL 'AndcultureCode.CSharp.Core.Constants.Queue.ALL')
   - [DEFAULT](#F-AndcultureCode-CSharp-Core-Constants-Queue-DEFAULT 'AndcultureCode.CSharp.Core.Constants.Queue.DEFAULT')
+- [Recurrence](#T-AndcultureCode-CSharp-Core-Enumerations-Recurrence 'AndcultureCode.CSharp.Core.Enumerations.Recurrence')
+- [RecurringOption](#T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption 'AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption')
 - [Rfc4646LanguageCodes](#T-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes')
 - [StringExtensions](#T-AndcultureCode-CSharp-Core-Extensions-StringExtensions 'AndcultureCode.CSharp.Core.Extensions.StringExtensions')
   - [LoadTranslations()](#M-AndcultureCode-CSharp-Core-Extensions-StringExtensions-LoadTranslations-System-String,System-String,Newtonsoft-Json-JsonSerializerSettings- 'AndcultureCode.CSharp.Core.Extensions.StringExtensions.LoadTranslations(System.String,System.String,Newtonsoft.Json.JsonSerializerSettings)')
+- [UriUtils](#T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils')
+  - [IsInvalidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsInvalidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsInvalidHttpUrl(System.String)')
+  - [IsValidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsValidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsValidHttpUrl(System.String)')
+- [WorkerProvider](#T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider')
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider'></a>
 ## AmazonEBConfigurationProvider `type`
@@ -247,16 +303,162 @@ Password for users to use when authenticating
 
 Username for users to use when authenticating
 
-<a name='T-AndcultureCode-CSharp-Core-Enumerations-BitwiseOperator'></a>
-## BitwiseOperator `type`
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils'></a>
+## ConfigurationUtils `type`
 
 ##### Namespace
 
-AndcultureCode.CSharp.Core.Enumerations
+AndcultureCode.CSharp.Core.Utilities.Configuration
 
 ##### Summary
 
-Simple Bitwise enumeration
+Static utility class to aid in configuration
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-Builder'></a>
+### Builder `property`
+
+##### Summary
+
+Returns current instance of configuration builder
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-GetConfiguration'></a>
+### GetConfiguration() `method`
+
+##### Summary
+
+Retrieve current instance of IConfigurationRoot
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-GetConnectionString-System-String-'></a>
+### GetConnectionString(name) `method`
+
+##### Summary
+
+Retrieve currently configured connection string
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-SetConfiguration-Microsoft-Extensions-Configuration-IConfigurationRoot-'></a>
+### SetConfiguration(configuration) `method`
+
+##### Summary
+
+Assign new instance of IConfigurationRoot
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-SetConnectionString-System-String-'></a>
+### SetConnectionString(connectionString) `method`
+
+##### Summary
+
+Explicitly set connection string at runtime. When set at runtime, this superceeds
+values from the loaded configurationRoot object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| connectionString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Connection'></a>
+## Connection `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models
+
+##### Summary
+
+Breaks out standard connection string params into easy to consume object
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-AdditionalParameters'></a>
+### AdditionalParameters `property`
+
+##### Summary
+
+Additional configuration details
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-Database'></a>
+### Database `property`
+
+##### Summary
+
+Database name
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-Datasource'></a>
+### Datasource `property`
+
+##### Summary
+
+Data host
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-Password'></a>
+### Password `property`
+
+##### Summary
+
+Hopefully a secure password
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Connection-UserId'></a>
+### UserId `property`
+
+##### Summary
+
+User identifier for the connectiong
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Connection-ToString-System-String-'></a>
+### ToString(delimiter) `method`
+
+##### Summary
+
+Return the data to the form from which it came, a semi-colon delimited connection string
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Connection-ValidParameter-System-String-'></a>
+### ValidParameter(value) `method`
+
+##### Summary
+
+Determines if the supplied value is a valid param
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`
@@ -603,6 +805,52 @@ Convenience method so joining key value pairs
 | pair | [System.Collections.Generic.KeyValuePair{System.String,System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyValuePair 'System.Collections.Generic.KeyValuePair{System.String,System.String}') |  |
 | delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils'></a>
+## GuidUtils `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Utilities.Security
+
+##### Summary
+
+Guid related helper functions
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsInvalid-System-String-'></a>
+### IsInvalid() `method`
+
+##### Summary
+
+Is the supplied string an invalid GUID?
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsValid-System-String-'></a>
+### IsValid() `method`
+
+##### Summary
+
+Is the supplied string an valid GUID?
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-HttpVerb'></a>
+## HttpVerb `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Enumeration of HttpVerbs
+
+ TODO: Consider using Microsoft.AspNet.Mvc.HttpVerbs enum
+
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder'></a>
 ## IAndcultureCodeWebHostBuilder `type`
 
@@ -658,6 +906,24 @@ is started up. Namely, reading of ASPNET environment
 | ---- | ---- | ----------- |
 | builder | [AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder](#T-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder') |  |
 | stdoutEnabled | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Should errors be output to standard output for debugging being this could be run before logging starts |
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext'></a>
+## IApplicationContext `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Data
+
+##### Summary
+
+Base application context containing commonly leveraged system-level entities
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Data-IApplicationContext-Acls'></a>
+### Acls `property`
+
+##### Summary
+
+Access control lists
 
 <a name='T-AndcultureCode-CSharp-Core-Extensions-IConfigurationBuilderExtensions'></a>
 ## IConfigurationBuilderExtensions `type`
@@ -899,6 +1165,55 @@ true if the lock is still active and is locked by the current user, false otherw
 | item | [\`0](#T-`0 '`0') | The item |
 | currentUserId | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | The current user id |
 
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor'></a>
+## IPermissionConductor `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Conductors
+
+##### Summary
+
+Determines permission leveraging access control lists
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-GetAcls-System-String,System-String-'></a>
+### GetAcls(resource,verb) `method`
+
+##### Summary
+
+Get a list of Access Rules for a given resource/verb pair.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| resource | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| verb | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-IsAllowed-System-String,System-String,System-String-'></a>
+### IsAllowed(resource,verb,subject) `method`
+
+##### Summary
+
+Determine if a given Role is allowed to perform a certain action, given as a
+resource/verb pair.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| resource | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| verb | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| subject | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The ID for the Role that we're checking permissions for. |
+
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-IProvider'></a>
 ## IProvider `type`
 
@@ -923,6 +1238,24 @@ Specify whether the provider has been implemented
 ##### Summary
 
 Name of the provider
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IRemoteAccessDetails'></a>
+## IRemoteAccessDetails `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Providers.Storage
+
+##### Summary
+
+Access details to access a given storage resource
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IRemoteAccessDetails-Url'></a>
+### Url `property`
+
+##### Summary
+
+Url for accessing the given resource
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor`1'></a>
 ## IRepositoryConductor\`1 `type`
@@ -1579,6 +1912,102 @@ List of key value pairs to be used request the very next related Result
 
 Actual resulting value from the request
 
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider'></a>
+## IStorageProvider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Providers.Storage
+
+##### Summary
+
+Generic storage container provider
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-Copy-System-String,System-String,System-String,System-String,System-String,System-String-'></a>
+### Copy(srcRelativeProviderPath,srcStorageContainer,destRelativeProviderPath,destStorageContainer,srcPathToCopy,destPathToCopy) `method`
+
+##### Summary
+
+Copies a file or folder from a source location on the external storage provider to a
+destination location on the external storage provider.
+
+##### Returns
+
+True if the copy operation succeeded, false otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| srcRelativeProviderPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Name of the 'prefix' or relative path under the source bucket to copy data from |
+| srcStorageContainer | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Name of the source bucket/container from which to pull data from |
+| destRelativeProviderPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Name of the 'prefix' or relative path under the destination bucket to copy data to |
+| destStorageContainer | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Name of the destination bucket/container from which to copy data to |
+| srcPathToCopy | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | (Optional) Name of the individual file underneath the source bucket and relative path.
+If omitted, it is assumed you are copying a folder instead of an individual file. |
+| destPathToCopy | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | (Optional) Name of the individual file underneath the destination bucket and relative path.
+If omitted, it is assumed you are copying a folder instead of an individual file. |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-Download-System-String,System-String,System-String-'></a>
+### Download(relativeProviderPath,storageContainer,pathToSave) `method`
+
+##### Summary
+
+Downloads and saves file from external storage to local machine
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| relativeProviderPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to file respective to the parent folder/bucket |
+| storageContainer | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Parent level folder/bucket |
+| pathToSave | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path on local system to save file |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-FileExists-System-String,System-String-'></a>
+### FileExists(relativeProviderPath,storageContainer) `method`
+
+##### Summary
+
+Check existence of a file stored externally
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| relativeProviderPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to file respective to the parent folder/bucket |
+| storageContainer | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Parent level folder/bucket |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-GetFile-System-String,System-String-'></a>
+### GetFile(relativeProviderPath,storageContainer) `method`
+
+##### Summary
+
+Get's file contents from storage provider
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| relativeProviderPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to file respective to the parent folder/bucket |
+| storageContainer | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Parent level folder/bucket |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-GetRemoteAccessDetails-System-String,System-String,System-Nullable{System-DateTimeOffset},AndcultureCode-CSharp-Core-Enumerations-HttpVerb,System-String-'></a>
+### GetRemoteAccessDetails(relativeProviderPath,storageContainer,expiryTime,httpVerb,contentType) `method`
+
+##### Summary
+
+Get resource RemoteAccessDetails
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| relativeProviderPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to file respective to the parent folder/bucket |
+| storageContainer | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Parent level folder/bucket |
+| expiryTime | [System.Nullable{System.DateTimeOffset}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTimeOffset}') | Life span before exipiration |
+| httpVerb | [AndcultureCode.CSharp.Core.Enumerations.HttpVerb](#T-AndcultureCode-CSharp-Core-Enumerations-HttpVerb 'AndcultureCode.CSharp.Core.Enumerations.HttpVerb') | The Http verb of requested action |
+| contentType | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Content-Type of requested resource |
+
 <a name='T-AndcultureCode-CSharp-Core-Extensions-IStringLocalizerExtensions'></a>
 ## IStringLocalizerExtensions `type`
 
@@ -1604,6 +2033,267 @@ Retrieve given translation for default configured culture
 | localizer | [Microsoft.Extensions.Localization.IStringLocalizer](#T-Microsoft-Extensions-Localization-IStringLocalizer 'Microsoft.Extensions.Localization.IStringLocalizer') |  |
 | key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | arguments | [System.Object[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object[] 'System.Object[]') | The values with which to format the translated error message |
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider'></a>
+## IWorkerProvider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Providers.Worker
+
+##### Summary
+
+Background job processing provider
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Delete-System-String-'></a>
+### Delete(id) `method`
+
+##### Summary
+
+Changes the state of an enqueued job to deleted. Will still be counted in the EnqueuedCount
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-DeletedCount'></a>
+### DeletedCount() `method`
+
+##### Summary
+
+Number of jobs in the deleted state.
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Enqueue-System-Linq-Expressions-Expression{System-Action}-'></a>
+### Enqueue(methodCall) `method`
+
+##### Summary
+
+Create a new fire and forget worker task
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Enqueue``1-System-Linq-Expressions-Expression{System-Action{``0}}-'></a>
+### Enqueue\`\`1(methodCall) `method`
+
+##### Summary
+
+Create a new fire and forget worker task
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-EnqueuedCount-System-String-'></a>
+### EnqueuedCount(queue) `method`
+
+##### Summary
+
+Enqueued can still mean deleted. This includes all jobs enqueued regardless of state.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| queue | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Recur-System-String,System-Linq-Expressions-Expression{System-Action},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-'></a>
+### Recur(identifier,methodCall,recurringOptions) `method`
+
+##### Summary
+
+Create a recurring worker task
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| identifier | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+| recurringOptions | [AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption](#T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption 'AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},System-String-'></a>
+### Recur\`\`1(identifier,methodCall,chronExpression) `method`
+
+##### Summary
+
+Create a recurring worker task
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| identifier | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| chronExpression | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-'></a>
+### Recur\`\`1(identifier,methodCall,recurringOptions) `method`
+
+##### Summary
+
+Create a recurring worker task
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| identifier | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| recurringOptions | [AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption](#T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption 'AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-RecurringCount'></a>
+### RecurringCount() `method`
+
+##### Summary
+
+Number of jobs that have been setup for recurrence.
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-RemoveRecurrence-System-String-'></a>
+### RemoveRecurrence(identifier) `method`
+
+##### Summary
+
+Remove a worker recurrence
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| identifier | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-TimeSpan-'></a>
+### Schedule(methodCall,delay) `method`
+
+##### Summary
+
+Schedule a method to be enqueued at a specific time
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+| delay | [System.TimeSpan](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.TimeSpan 'System.TimeSpan') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-DateTimeOffset-'></a>
+### Schedule(methodCall,enqueueOn) `method`
+
+##### Summary
+
+Schedule a method to be enqueued at a specific time
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+| enqueueOn | [System.DateTimeOffset](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTimeOffset 'System.DateTimeOffset') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-TimeSpan-'></a>
+### Schedule\`\`1(methodCall,delay) `method`
+
+##### Summary
+
+Schedule a method to be enqueued at a specific time
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| delay | [System.TimeSpan](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.TimeSpan 'System.TimeSpan') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-DateTimeOffset-'></a>
+### Schedule\`\`1(methodCall,enqueueOn) `method`
+
+##### Summary
+
+Schedule a method to be enqueued at a specific time
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| enqueueOn | [System.DateTimeOffset](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTimeOffset 'System.DateTimeOffset') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-JobStatus'></a>
+## JobStatus `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Statuses for a given job
+
+<a name='T-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider'></a>
+## LocalConfigurationProvider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Providers.Configuration
+
+##### Summary
+
+Centralized location for loading configuration settings
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-#ctor-System-String-'></a>
+### #ctor(basePath) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| basePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-GetConfiguration'></a>
+### GetConfiguration() `method`
+
+##### Summary
+
+Constructs configuration object
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils'></a>
 ## LocalizationUtils `type`
@@ -1648,6 +2338,17 @@ true if LockedUntil is not null and is set to a time in the future, false otherw
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-LogicalOperator'></a>
+## LogicalOperator `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Simple Bitwise enumeration
 
 <a name='T-AndcultureCode-CSharp-Core-Providers-Provider'></a>
 ## Provider `type`
@@ -1696,6 +2397,28 @@ Easy to access array of all queues in priority order from highest to lowest
 The default queue, general purpose that should happen relatively soon. Say a few minutes, but the world won't end
 if it happens to be delayed.
 
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-Recurrence'></a>
+## Recurrence `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Different types of job recurrence
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption'></a>
+## RecurringOption `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Entities.Worker
+
+##### Summary
+
+Recurrance configuration for a given worker
+
 <a name='T-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes'></a>
 ## Rfc4646LanguageCodes `type`
 
@@ -1729,3 +2452,55 @@ Loads a given translation .json file and maps contents to CultureTranslation obj
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils'></a>
+## UriUtils `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Utilities.Network
+
+##### Summary
+
+URI related helper functions
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsInvalidHttpUrl-System-String-'></a>
+### IsInvalidHttpUrl() `method`
+
+##### Summary
+
+Is the supplied source url an invalid HTTP URL?
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsValidHttpUrl-System-String-'></a>
+### IsValidHttpUrl() `method`
+
+##### Summary
+
+Is the supplied source url a valid HTTP URL?
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider'></a>
+## WorkerProvider `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Providers.Worker
+
+##### Summary
+
+Base class for implementing common worker functionality

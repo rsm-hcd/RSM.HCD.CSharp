@@ -12,10 +12,11 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
 using Microsoft.Extensions.Localization;
 using Moq;
+using AndcultureCode.CSharp.Testing.Tests;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 {
-    public class IResultExtensionsTest : UnitTestBase
+    public class IResultExtensionsTest : CoreUnitTest
     {
         #region Setup
 

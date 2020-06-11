@@ -9,10 +9,12 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Tests.Unit.Stubs;
 using AndcultureCode.CSharp.Core.Cultures;
 using AndcultureCode.CSharp.Core.Extensions;
+using AndcultureCode.CSharp.Testing.Tests;
+using AndcultureCode.CSharp.Core.Tests.Unit;
 
 namespace AndcultureCode.CSharp.Core.Tests.Extensions
 {
-    public partial class ICultureExtensionsTest : UnitTestBase
+    public partial class ICultureExtensionsTest : CoreUnitTest
     {
         #region Setup
 
