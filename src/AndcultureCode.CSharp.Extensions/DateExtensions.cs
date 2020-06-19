@@ -7,6 +7,23 @@ namespace AndcultureCode.CSharp.Extensions
     public static class DateExtensions
     {
         /// <summary>
+        /// Sets and returns the time to 11:59:59 on the given DateTimeOffset.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static DateTimeOffset AtEndOfDay(this DateTimeOffset date)
+        {
+            return new DateTimeOffset(
+                year:   date.Year,
+                month:  date.Month,
+                day:    date.Day,
+                hour:   23,
+                minute: 59,
+                second: 59,
+                offset: date.Offset);
+        }
+
+        /// <summary>
         /// Useful when you only care about the date, but do not want to lose the offset.
         /// Returns the midnight representation of the given DateTimeOffset.
         /// </summary>

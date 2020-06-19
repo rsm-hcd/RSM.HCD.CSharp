@@ -9,6 +9,54 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 {
     public class DateExtensionsTests
     {
+        #region AtEndOfDay
+
+        [Fact]
+        public void AtEndOfDay_Returns_Date_With_Time_Set_To_Eleven_Fifty_Nine_PM()
+        {
+            // Arrange
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.AtEndOfDay();
+
+            // Assert
+            result.Hour.ShouldBe(23);
+            result.Minute.ShouldBe(59);
+            result.Second.ShouldBe(59);
+
+        }
+
+        [Fact]
+        public void AtEndOfDay_Preserves_The_Offset_Value()
+        {
+            // Arrange
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.AtEndOfDay();
+
+            // Assert
+            result.Offset.ShouldBe(testDate.Offset);
+        }
+
+        [Fact]
+        public void AtEndOfDay_Does_Not_Change_The_Date()
+        {
+            // Arrange
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.AtEndOfDay();
+
+            // Assert
+            result.Year.ShouldBe(testDate.Year);
+            result.Month.ShouldBe(testDate.Month);
+            result.Day.ShouldBe(testDate.Day);
+        }
+
+        #endregion AtEndOfDay
+
         #region AtMidnight
 
         [Fact]
