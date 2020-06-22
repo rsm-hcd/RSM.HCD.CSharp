@@ -48,17 +48,17 @@ namespace AndcultureCode.CSharp.Extensions
         {
             if (hour < 0 || hour > 23)
             {
-                throw new ArgumentException($"Hour: {hour} is invalid. It must be between 0 and 23.");
+                throw new ArgumentException($"Hour: {hour} is invalid. It must be between 0 and 23.", nameof(hour));
             }
             
             if (minute < 0 || minute > 59)
             {
-                throw new ArgumentException($"Minute: {minute} is invalid. It must be between 0 and 59.");
+                throw new ArgumentException($"Minute: {minute} is invalid. It must be between 0 and 59.", nameof(minute));
             }
             
             if (second < 0 || second > 59)
             {
-                throw new ArgumentException($"Second: {second} is invalid. It must be between 0 and 59.");
+                throw new ArgumentException($"Second: {second} is invalid. It must be between 0 and 59.", nameof(second));
             }
             
             return new DateTimeOffset(
