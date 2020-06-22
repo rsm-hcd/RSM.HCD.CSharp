@@ -24,7 +24,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             result.Hour.ShouldBe(23);
             result.Minute.ShouldBe(59);
             result.Second.ShouldBe(59);
-
         }
 
         [Fact]

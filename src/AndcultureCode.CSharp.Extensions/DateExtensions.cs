@@ -11,9 +11,8 @@ namespace AndcultureCode.CSharp.Extensions
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public static DateTimeOffset AtEndOfDay(this DateTimeOffset date)
-        {
-            return new DateTimeOffset(
+        public static DateTimeOffset AtEndOfDay(this DateTimeOffset date) =>
+            new DateTimeOffset(
                 year:   date.Year,
                 month:  date.Month,
                 day:    date.Day,
@@ -21,7 +20,6 @@ namespace AndcultureCode.CSharp.Extensions
                 minute: 59,
                 second: 59,
                 offset: date.Offset);
-        }
 
         /// <summary>
         /// Useful when you only care about the date, but do not want to lose the offset.
