@@ -17,10 +17,12 @@
   - [RoleIds(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleIds-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleIds(System.Security.Claims.ClaimsPrincipal)')
   - [UserId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.UserId(System.Security.Claims.ClaimsPrincipal)')
 - [DateExtensions](#T-AndcultureCode-CSharp-Extensions-DateExtensions 'AndcultureCode.CSharp.Extensions.DateExtensions')
+  - [AtEndOfDay(date)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-AtEndOfDay-System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.AtEndOfDay(System.DateTimeOffset)')
   - [AtMidnight(date)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-AtMidnight-System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.AtMidnight(System.DateTimeOffset)')
   - [CalculateAge()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-CalculateAge-System-DateTime- 'AndcultureCode.CSharp.Extensions.DateExtensions.CalculateAge(System.DateTime)')
   - [IsBetweenDates()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-IsBetweenDates-System-DateTimeOffset,System-DateTimeOffset,System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.IsBetweenDates(System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset)')
   - [IsBetweenDates()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-IsBetweenDates-System-DateTimeOffset,System-DateTimeOffset,System-DateTimeOffset,System-Boolean- 'AndcultureCode.CSharp.Extensions.DateExtensions.IsBetweenDates(System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,System.Boolean)')
+  - [SetTime(date,hour,minute,second)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SetTime-System-DateTimeOffset,System-Int32,System-Int32,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SetTime(System.DateTimeOffset,System.Int32,System.Int32,System.Int32)')
   - [SubtractWeekdays()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTime,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SubtractWeekdays(System.DateTime,System.Int32)')
   - [SubtractWeekdays()](#M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTimeOffset,System-Int32- 'AndcultureCode.CSharp.Extensions.DateExtensions.SubtractWeekdays(System.DateTimeOffset,System.Int32)')
 - [DictionaryExtensions](#T-AndcultureCode-CSharp-Extensions-DictionaryExtensions 'AndcultureCode.CSharp.Extensions.DictionaryExtensions')
@@ -243,6 +245,23 @@ Retrieves user's id by way of identity claims
 
 AndcultureCode.CSharp.Extensions
 
+<a name='M-AndcultureCode-CSharp-Extensions-DateExtensions-AtEndOfDay-System-DateTimeOffset-'></a>
+### AtEndOfDay(date) `method`
+
+##### Summary
+
+Sets and returns the time to 11:59:59 on the given DateTimeOffset.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| date | [System.DateTimeOffset](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTimeOffset 'System.DateTimeOffset') |  |
+
 <a name='M-AndcultureCode-CSharp-Extensions-DateExtensions-AtMidnight-System-DateTimeOffset-'></a>
 ### AtMidnight(date) `method`
 
@@ -294,6 +313,26 @@ Provides filtering method for date ranges (excluding time portions)
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-DateExtensions-SetTime-System-DateTimeOffset,System-Int32,System-Int32,System-Int32-'></a>
+### SetTime(date,hour,minute,second) `method`
+
+##### Summary
+
+Sets the hour, minute, and second on the given DateTimeOffset with the supplied values.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| date | [System.DateTimeOffset](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTimeOffset 'System.DateTimeOffset') |  |
+| hour | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+| minute | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+| second | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-DateExtensions-SubtractWeekdays-System-DateTime,System-Int32-'></a>
 ### SubtractWeekdays() `method`
