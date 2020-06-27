@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
+using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Logging;
 using AndcultureCode.CSharp.Testing.Extensions;
@@ -118,6 +119,31 @@ namespace AndcultureCode.CSharp.Testing.Tests
         protected Result<T> BuildResult<T>(Action<T> property)                         => new Result<T> { ResultObject = FactoryExtensions.Build<T>(property) };
         protected Result<T> BuildResult<T>(string name, Action<T> property)            => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, property) };
         protected Result<T> BuildResult<T>(List<Action<T>> properties)                 => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties) };
+
+        /// <summary>
+        /// Factory method for setting properties directly on a new Result. Sets the `ResultObject`
+        /// to the default value of T, but can be nested with other factory methods if a specific
+        /// configuration of `T` is required.
+        /// </summary>
+        /// <param name="properties"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        protected Result<T> BuildResult<T>(params Action<Result<T>>[] properties)
+        {
+            var result = new Result<T>
+            {
+                Errors = new List<IError>(),
+                ResultObject = default(T),
+            };
+
+            foreach (var property in properties)
+            {
+                property.Invoke(result);
+            }
+
+            return result;
+        }
+
         protected Result<T> BuildResult<T>(params Action<T>[] properties)              => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties.ToList()) };
         protected Result<T> BuildResult<T>(string name, List<Action<T>> properties)    => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties) };
         protected Result<T> BuildResult<T>(string name, params Action<T>[] properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties.ToList()) };
