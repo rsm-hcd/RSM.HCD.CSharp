@@ -13,6 +13,10 @@ namespace AndcultureCode.CSharp.Testing.Factories
         /// </summary>
         public abstract void Define();
 
+        #endregion Public Methods
+
+        #region Public Properties
+
         /// <summary>
         /// Returns the current time in unix milliseconds.
         ///
@@ -23,10 +27,10 @@ namespace AndcultureCode.CSharp.Testing.Factories
         public long Milliseconds => DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
         /// <summary>
-        /// Returns a new `Randomizer` instance for generating random data as factory values.
+        /// Returns a cached `Randomizer` instance for generating random data as factory values.
         /// </summary>
         /// <returns></returns>
-        public Randomizer Random => new Faker().Random;
+        public Randomizer Random => _Random = _Random ?? new Randomizer();
 
         /// <summary>
         /// Returns a unique number for use in factory values.
@@ -43,6 +47,12 @@ namespace AndcultureCode.CSharp.Testing.Factories
             }
         }
 
-        #endregion
+        #endregion Public Properties
+
+        #region Private Properties
+
+        private Randomizer _Random;
+
+        #endregion Private Properties
     }
 }
