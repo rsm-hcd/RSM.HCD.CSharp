@@ -27,10 +27,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <typeparam name="T"></typeparam>
-        public static void ShouldHaveBasicError<T>(this IResult<T> result)
-        {
-            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
-        }
+        public static void ShouldHaveBasicError<T>(this IResult<T> result) => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
 
         /// <summary>
         /// Assert that the result has at least one error

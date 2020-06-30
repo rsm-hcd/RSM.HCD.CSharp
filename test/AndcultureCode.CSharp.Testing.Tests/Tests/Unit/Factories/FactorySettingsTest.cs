@@ -3,13 +3,13 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Factories
+namespace AndcultureCode.CSharp.Testing.Tests.Unit.Factories
 {
-    public class FactorySettingsTest : BaseUnitTest
+    public class FactorySettingsTest : TestUnitTest
     {
         #region Setup
 
-        public FactorySettingsTest(ITestOutputHelper output) : base(output) {}
+        public FactorySettingsTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 

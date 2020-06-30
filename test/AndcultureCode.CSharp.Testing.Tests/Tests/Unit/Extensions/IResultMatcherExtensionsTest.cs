@@ -6,10 +6,12 @@ using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Testing.Constants;
 using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Interfaces;
+using AndcultureCode.CSharp.Testing.Factories;
+using System;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Extensions
+namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 {
-    public class IResultMatcherExtensionsTest : BaseUnitTest
+    public class IResultMatcherExtensionsTest : TestUnitTest
     {
         #region Setup
 
@@ -45,14 +47,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
                 result.ShouldHaveBasicError();
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
         [Fact]
@@ -61,20 +60,14 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<object>((e) => e.Errors = new List<IError>
             {
-                new Error
-                {
-                    Key = "Advanced Error Key",
-                },
+                Build<Error>()
             });
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
                 result.ShouldHaveBasicError();
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
         [Fact]
@@ -83,17 +76,14 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<object>((e) => e.Errors = new List<IError>
             {
-                ErrorConstants.BasicError,
+                Build<Error>(ErrorFactory.BASIC_ERROR)
             });
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.NotThrow(() =>
             {
                 result.ShouldHaveBasicError();
             });
-
-            // Assert
-            ex.ShouldBeNull();
         }
 
         #endregion ShouldHaveBasicError
@@ -123,14 +113,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
                 result.ShouldHaveErrors();
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
         [Fact]
@@ -139,17 +126,14 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<object>((e) => e.Errors = new List<IError>
             {
-                ErrorConstants.BasicError,
+                Build<Error>()
             });
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.NotThrow(() =>
             {
                 result.ShouldHaveErrors();
             });
-
-            // Assert
-            ex.ShouldBeNull();
         }
 
         #endregion ShouldHaveErrors<T>
@@ -179,14 +163,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<bool>((e) => e.Errors = new List<IError>());
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
                 result.ShouldHaveErrors();
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
         [Fact]
@@ -195,21 +176,18 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var errors = new List<IError>
             {
-                ErrorConstants.BasicError,
+                Build<Error>(ErrorFactory.BASIC_ERROR)
             };
             var result = BuildResult<bool>(
                 (e) => e.Errors = errors,
                 (e) => e.ResultObject = true
             );
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
                 result.ShouldHaveErrors();
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
         [Fact]
@@ -218,17 +196,14 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<bool>((e) => e.Errors = new List<IError>
             {
-                ErrorConstants.BasicError,
+                Build<Error>()
             });
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.NotThrow(() =>
             {
                 result.ShouldHaveErrors();
             });
-
-            // Assert
-            ex.ShouldBeNull();
         }
 
         #endregion ShouldHaveErrors<bool>
@@ -258,36 +233,28 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
             // Arrange
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
                 result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
-         [Fact]
+        [Fact]
         public void ShouldHaveErrorsFor_When_Errors_Contains_Other_Keys_Fails_Assertion()
         {
             // Arrange
+            var error = Build<Error>();
             var result = BuildResult<object>((e) => e.Errors = new List<IError>
             {
-                new Error
-                {
-                    Key = "Advanced Error Key",
-                },
+                error
             });
 
-            // Act
-            var ex = Record.Exception(() =>
+            // Act & Assert
+            Should.Throw<Exception>(() =>
             {
-                result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
+                result.ShouldHaveErrorsFor($"not-{error.Key}");
             });
-
-            // Assert
-            ex.ShouldNotBeNull();
         }
 
 
@@ -295,15 +262,16 @@ namespace AndcultureCode.CSharp.Testing.Tests.Extensions
         public void ShouldHaveErrorsFor_When_Errors_Contains_Key_Passes_Assertion()
         {
             // Arrange
+            var error = Build<Error>();
             var result = BuildResult<object>((e) => e.Errors = new List<IError>
             {
-                ErrorConstants.BasicError,
+                error
             });
 
             // Act
             var ex = Record.Exception(() =>
             {
-                result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
+                result.ShouldHaveErrorsFor(error.Key);
             });
 
             // Assert

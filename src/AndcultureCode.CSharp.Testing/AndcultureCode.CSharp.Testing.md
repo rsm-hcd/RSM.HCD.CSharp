@@ -9,7 +9,11 @@
 - [BaseTest](#T-AndcultureCode-CSharp-Testing-Tests-BaseTest 'AndcultureCode.CSharp.Testing.Tests.BaseTest')
   - [#ctor(output)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#ctor-Xunit-Abstractions-ITestOutputHelper- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#ctor(Xunit.Abstractions.ITestOutputHelper)')
   - [#cctor()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor')
+  - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Result{``0}}[])')
 - [Factory](#T-AndcultureCode-CSharp-Testing-Factories-Factory 'AndcultureCode.CSharp.Testing.Factories.Factory')
+  - [Milliseconds](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds 'AndcultureCode.CSharp.Testing.Factories.Factory.Milliseconds')
+  - [Random](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Random 'AndcultureCode.CSharp.Testing.Factories.Factory.Random')
+  - [UniqueNumber](#P-AndcultureCode-CSharp-Testing-Factories-Factory-UniqueNumber 'AndcultureCode.CSharp.Testing.Factories.Factory.UniqueNumber')
   - [Define()](#M-AndcultureCode-CSharp-Testing-Factories-Factory-Define 'AndcultureCode.CSharp.Testing.Factories.Factory.Define')
 - [FactorySettings](#T-AndcultureCode-CSharp-Testing-Factories-FactorySettings 'AndcultureCode.CSharp.Testing.Factories.FactorySettings')
   - [Debug](#P-AndcultureCode-CSharp-Testing-Factories-FactorySettings-Debug 'AndcultureCode.CSharp.Testing.Factories.FactorySettings.Debug')
@@ -128,12 +132,69 @@ Static constructor to set up suite-level actors
 
 This method has no parameters.
 
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Result{``0}}[]-'></a>
+### BuildResult\`\`1(properties) `method`
+
+##### Summary
+
+Factory method for setting properties directly on a new Result. Sets the \`ResultObject\`
+to the default value of T, but can be nested with other factory methods if a specific
+configuration of \`T\` is required.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Action{AndcultureCode.CSharp.Core.Models.Result{\`\`0}}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{AndcultureCode.CSharp.Core.Models.Result{``0}}[]') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
 <a name='T-AndcultureCode-CSharp-Testing-Factories-Factory'></a>
 ## Factory `type`
 
 ##### Namespace
 
 AndcultureCode.CSharp.Testing.Factories
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds'></a>
+### Milliseconds `property`
+
+##### Summary
+
+Returns the current time in unix milliseconds.
+
+ NOTE: Not guaranteed to be unique. If you require a unique value for a factory value,
+ use \`UniqueNumber\` instead.
+
+##### Returns
+
+
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-Random'></a>
+### Random `property`
+
+##### Summary
+
+Returns a new \`Randomizer\` instance for generating random data as factory values.
+
+##### Returns
+
+
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-UniqueNumber'></a>
+### UniqueNumber `property`
+
+##### Summary
+
+Returns a unique number for use in factory values.
 
 <a name='M-AndcultureCode-CSharp-Testing-Factories-Factory-Define'></a>
 ### Define() `method`
