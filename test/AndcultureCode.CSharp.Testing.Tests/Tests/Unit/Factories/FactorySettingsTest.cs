@@ -5,7 +5,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Testing.Tests.Unit.Factories
 {
-    public class FactorySettingsTest : TestUnitTest
+    public class FactorySettingsTest : ProjectUnitTest
     {
         #region Setup
 

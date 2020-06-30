@@ -11,7 +11,7 @@ using System;
 
 namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 {
-    public class IResultMatcherExtensionsTest : TestUnitTest
+    public class IResultMatcherExtensionsTest : ProjectUnitTest
     {
         #region Setup
 

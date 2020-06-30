@@ -7,11 +7,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit
     /// Base class wrapper around BaseUnitTest to facilitate loading of factories specific to this
     /// assembly.
     /// </summary>
-    public class TestUnitTest : BaseUnitTest
+    public class ProjectUnitTest : BaseUnitTest
     {
         #region Constructors
 
-        public TestUnitTest(ITestOutputHelper output) : base(output)
+        public ProjectUnitTest(ITestOutputHelper output) : base(output)
         {
 
         }
@@ -19,9 +19,9 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit
         /// <summary>
         /// Static constructor to load suite-level actors (such as Factories)
         /// </summary>
-        static TestUnitTest()
+        static ProjectUnitTest()
         {
-            LoadFactories(typeof(TestUnitTest).GetTypeInfo().Assembly);
+            LoadFactories(typeof(ProjectUnitTest).GetTypeInfo().Assembly);
         }
 
         #endregion Constructors
