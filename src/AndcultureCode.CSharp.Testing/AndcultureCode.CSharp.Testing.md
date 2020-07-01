@@ -183,7 +183,7 @@ Returns the current time in unix milliseconds.
 
 ##### Summary
 
-Returns a new \`Randomizer\` instance for generating random data as factory values.
+Returns a cached \`Randomizer\` instance for generating random data as factory values.
 
 ##### Returns
 
