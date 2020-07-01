@@ -29,6 +29,13 @@
   - [UserId](#P-AndcultureCode-CSharp-Core-Models-Connection-UserId 'AndcultureCode.CSharp.Core.Models.Connection.UserId')
   - [ToString(delimiter)](#M-AndcultureCode-CSharp-Core-Models-Connection-ToString-System-String- 'AndcultureCode.CSharp.Core.Models.Connection.ToString(System.String)')
   - [ValidParameter(value)](#M-AndcultureCode-CSharp-Core-Models-Connection-ValidParameter-System-String- 'AndcultureCode.CSharp.Core.Models.Connection.ValidParameter(System.String)')
+- [ContentTypes](#T-AndcultureCode-CSharp-Core-Constants-ContentTypes 'AndcultureCode.CSharp.Core.Constants.ContentTypes')
+  - [CSS](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-CSS 'AndcultureCode.CSharp.Core.Constants.ContentTypes.CSS')
+  - [HTML](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-HTML 'AndcultureCode.CSharp.Core.Constants.ContentTypes.HTML')
+  - [JAVASCRIPT](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-JAVASCRIPT 'AndcultureCode.CSharp.Core.Constants.ContentTypes.JAVASCRIPT')
+  - [JSON](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-JSON 'AndcultureCode.CSharp.Core.Constants.ContentTypes.JSON')
+  - [PDF](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-PDF 'AndcultureCode.CSharp.Core.Constants.ContentTypes.PDF')
+  - [XML](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-XML 'AndcultureCode.CSharp.Core.Constants.ContentTypes.XML')
 - [CultureTranslation](#T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation')
   - [FilePath](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-FilePath 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.FilePath')
   - [Key](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Key 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Key')
@@ -58,6 +65,8 @@
   - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)')
   - [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)')
+- [ErrorConstants](#T-AndcultureCode-CSharp-Core-Constants-ErrorConstants 'AndcultureCode.CSharp.Core.Constants.ErrorConstants')
+  - [ERROR_RESOURCE_NOT_FOUND_KEY](#F-AndcultureCode-CSharp-Core-Constants-ErrorConstants-ERROR_RESOURCE_NOT_FOUND_KEY 'AndcultureCode.CSharp.Core.Constants.ErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY')
 - [GuidUtils](#T-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils')
   - [IsInvalid()](#M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsInvalid-System-String- 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils.IsInvalid(System.String)')
   - [IsValid()](#M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsValid-System-String- 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils.IsValid(System.String)')
@@ -183,6 +192,142 @@
 - [Recurrence](#T-AndcultureCode-CSharp-Core-Enumerations-Recurrence 'AndcultureCode.CSharp.Core.Enumerations.Recurrence')
 - [RecurringOption](#T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption 'AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption')
 - [Rfc4646LanguageCodes](#T-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes')
+  - [AF_ZA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AF_ZA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AF_ZA')
+  - [AR_AE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_AE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_AE')
+  - [AR_BH](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_BH 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_BH')
+  - [AR_DZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_DZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_DZ')
+  - [AR_EG](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_EG 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_EG')
+  - [AR_IQ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_IQ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_IQ')
+  - [AR_JO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_JO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_JO')
+  - [AR_KW](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_KW 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_KW')
+  - [AR_LB](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_LB 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_LB')
+  - [AR_LY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_LY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_LY')
+  - [AR_MA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_MA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_MA')
+  - [AR_OM](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_OM 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_OM')
+  - [AR_QA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_QA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_QA')
+  - [AR_SA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_SA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_SA')
+  - [AR_SY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_SY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_SY')
+  - [AR_TN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_TN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_TN')
+  - [AR_YE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_YE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.AR_YE')
+  - [BE_BY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-BE_BY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.BE_BY')
+  - [BG_BG](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-BG_BG 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.BG_BG')
+  - [CA_ES](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CA_ES 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.CA_ES')
+  - [CS_CZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CS_CZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.CS_CZ')
+  - [CY_AZ_AZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CY_AZ_AZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.CY_AZ_AZ')
+  - [CY_SR_SP](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CY_SR_SP 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.CY_SR_SP')
+  - [CY_UZ_UZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CY_UZ_UZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.CY_UZ_UZ')
+  - [DA_DK](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DA_DK 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DA_DK')
+  - [DE_AT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_AT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DE_AT')
+  - [DE_CH](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_CH 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DE_CH')
+  - [DE_DE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_DE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DE_DE')
+  - [DE_LI](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_LI 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DE_LI')
+  - [DE_LU](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_LU 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DE_LU')
+  - [DIV_MV](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DIV_MV 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.DIV_MV')
+  - [EL_GR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EL_GR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EL_GR')
+  - [EN_AU](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_AU 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_AU')
+  - [EN_BZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_BZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_BZ')
+  - [EN_CA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_CA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_CA')
+  - [EN_CB](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_CB 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_CB')
+  - [EN_GB](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_GB 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_GB')
+  - [EN_IE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_IE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_IE')
+  - [EN_JM](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_JM 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_JM')
+  - [EN_NZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_NZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_NZ')
+  - [EN_PH](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_PH 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_PH')
+  - [EN_TT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_TT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_TT')
+  - [EN_US](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_US 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_US')
+  - [EN_ZA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_ZA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_ZA')
+  - [EN_ZW](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_ZW 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EN_ZW')
+  - [ES_AR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_AR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_AR')
+  - [ES_BO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_BO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_BO')
+  - [ES_CL](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_CL 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_CL')
+  - [ES_CO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_CO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_CO')
+  - [ES_CR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_CR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_CR')
+  - [ES_DO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_DO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_DO')
+  - [ES_EC](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_EC 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_EC')
+  - [ES_ES](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_ES 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_ES')
+  - [ES_GT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_GT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_GT')
+  - [ES_HN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_HN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_HN')
+  - [ES_MX](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_MX 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_MX')
+  - [ES_NI](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_NI 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_NI')
+  - [ES_PA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_PA')
+  - [ES_PE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_PE')
+  - [ES_PR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_PR')
+  - [ES_PY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_PY')
+  - [ES_SV](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_SV 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_SV')
+  - [ES_UY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_UY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_UY')
+  - [ES_VE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_VE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ES_VE')
+  - [ET_EE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ET_EE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ET_EE')
+  - [EU_ES](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EU_ES 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.EU_ES')
+  - [FA_IR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FA_IR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FA_IR')
+  - [FI_FI](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FI_FI 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FI_FI')
+  - [FO_FO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FO_FO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FO_FO')
+  - [FR_BE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_BE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FR_BE')
+  - [FR_CA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_CA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FR_CA')
+  - [FR_CH](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_CH 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FR_CH')
+  - [FR_FR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_FR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FR_FR')
+  - [FR_LU](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_LU 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FR_LU')
+  - [FR_MC](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_MC 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.FR_MC')
+  - [GL_ES](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-GL_ES 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.GL_ES')
+  - [GU_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-GU_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.GU_IN')
+  - [HE_IL](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HE_IL 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.HE_IL')
+  - [HI_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HI_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.HI_IN')
+  - [HR_HR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HR_HR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.HR_HR')
+  - [HU_HU](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HU_HU 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.HU_HU')
+  - [HY_AM](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HY_AM 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.HY_AM')
+  - [ID_ID](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ID_ID 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ID_ID')
+  - [IS_IS](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-IS_IS 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.IS_IS')
+  - [IT_CH](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-IT_CH 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.IT_CH')
+  - [IT_IT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-IT_IT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.IT_IT')
+  - [JA_JP](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-JA_JP 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.JA_JP')
+  - [KA_GE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KA_GE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.KA_GE')
+  - [KK_KZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KK_KZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.KK_KZ')
+  - [KN_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KN_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.KN_IN')
+  - [KOK_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KOK_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.KOK_IN')
+  - [KO_KR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KO_KR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.KO_KR')
+  - [KY_KZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KY_KZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.KY_KZ')
+  - [LT_AZ_AZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_AZ_AZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.LT_AZ_AZ')
+  - [LT_LT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_LT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.LT_LT')
+  - [LT_SR_SP](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_SR_SP 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.LT_SR_SP')
+  - [LT_UZ_UZ](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_UZ_UZ 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.LT_UZ_UZ')
+  - [LV_LV](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LV_LV 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.LV_LV')
+  - [MK_MK](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MK_MK 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.MK_MK')
+  - [MN_MN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MN_MN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.MN_MN')
+  - [MR_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MR_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.MR_IN')
+  - [MS_BN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MS_BN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.MS_BN')
+  - [MS_MY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MS_MY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.MS_MY')
+  - [NB_NO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NB_NO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.NB_NO')
+  - [NL_BE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NL_BE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.NL_BE')
+  - [NL_NL](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NL_NL 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.NL_NL')
+  - [NN_NO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NN_NO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.NN_NO')
+  - [PA_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PA_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.PA_IN')
+  - [PL_PL](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PL_PL 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.PL_PL')
+  - [PT_BR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PT_BR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.PT_BR')
+  - [PT_PT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PT_PT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.PT_PT')
+  - [RO_RO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-RO_RO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.RO_RO')
+  - [RU_RU](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-RU_RU 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.RU_RU')
+  - [SA_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SA_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SA_IN')
+  - [SK_SK](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SK_SK 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SK_SK')
+  - [SL_SI](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SL_SI 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SL_SI')
+  - [SQ_AL](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SQ_AL 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SQ_AL')
+  - [SV_FI](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SV_FI 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SV_FI')
+  - [SV_SE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SV_SE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SV_SE')
+  - [SW_KE](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SW_KE 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SW_KE')
+  - [SYR_SY](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SYR_SY 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.SYR_SY')
+  - [TA_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TA_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.TA_IN')
+  - [TE_IN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TE_IN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.TE_IN')
+  - [TH_TH](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TH_TH 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.TH_TH')
+  - [TR_TR](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TR_TR 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.TR_TR')
+  - [TT_RU](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TT_RU 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.TT_RU')
+  - [UK_UA](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-UK_UA 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.UK_UA')
+  - [UR_PK](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-UR_PK 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.UR_PK')
+  - [VI_VN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-VI_VN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.VI_VN')
+  - [ZH_CHS](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_CHS 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_CHS')
+  - [ZH_CHT](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_CHT 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_CHT')
+  - [ZH_CN](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_CN 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_CN')
+  - [ZH_HK](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_HK 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_HK')
+  - [ZH_MO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_MO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_MO')
+  - [ZH_SG](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_SG 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_SG')
+  - [ZH_TW](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_TW 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_TW')
 - [StringExtensions](#T-AndcultureCode-CSharp-Core-Extensions-StringExtensions 'AndcultureCode.CSharp.Core.Extensions.StringExtensions')
   - [LoadTranslations()](#M-AndcultureCode-CSharp-Core-Extensions-StringExtensions-LoadTranslations-System-String,System-String,Newtonsoft-Json-JsonSerializerSettings- 'AndcultureCode.CSharp.Core.Extensions.StringExtensions.LoadTranslations(System.String,System.String,Newtonsoft.Json.JsonSerializerSettings)')
 - [UriUtils](#T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils')
@@ -459,6 +604,61 @@ Determines if the supplied value is a valid param
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-ContentTypes'></a>
+## ContentTypes `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Constants class to hold the various 'Content-Type' headers which indicate the media type
+of the resource.
+See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ContentTypes-CSS'></a>
+### CSS `constants`
+
+##### Summary
+
+Cascading Style Sheets (CSS)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ContentTypes-HTML'></a>
+### HTML `constants`
+
+##### Summary
+
+HyperText Markup Language (HTML)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ContentTypes-JAVASCRIPT'></a>
+### JAVASCRIPT `constants`
+
+##### Summary
+
+JavaScript
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ContentTypes-JSON'></a>
+### JSON `constants`
+
+##### Summary
+
+JavaScript Object Notation (JSON)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ContentTypes-PDF'></a>
+### PDF `constants`
+
+##### Summary
+
+Adobe Portable Document Format (PDF)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ContentTypes-XML'></a>
+### XML `constants`
+
+##### Summary
+
+Extensible Markup Language (XML)
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`
@@ -804,6 +1004,24 @@ Convenience method so joining key value pairs
 | ---- | ---- | ----------- |
 | pair | [System.Collections.Generic.KeyValuePair{System.String,System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyValuePair 'System.Collections.Generic.KeyValuePair{System.String,System.String}') |  |
 | delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-ErrorConstants'></a>
+## ErrorConstants `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Constants class to hold generic error keys and messages.
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ErrorConstants-ERROR_RESOURCE_NOT_FOUND_KEY'></a>
+### ERROR_RESOURCE_NOT_FOUND_KEY `constants`
+
+##### Summary
+
+Error key for when a resource/object cannot be located (soft-deleted, does not exist, etc.)
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils'></a>
 ## GuidUtils `type`
@@ -2382,6 +2600,10 @@ Name of the provider
 
 AndcultureCode.CSharp.Core.Constants
 
+##### Summary
+
+Constants class to hold identifiers for a queue concept
+
 <a name='F-AndcultureCode-CSharp-Core-Constants-Queue-ALL'></a>
 ### ALL `constants`
 
@@ -2430,6 +2652,958 @@ AndcultureCode.CSharp.Core.Constants
 
 RFC-4646 Language Codes
 See https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(v=cs.20)?redirectedfrom=MSDN
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AF_ZA'></a>
+### AF_ZA `constants`
+
+##### Summary
+
+Afrikaans - South Africa
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_AE'></a>
+### AR_AE `constants`
+
+##### Summary
+
+Arabic - United Arab Emirates
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_BH'></a>
+### AR_BH `constants`
+
+##### Summary
+
+Arabic - Bahrain
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_DZ'></a>
+### AR_DZ `constants`
+
+##### Summary
+
+Arabic - Algeria
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_EG'></a>
+### AR_EG `constants`
+
+##### Summary
+
+Arabic - Egypt
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_IQ'></a>
+### AR_IQ `constants`
+
+##### Summary
+
+Arabic - Iraq
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_JO'></a>
+### AR_JO `constants`
+
+##### Summary
+
+Arabic - Jordan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_KW'></a>
+### AR_KW `constants`
+
+##### Summary
+
+Arabic - Kuwait
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_LB'></a>
+### AR_LB `constants`
+
+##### Summary
+
+Arabic - Lebanon
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_LY'></a>
+### AR_LY `constants`
+
+##### Summary
+
+Arabic - Libya
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_MA'></a>
+### AR_MA `constants`
+
+##### Summary
+
+Arabic - Morocco
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_OM'></a>
+### AR_OM `constants`
+
+##### Summary
+
+Arabic - Oman
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_QA'></a>
+### AR_QA `constants`
+
+##### Summary
+
+Arabic - Qatar
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_SA'></a>
+### AR_SA `constants`
+
+##### Summary
+
+Arabic - Saudi Arabia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_SY'></a>
+### AR_SY `constants`
+
+##### Summary
+
+Arabic - Syria
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_TN'></a>
+### AR_TN `constants`
+
+##### Summary
+
+Arabic - Tunisia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-AR_YE'></a>
+### AR_YE `constants`
+
+##### Summary
+
+Arabic - Yemen
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-BE_BY'></a>
+### BE_BY `constants`
+
+##### Summary
+
+Belarusian - Belarus
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-BG_BG'></a>
+### BG_BG `constants`
+
+##### Summary
+
+Bulgarian - Bulgaria
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CA_ES'></a>
+### CA_ES `constants`
+
+##### Summary
+
+Catalan - Catalan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CS_CZ'></a>
+### CS_CZ `constants`
+
+##### Summary
+
+Czech - Czech Republic
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CY_AZ_AZ'></a>
+### CY_AZ_AZ `constants`
+
+##### Summary
+
+Azeri (Cyrillic) - Azerbaijan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CY_SR_SP'></a>
+### CY_SR_SP `constants`
+
+##### Summary
+
+Serbian (Cyrillic) - Serbia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-CY_UZ_UZ'></a>
+### CY_UZ_UZ `constants`
+
+##### Summary
+
+Uzbek (Cyrillic) - Uzbekistan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DA_DK'></a>
+### DA_DK `constants`
+
+##### Summary
+
+Danish - Denmark
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_AT'></a>
+### DE_AT `constants`
+
+##### Summary
+
+German - Austria
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_CH'></a>
+### DE_CH `constants`
+
+##### Summary
+
+German - Switzerland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_DE'></a>
+### DE_DE `constants`
+
+##### Summary
+
+German - Germany
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_LI'></a>
+### DE_LI `constants`
+
+##### Summary
+
+German - Liechtenstein
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DE_LU'></a>
+### DE_LU `constants`
+
+##### Summary
+
+German - Luxembourg
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-DIV_MV'></a>
+### DIV_MV `constants`
+
+##### Summary
+
+Dhivehi - Maldives
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EL_GR'></a>
+### EL_GR `constants`
+
+##### Summary
+
+Greek - Greece
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_AU'></a>
+### EN_AU `constants`
+
+##### Summary
+
+English - Australia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_BZ'></a>
+### EN_BZ `constants`
+
+##### Summary
+
+English - Belize
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_CA'></a>
+### EN_CA `constants`
+
+##### Summary
+
+English - Canada
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_CB'></a>
+### EN_CB `constants`
+
+##### Summary
+
+English - Caribbean
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_GB'></a>
+### EN_GB `constants`
+
+##### Summary
+
+English - United Kingdom
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_IE'></a>
+### EN_IE `constants`
+
+##### Summary
+
+English - Ireland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_JM'></a>
+### EN_JM `constants`
+
+##### Summary
+
+English - Jamaica
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_NZ'></a>
+### EN_NZ `constants`
+
+##### Summary
+
+English - New Zealand
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_PH'></a>
+### EN_PH `constants`
+
+##### Summary
+
+English - Philippines
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_TT'></a>
+### EN_TT `constants`
+
+##### Summary
+
+English - Trinidad and Tobago
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_US'></a>
+### EN_US `constants`
+
+##### Summary
+
+English - United States
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_ZA'></a>
+### EN_ZA `constants`
+
+##### Summary
+
+English - South Africa
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EN_ZW'></a>
+### EN_ZW `constants`
+
+##### Summary
+
+English - Zimbabwe
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_AR'></a>
+### ES_AR `constants`
+
+##### Summary
+
+Spanish - Argentina
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_BO'></a>
+### ES_BO `constants`
+
+##### Summary
+
+Spanish - Bolivia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_CL'></a>
+### ES_CL `constants`
+
+##### Summary
+
+Spanish - Chile
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_CO'></a>
+### ES_CO `constants`
+
+##### Summary
+
+Spanish - Colombia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_CR'></a>
+### ES_CR `constants`
+
+##### Summary
+
+Spanish - Costa Rica
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_DO'></a>
+### ES_DO `constants`
+
+##### Summary
+
+Spanish - Dominican Republic
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_EC'></a>
+### ES_EC `constants`
+
+##### Summary
+
+Spanish - Ecuador
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_ES'></a>
+### ES_ES `constants`
+
+##### Summary
+
+Spanish - Spain
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_GT'></a>
+### ES_GT `constants`
+
+##### Summary
+
+Spanish - Guatemala
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_HN'></a>
+### ES_HN `constants`
+
+##### Summary
+
+Spanish - Honduras
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_MX'></a>
+### ES_MX `constants`
+
+##### Summary
+
+Spanish - Mexico
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_NI'></a>
+### ES_NI `constants`
+
+##### Summary
+
+Spanish - Nicaragua
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PA'></a>
+### ES_PA `constants`
+
+##### Summary
+
+Spanish - Panama
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PE'></a>
+### ES_PE `constants`
+
+##### Summary
+
+Spanish - Peru
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PR'></a>
+### ES_PR `constants`
+
+##### Summary
+
+Spanish - Puerto Rico
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_PY'></a>
+### ES_PY `constants`
+
+##### Summary
+
+Spanish - Paraguay
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_SV'></a>
+### ES_SV `constants`
+
+##### Summary
+
+Spanish - El Salvador
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_UY'></a>
+### ES_UY `constants`
+
+##### Summary
+
+Spanish - Uruguay
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ES_VE'></a>
+### ES_VE `constants`
+
+##### Summary
+
+Spanish - Venezuela
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ET_EE'></a>
+### ET_EE `constants`
+
+##### Summary
+
+Estonian - Estonia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-EU_ES'></a>
+### EU_ES `constants`
+
+##### Summary
+
+Basque - Basque
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FA_IR'></a>
+### FA_IR `constants`
+
+##### Summary
+
+Farsi - Iran
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FI_FI'></a>
+### FI_FI `constants`
+
+##### Summary
+
+Finnish - Finland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FO_FO'></a>
+### FO_FO `constants`
+
+##### Summary
+
+Faroese - Faroe Islands
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_BE'></a>
+### FR_BE `constants`
+
+##### Summary
+
+French - Belgium
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_CA'></a>
+### FR_CA `constants`
+
+##### Summary
+
+French - Canada
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_CH'></a>
+### FR_CH `constants`
+
+##### Summary
+
+French - Switzerland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_FR'></a>
+### FR_FR `constants`
+
+##### Summary
+
+French - France
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_LU'></a>
+### FR_LU `constants`
+
+##### Summary
+
+French - Luxembourg
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-FR_MC'></a>
+### FR_MC `constants`
+
+##### Summary
+
+French - Monaco
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-GL_ES'></a>
+### GL_ES `constants`
+
+##### Summary
+
+Galician - Galician
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-GU_IN'></a>
+### GU_IN `constants`
+
+##### Summary
+
+Gujarati - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HE_IL'></a>
+### HE_IL `constants`
+
+##### Summary
+
+Hebrew - Israel
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HI_IN'></a>
+### HI_IN `constants`
+
+##### Summary
+
+Hindi - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HR_HR'></a>
+### HR_HR `constants`
+
+##### Summary
+
+Croatian - Croatia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HU_HU'></a>
+### HU_HU `constants`
+
+##### Summary
+
+Hungarian - Hungary
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-HY_AM'></a>
+### HY_AM `constants`
+
+##### Summary
+
+Armenian - Armenia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ID_ID'></a>
+### ID_ID `constants`
+
+##### Summary
+
+Indonesian - Indonesia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-IS_IS'></a>
+### IS_IS `constants`
+
+##### Summary
+
+Icelandic - Iceland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-IT_CH'></a>
+### IT_CH `constants`
+
+##### Summary
+
+Italian - Switzerland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-IT_IT'></a>
+### IT_IT `constants`
+
+##### Summary
+
+Italian - Italy
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-JA_JP'></a>
+### JA_JP `constants`
+
+##### Summary
+
+Japanese - Japan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KA_GE'></a>
+### KA_GE `constants`
+
+##### Summary
+
+Georgian - Georgia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KK_KZ'></a>
+### KK_KZ `constants`
+
+##### Summary
+
+Kazakh - Kazakhstan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KN_IN'></a>
+### KN_IN `constants`
+
+##### Summary
+
+Kannada - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KOK_IN'></a>
+### KOK_IN `constants`
+
+##### Summary
+
+Konkani - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KO_KR'></a>
+### KO_KR `constants`
+
+##### Summary
+
+Korean - Korea
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-KY_KZ'></a>
+### KY_KZ `constants`
+
+##### Summary
+
+Kyrgyz - Kazakhstan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_AZ_AZ'></a>
+### LT_AZ_AZ `constants`
+
+##### Summary
+
+Azeri (Latin) - Azerbaijan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_LT'></a>
+### LT_LT `constants`
+
+##### Summary
+
+Lithuanian - Lithuania
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_SR_SP'></a>
+### LT_SR_SP `constants`
+
+##### Summary
+
+Serbian (Latin) - Serbia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LT_UZ_UZ'></a>
+### LT_UZ_UZ `constants`
+
+##### Summary
+
+Uzbek (Latin) - Uzbekistan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-LV_LV'></a>
+### LV_LV `constants`
+
+##### Summary
+
+Latvian - Latvia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MK_MK'></a>
+### MK_MK `constants`
+
+##### Summary
+
+Macedonian (FYROM)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MN_MN'></a>
+### MN_MN `constants`
+
+##### Summary
+
+Mongolian - Mongolia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MR_IN'></a>
+### MR_IN `constants`
+
+##### Summary
+
+Marathi - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MS_BN'></a>
+### MS_BN `constants`
+
+##### Summary
+
+Malay - Brunei
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-MS_MY'></a>
+### MS_MY `constants`
+
+##### Summary
+
+Malay - Malaysia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NB_NO'></a>
+### NB_NO `constants`
+
+##### Summary
+
+Norwegian (Bokmål) - Norway
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NL_BE'></a>
+### NL_BE `constants`
+
+##### Summary
+
+Dutch - Belgium
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NL_NL'></a>
+### NL_NL `constants`
+
+##### Summary
+
+Dutch - The Netherlands
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-NN_NO'></a>
+### NN_NO `constants`
+
+##### Summary
+
+Norwegian (Nynorsk) - Norway
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PA_IN'></a>
+### PA_IN `constants`
+
+##### Summary
+
+Punjabi - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PL_PL'></a>
+### PL_PL `constants`
+
+##### Summary
+
+Polish - Poland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PT_BR'></a>
+### PT_BR `constants`
+
+##### Summary
+
+Portuguese - Brazil
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-PT_PT'></a>
+### PT_PT `constants`
+
+##### Summary
+
+Portuguese - Portugal
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-RO_RO'></a>
+### RO_RO `constants`
+
+##### Summary
+
+Romanian - Romania
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-RU_RU'></a>
+### RU_RU `constants`
+
+##### Summary
+
+Russian - Russia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SA_IN'></a>
+### SA_IN `constants`
+
+##### Summary
+
+Sanskrit - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SK_SK'></a>
+### SK_SK `constants`
+
+##### Summary
+
+Slovak - Slovakia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SL_SI'></a>
+### SL_SI `constants`
+
+##### Summary
+
+Slovenian - Slovenia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SQ_AL'></a>
+### SQ_AL `constants`
+
+##### Summary
+
+Albanian - Albania
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SV_FI'></a>
+### SV_FI `constants`
+
+##### Summary
+
+Swedish - Finland
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SV_SE'></a>
+### SV_SE `constants`
+
+##### Summary
+
+Swedish - Sweden
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SW_KE'></a>
+### SW_KE `constants`
+
+##### Summary
+
+Swahili - Kenya
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-SYR_SY'></a>
+### SYR_SY `constants`
+
+##### Summary
+
+Syriac - Syria
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TA_IN'></a>
+### TA_IN `constants`
+
+##### Summary
+
+Tamil - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TE_IN'></a>
+### TE_IN `constants`
+
+##### Summary
+
+Telugu - India
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TH_TH'></a>
+### TH_TH `constants`
+
+##### Summary
+
+Thai - Thailand
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TR_TR'></a>
+### TR_TR `constants`
+
+##### Summary
+
+Turkish - Turkey
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-TT_RU'></a>
+### TT_RU `constants`
+
+##### Summary
+
+Tatar - Russia
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-UK_UA'></a>
+### UK_UA `constants`
+
+##### Summary
+
+Ukrainian - Ukraine
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-UR_PK'></a>
+### UR_PK `constants`
+
+##### Summary
+
+Urdu - Pakistan
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-VI_VN'></a>
+### VI_VN `constants`
+
+##### Summary
+
+Vietnamese - Vietnam
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_CHS'></a>
+### ZH_CHS `constants`
+
+##### Summary
+
+Chinese (Simplified)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_CHT'></a>
+### ZH_CHT `constants`
+
+##### Summary
+
+Chinese (Traditional)
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_CN'></a>
+### ZH_CN `constants`
+
+##### Summary
+
+Chinese - China
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_HK'></a>
+### ZH_HK `constants`
+
+##### Summary
+
+Chinese - Hong Kong SAR
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_MO'></a>
+### ZH_MO `constants`
+
+##### Summary
+
+Chinese - Macau SAR
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_SG'></a>
+### ZH_SG `constants`
+
+##### Summary
+
+Chinese - Singapore
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_TW'></a>
+### ZH_TW `constants`
+
+##### Summary
+
+Chinese - Taiwan
 
 <a name='T-AndcultureCode-CSharp-Core-Extensions-StringExtensions'></a>
 ## StringExtensions `type`
