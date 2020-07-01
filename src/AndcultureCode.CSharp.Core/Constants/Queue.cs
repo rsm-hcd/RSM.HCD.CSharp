@@ -1,5 +1,8 @@
 namespace AndcultureCode.CSharp.Core.Constants
 {
+    /// <summary>
+    /// Constants class to hold identifiers for a queue concept
+    /// </summary>
     public class Queue
     {
         /// <summary>
