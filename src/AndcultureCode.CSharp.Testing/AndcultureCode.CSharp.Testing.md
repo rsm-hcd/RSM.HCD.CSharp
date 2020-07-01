@@ -9,7 +9,11 @@
 - [BaseTest](#T-AndcultureCode-CSharp-Testing-Tests-BaseTest 'AndcultureCode.CSharp.Testing.Tests.BaseTest')
   - [#ctor(output)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#ctor-Xunit-Abstractions-ITestOutputHelper- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#ctor(Xunit.Abstractions.ITestOutputHelper)')
   - [#cctor()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor')
+  - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Result{``0}}[])')
 - [Factory](#T-AndcultureCode-CSharp-Testing-Factories-Factory 'AndcultureCode.CSharp.Testing.Factories.Factory')
+  - [Milliseconds](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds 'AndcultureCode.CSharp.Testing.Factories.Factory.Milliseconds')
+  - [Random](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Random 'AndcultureCode.CSharp.Testing.Factories.Factory.Random')
+  - [UniqueNumber](#P-AndcultureCode-CSharp-Testing-Factories-Factory-UniqueNumber 'AndcultureCode.CSharp.Testing.Factories.Factory.UniqueNumber')
   - [Define()](#M-AndcultureCode-CSharp-Testing-Factories-Factory-Define 'AndcultureCode.CSharp.Testing.Factories.Factory.Define')
 - [FactorySettings](#T-AndcultureCode-CSharp-Testing-Factories-FactorySettings 'AndcultureCode.CSharp.Testing.Factories.FactorySettings')
   - [Debug](#P-AndcultureCode-CSharp-Testing-Factories-FactorySettings-Debug 'AndcultureCode.CSharp.Testing.Factories.FactorySettings.Debug')
@@ -33,8 +37,13 @@
   - [SetupFindAllCommitted\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions-SetupFindAllCommitted``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions.SetupFindAllCommitted``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})')
   - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
 - [IResultMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions')
+  - [ERROR_ERRORS_LIST_IS_NULL_MESSAGE](#F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_ERRORS_LIST_IS_NULL_MESSAGE 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE')
+  - [ShouldHaveBasicError\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveBasicError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveBasicError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
+  - [ShouldHaveErrors(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Boolean},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors(AndcultureCode.CSharp.Core.Interfaces.IResult{System.Boolean},System.Nullable{System.Int32})')
   - [ShouldHaveErrorsFor\`\`1(result,property,exactCount,containedInMessage)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String,System-Nullable{System-Int32},System-String- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String,System.Nullable{System.Int32},System.String)')
+  - [ShouldHaveErrors\`\`1(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Nullable{System.Int32})')
   - [ShouldNotHaveErrorsFor\`\`1(result,property)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String)')
+  - [ShouldNotHaveErrors\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
 
 <a name='T-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest'></a>
 ## BaseIntegrationTest `type`
@@ -123,12 +132,69 @@ Static constructor to set up suite-level actors
 
 This method has no parameters.
 
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Result{``0}}[]-'></a>
+### BuildResult\`\`1(properties) `method`
+
+##### Summary
+
+Factory method for setting properties directly on a new Result. Sets the \`ResultObject\`
+to the default value of T, but can be nested with other factory methods if a specific
+configuration of \`T\` is required.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Action{AndcultureCode.CSharp.Core.Models.Result{\`\`0}}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{AndcultureCode.CSharp.Core.Models.Result{``0}}[]') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
 <a name='T-AndcultureCode-CSharp-Testing-Factories-Factory'></a>
 ## Factory `type`
 
 ##### Namespace
 
 AndcultureCode.CSharp.Testing.Factories
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds'></a>
+### Milliseconds `property`
+
+##### Summary
+
+Returns the current time in unix milliseconds.
+
+ NOTE: Not guaranteed to be unique. If you require a unique value for a factory value,
+ use \`UniqueNumber\` instead.
+
+##### Returns
+
+
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-Random'></a>
+### Random `property`
+
+##### Summary
+
+Returns a new \`Randomizer\` instance for generating random data as factory values.
+
+##### Returns
+
+
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-UniqueNumber'></a>
+### UniqueNumber `property`
+
+##### Summary
+
+Returns a unique number for use in factory values.
 
 <a name='M-AndcultureCode-CSharp-Testing-Factories-Factory-Define'></a>
 ### Define() `method`
@@ -465,6 +531,50 @@ A setup FindAll method on the supplied mocked conductor.
 
 AndcultureCode.CSharp.Testing.Extensions
 
+##### Summary
+
+Extension methods for asserting expected states of the \`IResult\` interface
+
+<a name='F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_ERRORS_LIST_IS_NULL_MESSAGE'></a>
+### ERROR_ERRORS_LIST_IS_NULL_MESSAGE `constants`
+
+##### Summary
+
+Detailed output message to display when expecting errors on a result that has a null \`Errors\` property
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveBasicError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}-'></a>
+### ShouldHaveBasicError\`\`1(result) `method`
+
+##### Summary
+
+Assert result has error for \`BASIC_ERROR_KEY\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Boolean},System-Nullable{System-Int32}-'></a>
+### ShouldHaveErrors(result,exactCount) `method`
+
+##### Summary
+
+Assert that the result has at least one error
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{System.Boolean}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Boolean} 'AndcultureCode.CSharp.Core.Interfaces.IResult{System.Boolean}') | Result under test |
+| exactCount | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | When supplied, asserts the result has this exact number of errors |
+
 <a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String,System-Nullable{System-Int32},System-String-'></a>
 ### ShouldHaveErrorsFor\`\`1(result,property,exactCount,containedInMessage) `method`
 
@@ -476,10 +586,30 @@ Assert that there are errors for the supplied property
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') |  |
-| property | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-| exactCount | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | Exact number of errors with the property. NOT total number of errors |
-| containedInMessage | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Whens supplied, asserts that the property's error message contains this string |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| property | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Key of the error to be asserted against |
+| exactCount | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | When supplied, asserts the exact number of errors with the property. NOT total number of errors |
+| containedInMessage | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | When supplied, asserts that the property's error message contains this string |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Nullable{System-Int32}-'></a>
+### ShouldHaveErrors\`\`1(result,exactCount) `method`
+
+##### Summary
+
+Assert that the result has at least one error
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| exactCount | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | When supplied, asserts the result has this exact number of errors |
 
 ##### Generic Types
 
@@ -498,8 +628,27 @@ Assert that there weren't any errors for the supplied property
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') |  |
-| property | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| property | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Key of the error to be asserted against |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}-'></a>
+### ShouldNotHaveErrors\`\`1(result) `method`
+
+##### Summary
+
+Assert that there are no errors for the given result
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
 
 ##### Generic Types
 
