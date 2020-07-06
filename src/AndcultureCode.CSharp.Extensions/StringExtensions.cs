@@ -33,6 +33,15 @@ namespace AndcultureCode.CSharp.Extensions
         }
 
         /// <summary>
+        /// Determines if the supplied string is not a valid HTTP or HTTPS Url
+        ///
+        /// Uses the native Uri class
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsInvalidHttpUrl(this string source) => !source.IsValidHttpUrl();
+
+        /// <summary>
         /// Determines if the supplied string is an email address
         /// </summary>
         /// <param name="email"></param>
@@ -70,6 +79,28 @@ namespace AndcultureCode.CSharp.Extensions
                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
                 RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
 
+        }
+
+        /// <summary>
+        /// Determines if the supplied string is a valid HTTP or HTTPS url
+        ///
+        /// Uses the native Uri class
+        /// </summary>
+        /// <param name="source"></param>
+        public static bool IsValidHttpUrl(this string source)
+        {
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                return false;
+            }
+
+            var validUriSchemes = new[]
+            {
+                Uri.UriSchemeHttp,
+                Uri.UriSchemeHttps
+            };
+
+            return Uri.TryCreate(source, UriKind.Absolute, out var uriResult) && validUriSchemes.Contains(uriResult.Scheme);
         }
 
         /// <summary>
