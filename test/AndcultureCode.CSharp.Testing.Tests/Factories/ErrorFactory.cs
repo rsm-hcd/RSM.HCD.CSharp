@@ -1,5 +1,6 @@
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Testing.Constants;
+using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
 
 namespace AndcultureCode.CSharp.Testing.Factories
 {
@@ -8,6 +9,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
         #region Constants
 
         public const string BASIC_ERROR = "BASIC_ERROR";
+        public const string RESOURCE_NOT_FOUND_ERROR = CoreErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY;
 
         #endregion Constants
 
@@ -23,6 +25,12 @@ namespace AndcultureCode.CSharp.Testing.Factories
             {
                 Key = ErrorConstants.BASIC_ERROR_KEY,
                 Message = ErrorConstants.BASIC_ERROR_MESSAGE
+            });
+
+            this.DefineFactory(RESOURCE_NOT_FOUND_ERROR, () => new Error
+            {
+                Key = CoreErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY,
+                Message = Random.Words()
             });
         }
     }

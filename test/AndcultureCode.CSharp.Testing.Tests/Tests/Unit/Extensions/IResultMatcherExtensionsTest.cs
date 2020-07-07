@@ -279,5 +279,72 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         }
 
         #endregion ShouldHaveErrorsFor
+
+        #region ShouldHaveResourceNotFoundError
+
+        [Fact]
+        public void ShouldHaveResourceNotFoundError_When_Errors_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<object>((e) => e.Errors = null);
+
+            // Act
+            var ex = Record.Exception(() =>
+            {
+                result.ShouldHaveResourceNotFoundError();
+            });
+
+            // Assert
+            ex.ShouldNotBeNull();
+            ex.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+        }
+
+        [Fact]
+        public void ShouldHaveResourceNotFoundError_When_Errors_Empty_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<object>((e) => e.Errors = new List<IError>());
+
+            // Act & Assert
+            Should.Throw<Exception>(() =>
+            {
+                result.ShouldHaveResourceNotFoundError();
+            });
+        }
+
+        [Fact]
+        public void ShouldHaveResourceNotFoundError_When_Errors_Contains_Other_Keys_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<object>((e) => e.Errors = new List<IError>
+            {
+                Build<Error>()
+            });
+
+            // Act & Assert
+            Should.Throw<Exception>(() =>
+            {
+                result.ShouldHaveResourceNotFoundError();
+            });
+        }
+
+        [Fact]
+        public void ShouldHaveResourceNotFoundError_When_Errors_Contains_ResourceNotFoundKey_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<object>((e) => e.Errors = new List<IError>
+            {
+                Build<Error>(ErrorFactory.RESOURCE_NOT_FOUND_ERROR)
+            });
+
+            // Act & Assert
+            Should.NotThrow(() =>
+            {
+                result.ShouldHaveResourceNotFoundError();
+            });
+        }
+
+
+        #endregion ShouldHaveResourceNotFoundError
     }
 }
