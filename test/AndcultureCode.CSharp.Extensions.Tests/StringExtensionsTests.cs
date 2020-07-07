@@ -78,23 +78,23 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsInValidHttpUrl_With_Invalid_Url_Returns_True()
+        public void IsInValidHttpUrl_With_No_Url_Scheme_Returns_True()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "www.google.com".IsInvalidHttpUrl().ShouldBeTrue();
         }
 
         [Fact]
-        public void IsInValidHttpUrl_With_Valid_Url_Returns_False()
+        public void IsInValidHttpUrl_With_Valid_Url_Scheme_Returns_False()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "http://www.google.com".IsInvalidHttpUrl().ShouldBeFalse();
         }
 
         [Fact]
         public void IsInValidHttpUrl_With_Invalid_Uri_Scheme_Returns_True()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "ftp://www.google.com".IsInvalidHttpUrl().ShouldBeTrue();
         }
 
@@ -151,30 +151,30 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsValidHttpUrl_With_Valid_Url_Returns_True()
+        public void IsValidHttpUrl_With_Valid_Url_Scheme_Returns_True()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "http://www.google.com".IsValidHttpUrl().ShouldBeTrue();
         }
 
         [Fact]
         public void IsValidHttpUrl_With_Https_Url_Returns_True()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "https://www.google.com".IsValidHttpUrl().ShouldBeTrue();
         }
 
         [Fact]
         public void IsValidHttpUrl_With_Incomplete_Url_Returns_False()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "www.google.com".IsValidHttpUrl().ShouldBeFalse();
         }
 
         [Fact]
         public void IsValidHttpUrl_With_Invalid_Url_Scheme_Returns_False()
         {
-            // arrange & act & assert
+            // Arrange & Act & Assert
             "ftp://www.google.com".IsValidHttpUrl().ShouldBeFalse();
         }
 
