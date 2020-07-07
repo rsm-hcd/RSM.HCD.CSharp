@@ -151,14 +151,14 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void IsValidHttpUrl_With_Valid_Url_Scheme_Returns_True()
+        public void IsValidHttpUrl_With_Http_Url_Scheme_Returns_True()
         {
             // Arrange & Act & Assert
             "http://www.google.com".IsValidHttpUrl().ShouldBeTrue();
         }
 
         [Fact]
-        public void IsValidHttpUrl_With_Https_Url_Returns_True()
+        public void IsValidHttpUrl_With_Https_Url_Scheme_Returns_True()
         {
             // Arrange & Act & Assert
             "https://www.google.com".IsValidHttpUrl().ShouldBeTrue();
