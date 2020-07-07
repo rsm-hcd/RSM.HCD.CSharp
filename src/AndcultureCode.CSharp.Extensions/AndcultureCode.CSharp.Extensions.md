@@ -65,7 +65,9 @@
   - [Shuffle\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.Shuffle``1(System.Linq.IQueryable{``0})')
 - [StringExtensions](#T-AndcultureCode-CSharp-Extensions-StringExtensions 'AndcultureCode.CSharp.Extensions.StringExtensions')
   - [AsIndentedJson(str)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-AsIndentedJson-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.AsIndentedJson(System.String)')
+  - [IsInvalidHttpUrl(source)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsInvalidHttpUrl-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsInvalidHttpUrl(System.String)')
   - [IsValidEmail(email)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidEmail-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsValidEmail(System.String)')
+  - [IsValidHttpUrl(source)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidHttpUrl-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsValidHttpUrl(System.String)')
   - [ToBoolean()](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToBoolean-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToBoolean(System.String)')
   - [ToEnumerable\`\`1(input,separator)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToEnumerable``1-System-String,System-Char- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToEnumerable``1(System.String,System.Char)')
   - [ToInt(number,defaultValue)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToInt-System-String,System-Int32- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToInt(System.String,System.Int32)')
@@ -1025,6 +1027,25 @@ Formats string for pretty printing of a JSON string
 | ---- | ---- | ----------- |
 | str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
+<a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsInvalidHttpUrl-System-String-'></a>
+### IsInvalidHttpUrl(source) `method`
+
+##### Summary
+
+Determines if the supplied string is not a valid HTTP or HTTPS Url
+
+ Uses the native Uri class
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidEmail-System-String-'></a>
 ### IsValidEmail(email) `method`
 
@@ -1037,6 +1058,21 @@ Determines if the supplied string is an email address
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | email | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidHttpUrl-System-String-'></a>
+### IsValidHttpUrl(source) `method`
+
+##### Summary
+
+Determines if the supplied string is a valid HTTP or HTTPS url
+
+ Uses the native Uri class
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-ToBoolean-System-String-'></a>
 ### ToBoolean() `method`
