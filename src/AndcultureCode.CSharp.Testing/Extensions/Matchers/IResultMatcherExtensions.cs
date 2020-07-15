@@ -3,6 +3,7 @@ using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Testing.Constants;
 using Shouldly;
+using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
 
 namespace AndcultureCode.CSharp.Testing.Extensions
 {
@@ -99,6 +100,14 @@ namespace AndcultureCode.CSharp.Testing.Extensions
                 result.Errors.Where(e => e.Key == property).Count().ShouldBe((int)exactCount);
             }
         }
+
+        /// <summary>
+        /// Assert error exists for `ERROR_RESOURCE_NOT_FOUND_KEY`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <typeparam name="T"></typeparam>
+        public static void ShouldHaveResourceNotFoundError<T>(this IResult<T> result) =>
+            result.ShouldHaveErrorsFor(CoreErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY);
 
         /// <summary>
         /// Assert that there are no errors for the given result

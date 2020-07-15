@@ -42,6 +42,7 @@
   - [ShouldHaveErrors(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Boolean},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors(AndcultureCode.CSharp.Core.Interfaces.IResult{System.Boolean},System.Nullable{System.Int32})')
   - [ShouldHaveErrorsFor\`\`1(result,property,exactCount,containedInMessage)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String,System-Nullable{System-Int32},System-String- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String,System.Nullable{System.Int32},System.String)')
   - [ShouldHaveErrors\`\`1(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Nullable{System.Int32})')
+  - [ShouldHaveResourceNotFoundError\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResourceNotFoundError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResourceNotFoundError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
   - [ShouldNotHaveErrorsFor\`\`1(result,property)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String)')
   - [ShouldNotHaveErrors\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
 
@@ -610,6 +611,25 @@ Assert that the result has at least one error
 | ---- | ---- | ----------- |
 | result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
 | exactCount | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | When supplied, asserts the result has this exact number of errors |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResourceNotFoundError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}-'></a>
+### ShouldHaveResourceNotFoundError\`\`1(result) `method`
+
+##### Summary
+
+Assert error exists for \`ERROR_RESOURCE_NOT_FOUND_KEY\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
 
 ##### Generic Types
 
