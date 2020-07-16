@@ -16,5 +16,5 @@ notifications:
 script:
 - dotnet restore
 - dotnet build
-# - dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0
+- dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0
 solution: All.sln
