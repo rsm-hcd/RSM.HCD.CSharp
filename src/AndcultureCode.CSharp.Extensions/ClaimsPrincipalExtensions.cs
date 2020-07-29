@@ -70,7 +70,7 @@ namespace AndcultureCode.CSharp.Extensions
             }
 
             var roleIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.ROLE_ID);
-            if (roleIdClaim == null)
+            if (string.IsNullOrWhiteSpace(roleIdClaim?.Value))
             {
                 return null;
             }
@@ -116,7 +116,7 @@ namespace AndcultureCode.CSharp.Extensions
             }
 
             var userIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.USER_ID);
-            if (userIdClaim == null)
+            if (string.IsNullOrWhiteSpace(userIdClaim?.Value))
             {
                 return null;
             }
@@ -142,7 +142,7 @@ namespace AndcultureCode.CSharp.Extensions
             }
 
             var userLoginIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.USER_LOGIN_ID);
-            if (userLoginIdClaim == null || string.IsNullOrWhiteSpace(userLoginIdClaim.Value))
+            if (string.IsNullOrWhiteSpace(userLoginIdClaim?.Value))
             {
                 return null;
             }

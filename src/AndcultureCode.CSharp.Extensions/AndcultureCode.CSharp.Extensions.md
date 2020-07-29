@@ -255,7 +255,6 @@ Retrieves user's id by way of identity claims
 ##### Summary
 
 Retrieves user's UserLoginId from identity claims.
-TODO: Abstract to AndcultureCode.CSharp.Extensions
 
 ##### Returns
 
