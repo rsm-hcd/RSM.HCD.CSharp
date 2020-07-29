@@ -391,5 +391,71 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         #endregion UserId
+
+        #region UserLoginId
+
+        [Fact]
+        public void UserLoginId_Given_Principal_IsNull_Throws_Exception()
+        {
+            Should.Throw<ArgumentNullException>(() =>
+            {
+                ClaimsPrincipalExtensions.UserLoginId(principal: null);
+            });
+        }
+
+        [Fact]
+        public void UserLoginId_When_Unauthenticated_Returns_Null()
+        {
+            // Arrange
+            var principal = Mock.Of<ClaimsPrincipal>(e => e.Identity.IsAuthenticated == false);
+
+            // Act & Assert
+            principal.UserLoginId().ShouldBeNull();
+        }
+
+        [Fact]
+        public void UserLoginId_When_Claims_IsNull_Returns_Null()
+        {
+            // Arrange
+            var principal = Mock.Of<ClaimsPrincipal>(e =>
+                e.Identity.IsAuthenticated == true &&
+                e.Claims == null // <-----------------
+            );
+
+            // Act & Assert
+            principal.UserLoginId().ShouldBeNull();
+        }
+
+        [Fact]
+        public void UserLoginId_When_Claims_Empty_Returns_Null()
+        {
+            // Arrange
+            var principal = Mock.Of<ClaimsPrincipal>(e =>
+                e.Identity.IsAuthenticated == true &&
+                e.Claims == new List<Claim>() // <------------------
+            );
+
+            // Act & Assert
+            principal.UserLoginId().ShouldBeNull();
+        }
+
+        [Fact]
+        public void UserLoginId_When_Claims_Contains_Id_Claim_Returns_Value()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var principal = Mock.Of<ClaimsPrincipal>(e =>
+                e.Identity.IsAuthenticated == true &&
+                e.Claims == new List<Claim>
+                {
+                    new Claim(ApiClaimTypes.USER_LOGIN_ID, expected.ToString()) // <--------------
+                }
+            );
+
+            // Act & Assert
+            principal.UserLoginId().ShouldBe(expected);
+        }
+
+        #endregion UserLoginId
     }
 }
