@@ -31,5 +31,10 @@ namespace AndcultureCode.CSharp.Core.Constants
         /// Current User Id
         /// </summary>
         public const string USER_ID = "UserId";
+
+        /// <summary>
+        /// Current User Login Id
+        /// </summary>
+        public const string USER_LOGIN_ID = "UserLoginId";
     }
 }

@@ -9,6 +9,7 @@
   - [ROLE_IDS](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_IDS')
   - [ROLE_TYPE](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_TYPE')
   - [USER_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_ID')
+  - [USER_LOGIN_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_LOGIN_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_LOGIN_ID')
 - [ClaimsPrincipalExtensions](#T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions')
   - [IsAuthenticated(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsAuthenticated-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsAuthenticated(System.Security.Claims.ClaimsPrincipal)')
   - [IsSuperAdmin(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsSuperAdmin-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsSuperAdmin(System.Security.Claims.ClaimsPrincipal)')
@@ -16,6 +17,7 @@
   - [RoleId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleId(System.Security.Claims.ClaimsPrincipal)')
   - [RoleIds(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-RoleIds-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.RoleIds(System.Security.Claims.ClaimsPrincipal)')
   - [UserId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.UserId(System.Security.Claims.ClaimsPrincipal)')
+  - [UserLoginId(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserLoginId-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.UserLoginId(System.Security.Claims.ClaimsPrincipal)')
 - [DateExtensions](#T-AndcultureCode-CSharp-Extensions-DateExtensions 'AndcultureCode.CSharp.Extensions.DateExtensions')
   - [AtEndOfDay(date)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-AtEndOfDay-System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.AtEndOfDay(System.DateTimeOffset)')
   - [AtMidnight(date)](#M-AndcultureCode-CSharp-Extensions-DateExtensions-AtMidnight-System-DateTimeOffset- 'AndcultureCode.CSharp.Extensions.DateExtensions.AtMidnight(System.DateTimeOffset)')
@@ -127,6 +129,13 @@ Active Role Type
 
 Current User Id
 
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_LOGIN_ID'></a>
+### USER_LOGIN_ID `constants`
+
+##### Summary
+
+Current User Login Id
+
 <a name='T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions'></a>
 ## ClaimsPrincipalExtensions `type`
 
@@ -229,6 +238,23 @@ Retrieves user's role ids by way of their identity claims
 ##### Summary
 
 Retrieves user's id by way of identity claims
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| principal | [System.Security.Claims.ClaimsPrincipal](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Security.Claims.ClaimsPrincipal 'System.Security.Claims.ClaimsPrincipal') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-UserLoginId-System-Security-Claims-ClaimsPrincipal-'></a>
+### UserLoginId(principal) `method`
+
+##### Summary
+
+Retrieves user's UserLoginId from identity claims.
 
 ##### Returns
 

@@ -70,7 +70,7 @@ namespace AndcultureCode.CSharp.Extensions
             }
 
             var roleIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.ROLE_ID);
-            if (roleIdClaim == null)
+            if (string.IsNullOrWhiteSpace(roleIdClaim?.Value))
             {
                 return null;
             }
@@ -116,12 +116,38 @@ namespace AndcultureCode.CSharp.Extensions
             }
 
             var userIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.USER_ID);
-            if (userIdClaim == null)
+            if (string.IsNullOrWhiteSpace(userIdClaim?.Value))
             {
                 return null;
             }
 
             return Convert.ToInt64(userIdClaim.Value);
+        }
+
+        /// <summary>
+        /// Retrieves user's UserLoginId from identity claims.
+        /// </summary>
+        /// <param name="principal"></param>
+        /// <returns></returns>
+        public static long? UserLoginId(this ClaimsPrincipal principal)
+        {
+            if (principal == null)
+            {
+                throw new ArgumentNullException(nameof(principal));
+            }
+
+            if (principal.IsUnauthenticated())
+            {
+                return null;
+            }
+
+            var userLoginIdClaim = principal.Claims?.FirstOrDefault(c => c.Type == ApiClaimTypes.USER_LOGIN_ID);
+            if (string.IsNullOrWhiteSpace(userLoginIdClaim?.Value))
+            {
+                return null;
+            }
+
+            return Convert.ToInt64(userLoginIdClaim.Value);
         }
     }
 }
