@@ -126,7 +126,6 @@ namespace AndcultureCode.CSharp.Extensions
 
         /// <summary>
         /// Retrieves user's UserLoginId from identity claims.
-        /// TODO: Abstract to AndcultureCode.CSharp.Extensions
         /// </summary>
         /// <param name="principal"></param>
         /// <returns></returns>
