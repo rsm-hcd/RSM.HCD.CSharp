@@ -87,11 +87,9 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
                 );
             });
 
-
-
         [Fact]
-        public void GenerateSalt_When_Default_Arguments_Returns_Salt() =>
-            EncryptionUtils.GenerateSalt().ShouldNotBeEmpty();
+        public void GenerateSalt_When_Default_Arguments_Returns_Base64_Salt() =>
+            EncryptionUtils.GenerateSalt().ShouldBeBase64();
 
         #endregion GenerateSalt
     }

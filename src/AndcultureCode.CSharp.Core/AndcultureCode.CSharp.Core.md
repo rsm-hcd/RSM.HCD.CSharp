@@ -704,7 +704,7 @@ Cookie authentication settings
 ##### Summary
 
 Where to redirect user when access is denied.
-Only applies to tranditional web view auth flows.
+Only applies to traditional web view auth flows.
 
 <a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-AuthenticationScheme'></a>
 ### AuthenticationScheme `property`
@@ -733,7 +733,7 @@ Is cookie authentication currently enabled?
 ##### Summary
 
 Where to redirect the user when they are required to login.
-Only applies to tranditional web view auth flows.
+Only applies to traditional web view auth flows.
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`

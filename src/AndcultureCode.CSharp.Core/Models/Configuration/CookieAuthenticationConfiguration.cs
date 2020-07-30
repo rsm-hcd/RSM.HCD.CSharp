@@ -7,7 +7,7 @@
     {
         /// <summary>
         /// Where to redirect user when access is denied.
-        /// Only applies to tranditional web view auth flows.
+        /// Only applies to traditional web view auth flows.
         /// </summary>
         public string AccessDeniedPath { get; set; }
 
@@ -28,7 +28,7 @@
 
         /// <summary>
         /// Where to redirect the user when they are required to login.
-        /// Only applies to tranditional web view auth flows.
+        /// Only applies to traditional web view auth flows.
         /// </summary>
         public string LoginPath { get; set; }
     }
