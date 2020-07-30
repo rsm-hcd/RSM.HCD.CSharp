@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 namespace AndcultureCode.CSharp.Core.Utilities.Security
 {
     /// <summary>
-    /// TODO: Abstract to AndcultureCode.CSharp.Core before PR
+    /// Commonly used encryption related functionality
     /// </summary>
     public static class EncryptionUtils
     {
