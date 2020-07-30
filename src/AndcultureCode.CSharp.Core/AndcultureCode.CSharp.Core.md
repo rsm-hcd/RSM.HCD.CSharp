@@ -36,6 +36,12 @@
   - [JSON](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-JSON 'AndcultureCode.CSharp.Core.Constants.ContentTypes.JSON')
   - [PDF](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-PDF 'AndcultureCode.CSharp.Core.Constants.ContentTypes.PDF')
   - [XML](#F-AndcultureCode-CSharp-Core-Constants-ContentTypes-XML 'AndcultureCode.CSharp.Core.Constants.ContentTypes.XML')
+- [CookieAuthenticationConfiguration](#T-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration')
+  - [AccessDeniedPath](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-AccessDeniedPath 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.AccessDeniedPath')
+  - [AuthenticationScheme](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-AuthenticationScheme 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.AuthenticationScheme')
+  - [CookieName](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-CookieName 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.CookieName')
+  - [IsEnabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.IsEnabled')
+  - [LoginPath](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-LoginPath 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.LoginPath')
 - [CultureTranslation](#T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation')
   - [FilePath](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-FilePath 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.FilePath')
   - [Key](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Key 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Key')
@@ -60,16 +66,23 @@
   - [TestEmailEnvironmentToken](#P-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-TestEmailEnvironmentToken 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.TestEmailEnvironmentToken')
   - [GetDeveloperEmailAddress(environmentName)](#M-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-GetDeveloperEmailAddress-System-String- 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.GetDeveloperEmailAddress(System.String)')
   - [GetRecipientEmailOrTest(email,environmentName,isProduction)](#M-AndcultureCode-CSharp-Core-Models-Mail-EmailSettings-GetRecipientEmailOrTest-System-String,System-String,System-Boolean- 'AndcultureCode.CSharp.Core.Models.Mail.EmailSettings.GetRecipientEmailOrTest(System.String,System.String,System.Boolean)')
+- [EncryptionUtils](#T-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils 'AndcultureCode.CSharp.Core.Utilities.Security.EncryptionUtils')
+  - [GenerateHash(value,salt,iterationCount,bits)](#M-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils-GenerateHash-System-String,System-String,System-Int32,System-UInt16- 'AndcultureCode.CSharp.Core.Utilities.Security.EncryptionUtils.GenerateHash(System.String,System.String,System.Int32,System.UInt16)')
+  - [GenerateSalt(bits)](#M-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils-GenerateSalt-System-UInt16- 'AndcultureCode.CSharp.Core.Utilities.Security.EncryptionUtils.GenerateSalt(System.UInt16)')
 - [EnumerableExtensions](#T-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)')
   - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)')
   - [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)')
+- [EnvironmentConstants](#T-AndcultureCode-CSharpCore-Constants-EnvironmentConstants 'AndcultureCode.CSharpCore.Constants.EnvironmentConstants')
+  - [TESTING](#F-AndcultureCode-CSharpCore-Constants-EnvironmentConstants-TESTING 'AndcultureCode.CSharpCore.Constants.EnvironmentConstants.TESTING')
 - [ErrorConstants](#T-AndcultureCode-CSharp-Core-Constants-ErrorConstants 'AndcultureCode.CSharp.Core.Constants.ErrorConstants')
   - [ERROR_RESOURCE_NOT_FOUND_KEY](#F-AndcultureCode-CSharp-Core-Constants-ErrorConstants-ERROR_RESOURCE_NOT_FOUND_KEY 'AndcultureCode.CSharp.Core.Constants.ErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY')
 - [GuidUtils](#T-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils')
   - [IsInvalid()](#M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsInvalid-System-String- 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils.IsInvalid(System.String)')
   - [IsValid()](#M-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils-IsValid-System-String- 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils.IsValid(System.String)')
+- [HttpHeaders](#T-AndcultureCode-CSharp-Core-Constants-HttpHeaders 'AndcultureCode.CSharp.Core.Constants.HttpHeaders')
+  - [X_FORWARDED_FOR](#F-AndcultureCode-CSharp-Core-Constants-HttpHeaders-X_FORWARDED_FOR 'AndcultureCode.CSharp.Core.Constants.HttpHeaders.X_FORWARDED_FOR')
 - [HttpVerb](#T-AndcultureCode-CSharp-Core-Enumerations-HttpVerb 'AndcultureCode.CSharp.Core.Enumerations.HttpVerb')
 - [IAndcultureCodeWebHostBuilder](#T-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder')
   - [Args](#P-AndcultureCode-CSharp-Core-Interfaces-Hosting-IAndcultureCodeWebHostBuilder-Args 'AndcultureCode.CSharp.Core.Interfaces.Hosting.IAndcultureCodeWebHostBuilder.Args')
@@ -328,6 +341,20 @@
   - [ZH_MO](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_MO 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_MO')
   - [ZH_SG](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_SG 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_SG')
   - [ZH_TW](#F-AndcultureCode-CSharp-Core-Constants-Rfc4646LanguageCodes-ZH_TW 'AndcultureCode.CSharp.Core.Constants.Rfc4646LanguageCodes.ZH_TW')
+- [SeedsBase\`1](#T-AndcultureCode-CSharp-Core-SeedsBase`1 'AndcultureCode.CSharp.Core.SeedsBase`1')
+  - [#ctor(serviceProvider,isDevelopment)](#M-AndcultureCode-CSharp-Core-SeedsBase`1-#ctor-System-IServiceProvider,System-Boolean- 'AndcultureCode.CSharp.Core.SeedsBase`1.#ctor(System.IServiceProvider,System.Boolean)')
+  - [Context](#P-AndcultureCode-CSharp-Core-SeedsBase`1-Context 'AndcultureCode.CSharp.Core.SeedsBase`1.Context')
+  - [IsDevelopment](#P-AndcultureCode-CSharp-Core-SeedsBase`1-IsDevelopment 'AndcultureCode.CSharp.Core.SeedsBase`1.IsDevelopment')
+  - [Logger](#P-AndcultureCode-CSharp-Core-SeedsBase`1-Logger 'AndcultureCode.CSharp.Core.SeedsBase`1.Logger')
+  - [ServiceProvider](#P-AndcultureCode-CSharp-Core-SeedsBase`1-ServiceProvider 'AndcultureCode.CSharp.Core.SeedsBase`1.ServiceProvider')
+  - [Create()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-Create 'AndcultureCode.CSharp.Core.SeedsBase`1.Create')
+  - [CreateBase()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-CreateBase 'AndcultureCode.CSharp.Core.SeedsBase`1.CreateBase')
+  - [CreateDevelopment()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-CreateDevelopment 'AndcultureCode.CSharp.Core.SeedsBase`1.CreateDevelopment')
+  - [GetDep\`\`1()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-GetDep``1 'AndcultureCode.CSharp.Core.SeedsBase`1.GetDep``1')
+  - [LogEnd\`\`1()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-LogEnd``1 'AndcultureCode.CSharp.Core.SeedsBase`1.LogEnd``1')
+  - [LogStart\`\`1()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-LogStart``1 'AndcultureCode.CSharp.Core.SeedsBase`1.LogStart``1')
+- [SeedsConfiguration](#T-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration 'AndcultureCode.CSharp.Business.Core.Models.Configuration.SeedsConfiguration')
+  - [DefaultUserPassword](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration-DefaultUserPassword 'AndcultureCode.CSharp.Business.Core.Models.Configuration.SeedsConfiguration.DefaultUserPassword')
 - [StringExtensions](#T-AndcultureCode-CSharp-Core-Extensions-StringExtensions 'AndcultureCode.CSharp.Core.Extensions.StringExtensions')
   - [LoadTranslations()](#M-AndcultureCode-CSharp-Core-Extensions-StringExtensions-LoadTranslations-System-String,System-String,Newtonsoft-Json-JsonSerializerSettings- 'AndcultureCode.CSharp.Core.Extensions.StringExtensions.LoadTranslations(System.String,System.String,Newtonsoft.Json.JsonSerializerSettings)')
 - [UriUtils](#T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils')
@@ -660,6 +687,54 @@ Adobe Portable Document Format (PDF)
 
 Extensible Markup Language (XML)
 
+<a name='T-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration'></a>
+## CookieAuthenticationConfiguration `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Business.Core.Models.Configuration
+
+##### Summary
+
+Cookie authentication settings
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-AccessDeniedPath'></a>
+### AccessDeniedPath `property`
+
+##### Summary
+
+Where to redirect user when access is denied.
+Only applies to traditional web view auth flows.
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-AuthenticationScheme'></a>
+### AuthenticationScheme `property`
+
+##### Summary
+
+Authentication scheme identifier
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-CookieName'></a>
+### CookieName `property`
+
+##### Summary
+
+Cookie identifier
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-IsEnabled'></a>
+### IsEnabled `property`
+
+##### Summary
+
+Is cookie authentication currently enabled?
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-LoginPath'></a>
+### LoginPath `property`
+
+##### Summary
+
+Where to redirect the user when they are required to login.
+Only applies to traditional web view auth flows.
+
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`
 
@@ -925,6 +1000,54 @@ Returns a list containing the appropriate address. Returns an empty list if we'r
 | environmentName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | isProduction | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
 
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils'></a>
+## EncryptionUtils `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Utilities.Security
+
+##### Summary
+
+Commonly used encryption related functionality
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils-GenerateHash-System-String,System-String,System-Int32,System-UInt16-'></a>
+### GenerateHash(value,salt,iterationCount,bits) `method`
+
+##### Summary
+
+Generates a hash from the given value and salt
+
+##### Returns
+
+Base 64 encoded string of the hash
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Value to hash |
+| salt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Salt to use (base 64 string) |
+| iterationCount | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Iterations to perform (at least 10000) |
+| bits | [System.UInt16](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.UInt16 'System.UInt16') | Size of the hash in bits |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils-GenerateSalt-System-UInt16-'></a>
+### GenerateSalt(bits) `method`
+
+##### Summary
+
+Generate a salt to be used for hashing
+
+##### Returns
+
+Base 64 encoded string of the salt
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| bits | [System.UInt16](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.UInt16 'System.UInt16') | Size of the salt to generate in bits (must be a multiple of 8) |
+
 <a name='T-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions'></a>
 ## EnumerableExtensions `type`
 
@@ -1005,6 +1128,24 @@ Convenience method so joining key value pairs
 | pair | [System.Collections.Generic.KeyValuePair{System.String,System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyValuePair 'System.Collections.Generic.KeyValuePair{System.String,System.String}') |  |
 | delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
+<a name='T-AndcultureCode-CSharpCore-Constants-EnvironmentConstants'></a>
+## EnvironmentConstants `type`
+
+##### Namespace
+
+AndcultureCode.CSharpCore.Constants
+
+##### Summary
+
+Common environment related values
+
+<a name='F-AndcultureCode-CSharpCore-Constants-EnvironmentConstants-TESTING'></a>
+### TESTING `constants`
+
+##### Summary
+
+Testing environment identifier
+
 <a name='T-AndcultureCode-CSharp-Core-Constants-ErrorConstants'></a>
 ## ErrorConstants `type`
 
@@ -1055,6 +1196,25 @@ Is the supplied string an valid GUID?
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-HttpHeaders'></a>
+## HttpHeaders `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Common HTTP headers
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-HttpHeaders-X_FORWARDED_FOR'></a>
+### X_FORWARDED_FOR `constants`
+
+##### Summary
+
+Originating IP Address
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
 
 <a name='T-AndcultureCode-CSharp-Core-Enumerations-HttpVerb'></a>
 ## HttpVerb `type`
@@ -3604,6 +3764,161 @@ Chinese - Singapore
 ##### Summary
 
 Chinese - Taiwan
+
+<a name='T-AndcultureCode-CSharp-Core-SeedsBase`1'></a>
+## SeedsBase\`1 `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core
+
+##### Summary
+
+Shared functionality for configuring application data seeding
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-#ctor-System-IServiceProvider,System-Boolean-'></a>
+### #ctor(serviceProvider,isDevelopment) `constructor`
+
+##### Summary
+
+Shared functionality for configuring application data seeding
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| serviceProvider | [System.IServiceProvider](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IServiceProvider 'System.IServiceProvider') | Application's dependency registry |
+| isDevelopment | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Should development seeds be run? |
+
+<a name='P-AndcultureCode-CSharp-Core-SeedsBase`1-Context'></a>
+### Context `property`
+
+##### Summary
+
+Application's data context
+
+<a name='P-AndcultureCode-CSharp-Core-SeedsBase`1-IsDevelopment'></a>
+### IsDevelopment `property`
+
+##### Summary
+
+Should development seeds be run?
+
+<a name='P-AndcultureCode-CSharp-Core-SeedsBase`1-Logger'></a>
+### Logger `property`
+
+##### Summary
+
+Logger instance
+
+<a name='P-AndcultureCode-CSharp-Core-SeedsBase`1-ServiceProvider'></a>
+### ServiceProvider `property`
+
+##### Summary
+
+Application's dependency registry
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-Create'></a>
+### Create() `method`
+
+##### Summary
+
+Primary entry point to initialize seed data
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-CreateBase'></a>
+### CreateBase() `method`
+
+##### Summary
+
+Seed data that is required for the application to run, regardless of the environment
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-CreateDevelopment'></a>
+### CreateDevelopment() `method`
+
+##### Summary
+
+Seed data that is only for development environments (ie. test accounts, use cases)
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-GetDep``1'></a>
+### GetDep\`\`1() `method`
+
+##### Summary
+
+Retrieve dependency from registry
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-LogEnd``1'></a>
+### LogEnd\`\`1() `method`
+
+##### Summary
+
+Signify completion of seeding a particular type
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-LogStart``1'></a>
+### LogStart\`\`1() `method`
+
+##### Summary
+
+Signify start to seeding a particular type
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='T-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration'></a>
+## SeedsConfiguration `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Business.Core.Models.Configuration
+
+##### Summary
+
+Configuration values around data seeding
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration-DefaultUserPassword'></a>
+### DefaultUserPassword `property`
+
+##### Summary
+
+Password to use when new development/test users are seeded
 
 <a name='T-AndcultureCode-CSharp-Core-Extensions-StringExtensions'></a>
 ## StringExtensions `type`
