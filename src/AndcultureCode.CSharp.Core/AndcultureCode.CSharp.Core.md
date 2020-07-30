@@ -1009,7 +1009,7 @@ AndcultureCode.CSharp.Core.Utilities.Security
 
 ##### Summary
 
-TODO: Abstract to AndcultureCode.CSharp.Core before PR
+Commonly used encryption related functionality
 
 <a name='M-AndcultureCode-CSharp-Core-Utilities-Security-EncryptionUtils-GenerateHash-System-String,System-String,System-Int32,System-UInt16-'></a>
 ### GenerateHash(value,salt,iterationCount,bits) `method`

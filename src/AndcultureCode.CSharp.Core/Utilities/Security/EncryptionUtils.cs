@@ -28,15 +28,13 @@ namespace AndcultureCode.CSharp.Core.Utilities.Security
 
             ValidateBits(bits, 256);
 
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 iterationCount: iterationCount,
                 numBytesRequested: bits / 8,
                 password: value,
                 prf: KeyDerivationPrf.HMACSHA1,
                 salt: Convert.FromBase64String(salt)
             ));
-
-            return hashed;
         }
 
         /// <summary>
