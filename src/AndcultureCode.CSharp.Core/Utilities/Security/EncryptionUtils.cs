@@ -9,6 +9,8 @@ namespace AndcultureCode.CSharp.Core.Utilities.Security
     /// </summary>
     public static class EncryptionUtils
     {
+        #region Public Methods
+
         /// <summary>
         /// Generates a hash from the given value and salt
         /// </summary>
@@ -24,15 +26,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Security
                 throw new ArgumentOutOfRangeException("Iteration count must be at least 10000");
             }
 
-            if (bits < 256)
-            {
-                throw new ArgumentOutOfRangeException("Bits must be at least 256");
-            }
-
-            if (bits % 8 > 0)
-            {
-                throw new ArgumentException("Bits must be a multiple of 8");
-            }
+            ValidateBits(bits, 256);
 
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 iterationCount: iterationCount,
@@ -52,15 +46,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Security
         /// <returns>Base 64 encoded string of the salt</returns>
         public static string GenerateSalt(ushort bits = 128)
         {
-            if (bits < 128)
-            {
-                throw new ArgumentOutOfRangeException("Bits must be at least 128");
-            }
-
-            if (bits % 8 > 0)
-            {
-                throw new ArgumentException("Bits must be a multiple of 8");
-            }
+            ValidateBits(bits, 128);
 
             var salt = new byte[bits / 8];
             using (var rng = RandomNumberGenerator.Create())
@@ -70,5 +56,24 @@ namespace AndcultureCode.CSharp.Core.Utilities.Security
 
             return Convert.ToBase64String(salt);
         }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private static void ValidateBits(ushort bits, ushort minimum)
+        {
+            if (bits < minimum)
+            {
+                throw new ArgumentOutOfRangeException($"Bits must be at least {minimum}");
+            }
+
+            if (bits % 8 > 0)
+            {
+                throw new ArgumentException("Bits must be a multiple of 8");
+            }
+        }
+
+        #endregion Private Methods
     }
 }
