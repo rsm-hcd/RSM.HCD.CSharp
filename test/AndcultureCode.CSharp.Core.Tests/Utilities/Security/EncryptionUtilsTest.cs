@@ -5,6 +5,7 @@ using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
+using AndcultureCode.CSharp.Core.Tests.Matchers;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
 {
@@ -52,7 +53,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
             });
 
         [Fact]
-        public void GenerateHash_When_Default_Arguments_Returns_Hash()
+        public void GenerateHash_When_Default_Arguments_Returns_Base64_Hash()
         {
             // Arrange & Act
             var result = EncryptionUtils.GenerateHash(
@@ -61,7 +62,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
             );
 
             // Assert
-            result.ShouldNotBeEmpty();
+            result.ShouldBeBase64();
         }
 
         #endregion GenerateHash
