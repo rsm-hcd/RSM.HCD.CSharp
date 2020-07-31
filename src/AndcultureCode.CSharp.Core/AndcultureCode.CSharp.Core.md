@@ -42,6 +42,8 @@
   - [CookieName](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-CookieName 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.CookieName')
   - [IsEnabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.IsEnabled')
   - [LoginPath](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-CookieAuthenticationConfiguration-LoginPath 'AndcultureCode.CSharp.Business.Core.Models.Configuration.CookieAuthenticationConfiguration.LoginPath')
+- [CoreConfiguration](#T-AndcultureCode-CSharp-Core-Constants-CoreConfiguration 'AndcultureCode.CSharp.Core.Constants.CoreConfiguration')
+  - [SEEDS](#F-AndcultureCode-CSharp-Core-Constants-CoreConfiguration-SEEDS 'AndcultureCode.CSharp.Core.Constants.CoreConfiguration.SEEDS')
 - [CultureTranslation](#T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation')
   - [FilePath](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-FilePath 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.FilePath')
   - [Key](#P-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation-Key 'AndcultureCode.CSharp.Core.Models.Localization.CultureTranslation.Key')
@@ -163,6 +165,11 @@
   - [HasErrors](#P-AndcultureCode-CSharp-Core-Interfaces-IResult`1-HasErrors 'AndcultureCode.CSharp.Core.Interfaces.IResult`1.HasErrors')
   - [NextLinkParams](#P-AndcultureCode-CSharp-Core-Interfaces-IResult`1-NextLinkParams 'AndcultureCode.CSharp.Core.Interfaces.IResult`1.NextLinkParams')
   - [ResultObject](#P-AndcultureCode-CSharp-Core-Interfaces-IResult`1-ResultObject 'AndcultureCode.CSharp.Core.Interfaces.IResult`1.ResultObject')
+- [IRole](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IRole 'AndcultureCode.CSharp.Core.Interfaces.Entity.IRole')
+  - [Description](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IRole-Description 'AndcultureCode.CSharp.Core.Interfaces.Entity.IRole.Description')
+  - [Name](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IRole-Name 'AndcultureCode.CSharp.Core.Interfaces.Entity.IRole.Name')
+- [IServiceCollectionExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IServiceCollectionExtensions 'AndcultureCode.CSharp.Core.Extensions.IServiceCollectionExtensions')
+  - [AddSeeding(services,configuration)](#M-AndcultureCode-CSharp-Core-Extensions-IServiceCollectionExtensions-AddSeeding-Microsoft-Extensions-DependencyInjection-IServiceCollection,Microsoft-Extensions-Configuration-IConfigurationRoot- 'AndcultureCode.CSharp.Core.Extensions.IServiceCollectionExtensions.AddSeeding(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfigurationRoot)')
 - [IStorageProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider')
   - [Copy(srcRelativeProviderPath,srcStorageContainer,destRelativeProviderPath,destStorageContainer,srcPathToCopy,destPathToCopy)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-Copy-System-String,System-String,System-String,System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.Copy(System.String,System.String,System.String,System.String,System.String,System.String)')
   - [Download(relativeProviderPath,storageContainer,pathToSave)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-Download-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.Download(System.String,System.String,System.String)')
@@ -171,6 +178,30 @@
   - [GetRemoteAccessDetails(relativeProviderPath,storageContainer,expiryTime,httpVerb,contentType)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider-GetRemoteAccessDetails-System-String,System-String,System-Nullable{System-DateTimeOffset},AndcultureCode-CSharp-Core-Enumerations-HttpVerb,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Storage.IStorageProvider.GetRemoteAccessDetails(System.String,System.String,System.Nullable{System.DateTimeOffset},AndcultureCode.CSharp.Core.Enumerations.HttpVerb,System.String)')
 - [IStringLocalizerExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IStringLocalizerExtensions 'AndcultureCode.CSharp.Core.Extensions.IStringLocalizerExtensions')
   - [Default(localizer,key,arguments)](#M-AndcultureCode-CSharp-Core-Extensions-IStringLocalizerExtensions-Default-Microsoft-Extensions-Localization-IStringLocalizer,System-String,System-Object[]- 'AndcultureCode.CSharp.Core.Extensions.IStringLocalizerExtensions.Default(Microsoft.Extensions.Localization.IStringLocalizer,System.String,System.Object[])')
+- [IUser](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser')
+  - [Email](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-Email 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.Email')
+  - [FirstName](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-FirstName 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.FirstName')
+  - [IsSuperAdmin](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-IsSuperAdmin 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.IsSuperAdmin')
+  - [LastName](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-LastName 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.LastName')
+  - [PasswordHash](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-PasswordHash 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.PasswordHash')
+  - [Salt](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-Salt 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.Salt')
+  - [SecurityStamp](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-SecurityStamp 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.SecurityStamp')
+  - [UserName](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-UserName 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUser.UserName')
+- [IUserLogin](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin')
+  - [FailedAttemptCount](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-FailedAttemptCount 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.FailedAttemptCount')
+  - [Ip](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-Ip 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.Ip')
+  - [IsSuccessful](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-IsSuccessful 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.IsSuccessful')
+  - [Role](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-Role 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.Role')
+  - [RoleId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-RoleId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.RoleId')
+  - [ServerName](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-ServerName 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.ServerName')
+  - [User](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-User 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.User')
+  - [UserAgent](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserAgent 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserAgent')
+  - [UserId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserId')
+- [IUserRole](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole')
+  - [Role](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-Role 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole.Role')
+  - [RoleId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-RoleId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole.RoleId')
+  - [User](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-User 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole.User')
+  - [UserId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-UserId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole.UserId')
 - [IWorkerProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider')
   - [Delete(id)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-Delete-System-String- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.Delete(System.String)')
   - [DeletedCount()](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider-DeletedCount 'AndcultureCode.CSharp.Core.Interfaces.Providers.Worker.IWorkerProvider.DeletedCount')
@@ -734,6 +765,24 @@ Is cookie authentication currently enabled?
 
 Where to redirect the user when they are required to login.
 Only applies to traditional web view auth flows.
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-CoreConfiguration'></a>
+## CoreConfiguration `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Identifiers used for IConfigurationRoot configured sections and values
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-CoreConfiguration-SEEDS'></a>
+### SEEDS `constants`
+
+##### Summary
+
+General data seeding section
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Localization-CultureTranslation'></a>
 ## CultureTranslation `type`
@@ -2290,6 +2339,62 @@ List of key value pairs to be used request the very next related Result
 
 Actual resulting value from the request
 
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IRole'></a>
+## IRole `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Entity
+
+##### Summary
+
+Unique reponsibility (typically of a user) in the system
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IRole-Description'></a>
+### Description `property`
+
+##### Summary
+
+Brief description around the purpose of this role in the system
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IRole-Name'></a>
+### Name `property`
+
+##### Summary
+
+Human readable name for this role in the system
+///
+
+<a name='T-AndcultureCode-CSharp-Core-Extensions-IServiceCollectionExtensions'></a>
+## IServiceCollectionExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Extensions
+
+##### Summary
+
+Convenience extensions for registering/configuring core actors
+///
+
+<a name='M-AndcultureCode-CSharp-Core-Extensions-IServiceCollectionExtensions-AddSeeding-Microsoft-Extensions-DependencyInjection-IServiceCollection,Microsoft-Extensions-Configuration-IConfigurationRoot-'></a>
+### AddSeeding(services,configuration) `method`
+
+##### Summary
+
+Configure application to support data seeding
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| services | [Microsoft.Extensions.DependencyInjection.IServiceCollection](#T-Microsoft-Extensions-DependencyInjection-IServiceCollection 'Microsoft.Extensions.DependencyInjection.IServiceCollection') |  |
+| configuration | [Microsoft.Extensions.Configuration.IConfigurationRoot](#T-Microsoft-Extensions-Configuration-IConfigurationRoot 'Microsoft.Extensions.Configuration.IConfigurationRoot') |  |
+
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Storage-IStorageProvider'></a>
 ## IStorageProvider `type`
 
@@ -2411,6 +2516,185 @@ Retrieve given translation for default configured culture
 | localizer | [Microsoft.Extensions.Localization.IStringLocalizer](#T-Microsoft-Extensions-Localization-IStringLocalizer 'Microsoft.Extensions.Localization.IStringLocalizer') |  |
 | key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | arguments | [System.Object[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object[] 'System.Object[]') | The values with which to format the translated error message |
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser'></a>
+## IUser `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Entity
+
+##### Summary
+
+Descriptor of individual person's in the system
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-Email'></a>
+### Email `property`
+
+##### Summary
+
+Email address
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-FirstName'></a>
+### FirstName `property`
+
+##### Summary
+
+First name
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-IsSuperAdmin'></a>
+### IsSuperAdmin `property`
+
+##### Summary
+
+Highest level user permission.
+Has access to all capabilities in the system.
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-LastName'></a>
+### LastName `property`
+
+##### Summary
+
+Last name
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-PasswordHash'></a>
+### PasswordHash `property`
+
+##### Summary
+
+Encrypted base64 password
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-Salt'></a>
+### Salt `property`
+
+##### Summary
+
+Base64 salt
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-SecurityStamp'></a>
+### SecurityStamp `property`
+
+##### Summary
+
+Idenitifer used to compare changes to this "identity".
+Can take on many forms depending upon the application (ie. datetime, guid)
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-UserName'></a>
+### UserName `property`
+
+##### Summary
+
+Alias/handle in the system
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin'></a>
+## IUserLogin `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Entity
+
+##### Summary
+
+Captures a given user's attempts at both
+successfully and unsuccessfully log into the system.
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-FailedAttemptCount'></a>
+### FailedAttemptCount `property`
+
+##### Summary
+
+Number of consecutive failed attempts at logging in
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-Ip'></a>
+### Ip `property`
+
+##### Summary
+
+IP address of requests to authenticate this user
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-IsSuccessful'></a>
+### IsSuccessful `property`
+
+##### Summary
+
+Is this a successful login request?
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-Role'></a>
+### Role `property`
+
+##### Summary
+
+Reference to IRole that has Id equal to RoleId
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-RoleId'></a>
+### RoleId `property`
+
+##### Summary
+
+Unique identifier of associated IRole
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-ServerName'></a>
+### ServerName `property`
+
+##### Summary
+
+Identifier (hopefully unique) of server handling the request
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-User'></a>
+### User `property`
+
+##### Summary
+
+Reference to IUser that has an Id equal to UserId
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserAgent'></a>
+### UserAgent `property`
+
+##### Summary
+
+Requesting party's user-agent
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserId'></a>
+### UserId `property`
+
+##### Summary
+
+Unique identifier of associated IUser
+
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole'></a>
+## IUserRole `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Entity
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-Role'></a>
+### Role `property`
+
+##### Summary
+
+Reference to IRole that has Id equal to RoleId
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-RoleId'></a>
+### RoleId `property`
+
+##### Summary
+
+Unique identifier of associated IRole
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-User'></a>
+### User `property`
+
+##### Summary
+
+Reference to IUser that has an Id equal to UserId
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-UserId'></a>
+### UserId `property`
+
+##### Summary
+
+Unique identifier of associated IUser
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Worker-IWorkerProvider'></a>
 ## IWorkerProvider `type`
