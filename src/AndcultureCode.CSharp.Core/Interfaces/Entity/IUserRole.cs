@@ -1,5 +1,8 @@
 namespace AndcultureCode.CSharp.Core.Interfaces.Entity
 {
+    /// <summary>
+    /// Associates a role to a user
+    /// </summary>
     public interface IUserRole
     {
         #region Properties

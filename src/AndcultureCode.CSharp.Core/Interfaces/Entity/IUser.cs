@@ -1,7 +1,7 @@
 namespace AndcultureCode.CSharp.Core.Interfaces.Entity
 {
     /// <summary>
-    /// Descriptor of individual person's in the system
+    /// Descriptor of an individual in the system
     /// </summary>
     public interface IUser : IEntity
     {

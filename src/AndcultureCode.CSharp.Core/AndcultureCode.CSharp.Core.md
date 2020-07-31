@@ -2526,7 +2526,7 @@ AndcultureCode.CSharp.Core.Interfaces.Entity
 
 ##### Summary
 
-Descriptor of individual person's in the system
+Descriptor of an individual in the system
 
 <a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUser-Email'></a>
 ### Email `property`
@@ -2667,6 +2667,10 @@ Unique identifier of associated IUser
 ##### Namespace
 
 AndcultureCode.CSharp.Core.Interfaces.Entity
+
+##### Summary
+
+Associates a role to a user
 
 <a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-Role'></a>
 ### Role `property`
