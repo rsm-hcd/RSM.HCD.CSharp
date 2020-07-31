@@ -8,19 +8,9 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         #region Properties
 
         /// <summary>
-        /// Reference to IRole that has Id equal to RoleId
-        /// </summary>
-        IRole Role { get; set; }
-
-        /// <summary>
         /// Unique identifier of associated IRole
         /// </summary>
         long RoleId { get; set; }
-
-        /// <summary>
-        /// Reference to IUser that has an Id equal to UserId
-        /// </summary>
-        IUser User { get; set; }
 
         /// <summary>
         /// Unique identifier of associated IUser
@@ -29,5 +19,19 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         long UserId { get; set; }
 
         #endregion Properties
+
+        #region Navigation Properties
+
+        /// <summary>
+        /// Reference to IRole that has Id equal to RoleId
+        /// </summary>
+        IRole Role { get; set; }
+
+        /// <summary>
+        /// Reference to IUser that has an Id equal to UserId
+        /// </summary>
+        IUser User { get; set; }
+
+        #endregion Navigation Properties
     }
 }

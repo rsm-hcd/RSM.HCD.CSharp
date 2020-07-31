@@ -6,6 +6,8 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
     /// </summary>
     public interface IUserLogin : IEntity
     {
+        #region Properties
+
         /// <summary>
         /// Number of consecutive failed attempts at logging in
         /// </summary>
@@ -20,11 +22,6 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         /// Is this a successful login request?
         /// </summary>
         bool IsSuccessful { get; set; }
-
-        /// <summary>
-        /// Reference to IRole that has Id equal to RoleId
-        /// </summary>
-        IRole Role { get; set; }
 
         /// <summary>
         /// Unique identifier of associated IRole
@@ -42,14 +39,25 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         string UserAgent { get; set; }
 
         /// <summary>
-        /// Reference to IUser that has an Id equal to UserId
-        /// </summary>
-        IUser User { get; set; }
-
-        /// <summary>
         /// Unique identifier of associated IUser
         /// </summary>
         /// <value></value>
         long? UserId { get; set; }
+
+        #endregion Properties
+
+        #region Navigation Properties
+
+        /// <summary>
+        /// Reference to IRole that has Id equal to RoleId
+        /// </summary>
+        IRole Role { get; set; }
+
+        /// <summary>
+        /// Reference to IUser that has an Id equal to UserId
+        /// </summary>
+        IUser User { get; set; }
+
+        #endregion Navigation Properties
     }
 }
