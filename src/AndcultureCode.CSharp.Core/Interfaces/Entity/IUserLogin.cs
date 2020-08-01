@@ -51,12 +51,12 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         /// <summary>
         /// Reference to IRole that has Id equal to RoleId
         /// </summary>
-        IRole Role { get; set; }
+        IRole Role { get; }
 
         /// <summary>
         /// Reference to IUser that has an Id equal to UserId
         /// </summary>
-        IUser User { get; set; }
+        IUser User { get; }
 
         #endregion Navigation Properties
     }
