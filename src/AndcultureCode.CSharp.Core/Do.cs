@@ -3,16 +3,21 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Diagnostics;
 
 namespace AndcultureCode.CSharp.Core
 {
+    /// <summary>
+    /// TODO: Backfill tests https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/15
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Do<T>
     {
         #region Properties
 
-        public Exception            Exception { get; set; }
-        public IResult<T>           Result    { get; private set; }
-        public Func<IResult<T>, T>  Workload  { get; }
+        public Exception Exception { get; set; }
+        public IResult<T> Result { get; private set; }
+        public Func<IResult<T>, T> Workload { get; }
 
         #endregion Properties
 
@@ -21,7 +26,7 @@ namespace AndcultureCode.CSharp.Core
 
         public Do(Func<IResult<T>, T> workload)
         {
-            Result   = new Result<T>();
+            Result = new Result<T>();
             Workload = workload;
         }
 
@@ -78,7 +83,7 @@ namespace AndcultureCode.CSharp.Core
         /// <param name="logger">Logger to use when an unhandled exception is caught</param>
         /// <param name="workload"></param>
         /// <returns></returns>
-        public static Do<T> Try(ILogger logger, Func<IResult<T>,T> workload)
+        public static Do<T> Try(ILogger logger, Func<IResult<T>, T> workload)
         {
             var d = new Do<T>(workload);
 
@@ -98,7 +103,7 @@ namespace AndcultureCode.CSharp.Core
             return d;
         }
 
-        public static Do<T> Try(Func<IResult<T>,T> workload) => Try(logger: null, workload: workload);
+        public static Do<T> Try(Func<IResult<T>, T> workload) => Try(logger: null, workload: workload);
 
         /// <summary>
         /// Tries to run the given workload the indicated number of times
@@ -108,7 +113,7 @@ namespace AndcultureCode.CSharp.Core
         /// <param name="retry">Number of retries that should be performed. If value is
         ///                     zero, will not retry</param>
         /// <returns></returns>
-        public static Do<T> Try(ILogger logger, uint retry, Func<IResult<T>,T> workload)
+        public static Do<T> Try(ILogger logger, uint retry, Func<IResult<T>, T> workload)
         {
             if (retry == 0)
             {
@@ -129,6 +134,47 @@ namespace AndcultureCode.CSharp.Core
 
                 attempts++;
             }
+
+            return d;
+        }
+
+        /// <summary>
+        /// Extension of 'Try' that will automatically log before, during and after seeding logic
+        /// </summary>
+        /// <param name="seeds">Logger to use when an unhandled exception is caught</param>
+        /// <param name="workload"></param>
+        /// <param name="seedName">Manually supply name of seed. By default, the invoking function name is used.</param>
+        /// <returns></returns>
+        public static Do<T> TrySeed<TContext>(
+            SeedsBase<TContext> seeds,
+            Func<IResult<T>, T> workload,
+            string seedName = null
+        )
+            where TContext : class, IContext
+        {
+            var d = new Do<T>(workload);
+
+            // Default seedName to invoking method name
+            if (string.IsNullOrWhiteSpace(seedName))
+            {
+                seedName = new StackTrace().GetFrame(1).GetMethod().Name;
+            }
+
+            try
+            {
+                seeds.LogStart(seedName);
+                d.Result.ResultObject = workload(d.Result);
+            }
+            catch (Exception ex)
+            {
+                d.Exception = ex;
+
+                // Add the exception to the IResult object by default
+                d.Result.AddExceptionError(ex.GetType().Name, ex);
+                seeds.Log(seedName, d.Result.ListErrors());
+            }
+
+            seeds.LogEnd(seedName);
 
             return d;
         }
