@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharpCore.Constants
+namespace AndcultureCode.CSharp.Core.Constants
 {
     /// <summary>
     /// Common environment related values

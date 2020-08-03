@@ -76,8 +76,8 @@
   - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)')
   - [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-EnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- 'AndcultureCode.CSharp.Core.Extensions.EnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)')
-- [EnvironmentConstants](#T-AndcultureCode-CSharpCore-Constants-EnvironmentConstants 'AndcultureCode.CSharpCore.Constants.EnvironmentConstants')
-  - [TESTING](#F-AndcultureCode-CSharpCore-Constants-EnvironmentConstants-TESTING 'AndcultureCode.CSharpCore.Constants.EnvironmentConstants.TESTING')
+- [EnvironmentConstants](#T-AndcultureCode-CSharp-Core-Constants-EnvironmentConstants 'AndcultureCode.CSharp.Core.Constants.EnvironmentConstants')
+  - [TESTING](#F-AndcultureCode-CSharp-Core-Constants-EnvironmentConstants-TESTING 'AndcultureCode.CSharp.Core.Constants.EnvironmentConstants.TESTING')
 - [ErrorConstants](#T-AndcultureCode-CSharp-Core-Constants-ErrorConstants 'AndcultureCode.CSharp.Core.Constants.ErrorConstants')
   - [ERROR_RESOURCE_NOT_FOUND_KEY](#F-AndcultureCode-CSharp-Core-Constants-ErrorConstants-ERROR_RESOURCE_NOT_FOUND_KEY 'AndcultureCode.CSharp.Core.Constants.ErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY')
 - [GuidUtils](#T-AndcultureCode-CSharp-Core-Utilities-Security-GuidUtils 'AndcultureCode.CSharp.Core.Utilities.Security.GuidUtils')
@@ -1177,18 +1177,18 @@ Convenience method so joining key value pairs
 | pair | [System.Collections.Generic.KeyValuePair{System.String,System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyValuePair 'System.Collections.Generic.KeyValuePair{System.String,System.String}') |  |
 | delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
-<a name='T-AndcultureCode-CSharpCore-Constants-EnvironmentConstants'></a>
+<a name='T-AndcultureCode-CSharp-Core-Constants-EnvironmentConstants'></a>
 ## EnvironmentConstants `type`
 
 ##### Namespace
 
-AndcultureCode.CSharpCore.Constants
+AndcultureCode.CSharp.Core.Constants
 
 ##### Summary
 
 Common environment related values
 
-<a name='F-AndcultureCode-CSharpCore-Constants-EnvironmentConstants-TESTING'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-EnvironmentConstants-TESTING'></a>
 ### TESTING `constants`
 
 ##### Summary
