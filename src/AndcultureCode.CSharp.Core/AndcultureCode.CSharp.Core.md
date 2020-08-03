@@ -55,6 +55,7 @@
   - [Finally(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Finally-Microsoft-Extensions-Logging-ILogger,System-Action{AndcultureCode-CSharp-Core-Interfaces-IResult{`0}}- 'AndcultureCode.CSharp.Core.Do`1.Finally(Microsoft.Extensions.Logging.ILogger,System.Action{AndcultureCode.CSharp.Core.Interfaces.IResult{`0}})')
   - [Try(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
   - [Try(logger,workload,retry)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-UInt32,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.UInt32,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
+  - [TrySeed\`\`1(seeds,workload,seedName)](#M-AndcultureCode-CSharp-Core-Do`1-TrySeed``1-AndcultureCode-CSharp-Core-SeedsBase{``0},System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0},System-String- 'AndcultureCode.CSharp.Core.Do`1.TrySeed``1(AndcultureCode.CSharp.Core.SeedsBase{``0},System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0},System.String)')
 - [EmailProviderBase](#T-AndcultureCode-CSharp-Core-Providers-EmailProviderBase 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase')
   - [Send(message)](#M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase.Send(MimeKit.MimeMessage)')
   - [SendLater(message)](#M-AndcultureCode-CSharp-Core-Providers-EmailProviderBase-SendLater-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Providers.EmailProviderBase.SendLater(MimeKit.MimeMessage)')
@@ -855,6 +856,16 @@ IE has a max of 2083
 
 AndcultureCode.CSharp.Core
 
+##### Summary
+
+TODO: Backfill tests https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/15
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
 <a name='M-AndcultureCode-CSharp-Core-Do`1-Finally-Microsoft-Extensions-Logging-ILogger,System-Action{AndcultureCode-CSharp-Core-Interfaces-IResult{`0}}-'></a>
 ### Finally(logger,workload) `method`
 
@@ -910,6 +921,25 @@ Tries to run the given workload the indicated number of times
 | workload | [System.UInt32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.UInt32 'System.UInt32') | Workload to be performed |
 | retry | [System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{\`0},\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0}') | Number of retries that should be performed. If value is
         zero, will not retry |
+
+<a name='M-AndcultureCode-CSharp-Core-Do`1-TrySeed``1-AndcultureCode-CSharp-Core-SeedsBase{``0},System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0},System-String-'></a>
+### TrySeed\`\`1(seeds,workload,seedName) `method`
+
+##### Summary
+
+Extension of 'Try' that will automatically log before, during and after seeding logic
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| seeds | [AndcultureCode.CSharp.Core.SeedsBase{\`\`0}](#T-AndcultureCode-CSharp-Core-SeedsBase{``0} 'AndcultureCode.CSharp.Core.SeedsBase{``0}') | Logger to use when an unhandled exception is caught |
+| workload | [System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{\`0},\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0}') |  |
+| seedName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Manually supply name of seed. By default, the invoking function name is used. |
 
 <a name='T-AndcultureCode-CSharp-Core-Providers-EmailProviderBase'></a>
 ## EmailProviderBase `type`
