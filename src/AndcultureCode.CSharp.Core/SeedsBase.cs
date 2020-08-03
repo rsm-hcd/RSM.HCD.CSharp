@@ -74,16 +74,41 @@ namespace AndcultureCode.CSharp.Core
         public T GetDep<T>() where T : class => ServiceProvider.GetService(typeof(T)) as T;
 
         /// <summary>
+        /// Log message for seed name
+        /// </summary>
+        /// <param name="seedName"></param>
+        /// <param name="message"></param>
+        public void Log(string seedName, string message) => Logger.LogInformation($"[Seed:{seedName}] {message}");
+
+        /// <summary>
+        /// Log message for seed type
+        /// </summary>
+        /// <param name="message"></param>
+        public void Log<T>(string message) where T : class => Log(typeof(T).Name, message);
+
+        /// <summary>
         /// Signify completion of seeding a particular type
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public void LogEnd<T>() where T : class => Logger.LogInformation($"Finished seeding `{typeof(T).Name}`");
+        public void LogEnd<T>() where T : class => LogEnd(typeof(T).Name);
+
+        /// <summary>
+        /// Signify completion of seeding a particular seed name
+        /// </summary>
+        /// <param name="seedName"></param>
+        public void LogEnd(string seedName) => Log(seedName, "Finished");
 
         /// <summary>
         /// Signify start to seeding a particular type
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public void LogStart<T>() where T : class => Logger.LogInformation($"Seeding `{typeof(T).Name}`");
+        public void LogStart<T>() where T : class => LogStart(typeof(T).Name);
+
+        /// <summary>
+        /// Signify start to seeding a particular seed name
+        /// </summary>
+        /// <param name="seedName"></param>
+        public void LogStart(string seedName) => Log(seedName, "Started");
 
         #endregion Public Methods
 

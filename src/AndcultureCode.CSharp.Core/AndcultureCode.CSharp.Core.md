@@ -382,8 +382,12 @@
   - [CreateBase()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-CreateBase 'AndcultureCode.CSharp.Core.SeedsBase`1.CreateBase')
   - [CreateDevelopment()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-CreateDevelopment 'AndcultureCode.CSharp.Core.SeedsBase`1.CreateDevelopment')
   - [GetDep\`\`1()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-GetDep``1 'AndcultureCode.CSharp.Core.SeedsBase`1.GetDep``1')
+  - [Log(seedName,message)](#M-AndcultureCode-CSharp-Core-SeedsBase`1-Log-System-String,System-String- 'AndcultureCode.CSharp.Core.SeedsBase`1.Log(System.String,System.String)')
+  - [LogEnd(seedName)](#M-AndcultureCode-CSharp-Core-SeedsBase`1-LogEnd-System-String- 'AndcultureCode.CSharp.Core.SeedsBase`1.LogEnd(System.String)')
   - [LogEnd\`\`1()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-LogEnd``1 'AndcultureCode.CSharp.Core.SeedsBase`1.LogEnd``1')
+  - [LogStart(seedName)](#M-AndcultureCode-CSharp-Core-SeedsBase`1-LogStart-System-String- 'AndcultureCode.CSharp.Core.SeedsBase`1.LogStart(System.String)')
   - [LogStart\`\`1()](#M-AndcultureCode-CSharp-Core-SeedsBase`1-LogStart``1 'AndcultureCode.CSharp.Core.SeedsBase`1.LogStart``1')
+  - [Log\`\`1(message)](#M-AndcultureCode-CSharp-Core-SeedsBase`1-Log``1-System-String- 'AndcultureCode.CSharp.Core.SeedsBase`1.Log``1(System.String)')
 - [SeedsConfiguration](#T-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration 'AndcultureCode.CSharp.Business.Core.Models.Configuration.SeedsConfiguration')
   - [DefaultUserPassword](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration-DefaultUserPassword 'AndcultureCode.CSharp.Business.Core.Models.Configuration.SeedsConfiguration.DefaultUserPassword')
 - [StringExtensions](#T-AndcultureCode-CSharp-Core-Extensions-StringExtensions 'AndcultureCode.CSharp.Core.Extensions.StringExtensions')
@@ -4156,6 +4160,33 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-Log-System-String,System-String-'></a>
+### Log(seedName,message) `method`
+
+##### Summary
+
+Log message for seed name
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| seedName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| message | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-LogEnd-System-String-'></a>
+### LogEnd(seedName) `method`
+
+##### Summary
+
+Signify completion of seeding a particular seed name
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| seedName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-LogEnd``1'></a>
 ### LogEnd\`\`1() `method`
 
@@ -4173,6 +4204,19 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-LogStart-System-String-'></a>
+### LogStart(seedName) `method`
+
+##### Summary
+
+Signify start to seeding a particular seed name
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| seedName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-LogStart``1'></a>
 ### LogStart\`\`1() `method`
 
@@ -4189,6 +4233,19 @@ This method has no parameters.
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-SeedsBase`1-Log``1-System-String-'></a>
+### Log\`\`1(message) `method`
+
+##### Summary
+
+Log message for seed type
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='T-AndcultureCode-CSharp-Business-Core-Models-Configuration-SeedsConfiguration'></a>
 ## SeedsConfiguration `type`
