@@ -31,6 +31,21 @@
   - [ShouldBeOk(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldBeOk-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeOk(System.Net.Http.HttpResponseMessage,System.Boolean)')
   - [ShouldBeUnauthorized(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldBeUnauthorized-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeUnauthorized(System.Net.Http.HttpResponseMessage,System.Boolean)')
   - [ShouldNotBeFound(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldNotBeFound-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldNotBeFound(System.Net.Http.HttpResponseMessage,System.Boolean)')
+- [IActionResultMatcherExtensions](#T-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions')
+  - [AsAccepted\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsAccepted``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsAccepted``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsBadRequest\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsBadRequest\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-System-Threading-Tasks-Task{Microsoft-AspNetCore-Mvc-IActionResult}- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(System.Threading.Tasks.Task{Microsoft.AspNetCore.Mvc.IActionResult})')
+  - [AsConflict\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsConflict``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsConflict``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsCreated\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsCreated``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsCreated``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsFile()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsFile-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsFile(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsForbidden\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsForbidden``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsForbidden``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsHttpResult\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsHttpResult``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsHttpResult\`\`2(action,statusCode)](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``2-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Int32}- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsHttpResult``2(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Int32})')
+  - [AsInternalError\`\`1(action,shouldValidateType)](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsInternalError``1-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Boolean}- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsInternalError``1(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Boolean})')
+  - [AsNoContent()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNoContent-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNoContent(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsNotFound\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNotFound``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsOk\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsOk``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsUnauthorized\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsUnauthorized``1(Microsoft.AspNetCore.Mvc.IActionResult)')
 - [IRepositoryConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions')
   - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
 - [IRepositoryReadConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions')
@@ -418,6 +433,271 @@ Simplified approach to asserting if the HTTP status code was 404
 | ---- | ---- | ----------- |
 | response | [System.Net.Http.HttpResponseMessage](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Net.Http.HttpResponseMessage 'System.Net.Http.HttpResponseMessage') |  |
 | withContent | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Should we also assert that a content body was supplied |
+
+<a name='T-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions'></a>
+## IActionResultMatcherExtensions `type`
+
+##### Namespace
+
+AndcultureCode.GB.Presentation.Web.Tests.Extensions
+
+##### Summary
+
+Testing matchers for asserting controller responses
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsAccepted``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsAccepted\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'Accepted'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsBadRequest\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'BadRequest'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-System-Threading-Tasks-Task{Microsoft-AspNetCore-Mvc-IActionResult}-'></a>
+### AsBadRequest\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'BadRequest'
+and additionally the result object is of the supplied type 'T'
+///
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsConflict``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsConflict\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'Conflict'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsCreated``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsCreated\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'Created'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsFile-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsFile() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'FileContentResult'
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsForbidden``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsForbidden\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'Forbidden'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsHttpResult\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct requested HTTP response type
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``2-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Int32}-'></a>
+### AsHttpResult\`\`2(action,statusCode) `method`
+
+##### Summary
+
+Verifies the result is the correct requested HTTP response type
+and additionally the result object's body is of the supplied type 'T'
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| action | [Microsoft.AspNetCore.Mvc.IActionResult](#T-Microsoft-AspNetCore-Mvc-IActionResult 'Microsoft.AspNetCore.Mvc.IActionResult') |  |
+| statusCode | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| THttpResult |  |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsInternalError``1-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Boolean}-'></a>
+### AsInternalError\`\`1(action,shouldValidateType) `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'InternalError'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| action | [Microsoft.AspNetCore.Mvc.IActionResult](#T-Microsoft-AspNetCore-Mvc-IActionResult 'Microsoft.AspNetCore.Mvc.IActionResult') |  |
+| shouldValidateType | [System.Nullable{System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Boolean}') | Use 'false' when value of response is NULL to bypass type checking |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNoContent-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsNoContent() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'NoContent'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsNotFound\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'NotFound'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsOk\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'Ok'
+and additionally the result object is of the supplied type 'T'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+### AsUnauthorized\`\`1() `method`
+
+##### Summary
+
+Verifies the result is the correct HTTP response type of 'Unauthorized'
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
 
 <a name='T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions'></a>
 ## IRepositoryConductorMockExtensions `type`
