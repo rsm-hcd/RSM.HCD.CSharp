@@ -11,6 +11,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Localization
     {
         #region Private Properties
 
+        private static List<string> _assemblyExclusions = new List<string> { "Microsoft", "Serilog", "System", "Windows", "xunit" };
         private static List<ICulture> _cultures;
 
         #endregion Private Properties
@@ -32,6 +33,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Localization
                 _cultures = AppDomain
                     .CurrentDomain
                     .GetAssemblies()
+                    .Where(x => _assemblyExclusions.All(e => !x.GetName().FullName.StartsWith(e))) // Avoid loading types for common assemblies out of our control
                     .SelectMany(x => x.GetTypes())
                     .Where(x => typeof(ICulture).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
                     .Select(e => Activator.CreateInstance(e))
