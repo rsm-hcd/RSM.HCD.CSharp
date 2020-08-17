@@ -7,6 +7,9 @@ using System.Globalization;
 
 namespace AndcultureCode.CSharp.Extensions
 {
+    /// <summary>
+    /// String extension methods
+    /// </summary>
     public static class StringExtensions
     {
         #region Public Methods
@@ -115,13 +118,13 @@ namespace AndcultureCode.CSharp.Extensions
 
             switch (booleanAsString.Trim().ToLower())
             {
-                case "true":  return true;
-                case "t":     return true;
-                case "1":     return true;
-                case "0":     return false;
+                case "true": return true;
+                case "t": return true;
+                case "1": return true;
+                case "0": return false;
                 case "false": return false;
-                case "f":     return false;
-                default:      return false;
+                case "f": return false;
+                default: return false;
             }
         }
 
