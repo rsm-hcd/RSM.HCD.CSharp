@@ -44,6 +44,17 @@ namespace AndcultureCode.CSharp.Extensions
         {
             return list == null ? null : string.Join(delimiter, list);
         }
+        
+        /// <summary>
+        /// Convenience method for joining key value pairs
+        /// </summary>
+        /// <param name="pair"></param>
+        /// <param name="delimiter"></param>
+        /// <returns></returns>
+        public static string Join(this KeyValuePair<string, string> pair, string delimiter)
+            => new List<string> { pair.Key, pair.Value }
+                .Where(e => !string.IsNullOrEmpty(e))
+                .Join(delimiter);
 
         /// <summary>
         /// Returns a random value in the related IEnumerable list

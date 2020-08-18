@@ -184,6 +184,58 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion Join List of Strings (Delimiter)
 
+        #region Join KeyValuePair (Delimiter)
+
+        [Fact]
+        public void Join_KeyValuePair_Given_Key_And_Value_Returns_Key_And_Value_With_Delimiter()
+        {
+            (new KeyValuePair<string,string>("key", "value")).Join(delimiter: ":").ShouldBe("key:value");
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Null_Value_Returns_Key()
+        {
+            (new KeyValuePair<string,string>("key", null)).Join(delimiter: ":").ShouldBe("key");
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Null_Key_Returns_Value()
+        {
+            (new KeyValuePair<string,string>(null, "value")).Join(delimiter: ":").ShouldBe("value");
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Null_Key_And_Value_Returns_Empty_String()
+        {
+            (new KeyValuePair<string,string>(null, null)).Join(delimiter: ":").ShouldBe(string.Empty);
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Empty_String_Key_And_Value_Returns_Empty_String()
+        {
+            (new KeyValuePair<string,string>(string.Empty, string.Empty)).Join(delimiter: ":").ShouldBe(string.Empty);
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Empty_String_Key_Returns_Value()
+        {
+            (new KeyValuePair<string,string>(string.Empty, "value")).Join(delimiter: ":").ShouldBe("value");
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Empty_String_Value_Returns_Key()
+        {
+            (new KeyValuePair<string,string>("key", string.Empty)).Join(delimiter: ":").ShouldBe("key");
+        }
+        
+        [Fact]
+        public void Join_KeyValuePair_Given_Null_Delimiter_Returns_Key_Value_Without_Delimiter()
+        {
+            (new KeyValuePair<string,string>("key", "value")).Join(delimiter: null).ShouldBe("keyvalue");
+        }
+
+        #endregion Join KeyValuePair (Delimiter)
+
 
         #region PickRandom
 
