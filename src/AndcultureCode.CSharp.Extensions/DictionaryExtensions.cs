@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace AndcultureCode.CSharp.Extensions
 {
     /// <summary>
-    /// Extension methods for Dictionary<>
+    /// Extension methods for Dictionary
     /// </summary>
     public static class DictionaryExtensions
     {

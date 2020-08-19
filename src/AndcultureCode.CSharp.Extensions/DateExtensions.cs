@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AndcultureCode.CSharp.Extensions
 {
+    /// <summary>
+    /// DateTime/Offset Extensions
+    /// </summary>
     public static class DateExtensions
     {
         /// <summary>
@@ -35,7 +36,7 @@ namespace AndcultureCode.CSharp.Extensions
             }
             return age;
         }
-        
+
         /// <summary>
         /// Sets the hour, minute, and second on the given DateTimeOffset with the supplied values.
         /// </summary>
@@ -50,17 +51,17 @@ namespace AndcultureCode.CSharp.Extensions
             {
                 throw new ArgumentException($"Hour: {hour} is invalid. It must be between 0 and 23.", nameof(hour));
             }
-            
+
             if (minute < 0 || minute > 59)
             {
                 throw new ArgumentException($"Minute: {minute} is invalid. It must be between 0 and 59.", nameof(minute));
             }
-            
+
             if (second < 0 || second > 59)
             {
                 throw new ArgumentException($"Second: {second} is invalid. It must be between 0 and 59.", nameof(second));
             }
-            
+
             return new DateTimeOffset(
                 year: date.Year,
                 month: date.Month,

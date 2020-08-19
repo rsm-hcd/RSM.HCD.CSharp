@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.Net.Http.Headers;
 
 namespace AndcultureCode.CSharp.Extensions
 {
@@ -19,23 +20,33 @@ namespace AndcultureCode.CSharp.Extensions
         #region Public Methods
 
         /// <summary>
-        /// Retrieves the client's forwarded IP address, if present. Returns null otherwise.
+        /// Attempts to retrieve requested header value
         /// </summary>
-        /// <param name="httpRequest"></param>
-        /// <returns></returns>
-        public static string GetForwardedIpAddress(this HttpRequest httpRequest)
+        /// <param name="request"></param>
+        /// <param name="name">Header name/key</param>
+        public static string GetHeader(this HttpRequest request, string name)
         {
-            if (httpRequest == null ||
-                httpRequest.Headers == null ||
-                !httpRequest.Headers.ContainsKey(X_FORWARDED_FOR) ||
-                string.IsNullOrWhiteSpace(httpRequest.Headers[X_FORWARDED_FOR])
-            )
+            var headers = request?.Headers;
+            if (headers == null || !headers.ContainsKey(name) || string.IsNullOrWhiteSpace(request.Headers[name]))
             {
                 return null;
             }
 
-            return httpRequest.Headers[X_FORWARDED_FOR];
+            return request.Headers[name];
         }
+
+        /// <summary>
+        /// Retrieves the client's forwarded IP address, if present. Returns null otherwise.
+        /// Ensure you have 'AddForwardedHeaders' enabled in startup.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static string GetIpAddress(this HttpRequest request) => request.GetHeader(X_FORWARDED_FOR);
+
+        /// <summary>
+        /// Requesting user's agent
+        /// </summary>
+        public static string GetUserAgent(this HttpRequest request) => request.GetHeader(HeaderNames.UserAgent);
 
         #endregion Public Methods
     }

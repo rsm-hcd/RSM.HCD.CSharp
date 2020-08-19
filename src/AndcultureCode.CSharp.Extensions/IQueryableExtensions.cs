@@ -4,6 +4,9 @@ using System.Linq.Expressions;
 
 namespace AndcultureCode.CSharp.Extensions
 {
+    /// <summary>
+    /// IQueryable extension methods
+    /// </summary>
     public static class IQueryableExtensions
     {
         /// <summary>
@@ -51,6 +54,7 @@ namespace AndcultureCode.CSharp.Extensions
         /// Returns X number of random values in the related IQueryable list
         /// </summary>
         /// <param name="source"></param>
+        /// <param name="count"></param>
         /// <typeparam name="T"></typeparam>
         public static IQueryable<T> PickRandom<T>(this IQueryable<T> source, int count) => source.Shuffle().Take(count);
 

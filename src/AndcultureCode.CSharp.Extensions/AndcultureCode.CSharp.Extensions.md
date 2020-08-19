@@ -38,7 +38,9 @@
   - [Or\`\`2(expr1,expr2,navigationProperty)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-Or``2-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``1,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,``1}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.Or``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}})')
 - [HttpRequestExtensions](#T-AndcultureCode-CSharp-Extensions-HttpRequestExtensions 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions')
   - [X_FORWARDED_FOR](#F-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-X_FORWARDED_FOR 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.X_FORWARDED_FOR')
-  - [GetForwardedIpAddress(httpRequest)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetForwardedIpAddress-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetForwardedIpAddress(Microsoft.AspNetCore.Http.HttpRequest)')
+  - [GetHeader(request,name)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetHeader-Microsoft-AspNetCore-Http-HttpRequest,System-String- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetHeader(Microsoft.AspNetCore.Http.HttpRequest,System.String)')
+  - [GetIpAddress(request)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetIpAddress-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetIpAddress(Microsoft.AspNetCore.Http.HttpRequest)')
+  - [GetUserAgent()](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetUserAgent-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetUserAgent(Microsoft.AspNetCore.Http.HttpRequest)')
 - [HttpResponseMessageExtensions](#T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions')
   - [FromJson\`\`1(response)](#M-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage- 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)')
 - [IConfigurationRootExtensions](#T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions')
@@ -50,14 +52,16 @@
   - [GetDatabaseName(configuration)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseName(Microsoft.Extensions.Configuration.IConfigurationRoot)')
   - [GetVersion(configuration,isDevelopment)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean- 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetVersion(Microsoft.Extensions.Configuration.IConfigurationRoot,System.Boolean)')
 - [IEnumerableExtensions](#T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions')
-  - [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})')
-  - [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})')
+  - [IsEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})')
+  - [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})')
+  - [IsNullOrEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})')
+  - [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)')
   - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)')
   - [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)')
   - [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0})')
-  - [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0},System-Int32- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0},System.Int32)')
+  - [PickRandom\`\`1(source,count)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0},System-Int32- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0},System.Int32)')
   - [Shuffle\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Shuffle``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})')
 - [IQueryableExtensions](#T-AndcultureCode-CSharp-Extensions-IQueryableExtensions 'AndcultureCode.CSharp.Extensions.IQueryableExtensions')
   - [IsEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0}- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsEmpty``1(System.Linq.IQueryable{``0})')
@@ -65,7 +69,7 @@
   - [IsNullOrEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0}- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsNullOrEmpty``1(System.Linq.IQueryable{``0})')
   - [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsNullOrEmpty``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})')
   - [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0}- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0})')
-  - [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0},System.Int32)')
+  - [PickRandom\`\`1(source,count)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0},System.Int32)')
   - [Shuffle\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}- 'AndcultureCode.CSharp.Extensions.IQueryableExtensions.Shuffle``1(System.Linq.IQueryable{``0})')
 - [StringExtensions](#T-AndcultureCode-CSharp-Extensions-StringExtensions 'AndcultureCode.CSharp.Extensions.StringExtensions')
   - [AsIndentedJson(str)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-AsIndentedJson-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.AsIndentedJson(System.String)')
@@ -275,6 +279,10 @@ Retrieves user's UserLoginId from identity claims.
 
 AndcultureCode.CSharp.Extensions
 
+##### Summary
+
+DateTime/Offset Extensions
+
 <a name='M-AndcultureCode-CSharp-Extensions-DateExtensions-AtEndOfDay-System-DateTimeOffset-'></a>
 ### AtEndOfDay(date) `method`
 
@@ -393,6 +401,10 @@ This method has no parameters.
 
 AndcultureCode.CSharp.Extensions
 
+##### Summary
+
+Extension methods for Dictionary
+
 <a name='M-AndcultureCode-CSharp-Extensions-DictionaryExtensions-Merge``2-System-Collections-Generic-Dictionary{``0,``1},System-Collections-Generic-Dictionary{``0,``1},System-Boolean-'></a>
 ### Merge\`\`2(left,right,takeLastKey) `method`
 
@@ -427,6 +439,10 @@ when duplicates are encountered. If false, uses the value of the first occurrenc
 ##### Namespace
 
 AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Expression extension methods
 
 <a name='M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-AndAlso``1-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}-'></a>
 ### AndAlso\`\`1(expr1,expr2) `method`
@@ -596,12 +612,27 @@ Extension methods for HttpRequest
 
 Standard X-Header for forwarding IP addresses in varying infrastructures
 
-<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetForwardedIpAddress-Microsoft-AspNetCore-Http-HttpRequest-'></a>
-### GetForwardedIpAddress(httpRequest) `method`
+<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetHeader-Microsoft-AspNetCore-Http-HttpRequest,System-String-'></a>
+### GetHeader(request,name) `method`
+
+##### Summary
+
+Attempts to retrieve requested header value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Microsoft.AspNetCore.Http.HttpRequest](#T-Microsoft-AspNetCore-Http-HttpRequest 'Microsoft.AspNetCore.Http.HttpRequest') |  |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Header name/key |
+
+<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetIpAddress-Microsoft-AspNetCore-Http-HttpRequest-'></a>
+### GetIpAddress(request) `method`
 
 ##### Summary
 
 Retrieves the client's forwarded IP address, if present. Returns null otherwise.
+Ensure you have 'AddForwardedHeaders' enabled in startup.
 
 ##### Returns
 
@@ -611,7 +642,18 @@ Retrieves the client's forwarded IP address, if present. Returns null otherwise.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| httpRequest | [Microsoft.AspNetCore.Http.HttpRequest](#T-Microsoft-AspNetCore-Http-HttpRequest 'Microsoft.AspNetCore.Http.HttpRequest') |  |
+| request | [Microsoft.AspNetCore.Http.HttpRequest](#T-Microsoft-AspNetCore-Http-HttpRequest 'Microsoft.AspNetCore.Http.HttpRequest') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetUserAgent-Microsoft-AspNetCore-Http-HttpRequest-'></a>
+### GetUserAgent() `method`
+
+##### Summary
+
+Requesting user's agent
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions'></a>
 ## HttpResponseMessageExtensions `type`
@@ -619,6 +661,10 @@ Retrieves the client's forwarded IP address, if present. Returns null otherwise.
 ##### Namespace
 
 AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+HttpResponseMessage extension methods
 
 <a name='M-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage-'></a>
 ### FromJson\`\`1(response) `method`
@@ -734,8 +780,12 @@ Loads and conditionally updates the Version number based upon environment
 
 AndcultureCode.CSharp.Extensions
 
+##### Summary
+
+IEnumerable extension methods
+
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}-'></a>
-### IsEmpty\`\`1(source,predicate) `method`
+### IsEmpty\`\`1(source) `method`
 
 ##### Summary
 
@@ -757,7 +807,54 @@ Determines if the source list is empty
 | ---- | ----------- |
 | T |  |
 
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}-'></a>
+### IsEmpty\`\`1(source,predicate) `method`
+
+##### Summary
+
+Determines if the source list is empty
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| predicate | [System.Func{\`\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``0,System.Boolean}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}-'></a>
+### IsNullOrEmpty\`\`1(source) `method`
+
+##### Summary
+
+Determines if the source list is null or empty
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}-'></a>
 ### IsNullOrEmpty\`\`1(source,predicate) `method`
 
 ##### Summary
@@ -773,6 +870,7 @@ Determines if the source list is null or empty
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| predicate | [System.Func{\`\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``0,System.Boolean}') |  |
 
 ##### Generic Types
 
@@ -873,7 +971,7 @@ Returns a random value in the related IEnumerable list
 | T |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0},System-Int32-'></a>
-### PickRandom\`\`1(source) `method`
+### PickRandom\`\`1(source,count) `method`
 
 ##### Summary
 
@@ -884,6 +982,7 @@ Returns X number of random values in the related IEnumerable list
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 
 ##### Generic Types
 
@@ -916,6 +1015,10 @@ Returns source enumerable in randomized order
 ##### Namespace
 
 AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+IQueryable extension methods
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0}-'></a>
 ### IsEmpty\`\`1(source) `method`
@@ -1031,7 +1134,7 @@ Returns a random value in the related IQueryable list
 | T |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32-'></a>
-### PickRandom\`\`1(source) `method`
+### PickRandom\`\`1(source,count) `method`
 
 ##### Summary
 
@@ -1042,6 +1145,7 @@ Returns X number of random values in the related IQueryable list
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | source | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable 'System.Linq.IQueryable{``0}') |  |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 
 ##### Generic Types
 
@@ -1074,6 +1178,10 @@ Returns source enumerable in randomized order
 ##### Namespace
 
 AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+String extension methods
 
 <a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-AsIndentedJson-System-String-'></a>
 ### AsIndentedJson(str) `method`
