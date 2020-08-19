@@ -53,6 +53,7 @@
   - [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})')
   - [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)')
+  - [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)')
   - [Join(list,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)')
   - [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)')
   - [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0})')
@@ -795,6 +796,25 @@ Convenience method so joining strings reads better :)
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | list | [System.Collections.Generic.IEnumerable{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{System.String}') |  |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String-'></a>
+### Join(list,keyValueDelimiter,delimiter) `method`
+
+##### Summary
+
+Convenience method for joining dictionary key values into a string
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| list | [System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}') |  |
+| keyValueDelimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String-'></a>

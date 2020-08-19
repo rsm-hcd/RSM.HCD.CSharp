@@ -236,6 +236,73 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion Join KeyValuePair (Delimiter)
 
+        #region Join List of KeyValuePair (Delimiter)
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_And_Delimiter_Returns_String_Of_Key_Values_With_Delimiter()
+        {
+            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string,string>("key2", "value2");
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":", delimiter: "; ").ShouldBe("key1:value1; key2:value2");
+        }
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_And_No_Delimiter_Returns_String_Of_Key_Values()
+        {
+            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string,string>("key2", "value2");
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, key2:value2");
+        }
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_With_Null_Value_Returns_String_Of_Key_Values()
+        {
+            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string,string>("key2", null);
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, key2");
+        }
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_With_Null_Key_Returns_String_Of_Key_Values()
+        {
+            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string,string>(null, "value2");
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, value2");
+        }
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_With_Empty_KeyValuePair_Returns_String_Of_Key_Values()
+        {
+            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string,string>(string.Empty, string.Empty);
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1");
+        }
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_With_Empty_KeyValuePairs_Returns_Empty_String()
+        {
+            var keyValue1 = new KeyValuePair<string,string>(string.Empty, string.Empty);
+            var keyValue2 = new KeyValuePair<string,string>(string.Empty, string.Empty);
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe(string.Empty);
+        }
+        
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_With_Null_KeyValuePair_Returns_String_Of_Key_Values()
+        {
+            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string,string>(null, null);
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1");
+        }
+
+        [Fact]
+        public void Join_Given_List_Of_KeyValuePairs_With_Null_KeyValuePairs_Returns_Empty_String()
+        {
+            var keyValue1 = new KeyValuePair<string,string>(null, null);
+            var keyValue2 = new KeyValuePair<string,string>(null, null);
+            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe(string.Empty);
+        }
+
+        #endregion Join List of KeyValuePair (Delimiter)
 
         #region PickRandom
 
