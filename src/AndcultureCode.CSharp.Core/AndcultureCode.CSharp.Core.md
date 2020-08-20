@@ -114,6 +114,12 @@
   - [Lock(id,lockUntil,lockedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-Lock-System-Int64,System-DateTimeOffset,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.Lock(System.Int64,System.DateTimeOffset,System.Nullable{System.Int64})')
   - [Unlock(id,unlockedById)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-Unlock-System-Int64,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.Unlock(System.Int64,System.Nullable{System.Int64})')
   - [ValidateLock(item,currentUserId)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-ILockingConductor`1-ValidateLock-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.ILockingConductor`1.ValidateLock(`0,System.Nullable{System.Int64})')
+- [IOAuthUser](#T-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser')
+  - [Email](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-Email 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.Email')
+  - [FirstName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-FirstName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.FirstName')
+  - [Id](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-Id 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.Id')
+  - [LastName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-LastName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.LastName')
+  - [UserMetadataName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserMetadataName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.UserMetadataName')
 - [IPermissionConductor](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor')
   - [GetAcls(resource,verb)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-GetAcls-System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.GetAcls(System.String,System.String)')
   - [IsAllowed(resource,verb,subject)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-IsAllowed-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.IsAllowed(System.String,System.String,System.String)')
@@ -198,6 +204,15 @@
   - [User](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-User 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.User')
   - [UserAgent](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserAgent 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserAgent')
   - [UserId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserId')
+- [IUserMetadata](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata')
+  - [IsNameEditable](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-IsNameEditable 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.IsNameEditable')
+  - [Name](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Name 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.Name')
+  - [Role](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Role 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.Role')
+  - [RoleId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-RoleId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.RoleId')
+  - [Type](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Type 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.Type')
+  - [User](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-User 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.User')
+  - [UserId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-UserId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.UserId')
+  - [Value](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Value 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.Value')
 - [IUserRole](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole')
   - [Role](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-Role 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole.Role')
   - [RoleId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole-RoleId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserRole.RoleId')
@@ -228,6 +243,11 @@
   - [IsLocked](#P-AndcultureCode-CSharp-Core-Models-Lockable-IsLocked 'AndcultureCode.CSharp.Core.Models.Lockable.IsLocked')
   - [DetermineIfLocked()](#M-AndcultureCode-CSharp-Core-Models-Lockable-DetermineIfLocked 'AndcultureCode.CSharp.Core.Models.Lockable.DetermineIfLocked')
 - [LogicalOperator](#T-AndcultureCode-CSharp-Core-Enumerations-LogicalOperator 'AndcultureCode.CSharp.Core.Enumerations.LogicalOperator')
+- [OAuthAccountConfiguration](#T-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration')
+  - [ClientId](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-ClientId 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.ClientId')
+  - [ClientSecret](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-ClientSecret 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.ClientSecret')
+  - [IsDisabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsDisabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.IsDisabled')
+  - [IsEnabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsEnabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.IsEnabled')
 - [Provider](#T-AndcultureCode-CSharp-Core-Providers-Provider 'AndcultureCode.CSharp.Core.Providers.Provider')
   - [Implemented](#P-AndcultureCode-CSharp-Core-Providers-Provider-Implemented 'AndcultureCode.CSharp.Core.Providers.Provider.Implemented')
   - [Name](#P-AndcultureCode-CSharp-Core-Providers-Provider-Name 'AndcultureCode.CSharp.Core.Providers.Provider.Name')
@@ -396,6 +416,11 @@
 - [UriUtils](#T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils')
   - [IsInvalidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsInvalidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsInvalidHttpUrl(System.String)')
   - [IsValidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsValidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsValidHttpUrl(System.String)')
+- [UserMetadataName](#T-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName')
+  - [FACEBOOK](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.FACEBOOK')
+  - [GOOGLE](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.GOOGLE')
+  - [MICROSOFT](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.MICROSOFT')
+  - [TWITTER](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.TWITTER')
 - [WorkerProvider](#T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider')
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider'></a>
@@ -1626,6 +1651,52 @@ true if the lock is still active and is locked by the current user, false otherw
 | item | [\`0](#T-`0 '`0') | The item |
 | currentUserId | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | The current user id |
 
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser'></a>
+## IOAuthUser `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Authentication
+
+##### Summary
+
+Base information used to integration OAuth provider users
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-Email'></a>
+### Email `property`
+
+##### Summary
+
+Email address
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-FirstName'></a>
+### FirstName `property`
+
+##### Summary
+
+Given name / First name
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-Id'></a>
+### Id `property`
+
+##### Summary
+
+Uniquely assigned identifier from external oauth provider
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-LastName'></a>
+### LastName `property`
+
+##### Summary
+
+Surname / Lastname
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserMetadataName'></a>
+### UserMetadataName `property`
+
+##### Summary
+
+Which UserMetadata.Name is associated for this OAuth User type
+
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor'></a>
 ## IPermissionConductor `type`
 
@@ -2695,6 +2766,73 @@ Requesting party's user-agent
 
 Unique identifier of associated IUser
 
+<a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata'></a>
+## IUserMetadata `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Interfaces.Entity
+
+##### Summary
+
+Describes an individual user/role setting
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-IsNameEditable'></a>
+### IsNameEditable `property`
+
+##### Summary
+
+Can the name of this object be changed? (if not, system likely relies on it)
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Name'></a>
+### Name `property`
+
+##### Summary
+
+Name for metadata
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Role'></a>
+### Role `property`
+
+##### Summary
+
+Reference to IRole that has Id equal to RoleId
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-RoleId'></a>
+### RoleId `property`
+
+##### Summary
+
+Unique identifier of associated IRole
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Type'></a>
+### Type `property`
+
+##### Summary
+
+Type classification for metadata
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-User'></a>
+### User `property`
+
+##### Summary
+
+Reference to IUser that has an Id equal to UserId
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-UserId'></a>
+### UserId `property`
+
+##### Summary
+
+Unique identifier of associated IUser
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Value'></a>
+### Value `property`
+
+##### Summary
+
+User's value for this setting
+
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserRole'></a>
 ## IUserRole `type`
 
@@ -3049,6 +3187,45 @@ AndcultureCode.CSharp.Core.Enumerations
 ##### Summary
 
 Simple Bitwise enumeration
+
+<a name='T-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration'></a>
+## OAuthAccountConfiguration `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Business.Core.Models.Configuration
+
+##### Summary
+
+Describes common configuration for OAuth providers
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-ClientId'></a>
+### ClientId `property`
+
+##### Summary
+
+Application's uniquely assigned Id
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-ClientSecret'></a>
+### ClientSecret `property`
+
+##### Summary
+
+Application's uniquely assigned Secret
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsDisabled'></a>
+### IsDisabled `property`
+
+##### Summary
+
+Is this integration disabled?
+
+<a name='P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsEnabled'></a>
+### IsEnabled `property`
+
+##### Summary
+
+Is this integration enabled?
 
 <a name='T-AndcultureCode-CSharp-Core-Providers-Provider'></a>
 ## Provider `type`
@@ -4357,6 +4534,45 @@ Is the supplied source url a valid HTTP URL?
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName'></a>
+## UserMetadataName `type`
+
+##### Namespace
+
+Core.ConstantsAndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+UserMetadata name values used by Core actors
+
+<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK'></a>
+### FACEBOOK `constants`
+
+##### Summary
+
+Used to identify a facebook related value item (ie. OAuth type)
+
+<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE'></a>
+### GOOGLE `constants`
+
+##### Summary
+
+Used to identify a google related value item (ie. OAuth type)
+
+<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT'></a>
+### MICROSOFT `constants`
+
+##### Summary
+
+Used to identify a microsoft related value item (ie. OAuth type)
+
+<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER'></a>
+### TWITTER `constants`
+
+##### Summary
+
+Used to identify a twitter related value item (ie. OAuth type)
 
 <a name='T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider'></a>
 ## WorkerProvider `type`
