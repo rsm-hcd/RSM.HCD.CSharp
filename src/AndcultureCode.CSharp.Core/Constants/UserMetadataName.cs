@@ -1,4 +1,4 @@
-namespace Core.ConstantsAndcultureCode.CSharp.Core.Constants
+namespace AndcultureCode.CSharp.Core.Constants
 {
     /// <summary>
     /// UserMetadata name values used by Core actors

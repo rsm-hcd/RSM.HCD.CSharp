@@ -416,11 +416,11 @@
 - [UriUtils](#T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils')
   - [IsInvalidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsInvalidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsInvalidHttpUrl(System.String)')
   - [IsValidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsValidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsValidHttpUrl(System.String)')
-- [UserMetadataName](#T-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName')
-  - [FACEBOOK](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.FACEBOOK')
-  - [GOOGLE](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.GOOGLE')
-  - [MICROSOFT](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.MICROSOFT')
-  - [TWITTER](#F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER 'Core.ConstantsAndcultureCode.CSharp.Core.Constants.UserMetadataName.TWITTER')
+- [UserMetadataName](#T-AndcultureCode-CSharp-Core-Constants-UserMetadataName 'AndcultureCode.CSharp.Core.Constants.UserMetadataName')
+  - [FACEBOOK](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.FACEBOOK')
+  - [GOOGLE](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.GOOGLE')
+  - [MICROSOFT](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.MICROSOFT')
+  - [TWITTER](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.TWITTER')
 - [WorkerProvider](#T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider')
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider'></a>
@@ -4535,39 +4535,39 @@ Is the supplied source url a valid HTTP URL?
 
 This method has no parameters.
 
-<a name='T-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName'></a>
+<a name='T-AndcultureCode-CSharp-Core-Constants-UserMetadataName'></a>
 ## UserMetadataName `type`
 
 ##### Namespace
 
-Core.ConstantsAndcultureCode.CSharp.Core.Constants
+AndcultureCode.CSharp.Core.Constants
 
 ##### Summary
 
 UserMetadata name values used by Core actors
 
-<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK'></a>
 ### FACEBOOK `constants`
 
 ##### Summary
 
 Used to identify a facebook related value item (ie. OAuth type)
 
-<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE'></a>
 ### GOOGLE `constants`
 
 ##### Summary
 
 Used to identify a google related value item (ie. OAuth type)
 
-<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT'></a>
 ### MICROSOFT `constants`
 
 ##### Summary
 
 Used to identify a microsoft related value item (ie. OAuth type)
 
-<a name='F-Core-ConstantsAndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER'></a>
 ### TWITTER `constants`
 
 ##### Summary
