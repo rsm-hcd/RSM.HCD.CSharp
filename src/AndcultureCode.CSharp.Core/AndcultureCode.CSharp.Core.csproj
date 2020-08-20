@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.3" />
+    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
     <PackageReference Include="MailKit" Version="2.3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.2.0" />
