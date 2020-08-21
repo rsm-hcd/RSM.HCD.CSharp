@@ -120,7 +120,6 @@
   - [Id](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-Id 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.Id')
   - [LastName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-LastName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.LastName')
   - [UserMetadataName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserMetadataName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.UserMetadataName')
-  - [UserName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.UserName')
 - [IPermissionConductor](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor')
   - [GetAcls(resource,verb)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-GetAcls-System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.GetAcls(System.String,System.String)')
   - [IsAllowed(resource,verb,subject)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-IsAllowed-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.IsAllowed(System.String,System.String,System.String)')
@@ -205,6 +204,7 @@
   - [User](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-User 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.User')
   - [UserAgent](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserAgent 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserAgent')
   - [UserId](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserId 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserId')
+  - [UserName](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserName 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserLogin.UserName')
 - [IUserMetadata](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata')
   - [IsNameEditable](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-IsNameEditable 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.IsNameEditable')
   - [Name](#P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata-Name 'AndcultureCode.CSharp.Core.Interfaces.Entity.IUserMetadata.Name')
@@ -1700,13 +1700,6 @@ Surname / Lastname
 
 Which UserMetadata.Name is associated for this OAuth User type
 
-<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserName'></a>
-### UserName `property`
-
-##### Summary
-
-Handle/Alias unique to this user in our system
-
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor'></a>
 ## IPermissionConductor `type`
 
@@ -2775,6 +2768,13 @@ Requesting party's user-agent
 ##### Summary
 
 Unique identifier of associated IUser
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserLogin-UserName'></a>
+### UserName `property`
+
+##### Summary
+
+Handle/Alias used to login (or attempt to login) this user
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Entity-IUserMetadata'></a>
 ## IUserMetadata `type`

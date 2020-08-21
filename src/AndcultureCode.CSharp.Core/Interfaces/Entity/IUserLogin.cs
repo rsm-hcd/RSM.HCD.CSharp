@@ -44,6 +44,12 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         /// <value></value>
         long? UserId { get; set; }
 
+        /// <summary>
+        /// Handle/Alias used to login (or attempt to login) this user
+        /// </summary>
+        /// <value></value>
+        string UserName { get; }
+
         #endregion Properties
 
         #region Navigation Properties

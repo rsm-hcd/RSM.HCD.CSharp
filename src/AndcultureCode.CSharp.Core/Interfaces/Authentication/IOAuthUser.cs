@@ -29,11 +29,5 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Authentication
         /// Which UserMetadata.Name is associated for this OAuth User type
         /// </summary>
         string UserMetadataName { get; }
-
-        /// <summary>
-        /// Handle/Alias unique to this user in our system
-        /// </summary>
-        /// <value></value>
-        string UserName { get; }
     }
 }
