@@ -48,7 +48,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Entity
         /// Handle/Alias used to login (or attempt to login) this user
         /// </summary>
         /// <value></value>
-        string UserName { get; }
+        string UserName { get; set; }
 
         #endregion Properties
 
