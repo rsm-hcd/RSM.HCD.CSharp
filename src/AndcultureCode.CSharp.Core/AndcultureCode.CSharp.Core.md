@@ -120,6 +120,7 @@
   - [Id](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-Id 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.Id')
   - [LastName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-LastName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.LastName')
   - [UserMetadataName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserMetadataName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.UserMetadataName')
+  - [UserName](#P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserName 'AndcultureCode.CSharp.Core.Interfaces.Authentication.IOAuthUser.UserName')
 - [IPermissionConductor](#T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor')
   - [GetAcls(resource,verb)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-GetAcls-System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.GetAcls(System.String,System.String)')
   - [IsAllowed(resource,verb,subject)](#M-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor-IsAllowed-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Interfaces.Conductors.IPermissionConductor.IsAllowed(System.String,System.String,System.String)')
@@ -416,11 +417,13 @@
 - [UriUtils](#T-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils')
   - [IsInvalidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsInvalidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsInvalidHttpUrl(System.String)')
   - [IsValidHttpUrl()](#M-AndcultureCode-CSharp-Core-Utilities-Network-UriUtils-IsValidHttpUrl-System-String- 'AndcultureCode.CSharp.Core.Utilities.Network.UriUtils.IsValidHttpUrl(System.String)')
-- [UserMetadataName](#T-AndcultureCode-CSharp-Core-Constants-UserMetadataName 'AndcultureCode.CSharp.Core.Constants.UserMetadataName')
-  - [FACEBOOK](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.FACEBOOK')
-  - [GOOGLE](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.GOOGLE')
-  - [MICROSOFT](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.MICROSOFT')
-  - [TWITTER](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER 'AndcultureCode.CSharp.Core.Constants.UserMetadataName.TWITTER')
+- [UserMetadataNames](#T-AndcultureCode-CSharp-Core-Constants-UserMetadataNames 'AndcultureCode.CSharp.Core.Constants.UserMetadataNames')
+  - [FACEBOOK](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-FACEBOOK 'AndcultureCode.CSharp.Core.Constants.UserMetadataNames.FACEBOOK')
+  - [GOOGLE](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-GOOGLE 'AndcultureCode.CSharp.Core.Constants.UserMetadataNames.GOOGLE')
+  - [MICROSOFT](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-MICROSOFT 'AndcultureCode.CSharp.Core.Constants.UserMetadataNames.MICROSOFT')
+  - [TWITTER](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-TWITTER 'AndcultureCode.CSharp.Core.Constants.UserMetadataNames.TWITTER')
+- [UserMetadataTypes](#T-AndcultureCode-CSharp-Core-Constants-UserMetadataTypes 'AndcultureCode.CSharp.Core.Constants.UserMetadataTypes')
+  - [ExternalUserId](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataTypes-ExternalUserId 'AndcultureCode.CSharp.Core.Constants.UserMetadataTypes.ExternalUserId')
 - [WorkerProvider](#T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider')
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider'></a>
@@ -1696,6 +1699,13 @@ Surname / Lastname
 ##### Summary
 
 Which UserMetadata.Name is associated for this OAuth User type
+
+<a name='P-AndcultureCode-CSharp-Core-Interfaces-Authentication-IOAuthUser-UserName'></a>
+### UserName `property`
+
+##### Summary
+
+Handle/Alias unique to this user in our system
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Conductors-IPermissionConductor'></a>
 ## IPermissionConductor `type`
@@ -4535,8 +4545,8 @@ Is the supplied source url a valid HTTP URL?
 
 This method has no parameters.
 
-<a name='T-AndcultureCode-CSharp-Core-Constants-UserMetadataName'></a>
-## UserMetadataName `type`
+<a name='T-AndcultureCode-CSharp-Core-Constants-UserMetadataNames'></a>
+## UserMetadataNames `type`
 
 ##### Namespace
 
@@ -4546,33 +4556,51 @@ AndcultureCode.CSharp.Core.Constants
 
 UserMetadata name values used by Core actors
 
-<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-FACEBOOK'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-FACEBOOK'></a>
 ### FACEBOOK `constants`
 
 ##### Summary
 
 Used to identify a facebook related value item (ie. OAuth type)
 
-<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-GOOGLE'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-GOOGLE'></a>
 ### GOOGLE `constants`
 
 ##### Summary
 
 Used to identify a google related value item (ie. OAuth type)
 
-<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-MICROSOFT'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-MICROSOFT'></a>
 ### MICROSOFT `constants`
 
 ##### Summary
 
 Used to identify a microsoft related value item (ie. OAuth type)
 
-<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataName-TWITTER'></a>
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataNames-TWITTER'></a>
 ### TWITTER `constants`
 
 ##### Summary
 
 Used to identify a twitter related value item (ie. OAuth type)
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-UserMetadataTypes'></a>
+## UserMetadataTypes `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Commonly used UserMetadata types
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-UserMetadataTypes-ExternalUserId'></a>
+### ExternalUserId `constants`
+
+##### Summary
+
+Unique external authentication identifier (ie. oauth, client specific auth)
 
 <a name='T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider'></a>
 ## WorkerProvider `type`

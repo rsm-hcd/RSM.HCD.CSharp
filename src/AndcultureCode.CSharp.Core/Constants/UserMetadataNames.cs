@@ -3,7 +3,7 @@ namespace AndcultureCode.CSharp.Core.Constants
     /// <summary>
     /// UserMetadata name values used by Core actors
     /// </summary>
-    public class UserMetadataName
+    public class UserMetadataNames
     {
         /// <summary>
         /// Used to identify a facebook related value item (ie. OAuth type)
