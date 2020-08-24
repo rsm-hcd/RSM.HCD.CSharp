@@ -74,7 +74,9 @@
 - [StringExtensions](#T-AndcultureCode-CSharp-Extensions-StringExtensions 'AndcultureCode.CSharp.Extensions.StringExtensions')
   - [AsIndentedJson(str)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-AsIndentedJson-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.AsIndentedJson(System.String)')
   - [IsInvalidHttpUrl(source)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsInvalidHttpUrl-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsInvalidHttpUrl(System.String)')
+  - [IsNotValidGuid(guidString)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsNotValidGuid-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsNotValidGuid(System.String)')
   - [IsValidEmail(email)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidEmail-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsValidEmail(System.String)')
+  - [IsValidGuid(guidString)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidGuid-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsValidGuid(System.String)')
   - [IsValidHttpUrl(source)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidHttpUrl-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.IsValidHttpUrl(System.String)')
   - [ToBoolean()](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToBoolean-System-String- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToBoolean(System.String)')
   - [ToEnumerable\`\`1(input,separator)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-ToEnumerable``1-System-String,System-Char- 'AndcultureCode.CSharp.Extensions.StringExtensions.ToEnumerable``1(System.String,System.Char)')
@@ -1219,6 +1221,23 @@ Determines if the supplied string is not a valid HTTP or HTTPS Url
 | ---- | ---- | ----------- |
 | source | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
+<a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsNotValidGuid-System-String-'></a>
+### IsNotValidGuid(guidString) `method`
+
+##### Summary
+
+Determine if supplied string is not a valid Guid
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| guidString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidEmail-System-String-'></a>
 ### IsValidEmail(email) `method`
 
@@ -1231,6 +1250,23 @@ Determines if the supplied string is an email address
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | email | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidGuid-System-String-'></a>
+### IsValidGuid(guidString) `method`
+
+##### Summary
+
+Determine if supplied string is a valid Guid
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| guidString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-StringExtensions-IsValidHttpUrl-System-String-'></a>
 ### IsValidHttpUrl(source) `method`

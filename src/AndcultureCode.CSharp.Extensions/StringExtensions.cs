@@ -85,6 +85,26 @@ namespace AndcultureCode.CSharp.Extensions
         }
 
         /// <summary>
+        /// Determine if supplied string is a valid Guid
+        /// </summary>
+        /// <param name="guidString"></param>
+        /// <returns></returns>
+        public static bool IsValidGuid(this string guidString)
+        {
+            return Guid.TryParse(guidString, out var newGuid);
+        }
+
+        /// <summary>
+        /// Determine if supplied string is not a valid Guid
+        /// </summary>
+        /// <param name="guidString"></param>
+        /// <returns></returns>
+        public static bool IsNotValidGuid(this string guidString)
+        {
+            return !guidString.IsValidGuid();
+        }
+
+        /// <summary>
         /// Determines if the supplied string is a valid HTTP or HTTPS url
         ///
         /// Uses the native Uri class
