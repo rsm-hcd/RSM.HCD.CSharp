@@ -91,15 +91,7 @@ namespace AndcultureCode.CSharp.Extensions
         /// <returns></returns>
         public static bool IsValidGuid(this string guidString)
         {
-            try
-            {
-                new Guid(guidString);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return Guid.TryParse(guidString, out var newGuid);
         }
 
         /// <summary>

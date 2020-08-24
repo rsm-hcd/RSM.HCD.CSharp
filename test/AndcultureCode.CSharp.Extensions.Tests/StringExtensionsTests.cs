@@ -189,43 +189,61 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var guidString = Guid.NewGuid().ToString();
 
-            //Act
+            // Act
             var result = guidString.IsNotValidGuid();
 
-            //Assert
+            // Assert
             result.ShouldBeFalse();
         }
 
         [Fact]
         public void IsNotValidGuid_When_Invalid_Guid_Returns_True()
         {
-            //Arrange
+            // Arrange
             var guidString = "I'm not a Guid";
 
-            //Act
+            // Act
             var result = guidString.IsNotValidGuid();
 
-            //Assert
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsNotValidGuid_When_String_Is_Empty_Or_Whitespace_Then_Returns_True(string guidString)
+        {
+            // Act
+            var result = guidString.IsNotValidGuid();
+
+            // Assert
             result.ShouldBeTrue();
         }
 
         [Fact]
-        public void IsNotValidGuid_When_Empty_String_Returns_True()
+        public void IsNotValidGuid_When_Null_Then_Returns_True()
         {
-            //Arrange
-            var guidString = String.Empty;
-
-            //Act
-            var result = guidString.IsNotValidGuid();
-
-            //Assert
+            // Arrange & Act
+            var result = StringExtensions.IsNotValidGuid(null);
+            
+            // Assert
             result.ShouldBeTrue();
         }
 
         #endregion IsNotValidGuid
-
-
+        
         #region IsValidGuid
+
+        [Fact]
+        public void IsValidGuid_When_Null_Then_Returns_False()
+        {
+            // Araange & Act
+            var result = StringExtensions.IsValidGuid(null);
+            
+            // Assert 
+            result.ShouldBeFalse();
+        }
 
         [Fact]
         public void IsValidGuid_When_Valid_Guid_Returns_True()
@@ -233,36 +251,35 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var guidString = Guid.NewGuid().ToString();
 
-            //Act
+            // Act
             var result = guidString.IsValidGuid();
 
-            //Assert
+            // Assert
             result.ShouldBeTrue();
         }
 
         [Fact]
         public void IsValidGuid_When_Invalid_Guid_Returns_False()
         {
-            //Arrange
+            // Arrange
             var guidString = "I'm not a Guid";
 
-            //Act
+            // Act
             var result = guidString.IsValidGuid();
 
-            //Assert
+            // Assert
             result.ShouldBeFalse();
         }
 
-        [Fact]
-        public void IsValidGuid_When_Empty_String_Returns_False()
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsValidGuid_When_String_Is_Empty_Or_Whitespace_Then_Returns_False(string guidString)
         {
-            //Arrange
-            var guidString = String.Empty;
-
-            //Act
+            // Act
             var result = guidString.IsValidGuid();
 
-            //Assert
+            // Assert
             result.ShouldBeFalse();
         }
 
