@@ -67,6 +67,39 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion AsIndentedJson
 
+        #region IsInvalidHttpUrl
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsInvalidHttpUrl_When_Url_NullOrWhiteSpace_Returns_False(string url)
+        {
+            url.IsInvalidHttpUrl().ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsInValidHttpUrl_With_No_Url_Scheme_Returns_True()
+        {
+            // Arrange & Act & Assert
+            "www.google.com".IsInvalidHttpUrl().ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsInValidHttpUrl_With_Valid_Url_Scheme_Returns_False()
+        {
+            // Arrange & Act & Assert
+            "http://www.google.com".IsInvalidHttpUrl().ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsInValidHttpUrl_With_Invalid_Uri_Scheme_Returns_True()
+        {
+            // Arrange & Act & Assert
+            "ftp://www.google.com".IsInvalidHttpUrl().ShouldBeTrue();
+        }
+
+        #endregion
 
         #region IsValidEmail
 
@@ -107,6 +140,46 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion IsValidEmail
 
+        #region IsValidHttpUrl
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void IsValidHttpUrl_When_Url_NullOrWhiteSpace_Returns_False(string url)
+        {
+            url.IsValidHttpUrl().ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsValidHttpUrl_With_Http_Url_Scheme_Returns_True()
+        {
+            // Arrange & Act & Assert
+            "http://www.google.com".IsValidHttpUrl().ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsValidHttpUrl_With_Https_Url_Scheme_Returns_True()
+        {
+            // Arrange & Act & Assert
+            "https://www.google.com".IsValidHttpUrl().ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsValidHttpUrl_With_Incomplete_Url_Returns_False()
+        {
+            // Arrange & Act & Assert
+            "www.google.com".IsValidHttpUrl().ShouldBeFalse();
+        }
+
+        [Fact]
+        public void IsValidHttpUrl_With_Invalid_Url_Scheme_Returns_False()
+        {
+            // Arrange & Act & Assert
+            "ftp://www.google.com".IsValidHttpUrl().ShouldBeFalse();
+        }
+
+        #endregion
 
         #region IsNotValidGuid
 
@@ -194,7 +267,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion IsValidGuid
-
 
         #region ToBoolean
 

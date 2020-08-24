@@ -7,6 +7,9 @@ using System.Globalization;
 
 namespace AndcultureCode.CSharp.Extensions
 {
+    /// <summary>
+    /// String extension methods
+    /// </summary>
     public static class StringExtensions
     {
         #region Public Methods
@@ -31,6 +34,15 @@ namespace AndcultureCode.CSharp.Extensions
             dynamic resultObject = JsonConvert.DeserializeObject(str);
             return JsonConvert.SerializeObject(resultObject, Formatting.Indented);
         }
+
+        /// <summary>
+        /// Determines if the supplied string is not a valid HTTP or HTTPS Url
+        ///
+        /// Uses the native Uri class
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool IsInvalidHttpUrl(this string source) => !source.IsValidHttpUrl();
 
         /// <summary>
         /// Determines if the supplied string is an email address
@@ -101,6 +113,28 @@ namespace AndcultureCode.CSharp.Extensions
         }
 
         /// <summary>
+        /// Determines if the supplied string is a valid HTTP or HTTPS url
+        ///
+        /// Uses the native Uri class
+        /// </summary>
+        /// <param name="source"></param>
+        public static bool IsValidHttpUrl(this string source)
+        {
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                return false;
+            }
+
+            var validUriSchemes = new[]
+            {
+                Uri.UriSchemeHttp,
+                Uri.UriSchemeHttps
+            };
+
+            return Uri.TryCreate(source, UriKind.Absolute, out var uriResult) && validUriSchemes.Contains(uriResult.Scheme);
+        }
+
+        /// <summary>
         /// Converts a string representation of a boolean into an actual boolean
         /// </summary>
         public static bool ToBoolean(this string booleanAsString)
@@ -112,13 +146,13 @@ namespace AndcultureCode.CSharp.Extensions
 
             switch (booleanAsString.Trim().ToLower())
             {
-                case "true":  return true;
-                case "t":     return true;
-                case "1":     return true;
-                case "0":     return false;
+                case "true": return true;
+                case "t": return true;
+                case "1": return true;
+                case "0": return false;
                 case "false": return false;
-                case "f":     return false;
-                default:      return false;
+                case "f": return false;
+                default: return false;
             }
         }
 

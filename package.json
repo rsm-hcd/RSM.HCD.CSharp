@@ -13,6 +13,6 @@
   "license": "ISC",
   "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions#readme",
   "devDependencies": {
-    "and-cli": "^0.3.2"
+    "and-cli": "1.1.0"
   }
 }

@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace AndcultureCode.CSharp.Extensions
 {
+    /// <summary>
+    /// HttpResponseMessage extension methods
+    /// </summary>
     public static class HttpResponseMessageExtensions
     {
         /// <summary>

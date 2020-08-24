@@ -9,6 +9,53 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 {
     public class DateExtensionsTests
     {
+        #region AtEndOfDay
+
+        [Fact]
+        public void AtEndOfDay_Returns_Date_With_Time_Set_To_Eleven_Fifty_Nine_PM()
+        {
+            // Arrange
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.AtEndOfDay();
+
+            // Assert
+            result.Hour.ShouldBe(23);
+            result.Minute.ShouldBe(59);
+            result.Second.ShouldBe(59);
+        }
+
+        [Fact]
+        public void AtEndOfDay_Preserves_The_Offset_Value()
+        {
+            // Arrange
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.AtEndOfDay();
+
+            // Assert
+            result.Offset.ShouldBe(testDate.Offset);
+        }
+
+        [Fact]
+        public void AtEndOfDay_Does_Not_Change_The_Date()
+        {
+            // Arrange
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.AtEndOfDay();
+
+            // Assert
+            result.Year.ShouldBe(testDate.Year);
+            result.Month.ShouldBe(testDate.Month);
+            result.Day.ShouldBe(testDate.Day);
+        }
+
+        #endregion AtEndOfDay
+
         #region AtMidnight
 
         [Fact]
@@ -88,6 +135,146 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion CalculateAge
+        
+        #region SetTime
+
+        [Fact]
+        public void SetTime_Throws_Argument_Exception_When_Hour_Less_Than_Zero()
+        {
+            // Arrange
+            var hour = -1;
+            var testDate = DateTimeOffset.Now;
+
+            // Act & Assert
+            Should.Throw<ArgumentException>(() =>
+            {
+                testDate.SetTime(hour, 0, 0);
+            }).ParamName.ShouldBe(nameof(hour));
+        }
+        
+        [Fact]
+        public void SetTime_Throws_Argument_Exception_When_Hour_Greater_Than_Twenty_Three()
+        {
+            // Arrange
+            var hour = 24;
+            var testDate = DateTimeOffset.Now;
+
+            // Act & Assert
+            Should.Throw<ArgumentException>(() =>
+            {
+                testDate.SetTime(hour, 0, 0);
+            }).ParamName.ShouldBe(nameof(hour));
+        }
+        
+        [Fact]
+        public void SetTime_Throws_Argument_Exception_When_Minute_Less_Than_Zero()
+        {
+            // Arrange
+            var minute = -1;
+            var testDate = DateTimeOffset.Now;
+
+            // Act & Assert
+            Should.Throw<ArgumentException>(() =>
+            {
+                testDate.SetTime(0, minute, 0);
+            }).ParamName.ShouldBe(nameof(minute));
+        }
+        
+        [Fact]
+        public void SetTime_Throws_Argument_Exception_When_Minute_Greater_Than_Fifty_Nine()
+        {
+            // Arrange
+            var minute = 60;
+            var testDate = DateTimeOffset.Now;
+
+            // Act & Assert
+            Should.Throw<ArgumentException>(() =>
+            {
+                testDate.SetTime(0, minute, 0);
+            }).ParamName.ShouldBe(nameof(minute));
+        }
+
+        [Fact]
+        public void SetTime_Throws_Argument_Exception_When_Second_Less_Than_Zero()
+        {
+            // Arrange
+            var second = -1;
+            var testDate = DateTimeOffset.Now;
+
+            // Act & Assert
+            Should.Throw<ArgumentException>(() =>
+            {
+                testDate.SetTime(0, 0, second);
+            }).ParamName.ShouldBe(nameof(second));
+        }
+        
+        [Fact]
+        public void SetTime_Throws_Argument_Exception_When_Second_Greater_Than_Fifty_Nine()
+        {
+            // Arrange
+            var second = 60;
+            var testDate = DateTimeOffset.Now;
+
+            // Act & Assert
+            Should.Throw<ArgumentException>(() =>
+            {
+                testDate.SetTime(0, 0, second);
+            }).ParamName.ShouldBe(nameof(second));
+        }
+        
+        [Fact]
+        public void SetTime_With_Valid_Parameters_Sets_Time()
+        {
+            // Arrange
+            var hour = 11;
+            var minute = 35;
+            var second = 35;
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.SetTime(hour, minute, second);
+            
+            // Assert
+            result.Hour.ShouldBe(hour);
+            result.Minute.ShouldBe(minute);
+            result.Second.ShouldBe(second);
+        }
+        
+        [Fact]
+        public void SetTime_With_Valid_Parameters_Maintains_Offset()
+        {
+            // Arrange
+            var hour = 11;
+            var minute = 35;
+            var second = 35;
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.SetTime(hour, minute, second);
+            
+            // Assert
+            result.Offset.ShouldBe(testDate.Offset);
+        }
+        
+        [Fact]
+        public void SetTime_With_Valid_Parameters_Maintains_Date()
+        {
+            // Arrange
+            var hour = 11;
+            var minute = 35;
+            var second = 35;
+            var testDate = DateTimeOffset.Now;
+
+            // Act
+            var result = testDate.SetTime(hour, minute, second);
+            
+            // Assert
+            result.Month.ShouldBe(testDate.Month);
+            result.Day.ShouldBe(testDate.Day);
+            result.Year.ShouldBe(testDate.Year);
+        }
+        
+        #endregion SetTime
 
         #region SubtractWeekdays -- DateTime
 
