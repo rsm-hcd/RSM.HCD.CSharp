@@ -240,6 +240,48 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion AddError(localizer, key, arguments)
 
+        #region AddErrors(source)
+
+        [Fact]
+        public void
+            AddErrors_Source_Overload_When_Source_Errors_IsNull_Then_Returns_Destination_Errors_Without_Any_Additions()
+        {
+            // Arrange
+            var expected = new Error();
+            var sut      = new Result<bool>();
+            sut.Errors   = new List<IError>{ expected };
+            var source   = new Result<string>();
+            
+            // Act
+            var result = sut.AddErrors(source);
+            
+            // Assert
+            result.Count.ShouldBe(1);
+            result.ShouldContain(expected);
+        }
+
+        [Fact]
+        public void AddErrors_Source_Overload_When_Source_Has_Errors_Then_Returns_Errors_From_Destination_And_Source()
+        {
+            // Arrange
+            var expected1 = new Error();
+            var expected2 = new Error();
+            var sut       = new Result<bool>();
+            sut.Errors    = new List<IError> { expected1 };
+            var source    = new Result<string>();
+            source.Errors = new List<IError> { expected2 };
+            
+            // Act
+            var result = sut.AddErrors(source);
+            
+            // Assert
+            result.Count.ShouldBe(2);
+            result.ShouldContain(expected1);
+            result.ShouldContain(expected2);
+        }
+
+        #endregion AddErrors(source)
+
         #region AddErrorsAndReturnDefault
 
         [Fact]
