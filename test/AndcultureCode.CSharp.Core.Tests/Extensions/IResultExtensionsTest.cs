@@ -750,7 +750,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         #region DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType)
 
         [Fact]
-        public void DoesNotHaveErrors_When_There_Are_No_Errors_Returns_True()
+        public void DoesNotHaveErrors_ErrorType_Overload_When_There_Are_No_Errors_Returns_True()
         {
             // Arrange
             var result = new Result<bool>();
@@ -784,27 +784,6 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_Key_Then_Returns_False()
-        {
-            // Arrange
-            var result = new Result<bool>();
-            var error = new Error
-                {
-                    ErrorType = ErrorType.Error,
-                    Key       = "Key",
-                    Message   = "Error Message"
-                };
-
-            result.Errors = new List<IError> { error };
-            
-            // Act
-            var output = result.DoesNotHaveErrors("Key");
-            
-            // Assert
-            output.ShouldBeFalse();
-        }
-        
-        [Fact]
         public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_ErrorType_Then_Returns_True()
         {
             // Arrange
@@ -823,6 +802,44 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             
             // Assert
             output.ShouldBeTrue();
+        }
+        
+        #endregion DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType)
+
+        #region DoesNotHaveErrors<T>(this IResult<T> result, string key)
+        
+        [Fact]
+        public void DoesNotHaveErrors_String_Overload_When_There_Are_No_Errors_Returns_True()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            
+            // Act
+            var output = result.DoesNotHaveErrors("ErrorKey");
+            
+            // Assert
+            output.ShouldBeTrue();
+        }
+        
+        [Fact]
+        public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_Key_Then_Returns_False()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            var error = new Error
+                {
+                    ErrorType = ErrorType.Error,
+                    Key       = "Key",
+                    Message   = "Error Message"
+                };
+
+            result.Errors = new List<IError> { error };
+            
+            // Act
+            var output = result.DoesNotHaveErrors("Key");
+            
+            // Assert
+            output.ShouldBeFalse();
         }
 
         [Fact]
@@ -846,7 +863,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             output.ShouldBeTrue();
         }
 
-        #endregion DoesNotHaveErrors
+        #endregion DoesNotHaveErrors<T>(this IResult<T> result, string key)
 
         #region HasErrors
 
