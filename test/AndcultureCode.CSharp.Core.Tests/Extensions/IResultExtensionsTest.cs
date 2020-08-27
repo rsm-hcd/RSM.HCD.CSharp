@@ -1206,6 +1206,55 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion HasErrorsOrResultIsNull
 
+        #region HasValidationErrors
+
+        [Fact]
+        public void HasValidationErrors_When_There_Are_Errors_With_ValidationError_Type_Then_Returns_True()
+        {
+            // Arrange
+            var result = new Result<bool>
+                {
+                    Errors = new List<IError> { new Error { ErrorType = ErrorType.ValidationError } }
+                };
+            
+            // Act
+            var output = result.HasValidationErrors();
+            
+            // Assert 
+            output.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void HasValidationErrors_When_There_Are_Errors_That_Are_Not_Validation_Error_Type_Then_Returns_False()
+        {
+            // Arrange
+            var result = new Result<bool>
+                {
+                    Errors = new List<IError> { new Error { ErrorType = ErrorType.Error } }
+                };
+            
+            // Act
+            var output = result.HasValidationErrors();
+            
+            // Assert 
+            output.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValidationErrors_When_There_Are_No_Errors_Then_Returns_False()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            
+            // Act
+            var output = result.HasValidationErrors();
+            
+            // Assert
+            output.ShouldBeFalse();
+        }
+
+        #endregion HasValidationErrors
+
         #region ListErrors
 
         #region ListErrors (IEnumerable<IResult<T>>, string)
