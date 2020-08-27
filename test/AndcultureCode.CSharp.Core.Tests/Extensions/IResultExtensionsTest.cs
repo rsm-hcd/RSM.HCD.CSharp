@@ -1163,6 +1163,49 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion HasErrorsOrResultIsFalse
 
+        #region HasErrorsOrResultIsNull
+
+        [Fact]
+        public void HasErrorsOrResultIsNull_When_Has_Errors_Then_Returns_True()
+        {
+            // Arrange
+            var result = new Result<bool> { Errors = new List<IError> { new Error() } };
+            
+            // Act
+            var output = result.HasErrorsOrResultIsNull();
+            
+            // Assert
+            output.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void HasErrorsOrResultIsNull_When_Result_Is_False_Then_Returns_True()
+        {
+            // Arrange
+            var result = new Result<string> { ResultObject = null };
+            
+            // Act
+            var output = result.HasErrorsOrResultIsNull();
+            
+            // Assert
+            output.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void HasErrorsOrResultIsNull_When_There_Are_No_Errors_And_Result_Is_Not_False_Then_Returns_False()
+        {
+            // Arrange
+            var result = new Result<bool>{ ResultObject = true };
+            
+            // Act
+            var output = result.HasErrorsOrResultIsNull();
+            
+            // Assert
+            output.ShouldBeFalse();
+        }
+
+        #endregion HasErrorsOrResultIsNull
+
         #region ListErrors
 
         #region ListErrors (IEnumerable<IResult<T>>, string)
