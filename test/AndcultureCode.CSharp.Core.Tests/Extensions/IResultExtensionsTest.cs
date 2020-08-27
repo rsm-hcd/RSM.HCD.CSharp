@@ -1,6 +1,7 @@
 using Shouldly;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 using AndcultureCode.CSharp.Extensions;
@@ -11,6 +12,7 @@ using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Enumerations;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using Moq;
 using AndcultureCode.CSharp.Testing.Tests;
 
@@ -240,6 +242,12 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion AddError(localizer, key, arguments)
 
+        #region AddErrorAndLog
+
+        
+
+        #endregion AddErrorAndLog
+
         #region AddErrors(source)
 
         [Fact]
@@ -281,6 +289,66 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion AddErrors(source)
+
+        #region AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, string logMessage, string resourceIdentifier, IEnumerable<IError> errors = null, string methodName = null)
+
+        [Fact]
+        public void AddErrorsAndLog_When_Given_Error_Key_Then_Adds_Single_Error_To_Result()
+        {
+            // Arrange 
+            var errorKey     = "Error Key";
+            var errorMessage = "Error Message";
+            var result       = new Result<bool>();
+            var mockLogger   = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, "Log Message", "ResourceId");
+            
+            // Assert
+            result.Errors.First().Key.ShouldBe(errorKey);
+            result.Errors.First().Message.ShouldBe(errorMessage);
+        }
+
+        [Fact]
+        public void AddErrorsAndLog_When_Given_Error_List_Then_Adds_List_To_Result()
+        {
+            // Arrange
+            var error1     = new Error();
+            var error2     = new Error();
+            var errorList  = new List<IError> { error1, error2 };
+            var result     = new Result<bool>();
+            var mockLogger = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, null, null, null, null, errorList);
+            
+            // Assert
+            result.Errors.ShouldContain(error1);
+            result.Errors.ShouldContain(error2);
+        }
+
+        [Fact]
+        public void AddErrorsAndLog_Calls_LogError_Method_Of_The_Logger()
+        {
+            // Arrange
+            var result             = new Result<bool>();
+            var mockLogger         = new Mock<ILogger>();
+            var methodName         = "AddErrorsAndLog_Calls_LogError_Method_Of_The_Logger";
+            var resourceIdentifier = "ResourceId";
+            var logMessage         = "Log Message";
+            var identifierText     = $" ({resourceIdentifier}) -";
+            var parameter          = $"[{methodName}]{identifierText} {logMessage}";
+
+            mockLogger.Setup(mock => mock.LogError(parameter));
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, null, null, logMessage, resourceIdentifier, null, methodName);
+            
+            // Assert
+            mockLogger.Verify(mock => mock.LogError(parameter), Times.Once());
+        }
+
+        #endregion AddErrorsAndLog
 
         #region AddErrorsAndReturnDefault
 
@@ -678,6 +746,107 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion AddValidationError(localizer, key, arguments)
+
+        #region DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType)
+
+        [Fact]
+        public void DoesNotHaveErrors_When_There_Are_No_Errors_Returns_True()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            
+            // Act
+            var output = result.DoesNotHaveErrors(ErrorType.Error);
+            
+            // Assert
+            output.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_ErrorType_Then_Returns_False()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            var error  = new Error
+                {
+                    ErrorType = ErrorType.Error,
+                    Key       = "Key",
+                    Message   = "Error Message"
+                };
+
+            result.Errors = new List<IError> { error };
+            
+            // Act
+            var output = result.DoesNotHaveErrors(ErrorType.Error);
+            
+            // Assert
+            output.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_Key_Then_Returns_False()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            var error = new Error
+                {
+                    ErrorType = ErrorType.Error,
+                    Key       = "Key",
+                    Message   = "Error Message"
+                };
+
+            result.Errors = new List<IError> { error };
+            
+            // Act
+            var output = result.DoesNotHaveErrors("Key");
+            
+            // Assert
+            output.ShouldBeFalse();
+        }
+        
+        [Fact]
+        public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_ErrorType_Then_Returns_True()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            var error = new Error
+                {
+                    ErrorType = ErrorType.Error,
+                    Key       = "Key",
+                    Message   = "Error Message"
+                };
+
+            result.Errors = new List<IError> { error };
+            
+            // Act
+            var output = result.DoesNotHaveErrors(ErrorType.ValidationError);
+            
+            // Assert
+            output.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_Key_Then_Returns_True()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            var error = new Error
+                {
+                    ErrorType = ErrorType.Error,
+                    Key       = "ErrorKey",
+                    Message   = "Error Message"
+                };
+
+            result.Errors = new List<IError> { error };
+            
+            // Act
+            var output = result.DoesNotHaveErrors("Key");
+            
+            // Assert
+            output.ShouldBeTrue();
+        }
+
+        #endregion DoesNotHaveErrors
 
         #region HasErrors
 
