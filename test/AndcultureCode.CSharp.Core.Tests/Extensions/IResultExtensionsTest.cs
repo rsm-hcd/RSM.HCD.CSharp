@@ -973,6 +973,44 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion GetErrors<T>(this IResult<T> result, string key)
 
+        #region GetValidationErrors
+
+        [Fact]
+        public void GetValidationErrors_When_There_Are_Validation_Errors_Then_Returns_List_With_Validation_Errors()
+        {
+            // Arrange
+            var result = new Result<bool>
+                {
+                    Errors = new List<IError>
+                        {
+                            new Error { ErrorType = ErrorType.ValidationError },
+                            new Error { ErrorType = ErrorType.Error }
+                        }
+                };
+            
+            // Act
+            var output = result.GetValidationErrors();
+            
+            // Assert
+            output.Count.ShouldBe(1);
+            output.ShouldNotContain(e => e.ErrorType == ErrorType.Error);
+        }
+
+        [Fact]
+        public void GetValidationErrors_When_There_Are_No_Validation_Errors_Then_Returns_Null()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            
+            // Act
+            var output = result.GetValidationErrors();
+            
+            // Assert
+            output.ShouldBeNull();
+        }
+
+        #endregion GetValidationErrors
+
         #region HasErrors
 
         #region HasErrors (IEnumerable<IResult<T>>)
