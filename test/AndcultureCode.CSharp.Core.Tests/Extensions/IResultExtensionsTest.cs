@@ -865,6 +865,114 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion DoesNotHaveErrors<T>(this IResult<T> result, string key)
 
+        #region GetErrors<T>(this IResult<T> result, ErrorType errorType)
+
+        [Fact]
+        public void GetErrors_ErrorType_Overload_When_There_Are_No_Errors_Then_Returns_Null()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            
+            // Act
+            var output = result.GetErrors(ErrorType.Error);
+            
+            // Assert
+            output.ShouldBeNull();
+        }
+
+        [Fact]
+        public void GetErrors_When_Errors_Do_Not_Match_Provided_ErrorType_Then_Returns_Null()
+        {
+            // Arrange
+            var result = new Result<bool>
+                {
+                    Errors = new List<IError> { new Error { ErrorType = ErrorType.ValidationError } }
+                };
+            
+            // Act
+            var output = result.GetErrors(ErrorType.Error);
+            
+            // Assert
+            output.ShouldBeNull();
+        }
+
+        [Fact]
+        public void GetErrors_When_ErrorType_Matches_Then_Returns_Errors_With_Matched_Type()
+        {
+            // Arrange
+            var errors = new List<IError>
+                {
+                    new Error { ErrorType = ErrorType.Error },
+                    new Error { ErrorType = ErrorType.Error },
+                    new Error { ErrorType = ErrorType.ValidationError }
+                };
+            
+            var result = new Result<bool>{ Errors = errors };
+            
+            // Act
+            var output = result.GetErrors(ErrorType.Error);
+            
+            // Assert
+            output.Count.ShouldBe(2);
+            output.ShouldNotContain(e => e.ErrorType == ErrorType.ValidationError);
+        }
+
+        #endregion GetErrors<T>(this IResult<T> result, ErrorType errorType)
+
+        #region GetErrors<T>(this IResult<T> result, string key)
+
+        [Fact]
+        public void GetErrors_Key_Overload_When_There_Are_No_Errors_Then_Returns_Null()
+        {
+            // Arrange
+            var result = new Result<bool>();
+            
+            // Act
+            var output = result.GetErrors("ErrorKey");
+            
+            // Assert
+            output.ShouldBeNull();
+        }
+        
+        [Fact]
+        public void GetErrors_When_Error_Key_Does_Not_Match_Provided_Key_Then_Returns_Null()
+        {
+            // Arrange
+            var result = new Result<bool>
+                {
+                    Errors = new List<IError> { new Error { Key = "ErrorKey"} }
+                };
+            
+            // Act
+            var output = result.GetErrors("NotErrorKey");
+            
+            // Assert
+            output.ShouldBeNull();
+        }
+        
+        [Fact]
+        public void GetErrors_When_Error_Key_Matches_Then_Returns_Errors_With_Matched_Key()
+        {
+            // Arrange
+            var errors = new List<IError>
+                {
+                    new Error { Key = "ErrorKey1" },
+                    new Error { Key = "ErrorKey1" },
+                    new Error { Key = "ErrorKey2" }
+                };
+            
+            var result = new Result<bool>{ Errors = errors };
+            
+            // Act
+            var output = result.GetErrors("ErrorKey1");
+            
+            // Assert
+            output.Count.ShouldBe(2);
+            output.ShouldNotContain(e => e.Key == "ErrorKey2");
+        }
+
+        #endregion GetErrors<T>(this IResult<T> result, string key)
+
         #region HasErrors
 
         #region HasErrors (IEnumerable<IResult<T>>)
