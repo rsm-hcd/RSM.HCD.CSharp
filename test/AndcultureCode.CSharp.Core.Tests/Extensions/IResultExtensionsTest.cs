@@ -1432,6 +1432,81 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion ThrowIfAnyErrors
 
+        #region ThrowIfAnyErrorsOrResultIsFalse
+
+        [Fact]
+        public void ThrowIfAnyErrorsOrResultIsFalse_When_No_Errors_And_Result_Is_True_Then_Returns_Result()
+        {
+            // Arrange
+            var result = new Result<bool> { ResultObject = true };
+
+            // Act
+            var output = result.ThrowIfAnyErrorsOrResultIsFalse();
+
+            // Assert
+            output.ShouldBe(result);
+        }
+
+        [Fact]
+        public void ThrowIfAnyErrorsOrResultIsFalse_When_Provided_Exception_For_Errors_Then_Throws_Provided_Exception()
+        {
+            // Arrange
+            var result         = new Result<bool> { Errors = new List<IError> { new Error() } };
+            var errorException = new CustomException();
+
+            // Act && Assert
+            Should.Throw<CustomException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(errorException); });
+        }
+        
+        [Fact]
+        public void ThrowIfAnyErrorsOrResultIsFalse_When_Provided_Exception_For_False_Result_Then_Throws_Provided_Exception()
+        {
+            // Arrange
+            var result         = new Result<bool> { ResultObject = false };
+            var errorException = new CustomException();
+
+            // Act && Assert
+            Should.Throw<CustomException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(null, errorException); });
+        }
+
+        [Fact]
+        public void ThrowIfAnyErrorsOrResultIsFalse_When_No_Exception_Is_Provided_For_Errors_Then_Throws_Generic_Exception_With_Error_List()
+        {
+            // Arrange
+            var result = new Result<bool>
+                {
+                    Errors = new List<IError>
+                        {
+                            new Error { Key = "ErrorKey1", Message = "Error message 1" },
+                            new Error { Key = "ErrorKey2", Message = "Error message 2" }
+                        }
+                };
+            var errorList = result.ListErrors();
+
+            // Act && Assert
+            var exception = Should.Throw<Exception>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(); });
+
+            exception.Message.ShouldBe(errorList);
+        }
+
+        [Fact]
+        public void
+            ThrowIfAnyErrorsOrResultIsFalse_When_No_Exception_Provided_For_False_Result_Then_Throws_Generic_Exception_With_Default_Message()
+        {
+            // Arrange
+            var result         = new Result<bool> { ResultObject = false };
+            var defaultMessage = "Result object for IResult is false";
+            
+            // Act && Assert
+            var exception = Should.Throw<Exception>(() => result.ThrowIfAnyErrorsOrResultIsFalse());
+
+            exception.Message.ShouldBe(defaultMessage);
+        }
+
+        
+
+        #endregion ThrowIfAnyErrorsOrResultIsFalse
+
         #region ThrowIfAnyErrorsOrResultIsNull
 
         [Fact]
@@ -1513,7 +1588,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion ThrowIfAnyErrorsOrResultIsNull
 
-        class CustomException : Exception
+        private class CustomException : Exception
         {
             
         }
