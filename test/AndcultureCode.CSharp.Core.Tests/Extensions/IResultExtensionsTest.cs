@@ -15,6 +15,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Moq;
 using AndcultureCode.CSharp.Testing.Tests;
+using Castle.DynamicProxy.Generators.Emitters;
 using Microsoft.Extensions.Logging.Internal;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
@@ -243,12 +244,6 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion AddError(localizer, key, arguments)
 
-        #region AddErrorAndLog
-
-        
-
-        #endregion AddErrorAndLog
-
         #region AddErrors(source)
 
         [Fact]
@@ -291,6 +286,184 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion AddErrors(source)
 
+        #region AddErrorsAndLog
+
+        // DEVELOPER NOTE: Some of the tests in this region will be testing to see if methods of the logger were called. 
+        // Checking to see that one method calls another is typically seen as an antipattern but since we don't have any
+        // output to test against, the best we can do is test that the logger is called with the expected arguments.
+
+        #region AddErrorAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long? resourceIdentifier = null)
+
+        [Fact]
+        public void AddErrorAndLog_Adds_Error_To_Result()
+        {
+            // Arrange 
+            var errorKey     = "Error Key";
+            var errorMessage = "Error Message";
+            var result       = new Result<bool>();
+            var mockLogger   = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorAndLog(mockLogger.Object, errorKey, errorMessage);
+            
+            // Assert
+            result.Errors.First().Key.ShouldBe(errorKey);
+            result.Errors.First().Message.ShouldBe(errorMessage); 
+        }
+
+        [Fact]
+        public void AddErrorAndLog_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        {
+            // Arrange
+            var errorKey           = "ErrorKey";
+            var result             = new Result<bool>();
+            var mockLogger         = new Mock<ILogger>();
+            var methodName         = "AddErrorAndLog_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
+            var resourceIdentifier = 42;
+            var logMessage         = "Log Message";
+            var identifierText     = $" ({resourceIdentifier.ToString()}) -";
+            var formattedMessage   = $"[{methodName}]{identifierText} {logMessage}";
+            
+            // Act
+            result.AddErrorAndLog(mockLogger.Object, errorKey, logMessage, resourceIdentifier);
+            
+            // Assert
+            mockLogger.Verify(
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+        }
+
+        #endregion AddErrorAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long? resourceIdentifier = null)
+        
+        #region AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long resourceIdentifier, IEnumerable<IError> errors = null)
+
+        [Fact]
+        public void AddErrorsAndLog_When_Provided_With_Error_List_Then_Adds_List_To_Result()
+        {
+            // Arrange
+            var error1     = new Error();
+            var error2     = new Error();
+            var errorList  = new List<IError> { error1, error2 };
+            var result     = new Result<bool>();
+            var mockLogger = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(
+                logger:             mockLogger.Object, 
+                errorKey:           null,
+                errorMessage:       null,
+                resourceIdentifier: 1, 
+                errors:             errorList);
+            
+            // Assert
+            result.Errors.ShouldContain(error1);
+            result.Errors.ShouldContain(error2);
+        }
+
+        [Fact]
+        public void AddErrorsAndLog_When_Provided_With_Error_Key_Then_Adds_Single_Error_To_Result()
+        {
+            // Arrange 
+            var errorKey     = "Error Key";
+            var errorMessage = "Error Message";
+            var result       = new Result<bool>();
+            var mockLogger   = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, 1);
+            
+            // Assert
+            result.Errors.First().Key.ShouldBe(errorKey);
+            result.Errors.First().Message.ShouldBe(errorMessage);
+        }
+        
+        [Fact]
+        public void AddErrorsAndLog_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        {
+            // Arrange
+            var errorKey           = "ErrorKey";
+            var result             = new Result<bool>();
+            var mockLogger         = new Mock<ILogger>();
+            var methodName         = "AddErrorsAndLog_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
+            var resourceIdentifier = 42;
+            var logMessage         = "Log Message";
+            var identifierText     = $" ({resourceIdentifier.ToString()}) -";
+            var formattedMessage   = $"[{methodName}]{identifierText} {logMessage}";
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, errorKey, logMessage, resourceIdentifier);
+            
+            // Assert
+            mockLogger.Verify(
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+        }
+
+        #endregion AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long resourceIdentifier, IEnumerable<IError> errors = null)
+
+        #region AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, IEnumerable<IError> errors = null)
+
+        [Fact]
+        public void AddErrorsAndLog_Without_ResourceId_Overload_When_Provided_With_Error_List_Then_Adds_List_To_Result()
+        {
+            // Arrange
+            var error1     = new Error();
+            var error2     = new Error();
+            var errorList  = new List<IError> { error1, error2 };
+            var result     = new Result<bool>();
+            var mockLogger = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(
+                logger:             mockLogger.Object, 
+                errorKey:           null,
+                errorMessage:       null,
+                errors:             errorList);
+            
+            // Assert
+            result.Errors.ShouldContain(error1);
+            result.Errors.ShouldContain(error2);
+        }
+
+        [Fact]
+        public void AddErrorsAndLog_Without_ResourceId_Overload_When_Provided_With_Error_Key_Then_Adds_Single_Error_To_Result()
+        {
+            // Arrange 
+            var errorKey     = "Error Key";
+            var errorMessage = "Error Message";
+            var result       = new Result<bool>();
+            var mockLogger   = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, null);
+            
+            // Assert
+            result.Errors.First().Key.ShouldBe(errorKey);
+            result.Errors.First().Message.ShouldBe(errorMessage);
+        }
+        
+        [Fact]
+        public void AddErrorsAndLog_Without_ResourceId_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        {
+            // Arrange
+            var errorKey           = "ErrorKey";
+            var result             = new Result<bool>();
+            var mockLogger         = new Mock<ILogger>();
+            var methodName         = "AddErrorsAndLog_Without_ResourceId_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
+            var logMessage         = "Log Message";
+            var formattedMessage   = $"[{methodName}] {logMessage}";
+            
+            // Act
+            result.AddErrorsAndLog(mockLogger.Object, errorKey, logMessage, null);
+            
+            // Assert
+            mockLogger.Verify(
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+        }
+
+        #endregion AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, IEnumerable<IError> errors = null)
+        
         #region AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, string logMessage, string resourceIdentifier, IEnumerable<IError> errors = null, string methodName = null)
 
         [Fact]
@@ -373,6 +546,253 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #endregion AddErrorsAndLog
 
+        #region AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, params object[] arguments)
+
+        [Fact]
+        public void
+            AddErrorAndLog_Localizer_Without_ResourceId_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var localizer         = Mock.Of<IStringLocalizer>();
+            var mockLogger        = Mock.Of<ILogger>();
+
+            // Act
+            destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, expectedMessage);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+               e.ErrorType == ErrorType.Error && // <---- Error
+               e.Key       == expectedKey     &&
+               e.Message   == String.Empty
+            );  
+        }
+
+        [Fact]
+        public void AddErrorAndLog_Localizer_Without_ResourceId_Overload_Adds_Translated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var mockLogger        = Mock.Of<ILogger>();
+            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            
+            // Act
+            destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, expectedMessage);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+               e.ErrorType == ErrorType.Error && // <---- Error
+               e.Key       == expectedKey     &&
+               e.Message   == expectedMessage
+            );
+        }
+
+        [Fact]
+        public void
+            AddErrorAndLog_Localizer_Without_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var mockLogger        = new Mock<ILogger>();
+            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var methodName        = "AddErrorAndLog_Localizer_Without_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
+            var formattedMessage  = $"[{methodName}] {expectedMessage}";
+            
+            // Act
+            destinationResult.AddErrorAndLog(mockLogger.Object, localizer, expectedKey, expectedMessage);
+            
+            // Assert
+            mockLogger.Verify(
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+        }
+
+        #endregion AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, params object[] arguments)
+
+        #region AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, params object[] arguments)
+
+        [Fact]
+        public void
+            AddErrorAndLog_Localizer_With_ResourceId_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var localizer         = Mock.Of<IStringLocalizer>();
+            var mockLogger        = Mock.Of<ILogger>();
+            var resourceId        = 42;
+
+            // Act
+            destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, resourceId, expectedMessage);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+               e.ErrorType == ErrorType.Error && // <---- Error
+               e.Key       == expectedKey     &&
+               e.Message   == String.Empty
+            );  
+        }
+
+        [Fact]
+        public void AddErrorAndLog_Localizer_With_ResourceId_Overload_Adds_Translated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var mockLogger        = Mock.Of<ILogger>();
+            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var resourceId        = 42;
+            
+            // Act
+            destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, resourceId, expectedMessage);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+               e.ErrorType == ErrorType.Error && // <---- Error
+               e.Key       == expectedKey     &&
+               e.Message   == expectedMessage
+            );
+        }
+
+        [Fact]
+        public void
+            AddErrorAndLog_Localizer_With_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var resourceId        = 42;
+            var mockLogger        = new Mock<ILogger>();
+            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var methodName        = "AddErrorAndLog_Localizer_With_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
+            var identifierText    = $" ({resourceId}) -";
+            var formattedMessage  = $"[{methodName}]{identifierText} {expectedMessage}";
+            
+            // Act
+            destinationResult.AddErrorAndLog(mockLogger.Object, localizer, expectedKey, resourceId, expectedMessage);
+            
+            // Assert
+            mockLogger.Verify(
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+        }
+
+        #endregion AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, params object[] arguments)
+
+        #region AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, IEnumerable<IError> errors = null, params object[] arguments)
+        
+        [Fact]
+        public void AddErrorsAndLog_Localizer_With_Errors_Overload_When_Provided_With_Error_List_Then_Adds_List_To_Result()
+        {
+            // Arrange
+            var error1     = new Error();
+            var error2     = new Error();
+            var errorList  = new List<IError> { error1, error2 };
+            var localizer  = Mock.Of<IStringLocalizer>();
+            var result     = new Result<bool>();
+            var mockLogger = new Mock<ILogger>();
+            
+            // Act
+            result.AddErrorsAndLog(
+                logger:             mockLogger.Object, 
+                localizer:          localizer,
+                errorKey:           null,
+                resourceIdentifier: 1, 
+                errors:             errorList);
+            
+            // Assert
+            result.Errors.ShouldContain(error1);
+            result.Errors.ShouldContain(error2);
+        }
+
+        [Fact]
+        public void
+            AddErrorsAndLog_Localizer_With_Errors_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var localizer         = Mock.Of<IStringLocalizer>();
+            var mockLogger        = Mock.Of<ILogger>();
+            var resourceId        = 42;
+
+            // Act
+            destinationResult.AddErrorsAndLog(mockLogger, localizer, expectedKey, resourceId, null, expectedMessage);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+               e.ErrorType == ErrorType.Error && // <---- Error
+               e.Key       == expectedKey     &&
+               e.Message   == String.Empty
+            );  
+        }
+
+        [Fact]
+        public void AddErrorsAndLog_Localizer_With_Errors_Overload_Adds_Translated_Error()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var mockLogger        = Mock.Of<ILogger>();
+            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var resourceId        = 42;
+            
+            // Act
+            destinationResult.AddErrorsAndLog(mockLogger, localizer, expectedKey, resourceId, null, expectedMessage);
+
+            // Assert
+            destinationResult.Errors.ShouldContain(e =>
+               e.ErrorType == ErrorType.Error && // <---- Error
+               e.Key       == expectedKey     &&
+               e.Message   == expectedMessage
+            );
+        }
+
+        [Fact]
+        public void
+            AddErrorsAndLog_Localizer_With_Errors_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        {
+            // Arrange
+            var destinationResult = new Result<object>();
+            var expectedKey       = Random.String();
+            var expectedMessage   = Random.String();
+            var resourceId        = 42;
+            var mockLogger        = new Mock<ILogger>();
+            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var methodName        = "AddErrorsAndLog_Localizer_With_Errors_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
+            var identifierText    = $" ({resourceId}) -";
+            var formattedMessage  = $"[{methodName}]{identifierText} {expectedMessage}";
+            
+            // Act
+            destinationResult.AddErrorsAndLog(mockLogger.Object, localizer, expectedKey, resourceId, null, expectedMessage);
+            
+            // Assert
+            mockLogger.Verify(
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+        }
+
+        #endregion AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, IEnumerable<IError> errors = null, params object[] arguments)
+
+        #endregion AddErrorsAndLog
+        
         #region AddErrorsAndReturnDefault
 
         [Fact]
