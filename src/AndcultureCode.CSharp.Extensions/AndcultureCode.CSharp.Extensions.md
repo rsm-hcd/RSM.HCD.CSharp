@@ -38,9 +38,11 @@
   - [Or\`\`2(expr1,expr2,navigationProperty)](#M-AndcultureCode-CSharp-Extensions-ExpressionExtensions-Or``2-System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``1,System-Boolean}},System-Linq-Expressions-Expression{System-Func{``0,``1}}- 'AndcultureCode.CSharp.Extensions.ExpressionExtensions.Or``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}})')
 - [HttpRequestExtensions](#T-AndcultureCode-CSharp-Extensions-HttpRequestExtensions 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions')
   - [X_FORWARDED_FOR](#F-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-X_FORWARDED_FOR 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.X_FORWARDED_FOR')
+  - [GetCookie(request,name)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetCookie-Microsoft-AspNetCore-Http-HttpRequest,System-String- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetCookie(Microsoft.AspNetCore.Http.HttpRequest,System.String)')
   - [GetHeader(request,name)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetHeader-Microsoft-AspNetCore-Http-HttpRequest,System-String- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetHeader(Microsoft.AspNetCore.Http.HttpRequest,System.String)')
   - [GetIpAddress(request)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetIpAddress-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetIpAddress(Microsoft.AspNetCore.Http.HttpRequest)')
   - [GetUserAgent()](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetUserAgent-Microsoft-AspNetCore-Http-HttpRequest- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.GetUserAgent(Microsoft.AspNetCore.Http.HttpRequest)')
+  - [HasCookie(request,name)](#M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-HasCookie-Microsoft-AspNetCore-Http-HttpRequest,System-String- 'AndcultureCode.CSharp.Extensions.HttpRequestExtensions.HasCookie(Microsoft.AspNetCore.Http.HttpRequest,System.String)')
 - [HttpResponseMessageExtensions](#T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions')
   - [FromJson\`\`1(response)](#M-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage- 'AndcultureCode.CSharp.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)')
 - [IConfigurationRootExtensions](#T-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions 'AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions')
@@ -614,6 +616,26 @@ Extension methods for HttpRequest
 
 Standard X-Header for forwarding IP addresses in varying infrastructures
 
+<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetCookie-Microsoft-AspNetCore-Http-HttpRequest,System-String-'></a>
+### GetCookie(request,name) `method`
+
+##### Summary
+
+Returns the specified cookie by name
+
+ If no cookie is found, returns null
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Microsoft.AspNetCore.Http.HttpRequest](#T-Microsoft-AspNetCore-Http-HttpRequest 'Microsoft.AspNetCore.Http.HttpRequest') | The request to pull the cookie from |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the cookie to be returned |
+
 <a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-GetHeader-Microsoft-AspNetCore-Http-HttpRequest,System-String-'></a>
 ### GetHeader(request,name) `method`
 
@@ -656,6 +678,26 @@ Requesting user's agent
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-HttpRequestExtensions-HasCookie-Microsoft-AspNetCore-Http-HttpRequest,System-String-'></a>
+### HasCookie(request,name) `method`
+
+##### Summary
+
+Returns whether or not the specified cookie is found in the request
+
+ If the cookie is found but its value is null/whitespace, it will return false.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Microsoft.AspNetCore.Http.HttpRequest](#T-Microsoft-AspNetCore-Http-HttpRequest 'Microsoft.AspNetCore.Http.HttpRequest') | The request to check for the cookie |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the cookie to check for |
 
 <a name='T-AndcultureCode-CSharp-Extensions-HttpResponseMessageExtensions'></a>
 ## HttpResponseMessageExtensions `type`
