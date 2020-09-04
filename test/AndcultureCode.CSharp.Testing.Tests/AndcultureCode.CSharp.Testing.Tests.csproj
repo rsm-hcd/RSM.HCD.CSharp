@@ -26,8 +26,4 @@
     <DotNetCliToolReference Include="dotnet-reportgenerator-cli" Version="4.2.11" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Factories" />
-  </ItemGroup>
-
 </Project>
