@@ -1196,20 +1196,20 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void DoesNotHaveErrors_ErrorType_Overload_When_There_Are_No_Errors_Returns_True()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             
             // Act
-            var output = result.DoesNotHaveErrors(ErrorType.Error);
+            var result = sut.DoesNotHaveErrors(ErrorType.Error);
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_ErrorType_Then_Returns_False()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             var error  = new Error
                 {
                     ErrorType = ErrorType.Error,
@@ -1217,20 +1217,20 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                     Message   = "Error Message"
                 };
 
-            result.Errors = new List<IError> { error };
+            sut.Errors = new List<IError> { error };
             
             // Act
-            var output = result.DoesNotHaveErrors(ErrorType.Error);
+            var result = sut.DoesNotHaveErrors(ErrorType.Error);
             
             // Assert
-            output.ShouldBeFalse();
+            result.ShouldBeFalse();
         }
 
         [Fact]
         public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_ErrorType_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             var error = new Error
                 {
                     ErrorType = ErrorType.Error,
@@ -1238,13 +1238,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                     Message   = "Error Message"
                 };
 
-            result.Errors = new List<IError> { error };
+            sut.Errors = new List<IError> { error };
             
             // Act
-            var output = result.DoesNotHaveErrors(ErrorType.ValidationError);
+            var result = sut.DoesNotHaveErrors(ErrorType.ValidationError);
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
         
         #endregion DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType)
@@ -1255,20 +1255,20 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void DoesNotHaveErrors_String_Overload_When_There_Are_No_Errors_Returns_True()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             
             // Act
-            var output = result.DoesNotHaveErrors("ErrorKey");
+            var result = sut.DoesNotHaveErrors("ErrorKey");
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
         
         [Fact]
         public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_Key_Then_Returns_False()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             var error = new Error
                 {
                     ErrorType = ErrorType.Error,
@@ -1276,20 +1276,20 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                     Message   = "Error Message"
                 };
 
-            result.Errors = new List<IError> { error };
+            sut.Errors = new List<IError> { error };
             
             // Act
-            var output = result.DoesNotHaveErrors("Key");
+            var result = sut.DoesNotHaveErrors("Key");
             
             // Assert
-            output.ShouldBeFalse();
+            result.ShouldBeFalse();
         }
 
         [Fact]
         public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_Key_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             var error = new Error
                 {
                     ErrorType = ErrorType.Error,
@@ -1297,13 +1297,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                     Message   = "Error Message"
                 };
 
-            result.Errors = new List<IError> { error };
+            sut.Errors = new List<IError> { error };
             
             // Act
-            var output = result.DoesNotHaveErrors("Key");
+            var result = sut.DoesNotHaveErrors("Key");
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         #endregion DoesNotHaveErrors<T>(this IResult<T> result, string key)
@@ -1314,29 +1314,29 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void GetErrors_ErrorType_Overload_When_There_Are_No_Errors_Then_Returns_Null()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             
             // Act
-            var output = result.GetErrors(ErrorType.Error);
+            var result = sut.GetErrors(ErrorType.Error);
             
             // Assert
-            output.ShouldBeNull();
+            result.ShouldBeNull();
         }
 
         [Fact]
         public void GetErrors_When_Errors_Do_Not_Match_Provided_ErrorType_Then_Returns_Null()
         {
             // Arrange
-            var result = new Result<bool>
+            var sut = new Result<bool>
                 {
                     Errors = new List<IError> { new Error { ErrorType = ErrorType.ValidationError } }
                 };
             
             // Act
-            var output = result.GetErrors(ErrorType.Error);
+            var result = sut.GetErrors(ErrorType.Error);
             
             // Assert
-            output.ShouldBeNull();
+            result.ShouldBeNull();
         }
 
         [Fact]
@@ -1350,14 +1350,14 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                     new Error { ErrorType = ErrorType.ValidationError }
                 };
             
-            var result = new Result<bool>{ Errors = errors };
+            var sut = new Result<bool>{ Errors = errors };
             
             // Act
-            var output = result.GetErrors(ErrorType.Error);
+            var result = sut.GetErrors(ErrorType.Error);
             
             // Assert
-            output.Count.ShouldBe(2);
-            output.ShouldNotContain(e => e.ErrorType == ErrorType.ValidationError);
+            result.Count.ShouldBe(2);
+            result.ShouldNotContain(e => e.ErrorType == ErrorType.ValidationError);
         }
 
         #endregion GetErrors<T>(this IResult<T> result, ErrorType errorType)
@@ -1368,29 +1368,29 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void GetErrors_Key_Overload_When_There_Are_No_Errors_Then_Returns_Null()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             
             // Act
-            var output = result.GetErrors("ErrorKey");
+            var result = sut.GetErrors("ErrorKey");
             
             // Assert
-            output.ShouldBeNull();
+            result.ShouldBeNull();
         }
         
         [Fact]
         public void GetErrors_When_Error_Key_Does_Not_Match_Provided_Key_Then_Returns_Null()
         {
             // Arrange
-            var result = new Result<bool>
+            var sut = new Result<bool>
                 {
                     Errors = new List<IError> { new Error { Key = "ErrorKey"} }
                 };
             
             // Act
-            var output = result.GetErrors("NotErrorKey");
+            var result = sut.GetErrors("NotErrorKey");
             
             // Assert
-            output.ShouldBeNull();
+            result.ShouldBeNull();
         }
         
         [Fact]
@@ -1404,14 +1404,14 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                     new Error { Key = "ErrorKey2" }
                 };
             
-            var result = new Result<bool>{ Errors = errors };
+            var sut = new Result<bool>{ Errors = errors };
             
             // Act
-            var output = result.GetErrors("ErrorKey1");
+            var result = sut.GetErrors("ErrorKey1");
             
             // Assert
-            output.Count.ShouldBe(2);
-            output.ShouldNotContain(e => e.Key == "ErrorKey2");
+            result.Count.ShouldBe(2);
+            result.ShouldNotContain(e => e.Key == "ErrorKey2");
         }
 
         #endregion GetErrors<T>(this IResult<T> result, string key)
@@ -1422,7 +1422,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void GetValidationErrors_When_There_Are_Validation_Errors_Then_Returns_List_With_Validation_Errors()
         {
             // Arrange
-            var result = new Result<bool>
+            var sut = new Result<bool>
                 {
                     Errors = new List<IError>
                         {
@@ -1432,24 +1432,24 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                 };
             
             // Act
-            var output = result.GetValidationErrors();
+            var result = sut.GetValidationErrors();
             
             // Assert
-            output.Count.ShouldBe(1);
-            output.ShouldNotContain(e => e.ErrorType == ErrorType.Error);
+            result.Count.ShouldBe(1);
+            result.ShouldNotContain(e => e.ErrorType == ErrorType.Error);
         }
 
         [Fact]
         public void GetValidationErrors_When_There_Are_No_Validation_Errors_Then_Returns_Null()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             
             // Act
-            var output = result.GetValidationErrors();
+            var result = sut.GetValidationErrors();
             
             // Assert
-            output.ShouldBeNull();
+            result.ShouldBeNull();
         }
 
         #endregion GetValidationErrors
@@ -1569,39 +1569,39 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void HasErrorsOrResultIsFalse_When_Has_Errors_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<bool> { Errors = new List<IError> { new Error() } };
+            var sut = new Result<bool> { Errors = new List<IError> { new Error() } };
             
             // Act
-            var output = result.HasErrorsOrResultIsFalse();
+            var result = sut.HasErrorsOrResultIsFalse();
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void HasErrorsOrResultIsFalse_When_Result_Is_False_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<bool> { ResultObject = false };
+            var sut = new Result<bool> { ResultObject = false };
             
             // Act
-            var output = result.HasErrorsOrResultIsFalse();
+            var result = sut.HasErrorsOrResultIsFalse();
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void HasErrorsOrResultIsFalse_When_There_Are_No_Errors_And_Result_Is_Not_False_Then_Returns_False()
         {
             // Arrange
-            var result = new Result<bool>{ ResultObject = true };
+            var sut = new Result<bool>{ ResultObject = true };
             
             // Act
-            var output = result.HasErrorsOrResultIsFalse();
+            var result = sut.HasErrorsOrResultIsFalse();
             
             // Assert
-            output.ShouldBeFalse();
+            result.ShouldBeFalse();
         }
 
         #endregion HasErrorsOrResultIsFalse
@@ -1612,39 +1612,39 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void HasErrorsOrResultIsNull_When_Has_Errors_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<bool> { Errors = new List<IError> { new Error() } };
+            var sut = new Result<bool> { Errors = new List<IError> { new Error() } };
             
             // Act
-            var output = result.HasErrorsOrResultIsNull();
+            var result = sut.HasErrorsOrResultIsNull();
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void HasErrorsOrResultIsNull_When_Result_Is_False_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<string> { ResultObject = null };
+            var sut = new Result<string> { ResultObject = null };
             
             // Act
-            var output = result.HasErrorsOrResultIsNull();
+            var result = sut.HasErrorsOrResultIsNull();
             
             // Assert
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void HasErrorsOrResultIsNull_When_There_Are_No_Errors_And_Result_Is_Not_False_Then_Returns_False()
         {
             // Arrange
-            var result = new Result<bool>{ ResultObject = true };
+            var sut = new Result<bool>{ ResultObject = true };
             
             // Act
-            var output = result.HasErrorsOrResultIsNull();
+            var result = sut.HasErrorsOrResultIsNull();
             
             // Assert
-            output.ShouldBeFalse();
+            result.ShouldBeFalse();
         }
 
         #endregion HasErrorsOrResultIsNull
@@ -1655,45 +1655,45 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void HasValidationErrors_When_There_Are_Errors_With_ValidationError_Type_Then_Returns_True()
         {
             // Arrange
-            var result = new Result<bool>
+            var sut = new Result<bool>
                 {
                     Errors = new List<IError> { new Error { ErrorType = ErrorType.ValidationError } }
                 };
             
             // Act
-            var output = result.HasValidationErrors();
+            var result = sut.HasValidationErrors();
             
             // Assert 
-            output.ShouldBeTrue();
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void HasValidationErrors_When_There_Are_Errors_That_Are_Not_Validation_Error_Type_Then_Returns_False()
         {
             // Arrange
-            var result = new Result<bool>
+            var sut = new Result<bool>
                 {
                     Errors = new List<IError> { new Error { ErrorType = ErrorType.Error } }
                 };
             
             // Act
-            var output = result.HasValidationErrors();
+            var result = sut.HasValidationErrors();
             
             // Assert 
-            output.ShouldBeFalse();
+            result.ShouldBeFalse();
         }
 
         [Fact]
         public void HasValidationErrors_When_There_Are_No_Errors_Then_Returns_False()
         {
             // Arrange
-            var result = new Result<bool>();
+            var sut = new Result<bool>();
             
             // Act
-            var output = result.HasValidationErrors();
+            var result = sut.HasValidationErrors();
             
             // Assert
-            output.ShouldBeFalse();
+            result.ShouldBeFalse();
         }
 
         #endregion HasValidationErrors
@@ -1858,13 +1858,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void ThrowIfAnyErrorsOrResultIsFalse_When_No_Errors_And_Result_Is_True_Then_Returns_Result()
         {
             // Arrange
-            var result = new Result<bool> { ResultObject = true };
+            var sut = new Result<bool> { ResultObject = true };
 
             // Act
-            var output = result.ThrowIfAnyErrorsOrResultIsFalse();
+            var result = sut.ThrowIfAnyErrorsOrResultIsFalse();
 
             // Assert
-            output.ShouldBe(result);
+            result.ShouldBe(sut);
         }
 
         [Fact]
@@ -1893,7 +1893,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void ThrowIfAnyErrorsOrResultIsFalse_When_No_Exception_Is_Provided_For_Errors_Then_Throws_Generic_Exception_With_Error_List()
         {
             // Arrange
-            var result = new Result<bool>
+            var sut = new Result<bool>
                 {
                     Errors = new List<IError>
                         {
@@ -1901,10 +1901,10 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                             new Error { Key = "ErrorKey2", Message = "Error message 2" }
                         }
                 };
-            var errorList = result.ListErrors();
+            var errorList = sut.ListErrors();
 
             // Act && Assert
-            var exception = Should.Throw<Exception>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(); });
+            var exception = Should.Throw<Exception>(() => { sut.ThrowIfAnyErrorsOrResultIsFalse(); });
 
             exception.Message.ShouldBe(errorList);
         }
@@ -1914,11 +1914,11 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             ThrowIfAnyErrorsOrResultIsFalse_When_No_Exception_Provided_For_False_Result_Then_Throws_Generic_Exception_With_Default_Message()
         {
             // Arrange
-            var result         = new Result<bool> { ResultObject = false };
+            var sut         = new Result<bool> { ResultObject = false };
             var defaultMessage = "Result object for IResult is false";
             
             // Act && Assert
-            var exception = Should.Throw<Exception>(() => result.ThrowIfAnyErrorsOrResultIsFalse());
+            var exception = Should.Throw<Exception>(() => sut.ThrowIfAnyErrorsOrResultIsFalse());
 
             exception.Message.ShouldBe(defaultMessage);
         }
