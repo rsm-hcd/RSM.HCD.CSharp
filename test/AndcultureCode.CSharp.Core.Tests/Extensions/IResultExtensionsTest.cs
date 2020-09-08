@@ -252,9 +252,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var expected = new Error();
-            var sut      = new Result<bool>();
-            sut.Errors   = new List<IError>{ expected };
-            var source   = new Result<string>();
+            var sut    = BuildResult<bool>(e => e.Errors = new List<IError> { expected });
+            var source = new Result<string>();
             
             // Act
             var result = sut.AddErrors(source);
@@ -307,8 +306,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             result.AddErrorAndLog(mockLogger.Object, errorKey, errorMessage);
             
             // Assert
-            result.Errors.First().Key.ShouldBe(errorKey);
-            result.Errors.First().Message.ShouldBe(errorMessage); 
+            result.Errors.ShouldContain(e => e.Key == errorKey && e.Message == errorMessage);
         }
 
         [Fact]
@@ -321,15 +319,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var methodName         = "AddErrorAndLog_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
             var resourceIdentifier = 42;
             var logMessage         = "Log Message";
-            var identifierText     = $" ({resourceIdentifier.ToString()}) -";
-            var formattedMessage   = $"[{methodName}]{identifierText} {logMessage}";
             
             // Act
             result.AddErrorAndLog(mockLogger.Object, errorKey, logMessage, resourceIdentifier);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -341,9 +337,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void AddErrorsAndLog_When_Provided_With_Error_List_Then_Adds_List_To_Result()
         {
             // Arrange
-            var error1     = new Error();
-            var error2     = new Error();
-            var errorList  = new List<IError> { error1, error2 };
+            var errors     = BuildList<Error>(2);
             var result     = new Result<bool>();
             var mockLogger = new Mock<ILogger>();
             
@@ -353,11 +347,11 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                 errorKey:           null,
                 errorMessage:       null,
                 resourceIdentifier: 1, 
-                errors:             errorList);
+                errors:             errors);
             
             // Assert
-            result.Errors.ShouldContain(error1);
-            result.Errors.ShouldContain(error2);
+            result.Errors.ShouldContain(errors[0]);
+            result.Errors.ShouldContain(errors[1]);
         }
 
         [Fact]
@@ -373,8 +367,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, 1);
             
             // Assert
-            result.Errors.First().Key.ShouldBe(errorKey);
-            result.Errors.First().Message.ShouldBe(errorMessage);
+            result.Errors.ShouldContain(e => e.Key == errorKey && e.Message == errorMessage);
         }
         
         [Fact]
@@ -387,15 +380,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var methodName         = "AddErrorsAndLog_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
             var resourceIdentifier = 42;
             var logMessage         = "Log Message";
-            var identifierText     = $" ({resourceIdentifier.ToString()}) -";
-            var formattedMessage   = $"[{methodName}]{identifierText} {logMessage}";
             
             // Act
             result.AddErrorsAndLog(mockLogger.Object, errorKey, logMessage, resourceIdentifier);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -407,9 +398,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void AddErrorsAndLog_Without_ResourceId_Overload_When_Provided_With_Error_List_Then_Adds_List_To_Result()
         {
             // Arrange
-            var error1     = new Error();
-            var error2     = new Error();
-            var errorList  = new List<IError> { error1, error2 };
+            var errorList  = BuildList<Error>(2);
             var result     = new Result<bool>();
             var mockLogger = new Mock<ILogger>();
             
@@ -421,8 +410,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                 errors:             errorList);
             
             // Assert
-            result.Errors.ShouldContain(error1);
-            result.Errors.ShouldContain(error2);
+            result.Errors.ShouldContain(errorList[0]);
+            result.Errors.ShouldContain(errorList[1]);
         }
 
         [Fact]
@@ -438,8 +427,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, null);
             
             // Assert
-            result.Errors.First().Key.ShouldBe(errorKey);
-            result.Errors.First().Message.ShouldBe(errorMessage);
+            result.Errors.ShouldContain(e => e.Key == errorKey && e.Message == errorMessage);
         }
         
         [Fact]
@@ -451,14 +439,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var mockLogger         = new Mock<ILogger>();
             var methodName         = "AddErrorsAndLog_Without_ResourceId_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
             var logMessage         = "Log Message";
-            var formattedMessage   = $"[{methodName}] {logMessage}";
             
             // Act
             result.AddErrorsAndLog(mockLogger.Object, errorKey, logMessage, null);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -479,17 +466,14 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, "Log Message", "ResourceId");
             
             // Assert
-            result.Errors.First().Key.ShouldBe(errorKey);
-            result.Errors.First().Message.ShouldBe(errorMessage);
+            result.Errors.ShouldContain(e => e.Key == errorKey && e.Message == errorMessage);
         }
 
         [Fact]
         public void AddErrorsAndLog_When_Given_Error_List_Then_Adds_List_To_Result()
         {
             // Arrange
-            var error1     = new Error();
-            var error2     = new Error();
-            var errorList  = new List<IError> { error1, error2 };
+            var errorList  = BuildList<Error>(2);
             var result     = new Result<bool>();
             var mockLogger = new Mock<ILogger>();
             
@@ -497,8 +481,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             result.AddErrorsAndLog(mockLogger.Object, null, null, null, null, errorList);
             
             // Assert
-            result.Errors.ShouldContain(error1);
-            result.Errors.ShouldContain(error2);
+            result.Errors.ShouldContain(errorList[0]);
+            result.Errors.ShouldContain(errorList[1]);
         }
 
         [Fact]
@@ -510,15 +494,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var methodName         = "AddErrorsAndLog_Calls_LogError_Method_Of_The_Logger";
             var resourceIdentifier = "ResourceId";
             var logMessage         = "Log Message";
-            var identifierText     = $" ({resourceIdentifier}) -";
-            var formattedMessage   = $"[{methodName}]{identifierText} {logMessage}";
             
             // Act
             result.AddErrorsAndLog(mockLogger.Object, null, null, logMessage, resourceIdentifier, null, methodName);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -532,15 +514,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var methodName         = "AddErrorsAndLog_When_MethodName_Is_Not_Provided_Then_Retrieves_MethodName_And_Adds_It_To_The_Formatted_Message";
             var resourceIdentifier = "ResourceId";
             var logMessage         = "Log Message";
-            var identifierText     = $" ({resourceIdentifier}) -";
-            var formattedMessage   = $"[{methodName}]{identifierText} {logMessage}";
             
             // Act
             result.AddErrorsAndLog(mockLogger.Object, null, null, logMessage, resourceIdentifier, null);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -575,10 +555,11 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var expectedKey       = Random.String();
-            var expectedMessage   = Random.String();
+            var expectedKey = "expected key";
+            var expectedMessage = "expected message";
+            var translatedMessage = "translated message";
             var mockLogger        = Mock.Of<ILogger>();
-            var localizedString   = new LocalizedString(expectedKey, expectedMessage);
+            var localizedString   = new LocalizedString(expectedKey, translatedMessage);
             var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
             
             // Act
@@ -588,7 +569,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             destinationResult.Errors.ShouldContain(e =>
                e.ErrorType == ErrorType.Error && // <---- Error
                e.Key       == expectedKey     &&
-               e.Message   == expectedMessage
+               e.Message   == translatedMessage
             );
         }
 
@@ -604,14 +585,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var localizedString   = new LocalizedString(expectedKey, expectedMessage);
             var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
             var methodName        = "AddErrorAndLog_Localizer_Without_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
-            var formattedMessage  = $"[{methodName}] {expectedMessage}";
             
             // Act
             destinationResult.AddErrorAndLog(mockLogger.Object, localizer, expectedKey, expectedMessage);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -678,15 +658,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var localizedString   = new LocalizedString(expectedKey, expectedMessage);
             var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
             var methodName        = "AddErrorAndLog_Localizer_With_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
-            var identifierText    = $" ({resourceId}) -";
-            var formattedMessage  = $"[{methodName}]{identifierText} {expectedMessage}";
             
             // Act
             destinationResult.AddErrorAndLog(mockLogger.Object, localizer, expectedKey, resourceId, expectedMessage);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -698,9 +676,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void AddErrorsAndLog_Localizer_With_Errors_Overload_When_Provided_With_Error_List_Then_Adds_List_To_Result()
         {
             // Arrange
-            var error1     = new Error();
-            var error2     = new Error();
-            var errorList  = new List<IError> { error1, error2 };
+            var errorList  = BuildList<Error>(2);
             var localizer  = Mock.Of<IStringLocalizer>();
             var result     = new Result<bool>();
             var mockLogger = new Mock<ILogger>();
@@ -714,8 +690,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
                 errors:             errorList);
             
             // Assert
-            result.Errors.ShouldContain(error1);
-            result.Errors.ShouldContain(error2);
+            result.Errors.ShouldContain(errorList[0]);
+            result.Errors.ShouldContain(errorList[1]);
         }
 
         [Fact]
@@ -777,15 +753,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             var localizedString   = new LocalizedString(expectedKey, expectedMessage);
             var localizer         = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
             var methodName        = "AddErrorsAndLog_Localizer_With_Errors_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message";
-            var identifierText    = $" ({resourceId}) -";
-            var formattedMessage  = $"[{methodName}]{identifierText} {expectedMessage}";
             
             // Act
             destinationResult.AddErrorsAndLog(mockLogger.Object, localizer, expectedKey, resourceId, null, expectedMessage);
             
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), new FormattedLogValues(formattedMessage), It.IsAny<Exception>(),
+                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
                            It.IsAny<Func<object, Exception, string>>()), Times.Once);
         }
 
@@ -1209,15 +1183,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_ErrorType_Then_Returns_False()
         {
             // Arrange
-            var sut = new Result<bool>();
-            var error  = new Error
-                {
-                    ErrorType = ErrorType.Error,
-                    Key       = "Key",
-                    Message   = "Error Message"
-                };
-
-            sut.Errors = new List<IError> { error };
+            var error = Build<Error>(e => e.ErrorType = ErrorType.Error);
+            var sut   = BuildResult<bool>(e => e.Errors = new List<IError> { error });
             
             // Act
             var result = sut.DoesNotHaveErrors(ErrorType.Error);
@@ -1230,15 +1197,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_ErrorType_Then_Returns_True()
         {
             // Arrange
-            var sut = new Result<bool>();
-            var error = new Error
-                {
-                    ErrorType = ErrorType.Error,
-                    Key       = "Key",
-                    Message   = "Error Message"
-                };
-
-            sut.Errors = new List<IError> { error };
+            var error = Build<Error>(e => e.ErrorType = ErrorType.Error);
+            var sut   = BuildResult<bool>(e => e.Errors = new List<IError> { error });
             
             // Act
             var result = sut.DoesNotHaveErrors(ErrorType.ValidationError);
@@ -1268,18 +1228,11 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void DoesNotHaveErrors_When_There_Is_An_Error_With_Matching_Key_Then_Returns_False()
         {
             // Arrange
-            var sut = new Result<bool>();
-            var error = new Error
-                {
-                    ErrorType = ErrorType.Error,
-                    Key       = "Key",
-                    Message   = "Error Message"
-                };
-
-            sut.Errors = new List<IError> { error };
+            var error = Build<Error>(e => e.ErrorType = ErrorType.Error);
+            var sut   = BuildResult<bool>(e => e.Errors = new List<IError> { error });
             
             // Act
-            var result = sut.DoesNotHaveErrors("Key");
+            var result = sut.DoesNotHaveErrors(error.Key);
             
             // Assert
             result.ShouldBeFalse();
@@ -1289,15 +1242,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void DoesNotHaveErrors_When_There_Is_An_Error_Without_Matching_Key_Then_Returns_True()
         {
             // Arrange
-            var sut = new Result<bool>();
-            var error = new Error
-                {
-                    ErrorType = ErrorType.Error,
-                    Key       = "ErrorKey",
-                    Message   = "Error Message"
-                };
-
-            sut.Errors = new List<IError> { error };
+            var error = Build<Error>(e => e.Key = "ErroryKey");
+            var sut   = BuildResult<bool>(e => e.Errors = new List<IError> { error });
             
             // Act
             var result = sut.DoesNotHaveErrors("Key");
@@ -1327,10 +1273,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void GetErrors_When_Errors_Do_Not_Match_Provided_ErrorType_Then_Returns_Null()
         {
             // Arrange
-            var sut = new Result<bool>
-                {
-                    Errors = new List<IError> { new Error { ErrorType = ErrorType.ValidationError } }
-                };
+            var error = Build<Error>(e => e.ErrorType = ErrorType.ValidationError);
+            var sut   = BuildResult<bool>(e => e.Errors = new List<IError> { error });
             
             // Act
             var result = sut.GetErrors(ErrorType.Error);
@@ -1840,11 +1784,11 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void ThrowIfAnyErrors_When_Provided_Custom_Exception_Then_Throws_Custom_Exception()
         {
             // Arrange
-            var customException = new CustomException();
+            var customException = new ArgumentNullException();
             var result = new Result<bool> { Errors = new List<IError> { new Error() } };
             
             // Act && Assert
-            Should.Throw<CustomException>(() =>
+            Should.Throw<ArgumentNullException>(() =>
             {
                 result.ThrowIfAnyErrors(customException);
             });
@@ -1872,10 +1816,10 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var result         = new Result<bool> { Errors = new List<IError> { new Error() } };
-            var errorException = new CustomException();
+            var errorException = new ArgumentNullException();
 
             // Act && Assert
-            Should.Throw<CustomException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(errorException); });
+            Should.Throw<ArgumentNullException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(errorException); });
         }
         
         [Fact]
@@ -1883,10 +1827,10 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var result         = new Result<bool> { ResultObject = false };
-            var errorException = new CustomException();
+            var errorException = new ArgumentNullException();
 
             // Act && Assert
-            Should.Throw<CustomException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(null, errorException); });
+            Should.Throw<ArgumentNullException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(null, errorException); });
         }
 
         [Fact]
@@ -2007,11 +1951,6 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion ThrowIfAnyErrorsOrResultIsNull
-
-        private class CustomException : Exception
-        {
-            
-        }
         
     }
 }
