@@ -243,8 +243,20 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         {
             // Arrange
             HttpRequest sut = null;
+
             // Act && Assert
             sut.HasCookie(name: Random.String2(1)).ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasCookie_When_Name_Is_Null_Then_Returns_False()
+        {
+            // Arrange
+            var sut = Mock.Of<HttpRequest>();
+            string name = null;
+
+            // Act && Assert
+            sut.HasCookie(name).ShouldBeFalse();
         }
 
         [Fact]
