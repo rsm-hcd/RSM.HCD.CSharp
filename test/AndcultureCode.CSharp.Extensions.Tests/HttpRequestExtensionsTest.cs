@@ -4,8 +4,9 @@ using Xunit.Abstractions;
 using AndcultureCode.CSharp.Testing.Extensions;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using System.Net;
 using Microsoft.Net.Http.Headers;
+using System.Collections.Generic;
+using System;
 
 namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
 {
@@ -19,6 +20,78 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         #endregion Setup
+
+        #region GetCookie
+
+        [Fact]
+        public void GetCookie_When_Request_Null_Retuns_Null()
+        {
+            // Arrange
+            var sut = null as HttpRequest;
+
+            // Act 
+            var result = sut.GetCookie(Random.Word());
+
+            // Assert
+            result.ShouldBeNull();
+        }
+
+        [Fact]
+        public void GetCookie_When_Request_Does_Not_Contain_Cookie_Name_Returns_Null()
+        {
+            // Arrange
+            var sut = Mock.Of<HttpRequest>();
+            Mock.Get(sut).Setup((e) => e.Cookies.Keys).Returns(new List<String>());
+
+            // Act
+            var result = sut.GetCookie(Random.Word());
+
+            // Assert
+            result.ShouldBeNull();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void GetCookie_When_Request_Cookie_Value_Null_Or_Whitespace_Returns_Null(string cookieValue)
+        {
+            // Arrange
+            var key = Random.Word();
+            var cookieCollection = Mock.Of<IRequestCookieCollection>();
+            Mock.Get(cookieCollection).SetupGet((e) => e[It.IsAny<string>()]).Returns(cookieValue);
+            Mock.Get(cookieCollection).Setup((e) => e.ContainsKey(It.IsAny<String>())).Returns(true);
+            var sut = Mock.Of<HttpRequest>();
+            Mock.Get(sut).Setup((e) => e.Cookies).Returns(cookieCollection);
+
+            // Act
+            var result = sut.GetCookie(key);
+
+            // Assert
+            result.ShouldBeNull();
+        }
+
+        [Fact]
+        public void GetCookie_When_Request_Cookie_Has_Value_Returns_Value()
+        {
+            // Arrange
+            var key = Random.Word();
+            var value = Random.Guid().ToString();
+            var cookieCollection = Mock.Of<IRequestCookieCollection>();
+            Mock.Get(cookieCollection).SetupGet((e) => e[key]).Returns(value);
+            Mock.Get(cookieCollection).Setup((e) => e.ContainsKey(key)).Returns(true);
+            var sut = Mock.Of<HttpRequest>();
+            Mock.Get(sut).Setup((e) => e.Cookies).Returns(cookieCollection);
+
+            // Act
+            var result = sut.GetCookie(key);
+
+            // Assert
+            result.ShouldBe(value);
+        }
+
+        #endregion GetCookie
 
         #region GetHeader
 
@@ -162,5 +235,79 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
         }
 
         #endregion GetUserAgent
+
+        #region HasCookie
+
+        [Fact]
+        public void HasCookie_When_Request_Cookies_Is_Null_Then_Returns_False()
+        {
+            // Arrange
+            HttpRequest sut = null;
+
+            // Act && Assert
+            sut.HasCookie(name: Random.String2(1)).ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasCookie_When_Name_Is_Null_Then_Returns_False()
+        {
+            // Arrange
+            var sut = Mock.Of<HttpRequest>();
+            string name = null;
+
+            // Act && Assert
+            sut.HasCookie(name).ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasCookie_Given_Name_When_Request_Cookies_DoesNot_Contain_Matching_Cookie_Name_Then_Returns_False()
+        {
+            // Arrange
+            var key = Random.Word();
+            var value = Random.Guid().ToString();
+            var cookieCollection = Mock.Of<IRequestCookieCollection>();
+            Mock.Get(cookieCollection).Setup((e) => e.ContainsKey(key)).Returns(false);
+            Mock.Get(cookieCollection).SetupGet((e) => e[key]).Returns(value);
+            var sut = Mock.Of<HttpRequest>();
+            Mock.Get(sut).Setup((e) => e.Cookies).Returns(cookieCollection);
+
+            // Act && Assert
+            sut.HasCookie(key).ShouldBeFalse();
+        }
+
+        [Theory]
+        [InlineData(" ")]
+        [InlineData(null)]
+        public void HasCookie_Given_Name_When_CookieCollection_Is_NullOrWhitespace_At_Index_Name_Then_Returns_False(string cookieName)
+        {
+            // Arrange
+            var cookieCollection = Mock.Of<IRequestCookieCollection>();
+            Mock.Get(cookieCollection).Setup((e) => e.ContainsKey(cookieName)).Returns(true);
+            Mock.Get(cookieCollection).SetupGet((e) => e[cookieName]).Returns(cookieName);
+            var sut = Mock.Of<HttpRequest>();
+            Mock.Get(sut).Setup((e) => e.Cookies).Returns(cookieCollection);
+
+            // Act && Assert
+            sut.HasCookie(cookieName).ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasCookie_Given_Name_When_Exists_In_Collection_Then_Returns_True()
+        {
+            // Arrange
+            var key = Random.Word();
+            var value = Random.Guid().ToString();
+            var cookieCollection = Mock.Of<IRequestCookieCollection>();
+            Mock.Get(cookieCollection).Setup((e) => e.ContainsKey(key)).Returns(true);
+            Mock.Get(cookieCollection).SetupGet((e) => e[key]).Returns(value);
+            var sut = Mock.Of<HttpRequest>();
+            Mock.Get(sut).Setup((e) => e.Cookies).Returns(cookieCollection);
+
+            // Act && Assert
+            sut.HasCookie(key).ShouldBeTrue();
+        }
+
+        #endregion HasCookie
+
     }
 }

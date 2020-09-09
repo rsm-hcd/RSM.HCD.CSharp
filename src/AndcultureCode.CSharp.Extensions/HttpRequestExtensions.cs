@@ -20,6 +20,16 @@ namespace AndcultureCode.CSharp.Extensions
         #region Public Methods
 
         /// <summary>
+        /// Returns the specified cookie by name
+        ///
+        /// If no cookie is found, returns null
+        /// </summary>
+        /// <param name="request">The request to pull the cookie from</param>
+        /// <param name="name">The name of the cookie to be returned</param>
+        /// <returns></returns>
+        public static string GetCookie(this HttpRequest request, string name) => request.HasCookie(name) ? request.Cookies[name] : null;
+
+        /// <summary>
         /// Attempts to retrieve requested header value
         /// </summary>
         /// <param name="request"></param>
@@ -47,6 +57,24 @@ namespace AndcultureCode.CSharp.Extensions
         /// Requesting user's agent
         /// </summary>
         public static string GetUserAgent(this HttpRequest request) => request.GetHeader(HeaderNames.UserAgent);
+
+        /// <summary>
+        /// Returns whether or not the specified cookie is found in the request
+        ///
+        /// If the cookie is found but its value is null/whitespace, it will return false.
+        /// </summary>
+        /// <param name="request">The request to check for the cookie</param>
+        /// <param name="name">The name of the cookie to check for</param>
+        /// <returns></returns>
+        public static bool HasCookie(this HttpRequest request, string name)
+        {
+            var cookieCollection = request?.Cookies;
+            if (cookieCollection == null || !cookieCollection.ContainsKey(name) || string.IsNullOrWhiteSpace(cookieCollection[name]))
+            {
+                return false;
+            }
+            return true;
+        }
 
         #endregion Public Methods
     }
