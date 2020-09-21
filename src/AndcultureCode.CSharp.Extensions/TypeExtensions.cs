@@ -11,6 +11,53 @@ namespace AndcultureCode.CSharp.Extensions
     public static class TypeExtensions
     {
         /// <summary>
+        /// Get the PropertyInfo for specified property,
+        /// if it exists on the type and is public,
+        /// otherwise returns null.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="propertyName"></param>
+        /// <returns>The PropertyInfo for the property, if it exists and is public, null otherwise.</returns>
+        public static PropertyInfo GetPublicPropertyInfo(this Type type, string propertyName)
+        {
+            if (!type.HasPublicProperty(propertyName))
+            {
+                return null;
+            }
+
+            return type.GetProperty(propertyName);
+        }
+
+        /// <summary>
+        /// Get the value of a property specified by propertyName,
+        /// if it exists on the object and is public.
+        /// If no such public property exists, returns null.
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="propertyName"></param>
+        /// <returns>The property value, if it exists and is public, null otherwise.</returns>
+        public static object GetPublicPropertyValue(this object src, string propertyName)
+        {
+            if (!(src?.GetType().HasPublicProperty(propertyName) ?? false))
+            {
+                return null;
+            }
+
+            return src.GetType().GetProperty(propertyName)?.GetValue(src);
+        }
+
+        /// <summary>
+        /// Get the value of a property specified by propertyName,
+        /// if it exists on the object and is public, casted to type T.
+        /// If no such property exists, returns null.
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="propertyName"></param>
+        /// <returns>The property value, if it exists, null otherwise.</returns>
+        public static T GetPublicPropertyValue<T>(this object src, string propertyName) =>
+            (T) src.GetPublicPropertyValue(propertyName);
+
+        /// <summary>
         /// Retrieve all constant values for given type whose value matches type T
         /// </summary>
         public static List<T> GetPublicConstantValues<T>(this Type type) =>
@@ -40,6 +87,16 @@ namespace AndcultureCode.CSharp.Extensions
 
             return type.FullName + ", " + type.AssemblyQualifiedName;
         }
+
+        /// <summary>
+        /// Checks whether a property specified by propertyName exists
+        /// on the specified type.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="propertyName"></param>
+        /// <returns>true if type has property with specified name, false otherwise</returns>
+        public static bool HasPublicProperty(this Type type, string propertyName) =>
+            type.GetProperties().Any(property => property.Name == propertyName);
 
         /// <summary>
         /// Filters the provided list of types to only those that are
