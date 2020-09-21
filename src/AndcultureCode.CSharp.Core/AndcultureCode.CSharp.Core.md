@@ -2141,7 +2141,7 @@ Find all filtered, sorted and paged
 
 ##### Summary
 
-Calls Update one-by-one for each item in the enumerated entities. 
+Calls Update one-by-one for each item in the enumerated entities.
 For large operations, BulkUpdate() is more efficient.
 
 ##### Returns
