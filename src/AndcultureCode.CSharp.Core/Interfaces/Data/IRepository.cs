@@ -78,9 +78,10 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="createdById">Id of the user creating the entity</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
-        IResult<List<T>>       CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
-        IResult<bool>          Delete(long id, long? deletedById = null, bool soft = true);
-        IResult<bool>          Delete(T o, long? deletedById = null, bool soft = true);
+        IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
+        IResult<bool>    Delete(long id, long? deletedById = null, bool soft = true);
+        IResult<bool>    Delete(T o, long? deletedById = null, bool soft = true);
+        IResult<bool>    Delete(T o, long? deletedById = null, long batchSize = 100, bool soft = true);
 
         /// <summary>
         /// Find all filtered, sorted and paged
