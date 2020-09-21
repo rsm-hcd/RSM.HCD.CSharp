@@ -156,6 +156,7 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true) => _deleteConductor.BulkDelete(items, deletedById, soft);
         public virtual IResult<bool> Delete(long id, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(id, deletedById, soft);
         public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(o, deletedById, soft);
+        public virtual IResult<bool> Delete(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true) => _deleteConductor.Delete(items, deletedById, batchSize, soft);
 
         public virtual IResult<bool> Restore(T o) => _deleteConductor.Restore(o);
         public virtual IResult<bool> Restore(long id) => _deleteConductor.Restore(id);
@@ -221,7 +222,7 @@ namespace AndcultureCode.CSharp.Conductors
         #endregion Update
 
 
-        
+
         #endregion Public Methods
     }
 }
