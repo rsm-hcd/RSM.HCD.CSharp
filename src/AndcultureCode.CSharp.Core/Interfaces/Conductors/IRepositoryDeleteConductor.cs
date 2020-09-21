@@ -21,6 +21,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true);
         IResult<bool> Delete(long id, long? deletedById = null, bool soft = true);
         IResult<bool> Delete(T o, long? deletedById = null, bool soft = true);
+        IResult<bool> Delete(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true);
         IResult<bool> Restore(T o);
         IResult<bool> Restore(long id);
 
