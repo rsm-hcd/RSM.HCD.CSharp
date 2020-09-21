@@ -34,7 +34,6 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion Properties
 
-
         #region Constructor
 
         public RepositoryConductor(
@@ -51,7 +50,6 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion Constructor
 
-
         #region Public Methods
 
         #region Create
@@ -63,7 +61,6 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null) => _createConductor.CreateDistinct(items, property, createdById);
 
         #endregion Create
-
 
         #region CreateOrUpdate
 
@@ -201,7 +198,6 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion FindAll
 
-
         #region FindById
 
         public virtual IResult<T> FindById(long id) => _readConductor.FindById(id);
@@ -212,7 +208,6 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion FindById
 
-
         #region Update
 
         public virtual IResult<bool> BulkUpdate(IEnumerable<T> items, long? updatedBy = default(long?)) => _updateConductor.BulkUpdate(items, updatedBy);
@@ -220,8 +215,6 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?)) => _updateConductor.Update(items, updatedBy);
 
         #endregion Update
-
-
 
         #endregion Public Methods
     }
