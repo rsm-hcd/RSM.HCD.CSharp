@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 
@@ -34,7 +35,19 @@ namespace AndcultureCode.CSharp.Core.Utilities.Localization
                     .CurrentDomain
                     .GetAssemblies()
                     .Where(x => _assemblyExclusions.All(e => !x.GetName().FullName.StartsWith(e))) // Avoid loading types for common assemblies out of our control
-                    .SelectMany(x => x.GetTypes())
+                    .SelectMany(x =>
+                    {
+                        // TODO: Provided the method gets added, update this to be a convenience method
+                        // see https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/issues/38
+                        try
+                        {
+                            return x.GetTypes();
+                        }
+                        catch (ReflectionTypeLoadException e)
+                        {
+                            return e.Types.Where(t => t != null);
+                        }
+                    })
                     .Where(x => typeof(ICulture).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
                     .Select(e => Activator.CreateInstance(e))
                     .Cast<ICulture>()
