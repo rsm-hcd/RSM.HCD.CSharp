@@ -86,8 +86,12 @@
   - [TryChangeType(value,conversionType)](#M-AndcultureCode-CSharp-Extensions-StringExtensions-TryChangeType-System-Object,System-Type- 'AndcultureCode.CSharp.Extensions.StringExtensions.TryChangeType(System.Object,System.Type)')
 - [TypeExtensions](#T-AndcultureCode-CSharp-Extensions-TypeExtensions 'AndcultureCode.CSharp.Extensions.TypeExtensions')
   - [GetPublicConstantValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicConstantValues``1-System-Type- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetPublicConstantValues``1(System.Type)')
+  - [GetPublicPropertyInfo(type,propertyName)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicPropertyInfo-System-Type,System-String- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetPublicPropertyInfo(System.Type,System.String)')
+  - [GetPublicPropertyValue(src,propertyName)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicPropertyValue-System-Object,System-String- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetPublicPropertyValue(System.Object,System.String)')
+  - [GetPublicPropertyValue\`\`1(src,propertyName)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicPropertyValue``1-System-Object,System-String- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetPublicPropertyValue``1(System.Object,System.String)')
   - [GetTypeName(obj)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Object- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetTypeName(System.Object)')
   - [GetTypeName(type)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Type- 'AndcultureCode.CSharp.Extensions.TypeExtensions.GetTypeName(System.Type)')
+  - [HasPublicProperty(type,propertyName)](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-HasPublicProperty-System-Type,System-String- 'AndcultureCode.CSharp.Extensions.TypeExtensions.HasPublicProperty(System.Type,System.String)')
   - [WhereWithAttribute\`\`1()](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithAttribute``1-System-Collections-Generic-IEnumerable{System-Type}- 'AndcultureCode.CSharp.Extensions.TypeExtensions.WhereWithAttribute``1(System.Collections.Generic.IEnumerable{System.Type})')
   - [WhereWithoutAttribute\`\`1()](#M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithoutAttribute``1-System-Collections-Generic-IEnumerable{System-Type}- 'AndcultureCode.CSharp.Extensions.TypeExtensions.WhereWithoutAttribute``1(System.Collections.Generic.IEnumerable{System.Type})')
 
@@ -1412,6 +1416,66 @@ Retrieve all constant values for given type whose value matches type T
 
 This method has no parameters.
 
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicPropertyInfo-System-Type,System-String-'></a>
+### GetPublicPropertyInfo(type,propertyName) `method`
+
+##### Summary
+
+Get the PropertyInfo for specified property,
+if it exists on the type and is public,
+otherwise returns null.
+
+##### Returns
+
+The PropertyInfo for the property, if it exists and is public, null otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+| propertyName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicPropertyValue-System-Object,System-String-'></a>
+### GetPublicPropertyValue(src,propertyName) `method`
+
+##### Summary
+
+Get the value of a property specified by propertyName,
+if it exists on the object and is public.
+If no such public property exists, returns null.
+
+##### Returns
+
+The property value, if it exists and is public, null otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| src | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| propertyName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetPublicPropertyValue``1-System-Object,System-String-'></a>
+### GetPublicPropertyValue\`\`1(src,propertyName) `method`
+
+##### Summary
+
+Get the value of a property specified by propertyName,
+if it exists on the object and is public, casted to type T.
+If no such property exists, returns null.
+
+##### Returns
+
+The property value, if it exists, null otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| src | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| propertyName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-GetTypeName-System-Object-'></a>
 ### GetTypeName(obj) `method`
 
@@ -1445,6 +1509,25 @@ Returns the full name of the type as well as the assembly qualified name
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+
+<a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-HasPublicProperty-System-Type,System-String-'></a>
+### HasPublicProperty(type,propertyName) `method`
+
+##### Summary
+
+Checks whether a property specified by propertyName exists
+on the specified type.
+
+##### Returns
+
+true if type has property with specified name, false otherwise
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+| propertyName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-AndcultureCode-CSharp-Extensions-TypeExtensions-WhereWithAttribute``1-System-Collections-Generic-IEnumerable{System-Type}-'></a>
 ### WhereWithAttribute\`\`1() `method`
