@@ -38,7 +38,12 @@ namespace AndcultureCode.CSharp.Extensions
         /// <returns>The property value, if it exists and is public, null otherwise.</returns>
         public static object GetPublicPropertyValue(this object src, string propertyName)
         {
-            if (!(src?.GetType().HasPublicProperty(propertyName) ?? false))
+            if (src == null)
+            {
+                return null;
+            }
+
+            if (!src.GetType().HasPublicProperty(propertyName))
             {
                 return null;
             }

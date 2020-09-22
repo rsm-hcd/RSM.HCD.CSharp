@@ -2,31 +2,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AndcultureCode.CSharp.Extensions.Tests.Stubs;
-using Bogus;
-using Newtonsoft.Json;
+using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
-    public class TypeExtensionsTests
+    public class TypeExtensionsTests : BaseUnitTest
     {
-        #region GetPublicPropertyInfo
+        #region Constructor
 
-        private class GetPublicPropertyInfoTestStub
+        public TypeExtensionsTests(ITestOutputHelper output) : base(output)
         {
-            public string TEST_STRING_PROPERTY { get; set; }
-            public static string TEST_STATIC_STRING = "TEST_STATIC_STRING";
-            public const string TEST_CONST_STRING = "TEST_CONST_STRING";
-            private string TEST_PRIVATE_STRING_PROPERTY { get; set; }
         }
+
+        #endregion Constructor
+
+        #region GetPublicPropertyInfo
 
         [Fact]
         public void GetPublicPropertyInfo_When_Property_Exists_On_Src_Then_Returns_PropertyInfo()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyInfoTestStub);
-            var propertyName = nameof(GetPublicPropertyInfoTestStub.TEST_STRING_PROPERTY);
+            var type = typeof(TypeExtensionsTestStub);
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_STRING_PROPERTY);
 
             // Act
             var result = type.GetPublicPropertyInfo(propertyName);
@@ -39,8 +39,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyInfo_When_Called_For_Static_Value_Then_Returns_Null()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyInfoTestStub);
-            var propertyName = nameof(GetPublicPropertyInfoTestStub.TEST_STATIC_STRING);
+            var type = typeof(TypeExtensionsTestStub);
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_STATIC_STRING);
 
             // Act
             var result = type.GetPublicPropertyInfo(propertyName);
@@ -53,8 +53,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyInfo_When_Called_For_Const_Value_Then_Returns_Null()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyInfoTestStub);
-            var propertyName = nameof(GetPublicPropertyInfoTestStub.TEST_CONST_STRING);
+            var type = typeof(TypeExtensionsTestStub);
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_CONST_STRING);
 
             // Act
             var result = type.GetPublicPropertyInfo(propertyName);
@@ -67,7 +67,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyInfo_When_Called_For_Private_Property_Then_Returns_Null()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyInfoTestStub);
+            var type = typeof(TypeExtensionsTestStub);
             var propertyName = "TEST_PRIVATE_STRING_PROPERTY";
 
             // Act
@@ -81,9 +81,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyInfo_When_Property_Does_Not_Exist_Then_Returns_Null()
         {
             // Arrange
-            var randomizer = new Randomizer();
-            var type = typeof(GetPublicPropertyInfoTestStub);
-            var propertyName = randomizer.String();
+            var type = typeof(TypeExtensionsTestStub);
+            var propertyName = Random.String();
 
             // Act
             var result = type.GetPublicPropertyInfo(propertyName);
@@ -96,40 +95,26 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #region GetPublicPropertyValue
 
-        private class GetPublicPropertyValueTestStub
-        {
-            public string TEST_STRING_VALUE { get; set; }
-            public static string TEST_STATIC_STRING = "TEST_STATIC_STRING";
-            public const string TEST_CONST_STRING = "TEST_CONST_STRING";
-            private string TEST_PRIVATE_STRING_PROPERTY { get; set; }
-
-            public GetPublicPropertyValueTestStub()
-            {
-                // set value to a test value
-                TEST_STRING_VALUE = nameof(TEST_STRING_VALUE);
-            }
-        }
-
         [Fact]
         public void GetPublicPropertyValue_When_Property_Exists_Then_Returns_Value()
         {
             // Arrange
-            var propertyName = nameof(GetPublicPropertyValueTestStub.TEST_STRING_VALUE);
-            var instance = new GetPublicPropertyValueTestStub();
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_STRING_PROPERTY);
+            var instance = new TypeExtensionsTestStub();
 
             // Act
             var result = instance.GetPublicPropertyValue(propertyName);
 
             // Assert
-            result.ToString().ShouldBe(instance.TEST_STRING_VALUE);
+            result.ToString().ShouldBe(instance.TEST_STRING_PROPERTY);
         }
 
         [Fact]
         public void GetPublicPropertyValue_When_Called_For_Static_Value_Then_Returns_Null()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyValueTestStub);
-            var propertyName = nameof(GetPublicPropertyValueTestStub.TEST_STATIC_STRING);
+            var type = typeof(TypeExtensionsTestStub);
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_STATIC_STRING);
 
             // Act
             var result = type.GetPublicPropertyValue(propertyName);
@@ -142,8 +127,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyValue_When_Called_For_Const_Value_Then_Returns_Null()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyValueTestStub);
-            var propertyName = nameof(GetPublicPropertyValueTestStub.TEST_CONST_STRING);
+            var type = typeof(TypeExtensionsTestStub);
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_CONST_STRING);
 
             // Act
             var result = type.GetPublicPropertyValue(propertyName);
@@ -156,7 +141,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyValue_When_Called_For_Private_Property_Then_Returns_Null()
         {
             // Arrange
-            var type = typeof(GetPublicPropertyValueTestStub);
+            var type = typeof(TypeExtensionsTestStub);
             var propertyName = "TEST_PRIVATE_STRING_PROPERTY";
 
             // Act
@@ -170,9 +155,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyValue_When_Property_Does_Not_Exist_Then_Returns_Null()
         {
             // Arrange
-            var randomizer = new Randomizer();
-            var propertyName = randomizer.String();
-            var instance = new GetPublicPropertyValueTestStub();
+            var propertyName = Random.String();
+            var instance = new TypeExtensionsTestStub();
 
             // Act
             var result = instance.GetPublicPropertyValue(propertyName);
@@ -187,27 +171,27 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetPublicPropertyValueT_When_T_Is_Valid_Type_Then_Casts_Value_Successfully()
         {
             // Arrange
-            var propertyName = nameof(GetPublicPropertyValueTestStub.TEST_STRING_VALUE);
-            var instance = new GetPublicPropertyValueTestStub();
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_STRING_PROPERTY);
+            var instance = new TypeExtensionsTestStub();
 
             // Act
             var result = instance.GetPublicPropertyValue<string>(propertyName);
 
             // Assert
-            result.ShouldBe(instance.TEST_STRING_VALUE);
+            result.ShouldBe(instance.TEST_STRING_PROPERTY);
         }
 
         [Fact]
         public void GetPublicPropertyValueT_When_Cannot_Cast_Types_Then_Throws_InvalidCastException()
         {
             // Arrange
-            var propertyName = nameof(GetPublicPropertyValueTestStub.TEST_STRING_VALUE);
-            var instance = new GetPublicPropertyValueTestStub();
+            var propertyName = nameof(TypeExtensionsTestStub.TEST_STRING_PROPERTY);
+            var instance = new TypeExtensionsTestStub();
 
             // Act & Assert
             Should.Throw<InvalidCastException>(() =>
             {
-                instance.GetPublicPropertyValue<GetPublicPropertyValueTestStub>(propertyName);
+                instance.GetPublicPropertyValue<TypeExtensionsTestStub>(propertyName);
             });
         }
 
@@ -360,9 +344,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void HasPublicProperty_When_Called_With_NonExisting_PropertyName_Then_Returns_False()
         {
             // Arrange
-            var randomizer = new Randomizer();
             var type = typeof(HasPublicPropertyTestStub);
-            var propertyName = randomizer.String();
+            var propertyName = Random.String();
 
             // Act
             var result = type.HasPublicProperty(propertyName);
