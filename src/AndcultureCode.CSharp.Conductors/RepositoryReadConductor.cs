@@ -35,7 +35,7 @@ namespace AndcultureCode.CSharp.Conductors
         #region Constructor
 
         /// <summary>
-        /// Creates and instance of RepositoryReadConductor for an <see cref="IRepository{T}"/> instance.
+        /// Creates an instance of RepositoryReadConductor for an <see cref="IRepository{T}"/> instance.
         /// </summary>
         /// <param name="repository">The Repository instance that should be used to perform read operations.</param>
         public RepositoryReadConductor(IRepository<T> repository)
@@ -58,7 +58,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <param name="skip">Number of entities that should be skipped.</param>
         /// <param name="take">Number of entities per page.</param>
-        /// <param name="ignoreQueryFilters">If previous applied filters should be ignore.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns>A queryable collection of entities for the given criteria.</returns>
         public virtual IResult<IQueryable<T>> FindAll(
@@ -78,7 +78,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="nextLinkParams">Currently nothing is provided for NextLinkParams by this base class. Exists for overriding subclasses.</param>
         /// <param name="filter">Filter to be used for querying.</param>
         /// <param name="orderBy">Properties that should be used for sorting.</param>
-        /// <param name="ignoreQueryFilters">If previous applied filters should be ignore.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns>A queryable collection of entities for the given criteria.</returns>
         public virtual IResult<IQueryable<T>> FindAll(
@@ -97,7 +97,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <param name="skip">Number of entities that should be skipped.</param>
         /// <param name="take">Number of entities per page.</param>
-        /// <param name="ignoreQueryFilters">If previous applied filters should be ignore.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <returns>An in-memory collection of entities for the given criteria.</returns>
         public virtual IResult<IList<T>> FindAllCommitted(
             Expression<Func<T, bool>> filter = null,
@@ -114,7 +114,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="nextLinkParams">Currently nothing is provided for NextLinkParams by this base class. Exists for overriding subclasses.</param>
         /// <param name="filter">Filter to be used for querying.</param>
         /// <param name="orderBy">Properties that should be used for sorting.</param>
-        /// <param name="ignoreQueryFilters">If previous applied filters should be ignore.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <returns>An in-memory collection of entities for the given criteria.</returns>
         public virtual IResult<IList<T>> FindAllCommitted(
             Dictionary<string, string> nextLinkParams,
@@ -142,7 +142,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// Finds an entity by its ID.
         /// </summary>
         /// <param name="id">The entity identity value.</param>
-        /// <param name="ignoreQueryFilters">If previous applied filters should be ignore.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <returns>The entity with the provided identity value.</returns>
         public virtual IResult<T> FindById(long id, bool ignoreQueryFilters, params Expression<Func<T, object>>[] includeProperties)
