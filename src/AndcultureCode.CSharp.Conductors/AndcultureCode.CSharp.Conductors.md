@@ -14,6 +14,12 @@
   - [FindById(id,ignoreQueryFilters,includeProperties)](#M-AndcultureCode-CSharp-Conductors-RepositoryReadConductor`1-FindById-System-Int64,System-Boolean,System-Linq-Expressions-Expression{System-Func{`0,System-Object}}[]- 'AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64,System.Boolean,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])')
   - [FindById(id,includeProperties)](#M-AndcultureCode-CSharp-Conductors-RepositoryReadConductor`1-FindById-System-Int64,System-Linq-Expressions-Expression{System-Func{`0,System-Object}}[]- 'AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])')
   - [FindById(id,includeProperties)](#M-AndcultureCode-CSharp-Conductors-RepositoryReadConductor`1-FindById-System-Int64,System-String[]- 'AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64,System.String[])')
+- [RepositoryUpdateConductor\`1](#T-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1')
+  - [#ctor(repository)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-#ctor-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})')
+  - [CommandTimeout](#P-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-CommandTimeout 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.CommandTimeout')
+  - [BulkUpdate(items,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-BulkUpdate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.BulkUpdate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
+  - [Update(item,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(`0,System.Nullable{System.Int64})')
+  - [Update(items,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
 
 <a name='T-AndcultureCode-CSharp-Conductors-RepositoryReadConductor`1'></a>
 ## RepositoryReadConductor\`1 `type`
@@ -222,3 +228,94 @@ The entity with the provided identity value.
 | ---- | ---- | ----------- |
 | id | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | The entity identity value. |
 | includeProperties | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') | Navigation properties that should be included. |
+
+<a name='T-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1'></a>
+## RepositoryUpdateConductor\`1 `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Conductors
+
+##### Summary
+
+Ability to update an entity or a list of entities
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-#ctor-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0}-'></a>
+### #ctor(repository) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| repository | [AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0} 'AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0}') |  |
+
+<a name='P-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-CommandTimeout'></a>
+### CommandTimeout `property`
+
+##### Summary
+
+Ability to set and get the underlying DbContext's command timeout
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-BulkUpdate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}-'></a>
+### BulkUpdate(items,updatedBy) `method`
+
+##### Summary
+
+Ability to update a list of entities in a single bulk operation.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{`0}') | List of items to update |
+| updatedBy | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user updating the entity |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-`0,System-Nullable{System-Int64}-'></a>
+### Update(item,updatedBy) `method`
+
+##### Summary
+
+Ability to update an entity
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| item | [\`0](#T-`0 '`0') | Item to update |
+| updatedBy | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user updating the entity |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}-'></a>
+### Update(items,updatedBy) `method`
+
+##### Summary
+
+Ability to update a list of items but each item is updated individually.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{`0}') | List of items to update |
+| updatedBy | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user updating the entity |
