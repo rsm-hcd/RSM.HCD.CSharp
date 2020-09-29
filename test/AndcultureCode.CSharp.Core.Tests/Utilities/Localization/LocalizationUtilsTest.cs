@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using AndcultureCode.CSharp.Core.Tests.Unit.Stubs;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Testing;
@@ -114,6 +115,17 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Localization
         public void CultureByCode_Given_CultureCode_DoesNotExist_Returns_Null()
         {
             LocalizationUtils.CultureByCode("404").ShouldBeNull();
+        }
+
+        [Fact]
+        public void CultureByCode_Given_Invariant_CultureCode_Returns_Default_Culture()
+        {
+            // Act
+            var result = LocalizationUtils.CultureByCode(CultureInfo.InvariantCulture.Name);
+
+            // Assert
+            result.ShouldNotBeNull();
+            result.Code.ShouldBe(LocalizationUtils.DefaultCultureCode);
         }
 
         [Fact]
