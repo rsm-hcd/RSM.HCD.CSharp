@@ -69,7 +69,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
-        public virtual IResult<bool> Delete(T o,     long? deletedById = default(long?), bool soft = true) => _repository.Delete(o,  deletedById, soft);
+        public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _repository.Delete(o,  deletedById, soft);
 
         /// <summary>
         /// Ability to delete a list of entities by batch size.
@@ -79,14 +79,14 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
         /// <param name="soft">Boolean flag for soft-deleting the items</param>
         /// <returns></returns>
-        public virtual IResult<bool> Delete(IEnumerable<T> items ,long? deletedById = default(long?), long batchSize = 100, bool soft = true) => _repository.Delete(items, deletedById, batchSize, soft);
+        public virtual IResult<bool> Delete(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true) => _repository.Delete(items, deletedById, batchSize, soft);
 
         /// <summary>
         /// Ability to restore a soft-deleted entity using the entity itself. 
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>
-        public virtual IResult<bool> Restore(T o)     => _repository.Restore(o);
+        public virtual IResult<bool> Restore(T o) => _repository.Restore(o);
 
         /// <summary>
         /// Ability to restore a soft-deleted entity using the entity id.
