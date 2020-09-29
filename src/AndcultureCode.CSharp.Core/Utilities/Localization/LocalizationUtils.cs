@@ -71,7 +71,14 @@ namespace AndcultureCode.CSharp.Core.Utilities.Localization
         #region Public Methods
 
         public static ICulture CultureByCode(string cultureCode)
-            => Cultures.FirstOrDefault(e => e.Code.ToLower() == cultureCode.ToLower());
+        {
+            if (cultureCode == CultureInfo.InvariantCulture.Name)
+            {
+                return DefaultCulture;
+            }
+
+            return Cultures.FirstOrDefault(e => e.Code.ToLower() == cultureCode.ToLower());
+        }
 
         public static string CultureCodes(string delimiter = ", ")
             => Cultures.ToCultureCodes(delimiter);
