@@ -79,6 +79,5 @@ namespace AndcultureCode.CSharp.Conductors
         }
 
         #endregion IRepositoryUpdateConductor Implementation
-
     }
 }
