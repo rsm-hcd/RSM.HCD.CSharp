@@ -8,7 +8,7 @@ using AndcultureCode.CSharp.Core.Interfaces.Entity;
 namespace AndcultureCode.CSharp.Conductors
 {
     /// <summary>
-    /// Ability to create an entity or list of entities
+    /// Ability to create an entity or multiple entities
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class RepositoryCreateConductor<T> : Conductor, IRepositoryCreateConductor<T>
