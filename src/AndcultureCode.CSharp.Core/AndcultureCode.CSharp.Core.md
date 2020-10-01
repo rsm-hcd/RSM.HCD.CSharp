@@ -4,9 +4,18 @@
 ## Contents
 
 - [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider')
+  - [#ctor()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.#ctor')
+  - [#ctor(stdoutEnabled,configurationFilePath)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor-System-Boolean,System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.#ctor(System.Boolean,System.String)')
   - [CONFIGURATION_FILE_PATH](#F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CONFIGURATION_FILE_PATH')
   - [CachedConfiguration](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CachedConfiguration 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CachedConfiguration')
+  - [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath')
+  - [StdoutEnabled](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.StdoutEnabled')
+  - [Get(key)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Get-System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Get(System.String)')
+  - [Has(key)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Has-System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Has(System.String)')
   - [Load()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Load 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Load')
+  - [Read()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Read 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Read')
+- [AmazonEBConfigurationSource](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationSource')
+  - [Build(builder)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource-Build-Microsoft-Extensions-Configuration-IConfigurationBuilder- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationSource.Build(Microsoft.Extensions.Configuration.IConfigurationBuilder)')
 - [AndcultureCodeWebHost](#T-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost')
   - [Preload()](#M-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost-Preload-System-String[]- 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost.Preload(System.String[])')
 - [ApplicationConstants](#T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants')
@@ -439,6 +448,31 @@ Adds support to read environment variables from an Amazon Elastic Beanstalk EC2 
  At this time AWS stores these environment variables in its own proprietary configuration
  that we are forced to read and pipe to the application.
 
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Initializes a new instance of the [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider') class with default values for [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and [StdoutEnabled](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.StdoutEnabled')
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor-System-Boolean,System-String-'></a>
+### #ctor(stdoutEnabled,configurationFilePath) `constructor`
+
+##### Summary
+
+Initializes a new instance of the [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider') class with optional values for [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and [StdoutEnabled](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.StdoutEnabled')
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| stdoutEnabled | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Enables logging to standard output |
+| configurationFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to configuration file, if not provider the value of [CONFIGURATION_FILE_PATH](#F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CONFIGURATION_FILE_PATH') will be used |
+
 <a name='F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH'></a>
 ### CONFIGURATION_FILE_PATH `constants`
 
@@ -453,6 +487,54 @@ Absolute path to the AWS Elastic Beanstalk windows instance configuration file
 
 Must be static to cache initially loaded configuration across multiple requests
 
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath'></a>
+### ConfigurationFilePath `property`
+
+##### Summary
+
+Path for the AWS Elastic Beanstalk configuration file
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled'></a>
+### StdoutEnabled `property`
+
+##### Summary
+
+Determines if logging to standard output should be enabled
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Get-System-String-'></a>
+### Get(key) `method`
+
+##### Summary
+
+Gets the value of an environment variable by the given `key`
+
+##### Returns
+
+The environment variable or `null` if the key isn't present
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string identifying the requested variable |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Has-System-String-'></a>
+### Has(key) `method`
+
+##### Summary
+
+Checks if an environment variable by the given `key` is present in the configuration
+
+##### Returns
+
+`true` if the variable exists `false` otherwise
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string identifying the requested variable |
+
 <a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Load'></a>
 ### Load() `method`
 
@@ -463,6 +545,55 @@ Load the configuration into the inherited 'Data' dictionary for use by Configura
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Read'></a>
+### Read() `method`
+
+##### Summary
+
+Reads the configuration from the [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and returns it as a IDictionary
+
+##### Returns
+
+A dictionary of key/values for all the environment variables in the configuration
+
+##### Parameters
+
+This method has no parameters.
+
+##### Remarks
+
+If the configuration file doesn't exist it returns an empty dictionary
+
+The return value might be cached
+
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource'></a>
+## AmazonEBConfigurationSource `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Utilities.Configuration
+
+##### Summary
+
+Class used to create a [IConfigurationProvider](#T-Microsoft-Extensions-Configuration-IConfigurationProvider 'Microsoft.Extensions.Configuration.IConfigurationProvider') that reads Amazon Elastic Beanstalk instance environment variables
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource-Build-Microsoft-Extensions-Configuration-IConfigurationBuilder-'></a>
+### Build(builder) `method`
+
+##### Summary
+
+Builds a [IConfigurationProvider](#T-Microsoft-Extensions-Configuration-IConfigurationProvider 'Microsoft.Extensions.Configuration.IConfigurationProvider') that reads Amazon Elastic Beanstalk instance environment variables
+
+##### Returns
+
+A new [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider') with default values
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| builder | [Microsoft.Extensions.Configuration.IConfigurationBuilder](#T-Microsoft-Extensions-Configuration-IConfigurationBuilder 'Microsoft.Extensions.Configuration.IConfigurationBuilder') |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost'></a>
 ## AndcultureCodeWebHost `type`
