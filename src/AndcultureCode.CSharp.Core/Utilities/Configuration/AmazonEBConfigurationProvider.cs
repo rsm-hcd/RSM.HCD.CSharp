@@ -27,7 +27,14 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Properties
 
+        /// <summary>
+        /// Path to the configuration file
+        /// </summary>
         public string ConfigurationFilePath { get; set; }
+
+        /// <summary>
+        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// </summary>
         public bool StdoutEnabled { get; set; }
 
         #endregion Properties
@@ -35,7 +42,16 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Constructors
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AmazonEBConfigurationProvider() { }
+
+        /// <summary>
+        /// Constructor with parameters to set properties
+        /// </summary>
+        /// <param name="stdoutEnabled"></param>
+        /// <param name="configurationFilePath"></param>
         public AmazonEBConfigurationProvider(bool stdoutEnabled = false, string configurationFilePath = null)
         {
             ConfigurationFilePath = string.IsNullOrWhiteSpace(configurationFilePath) ? CONFIGURATION_FILE_PATH : configurationFilePath;
@@ -57,10 +73,24 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
 
         #region Public Methods
 
+        /// <summary>
+        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public virtual string Get(string key) => Has(key) ? Read()[key] : null;
 
+        /// <summary>
+        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public virtual bool Has(string key) => Read().ContainsKey(key);
 
+        /// <summary>
+        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// </summary>
+        /// <returns></returns>
         public virtual IDictionary<string, string> Read()
         {
             if (CachedConfiguration != null)
