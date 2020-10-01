@@ -3,6 +3,14 @@
 
 ## Contents
 
+- [RepositoryCreateConductor\`1](#T-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1')
+  - [#ctor(repository)](#M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-#ctor-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0}- 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})')
+  - [CommandTimeout](#P-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-CommandTimeout 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.CommandTimeout')
+  - [BulkCreate(items,createdById)](#M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-BulkCreate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.BulkCreate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
+  - [BulkCreateDistinct\`\`1(items,property,createdById)](#M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-BulkCreateDistinct``1-System-Collections-Generic-IEnumerable{`0},System-Func{`0,``0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.BulkCreateDistinct``1(System.Collections.Generic.IEnumerable{`0},System.Func{`0,``0},System.Nullable{System.Int64})')
+  - [Create(item,createdById)](#M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-Create-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.Create(`0,System.Nullable{System.Int64})')
+  - [Create(items,createdById)](#M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-Create-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.Create(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
+  - [CreateDistinct\`\`1(items,property,createdById)](#M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-CreateDistinct``1-System-Collections-Generic-IEnumerable{`0},System-Func{`0,``0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.CreateDistinct``1(System.Collections.Generic.IEnumerable{`0},System.Func{`0,``0},System.Nullable{System.Int64})')
 - [RepositoryDeleteConductor\`1](#T-AndcultureCode-CSharp-Conductors-RepositoryDeleteConductor`1 'AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1')
   - [#ctor(repository)](#M-AndcultureCode-CSharp-Conductors-RepositoryDeleteConductor`1-#ctor-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0}- 'AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})')
   - [CommandTimeout](#P-AndcultureCode-CSharp-Conductors-RepositoryDeleteConductor`1-CommandTimeout 'AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.CommandTimeout')
@@ -29,6 +37,141 @@
   - [BulkUpdate(items,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-BulkUpdate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.BulkUpdate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
   - [Update(item,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(`0,System.Nullable{System.Int64})')
   - [Update(items,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
+
+<a name='T-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1'></a>
+## RepositoryCreateConductor\`1 `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Conductors
+
+##### Summary
+
+Ability to create an entity or list of entities
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-#ctor-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0}-'></a>
+### #ctor(repository) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| repository | [AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{`0} 'AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0}') |  |
+
+<a name='P-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-CommandTimeout'></a>
+### CommandTimeout `property`
+
+##### Summary
+
+Ability to set and get the underlying DbContext's command timeout
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-BulkCreate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}-'></a>
+### BulkCreate(items,createdById) `method`
+
+##### Summary
+
+Ability to create entities using a list in a single bulk operation.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{`0}') | List of items to create |
+| createdById | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user creating the items |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-BulkCreateDistinct``1-System-Collections-Generic-IEnumerable{`0},System-Func{`0,``0},System-Nullable{System-Int64}-'></a>
+### BulkCreateDistinct\`\`1(items,property,createdById) `method`
+
+##### Summary
+
+Ability to create entities using a list in a single bulk operation without duplicates.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{`0}') | List of items to create |
+| property | [System.Func{\`0,\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{`0,``0}') | Property used to remove duplicates |
+| createdById | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user creating the items |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-Create-`0,System-Nullable{System-Int64}-'></a>
+### Create(item,createdById) `method`
+
+##### Summary
+
+Ability to create an entity
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| item | [\`0](#T-`0 '`0') | Item to be created |
+| createdById | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user creating the item |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-Create-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}-'></a>
+### Create(items,createdById) `method`
+
+##### Summary
+
+Ability to create entities individually using a list
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{`0}') | List of items to be created |
+| createdById | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user creating the items |
+
+<a name='M-AndcultureCode-CSharp-Conductors-RepositoryCreateConductor`1-CreateDistinct``1-System-Collections-Generic-IEnumerable{`0},System-Func{`0,``0},System-Nullable{System-Int64}-'></a>
+### CreateDistinct\`\`1(items,property,createdById) `method`
+
+##### Summary
+
+Ability to create entities individually without duplicates
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{`0}') | List of items to create |
+| property | [System.Func{\`0,\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{`0,``0}') | Property used to remove duplicates |
+| createdById | [System.Nullable{System.Int64}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int64}') | Id of user creating the items |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TKey |  |
 
 <a name='T-AndcultureCode-CSharp-Conductors-RepositoryDeleteConductor`1'></a>
 ## RepositoryDeleteConductor\`1 `type`
