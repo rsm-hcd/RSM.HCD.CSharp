@@ -247,7 +247,14 @@
   - [#ctor(basePath)](#M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-#ctor-System-String- 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider.#ctor(System.String)')
   - [GetConfiguration()](#M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-GetConfiguration 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider.GetConfiguration')
 - [LocalizationUtils](#T-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils')
+  - [CultureInfos](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureInfos 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureInfos')
   - [Cultures](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-Cultures 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.Cultures')
+  - [DefaultCulture](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCulture 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.DefaultCulture')
+  - [DefaultCultureCode](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureCode 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.DefaultCultureCode')
+  - [DefaultCultureInfo](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureInfo 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.DefaultCultureInfo')
+  - [CultureByCode(cultureCode)](#M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureByCode-System-String- 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureByCode(System.String)')
+  - [CultureCodes(delimiter)](#M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureCodes-System-String- 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureCodes(System.String)')
+  - [CultureExists(cultureCode)](#M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureExists-System-String- 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureExists(System.String)')
 - [Lockable](#T-AndcultureCode-CSharp-Core-Models-Lockable 'AndcultureCode.CSharp.Core.Models.Lockable')
   - [IsLocked](#P-AndcultureCode-CSharp-Core-Models-Lockable-IsLocked 'AndcultureCode.CSharp.Core.Models.Lockable.IsLocked')
   - [DetermineIfLocked()](#M-AndcultureCode-CSharp-Core-Models-Lockable-DetermineIfLocked 'AndcultureCode.CSharp.Core.Models.Lockable.DetermineIfLocked')
@@ -601,6 +608,10 @@ A new [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Co
 ##### Namespace
 
 AndcultureCode.CSharp.Core.Utilities.Hosting
+
+##### Summary
+
+Static class related to our custom [WebHost](#T-Microsoft-AspNetCore-WebHost 'Microsoft.AspNetCore.WebHost') builder pattern
 
 <a name='M-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost-Preload-System-String[]-'></a>
 ### Preload() `method`
@@ -3262,12 +3273,95 @@ This method has no parameters.
 
 AndcultureCode.CSharp.Core.Utilities.Localization
 
+##### Summary
+
+Static class with helper functions related to localization
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureInfos'></a>
+### CultureInfos `property`
+
+##### Summary
+
+List of supported CultureInfo
+
 <a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-Cultures'></a>
 ### Cultures `property`
 
 ##### Summary
 
 Current cultures supported by the application
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCulture'></a>
+### DefaultCulture `property`
+
+##### Summary
+
+Default culture for the application
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureCode'></a>
+### DefaultCultureCode `property`
+
+##### Summary
+
+Code of the default culture for the application
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureInfo'></a>
+### DefaultCultureInfo `property`
+
+##### Summary
+
+CultureInfo of the default culture fore the application
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureByCode-System-String-'></a>
+### CultureByCode(cultureCode) `method`
+
+##### Summary
+
+Retrieves the [ICulture](#T-AndcultureCode-CSharp-Core-Interfaces-ICulture 'AndcultureCode.CSharp.Core.Interfaces.ICulture') from the supported Cultures by `cultureCode`
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cultureCode | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureCodes-System-String-'></a>
+### CultureCodes(delimiter) `method`
+
+##### Summary
+
+Retrieves the codes of the current cultures supported by the application
+
+##### Returns
+
+A concatenated string delimited by `delimiter`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureExists-System-String-'></a>
+### CultureExists(cultureCode) `method`
+
+##### Summary
+
+Checks if a culture by the given `cultureCode` is supported by the application
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cultureCode | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string identifying the requested culture |
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Lockable'></a>
 ## Lockable `type`
