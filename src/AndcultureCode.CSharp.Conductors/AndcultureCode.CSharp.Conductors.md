@@ -3,6 +3,7 @@
 
 ## Contents
 
+- [Conductor](#T-AndcultureCode-CSharp-Conductors-Conductor 'AndcultureCode.CSharp.Conductors.Conductor')
 - [RepositoryConductor\`1](#T-AndcultureCode-CSharp-Conductors-RepositoryConductor`1 'AndcultureCode.CSharp.Conductors.RepositoryConductor`1')
   - [#ctor(createConductor,readConductor,updateConductor,deleteConductor)](#M-AndcultureCode-CSharp-Conductors-RepositoryConductor`1-#ctor-AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryCreateConductor{`0},AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{`0},AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryUpdateConductor{`0},AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryDeleteConductor{`0}- 'AndcultureCode.CSharp.Conductors.RepositoryConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryCreateConductor{`0},AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{`0},AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryUpdateConductor{`0},AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryDeleteConductor{`0})')
   - [_createConductor](#F-AndcultureCode-CSharp-Conductors-RepositoryConductor`1-_createConductor 'AndcultureCode.CSharp.Conductors.RepositoryConductor`1._createConductor')
@@ -70,6 +71,17 @@
   - [BulkUpdate(items,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-BulkUpdate-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.BulkUpdate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
   - [Update(item,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-`0,System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(`0,System.Nullable{System.Int64})')
   - [Update(items,updatedBy)](#M-AndcultureCode-CSharp-Conductors-RepositoryUpdateConductor`1-Update-System-Collections-Generic-IEnumerable{`0},System-Nullable{System-Int64}- 'AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})')
+
+<a name='T-AndcultureCode-CSharp-Conductors-Conductor'></a>
+## Conductor `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Conductors
+
+##### Summary
+
+Conductor class
 
 <a name='T-AndcultureCode-CSharp-Conductors-RepositoryConductor`1'></a>
 ## RepositoryConductor\`1 `type`
