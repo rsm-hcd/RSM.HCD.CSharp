@@ -51,7 +51,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
         /// Initializes a new instance of the <see cref="AmazonEBConfigurationProvider"></see> class with optional values for <see cref="ConfigurationFilePath"/> and <see cref="StdoutEnabled"/>
         /// </summary>
         /// <param name="stdoutEnabled">Enables logging to standard output</param>
-        /// <param name="configurationFilePath">Path to configuration file, if not provider the value of <see cref="CONFIGURATION_FILE_PATH"/> will be used</param>
+        /// <param name="configurationFilePath">Path to configuration file, if not provided the value of <see cref="CONFIGURATION_FILE_PATH"/> will be used</param>
         public AmazonEBConfigurationProvider(bool stdoutEnabled = false, string configurationFilePath = null)
         {
             ConfigurationFilePath = string.IsNullOrWhiteSpace(configurationFilePath) ? CONFIGURATION_FILE_PATH : configurationFilePath;
@@ -88,7 +88,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Configuration
         public virtual bool Has(string key) => Read().ContainsKey(key);
 
         /// <summary>
-        /// Reads the configuration from the <see cref="ConfigurationFilePath"/> and returns it as a IDictionary
+        /// Reads the configuration from the <see cref="ConfigurationFilePath"/> and returns it as an IDictionary
         /// </summary>
         /// <remarks>
         /// <para>If the configuration file doesn't exist it returns an empty dictionary</para>
