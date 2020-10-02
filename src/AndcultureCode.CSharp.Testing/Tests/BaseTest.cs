@@ -19,9 +19,10 @@ namespace AndcultureCode.CSharp.Testing.Tests
 {
     public class BaseTest : IDisposable
     {
-        #region Properties
+        #region Protected Properties
 
-        protected ILoggerFactory LoggerFactory {
+        protected ILoggerFactory LoggerFactory
+        {
             get
             {
                 if (_loggerFactory == null)
@@ -36,11 +37,15 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
         protected ITestOutputHelper Output { get; private set; }
 
-        private   Randomizer _randomizer;
         protected Randomizer Random => _randomizer = _randomizer ?? new Randomizer();
 
-        #endregion Properties
+        #endregion Protected Properties
 
+        #region Private Properties
+
+        private Randomizer _randomizer;
+
+        #endregion Private Properties
 
         #region Constructors
 
@@ -82,31 +87,29 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
         #endregion Teardown
 
-
         #region Member Variables
 
         private ILoggerFactory _loggerFactory;
 
         #endregion Member Variables
 
-
         #region Protected Methods
 
-        protected T Build<T>()                                           => FactoryExtensions.Build<T>();
-        protected T Build<T>(string name)                                => FactoryExtensions.Build<T>(name);
-        protected T Build<T>(List<string> names)                         => FactoryExtensions.Build<T>(names);
-        protected T Build<T>(Action<T> property)                         => FactoryExtensions.Build<T>(property);
-        protected T Build<T>(string name, Action<T> property)            => FactoryExtensions.Build<T>(name, property);
-        protected T Build<T>(List<Action<T>> properties)                 => FactoryExtensions.Build<T>(properties);
-        protected T Build<T>(params Action<T>[] properties)              => FactoryExtensions.Build<T>(properties.ToList());
-        protected T Build<T>(string name, List<Action<T>> properties)    => FactoryExtensions.Build<T>(name, properties);
+        protected T Build<T>() => FactoryExtensions.Build<T>();
+        protected T Build<T>(string name) => FactoryExtensions.Build<T>(name);
+        protected T Build<T>(List<string> names) => FactoryExtensions.Build<T>(names);
+        protected T Build<T>(Action<T> property) => FactoryExtensions.Build<T>(property);
+        protected T Build<T>(string name, Action<T> property) => FactoryExtensions.Build<T>(name, property);
+        protected T Build<T>(List<Action<T>> properties) => FactoryExtensions.Build<T>(properties);
+        protected T Build<T>(params Action<T>[] properties) => FactoryExtensions.Build<T>(properties.ToList());
+        protected T Build<T>(string name, List<Action<T>> properties) => FactoryExtensions.Build<T>(name, properties);
         protected T Build<T>(string name, params Action<T>[] properties) => FactoryExtensions.Build<T>(name, properties.ToList());
 
         protected List<T> BuildList<T>(int count)
         {
             var result = new List<T>();
 
-            for (var i = 1; i <= count; i ++)
+            for (var i = 1; i <= count; i++)
             {
                 result.Add(Build<T>());
             }
@@ -114,11 +117,11 @@ namespace AndcultureCode.CSharp.Testing.Tests
             return result;
         }
 
-        protected Result<T> BuildResult<T>()                                           => new Result<T> { ResultObject = FactoryExtensions.Build<T>() };
-        protected Result<T> BuildResult<T>(string name)                                => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name) };
-        protected Result<T> BuildResult<T>(Action<T> property)                         => new Result<T> { ResultObject = FactoryExtensions.Build<T>(property) };
-        protected Result<T> BuildResult<T>(string name, Action<T> property)            => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, property) };
-        protected Result<T> BuildResult<T>(List<Action<T>> properties)                 => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties) };
+        protected Result<T> BuildResult<T>() => new Result<T> { ResultObject = FactoryExtensions.Build<T>() };
+        protected Result<T> BuildResult<T>(string name) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name) };
+        protected Result<T> BuildResult<T>(Action<T> property) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(property) };
+        protected Result<T> BuildResult<T>(string name, Action<T> property) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, property) };
+        protected Result<T> BuildResult<T>(List<Action<T>> properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties) };
 
         /// <summary>
         /// Factory method for setting properties directly on a new Result. Sets the `ResultObject`
@@ -144,11 +147,11 @@ namespace AndcultureCode.CSharp.Testing.Tests
             return result;
         }
 
-        protected Result<T> BuildResult<T>(params Action<T>[] properties)              => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties.ToList()) };
-        protected Result<T> BuildResult<T>(string name, List<Action<T>> properties)    => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties) };
+        protected Result<T> BuildResult<T>(params Action<T>[] properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties.ToList()) };
+        protected Result<T> BuildResult<T>(string name, List<Action<T>> properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties) };
         protected Result<T> BuildResult<T>(string name, params Action<T>[] properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties.ToList()) };
 
-        protected T FromJson<T>(string value)                 => JsonConvert.DeserializeObject<T>(value);
+        protected T FromJson<T>(string value) => JsonConvert.DeserializeObject<T>(value);
         protected T FromJson<T>(HttpResponseMessage response) => response.FromJson<T>();
 
         protected byte[] GetBytes(string value) => Encoding.UTF8.GetBytes(value);
