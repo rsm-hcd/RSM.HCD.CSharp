@@ -33,10 +33,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         )
         {
             return new RepositoryConductor<Entity>(
-                createConductor?.Object,
-                readConductor?.Object,
-                updateConductor?.Object,
-                deleteConductor?.Object
+                createConductor: createConductor?.Object,
+                readConductor: readConductor?.Object,
+                updateConductor: updateConductor?.Object,
+                deleteConductor: deleteConductor?.Object
             );
         }
 
