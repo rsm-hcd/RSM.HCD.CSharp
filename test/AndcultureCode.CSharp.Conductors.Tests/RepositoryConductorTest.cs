@@ -27,16 +27,16 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
         private IRepositoryConductor<Entity> SetupSut(
             Mock<IRepositoryCreateConductor<Entity>> createConductor = null,
+            Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null,
             Mock<IRepositoryReadConductor<Entity>>   readConductor   = null,
-            Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null,
-            Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null
+            Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null
         )
         {
             return new RepositoryConductor<Entity>(
                 createConductor: createConductor?.Object,
+                deleteConductor: deleteConductor?.Object,
                 readConductor: readConductor?.Object,
-                updateConductor: updateConductor?.Object,
-                deleteConductor: deleteConductor?.Object
+                updateConductor: updateConductor?.Object
             );
         }
 
