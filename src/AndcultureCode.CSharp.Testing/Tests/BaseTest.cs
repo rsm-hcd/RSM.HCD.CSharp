@@ -35,15 +35,39 @@ namespace AndcultureCode.CSharp.Testing.Tests
             }
         }
 
+        /// <summary>
+        /// Cached instance of 'Faker' to use for specific data generation functions not available
+        /// from Randomizer (such as email addresses, ip addresses, names, etc.)
+        /// </summary>
+        /// <returns></returns>
+        protected Faker Faker => _faker = _faker ?? new Faker();
+
         protected ITestOutputHelper Output { get; private set; }
 
-        protected Randomizer Random => _randomizer = _randomizer ?? new Randomizer();
+        /// <summary>
+        /// Wrapper property for accessing the 'Randomizer' instance of 'Faker' directly. This field
+        /// will instantiate a new Faker instance if it has not yet been accessed directly.
+        /// </summary>
+        /// <value></value>
+        protected Randomizer Random
+        {
+            get
+            {
+                if (_faker == null)
+                {
+                    _faker = new Faker();
+                }
+
+                return _faker.Random;
+            }
+        }
 
         #endregion Protected Properties
 
         #region Private Properties
 
-        private Randomizer _randomizer;
+        private Faker _faker;
+        private ILoggerFactory _loggerFactory;
 
         #endregion Private Properties
 
@@ -86,12 +110,6 @@ namespace AndcultureCode.CSharp.Testing.Tests
         }
 
         #endregion Teardown
-
-        #region Member Variables
-
-        private ILoggerFactory _loggerFactory;
-
-        #endregion Member Variables
 
         #region Protected Methods
 
