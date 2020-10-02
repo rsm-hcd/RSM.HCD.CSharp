@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 namespace AndcultureCode.CSharp.Conductors.Aspects
 {
     /// <summary>
-    /// Repository implementation for handling ILockable entiteis
+    /// Repository implementation for handling ILockable entities
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class LockingConductor<T> : Conductor, ILockingConductor<T>
