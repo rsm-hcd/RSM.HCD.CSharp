@@ -214,8 +214,6 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<bool> Update(T item, long? updatedBy = default(long?)) => _updateConductor.Update(item, updatedBy);
         public virtual IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?)) => _updateConductor.Update(items, updatedBy);
 
-
-
         #endregion Update
 
         #endregion Public Methods
