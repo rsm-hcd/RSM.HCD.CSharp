@@ -4,9 +4,18 @@
 ## Contents
 
 - [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider')
+  - [#ctor()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.#ctor')
+  - [#ctor(stdoutEnabled,configurationFilePath)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor-System-Boolean,System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.#ctor(System.Boolean,System.String)')
   - [CONFIGURATION_FILE_PATH](#F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CONFIGURATION_FILE_PATH')
   - [CachedConfiguration](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CachedConfiguration 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CachedConfiguration')
+  - [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath')
+  - [StdoutEnabled](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.StdoutEnabled')
+  - [Get(key)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Get-System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Get(System.String)')
+  - [Has(key)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Has-System-String- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Has(System.String)')
   - [Load()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Load 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Load')
+  - [Read()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Read 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.Read')
+- [AmazonEBConfigurationSource](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationSource')
+  - [Build(builder)](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource-Build-Microsoft-Extensions-Configuration-IConfigurationBuilder- 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationSource.Build(Microsoft.Extensions.Configuration.IConfigurationBuilder)')
 - [AndcultureCodeWebHost](#T-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost')
   - [Preload()](#M-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost-Preload-System-String[]- 'AndcultureCode.CSharp.Core.Utilities.Hosting.AndcultureCodeWebHost.Preload(System.String[])')
 - [ApplicationConstants](#T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants')
@@ -238,7 +247,14 @@
   - [#ctor(basePath)](#M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-#ctor-System-String- 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider.#ctor(System.String)')
   - [GetConfiguration()](#M-AndcultureCode-CSharp-Core-Providers-Configuration-LocalConfigurationProvider-GetConfiguration 'AndcultureCode.CSharp.Core.Providers.Configuration.LocalConfigurationProvider.GetConfiguration')
 - [LocalizationUtils](#T-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils')
+  - [CultureInfos](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureInfos 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureInfos')
   - [Cultures](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-Cultures 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.Cultures')
+  - [DefaultCulture](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCulture 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.DefaultCulture')
+  - [DefaultCultureCode](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureCode 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.DefaultCultureCode')
+  - [DefaultCultureInfo](#P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureInfo 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.DefaultCultureInfo')
+  - [CultureByCode(cultureCode)](#M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureByCode-System-String- 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureByCode(System.String)')
+  - [CultureCodes(delimiter)](#M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureCodes-System-String- 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureCodes(System.String)')
+  - [CultureExists(cultureCode)](#M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureExists-System-String- 'AndcultureCode.CSharp.Core.Utilities.Localization.LocalizationUtils.CultureExists(System.String)')
 - [Lockable](#T-AndcultureCode-CSharp-Core-Models-Lockable 'AndcultureCode.CSharp.Core.Models.Lockable')
   - [IsLocked](#P-AndcultureCode-CSharp-Core-Models-Lockable-IsLocked 'AndcultureCode.CSharp.Core.Models.Lockable.IsLocked')
   - [DetermineIfLocked()](#M-AndcultureCode-CSharp-Core-Models-Lockable-DetermineIfLocked 'AndcultureCode.CSharp.Core.Models.Lockable.DetermineIfLocked')
@@ -439,6 +455,31 @@ Adds support to read environment variables from an Amazon Elastic Beanstalk EC2 
  At this time AWS stores these environment variables in its own proprietary configuration
  that we are forced to read and pipe to the application.
 
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Initializes a new instance of the [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider') class with default values for [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and [StdoutEnabled](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.StdoutEnabled')
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-#ctor-System-Boolean,System-String-'></a>
+### #ctor(stdoutEnabled,configurationFilePath) `constructor`
+
+##### Summary
+
+Initializes a new instance of the [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider') class with optional values for [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and [StdoutEnabled](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.StdoutEnabled')
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| stdoutEnabled | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Enables logging to standard output |
+| configurationFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to configuration file, if not provider the value of [CONFIGURATION_FILE_PATH](#F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CONFIGURATION_FILE_PATH') will be used |
+
 <a name='F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH'></a>
 ### CONFIGURATION_FILE_PATH `constants`
 
@@ -453,6 +494,54 @@ Absolute path to the AWS Elastic Beanstalk windows instance configuration file
 
 Must be static to cache initially loaded configuration across multiple requests
 
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath'></a>
+### ConfigurationFilePath `property`
+
+##### Summary
+
+Path for the AWS Elastic Beanstalk configuration file
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-StdoutEnabled'></a>
+### StdoutEnabled `property`
+
+##### Summary
+
+Determines if logging to standard output should be enabled
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Get-System-String-'></a>
+### Get(key) `method`
+
+##### Summary
+
+Gets the value of an environment variable by the given `key`
+
+##### Returns
+
+The environment variable or `null` if the key isn't present
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string identifying the requested variable |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Has-System-String-'></a>
+### Has(key) `method`
+
+##### Summary
+
+Checks if an environment variable by the given `key` is present in the configuration
+
+##### Returns
+
+`true` if the variable exists `false` otherwise
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string identifying the requested variable |
+
 <a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Load'></a>
 ### Load() `method`
 
@@ -464,12 +553,65 @@ Load the configuration into the inherited 'Data' dictionary for use by Configura
 
 This method has no parameters.
 
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-Read'></a>
+### Read() `method`
+
+##### Summary
+
+Reads the configuration from the [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and returns it as a IDictionary
+
+##### Returns
+
+A dictionary of key/values for all the environment variables in the configuration
+
+##### Parameters
+
+This method has no parameters.
+
+##### Remarks
+
+If the configuration file doesn't exist it returns an empty dictionary
+
+The return value might be cached
+
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource'></a>
+## AmazonEBConfigurationSource `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Utilities.Configuration
+
+##### Summary
+
+Class used to create a [IConfigurationProvider](#T-Microsoft-Extensions-Configuration-IConfigurationProvider 'Microsoft.Extensions.Configuration.IConfigurationProvider') that reads Amazon Elastic Beanstalk instance environment variables
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationSource-Build-Microsoft-Extensions-Configuration-IConfigurationBuilder-'></a>
+### Build(builder) `method`
+
+##### Summary
+
+Builds a [IConfigurationProvider](#T-Microsoft-Extensions-Configuration-IConfigurationProvider 'Microsoft.Extensions.Configuration.IConfigurationProvider') that reads Amazon Elastic Beanstalk instance environment variables
+
+##### Returns
+
+A new [AmazonEBConfigurationProvider](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider') with default values
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| builder | [Microsoft.Extensions.Configuration.IConfigurationBuilder](#T-Microsoft-Extensions-Configuration-IConfigurationBuilder 'Microsoft.Extensions.Configuration.IConfigurationBuilder') |  |
+
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost'></a>
 ## AndcultureCodeWebHost `type`
 
 ##### Namespace
 
 AndcultureCode.CSharp.Core.Utilities.Hosting
+
+##### Summary
+
+Static class related to our custom [WebHost](#T-Microsoft-AspNetCore-WebHost 'Microsoft.AspNetCore.WebHost') builder pattern
 
 <a name='M-AndcultureCode-CSharp-Core-Utilities-Hosting-AndcultureCodeWebHost-Preload-System-String[]-'></a>
 ### Preload() `method`
@@ -3131,12 +3273,95 @@ This method has no parameters.
 
 AndcultureCode.CSharp.Core.Utilities.Localization
 
+##### Summary
+
+Static class with helper functions related to localization
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureInfos'></a>
+### CultureInfos `property`
+
+##### Summary
+
+List of supported CultureInfo
+
 <a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-Cultures'></a>
 ### Cultures `property`
 
 ##### Summary
 
 Current cultures supported by the application
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCulture'></a>
+### DefaultCulture `property`
+
+##### Summary
+
+Default culture for the application
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureCode'></a>
+### DefaultCultureCode `property`
+
+##### Summary
+
+Code of the default culture for the application
+
+<a name='P-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-DefaultCultureInfo'></a>
+### DefaultCultureInfo `property`
+
+##### Summary
+
+CultureInfo of the default culture fore the application
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureByCode-System-String-'></a>
+### CultureByCode(cultureCode) `method`
+
+##### Summary
+
+Retrieves the [ICulture](#T-AndcultureCode-CSharp-Core-Interfaces-ICulture 'AndcultureCode.CSharp.Core.Interfaces.ICulture') from the supported Cultures by `cultureCode`
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cultureCode | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureCodes-System-String-'></a>
+### CultureCodes(delimiter) `method`
+
+##### Summary
+
+Retrieves the codes of the current cultures supported by the application
+
+##### Returns
+
+A concatenated string delimited by `delimiter`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Localization-LocalizationUtils-CultureExists-System-String-'></a>
+### CultureExists(cultureCode) `method`
+
+##### Summary
+
+Checks if a culture by the given `cultureCode` is supported by the application
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cultureCode | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string identifying the requested culture |
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Lockable'></a>
 ## Lockable `type`
