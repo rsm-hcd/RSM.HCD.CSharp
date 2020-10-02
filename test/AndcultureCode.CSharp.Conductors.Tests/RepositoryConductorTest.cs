@@ -518,7 +518,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         #region Delete
 
         [Fact]
-        public void Delete_When_Delete_HasErrors_Then_Returns_False_Errors()
+        public void Delete_When_Delete_HasErrors_Then_Returns_False_With_Errors()
         {
             // Arrange
             var entities = new List<Entity>();
