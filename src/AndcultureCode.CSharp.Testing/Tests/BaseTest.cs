@@ -49,18 +49,7 @@ namespace AndcultureCode.CSharp.Testing.Tests
         /// will instantiate a new Faker instance if it has not yet been accessed directly.
         /// </summary>
         /// <value></value>
-        protected Randomizer Random
-        {
-            get
-            {
-                if (_faker == null)
-                {
-                    _faker = new Faker();
-                }
-
-                return _faker.Random;
-            }
-        }
+        protected Randomizer Random => Faker.Random;
 
         #endregion Protected Properties
 
