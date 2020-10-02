@@ -1,13 +1,13 @@
 {
   "name": "andculturecode.csharp.conductors",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "npx and-cli",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "and-cli": "0.0.5"
+    "and-cli": "1.2.0"
   },
   "devDependencies": {},
   "scripts": {

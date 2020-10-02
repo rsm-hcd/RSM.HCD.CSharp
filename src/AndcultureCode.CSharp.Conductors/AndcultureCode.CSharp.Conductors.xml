@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AndcultureCode.CSharp.Conductors</name>
+    </assembly>
+    <members>
+        <member name="T:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1">
+            <summary>
+            Repository implementation for handling ILockable entiteis
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_EXTEND_LOCK_LOCK_TIME_IN_PAST">
+            <summary>
+            Error key indicating lock cannot be extended because the lock has expired
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_EXTEND_LOCK_LOCKED_BY_DIFFERENT_USER">
+            <summary>
+            Error key indicating the lock cannot be extended because it was locked by a different user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_EXTEND_LOCK_RECORD_NOT_FOUND">
+            <summary>
+            Error key indicating the lock cannot be extended because the record to be locked could not
+            be found. It may have been deleted or is otherwise unavailable.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_EXTEND_LOCK_RECORD_NOT_LOCKED">
+            <summary>
+            Error key indicating the lock cannot be extended because the record is not locked
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_LOCK_RECORD_ALREADY_LOCKED">
+            <summary>
+            Error key indicating the record cannot be locked because it is already in a locked state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_LOCK_RECORD_NOT_FOUND">
+            <summary>
+            Error key indicating the record cannot be locked because the record to be locked could not
+            be found. It may have been deleted or is otherwise unavailable.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_LOCK_TIME_IN_PAST">
+            <summary>
+            Error key indicating the record cannot be locked because the desired lockTime is in the past
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_UNLOCK_RECORD_NOT_FOUND">
+            <summary>
+            Error key indicating the record cannot be unlocked because the record to be unlocked could not
+            be found. It may have been deleted or is otherwise unavailable.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_VALIDATE_LOCK_ITEM_IS_NULL">
+            <summary>
+            Error key indicating the lock could not be validated because the item to be validated is null
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED">
+            <summary>
+            Error key indicating the lock could not be validated because the item is not in a locked state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER">
+            <summary>
+            Error key indicating the lock could not be validated because the resource was locked by a different user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.#ctor(Microsoft.Extensions.Logging.ILogger{AndcultureCode.CSharp.Conductors.Aspects.LockingConductor{`0}},AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{`0},AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryUpdateConductor{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="repositoryReadConductor"></param>
+            <param name="repositoryUpdateConductor"></param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.Lock(System.Int64,System.DateTimeOffset,System.Nullable{System.Int64})">
+            <summary>
+            Updates the locking fields to be set, which denotes that the user locking the record should
+            have exclusive access to modifying it for the lock's duration. This, however, does
+            not prohibit the record from being modified by others. When a record is locked, the
+            ValidateLock method below should be used to determine if the record can be modified. This will
+            ensure that only the user that locked the record is actually able to modify its contents.
+            </summary>
+            <param name="id">The record id</param>
+            <param name="lockUntil">The time the record should be locked until</param>
+            <param name="lockedById">The id of the user locking the record</param>
+            <returns>the updated record if it is successfully locked, null otherwise</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.Unlock(System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Updates the locking fields back to null, meaning any user will be able to acquire a lock
+            so they have exclusive access to editing it.
+            </summary>
+            <param name="id">The record id</param>
+            <param name="unlockedById">The id of the user unlocking the record</param>
+            <returns>the updated record if it is successfully unlocked, null otherwise</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ExtendLock(System.Int64,System.DateTimeOffset,System.Nullable{System.Int64})">
+            <summary>
+            Updates the LockedUntil field for the record, allowing the user that locked
+            it to have the lock for a longer amount of time.
+            </summary>
+            <param name="id">The record id</param>
+            <param name="lockUntil">The time the record should be locked until</param>
+            <param name="updatedById">The id of the user updating the record's lock time</param>
+            <returns>the updated record if the lock is successfully extended, null otherwise</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.Aspects.LockingConductor`1.ValidateLock(`0,System.Nullable{System.Int64})">
+            <summary>
+            Used to determine whether or not the user attempting to update the record is the
+            user that has the lock, AND that the lock is still valid (i.e. not expired).
+            </summary>
+            <param name="item">The item</param>
+            <param name="currentUserId">The current user id</param>
+            <returns>true if the lock is still active and is locked by the current user, false otherwise</returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1">
+            <summary>
+            Ability to create an entity or multiple entities
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.CommandTimeout">
+            <summary>
+            Ability to set and get the underlying DbContext's command timeout
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository"></param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.BulkCreate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})">
+            <summary>
+            Ability to create entities using a list in a single bulk operation.
+            </summary>
+            <param name="items">List of items to create</param>
+            <param name="createdById">Id of user creating the items</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.BulkCreateDistinct``1(System.Collections.Generic.IEnumerable{`0},System.Func{`0,``0},System.Nullable{System.Int64})">
+            <summary>
+            Ability to create entities using a list in a single bulk operation without duplicates.
+            </summary>
+            <param name="items">List of items to create</param>
+            <param name="property">Property used to remove duplicates</param>
+            <param name="createdById">Id of user creating the items</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.Create(`0,System.Nullable{System.Int64})">
+            <summary>
+            Ability to create an entity 
+            </summary>
+            <param name="item">Item to be created</param>
+            <param name="createdById">Id of user creating the item</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.Create(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})">
+            <summary>
+            Ability to create entities individually using a list 
+            </summary>
+            <param name="items">List of items to be created</param>
+            <param name="createdById">Id of user creating the items</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryCreateConductor`1.CreateDistinct``1(System.Collections.Generic.IEnumerable{`0},System.Func{`0,``0},System.Nullable{System.Int64})">
+            <summary>
+            Ability to create entities individually without duplicates
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <param name="items">List of items to create</param>
+            <param name="property">Property used to remove duplicates</param>
+            <param name="createdById">Id of user creating the items</param>
+            <returns></returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1">
+            <summary>
+            Ability to delete an entity or list of entities
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.CommandTimeout">
+            <summary>
+            Ability to set and get the underlying DbContext's command timeout
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository"></param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.BulkDelete(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64},System.Boolean)">
+            <summary>
+            Ability to delete a list of entities in a single bulk operation.
+            </summary>
+            <param name="items">List of items to delete</param>
+            <param name="deletedById">Id of user deleting the items</param>
+            <param name="soft">Boolean flag for soft-deleting items</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.Delete(System.Int64,System.Nullable{System.Int64},System.Boolean)">
+            <summary>
+            Ability to delete an entity using an Id
+            </summary>
+            <param name="id">Id of item to be deleted</param>
+            <param name="deletedById">Id of user deleting the item</param>
+            <param name="soft">Boolean flag for soft-deleting the item</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.Delete(`0,System.Nullable{System.Int64},System.Boolean)">
+            <summary>
+            Ability to delete an entity using the entity itself
+            </summary>
+            <param name="o">Item to be deleted</param>
+            <param name="deletedById">Id of user deleting the item</param>
+            <param name="soft">Boolean flag for soft-deleting the item</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.Delete(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64},System.Int64,System.Boolean)">
+            <summary>
+            Ability to delete a list of entities by batch size.
+            </summary>
+            <param name="items">List of items to delete</param>
+            <param name="deletedById">Id of user deleting the items</param>
+            <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
+            <param name="soft">Boolean flag for soft-deleting the items</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.Restore(`0)">
+            <summary>
+            Ability to restore a soft-deleted entity using the entity itself. 
+            </summary>
+            <param name="o">Entity to be restored</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryDeleteConductor`1.Restore(System.Int64)">
+            <summary>
+            Ability to restore a soft-deleted entity using the entity id.
+            </summary>
+            <param name="id">Id of entity to be restored</param>
+            <returns></returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1">
+            <summary>
+            Provides read operations on a given repository.
+            </summary>
+            <typeparam name="T">The entity type.</typeparam>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.CommandTimeout">
+            <summary>
+            Ability to set and get the underlying Repository's command timeout.
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})">
+            <summary>
+            Creates an instance of RepositoryReadConductor for an <see cref="T:AndcultureCode.CSharp.Core.Interfaces.Data.IRepository`1"/> instance.
+            </summary>
+            <param name="repository">The Repository instance that should be used to perform read operations.</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Boolean)">
+            <summary>
+            Find all filtered, sorted and paged.
+            </summary>
+            <param name="filter">Filter to be used for querying.</param>
+            <param name="orderBy">Properties that should be used for sorting.</param>
+            <param name="includeProperties">Navigation properties that should be included.</param>
+            <param name="skip">Number of entities that should be skipped.</param>
+            <param name="take">Number of entities per page.</param>
+            <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+            <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
+            <returns>A queryable collection of entities for the given criteria.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindAll(System.Collections.Generic.Dictionary{System.String,System.String},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Boolean},System.Boolean)">
+            <summary>
+            Alternative FindAll for retrieving records using NextLinkParams in place of traditional
+            determinate pagination mechanisms, such as; skip and take.
+            </summary>
+            <param name="nextLinkParams">Currently nothing is provided for NextLinkParams by this base class. Exists for overriding subclasses.</param>
+            <param name="filter">Filter to be used for querying.</param>
+            <param name="orderBy">Properties that should be used for sorting.</param>
+            <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+            <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
+            <returns>A queryable collection of entities for the given criteria.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindAllCommitted(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Similar to FindAll but loading the result into memory.
+            </summary>
+            <param name="filter">Filter to be used for querying.</param>
+            <param name="orderBy">Properties that should be used for sorting.</param>
+            <param name="includeProperties">Navigation properties that should be included.</param>
+            <param name="skip">Number of entities that should be skipped.</param>
+            <param name="take">Number of entities per page.</param>
+            <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+            <returns>An in-memory collection of entities for the given criteria.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindAllCommitted(System.Collections.Generic.Dictionary{System.String,System.String},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Boolean})">
+            <summary>
+            Similar to FindAll but loading the result into memory.
+            </summary>
+            <param name="nextLinkParams">Currently nothing is provided for NextLinkParams by this base class. Exists for overriding subclasses.</param>
+            <param name="filter">Filter to be used for querying.</param>
+            <param name="orderBy">Properties that should be used for sorting.</param>
+            <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+            <returns>An in-memory collection of entities for the given criteria.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64)">
+            <summary>
+            Finds an entity by its ID.
+            </summary>
+            <param name="id">The entity identity value.</param>
+            <returns>The entity with the provided identity value.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64,System.Boolean,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Finds an entity by its ID.
+            </summary>
+            <param name="id">The entity identity value.</param>
+            <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+            <param name="includeProperties">Navigation properties that should be included.</param>
+            <returns>The entity with the provided identity value.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Finds an entity by its ID.
+            </summary>
+            <param name="id">The entity identity value.</param>
+            <param name="includeProperties">Navigation properties that should be included.</param>
+            <returns>The entity with the provided identity value.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryReadConductor`1.FindById(System.Int64,System.String[])">
+            <summary>
+            Finds an entity by its ID.
+            </summary>
+            <param name="id">The entity identity value.</param>
+            <param name="includeProperties">Navigation properties that should be included.</param>
+            <returns>The entity with the provided identity value.</returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1">
+            <summary>
+            Ability to update an entity or a list of entities
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.CommandTimeout">
+            <summary>
+            Ability to set and get the underlying DbContext's command timeout
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.#ctor(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository"></param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.BulkUpdate(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})">
+            <summary>
+            Ability to update a list of entities in a single bulk operation.
+            </summary>
+            <param name="items">List of items to update</param>
+            <param name="updatedBy">Id of user updating the entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(`0,System.Nullable{System.Int64})">
+            <summary>
+            Ability to update an entity
+            </summary>
+            <param name="item">Item to update</param>
+            <param name="updatedBy">Id of user updating the entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Conductors.RepositoryUpdateConductor`1.Update(System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int64})">
+            <summary>
+            Ability to update a list of items but each item is updated individually.
+            </summary>
+            <param name="items">List of items to update</param>
+            <param name="updatedBy">Id of user updating the entity</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
