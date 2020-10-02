@@ -95,6 +95,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <returns></returns>
         public virtual IResult<bool> Restore(long id) => _repository.Restore(id);
 
+
         #endregion IRepositoryDeleteConductor Implementation
     }
 }

@@ -6,6 +6,8 @@ using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Testing.Extensions;
+using AndcultureCode.CSharp.Testing.Extensions.Mocks;
+using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using AndcultureCode.CSharp.Testing.Tests;
 using Moq;
 using Shouldly;
@@ -27,20 +29,20 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
         private IRepositoryConductor<Entity> SetupSut(
             Mock<IRepositoryCreateConductor<Entity>> createConductor = null,
+            Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null,
             Mock<IRepositoryReadConductor<Entity>>   readConductor   = null,
-            Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null,
-            Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null
+            Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null
         )
         {
             return new RepositoryConductor<Entity>(
-                createConductor?.Object,
-                readConductor?.Object,
-                updateConductor?.Object,
-                deleteConductor?.Object
+                createConductor: createConductor?.Object,
+                deleteConductor: deleteConductor?.Object,
+                readConductor: readConductor?.Object,
+                updateConductor: updateConductor?.Object
             );
         }
 
-        #region CreateOrUpdate
+        #region BulkCreateOrUpdate
 
         [Fact]
         public void BulkCreateOrUpdate_When_Items_Is_Null_Then_Returns_Null()
@@ -233,7 +235,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             bulkCreateOrUpdateResponse.ResultObject.Count().ShouldBe(1);
         }
 
-        #endregion
+        #endregion BulkCreateOrUpdate
 
         #region CreateOrUpdate
 
@@ -511,6 +513,48 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             result.ResultObject.ShouldBe(createdEntities);
         }
 
-        #endregion
+        #endregion CreateOrUpdate
+
+        #region Delete
+
+        [Fact]
+        public void Delete_When_Delete_HasErrors_Then_Returns_False_With_Errors()
+        {
+            // Arrange
+            var entities = new List<Entity>();
+            var mockDeleteConductor = new Mock<IRepositoryDeleteConductor<Entity>>();
+            mockDeleteConductor.Setup(
+                m => m.Delete(It.IsAny<IEnumerable<Entity>>(), It.IsAny<long?>(), It.IsAny<long>(), It.IsAny<bool>()
+            )).ReturnsBasicErrorResult();
+            var sut = SetupSut(deleteConductor: mockDeleteConductor);
+
+            // Act
+            var result = sut.Delete(entities, null, 100, true);
+
+            // Assert
+            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ResultObject.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void Delete_When_Delete_Succeeds_Then_Returns_True()
+        {
+            // Arrange
+            var entities = new List<Entity>();
+            var mockDeleteConductor = new Mock<IRepositoryDeleteConductor<Entity>>();
+            mockDeleteConductor.Setup(
+                m => m.Delete(It.IsAny<IEnumerable<Entity>>(), It.IsAny<long?>(), It.IsAny<long>(), It.IsAny<bool>()
+            )).ReturnsGivenResult(true);
+            var sut = SetupSut(deleteConductor: mockDeleteConductor);
+
+            // Act
+            var result = sut.Delete(entities, null, 100, true);
+
+            // Assert
+            result.ShouldNotHaveErrors();
+            result.ResultObject.ShouldBeTrue();
+        }
+
+        #endregion Delete
     }
 }
