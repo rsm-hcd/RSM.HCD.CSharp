@@ -29,70 +29,70 @@ namespace AndcultureCode.CSharp.Conductors.Aspects
         /// Error key indicating lock cannot be extended because the lock has expired
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_EXTEND_LOCK_LOCK_TIME_IN_PAST = $"{nameof(LockingConductor<T>)}.LockTimeInPast";
+        public const string ERROR_EXTEND_LOCK_LOCK_TIME_IN_PAST = "LockingConductor.LockTimeInPast";
 
         /// <summary>
         /// Error key indicating the lock cannot be extended because it was locked by a different user
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_EXTEND_LOCK_LOCKED_BY_DIFFERENT_USER = $"{nameof(LockingConductor<T>)}.ExtendLock.RecordLockedByDifferentUser";
+        public const string ERROR_EXTEND_LOCK_LOCKED_BY_DIFFERENT_USER = "LockingConductor.ExtendLock.RecordLockedByDifferentUser";
 
         /// <summary>
         /// Error key indicating the lock cannot be extended because the record to be locked could not
         /// be found. It may have been deleted or is otherwise unavailable.
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_EXTEND_LOCK_RECORD_NOT_FOUND = $"{nameof(LockingConductor<T>)}.ExtendLock.ReadResultIsNull";
+        public const string ERROR_EXTEND_LOCK_RECORD_NOT_FOUND = "LockingConductor.ExtendLock.ReadResultIsNull";
 
         /// <summary>
         /// Error key indicating the lock cannot be extended because the record is not locked
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_EXTEND_LOCK_RECORD_NOT_LOCKED = $"{nameof(LockingConductor<T>)}.ExtendLock.RecordIsNotLocked";
+        public const string ERROR_EXTEND_LOCK_RECORD_NOT_LOCKED = "LockingConductor.ExtendLock.RecordIsNotLocked";
 
         /// <summary>
         /// Error key indicating the record cannot be locked because it is already in a locked state
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_LOCK_RECORD_ALREADY_LOCKED = $"{nameof(LockingConductor<T>)}.{typeof(T).Name}.IsLocked";
+        public const string ERROR_LOCK_RECORD_ALREADY_LOCKED = "LockingConductor.Lock.IsLocked";
 
         /// <summary>
         /// Error key indicating the record cannot be locked because the record to be locked could not
         /// be found. It may have been deleted or is otherwise unavailable.
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_LOCK_RECORD_NOT_FOUND = $"{nameof(LockingConductor<T>)}.Lock.ReadResult.ResultObjectIsNull";
+        public const string ERROR_LOCK_RECORD_NOT_FOUND = "LockingConductor.Lock.ReadResult.ResultObjectIsNull";
 
         /// <summary>
         /// Error key indicating the record cannot be locked because the desired lockTime is in the past
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_LOCK_TIME_IN_PAST = $"{nameof(LockingConductor<T>)}.LockTimeInPast";
+        public const string ERROR_LOCK_TIME_IN_PAST = "LockingConductor.LockTimeInPast";
 
         /// <summary>
         /// Error key indicating the record cannot be unlocked because the record to be unlocked could not
         /// be found. It may have been deleted or is otherwise unavailable.
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_UNLOCK_RECORD_NOT_FOUND = $"{nameof(LockingConductor<T>)}.Unlock.ReadResultIsNull";
+        public const string ERROR_UNLOCK_RECORD_NOT_FOUND = "LockingConductor.Unlock.ReadResultIsNull";
 
         /// <summary>
         /// Error key indicating the lock could not be validated because the item to be validated is null
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_VALIDATE_LOCK_ITEM_IS_NULL = $"{nameof(LockingConductor<T>)}.ValidateLock.{typeof(T).Name}.IsNull";
+        public const string ERROR_VALIDATE_LOCK_ITEM_IS_NULL = "LockingConductor.ValidateLock.IsNull";
 
         /// <summary>
         /// Error key indicating the lock could not be validated because the item is not in a locked state
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED = $"{nameof(LockingConductor<T>)}.ValidateLock.{typeof(T).Name}.IsNotLocked";
+        public const string ERROR_VALIDATE_LOCK_ITEM_NOT_LOCKED = "LockingConductor.ValidateLock.IsNotLocked";
 
         /// <summary>
         /// Error key indicating the lock could not be validated because the resource was locked by a different user
         /// </summary>
         /// <returns></returns>
-        public static readonly string ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER = $"{nameof(LockingConductor<T>)}.ValidateLock.{typeof(T).Name}.LockedByDifferentUser";
+        public const string ERROR_VALIDATE_LOCK_LOCKED_BY_DIFFERENT_USER = "LockingConductor.ValidateLock.LockedByDifferentUser";
 
         #endregion Constants
 
