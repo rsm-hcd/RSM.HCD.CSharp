@@ -392,5 +392,126 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion PickRandom (count)
+
+        #region ThenBy
+
+        [Fact]
+        public void ThenBy_When_Property_DoesNotExist_Throws_ArgumentException()
+        {
+            // Arrange
+            var queryable = new List<DateTime> { DateTime.MinValue, DateTime.MaxValue }.AsQueryable();
+            var orderedQueryable = queryable.OrderBy(s => s.Day);
+            string badPropertyName = "test"; // <-- This property does not exist on the string type.
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => orderedQueryable.ThenBy<DateTime>(badPropertyName));
+        }
+
+        [Fact]
+        public void ThenBy_When_List_IsEmpty_Returns_Empty_List()
+        {
+            // Arrange
+            var queryable = new List<DateTime>().AsQueryable();
+            var orderedQueryable = queryable.OrderBy(s => s.Day);
+
+            // Act
+            var result = orderedQueryable.ThenBy<DateTime>("Day");
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void ThenBy_When_Sorted_In_Ascending_Order_Returns_List_Ordered_Ascending()
+        {
+            // Arrange
+            var minDate = DateTime.Now.AddHours(-1);
+            var midDate = DateTime.Now;
+            var maxDate = DateTime.Now.AddDays(1);
+            var queryable = new List<DateTime> { midDate, maxDate, minDate }.AsQueryable();
+            var orderedQueryable = queryable.OrderBy(date => date.Day);
+
+            // Act
+            var result = orderedQueryable.ThenBy<DateTime>("Hour", OrderByDirection.Ascending);
+
+            // Assert
+            result.First().ShouldBe(minDate);
+            result.Last().ShouldBe(maxDate);
+        }
+
+        [Fact]
+        public void ThenBy_When_Sorted_In_Descending_Order_Returns_List_Ordered_Descending()
+        {
+            // Arrange
+            var minDate = DateTime.Now.AddHours(-1);
+            var midDate = DateTime.Now;
+            var maxDate = DateTime.Now.AddDays(1);
+            var queryable = new List<DateTime> { midDate, minDate, maxDate }.AsQueryable();
+            var orderedQueryable = queryable.OrderByDescending(date => date.Day);
+
+            // Act
+            var result = orderedQueryable.ThenBy<DateTime>("Hour", OrderByDirection.Descending);
+
+            // Assert
+            result.First().ShouldBe(maxDate);
+            result.Last().ShouldBe(minDate);
+        }
+
+        [Fact]
+        public void ThenBy_When_ThenByProperty_IsEmpty_Returns_List_Sorted_Only_By_OrderBy()
+        {
+            // Arrange
+            var minDate = DateTime.MinValue;
+            var maxDate = DateTime.MaxValue;
+            var queryable = new List<DateTime> { maxDate, minDate }.AsQueryable();
+            var orderedQueryable = queryable.OrderBy(date => date.Day);
+            string thenByProperty = string.Empty;
+
+            // Act
+            var result = orderedQueryable.ThenBy<DateTime>(thenByProperty);
+
+            // Assert
+            result.ShouldBeSameAs(orderedQueryable);
+        }
+
+        [Fact]
+        public void ThenBy_When_OrderedAscending_With_Nested_Property_Returns_List_Ordered_Ascending()
+        {
+            // Arrange
+            var minDate = DateTime.Now.AddHours(-1);
+            var midDate = DateTime.Now;
+            var maxDate = DateTime.Now.AddDays(1);
+            var queryable = new List<DateTime> { midDate, minDate, maxDate }.AsQueryable();
+            var orderedQueryable = queryable.OrderBy(date => date.Day);
+            string nestedProperty = "TimeOfDay.Ticks";
+
+            // Act
+            var result = orderedQueryable.ThenBy<DateTime>(nestedProperty, OrderByDirection.Ascending);
+
+            // Assert
+            result.First().ShouldBe(minDate);
+            result.Last().ShouldBe(maxDate);
+        }
+
+        [Fact]
+        public void ThenBy_When_OrderedDescending_With_Nested_Property_Returns_List_Ordered_Descending()
+        {
+            // Arrange
+            var minDate = DateTime.Now.AddHours(-1);
+            var midDate = DateTime.Now;
+            var maxDate = DateTime.Now.AddDays(1);
+            var queryable = new List<DateTime> { midDate, minDate, maxDate }.AsQueryable();
+            var orderedQueryable = queryable.OrderByDescending(date => date.Day);
+            string nestedProperty = "Date.Hour";
+
+            // Act
+            var result = orderedQueryable.ThenBy<DateTime>(nestedProperty, OrderByDirection.Descending);
+
+            // Assert
+            result.First().ShouldBe(maxDate);
+            result.Last().ShouldBe(minDate);
+        }
+
+        #endregion ThenBy
     }
 }
