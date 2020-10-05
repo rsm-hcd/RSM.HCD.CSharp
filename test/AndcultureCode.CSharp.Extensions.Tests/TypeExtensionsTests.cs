@@ -223,9 +223,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
             public static long TEST_STATIC_LONG_PROPERTY = 10;
             public static string TEST_STATIC_STRING_PROPERTY = "TEST_STATIC_STRING_PROPERTY";
-            private static string TEST_PRIVATE_STATIC_STRING_PROPERTY = "TEST_PRIVATE_STATIC_STRING_PROPERTY";
-
-            private string _privateTestProperty = "privateTestProperty";
         }
 
         [Fact]
