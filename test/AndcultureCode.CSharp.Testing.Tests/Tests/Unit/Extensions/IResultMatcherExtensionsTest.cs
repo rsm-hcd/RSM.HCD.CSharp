@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Testing.Factories;
 using System;
+using AndcultureCode.CSharp.Core.Models.Errors;
 
 namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 {

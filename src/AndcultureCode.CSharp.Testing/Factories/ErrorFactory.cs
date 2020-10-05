@@ -1,4 +1,5 @@
 using AndcultureCode.CSharp.Core.Models;
+using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Testing.Constants;
 using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
 

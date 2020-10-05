@@ -9,7 +9,7 @@
 - [BaseTest](#T-AndcultureCode-CSharp-Testing-Tests-BaseTest 'AndcultureCode.CSharp.Testing.Tests.BaseTest')
   - [#ctor(output)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#ctor-Xunit-Abstractions-ITestOutputHelper- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#ctor(Xunit.Abstractions.ITestOutputHelper)')
   - [#cctor()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor')
-  - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Result{``0}}[])')
+  - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Errors-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{``0}}[])')
 - [Factory](#T-AndcultureCode-CSharp-Testing-Factories-Factory 'AndcultureCode.CSharp.Testing.Factories.Factory')
   - [Milliseconds](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds 'AndcultureCode.CSharp.Testing.Factories.Factory.Milliseconds')
   - [Random](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Random 'AndcultureCode.CSharp.Testing.Factories.Factory.Random')
@@ -148,7 +148,7 @@ Static constructor to set up suite-level actors
 
 This method has no parameters.
 
-<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Result{``0}}[]-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Errors-Result{``0}}[]-'></a>
 ### BuildResult\`\`1(properties) `method`
 
 ##### Summary
@@ -165,7 +165,7 @@ configuration of \`T\` is required.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| properties | [System.Action{AndcultureCode.CSharp.Core.Models.Result{\`\`0}}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{AndcultureCode.CSharp.Core.Models.Result{``0}}[]') |  |
+| properties | [System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{\`\`0}}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{``0}}[]') |  |
 
 ##### Generic Types
 
