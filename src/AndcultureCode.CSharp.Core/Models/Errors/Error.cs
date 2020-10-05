@@ -1,7 +1,7 @@
 ﻿using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Interfaces;
 
-namespace AndcultureCode.CSharp.Core.Models
+namespace AndcultureCode.CSharp.Core.Models.Errors
 {
     public class Error : IError
     {

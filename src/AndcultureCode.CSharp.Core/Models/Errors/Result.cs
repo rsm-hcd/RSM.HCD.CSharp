@@ -3,7 +3,7 @@ using System.Linq;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 
-namespace AndcultureCode.CSharp.Core.Models
+namespace AndcultureCode.CSharp.Core.Models.Errors
 {
     public class Result<T> : IResult<T>
     {

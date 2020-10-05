@@ -440,6 +440,20 @@
 - [UserMetadataTypes](#T-AndcultureCode-CSharp-Core-Constants-UserMetadataTypes 'AndcultureCode.CSharp.Core.Constants.UserMetadataTypes')
   - [ExternalUserId](#F-AndcultureCode-CSharp-Core-Constants-UserMetadataTypes-ExternalUserId 'AndcultureCode.CSharp.Core.Constants.UserMetadataTypes.ExternalUserId')
 - [WorkerProvider](#T-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider')
+  - [Delete(id)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Delete-System-String- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Delete(System.String)')
+  - [DeletedCount()](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-DeletedCount 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.DeletedCount')
+  - [Enqueue(methodCall)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Enqueue-System-Linq-Expressions-Expression{System-Action}- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Enqueue(System.Linq.Expressions.Expression{System.Action})')
+  - [Enqueue\`\`1(methodCall)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Enqueue``1-System-Linq-Expressions-Expression{System-Action{``0}}- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Enqueue``1(System.Linq.Expressions.Expression{System.Action{``0}})')
+  - [EnqueuedCount(queue)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-EnqueuedCount-System-String- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.EnqueuedCount(System.String)')
+  - [Recur(id,methodCall,recurringOptions)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Recur-System-String,System-Linq-Expressions-Expression{System-Action},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Recur(System.String,System.Linq.Expressions.Expression{System.Action},AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption)')
+  - [Recur\`\`1(id,methodCall,chronExpression)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},System-String- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Recur``1(System.String,System.Linq.Expressions.Expression{System.Action{``0}},System.String)')
+  - [Recur\`\`1(id,methodCall,recurringOptions)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Recur``1(System.String,System.Linq.Expressions.Expression{System.Action{``0}},AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption)')
+  - [RecurringCount()](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-RecurringCount 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.RecurringCount')
+  - [RemoveRecurrence(id)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-RemoveRecurrence-System-String- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.RemoveRecurrence(System.String)')
+  - [Schedule(methodCall,enqueueOn)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-DateTimeOffset- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Schedule(System.Linq.Expressions.Expression{System.Action},System.DateTimeOffset)')
+  - [Schedule(methodCall,delay)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-TimeSpan- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Schedule(System.Linq.Expressions.Expression{System.Action},System.TimeSpan)')
+  - [Schedule\`\`1(methodCall,enqueueOn)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-DateTimeOffset- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Schedule``1(System.Linq.Expressions.Expression{System.Action{``0}},System.DateTimeOffset)')
+  - [Schedule\`\`1(methodCall,delay)](#M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-TimeSpan- 'AndcultureCode.CSharp.Core.Providers.Worker.WorkerProvider.Schedule``1(System.Linq.Expressions.Expression{System.Action{``0}},System.TimeSpan)')
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider'></a>
 ## AmazonEBConfigurationProvider `type`
@@ -478,7 +492,7 @@ Initializes a new instance of the [AmazonEBConfigurationProvider](#T-AndcultureC
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | stdoutEnabled | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Enables logging to standard output |
-| configurationFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to configuration file, if not provider the value of [CONFIGURATION_FILE_PATH](#F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CONFIGURATION_FILE_PATH') will be used |
+| configurationFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Path to configuration file, if not provided the value of [CONFIGURATION_FILE_PATH](#F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.CONFIGURATION_FILE_PATH') will be used |
 
 <a name='F-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-CONFIGURATION_FILE_PATH'></a>
 ### CONFIGURATION_FILE_PATH `constants`
@@ -558,7 +572,7 @@ This method has no parameters.
 
 ##### Summary
 
-Reads the configuration from the [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and returns it as a IDictionary
+Reads the configuration from the [ConfigurationFilePath](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-AmazonEBConfigurationProvider-ConfigurationFilePath 'AndcultureCode.CSharp.Core.Utilities.Configuration.AmazonEBConfigurationProvider.ConfigurationFilePath') and returns it as an IDictionary
 
 ##### Returns
 
@@ -4818,3 +4832,261 @@ AndcultureCode.CSharp.Core.Providers.Worker
 ##### Summary
 
 Base class for implementing common worker functionality
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Delete-System-String-'></a>
+### Delete(id) `method`
+
+##### Summary
+
+Deletes a job by its identifier
+
+##### Returns
+
+success status
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | job identifier |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-DeletedCount'></a>
+### DeletedCount() `method`
+
+##### Summary
+
+Count of deleted jobs
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Enqueue-System-Linq-Expressions-Expression{System-Action}-'></a>
+### Enqueue(methodCall) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Enqueue``1-System-Linq-Expressions-Expression{System-Action{``0}}-'></a>
+### Enqueue\`\`1(methodCall) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-EnqueuedCount-System-String-'></a>
+### EnqueuedCount(queue) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| queue | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Recur-System-String,System-Linq-Expressions-Expression{System-Action},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-'></a>
+### Recur(id,methodCall,recurringOptions) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+| recurringOptions | [AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption](#T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption 'AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},System-String-'></a>
+### Recur\`\`1(id,methodCall,chronExpression) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| chronExpression | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Recur``1-System-String,System-Linq-Expressions-Expression{System-Action{``0}},AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-'></a>
+### Recur\`\`1(id,methodCall,recurringOptions) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| recurringOptions | [AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption](#T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption 'AndcultureCode.CSharp.Core.Models.Entities.Worker.RecurringOption') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-RecurringCount'></a>
+### RecurringCount() `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-RemoveRecurrence-System-String-'></a>
+### RemoveRecurrence(id) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-DateTimeOffset-'></a>
+### Schedule(methodCall,enqueueOn) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+| enqueueOn | [System.DateTimeOffset](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTimeOffset 'System.DateTimeOffset') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule-System-Linq-Expressions-Expression{System-Action},System-TimeSpan-'></a>
+### Schedule(methodCall,delay) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action}') |  |
+| delay | [System.TimeSpan](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.TimeSpan 'System.TimeSpan') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-DateTimeOffset-'></a>
+### Schedule\`\`1(methodCall,enqueueOn) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| enqueueOn | [System.DateTimeOffset](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTimeOffset 'System.DateTimeOffset') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Providers-Worker-WorkerProvider-Schedule``1-System-Linq-Expressions-Expression{System-Action{``0}},System-TimeSpan-'></a>
+### Schedule\`\`1(methodCall,delay) `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodCall | [System.Linq.Expressions.Expression{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression{System.Action{``0}}') |  |
+| delay | [System.TimeSpan](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.TimeSpan 'System.TimeSpan') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
