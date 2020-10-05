@@ -54,7 +54,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// </summary>
         protected readonly IRepositoryDeleteConductor<T> _deleteConductor;
 
-        #endregion Properties0
+        #endregion Properties
 
         #region Constructor
 
