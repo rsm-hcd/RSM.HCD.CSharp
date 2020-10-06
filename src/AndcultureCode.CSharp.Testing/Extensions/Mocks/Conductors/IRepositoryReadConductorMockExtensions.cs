@@ -341,18 +341,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
 
         #region Returns
 
-        public static IReturnsResult<T> ReturnsGivenResult<T, TResult>(this ISetup<T, IResult<TResult>> setup,
-            TResult resultObject = default(TResult)
-        ) where T : class
-        {
-            return setup
-                .Returns(new Result<TResult>
-                {
-                    Errors = new List<IError>(),
-                    ResultObject = resultObject
-                });
-        }
-
         public static ISetupSequentialResult<IResult<TResult>> ReturnsGivenSequentialResult<TResult>(this ISetupSequentialResult<IResult<TResult>> setup,
             TResult resultObject = default(TResult)
         )
