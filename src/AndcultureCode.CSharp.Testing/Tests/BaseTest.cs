@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
+using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Logging;
 using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Testing.Factories;
