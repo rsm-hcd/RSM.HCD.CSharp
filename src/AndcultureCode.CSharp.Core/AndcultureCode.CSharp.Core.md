@@ -4500,6 +4500,282 @@ This constructor has no parameters.
 
 ##### Summary
 
+The default queue, general purpose that should happen relatively soon. Say a few minutes, but the world won't end
+if it happens to be delayed.
+
+<a name='T-AndcultureCode-CSharp-Core-Enumerations-Recurrence'></a>
+## Recurrence `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Enumerations
+
+##### Summary
+
+Different types of job recurrence
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption'></a>
+## RecurringOption `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Entities.Worker
+
+##### Summary
+
+Recurrence configuration for a given worker
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-Day'></a>
+### Day `property`
+
+##### Summary
+
+Integer representation of the day
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-DayOfWeek'></a>
+### DayOfWeek `property`
+
+##### Summary
+
+Specifies the day of the week
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-Hour'></a>
+### Hour `property`
+
+##### Summary
+
+Integer representation of the hour
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-Minute'></a>
+### Minute `property`
+
+##### Summary
+
+Integer representation of the minute
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-Month'></a>
+### Month `property`
+
+##### Summary
+
+Integer representation of the month
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Entities-Worker-RecurringOption-Recurrence'></a>
+### Recurrence `property`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Security-ResourceVerb'></a>
+## ResourceVerb `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Security
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Security-ResourceVerb-#ctor-System-String,System-String-'></a>
+### #ctor(resource,verb) `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| resource | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| verb | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Security-ResourceVerb-#ctor-System-String-'></a>
+### #ctor(resourceVerb) `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| resourceVerb | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') |  |
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Security-ResourceVerb-Resource'></a>
+### Resource `property`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Security-ResourceVerb-Verb'></a>
+### Verb `property`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Security-ResourceVerb-ToString'></a>
+### ToString() `method`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Errors-Result`1'></a>
+## Result\`1 `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Errors
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Errors-Result`1-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Errors-Result`1-#ctor-System-String-'></a>
+### #ctor(errorMessage) `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| errorMessage | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Errors-Result`1-#ctor-System-String,System-String-'></a>
+### #ctor(errorKey,errorMessage) `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| errorKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| errorMessage | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Errors-Result`1-#ctor-`0-'></a>
+### #ctor(resultObject) `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| resultObject | [\`0](#T-`0 '`0') |  |
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Errors-Result`1-ErrorCount'></a>
+### ErrorCount `property`
+
+##### Summary
+
+Gets the number of errors, if there are any; otherwise, returns 0.
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Errors-Result`1-Errors'></a>
+### Errors `property`
+
+##### Summary
+
+List of errors around a request
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Errors-Result`1-HasErrors'></a>
+### HasErrors `property`
+
+##### Summary
+
+Returns whether or not this result has any error
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Errors-Result`1-NextLinkParams'></a>
+### NextLinkParams `property`
+
+##### Summary
+
+List of key value pairs to be used request the very next related Result
+
+<a name='P-AndcultureCode-CSharp-Core-Models-Errors-Result`1-ResultObject'></a>
+### ResultObject `property`
+
+##### Summary
+
+Actual resulting value from the request
+
+<a name='T-AndcultureCode-CSharp-Core-Models-Collections-ReverseComparer`1'></a>
+## ReverseComparer\`1 `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Models.Collections
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TKey |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Collections-ReverseComparer`1-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Core-Models-Collections-ReverseComparer`1-#ctor-System-Collections-Generic-IComparer{`0}-'></a>
+### #ctor(comparer) `constructor`
+
+##### Summary
+
 TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
 
 ##### Parameters
