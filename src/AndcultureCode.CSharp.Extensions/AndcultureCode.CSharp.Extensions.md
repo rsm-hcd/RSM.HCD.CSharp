@@ -10,6 +10,8 @@
   - [ROLE_TYPE](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_TYPE')
   - [USER_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_ID')
   - [USER_LOGIN_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_LOGIN_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_LOGIN_ID')
+- [AssemblyExtension](#T-AndcultureCode-CSharp-Extensions-AssemblyExtension 'AndcultureCode.CSharp.Extensions.AssemblyExtension')
+  - [GetSafetlyTypes(assembly)](#M-AndcultureCode-CSharp-Extensions-AssemblyExtension-GetSafetlyTypes-System-Reflection-Assembly- 'AndcultureCode.CSharp.Extensions.AssemblyExtension.GetSafetlyTypes(System.Reflection.Assembly)')
 - [ClaimsPrincipalExtensions](#T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions')
   - [IsAuthenticated(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsAuthenticated-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsAuthenticated(System.Security.Claims.ClaimsPrincipal)')
   - [IsSuperAdmin(principal)](#M-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions-IsSuperAdmin-System-Security-Claims-ClaimsPrincipal- 'AndcultureCode.CSharp.Extensions.ClaimsPrincipalExtensions.IsSuperAdmin(System.Security.Claims.ClaimsPrincipal)')
@@ -155,6 +157,34 @@ Current User Id
 ##### Summary
 
 Current User Login Id
+
+<a name='T-AndcultureCode-CSharp-Extensions-AssemblyExtension'></a>
+## AssemblyExtension `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions
+
+##### Summary
+
+Extensions for Assembly
+
+<a name='M-AndcultureCode-CSharp-Extensions-AssemblyExtension-GetSafetlyTypes-System-Reflection-Assembly-'></a>
+### GetSafetlyTypes(assembly) `method`
+
+##### Summary
+
+Get loadable from give assembly
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| assembly | [System.Reflection.Assembly](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Reflection.Assembly 'System.Reflection.Assembly') |  |
 
 <a name='T-AndcultureCode-CSharp-Extensions-ClaimsPrincipalExtensions'></a>
 ## ClaimsPrincipalExtensions `type`
