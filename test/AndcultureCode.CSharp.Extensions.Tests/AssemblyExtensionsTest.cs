@@ -31,7 +31,54 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             types.ShouldNotBeEmpty();               // Assert
         }
 
+        [Fact]
+        public void GetSafetlyTypes_Given_Types_With_Domain_Assemblies()
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            List<Type> types = assemblies.SelectMany(o => o.GetSafetlyTypes()).ToList();    // act
+            types.ShouldNotBeEmpty();                                                       // Assert
+        }
+
         #endregion NotNullAssembly
+
+        #region exception failures
+
+        internal class AssemblyFailure_ReflectionTypeLoadException : Assembly
+        {
+            public override Type[] GetTypes()
+            {
+                throw new ReflectionTypeLoadException(
+                    classes: new List<Type> { this.GetType() }.ToArray(),
+                    exceptions: new List<Exception> { new Exception() }.ToArray()
+                );
+            }
+        }
+
+        internal class AssemblyFailure_Exception : Assembly
+        {
+            public override Type[] GetTypes()
+            {
+                throw new Exception();
+            }
+        }
+
+        [Fact]
+        public void GetSafetlyTypes_Given_Types_From_ReflectionTypeLoadException()
+        {
+            var assembly = new AssemblyFailure_ReflectionTypeLoadException();
+            var types = assembly.GetSafetlyTypes();    // act
+            types.ShouldNotBeEmpty();                  // Assert
+        }
+
+        [Fact]
+        public void GetSafetlyTypes_Given_Types_From_Exception()
+        {
+            var assembly = new AssemblyFailure_Exception();
+            var types = assembly.GetSafetlyTypes();    // act
+            types.ShouldBeEmpty();                     // Assert
+        }
+
+        #endregion
 
     }
 
