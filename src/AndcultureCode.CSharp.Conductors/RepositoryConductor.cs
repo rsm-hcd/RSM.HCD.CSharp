@@ -311,6 +311,31 @@ namespace AndcultureCode.CSharp.Conductors
         ) => _readConductor.FindAll(filter, orderBy, includeProperties, skip, take, ignoreQueryFilters, asNoTracking);
 
         /// <summary>
+        /// Find all filtered, sorted and paged by grouping the result
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="groupBy"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <param name="ignoreQueryFilters"></param>
+        /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
+        /// <returns></returns>
+        public IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
+        ) => _readConductor.FindAll(filter, orderBy, groupBy, includeProperties, skip, take, ignoreQueryFilters, asNoTracking);
+
+
+
+        /// <summary>
         /// Alternative FindAll for retrieving records using NextLinkParams in place of traditional
         /// determinate pagination mechanisms, such as; skip and take.
         /// </summary>

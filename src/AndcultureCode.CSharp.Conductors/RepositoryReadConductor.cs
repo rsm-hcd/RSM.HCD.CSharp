@@ -72,6 +72,30 @@ namespace AndcultureCode.CSharp.Conductors
         ) => _repository.FindAll(filter, orderBy, includeProperties, skip, take, ignoreQueryFilters, asNoTracking);
 
         /// <summary>
+        /// Find all filtered, sorted and paged by grouping the result
+        /// </summary>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
+        /// <param name="groupBy">Filter to be used for grouping.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <param name="skip">Number of entities that should be skipped.</param>
+        /// <param name="take">Number of entities per page.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
+        /// <returns></returns>
+        public IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
+        ) => _repository.FindAll(filter, orderBy, groupBy, includeProperties, skip, take, ignoreQueryFilters, asNoTracking);
+
+
+        /// <summary>
         /// Alternative FindAll for retrieving records using NextLinkParams in place of traditional
         /// determinate pagination mechanisms, such as; skip and take.
         /// </summary>
