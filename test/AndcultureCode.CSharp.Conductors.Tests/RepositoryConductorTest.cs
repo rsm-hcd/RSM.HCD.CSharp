@@ -3,7 +3,7 @@ using System.Linq;
 using AndcultureCode.CSharp.Conductors.Tests.Stubs;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models;
+using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Testing.Extensions.Mocks;
