@@ -97,6 +97,20 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<IQueryable<T>> FindAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false);
 
         /// <summary>
+        /// Find all filtered, sorted and paged
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="groupBy"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <param name="ignoreQueryFilters"></param>
+        /// <param name="asNoTracking"></param>
+        /// <returns></returns>
+        IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Expression<Func<T, TKey>> groupBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false);
+
+        /// <summary>
         /// Find all filtered, sorted and paged and converts to an IList<T>
         /// </summary>
         /// <param name="filter"></param>

@@ -44,6 +44,28 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         );
 
         /// <summary>
+        /// Configure lazy loaded queryable, given provided parameters, to load a grouped list of <T>
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="groupBy"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <param name="ignoreQueryFilters"></param>
+        /// <returns></returns>
+        IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
+        );
+
+        /// <summary>
         /// Altenative FindAll for retrieving records using NextLinkParams in place of tranditonal
         /// determinate pagination mechanisms, such as; skip and take.
         /// </summary>
@@ -58,6 +80,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
             bool?              ignoreQueryFilters             = false,
             bool               asNoTracking                   = false
         );
+
 
         /// <summary>
         /// Similar to FindAll, this evaluates the parameters as given. The big difference here is that the query is executed
