@@ -59,7 +59,8 @@ namespace AndcultureCode.CSharp.Extensions
 
             foreach (var setting in settings)
             {
-                if (!setting.ToLower().TrimStart().StartsWith("database"))
+                if (!setting.ToLower().TrimStart().StartsWith("database")
+                    && !setting.ToLower().TrimStart().StartsWith("initial catalog"))
                 {
                     continue;
                 }
