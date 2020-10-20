@@ -34,13 +34,13 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="ignoreQueryFilters"></param>
         /// <returns></returns>
         IResult<IQueryable<T>> FindAll(
-            Expression<Func<T , bool>> filter                 = null,
+            Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string             includeProperties              = null,
-            int?               skip                           = null,
-            int?               take                           = null,
-            bool?              ignoreQueryFilters             = false,
-            bool               asNoTracking                   = false
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
         );
 
         /// <summary>
@@ -57,13 +57,13 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <returns></returns>
         IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(
             Expression<Func<T, bool>> filter = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy   = null,
-            Expression<Func<T, TKey>> groupBy                   = null,
-            string includeProperties                            = null,
-            int? skip                                           = default(int?),
-            int? take                                           = default(int?),
-            bool? ignoreQueryFilters                            = false,
-            bool asNoTracking                                   = false
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
         );
 
         /// <summary>
@@ -76,10 +76,10 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <returns></returns>
         IResult<IQueryable<T>> FindAll(
             Dictionary<string, string> nextLinkParams,
-            Expression<Func<T , bool>> filter                 = null,
+            Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            bool?              ignoreQueryFilters             = false,
-            bool               asNoTracking                   = false
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
         );
 
 
@@ -96,12 +96,12 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="ignoreQueryFilters"></param>
         /// <returns></returns>
         IResult<IList<T>> FindAllCommitted(
-            Expression<Func<T , bool>> filter                 = null,
+            Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string             includeProperties              = null,
-            int?               skip                           = null,
-            int?               take                           = null,
-            bool?              ignoreQueryFilters             = false
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false
         );
 
         /// <summary>
@@ -114,9 +114,9 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <returns></returns>
         IResult<IList<T>> FindAllCommitted(
             Dictionary<string, string> nextLinkParams,
-            Expression<Func<T , bool>> filter                 = null,
+            Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            bool?              ignoreQueryFilters             = false
+            bool? ignoreQueryFilters = false
         );
 
         #endregion FindAll
