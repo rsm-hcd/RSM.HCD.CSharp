@@ -94,21 +94,38 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="ignoreQueryFilters"></param>
         /// <param name="asNoTracking"></param>
         /// <returns></returns>
-        IResult<IQueryable<T>> FindAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false);
+        IResult<IQueryable<T>> FindAll(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
+        );
 
         /// <summary>
-        /// Find all filtered, sorted and paged
+        /// Configure lazy loaded queryable, given provided parameters, to load a list of <typeparamref name="T"/> grouped by a <typeparamref name="TKey"/>
         /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="orderBy"></param>
-        /// <param name="groupBy"></param>
-        /// <param name="includeProperties"></param>
-        /// <param name="skip"></param>
-        /// <param name="take"></param>
-        /// <param name="ignoreQueryFilters"></param>
-        /// <param name="asNoTracking"></param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
+        /// <param name="groupBy">Filter to be used for grouping by <typeparamref name="TKey"/> of <typeparamref name="T"/> .</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <param name="skip">Number of entities that should be skipped.</param>
+        /// <param name="take">Number of entities per page.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns></returns>
-        IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Expression<Func<T, TKey>> groupBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false);
+        IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
+        );
 
         /// <summary>
         /// Find all filtered, sorted and paged and converts to an IList<T>
