@@ -17,8 +17,11 @@ namespace AndcultureCode.CSharp.Extensions
         /// <returns></returns>
         public static IEnumerable<Type> GetSafetlyTypes(this Assembly assembly)
         {
-            if(assembly == null)
+            if (assembly == null)
+            {
                 return Enumerable.Empty<Type>();
+            }
+
             try
             {
                 return assembly.GetTypes();
