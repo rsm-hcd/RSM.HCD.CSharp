@@ -12,7 +12,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         #region NullAssembly
 
         [Fact]
-        public void GetSafetlyTypes_Given_Empty_Type_With_Null_Assembly()
+        public void GetSafetlyTypes_Returns_Empty_Type_List_With_Null_Assembly()
         {
             Assembly assembly = null;
             var types = assembly.GetSafetlyTypes(); // act
@@ -24,7 +24,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         #region NotNullAssembly
 
         [Fact]
-        public void GetSafetlyTypes_Given_Types_With_Not_Null_Assembly()
+        public void GetSafetlyTypes_Returns_Not_Empty_Type_List_With_Not_Null_Assembly()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             var types = assembly.GetSafetlyTypes(); // act
@@ -32,7 +32,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetSafetlyTypes_Given_Types_With_Domain_Assemblies()
+        public void GetSafetlyTypes_Returns_Not_Empty_Type_List_With_Domain_Assemblies()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             List<Type> types = assemblies.SelectMany(o => o.GetSafetlyTypes()).ToList();    // act
