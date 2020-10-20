@@ -48,7 +48,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             public override Type[] GetTypes()
             {
                 throw new ReflectionTypeLoadException(
-                    classes: new List<Type> { this.GetType() }.ToArray(),
+                    classes: new Type[] { this.GetType() },
                     exceptions: new List<Exception> { new Exception() }.ToArray()
                 );
             }
