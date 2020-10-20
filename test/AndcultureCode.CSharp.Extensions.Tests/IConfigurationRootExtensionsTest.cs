@@ -166,6 +166,39 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
             result.ShouldBe(expected);
         }
 
+        [Theory]
+        [InlineData("initial catalog")]
+        [InlineData("Initial Catalog")]
+        [InlineData("INitial CAtalOG")]
+        [InlineData(" Initial CATaLOG")]
+        public void GetDatabaseName_When_ConnectionStrings_Section_Contains_PrimaryDatabase_Contains_InitialCatalog_Property_Returns_Value(string databaseKey)
+        {
+            // Arrange
+            var expected = "databaseValue";
+            var valueWithoutProperty = $"Prop1=Value1;{databaseKey}={expected}";
+
+            var apiConfigurationSectionMock = new Mock<IConfigurationSection>();
+            apiConfigurationSectionMock
+                .SetupGet(e => e.Value)
+                .Returns(valueWithoutProperty);
+
+            var connectionsConfigurationSectionMock = new Mock<IConfigurationSection>();
+            connectionsConfigurationSectionMock
+                .Setup(e => e.GetSection(IConfigurationRootExtensions.DEFAULT_DATABASE_KEY))
+                .Returns(apiConfigurationSectionMock.Object);
+
+            var configurationMock = new Mock<IConfigurationRoot>();
+            configurationMock
+                .Setup(e => e.GetSection("ConnectionStrings"))
+                .Returns(connectionsConfigurationSectionMock.Object);
+
+            // Act
+            var result = configurationMock.Object.GetDatabaseName();
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
         #endregion GetDatabaseName
 
         #region GetVersion
