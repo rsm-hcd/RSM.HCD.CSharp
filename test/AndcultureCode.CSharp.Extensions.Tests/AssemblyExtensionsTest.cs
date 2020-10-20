@@ -78,7 +78,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             types.ShouldBeEmpty();                     // Assert
         }
 
-        #endregion
+        #endregion Exception failures
 
     }
 
