@@ -19,3 +19,4 @@
   </ItemGroup>
 
 </Project>
+    <PackageReference Include="AndcultureCode.CSharp.Testing" Version="0.4.1" />
