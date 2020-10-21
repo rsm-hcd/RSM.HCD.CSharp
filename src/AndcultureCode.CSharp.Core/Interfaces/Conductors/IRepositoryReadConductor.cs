@@ -67,6 +67,33 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         );
 
         /// <summary>
+        /// Configure lazy loaded queryable, given provided parameters, to load a list of <typeparamref name="T"/>
+        /// grouped by a <typeparamref name="TKey"/> and selected by groupBySelector tranformed into <typeparamref name="TResult"/>
+        /// ref to microsoft docs: https://shorturl.at/jptP3
+        /// </summary>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
+        /// <param name="groupBy">Filter to be used for grouping by <typeparamref name="TKey"/> of <typeparamref name="T"/> .</param>
+        /// <param name="groupBySelector">Selector to be used on groupBy used to create a result of <typeparamref name="TResult"/> value from each group.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <param name="skip">Number of entities that should be skipped.</param>
+        /// <param name="take">Number of entities per page.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
+        /// <returns></returns>
+        IResult<IQueryable<TResult>> FindAll<TKey, TResult>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            Expression<Func<TKey, IEnumerable<T>, TResult>> groupBySelector = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false
+        );
+
+        /// <summary>
         /// Altenative FindAll for retrieving records using NextLinkParams in place of tranditonal
         /// determinate pagination mechanisms, such as; skip and take.
         /// </summary>
