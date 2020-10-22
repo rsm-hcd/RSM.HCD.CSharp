@@ -18,20 +18,20 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 
         #endregion Properties
 
-
         #region Methods
 
         #region FindAll
 
         /// <summary>
-        /// Configure lazy loaded queryable, given provided parameters, to load a list of <T>
+        /// Configure lazy loaded queryable, given provided parameters, to load a list of <typeparamref name="T"/>
         /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="orderBy"></param>
-        /// <param name="includeProperties"></param>
-        /// <param name="skip"></param>
-        /// <param name="take"></param>
-        /// <param name="ignoreQueryFilters"></param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <param name="skip">Number of entities that should be skipped.</param>
+        /// <param name="take">Number of entities per page.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns></returns>
         IResult<IQueryable<T>> FindAll(
             Expression<Func<T, bool>> filter = null,
@@ -94,12 +94,14 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         );
 
         /// <summary>
-        /// Altenative FindAll for retrieving records using NextLinkParams in place of tranditonal
+        /// Alternative FindAll for retrieving records using NextLinkParams in place of traditional
         /// determinate pagination mechanisms, such as; skip and take.
         /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="orderBy"></param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
         /// <param name="nextLinkParams"></param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns></returns>
         IResult<IQueryable<T>> FindAll(
             Dictionary<string, string> nextLinkParams,
@@ -109,18 +111,17 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
             bool asNoTracking = false
         );
 
-
         /// <summary>
         /// Similar to FindAll, this evaluates the parameters as given. The big difference here is that the query is executed
-        /// inside the conductor and a List<T> is returned and NOT Queryable<T>.  This is primary used in cases where calculated
+        /// inside the conductor and a List<typeparamref name="T"/> is returned and NOT Queryable<typeparamref name="T"/>.  This is primary used in cases where calculated
         /// fields need to be executed (committed) inside the conductor.
         /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="orderBy"></param>
-        /// <param name="includeProperties"></param>
-        /// <param name="skip"></param>
-        /// <param name="take"></param>
-        /// <param name="ignoreQueryFilters"></param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <param name="skip">Number of entities that should be skipped.</param>
+        /// <param name="take">Number of entities per page.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <returns></returns>
         IResult<IList<T>> FindAllCommitted(
             Expression<Func<T, bool>> filter = null,
@@ -132,12 +133,13 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         );
 
         /// <summary>
-        /// Altenative FindAll for retrieving records using NextLinkParams in place of tranditonal
+        /// Alternative FindAll for retrieving records using NextLinkParams in place of traditional
         /// determinate pagination mechanisms, such as; skip and take.
         /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="orderBy"></param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <param name="orderBy">Properties that should be used for sorting.</param>
         /// <param name="nextLinkParams"></param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <returns></returns>
         IResult<IList<T>> FindAllCommitted(
             Dictionary<string, string> nextLinkParams,
@@ -147,7 +149,6 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         );
 
         #endregion FindAll
-
 
         #region FindById
 
