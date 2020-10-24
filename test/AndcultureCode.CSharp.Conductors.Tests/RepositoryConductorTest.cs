@@ -15,6 +15,7 @@ using Xunit;
 using Xunit.Abstractions;
 using System.Linq.Expressions;
 using System;
+using AndcultureCode.CSharp.Testing.Factories;
 
 namespace AndcultureCode.CSharp.Conductors.Tests
 {
@@ -23,6 +24,16 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         #region Setup
         public RepositoryConductorTest(ITestOutputHelper output) : base(output)
         {
+        }
+
+        /// <summary>
+        /// Mock class used in groupBySelector of tests below
+        /// </summary>
+        internal class GroupingResult
+        {
+            public object Key { get; set; }
+            public object Value { get; set; }
+
         }
         #endregion
 
@@ -102,7 +113,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
             // Assert
             bulkCreateOrUpdateResponse.ShouldHaveErrors();
-            bulkCreateOrUpdateResponse.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            bulkCreateOrUpdateResponse.ShouldHaveBasicError();
         }
 
         [Fact]
@@ -148,7 +159,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
             // Assert
             bulkCreateOrUpdateResponse.ShouldHaveErrors();
-            bulkCreateOrUpdateResponse.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            bulkCreateOrUpdateResponse.ShouldHaveBasicError();
         }
 
         [Fact]
@@ -194,7 +205,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
             // Assert
             bulkCreateOrUpdateResponse.ShouldHaveErrors();
-            bulkCreateOrUpdateResponse.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            bulkCreateOrUpdateResponse.ShouldHaveBasicError();
         }
 
         [Fact]
@@ -268,7 +279,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.CreateOrUpdate(entity, createdByUserId);
 
             // Assert
-            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeNull();
         }
 
@@ -326,9 +337,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.CreateOrUpdate(entityToUpdate, createdByUserId);
 
             // Assert
-            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeNull();
         }
+
         [Fact]
         public void CreateOrUpdate_When_item_Id_Is_Greater_Than_0_and_Update_Is_Successful_Then_Returns_Updated_Item()
         {
@@ -477,7 +489,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
             // Assert
 
-            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeEmpty();
         }
 
@@ -542,7 +554,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             var result = sut.Delete(entities, null, 100, true);
 
             // Assert
-            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeFalse();
         }
 
@@ -567,32 +579,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
         #endregion Delete
 
-        #region findAll
-
-        /// <summary>
-        /// moke class used in groupBySelector of tests below
-        /// </summary>
-        internal class GroupingResult
-        {
-            public object Key { get; set; }
-            public object Value { get; set; }
-
-        }
-
-        /// <summary>
-        /// moke class used on findAll tests below
-        /// </summary>
-        internal class FindAllMokedEntity : Entity
-        {
-            public string Name { get; set; }
-            public decimal Age { get; set; }
-        }
+        #region FindAll
 
         [Fact]
-        public void FindAll_GroupBy_When_FindAll_HasErrors_Then_Returns_An_Errors()
+        public void FindAll_GroupBy_When_FindAll_HasErrors_Then_Returns_Errors()
         {
-            // Arrange
-            var entities = new List<Entity>();
+            // Arrange            
             var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long>(
@@ -612,24 +604,20 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 filter: o => o.Id == 1,
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
-                includeProperties: null,
-                skip: null,
-                take: null,
                 ignoreQueryFilters: false,
                 asNoTracking: false
             );
 
             // Assert
-            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeNull();
         }
 
-        [Fact]
-        public void FindAll_GroupBy_When_FindAll_Not_Find_Anyting_And_Succeeds_Then_Returns_An_Empty_IQueryable()
+        [Fact]        
+        public void FindAll_GroupBy_When_No_Records_Found_Returns_Empty_List()
         {
-            // Arrange
-            var entities = new List<Entity>();
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
+            // Arrange            
+            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();            
             mockReadConductor.Setup(
                 m => m.FindAll<long>(
                     It.IsAny<Expression<Func<Entity, bool>>>(), // filter
@@ -640,7 +628,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                     It.IsAny<int?>(), // take
                     It.IsAny<bool?>(), // ignoreQueryFilters
                     It.IsAny<bool>() // asNoTracking
-            )).Returns(new Result<IQueryable<IGrouping<long, Entity>>>());
+            )).ReturnsGivenResult(new List<IGrouping<long, Entity>>().AsQueryable());
             var sut = SetupSut(readConductor: mockReadConductor);
 
             // Act
@@ -648,31 +636,22 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 filter: o => o.Id == 1,
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
-                includeProperties: null,
-                skip: null,
-                take: null,
                 ignoreQueryFilters: false,
                 asNoTracking: false
             );
 
             // Assert
             result.ShouldNotHaveErrors();
-            result.ResultObject.ShouldBeNull();
+            result.ResultObject.ShouldNotBeNull();
+            result.ResultObject.ShouldBeEmpty();
         }
 
         [Fact]
-        public void FindAll_GroupBy_When_FindAll_Find_Something_And_Succeeds_Then_Returns_An_IQueryable()
+        public void FindAll_GroupBy_When_FindAll_Find_Something_And_Succeeds_Then_Returns_IQueryable()
         {
-            // Arrange           
-            List<FindAllMokedEntity> mokedEntityList =
-                new List<FindAllMokedEntity> {
-                    new FindAllMokedEntity { Id = 0, },
-                    new FindAllMokedEntity { Id = 1, },
-                    new FindAllMokedEntity { Id = 2, },
-                    new FindAllMokedEntity { Id = 3, }
-                };
-            var query = mokedEntityList.AsQueryable().GroupBy(entity => entity.Id);
-
+            // Arrange
+            FactoryExtensions.DefineFactory(new TestEntityFactory(), () => new TestEntity() { Id = 0, Name = "Alice" });
+            var query = BuildList<TestEntity>(10).AsQueryable().GroupBy(entity => entity.Id);
             var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long>(
@@ -684,12 +663,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                     It.IsAny<int?>(), // take
                     It.IsAny<bool?>(), // ignoreQueryFilters
                     It.IsAny<bool>() // asNoTracking
-            )).Returns(new Result<IQueryable<IGrouping<long, Entity>>>(query));
+            )).ReturnsGivenResult(query);
             var sut = SetupSut(readConductor: mockReadConductor);
 
             // Act
             var result = sut.FindAll<long>(
-                filter: o => o.Id > 0,
+                filter: o => o.Id == 0,
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
                 includeProperties: string.Empty,
@@ -702,13 +681,13 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             // Assert
             result.ShouldNotHaveErrors();
             result.ResultObject.ShouldNotBeNull();
+            result.ResultObject.ShouldNotBeEmpty();
         }
 
         [Fact]
-        public void FindAll_GroupBy_With_Selector_When_FindAll_HasErrors_Then_Returns_An_Errors()
+        public void FindAll_GroupBy_With_Selector_When_FindAll_HasErrors_Then_Returns_Errors()
         {
             // Arrange
-            var entities = new List<Entity>();
             var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long, GroupingResult>(
@@ -730,20 +709,17 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
                 groupBySelector: (o, k) => new GroupingResult { Key = o, Value = k.Max() },
-                includeProperties: null,
-                skip: null,
-                take: null,
                 ignoreQueryFilters: false,
                 asNoTracking: false
             );
 
             // Assert
-            result.ShouldHaveErrorsFor(BASIC_ERROR_KEY);
+            result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeNull();
         }
 
         [Fact]
-        public void FindAll_GroupBy_With_Selector_When_FindAll_Not_Find_Anyting_And_Succeeds_Then_Returns_An_Empty_IQueryable()
+        public void FindAll_GroupBy_Given_Selector_When_No_Records_Found_Returns_Empty_List()
         {
             // Arrange
             var entities = new List<Entity>();
@@ -759,7 +735,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                     It.IsAny<int?>(), // take
                     It.IsAny<bool?>(), // ignoreQueryFilters
                     It.IsAny<bool>() // asNoTracking
-            )).Returns(new Result<IQueryable<GroupingResult>>());
+            )).ReturnsGivenResult(new List<GroupingResult>().AsQueryable());
             var sut = SetupSut(readConductor: mockReadConductor);
 
             // Act
@@ -767,39 +743,31 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 filter: o => o.Id == 1,
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
-                groupBySelector: (o, k) => new GroupingResult { Key = o, Value = k.Count() },
-                includeProperties: null,
-                skip: null,
-                take: null,
+                groupBySelector: (o, k) => new GroupingResult { Key = o, Value = k.Count() },                
                 ignoreQueryFilters: false,
                 asNoTracking: false
             );
 
             // Assert
             result.ShouldNotHaveErrors();
-            result.ResultObject.ShouldBeNull();
+            result.ResultObject.ShouldNotBeNull();
+            result.ResultObject.ShouldBeEmpty();
         }
 
-
         [Fact]
-        public void FindAll_GroupBy_With_Selector_When_FindAll_Find_Something_And_Succeeds_Then_Returns_An_IQueryable()
+        public void FindAll_GroupBy_With_Selector_When_FindAll_Find_Something_And_Succeeds_Then_Returns_IQueryable()
         {
-            // Arrange           
-            List<FindAllMokedEntity> mokedEntityList =
-                new List<FindAllMokedEntity> {
-                    new FindAllMokedEntity { Id = 0, },
-                    new FindAllMokedEntity { Id = 1, },
-                    new FindAllMokedEntity { Id = 2, },
-                    new FindAllMokedEntity { Id = 3, }
-                };
-            var query = mokedEntityList.AsQueryable().GroupBy(
-                entity => Math.Floor(entity.Age),
-                (age, list) => new GroupingResult
-                {
-                    Key = age,
-                    Value = list.Count()
-                });
-
+            // Arrange
+            FactoryExtensions.DefineFactory(new TestEntityFactory(), () => new TestEntity() { Id = 0, Name = "Alice" });
+            var query = BuildList<TestEntity>(10)
+                        .AsQueryable()
+                        .GroupBy(
+                            entity => entity.Name,
+                            (name, list) => new GroupingResult
+                            {
+                                Key = name,
+                                Value = list.Count()
+                            });
             var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long, GroupingResult>(
@@ -812,12 +780,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                     It.IsAny<int?>(), // take
                     It.IsAny<bool?>(), // ignoreQueryFilters
                     It.IsAny<bool>() // asNoTracking
-            )).Returns(new Result<IQueryable<GroupingResult>>(query));
+            )).ReturnsGivenResult(query);                
             var sut = SetupSut(readConductor: mockReadConductor);
 
             // Act
             var result = sut.FindAll<long, GroupingResult>(
-                filter: o => o.Id > 0,
+                filter: o => o.Id == 0,
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
                 groupBySelector: (o, k) => new GroupingResult { Key = o, Value = k.Count() },
@@ -831,8 +799,9 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             // Assert
             result.ShouldNotHaveErrors();
             result.ResultObject.ShouldNotBeNull();
+            result.ResultObject.ShouldNotBeEmpty();
         }
 
-        #endregion findAll
+        #endregion FindAll
     }
 }
