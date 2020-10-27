@@ -60,6 +60,10 @@ Below are a few basics to get you started, but there are many more commands and 
     and-cli nuget --publish <version>
     ```
 
+# Community
+
+[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/0)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/0)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/1)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/1)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/2)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/2)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/3)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/3)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/4)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/4)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/5)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/5)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/6)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/6)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/images/7)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.Cli/links/7)
+
 # Contributing
 
 Information on contributing to this repo is in the [Contributing Guide](CONTRIBUTING.md)
