@@ -10,6 +10,12 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks
 {
     public static class IResultReturnExtensions
     {
+        /// <summary>
+        /// Returns basic error result.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <returns></returns>
         public static IReturnsResult<T> ReturnsBasicErrorResult<T, TResult>(this ISetup<T, IResult<TResult>> setup,
             TResult resultObject = default(TResult)
         ) where T : class
