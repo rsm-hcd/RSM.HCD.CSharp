@@ -8,6 +8,8 @@
   - [GetRepositoryConductorDeps\`\`1(repository)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-GetRepositoryConductorDeps``1-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.GetRepositoryConductorDeps``1(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{``0})')
 - [BaseTest](#T-AndcultureCode-CSharp-Testing-Tests-BaseTest 'AndcultureCode.CSharp.Testing.Tests.BaseTest')
   - [#ctor(output)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#ctor-Xunit-Abstractions-ITestOutputHelper- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#ctor(Xunit.Abstractions.ITestOutputHelper)')
+  - [Faker](#P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Faker 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Faker')
+  - [Random](#P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Random 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Random')
   - [#cctor()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor')
   - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Errors-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{``0}}[])')
 - [Factory](#T-AndcultureCode-CSharp-Testing-Factories-Factory 'AndcultureCode.CSharp.Testing.Factories.Factory')
@@ -134,6 +136,26 @@ Instance constructor to set up common test-level actors
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | output | [Xunit.Abstractions.ITestOutputHelper](#T-Xunit-Abstractions-ITestOutputHelper 'Xunit.Abstractions.ITestOutputHelper') |  |
+
+<a name='P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Faker'></a>
+### Faker `property`
+
+##### Summary
+
+Cached instance of 'Faker' to use for specific data generation functions not available
+from Randomizer (such as email addresses, ip addresses, names, etc.)
+
+##### Returns
+
+
+
+<a name='P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Random'></a>
+### Random `property`
+
+##### Summary
+
+Wrapper property for accessing the 'Randomizer' instance of 'Faker' directly. This field
+will instantiate a new Faker instance if it has not yet been accessed directly.
 
 <a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor'></a>
 ### #cctor() `method`
