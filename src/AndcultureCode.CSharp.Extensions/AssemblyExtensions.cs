@@ -8,14 +8,14 @@ namespace AndcultureCode.CSharp.Extensions
     /// <summary>
     /// Extensions for Assembly
     /// </summary>
-    public static class AssemblyExtension
+    public static class AssemblyExtensions
     {
         /// <summary>
-        /// Get loadable from give assembly
+        /// Safely returns types that can be loaded from the given assembly
         /// </summary>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        public static IEnumerable<Type> GetSafetlyTypes(this Assembly assembly)
+        public static IEnumerable<Type> GetLoadableTypes(this Assembly assembly)
         {
             if (assembly == null)
             {

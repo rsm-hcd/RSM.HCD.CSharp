@@ -15,7 +15,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetSafetlyTypes_Returns_Empty_Type_List_With_Null_Assembly()
         {
             Assembly assembly = null;
-            var types = assembly.GetSafetlyTypes(); // act
+            var types = assembly.GetLoadableTypes(); // act
             types.ShouldBeEmpty();                  // Assert
         }
 
@@ -27,7 +27,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetSafetlyTypes_Returns_Not_Empty_Type_List_With_Not_Null_Assembly()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            var types = assembly.GetSafetlyTypes(); // act
+            var types = assembly.GetLoadableTypes(); // act
             types.ShouldNotBeEmpty();               // Assert
         }
 
@@ -35,7 +35,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetSafetlyTypes_Returns_Not_Empty_Type_List_With_Domain_Assemblies()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            List<Type> types = assemblies.SelectMany(o => o.GetSafetlyTypes()).ToList();    // act
+            List<Type> types = assemblies.SelectMany(o => o.GetLoadableTypes()).ToList();    // act
             types.ShouldNotBeEmpty();                                                       // Assert
         }
 
@@ -66,7 +66,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetSafetlyTypes_Given_Types_From_ReflectionTypeLoadException()
         {
             var assembly = new AssemblyFailure_ReflectionTypeLoadException();
-            var types = assembly.GetSafetlyTypes();    // act
+            var types = assembly.GetLoadableTypes();    // act
             types.ShouldNotBeEmpty();                  // Assert
         }
 
@@ -74,7 +74,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void GetSafetlyTypes_Given_Types_From_Exception()
         {
             var assembly = new AssemblyFailure_Exception();
-            var types = assembly.GetSafetlyTypes();    // act
+            var types = assembly.GetLoadableTypes();    // act
             types.ShouldBeEmpty();                     // Assert
         }
 
