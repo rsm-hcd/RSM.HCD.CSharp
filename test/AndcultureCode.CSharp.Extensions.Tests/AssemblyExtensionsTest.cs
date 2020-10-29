@@ -30,12 +30,12 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             }
         }
 
-        #endregion
+        #endregion Setup
 
         #region GetLoadableTypes
 
         [Fact]
-        public void GetLoadableTypes_Returns_Empty_Type_List_With_Null_Assembly()
+        public void GetLoadableTypes_When_Assembly_Null_Returns_Empty_List()
         {
             // Arrange
             Assembly assembly = null;
@@ -48,7 +48,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetLoadableTypes_Returns_Not_Empty_Type_List_With_Not_Null_Assembly()
+        public void GetLoadableTypes_When_Assembly_Valid_Returns_List_With_Values()
         {
             // Arrange
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -74,7 +74,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetLoadableTypes_Given_Types_From_ReflectionTypeLoadException()
+        public void GetLoadableTypes_When_ReflectionTypeLoadException_Thrown_Returns_Successfully_Loaded_Types()
         {
             // Arrange
             var assembly = new AssemblyFailure_ReflectionTypeLoadException();
@@ -87,7 +87,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         [Fact]
-        public void GetLoadableTypes_Given_Types_From_Exception()
+        public void GetLoadableTypes_When_Assembly_Throws_Returns_Empty_List()
         {
             // Arrange
             var assembly = new AssemblyFailure_Exception();
