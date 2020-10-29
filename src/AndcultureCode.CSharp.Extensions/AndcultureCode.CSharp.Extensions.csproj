@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Authors>andculture</Authors>
@@ -8,7 +8,8 @@
     <DocumentationMarkdown>$(MSBuildProjectDirectory)/AndcultureCode.CSharp.Extensions.md</DocumentationMarkdown>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIconUrl>https://avatars3.githubusercontent.com/u/32297579?s=460&amp;v=4</PackageIconUrl>
+    <PackageIconUrl>https://github.com/AndcultureCode/AndcultureCode/blob/main/assets/andculture-glyph%402x.png</PackageIconUrl>
+    <PackageIcon>andculture-glyph@2x.png</PackageIcon>
     <PackageId>AndcultureCode.CSharp.Extensions</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions</PackageProjectUrl>
@@ -16,6 +17,10 @@
     <Version>0.4.10</Version>
     <VsxmdAutoDeleteXml>true</VsxmdAutoDeleteXml>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Images\andculture-glyph@2x.png" Pack="true" PackagePath=""/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
