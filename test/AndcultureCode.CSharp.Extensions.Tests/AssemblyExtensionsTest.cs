@@ -9,39 +9,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 {
     public class AssemblyExtensionsTest
     {
-        #region NullAssembly
-
-        [Fact]
-        public void GetSafetlyTypes_Returns_Empty_Type_List_With_Null_Assembly()
-        {
-            Assembly assembly = null;
-            var types = assembly.GetLoadableTypes(); // act
-            types.ShouldBeEmpty();                  // Assert
-        }
-
-        #endregion NullAssembly 
-
-        #region NotNullAssembly
-
-        [Fact]
-        public void GetSafetlyTypes_Returns_Not_Empty_Type_List_With_Not_Null_Assembly()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            var types = assembly.GetLoadableTypes(); // act
-            types.ShouldNotBeEmpty();               // Assert
-        }
-
-        [Fact]
-        public void GetSafetlyTypes_Returns_Not_Empty_Type_List_With_Domain_Assemblies()
-        {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            List<Type> types = assemblies.SelectMany(o => o.GetLoadableTypes()).ToList();    // act
-            types.ShouldNotBeEmpty();                                                       // Assert
-        }
-
-        #endregion NotNullAssembly
-
-        #region exception failures
+        #region Setup
 
         internal class AssemblyFailure_ReflectionTypeLoadException : Assembly
         {
@@ -62,24 +30,75 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             }
         }
 
+        #endregion
+
+        #region GetLoadableTypes
+
         [Fact]
-        public void GetSafetlyTypes_Given_Types_From_ReflectionTypeLoadException()
+        public void GetLoadableTypes_Returns_Empty_Type_List_With_Null_Assembly()
         {
+            // Arrange
+            Assembly assembly = null;
+
+            // Act
+            var types = assembly.GetLoadableTypes();
+
+            // Assert
+            types.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void GetLoadableTypes_Returns_Not_Empty_Type_List_With_Not_Null_Assembly()
+        {
+            // Arrange
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            // Act
+            var types = assembly.GetLoadableTypes();
+
+            // Assert
+            types.ShouldNotBeEmpty();
+        }
+
+        [Fact]
+        public void GetLoadableTypes_Returns_Not_Empty_Type_List_With_Domain_Assemblies()
+        {
+            // Arrange
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+            // Act
+            List<Type> types = assemblies.SelectMany(o => o.GetLoadableTypes()).ToList();
+
+            // Assert
+            types.ShouldNotBeEmpty();
+        }
+
+        [Fact]
+        public void GetLoadableTypes_Given_Types_From_ReflectionTypeLoadException()
+        {
+            // Arrange
             var assembly = new AssemblyFailure_ReflectionTypeLoadException();
-            var types = assembly.GetLoadableTypes();    // act
-            types.ShouldNotBeEmpty();                  // Assert
+
+            // Act
+            var types = assembly.GetLoadableTypes();
+
+            // Assert
+            types.ShouldNotBeEmpty();
         }
 
         [Fact]
-        public void GetSafetlyTypes_Given_Types_From_Exception()
+        public void GetLoadableTypes_Given_Types_From_Exception()
         {
+            // Arrange
             var assembly = new AssemblyFailure_Exception();
-            var types = assembly.GetLoadableTypes();    // act
-            types.ShouldBeEmpty();                     // Assert
+
+            // Act
+            var types = assembly.GetLoadableTypes();
+
+            // Assert
+            types.ShouldBeEmpty();
         }
 
-        #endregion Exception failures
-
+        #endregion GetLoadableTypes
     }
-
 }
