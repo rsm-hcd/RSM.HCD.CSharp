@@ -62,6 +62,10 @@
   - [ShouldHaveResourceNotFoundError\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResourceNotFoundError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResourceNotFoundError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
   - [ShouldNotHaveErrorsFor\`\`1(result,property)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String)')
   - [ShouldNotHaveErrors\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
+- [ISetupExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions')
+  - [ReturnsBasicErrorResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
+  - [ReturnsBasicErrorSequentialResult\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)')
+  - [ReturnsGivenResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
 
 <a name='T-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest'></a>
 ## BaseIntegrationTest `type`
@@ -977,3 +981,79 @@ Assert that there are no errors for the given result
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions'></a>
+## ISetupExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Setup extension methods.
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1-'></a>
+### ReturnsBasicErrorResult\`\`2() `method`
+
+##### Summary
+
+Returns basic error result.
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+| TResult |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0-'></a>
+### ReturnsBasicErrorSequentialResult\`\`1() `method`
+
+##### Summary
+
+Returns basic error sequential result.
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1-'></a>
+### ReturnsGivenResult\`\`2() `method`
+
+##### Summary
+
+Returns given result.
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+| TResult |  |
