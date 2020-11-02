@@ -6,10 +6,19 @@ using Moq.Language;
 using Moq.Language.Flow;
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Testing.Extensions.Mocks
+namespace AndcultureCode.CSharp.Testing.Extensions
 {
-    public static class IResultReturnExtensions
+    /// <summary>
+    /// Setup extension methods.
+    /// </summary>
+    public static class ISetupExtensions
     {
+        /// <summary>
+        /// Returns basic error result.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <returns></returns>
         public static IReturnsResult<T> ReturnsBasicErrorResult<T, TResult>(this ISetup<T, IResult<TResult>> setup,
             TResult resultObject = default(TResult)
         ) where T : class
@@ -24,6 +33,11 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks
                 });
         }
 
+        /// <summary>
+        /// Returns basic error sequential result.
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <returns></returns>
         public static ISetupSequentialResult<IResult<TResult>> ReturnsBasicErrorSequentialResult<TResult>(this ISetupSequentialResult<IResult<TResult>> setup,
            TResult resultObject = default(TResult)
        )
@@ -34,6 +48,24 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks
                     Errors = new List<IError> {
                         ErrorConstants.BasicError
                     },
+                    ResultObject = resultObject
+                });
+        }
+
+        /// <summary>
+        /// Returns given result.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <returns></returns>
+        public static IReturnsResult<T> ReturnsGivenResult<T, TResult>(this ISetup<T, IResult<TResult>> setup,
+            TResult resultObject = default(TResult)
+        ) where T : class
+        {
+            return setup
+                .Returns(new Result<TResult>
+                {
+                    Errors = new List<IError>(),
                     ResultObject = resultObject
                 });
         }
