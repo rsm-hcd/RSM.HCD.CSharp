@@ -48,6 +48,10 @@
   - [AsNotFound\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNotFound``1(Microsoft.AspNetCore.Mvc.IActionResult)')
   - [AsOk\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsOk``1(Microsoft.AspNetCore.Mvc.IActionResult)')
   - [AsUnauthorized\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsUnauthorized``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+- [IEnumerableMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions')
+  - [ShouldBeOfSize\`\`1(items,expectedSize)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOfSize``1-System-Collections-Generic-IEnumerable{``0},System-Int32- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOfSize``1(System.Collections.Generic.IEnumerable{``0},System.Int32)')
+  - [ShouldBeOrderedByDescending\`\`2(items,keySelector)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedByDescending``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedByDescending``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})')
+  - [ShouldBeOrderedBy\`\`2(items,keySelector)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedBy``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})')
 - [IRepositoryConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions')
   - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
 - [IRepositoryReadConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions')
@@ -724,6 +728,93 @@ This method has no parameters.
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions'></a>
+## IEnumerableMatcherExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOfSize``1-System-Collections-Generic-IEnumerable{``0},System-Int32-'></a>
+### ShouldBeOfSize\`\`1(items,expectedSize) `method`
+
+##### Summary
+
+Assert that an IEnumerable{T} has a certain length.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| expectedSize | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [Shouldly.ShouldAssertException](#T-Shouldly-ShouldAssertException 'Shouldly.ShouldAssertException') |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedByDescending``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}-'></a>
+### ShouldBeOrderedByDescending\`\`2(items,keySelector) `method`
+
+##### Summary
+
+Assert that a list of T is ordered (descending) by property of type V.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| keySelector | [System.Func{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``0,``1}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+| TValue |  |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [Shouldly.ShouldAssertException](#T-Shouldly-ShouldAssertException 'Shouldly.ShouldAssertException') |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedBy``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}-'></a>
+### ShouldBeOrderedBy\`\`2(items,keySelector) `method`
+
+##### Summary
+
+Assert that a list of T is ordered (ascending) by property of type V.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| items | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| keySelector | [System.Func{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``0,``1}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+| TValue |  |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [Shouldly.ShouldAssertException](#T-Shouldly-ShouldAssertException 'Shouldly.ShouldAssertException') |  |
 
 <a name='T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions'></a>
 ## IRepositoryConductorMockExtensions `type`
