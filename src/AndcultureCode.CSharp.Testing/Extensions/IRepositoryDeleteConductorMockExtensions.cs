@@ -4,26 +4,29 @@ using AndcultureCode.CSharp.Core.Models.Entities;
 using Moq;
 using Moq.Language.Flow;
 
-namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
+namespace AndcultureCode.CSharp.Testing.Extensions
 {
+    /// <summary>
+    /// Extension methods for mocking methods of the `IRepositoryDeleteConductor` interface
+    /// </summary>
     public static class IRepositoryDeleteConductorMockExtensions
     {
         #region Delete(long id, long? deletedById = null, bool soft = true)
 
         public static ISetup<IRepositoryDeleteConductor<T>, IResult<bool>> SetupDelete<T>(this Mock<IRepositoryDeleteConductor<T>> mock,
-            long  id,
+            long id,
             long? deletedById = null,
-            bool  soft        = true
+            bool soft = true
         ) where T : Entity
         {
-            var deletedByIdParam  = deletedById.HasValue ? deletedById.Value : It.IsAny<long?>();
+            var deletedByIdParam = deletedById.HasValue ? deletedById.Value : It.IsAny<long?>();
             return mock.Setup(e => e.Delete(id, deletedByIdParam, soft));
         }
 
         public static Mock<IRepositoryDeleteConductor<T>> SetupDeleteReturnsBasicErrorResult<T>(this Mock<IRepositoryDeleteConductor<T>> mock,
-            long  id,
+            long id,
             long? deletedById = null,
-            bool  soft        = true
+            bool soft = true
         ) where T : Entity
         {
             mock
@@ -33,10 +36,10 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         }
 
         public static Mock<IRepositoryDeleteConductor<T>> SetupDeleteReturnsGivenResult<T>(this Mock<IRepositoryDeleteConductor<T>> mock,
-            long  id,
-            long? deletedById  = null,
-            bool  soft         = true,
-            bool  resultObject = default(bool)
+            long id,
+            long? deletedById = null,
+            bool soft = true,
+            bool resultObject = default(bool)
         ) where T : Entity
         {
             mock
@@ -51,19 +54,19 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         #region Delete(T o, long? deletedById = null, bool soft = true);
 
         public static ISetup<IRepositoryDeleteConductor<T>, IResult<bool>> SetupDelete<T>(this Mock<IRepositoryDeleteConductor<T>> mock,
-            T     o,
+            T o,
             long? deletedById = null,
-            bool  soft        = true
+            bool soft = true
         ) where T : Entity
         {
-            var deletedByIdParam  = deletedById.HasValue ? deletedById.Value : It.IsAny<long?>();
+            var deletedByIdParam = deletedById.HasValue ? deletedById.Value : It.IsAny<long?>();
             return mock.Setup(e => e.Delete(o, deletedByIdParam, soft));
         }
 
         public static Mock<IRepositoryDeleteConductor<T>> SetupDeleteReturnsBasicErrorResult<T>(this Mock<IRepositoryDeleteConductor<T>> mock,
-            T     o,
+            T o,
             long? deletedById = null,
-            bool  soft        = true
+            bool soft = true
         ) where T : Entity
         {
             mock
@@ -73,10 +76,10 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         }
 
         public static Mock<IRepositoryDeleteConductor<T>> SetupDeleteReturnsGivenResult<T>(this Mock<IRepositoryDeleteConductor<T>> mock,
-            T     o,
-            long? deletedById  = null,
-            bool  soft         = true,
-            bool  resultObject = default(bool)
+            T o,
+            long? deletedById = null,
+            bool soft = true,
+            bool resultObject = default(bool)
         ) where T : Entity
         {
             mock

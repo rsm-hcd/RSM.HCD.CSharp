@@ -11,8 +11,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
+namespace AndcultureCode.CSharp.Testing.Extensions
 {
+    /// <summary>
+    /// Extension methods for mocking methods of the `IRepositoryReadConductor` interface
+    /// </summary>
     public static class IRepositoryReadConductorMockExtensions
     {
         #region FindAll
