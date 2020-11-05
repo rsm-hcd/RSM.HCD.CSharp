@@ -177,6 +177,7 @@
   - [ToCultureInfos(cultures)](#M-AndcultureCode-CSharp-Core-Extensions-ICultureExtensions-ToCultureInfos-System-Collections-Generic-IEnumerable{AndcultureCode-CSharp-Core-Interfaces-ICulture}- 'AndcultureCode.CSharp.Core.Extensions.ICultureExtensions.ToCultureInfos(System.Collections.Generic.IEnumerable{AndcultureCode.CSharp.Core.Interfaces.ICulture})')
 - [IDistributedCacheExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions')
   - [Get\`\`1(cache,key)](#M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Get``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,System-String- 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions.Get``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String)')
+  - [Serialize\`\`1(cache,value)](#M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Serialize``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,``0- 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions.Serialize``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,``0)')
   - [Set\`\`1(cache,key,value,options)](#M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Set``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,System-String,``0,Microsoft-Extensions-Caching-Distributed-DistributedCacheEntryOptions- 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions.Set``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,``0,Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions)')
 - [IEmailProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider')
   - [Send(message)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider.Send(MimeKit.MimeMessage)')
@@ -2457,6 +2458,30 @@ Retrieve cached value as a desired type.
 | ---- | ---- | ----------- |
 | cache | [Microsoft.Extensions.Caching.Distributed.IDistributedCache](#T-Microsoft-Extensions-Caching-Distributed-IDistributedCache 'Microsoft.Extensions.Caching.Distributed.IDistributedCache') |  |
 | key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Serialize``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,``0-'></a>
+### Serialize\`\`1(cache,value) `method`
+
+##### Summary
+
+Serialize data to be cached
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cache | [Microsoft.Extensions.Caching.Distributed.IDistributedCache](#T-Microsoft-Extensions-Caching-Distributed-IDistributedCache 'Microsoft.Extensions.Caching.Distributed.IDistributedCache') |  |
+| value | [\`\`0](#T-``0 '``0') |  |
 
 ##### Generic Types
 

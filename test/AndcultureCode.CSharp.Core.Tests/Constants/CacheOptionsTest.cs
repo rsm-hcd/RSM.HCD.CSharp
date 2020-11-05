@@ -27,7 +27,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Models
         public void Minutes_When_Minutes_Set_Returns_Configured_Options()
         {
             // Arrange
-            var minutes = Random.Int();
+            var minutes = Random.Int(min: 1);
             var expected = TimeSpan.FromMinutes(minutes);
 
             // Act

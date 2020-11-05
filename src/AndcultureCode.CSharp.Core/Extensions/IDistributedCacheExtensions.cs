@@ -16,6 +16,11 @@ namespace AndcultureCode.CSharp.Core.Extensions
         /// <typeparam name="T"></typeparam>
         public static T Get<T>(this IDistributedCache cache, string key) where T : class
         {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                return default(T);
+            }
+
             var result = cache.Get(key);
             if (result == null)
             {
@@ -26,6 +31,15 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
+        /// Serialize data to be cached
+        /// </summary>
+        /// <param name="cache"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static string Serialize<T>(this IDistributedCache cache, T value) => JsonConvert.SerializeObject(value);
+
+        /// <summary>
         /// Serialize and cache supplied key/value pair
         /// </summary>
         /// <param name="cache"></param>
@@ -33,15 +47,23 @@ namespace AndcultureCode.CSharp.Core.Extensions
         /// <param name="value"></param>
         /// <param name="options"></param>
         /// <typeparam name="T"></typeparam>
-        public static void Set<T>(
+        public static string Set<T>(
             this IDistributedCache cache,
             string key,
             T value,
             DistributedCacheEntryOptions options
         ) where T : class
         {
-            var data = JsonConvert.SerializeObject(value).ToByteArray();
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                return null;
+            }
+
+            var serializedValue = cache.Serialize<T>(value);
+            var data = serializedValue.ToByteArray();
             cache.Set(key, data, options);
+
+            return serializedValue;
         }
     }
 }
