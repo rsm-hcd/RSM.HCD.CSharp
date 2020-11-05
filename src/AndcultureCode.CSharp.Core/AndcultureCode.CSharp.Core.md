@@ -367,6 +367,8 @@
   - [IsDisabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsDisabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.IsDisabled')
   - [IsEnabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsEnabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.IsEnabled')
 - [ObjectExtensions](#T-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions 'AndcultureCode.CSharp.Core.Extensions.ObjectExtensions')
+  - [FromByteArray\`\`1()](#M-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions-FromByteArray``1-System-Byte[]- 'AndcultureCode.CSharp.Core.Extensions.ObjectExtensions.FromByteArray``1(System.Byte[])')
+  - [ToByteArray(obj)](#M-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions-ToByteArray-System-Object- 'AndcultureCode.CSharp.Core.Extensions.ObjectExtensions.ToByteArray(System.Object)')
 - [OrderedList\`2](#T-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2 'AndcultureCode.CSharp.Core.Models.Collections.OrderedList`2')
   - [#ctor()](#M-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2-#ctor 'AndcultureCode.CSharp.Core.Models.Collections.OrderedList`2.#ctor')
   - [#ctor(comparer)](#M-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2-#ctor-System-Collections-Generic-IComparer{`0}- 'AndcultureCode.CSharp.Core.Models.Collections.OrderedList`2.#ctor(System.Collections.Generic.IComparer{`0})')
@@ -5200,7 +5202,41 @@ AndcultureCode.CSharp.Core.Extensions
 
 ##### Summary
 
-TODO: Remove when Extensions project is updated
+TODO: Extract to AndcultureCode.CSharp.Extensions project
+
+<a name='M-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions-FromByteArray``1-System-Byte[]-'></a>
+### FromByteArray\`\`1() `method`
+
+##### Summary
+
+Converts supplied byte array to requested type
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions-ToByteArray-System-Object-'></a>
+### ToByteArray(obj) `method`
+
+##### Summary
+
+Converts supplied data to byte array
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| obj | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2'></a>
 ## OrderedList\`2 `type`
