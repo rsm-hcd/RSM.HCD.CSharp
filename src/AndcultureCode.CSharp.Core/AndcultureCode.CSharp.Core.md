@@ -50,6 +50,15 @@
   - [IsEnabled](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-IsEnabled 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.IsEnabled')
   - [Password](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-Password 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.Password')
   - [UserName](#P-AndcultureCode-CSharp-Core-Models-Configuration-BasicAuthenticationConfiguration-UserName 'AndcultureCode.CSharp.Core.Models.Configuration.BasicAuthenticationConfiguration.UserName')
+- [CacheKeys](#T-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys 'AndcultureCode.CSharp.Core.Utilities.Caching.CacheKeys')
+  - [DEFAULT_DELIMITER](#F-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-DEFAULT_DELIMITER 'AndcultureCode.CSharp.Core.Utilities.Caching.CacheKeys.DEFAULT_DELIMITER')
+  - [GetKey\`\`1(id,includeProperties)](#M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``1-System-Int64,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``0,System-Object}}}- 'AndcultureCode.CSharp.Core.Utilities.Caching.CacheKeys.GetKey``1(System.Int64,System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})')
+  - [GetKey\`\`1(id,delimiter,includeProperties)](#M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``1-System-Int64,System-String,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``0,System-Object}}}- 'AndcultureCode.CSharp.Core.Utilities.Caching.CacheKeys.GetKey``1(System.Int64,System.String,System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})')
+  - [GetKey\`\`2(id,includeProperties)](#M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``2-System-Int64,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``1,System-Object}}}- 'AndcultureCode.CSharp.Core.Utilities.Caching.CacheKeys.GetKey``2(System.Int64,System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``1,System.Object}}})')
+  - [GetKey\`\`2(id,delimiter,includeProperties)](#M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``2-System-Int64,System-String,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``1,System-Object}}}- 'AndcultureCode.CSharp.Core.Utilities.Caching.CacheKeys.GetKey``2(System.Int64,System.String,System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``1,System.Object}}})')
+- [CacheOptions](#T-AndcultureCode-CSharp-Core-Constants-CacheOptions 'AndcultureCode.CSharp.Core.Constants.CacheOptions')
+  - [DAY](#F-AndcultureCode-CSharp-Core-Constants-CacheOptions-DAY 'AndcultureCode.CSharp.Core.Constants.CacheOptions.DAY')
+  - [Minutes(minutes)](#M-AndcultureCode-CSharp-Core-Constants-CacheOptions-Minutes-System-Double- 'AndcultureCode.CSharp.Core.Constants.CacheOptions.Minutes(System.Double)')
 - [ConfigurationUtils](#T-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils')
   - [Builder](#P-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-Builder 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.Builder')
   - [GetConfiguration()](#M-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils-GetConfiguration 'AndcultureCode.CSharp.Core.Utilities.Configuration.ConfigurationUtils.GetConfiguration')
@@ -166,6 +175,9 @@
   - [ToCultureCodes(cultures,delimiter)](#M-AndcultureCode-CSharp-Core-Extensions-ICultureExtensions-ToCultureCodes-System-Collections-Generic-IEnumerable{AndcultureCode-CSharp-Core-Interfaces-ICulture},System-String- 'AndcultureCode.CSharp.Core.Extensions.ICultureExtensions.ToCultureCodes(System.Collections.Generic.IEnumerable{AndcultureCode.CSharp.Core.Interfaces.ICulture},System.String)')
   - [ToCultureInfo(culture)](#M-AndcultureCode-CSharp-Core-Extensions-ICultureExtensions-ToCultureInfo-AndcultureCode-CSharp-Core-Interfaces-ICulture- 'AndcultureCode.CSharp.Core.Extensions.ICultureExtensions.ToCultureInfo(AndcultureCode.CSharp.Core.Interfaces.ICulture)')
   - [ToCultureInfos(cultures)](#M-AndcultureCode-CSharp-Core-Extensions-ICultureExtensions-ToCultureInfos-System-Collections-Generic-IEnumerable{AndcultureCode-CSharp-Core-Interfaces-ICulture}- 'AndcultureCode.CSharp.Core.Extensions.ICultureExtensions.ToCultureInfos(System.Collections.Generic.IEnumerable{AndcultureCode.CSharp.Core.Interfaces.ICulture})')
+- [IDistributedCacheExtensions](#T-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions')
+  - [Get\`\`1(cache,key)](#M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Get``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,System-String- 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions.Get``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String)')
+  - [Set\`\`1(cache,key,value,options)](#M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Set``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,System-String,``0,Microsoft-Extensions-Caching-Distributed-DistributedCacheEntryOptions- 'AndcultureCode.CSharp.Core.Extensions.IDistributedCacheExtensions.Set``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,``0,Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions)')
 - [IEmailProvider](#T-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider')
   - [Send(message)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-Send-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider.Send(MimeKit.MimeMessage)')
   - [SendLater(message)](#M-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider-SendLater-MimeKit-MimeMessage- 'AndcultureCode.CSharp.Core.Interfaces.Providers.Mail.IEmailProvider.SendLater(MimeKit.MimeMessage)')
@@ -353,6 +365,7 @@
   - [ClientSecret](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-ClientSecret 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.ClientSecret')
   - [IsDisabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsDisabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.IsDisabled')
   - [IsEnabled](#P-AndcultureCode-CSharp-Business-Core-Models-Configuration-OAuthAccountConfiguration-IsEnabled 'AndcultureCode.CSharp.Business.Core.Models.Configuration.OAuthAccountConfiguration.IsEnabled')
+- [ObjectExtensions](#T-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions 'AndcultureCode.CSharp.Core.Extensions.ObjectExtensions')
 - [OrderedList\`2](#T-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2 'AndcultureCode.CSharp.Core.Models.Collections.OrderedList`2')
   - [#ctor()](#M-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2-#ctor 'AndcultureCode.CSharp.Core.Models.Collections.OrderedList`2.#ctor')
   - [#ctor(comparer)](#M-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2-#ctor-System-Collections-Generic-IComparer{`0}- 'AndcultureCode.CSharp.Core.Models.Collections.OrderedList`2.#ctor(System.Collections.Generic.IComparer{`0})')
@@ -1072,6 +1085,118 @@ Password for users to use when authenticating
 ##### Summary
 
 Username for users to use when authenticating
+
+<a name='T-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys'></a>
+## CacheKeys `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Utilities.Caching
+
+##### Summary
+
+Eased creation of cache keys
+
+<a name='F-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-DEFAULT_DELIMITER'></a>
+### DEFAULT_DELIMITER `constants`
+
+##### Summary
+
+Default delimiter used for creating cache keys
+///
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``1-System-Int64,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``0,System-Object}}}-'></a>
+### GetKey\`\`1(id,includeProperties) `method`
+
+##### Summary
+
+Construct standardized cache keys for entities with optional include properties
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') |  |
+| includeProperties | [System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{\`\`0,System.Object}}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``1-System-Int64,System-String,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``0,System-Object}}}-'></a>
+### GetKey\`\`1(id,delimiter,includeProperties) `method`
+
+##### Summary
+
+Construct standardized cache keys for entities with optional include properties
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') |  |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| includeProperties | [System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{\`\`0,System.Object}}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``2-System-Int64,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``1,System-Object}}}-'></a>
+### GetKey\`\`2(id,includeProperties) `method`
+
+##### Summary
+
+Construct standardized cache keys for entities with optional include properties
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') |  |
+| includeProperties | [System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{\`\`1,System.Object}}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``1,System.Object}}}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Utilities-Caching-CacheKeys-GetKey``2-System-Int64,System-String,System-Collections-Generic-List{System-Linq-Expressions-Expression{System-Func{``1,System-Object}}}-'></a>
+### GetKey\`\`2(id,delimiter,includeProperties) `method`
+
+##### Summary
+
+Construct standardized cache keys for entities with optional include properties
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| id | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') |  |
+| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| includeProperties | [System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{\`\`1,System.Object}}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Linq.Expressions.Expression{System.Func{``1,System.Object}}}') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-CacheOptions'></a>
+## CacheOptions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Common cache configuration options
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-CacheOptions-DAY'></a>
+### DAY `constants`
+
+##### Summary
+
+Sliding cache expiration of a day (24 hours)
+
+<a name='M-AndcultureCode-CSharp-Core-Constants-CacheOptions-Minutes-System-Double-'></a>
+### Minutes(minutes) `method`
+
+##### Summary
+
+Configure options for X minutes sliding scale expiration
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| minutes | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Utilities-Configuration-ConfigurationUtils'></a>
 ## ConfigurationUtils `type`
@@ -2307,6 +2432,59 @@ TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | cultures | [System.Collections.Generic.IEnumerable{AndcultureCode.CSharp.Core.Interfaces.ICulture}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{AndcultureCode.CSharp.Core.Interfaces.ICulture}') |  |
+
+<a name='T-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions'></a>
+## IDistributedCacheExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Extensions
+
+##### Summary
+
+Extensions of IDistributedCache
+
+<a name='M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Get``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,System-String-'></a>
+### Get\`\`1(cache,key) `method`
+
+##### Summary
+
+Retrieve cached value as a desired type.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cache | [Microsoft.Extensions.Caching.Distributed.IDistributedCache](#T-Microsoft-Extensions-Caching-Distributed-IDistributedCache 'Microsoft.Extensions.Caching.Distributed.IDistributedCache') |  |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Extensions-IDistributedCacheExtensions-Set``1-Microsoft-Extensions-Caching-Distributed-IDistributedCache,System-String,``0,Microsoft-Extensions-Caching-Distributed-DistributedCacheEntryOptions-'></a>
+### Set\`\`1(cache,key,value,options) `method`
+
+##### Summary
+
+Serialize and cache supplied key/value pair
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cache | [Microsoft.Extensions.Caching.Distributed.IDistributedCache](#T-Microsoft-Extensions-Caching-Distributed-IDistributedCache 'Microsoft.Extensions.Caching.Distributed.IDistributedCache') |  |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| value | [\`\`0](#T-``0 '``0') |  |
+| options | [Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions](#T-Microsoft-Extensions-Caching-Distributed-DistributedCacheEntryOptions 'Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
 
 <a name='T-AndcultureCode-CSharp-Core-Interfaces-Providers-Mail-IEmailProvider'></a>
 ## IEmailProvider `type`
@@ -4987,6 +5165,17 @@ Is this integration disabled?
 ##### Summary
 
 Is this integration enabled?
+
+<a name='T-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions'></a>
+## ObjectExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Extensions
+
+##### Summary
+
+TODO: Remove when Extensions project is updated
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Collections-OrderedList`2'></a>
 ## OrderedList\`2 `type`
