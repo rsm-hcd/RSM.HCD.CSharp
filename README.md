@@ -25,12 +25,18 @@ Below are a few basics to get you started, but there are many more commands and 
     and-cli dotnet --build
     ```
 
-### Running tests along with code coverage
+    ### Running tests
 * Run the test command
     ```
     and-cli dotnet-test
     ```
-* Open the `coverage/index.htm` file in your browser
+
+### Running tests along with code coverage
+* Run the test command
+    ```
+    and-cli dotnet-test --coverage
+    ```
+* Open the `coverage.opencover.xml` file in your browser
 
 ### Publishing a new version
 * Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
