@@ -425,6 +425,14 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<T> FindById(long id) => _readConductor.FindById(id);
 
         /// <summary>
+        /// Finds an entity by its Id that also matches a filter.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <returns>The entity witht he provided identity value and filter condition met.</returns>
+        public virtual IResult<T> FindById(long id, Expression<Func<T, bool>> filter) => _readConductor.FindById(id, filter);
+
+        /// <summary>
         /// Finds an entity by its Id.
         /// </summary>
         /// <param name="id">The entity identity value.</param>
