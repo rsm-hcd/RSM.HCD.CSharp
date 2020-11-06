@@ -64,8 +64,29 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="soft"></param>
         /// <returns></returns>
         IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = null, bool soft = true);
+
+        /// <summary>
+        /// Ability to update a list of entities in a single bulk operation.
+        /// </summary>
+        /// <param name="entities">List of items to update</param>
+        /// <param name="updatedBy">Id of user updating the entity</param>
+        /// <returns></returns>
         IResult<bool> BulkUpdate(IEnumerable<T> entities, long? updatedBy = default(long?));
+
+        /// <summary>
+        /// Ability to create an entity 
+        /// </summary>
+        /// <param name="item">Item to be created</param>
+        /// <param name="createdById">Id of user creating the item</param>
+        /// <returns></returns>
         IResult<T> Create(T item, long? createdById = null);
+
+        /// <summary>
+        /// Ability to create entities individually using a list 
+        /// </summary>
+        /// <param name="items">List of items to be created</param>
+        /// <param name="createdById">Id of user creating the items</param>
+        /// <returns></returns>
         IResult<List<T>> Create(IEnumerable<T> items, long? createdById = null);
 
         /// <summary>
@@ -79,8 +100,33 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
         IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
+
+        /// <summary>
+        /// Ability to delete an entity using an Id
+        /// </summary>
+        /// <param name="id">Id of item to be deleted</param>
+        /// <param name="deletedById">Id of user deleting the item</param>
+        /// <param name="soft">Boolean flag for soft-deleting the item</param>
+        /// <returns></returns>
         IResult<bool> Delete(long id, long? deletedById = null, bool soft = true);
+
+        /// <summary>
+        /// Ability to delete an entity using the entity itself
+        /// </summary>
+        /// <param name="o">Item to be deleted</param>
+        /// <param name="deletedById">Id of user deleting the item</param>
+        /// <param name="soft">Boolean flag for soft-deleting the item</param>
+        /// <returns></returns>
         IResult<bool> Delete(T o, long? deletedById = null, bool soft = true);
+
+        /// <summary>
+        /// Ability to delete a list of entities by batch size.
+        /// </summary>
+        /// <param name="items">List of items to delete</param>
+        /// <param name="deletedById">Id of user deleting the items</param>
+        /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
+        /// <param name="soft">Boolean flag for soft-deleting the items</param>
+        /// <returns></returns>
         IResult<bool> Delete(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true);
 
         /// <summary>
@@ -165,13 +211,68 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="ignoreQueryFilters"></param>
         /// <returns></returns>
         IResult<IList<T>> FindAllCommitted(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, bool? ignoreQueryFilters = false);
+
+        /// <summary>
+        /// Finds an entity by its Id that also matches a filter.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <returns>The entity witht he provided identity value and filter condition met.</returns>
+        IResult<T> FindById(long id, Expression<Func<T, bool>> filter);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, params Expression<Func<T, object>>[] includeProperties);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, bool? ignoreQueryFilters = false, params Expression<Func<T, object>>[] includeProperties);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, params string[] includeProperties);
+
+        /// <summary>
+        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// </summary>
+        /// <param name="o">Entity to be restored</param>
+        /// <returns></returns>
         IResult<bool> Restore(T o);
+
+        /// <summary>
+        /// Ability to restore a soft-deleted entity using the entity id.
+        /// </summary>
+        /// <param name="id">Id of entity to be restored</param>
+        /// <returns></returns>
         IResult<bool> Restore(long id);
 
+        /// <summary>
+        /// Ability to create or update an entity
+        /// </summary>
+        /// <param name="item">Item to create or update</param>
+        /// <param name="updatedBy">Id of user creating or updating the entity</param>
+        /// <returns></returns>
         IResult<bool> Update(T item, long? updatedBy = null);
 
         /// <summary>
