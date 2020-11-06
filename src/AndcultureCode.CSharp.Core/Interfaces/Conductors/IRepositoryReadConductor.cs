@@ -6,6 +6,10 @@ using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
 namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IRepositoryReadConductor<T>
         where T : class, IEntity
     {
@@ -152,9 +156,44 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 
         #region FindById
 
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id);
+
+        /// <summary>
+        /// Finds an entity by its Id that also matches a filter.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="filter">Filter to be used for querying.</param>
+        /// <returns>The entity witht he provided identity value and filter condition met.</returns>
+        IResult<T> FindById(long id, Expression<Func<T, bool>> filter);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, params Expression<Func<T, object>>[] includeProperties);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, bool ignoreQueryFilters, params Expression<Func<T, object>>[] includeProperties);
+
+        /// <summary>
+        /// Finds an entity by its Id.
+        /// </summary>
+        /// <param name="id">The entity identity value.</param>
+        /// <param name="includeProperties">Navigation properties that should be included.</param>
+        /// <returns>The entity with the provided identity value.</returns>
         IResult<T> FindById(long id, params string[] includeProperties);
 
         #endregion FindById
