@@ -846,7 +846,7 @@ Finds an entity by its Id that also matches a filter.
 
 ##### Returns
 
-The entity witht he provided identity value and filter condition met.
+The entity with the provided identity value and filter condition met.
 
 ##### Parameters
 
