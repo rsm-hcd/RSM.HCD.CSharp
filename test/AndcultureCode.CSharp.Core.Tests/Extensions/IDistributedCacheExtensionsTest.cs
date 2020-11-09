@@ -66,6 +66,16 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
         #region Set<T>
 
+        /// <summary>
+        /// Provides various input data types to successful 'Set<T>' tests
+        /// </summary>
+        public static IEnumerable<object[]> SetupSetData() => new List<object[]>
+        {
+            new object[] { "test" },
+            new object[] { 50 },
+            new object[] { new GetTestStub() },
+        };
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -82,15 +92,8 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
             result.ShouldBeNull();
         }
 
-        public static IEnumerable<object[]> GetSetCacheData(int numTests) => new List<object[]>
-        {
-            new object[] { "test" },
-            new object[] { 50 },
-            new object[] { new GetTestStub() },
-        };
-
         [Theory]
-        [MemberData(nameof(GetSetCacheData), parameters: 1)]
+        [MemberData(nameof(SetupSetData))]
         public void Set_Caches_Value(object value)
         {
             // Arrange
@@ -106,7 +109,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         }
 
         [Theory]
-        [MemberData(nameof(GetSetCacheData), parameters: 1)]
+        [MemberData(nameof(SetupSetData))]
         public void Set_Returns_Serialized_Value(object value)
         {
             // Arrange

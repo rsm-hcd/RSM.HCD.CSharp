@@ -5203,6 +5203,7 @@ AndcultureCode.CSharp.Core.Extensions
 ##### Summary
 
 TODO: Extract to AndcultureCode.CSharp.Extensions project
+https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/64
 
 <a name='M-AndcultureCode-CSharp-Core-Extensions-ObjectExtensions-FromByteArray``1-System-Byte[]-'></a>
 ### FromByteArray\`\`1() `method`

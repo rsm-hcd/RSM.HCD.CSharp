@@ -47,7 +47,11 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Caching
             };
 
             // Act
-            var result = CacheKeys.GetKey<CultureStub>(id: Random.Long(), delimiter, includeProperties);
+            var result = CacheKeys.GetKey<CultureStub>(
+                id: Random.Long(),
+                delimiter: delimiter,
+                includeProperties: includeProperties
+            );
 
             // Assert
             result.ShouldContain($"Code{delimiter}IsDefault");
