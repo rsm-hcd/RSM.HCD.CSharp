@@ -37,6 +37,13 @@
   - [#ctor(args)](#M-AndcultureCode-CSharp-Core-Models-Hosting-AndcultureCodeWebHostBuilder-#ctor-System-String[]- 'AndcultureCode.CSharp.Core.Models.Hosting.AndcultureCodeWebHostBuilder.#ctor(System.String[])')
   - [Args](#P-AndcultureCode-CSharp-Core-Models-Hosting-AndcultureCodeWebHostBuilder-Args 'AndcultureCode.CSharp.Core.Models.Hosting.AndcultureCodeWebHostBuilder.Args')
   - [CreateDefaultBuilder()](#M-AndcultureCode-CSharp-Core-Models-Hosting-AndcultureCodeWebHostBuilder-CreateDefaultBuilder 'AndcultureCode.CSharp.Core.Models.Hosting.AndcultureCodeWebHostBuilder.CreateDefaultBuilder')
+- [ApiClaimTypes](#T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes')
+  - [IS_SUPER_ADMIN](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-IS_SUPER_ADMIN 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.IS_SUPER_ADMIN')
+  - [ROLE_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_ID')
+  - [ROLE_IDS](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_IDS')
+  - [ROLE_TYPE](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.ROLE_TYPE')
+  - [USER_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_ID')
+  - [USER_LOGIN_ID](#F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_LOGIN_ID 'AndcultureCode.CSharp.Core.Constants.ApiClaimTypes.USER_LOGIN_ID')
 - [ApplicationConstants](#T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants')
   - [API_DATABASE_CONFIGURATION_KEY](#F-AndcultureCode-CSharp-Core-Constants-ApplicationConstants-API_DATABASE_CONFIGURATION_KEY 'AndcultureCode.CSharp.Core.Constants.ApplicationConstants.API_DATABASE_CONFIGURATION_KEY')
 - [Auditable](#T-AndcultureCode-CSharp-Core-Models-Auditable 'AndcultureCode.CSharp.Core.Models.Auditable')
@@ -1003,6 +1010,59 @@ to support our own extensibility model
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes'></a>
+## ApiClaimTypes `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core.Constants
+
+##### Summary
+
+Commonly used Claim types for APIs
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-IS_SUPER_ADMIN'></a>
+### IS_SUPER_ADMIN `constants`
+
+##### Summary
+
+Is the current user elevated to super admin
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_ID'></a>
+### ROLE_ID `constants`
+
+##### Summary
+
+Active Role Id
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_IDS'></a>
+### ROLE_IDS `constants`
+
+##### Summary
+
+Available Role Ids
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-ROLE_TYPE'></a>
+### ROLE_TYPE `constants`
+
+##### Summary
+
+Active Role Type
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_ID'></a>
+### USER_ID `constants`
+
+##### Summary
+
+Current User Id
+
+<a name='F-AndcultureCode-CSharp-Core-Constants-ApiClaimTypes-USER_LOGIN_ID'></a>
+### USER_LOGIN_ID `constants`
+
+##### Summary
+
+Current User Login Id
 
 <a name='T-AndcultureCode-CSharp-Core-Constants-ApplicationConstants'></a>
 ## ApplicationConstants `type`
