@@ -4,6 +4,9 @@ using Bogus;
 
 namespace AndcultureCode.CSharp.Testing.Factories
 {
+    /// <summary>
+    /// Base factory class for building out entity configurations
+    /// </summary>
     public abstract class Factory
     {
         #region Public Methods
@@ -18,6 +21,12 @@ namespace AndcultureCode.CSharp.Testing.Factories
         #region Public Properties
 
         /// <summary>
+        /// Cached instance of 'Faker' to use for specific data generation functions not available
+        /// from Randomizer (such as email addresses, ip addresses, names, etc.)
+        /// </summary>
+        public Faker Faker => _faker = _faker ?? new Faker();
+
+        /// <summary>
         /// Returns the current time in unix milliseconds.
         ///
         /// NOTE: Not guaranteed to be unique. If you require a unique value for a factory value,
@@ -29,8 +38,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
         /// <summary>
         /// Returns a cached `Randomizer` instance for generating random data as factory values.
         /// </summary>
-        /// <returns></returns>
-        public Randomizer Random => _Random = _Random ?? new Randomizer();
+        public Randomizer Random => Faker.Random;
 
         /// <summary>
         /// Returns a unique number for use in factory values.
@@ -51,7 +59,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
         #region Private Properties
 
-        private Randomizer _Random;
+        private Faker _faker;
 
         #endregion Private Properties
     }
