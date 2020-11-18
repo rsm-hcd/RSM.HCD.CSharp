@@ -12,7 +12,12 @@
   - [Random](#P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Random 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Random')
   - [#cctor()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor')
   - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Errors-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{``0}}[])')
+- [ErrorFactory](#T-AndcultureCode-CSharp-Testing-Factories-ErrorFactory 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory')
+  - [BASIC_ERROR](#F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-BASIC_ERROR 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.BASIC_ERROR')
+  - [RESOURCE_NOT_FOUND_ERROR](#F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-RESOURCE_NOT_FOUND_ERROR 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.RESOURCE_NOT_FOUND_ERROR')
+  - [Define()](#M-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-Define 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.Define')
 - [Factory](#T-AndcultureCode-CSharp-Testing-Factories-Factory 'AndcultureCode.CSharp.Testing.Factories.Factory')
+  - [Faker](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Faker 'AndcultureCode.CSharp.Testing.Factories.Factory.Faker')
   - [Milliseconds](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds 'AndcultureCode.CSharp.Testing.Factories.Factory.Milliseconds')
   - [Random](#P-AndcultureCode-CSharp-Testing-Factories-Factory-Random 'AndcultureCode.CSharp.Testing.Factories.Factory.Random')
   - [UniqueNumber](#P-AndcultureCode-CSharp-Testing-Factories-Factory-UniqueNumber 'AndcultureCode.CSharp.Testing.Factories.Factory.UniqueNumber')
@@ -70,6 +75,16 @@
   - [ReturnsBasicErrorResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
   - [ReturnsBasicErrorSequentialResult\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)')
   - [ReturnsGivenResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
+- [UserStub](#T-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub')
+  - [EmailAddress](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-EmailAddress 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.EmailAddress')
+  - [FirstName](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-FirstName 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.FirstName')
+  - [LastName](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-LastName 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.LastName')
+  - [RelatedUserStub](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-RelatedUserStub 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.RelatedUserStub')
+  - [RelatedUserStubId](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-RelatedUserStubId 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.RelatedUserStubId')
+- [UserStubFactory](#T-AndcultureCode-CSharp-Testing-Factories-UserStubFactory 'AndcultureCode.CSharp.Testing.Factories.UserStubFactory')
+  - [WITH_GMAIL_EMAIL](#F-AndcultureCode-CSharp-Testing-Factories-UserStubFactory-WITH_GMAIL_EMAIL 'AndcultureCode.CSharp.Testing.Factories.UserStubFactory.WITH_GMAIL_EMAIL')
+  - [WITH_YAHOO_EMAIL](#F-AndcultureCode-CSharp-Testing-Factories-UserStubFactory-WITH_YAHOO_EMAIL 'AndcultureCode.CSharp.Testing.Factories.UserStubFactory.WITH_YAHOO_EMAIL')
+  - [Define()](#M-AndcultureCode-CSharp-Testing-Factories-UserStubFactory-Define 'AndcultureCode.CSharp.Testing.Factories.UserStubFactory.Define')
 
 <a name='T-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest'></a>
 ## BaseIntegrationTest `type`
@@ -203,12 +218,60 @@ configuration of \`T\` is required.
 | ---- | ----------- |
 | T |  |
 
+<a name='T-AndcultureCode-CSharp-Testing-Factories-ErrorFactory'></a>
+## ErrorFactory `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Factories
+
+##### Summary
+
+Factory for building out configurations of the \`Error\` class
+
+<a name='F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-BASIC_ERROR'></a>
+### BASIC_ERROR `constants`
+
+##### Summary
+
+Represents a basic error for testing.
+
+<a name='F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-RESOURCE_NOT_FOUND_ERROR'></a>
+### RESOURCE_NOT_FOUND_ERROR `constants`
+
+##### Summary
+
+Represents a 'RESOURCE_NOT_FOUND' error using the Core error key.
+
+<a name='M-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-Define'></a>
+### Define() `method`
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Parameters
+
+This method has no parameters.
+
 <a name='T-AndcultureCode-CSharp-Testing-Factories-Factory'></a>
 ## Factory `type`
 
 ##### Namespace
 
 AndcultureCode.CSharp.Testing.Factories
+
+##### Summary
+
+Base factory class for building out entity configurations
+
+<a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-Faker'></a>
+### Faker `property`
+
+##### Summary
+
+Cached instance of 'Faker' to use for specific data generation functions not available
+from Randomizer (such as email addresses, ip addresses, names, etc.)
 
 <a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-Milliseconds'></a>
 ### Milliseconds `property`
@@ -230,10 +293,6 @@ Returns the current time in unix milliseconds.
 ##### Summary
 
 Returns a cached \`Randomizer\` instance for generating random data as factory values.
-
-##### Returns
-
-
 
 <a name='P-AndcultureCode-CSharp-Testing-Factories-Factory-UniqueNumber'></a>
 ### UniqueNumber `property`
@@ -1148,3 +1207,85 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 | TResult |  |
+
+<a name='T-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub'></a>
+## UserStub `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Models.Stubs
+
+##### Summary
+
+Stub entity representing a User
+
+<a name='P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-EmailAddress'></a>
+### EmailAddress `property`
+
+##### Summary
+
+Email address of the stub user
+
+<a name='P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-FirstName'></a>
+### FirstName `property`
+
+##### Summary
+
+First name of the stub user
+
+<a name='P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-LastName'></a>
+### LastName `property`
+
+##### Summary
+
+Last name of the stub user
+
+<a name='P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-RelatedUserStub'></a>
+### RelatedUserStub `property`
+
+##### Summary
+
+Related stub user for testing navigation properties
+
+<a name='P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-RelatedUserStubId'></a>
+### RelatedUserStubId `property`
+
+##### Summary
+
+Id of a related stub user
+
+<a name='T-AndcultureCode-CSharp-Testing-Factories-UserStubFactory'></a>
+## UserStubFactory `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Factories
+
+##### Summary
+
+Factory for building out configurations of the \`UserStub\` class
+
+<a name='F-AndcultureCode-CSharp-Testing-Factories-UserStubFactory-WITH_GMAIL_EMAIL'></a>
+### WITH_GMAIL_EMAIL `constants`
+
+##### Summary
+
+Returns a user stub with a gmail address
+
+<a name='F-AndcultureCode-CSharp-Testing-Factories-UserStubFactory-WITH_YAHOO_EMAIL'></a>
+### WITH_YAHOO_EMAIL `constants`
+
+##### Summary
+
+Returns a user stub with a yahoo address
+
+<a name='M-AndcultureCode-CSharp-Testing-Factories-UserStubFactory-Define'></a>
+### Define() `method`
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Parameters
+
+This method has no parameters.
