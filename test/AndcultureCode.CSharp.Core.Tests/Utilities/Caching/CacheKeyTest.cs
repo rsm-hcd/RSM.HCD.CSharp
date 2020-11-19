@@ -9,11 +9,11 @@ using AndcultureCode.CSharp.Core.Tests.Unit.Stubs;
 
 namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Caching
 {
-    public class CacheKeyAttributeTest : CoreUnitTest
+    public class CacheKeyTest : CoreUnitTest
     {
         #region Setup
 
-        public CacheKeyAttributeTest(ITestOutputHelper output) : base(output) { }
+        public CacheKeyTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
@@ -22,7 +22,14 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Caching
         [Fact]
         public void GetKey_When_Id_Set_Returns_Key_Containing_Type()
         {
-            CacheKeys.GetKey<CultureStub>(id: Random.Long()).ShouldContain(typeof(CultureStub).Name);
+            // Arrange
+            var id = Random.Long();
+
+            // Act
+            var result = CacheKeys.GetKey<CultureStub>(id);
+
+            // Assert
+            result.ShouldContain(nameof(CultureStub));
         }
 
         [Fact]

@@ -15,7 +15,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Caching
 
         /// <summary>
         /// Default delimiter used for creating cache keys
-        /// /// </summary>
+        /// </summary>
         public const string DEFAULT_DELIMITER = "-";
 
         #endregion Properties
@@ -62,7 +62,6 @@ namespace AndcultureCode.CSharp.Core.Utilities.Caching
             List<Expression<Func<TProperties, object>>> includeProperties = null
         ) => AppendIncludeProperties($"{typeof(T).Name}{delimiter}{id}", delimiter, includeProperties);
 
-
         #endregion Public Methods
 
         #region Private Methods
@@ -80,9 +79,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Caching
                 .OrderBy(p => p)
                 .ToList();
 
-            key = $"{key}{delimiter}{string.Join(delimiter, names)}";
-
-            return key;
+            return $"{key}{delimiter}{string.Join(delimiter, names)}";
         }
 
         private static string GetPropertyName<T>(Expression<Func<T, Object>> expression)

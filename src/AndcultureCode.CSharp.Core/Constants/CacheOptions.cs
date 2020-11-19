@@ -25,7 +25,10 @@ namespace AndcultureCode.CSharp.Core.Constants
         /// <param name="minutes"></param>
         /// <returns></returns>
         public static DistributedCacheEntryOptions Minutes(double minutes)
-            => new DistributedCacheEntryOptions { SlidingExpiration = TimeSpan.FromMinutes(minutes) };
+            => new DistributedCacheEntryOptions
+            {
+                SlidingExpiration = TimeSpan.FromMinutes(minutes >= 1 ? minutes : 1)
+            };
 
         #endregion Methods
     }
