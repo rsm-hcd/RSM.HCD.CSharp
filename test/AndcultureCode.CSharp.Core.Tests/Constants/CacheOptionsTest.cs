@@ -20,6 +20,19 @@ namespace AndcultureCode.CSharp.Core.Tests.Constants
         #region Minutes
 
         [Fact]
+        public void Minutes_When_Minutes_LessThan1_Returned_SlidingExpiration_Of_1()
+        {
+            // Arrange
+            var minutes = Random.Int(max: 0);
+
+            // Act
+            var result = CacheOptions.Minutes(minutes);
+
+            // Assert
+            result.SlidingExpiration.Value.Minutes.ShouldBe(1);
+        }
+
+        [Fact]
         public void Minutes_When_Minutes_Set_Returns_Configured_Options()
         {
             // Arrange
