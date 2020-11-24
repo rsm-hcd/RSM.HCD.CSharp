@@ -8,7 +8,8 @@
     <DocumentationMarkdown>$(MSBuildProjectDirectory)/AndcultureCode.CSharp.Core.md</DocumentationMarkdown>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIconUrl>https://avatars3.githubusercontent.com/u/32297579?s=460&amp;v=4</PackageIconUrl>
+    <PackageIconUrl>https://github.com/AndcultureCode/AndcultureCode/blob/main/assets/andculture-glyph%402x.png</PackageIconUrl>
+    <PackageIcon>andculture-glyph@2x.png</PackageIcon>
     <PackageId>AndcultureCode.CSharp.Core</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp.Core</PackageProjectUrl>
@@ -18,6 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Images\andculture-glyph@2x.png" Pack="true" PackagePath=""/>
     <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
     <PackageReference Include="MailKit" Version="2.3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
