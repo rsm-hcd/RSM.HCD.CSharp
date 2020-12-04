@@ -25,8 +25,6 @@
 - [FactorySettings](#T-AndcultureCode-CSharp-Testing-Factories-FactorySettings 'AndcultureCode.CSharp.Testing.Factories.FactorySettings')
   - [Debug](#P-AndcultureCode-CSharp-Testing-Factories-FactorySettings-Debug 'AndcultureCode.CSharp.Testing.Factories.FactorySettings.Debug')
   - [Instance](#P-AndcultureCode-CSharp-Testing-Factories-FactorySettings-Instance 'AndcultureCode.CSharp.Testing.Factories.FactorySettings.Instance')
-- [HttpResponseMessageExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageExtensions 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageExtensions')
-  - [FromJson\`\`1(response)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)')
 - [HttpResponseMessageMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions')
   - [ShouldBe(response,statusCode,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldBe-System-Net-Http-HttpResponseMessage,System-Net-HttpStatusCode,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBe(System.Net.Http.HttpResponseMessage,System.Net.HttpStatusCode,System.Boolean)')
   - [ShouldBeABadRequest(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldBeABadRequest-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeABadRequest(System.Net.Http.HttpResponseMessage,System.Boolean)')
@@ -38,30 +36,33 @@
   - [ShouldBeOk(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldBeOk-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeOk(System.Net.Http.HttpResponseMessage,System.Boolean)')
   - [ShouldBeUnauthorized(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldBeUnauthorized-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeUnauthorized(System.Net.Http.HttpResponseMessage,System.Boolean)')
   - [ShouldNotBeFound(response,withContent)](#M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions-ShouldNotBeFound-System-Net-Http-HttpResponseMessage,System-Boolean- 'AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldNotBeFound(System.Net.Http.HttpResponseMessage,System.Boolean)')
-- [IActionResultMatcherExtensions](#T-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions')
-  - [AsAccepted\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsAccepted``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsAccepted``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsBadRequest\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsBadRequest\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-System-Threading-Tasks-Task{Microsoft-AspNetCore-Mvc-IActionResult}- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(System.Threading.Tasks.Task{Microsoft.AspNetCore.Mvc.IActionResult})')
-  - [AsConflict\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsConflict``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsConflict``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsCreated\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsCreated``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsCreated``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsFile()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsFile-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsFile(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsForbidden\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsForbidden``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsForbidden``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsHttpResult\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsHttpResult``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsHttpResult\`\`2(action,statusCode)](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``2-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Int32}- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsHttpResult``2(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Int32})')
-  - [AsInternalError\`\`1(action,shouldValidateType)](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsInternalError``1-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Boolean}- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsInternalError``1(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Boolean})')
-  - [AsNoContent()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNoContent-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNoContent(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsNotFound\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNotFound``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsOk\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsOk``1(Microsoft.AspNetCore.Mvc.IActionResult)')
-  - [AsUnauthorized\`\`1()](#M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsUnauthorized``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+- [IActionResultMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions')
+  - [AsAccepted\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsAccepted``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsAccepted``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsBadRequest\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsBadRequest\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-System-Threading-Tasks-Task{Microsoft-AspNetCore-Mvc-IActionResult}- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(System.Threading.Tasks.Task{Microsoft.AspNetCore.Mvc.IActionResult})')
+  - [AsConflict\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsConflict``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsConflict``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsCreated\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsCreated``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsCreated``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsFile()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsFile-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsFile(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsForbidden\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsForbidden``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsForbidden``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsHttpResult\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsHttpResult``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsHttpResult``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsHttpResult\`\`2(action,statusCode)](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsHttpResult``2-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsHttpResult``2(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Int32})')
+  - [AsInternalError\`\`1(action,shouldValidateType)](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsInternalError``1-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsInternalError``1(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Boolean})')
+  - [AsNoContent()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsNoContent-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsNoContent(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsNotFound\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsNotFound``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsOk\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsOk``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+  - [AsUnauthorized\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsUnauthorized``1(Microsoft.AspNetCore.Mvc.IActionResult)')
 - [IEnumerableMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions')
   - [ShouldBeOfSize\`\`1(items,expectedSize)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOfSize``1-System-Collections-Generic-IEnumerable{``0},System-Int32- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOfSize``1(System.Collections.Generic.IEnumerable{``0},System.Int32)')
   - [ShouldBeOrderedByDescending\`\`2(items,keySelector)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedByDescending``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedByDescending``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})')
   - [ShouldBeOrderedBy\`\`2(items,keySelector)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedBy``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})')
-- [IRepositoryConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions')
-  - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
-- [IRepositoryReadConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions')
-  - [SetupFindAllCommitted\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions-SetupFindAllCommitted``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions.SetupFindAllCommitted``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})')
-  - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
+  - [ShouldContain\`\`1(actual,expected)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldContain``1-System-Collections-Generic-IEnumerable{``0},System-Collections-Generic-IEnumerable{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldContain``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})')
+- [IRepositoryConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryConductorMockExtensions')
+  - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
+- [IRepositoryCreateConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryCreateConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryCreateConductorMockExtensions')
+- [IRepositoryDeleteConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryDeleteConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryDeleteConductorMockExtensions')
+- [IRepositoryReadConductorMockExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryReadConductorMockExtensions')
+  - [SetupFindAllCommitted\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters)](#M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions-SetupFindAllCommitted``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryReadConductorMockExtensions.SetupFindAllCommitted``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})')
+  - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryReadConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
 - [IResultMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions')
   - [ERROR_ERRORS_LIST_IS_NULL_MESSAGE](#F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_ERRORS_LIST_IS_NULL_MESSAGE 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE')
   - [ShouldHaveBasicError\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveBasicError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveBasicError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
@@ -340,36 +341,6 @@ for actual exceptional cases.
 Lazy-loaded singleton instance used to alter factory settings
 Ie. FactorySettings.Instance.Debug = true;
 
-<a name='T-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageExtensions'></a>
-## HttpResponseMessageExtensions `type`
-
-##### Namespace
-
-AndcultureCode.CSharp.Testing.Extensions
-
-<a name='M-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageExtensions-FromJson``1-System-Net-Http-HttpResponseMessage-'></a>
-### FromJson\`\`1(response) `method`
-
-##### Summary
-
-Deserializes http response into supplied object
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| response | [System.Net.Http.HttpResponseMessage](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Net.Http.HttpResponseMessage 'System.Net.Http.HttpResponseMessage') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T |  |
-
 <a name='T-AndcultureCode-CSharp-Testing-Extensions-HttpResponseMessageMatcherExtensions'></a>
 ## HttpResponseMessageMatcherExtensions `type`
 
@@ -523,18 +494,18 @@ Simplified approach to asserting if the HTTP status code was 404
 | response | [System.Net.Http.HttpResponseMessage](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Net.Http.HttpResponseMessage 'System.Net.Http.HttpResponseMessage') |  |
 | withContent | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Should we also assert that a content body was supplied |
 
-<a name='T-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions'></a>
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions'></a>
 ## IActionResultMatcherExtensions `type`
 
 ##### Namespace
 
-AndcultureCode.GB.Presentation.Web.Tests.Extensions
+AndcultureCode.CSharp.Testing.Extensions
 
 ##### Summary
 
 Testing matchers for asserting controller responses
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsAccepted``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsAccepted``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsAccepted\`\`1() `method`
 
 ##### Summary
@@ -552,7 +523,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsBadRequest\`\`1() `method`
 
 ##### Summary
@@ -570,7 +541,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-System-Threading-Tasks-Task{Microsoft-AspNetCore-Mvc-IActionResult}-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsBadRequest``1-System-Threading-Tasks-Task{Microsoft-AspNetCore-Mvc-IActionResult}-'></a>
 ### AsBadRequest\`\`1() `method`
 
 ##### Summary
@@ -589,7 +560,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsConflict``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsConflict``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsConflict\`\`1() `method`
 
 ##### Summary
@@ -607,7 +578,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsCreated``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsCreated``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsCreated\`\`1() `method`
 
 ##### Summary
@@ -625,7 +596,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsFile-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsFile-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsFile() `method`
 
 ##### Summary
@@ -636,7 +607,7 @@ Verifies the result is the correct HTTP response type of 'FileContentResult'
 
 This method has no parameters.
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsForbidden``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsForbidden``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsForbidden\`\`1() `method`
 
 ##### Summary
@@ -653,7 +624,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsHttpResult``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsHttpResult\`\`1() `method`
 
 ##### Summary
@@ -671,7 +642,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsHttpResult``2-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Int32}-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsHttpResult``2-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Int32}-'></a>
 ### AsHttpResult\`\`2(action,statusCode) `method`
 
 ##### Summary
@@ -697,7 +668,7 @@ and additionally the result object's body is of the supplied type 'T'
 | THttpResult |  |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsInternalError``1-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Boolean}-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsInternalError``1-Microsoft-AspNetCore-Mvc-IActionResult,System-Nullable{System-Boolean}-'></a>
 ### AsInternalError\`\`1(action,shouldValidateType) `method`
 
 ##### Summary
@@ -718,7 +689,7 @@ and additionally the result object is of the supplied type 'T'
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNoContent-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsNoContent-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsNoContent() `method`
 
 ##### Summary
@@ -735,7 +706,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsNotFound\`\`1() `method`
 
 ##### Summary
@@ -753,7 +724,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsOk\`\`1() `method`
 
 ##### Summary
@@ -771,7 +742,7 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
-<a name='M-AndcultureCode-GB-Presentation-Web-Tests-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult-'></a>
 ### AsUnauthorized\`\`1() `method`
 
 ##### Summary
@@ -794,6 +765,10 @@ This method has no parameters.
 ##### Namespace
 
 AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Extension methods for asserting expected states of \`IEnumerable\` types
 
 <a name='M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOfSize``1-System-Collections-Generic-IEnumerable{``0},System-Int32-'></a>
 ### ShouldBeOfSize\`\`1(items,expectedSize) `method`
@@ -875,22 +850,45 @@ Assert that a list of T is ordered (ascending) by property of type V.
 | ---- | ----------- |
 | [Shouldly.ShouldAssertException](#T-Shouldly-ShouldAssertException 'Shouldly.ShouldAssertException') |  |
 
-<a name='T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldContain``1-System-Collections-Generic-IEnumerable{``0},System-Collections-Generic-IEnumerable{``0}-'></a>
+### ShouldContain\`\`1(actual,expected) `method`
+
+##### Summary
+
+Asserts if a collection contains the exact values in the supplied collection
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| actual | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+| expected | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryConductorMockExtensions'></a>
 ## IRepositoryConductorMockExtensions `type`
 
 ##### Namespace
 
-AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
+AndcultureCode.CSharp.Testing.Extensions
 
-<a name='M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}-'></a>
+##### Summary
+
+Extension methods for mocking methods of the \`IRepositoryConductor\` interface
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}-'></a>
 ### SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking) `method`
 
 ##### Summary
 
 Sets up the FindAll method on a repository read conductor.
 NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
-via parameters. There seems to be an issue around Moq and c# "Expressions". See
-https://andculture.atlassian.net/browse/CCALMS2-599
+via parameters. There seems to be an issue around Moq and c# "Expressions".
 
 ##### Returns
 
@@ -913,14 +911,40 @@ A setup FindAll method on the supplied mocked conductor.
 | ---- | ----------- |
 | T | The model type applied to the repository read conductor. |
 
-<a name='T-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions'></a>
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryCreateConductorMockExtensions'></a>
+## IRepositoryCreateConductorMockExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Extension methods for mocking methods of the \`IRepositoryCreateConductor\` interface
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryDeleteConductorMockExtensions'></a>
+## IRepositoryDeleteConductorMockExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Extension methods for mocking methods of the \`IRepositoryDeleteConductor\` interface
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions'></a>
 ## IRepositoryReadConductorMockExtensions `type`
 
 ##### Namespace
 
-AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
+AndcultureCode.CSharp.Testing.Extensions
 
-<a name='M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions-SetupFindAllCommitted``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean}-'></a>
+##### Summary
+
+Extension methods for mocking methods of the \`IRepositoryReadConductor\` interface
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions-SetupFindAllCommitted``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean}-'></a>
 ### SetupFindAllCommitted\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters) `method`
 
 ##### Summary
@@ -950,7 +974,7 @@ A setup FindAllCommitted method on the supplied mocked conductor.
 | ---- | ----------- |
 | T | The model type applied to the repository read conductor. |
 
-<a name='M-AndcultureCode-CSharp-Testing-Extensions-Mocks-Conductors-IRepositoryReadConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}-'></a>
 ### SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking) `method`
 
 ##### Summary

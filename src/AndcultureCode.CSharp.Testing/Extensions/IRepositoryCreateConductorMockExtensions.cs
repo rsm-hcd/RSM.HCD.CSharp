@@ -6,14 +6,17 @@ using Moq.Language.Flow;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
+namespace AndcultureCode.CSharp.Testing.Extensions
 {
+    /// <summary>
+    /// Extension methods for mocking methods of the `IRepositoryCreateConductor` interface
+    /// </summary>
     public static class IRepositoryCreateConductorMockExtensions
     {
         #region Create(T item, createdById = null)
 
         public static ISetup<IRepositoryCreateConductor<T>, IResult<T>> SetupCreate<T>(this Mock<IRepositoryCreateConductor<T>> mock,
-            T     item        = null,
+            T item = null,
             long? createdById = null
             ) where T : Entity
         {
@@ -31,7 +34,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         }
 
         public static Mock<IRepositoryCreateConductor<T>> SetupCreateReturnsBasicErrorResult<T>(this Mock<IRepositoryCreateConductor<T>> mock,
-            T     item        = null,
+            T item = null,
             long? createdById = null
             ) where T : Entity
         {
@@ -51,9 +54,9 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         /// <param name="returned">Desired object to return in ResultObject, if null uses item, otherwise null</param>
         /// <returns></returns>
         public static Mock<IRepositoryCreateConductor<T>> SetupCreateReturnsGivenResult<T>(this Mock<IRepositoryCreateConductor<T>> mock,
-            T     item        = null,
+            T item = null,
             long? createdById = null,
-            T     returned    = null
+            T returned = null
             ) where T : Entity
         {
             mock
@@ -61,14 +64,14 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
                 .ReturnsGivenResult(returned ?? item ?? null);
             return mock;
         }
-        
+
         #endregion Create(T item, createdById = null)
 
         #region Create(IEnumerable<T> item, createdById = null)
 
         public static ISetup<IRepositoryCreateConductor<T>, IResult<List<T>>> SetupCreate<T>(this Mock<IRepositoryCreateConductor<T>> mock,
             IEnumerable<T> items,
-            long?          createdById = null
+            long? createdById = null
             ) where T : Entity
         {
             var createdByIdParam = createdById.HasValue ? createdById.Value : It.IsAny<long?>();
@@ -77,7 +80,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
 
         public static Mock<IRepositoryCreateConductor<T>> SetupCreateReturnsBasicErrorResult<T>(this Mock<IRepositoryCreateConductor<T>> mock,
             IEnumerable<T> items,
-            long?          createdById = null
+            long? createdById = null
             ) where T : Entity
         {
             mock
@@ -88,7 +91,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
 
         public static Mock<IRepositoryCreateConductor<T>> SetupCreateReturnsGivenResult<T>(this Mock<IRepositoryCreateConductor<T>> mock,
             IEnumerable<T> items,
-            long?          createdById = null
+            long? createdById = null
             ) where T : Entity
         {
             mock

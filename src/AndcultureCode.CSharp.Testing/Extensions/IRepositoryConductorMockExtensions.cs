@@ -7,8 +7,11 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
+namespace AndcultureCode.CSharp.Testing.Extensions
 {
+    /// <summary>
+    /// Extension methods for mocking methods of the `IRepositoryConductor` interface
+    /// </summary>
     public static class IRepositoryConductorMockExtensions
     {
 
@@ -19,8 +22,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         /// <summary>
         /// Sets up the FindAll method on a repository read conductor.
         /// NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
-        /// via parameters. There seems to be an issue around Moq and c# "Expressions". See
-        /// https://andculture.atlassian.net/browse/CCALMS2-599
+        /// via parameters. There seems to be an issue around Moq and c# "Expressions".
         /// </summary>
         /// <param name="mock">The read repository conductor being mocked.</param>
         /// <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
@@ -31,18 +33,18 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         /// <typeparam name="T">The model type applied to the repository read conductor.</typeparam>
         /// <returns>A setup FindAll method on the supplied mocked conductor.</returns>
         public static ISetup<IRepositoryConductor<T>, IResult<IQueryable<T>>> SetupFindAll<T>(this Mock<IRepositoryConductor<T>> mock,
-            string includeProperties  = null,
-            int?   skip               = null,
-            int?   take               = null,
-            bool?  ignoreQueryFilters = false,
-            bool?  asNoTracking       = false
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool? asNoTracking = false
         ) where T : Entity
         {
-            var includePropertiesParam  = includeProperties != null ? includeProperties : It.IsAny<string>();
-            var skipParam               = skip.HasValue ? skip : It.IsAny<int?>();
-            var takeParam               = take.HasValue ? take : It.IsAny<int?>();
+            var includePropertiesParam = includeProperties != null ? includeProperties : It.IsAny<string>();
+            var skipParam = skip.HasValue ? skip : It.IsAny<int?>();
+            var takeParam = take.HasValue ? take : It.IsAny<int?>();
             var ignoreQueryFiltersParam = ignoreQueryFilters.HasValue ? ignoreQueryFilters : It.IsAny<bool?>();
-            var asNoTrackingParam       = asNoTracking.HasValue ? asNoTracking.Value : It.IsAny<bool>();
+            var asNoTrackingParam = asNoTracking.HasValue ? asNoTracking.Value : It.IsAny<bool>();
 
             return mock
                 .Setup(e => e.FindAll(
@@ -57,10 +59,10 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         }
 
         public static Mock<IRepositoryConductor<T>> SetupFindAllReturnsBasicErrorResult<T>(this Mock<IRepositoryConductor<T>> mock,
-            string includeProperties  = null,
-            int?   skip               = null,
-            int?   take               = null,
-            bool?  ignoreQueryFilters = false
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false
         ) where T : Entity
         {
             mock
@@ -70,11 +72,11 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         }
 
         public static Mock<IRepositoryConductor<T>> SetupFindAllReturnsGivenResult<T>(this Mock<IRepositoryConductor<T>> mock,
-            string        includeProperties  = null,
-            int?          skip               = null,
-            int?          take               = null,
-            bool?         ignoreQueryFilters = false,
-            IQueryable<T> resultObject       = null
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            IQueryable<T> resultObject = null
         ) where T : Entity
         {
             mock
@@ -89,18 +91,18 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
 
         public static Mock<IRepositoryConductor<T>> VerifyFindAll<T>(this Mock<IRepositoryConductor<T>> mock,
             Func<Times> times,
-            string includeProperties  = null,
-            int?   skip               = null,
-            int?   take               = null,
-            bool?  ignoreQueryFilters = false,
-            bool?  asNoTracking       = false
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool? asNoTracking = false
         ) where T : Entity
         {
-            var includePropertiesParam  = includeProperties != null ? includeProperties : It.IsAny<string>();
-            var skipParam               = skip.HasValue ? skip : It.IsAny<int?>();
-            var takeParam               = take.HasValue ? take : It.IsAny<int?>();
+            var includePropertiesParam = includeProperties != null ? includeProperties : It.IsAny<string>();
+            var skipParam = skip.HasValue ? skip : It.IsAny<int?>();
+            var takeParam = take.HasValue ? take : It.IsAny<int?>();
             var ignoreQueryFiltersParam = ignoreQueryFilters.HasValue ? ignoreQueryFilters : It.IsAny<bool?>();
-            var asNoTrackingParam       = asNoTracking.HasValue ? asNoTracking.Value : It.IsAny<bool>();
+            var asNoTrackingParam = asNoTracking.HasValue ? asNoTracking.Value : It.IsAny<bool>();
 
             mock.Verify(e => e.FindAll(
                 It.IsAny<Expression<System.Func<T, bool>>>(),
@@ -118,7 +120,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         #endregion Verify
 
         #endregion FindAll
-
 
         #region FindById(long id)
 
@@ -154,7 +155,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors
         }
 
         #endregion FindById(long id)
-
 
         #region FindById(long id, params string[] includeProperties)
 

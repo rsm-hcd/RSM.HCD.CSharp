@@ -86,26 +86,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         }
 
         /// <summary>
-        /// Simplified approach to asserting if the HTTP status code was 200 (with or without content)
-        /// </summary>
-        /// <param name="response"></param>
-        /// <param name="withContent">Should we also assert that a content body was supplied</param>
-        public static void ShouldBeOk(this HttpResponseMessage response, bool withContent = true)
-        {
-            response.ShouldBe(HttpStatusCode.OK, withContent);
-        }
-
-        /// <summary>
-        /// Simplified approach to asserting if the HTTP status code was 404
-        /// </summary>
-        /// <param name="response"></param>
-        /// <param name="withContent">Should we also assert that a content body was supplied</param>
-        public static void ShouldNotBeFound(this HttpResponseMessage response, bool withContent = false)
-        {
-            response.ShouldBe(HttpStatusCode.NotFound, withContent);
-        }
-
-        /// <summary>
         /// Simplified approach to asserting if the HTTP status code was 204 (with or without content)
         /// </summary>
         /// <param name="response"></param>
@@ -116,6 +96,16 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         }
 
         /// <summary>
+        /// Simplified approach to asserting if the HTTP status code was 200 (with or without content)
+        /// </summary>
+        /// <param name="response"></param>
+        /// <param name="withContent">Should we also assert that a content body was supplied</param>
+        public static void ShouldBeOk(this HttpResponseMessage response, bool withContent = true)
+        {
+            response.ShouldBe(HttpStatusCode.OK, withContent);
+        }
+
+        /// <summary>
         /// Simplified approach to asserting if the HTTP status code was 401
         /// </summary>
         /// <param name="response"></param>
@@ -123,6 +113,16 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeUnauthorized(this HttpResponseMessage response, bool withContent = false)
         {
             response.ShouldBe(HttpStatusCode.Unauthorized, withContent);
+        }
+
+        /// <summary>
+        /// Simplified approach to asserting if the HTTP status code was 404
+        /// </summary>
+        /// <param name="response"></param>
+        /// <param name="withContent">Should we also assert that a content body was supplied</param>
+        public static void ShouldNotBeFound(this HttpResponseMessage response, bool withContent = false)
+        {
+            response.ShouldBe(HttpStatusCode.NotFound, withContent);
         }
 
         #endregion Status Codes

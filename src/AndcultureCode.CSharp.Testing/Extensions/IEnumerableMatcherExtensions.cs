@@ -6,6 +6,9 @@ using Shouldly;
 
 namespace AndcultureCode.CSharp.Testing.Extensions
 {
+    /// <summary>
+    /// Extension methods for asserting expected states of `IEnumerable` types
+    /// </summary>
     public static class IEnumerableMatcherExtensions
     {
         /// <summary>
@@ -99,8 +102,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <summary>
         /// Asserts if a collection contains the exact values in the supplied collection
         /// </summary>
-        /// <param name="Expression<Func<T"></param>
         /// <param name="actual"></param>
+        /// <param name="expected"></param>
         /// <typeparam name="T"></typeparam>
         public static void ShouldContain<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
         {

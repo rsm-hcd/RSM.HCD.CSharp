@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Shouldly;
 
-namespace AndcultureCode.GB.Presentation.Web.Tests.Extensions
+namespace AndcultureCode.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Testing matchers for asserting controller responses
@@ -50,6 +50,11 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Extensions
         /// <typeparam name="T"></typeparam>
         public static T AsCreated<T>(this IActionResult action) where T : class
             => action.AsHttpResult<CreatedResult, T>();
+
+        /// <summary>
+        /// Verifies the result is the correct HTTP response type of 'FileContentResult'
+        /// </summary>
+        public static void AsFile(this IActionResult action) => action.AsHttpResult<FileContentResult>();
 
         /// <summary>
         /// Verifies the result is the correct HTTP response type of 'Forbidden'
@@ -152,10 +157,5 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Extensions
         /// <typeparam name="T"></typeparam>
         public static void AsUnauthorized<T>(this IActionResult action) where T : class
             => action.AsHttpResult<UnauthorizedResult>();
-
-        /// <summary>
-        /// Verifies the result is the correct HTTP response type of 'FileContentResult'
-        /// </summary>
-        public static void AsFile(this IActionResult action) => action.AsHttpResult<FileContentResult>();
     }
 }
