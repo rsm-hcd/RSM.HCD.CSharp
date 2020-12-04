@@ -1,0 +1,548 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AndcultureCode.CSharp.Testing</name>
+    </assembly>
+    <members>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageExtensions.FromJson``1(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Deserializes http response into supplied object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions">
+            <summary>
+            Setup extension methods.
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)">
+            <summary>
+            Returns basic error result.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)">
+            <summary>
+            Returns basic error sequential result.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)">
+            <summary>
+            Returns given result.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions">
+            <summary>
+            Testing assertion extension methods related to HttpResponseMessage objects.
+            Try your best to follow the 'Shouldly' API to maintain a common language in assertions.
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBe(System.Net.Http.HttpResponseMessage,System.Net.HttpStatusCode,System.Boolean)">
+            <summary>
+            General purpose extension to shouldly's ShouldBe around status code assertion
+            </summary>
+            <param name="response"></param>
+            <param name="statusCode"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeABadRequest(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 400 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeAConflict(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 409 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeCreated(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 201 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeForbidden(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 403 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent"></param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeInternalServerError(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 500 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeOk(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 200 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldNotBeFound(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 404
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeNoContent(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 204 (with or without content)
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.HttpResponseMessageMatcherExtensions.ShouldBeUnauthorized(System.Net.Http.HttpResponseMessage,System.Boolean)">
+            <summary>
+            Simplified approach to asserting if the HTTP status code was 401
+            </summary>
+            <param name="response"></param>
+            <param name="withContent">Should we also assert that a content body was supplied</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOfSize``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Assert that an IEnumerable{T} has a certain length.
+            </summary>
+            <param name="items"></param>
+            <param name="expectedSize"></param>
+            <typeparam name="T"></typeparam>
+            <exception cref="T:Shouldly.ShouldAssertException"></exception>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Assert that a list of T is ordered (ascending) by property of type V.
+            </summary>
+            <param name="items"></param>
+            <param name="keySelector"></param>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <exception cref="T:Shouldly.ShouldAssertException"></exception>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedByDescending``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Assert that a list of T is ordered (descending) by property of type V.
+            </summary>
+            <param name="items"></param>
+            <param name="keySelector"></param>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <exception cref="T:Shouldly.ShouldAssertException"></exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldContain``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})" -->
+        <member name="T:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions">
+            <summary>
+            Extension methods for asserting expected states of the `IResult` interface
+            </summary>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE">
+            <summary>
+            Detailed output message to display when expecting errors on a result that has a null `Errors` property
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveBasicError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})">
+            <summary>
+            Assert result has error for `BASIC_ERROR_KEY`
+            </summary>
+            <param name="result">Result under test</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Nullable{System.Int32})">
+            <summary>
+            Assert that the result has at least one error
+            </summary>
+            <param name="result">Result under test</param>
+            <param name="exactCount">When supplied, asserts the result has this exact number of errors</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors(AndcultureCode.CSharp.Core.Interfaces.IResult{System.Boolean},System.Nullable{System.Int32})">
+            <summary>
+            Assert that the result has at least one error
+            </summary>
+            <param name="result">Result under test</param>
+            <param name="exactCount">When supplied, asserts the result has this exact number of errors</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Assert that there are errors for the supplied property
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result">Result under test</param>
+            <param name="property">Key of the error to be asserted against</param>
+            <param name="exactCount">When supplied, asserts the exact number of errors with the property. NOT total number of errors</param>
+            <param name="containedInMessage">When supplied, asserts that the property's error message contains this string</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResourceNotFoundError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})">
+            <summary>
+            Assert error exists for `ERROR_RESOURCE_NOT_FOUND_KEY`
+            </summary>
+            <param name="result">Result under test</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})">
+            <summary>
+            Assert that there are no errors for the given result
+            </summary>
+            <param name="result">Result under test</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String)">
+            <summary>
+            Assert that there weren't any errors for the supplied property
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result">Result under test</param>
+            <param name="property">Key of the error to be asserted against</param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Sets up the FindAll method on a repository read conductor.
+            NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
+            via parameters. There seems to be an issue around Moq and c# "Expressions". See
+            https://andculture.atlassian.net/browse/CCALMS2-599
+            </summary>
+            <param name="mock">The read repository conductor being mocked.</param>
+            <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
+            <param name="skip">The value for skip to be setup (optional)</param>
+            <param name="take">The value for take to be setup (optional)</param>
+            <param name="ignoreQueryFilters">The value for ignoreQueryFilters to be setup (optional)</param>
+            <param name="asNoTracking">The value for asNoTracking to be setup (optional)</param>
+            <typeparam name="T">The model type applied to the repository read conductor.</typeparam>
+            <returns>A setup FindAll method on the supplied mocked conductor.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryCreateConductorMockExtensions.SetupCreateReturnsGivenResult``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryCreateConductor{``0}},``0,System.Nullable{System.Int64},``0)" -->
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Sets up the FindAll method on a repository read conductor.
+            NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
+            via parameters. There seems to be an issue around Moq and c# "Expressions". See
+            https://andculture.atlassian.net/browse/CCALMS2-599
+            </summary>
+            <param name="mock">The read repository conductor being mocked.</param>
+            <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
+            <param name="skip">The value for skip to be setup (optional)</param>
+            <param name="take">The value for take to be setup (optional)</param>
+            <param name="ignoreQueryFilters">The value for ignoreQueryFilters to be setup (optional)</param>
+            <param name="asNoTracking">The value for asNoTracking to be setup (optional)</param>
+            <typeparam name="T">The model type applied to the repository read conductor.</typeparam>
+            <returns>A setup FindAll method on the supplied mocked conductor.</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors.IRepositoryReadConductorMockExtensions.SetupFindAllCommitted``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Sets up the FindAllCommitted method on a repository read conductor.
+            NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
+            via parameters. There seems to be an issue around Moq and c# "Expressions". See
+            https://andculture.atlassian.net/browse/CCALMS2-599
+            </summary>
+            <param name="mock">The read repository conductor being mocked.</param>
+            <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
+            <param name="skip">The value for skip to be setup (optional)</param>
+            <param name="take">The value for take to be setup (optional)</param>
+            <param name="ignoreQueryFilters">The value for ignoreQueryFilters to be setup (optional)</param>
+            <typeparam name="T">The model type applied to the repository read conductor.</typeparam>
+            <returns>A setup FindAllCommitted method on the supplied mocked conductor.</returns>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Factories.ErrorFactory">
+            <summary>
+            Factory for building out configurations of the `Error` class
+            </summary>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Testing.Factories.ErrorFactory.BASIC_ERROR">
+            <summary>
+            Represents a basic error for testing.
+            </summary>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Testing.Factories.ErrorFactory.RESOURCE_NOT_FOUND_ERROR">
+            <summary>
+            Represents a 'RESOURCE_NOT_FOUND' error using the Core error key.
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Factories.ErrorFactory.Define">
+            <inheritdoc />
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Factories.Factory">
+            <summary>
+            Base factory class for building out entity configurations
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Factories.Factory.Define">
+            <summary>
+            Define your factory
+            </summary>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Factories.Factory.Faker">
+            <summary>
+            Cached instance of 'Faker' to use for specific data generation functions not available
+            from Randomizer (such as email addresses, ip addresses, names, etc.)
+            </summary>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Factories.Factory.Milliseconds">
+             <summary>
+             Returns the current time in unix milliseconds.
+            
+             NOTE: Not guaranteed to be unique. If you require a unique value for a factory value,
+             use `UniqueNumber` instead.
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Factories.Factory.Random">
+            <summary>
+            Returns a cached `Randomizer` instance for generating random data as factory values.
+            </summary>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Factories.Factory.UniqueNumber">
+            <summary>
+            Returns a unique number for use in factory values.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Factories.FactorySettings">
+            <summary>
+            Singleton test-suite wide for configuring test factory related settings
+            </summary>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Factories.FactorySettings.Debug">
+            <summary>
+            When enabled, factory related debug output will be written to standard out
+            for troubleshooting purposes. Otherwise, by default it will only output
+            for actual exceptional cases.
+            </summary>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Factories.FactorySettings.Instance">
+            <summary>
+            Lazy-loaded singleton instance used to alter factory settings
+            Ie. FactorySettings.Instance.Debug = true;
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Factories.UserStubFactory">
+            <summary>
+            Factory for building out configurations of the `UserStub` class
+            </summary>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Testing.Factories.UserStubFactory.WITH_GMAIL_EMAIL">
+            <summary>
+            Returns a user stub with a gmail address
+            </summary>
+        </member>
+        <member name="F:AndcultureCode.CSharp.Testing.Factories.UserStubFactory.WITH_YAHOO_EMAIL">
+            <summary>
+            Returns a user stub with a yahoo address
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Factories.UserStubFactory.Define">
+            <inheritdoc />
+        </member>
+        <member name="T:AndcultureCode.CSharp.Testing.Models.Stubs.UserStub">
+            <summary>
+            Stub entity representing a User
+            </summary>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.EmailAddress">
+            <summary>
+            Email address of the stub user
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.FirstName">
+            <summary>
+            First name of the stub user
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.LastName">
+            <summary>
+            Last name of the stub user
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.RelatedUserStubId">
+            <summary>
+            Id of a related stub user
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.RelatedUserStub">
+            <summary>
+            Related stub user for testing navigation properties
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(AndcultureCode.CSharp.Core.Interfaces.IContext,``0)">
+            <summary>
+            Defines generic creation of T Entity using repository conductors. Must be overridden by inheriting classes.
+            </summary>
+            <param name="context"></param>
+            <param name="item"></param>
+            <typeparam name="T"></typeparam>
+            <returns>NotImplementedException when not overridden</returns>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.GetRepositoryConductorDeps``1(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{``0})">
+            <summary>
+            Sets up an object containing conductor dependencies for a given Entity T returned as a composed model.
+            </summary>
+            <param name="repository"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.SetupRepositoryConductor``1(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{``0})" -->
+        <member name="P:AndcultureCode.CSharp.Testing.Tests.BaseTest.Faker">
+            <summary>
+            Cached instance of 'Faker' to use for specific data generation functions not available
+            from Randomizer (such as email addresses, ip addresses, names, etc.)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:AndcultureCode.CSharp.Testing.Tests.BaseTest.Random">
+            <summary>
+            Wrapper property for accessing the 'Randomizer' instance of 'Faker' directly. This field
+            will instantiate a new Faker instance if it has not yet been accessed directly.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor">
+             <summary>
+             Static constructor to set up suite-level actors
+            
+             Most recent performance test: .04 milliseconds / ~47 microseconds
+             </summary>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Tests.BaseTest.#ctor(Xunit.Abstractions.ITestOutputHelper)">
+            <summary>
+            Instance constructor to set up common test-level actors
+            </summary>
+            <param name="output"></param>
+        </member>
+        <member name="M:AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{``0}}[])">
+            <summary>
+            Factory method for setting properties directly on a new Result. Sets the `ResultObject`
+            to the default value of T, but can be nested with other factory methods if a specific
+            configuration of `T` is required.
+            </summary>
+            <param name="properties"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions">
+            <summary>
+            Testing matchers for asserting controller responses
+            </summary>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsAccepted``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'Accepted'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'BadRequest'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsBadRequest``1(System.Threading.Tasks.Task{Microsoft.AspNetCore.Mvc.IActionResult})">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'BadRequest'
+            and additionally the result object is of the supplied type 'T'
+            /// </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsConflict``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'Conflict'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsCreated``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'Created'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsForbidden``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'Forbidden'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsHttpResult``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct requested HTTP response type
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsHttpResult``2(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Int32})">
+            <summary>
+            Verifies the result is the correct requested HTTP response type
+            and additionally the result object's body is of the supplied type 'T'
+            </summary>
+            <param name="action"></param>
+            <param name="statusCode"></param>
+            <typeparam name="THttpResult"></typeparam>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsInternalError``1(Microsoft.AspNetCore.Mvc.IActionResult,System.Nullable{System.Boolean})">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'InternalError'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <param name="shouldValidateType">Use 'false' when value of response is NULL to bypass type checking</param>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNoContent(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'NoContent'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsNotFound``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'NotFound'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsOk``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'Ok'
+            and additionally the result object is of the supplied type 'T'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsUnauthorized``1(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'Unauthorized'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AndcultureCode.GB.Presentation.Web.Tests.Extensions.IActionResultMatcherExtensions.AsFile(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Verifies the result is the correct HTTP response type of 'FileContentResult'
+            </summary>
+        </member>
+    </members>
+</doc>

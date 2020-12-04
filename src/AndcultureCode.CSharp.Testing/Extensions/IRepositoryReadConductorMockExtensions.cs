@@ -1,8 +1,6 @@
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Core.Models.Entities;
-using AndcultureCode.CSharp.Testing.Constants;
 using Moq;
 using Moq.Language;
 using Moq.Language.Flow;
@@ -26,7 +24,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Sets up the FindAll method on a repository read conductor.
         /// NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
         /// via parameters. There seems to be an issue around Moq and c# "Expressions". See
-        /// https://andculture.atlassian.net/browse/CCALMS2-599
+        /// https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing/issues/28
         /// </summary>
         /// <param name="mock">The read repository conductor being mocked.</param>
         /// <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
@@ -116,19 +114,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
                 );
         }
 
-        public static ISetupSequentialResult<IResult<IQueryable<T>>> ReturnsGivenSequentialResult<T>(
-            this ISetupSequentialResult<IResult<IQueryable<T>>> setupSequence,
-            bool success,
-            IEnumerable<T> entityCollection
-        ) where T : Entity
-        {
-            return setupSequence.Returns(new Result<IQueryable<T>>
-            {
-                Errors = success ? null : new List<IError> { new Error { Key = "ERROR_KEY" } },
-                ResultObject = success ? entityCollection.AsQueryable() : null
-            });
-        }
-
         #endregion Setup
 
         #region Verify
@@ -173,7 +158,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Sets up the FindAllCommitted method on a repository read conductor.
         /// NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
         /// via parameters. There seems to be an issue around Moq and c# "Expressions". See
-        /// https://andculture.atlassian.net/browse/CCALMS2-599
+        /// https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing/issues/28
         /// </summary>
         /// <param name="mock">The read repository conductor being mocked.</param>
         /// <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
@@ -265,7 +250,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
 
         #endregion FindAllCommitted
 
-
         #region FindById(long id)
 
         public static ISetup<IRepositoryReadConductor<T>, IResult<T>> SetupFindById<T>(this Mock<IRepositoryReadConductor<T>> mock,
@@ -300,7 +284,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         }
 
         #endregion FindById(long id)
-
 
         #region FindById(long id, params string[] includeProperties)
 
@@ -340,36 +323,5 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         }
 
         #endregion FindById(long id, params string[] includeProperties)
-
-
-        #region Returns
-
-        public static ISetupSequentialResult<IResult<TResult>> ReturnsGivenSequentialResult<TResult>(this ISetupSequentialResult<IResult<TResult>> setup,
-            TResult resultObject = default(TResult)
-        )
-        {
-            return setup
-                .Returns(new Result<TResult>
-                {
-                    Errors = new List<IError>(),
-                    ResultObject = resultObject
-                });
-        }
-
-        public static ISetupSequentialResult<IResult<TResult>> ReturnsBasicErrorSequentialResult<TResult>(this ISetupSequentialResult<IResult<TResult>> setup,
-            TResult resultObject = default(TResult)
-        )
-        {
-            return setup
-                .Returns(new Result<TResult>
-                {
-                    Errors = new List<IError> {
-                        ErrorConstants.BasicError
-                    },
-                    ResultObject = resultObject
-                });
-        }
-
-        #endregion Returns
     }
 }
