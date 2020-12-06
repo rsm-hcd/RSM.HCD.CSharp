@@ -5,8 +5,6 @@ using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Testing.Constants;
 using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using AndcultureCode.CSharp.Testing.Tests;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -23,6 +21,13 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
         public LockingConductorTest(ITestOutputHelper output) : base(output)
         {
+        }
+
+        private DateTimeOffset GetFifteenMinutesInTheFuture()
+        {
+            DateTimeOffset now = DateTimeOffset.Now;
+
+            return now.AddMinutes(15);
         }
 
         #endregion Setup
@@ -96,11 +101,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, null).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.Lock(
@@ -123,11 +128,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.Lock(
@@ -148,11 +153,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, new LockableEntity()).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
-                logger: _logger,
-                repositoryReadConductor: repositoryReadConductor,
-                repositoryUpdateConductor: null
-            );
+            var sut = new LockingConductor<LockableEntity>(
+               logger: _logger,
+               repositoryReadConductor: repositoryReadConductor,
+               repositoryUpdateConductor: null
+           );
 
             // Act
             var result = sut.Lock(
@@ -179,11 +184,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 .SetupFindByIdReturnsGivenResult(1, new LockableEntity()).Object;
             var repositoryUpdateConductor = repositoryUpdateConductorMock.Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: repositoryUpdateConductor
-            );
+           );
 
             // Act
             var result = sut.Lock(
@@ -194,7 +199,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);;
+            result.ShouldHaveBasicError();
         }
 
         #endregion Lock
@@ -214,11 +219,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 .SetupFindByIdReturnsGivenResult(1, new LockableEntity()).Object;
             var repositoryUpdateConductor = repositoryUpdateConductorMock.Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: repositoryUpdateConductor
-            );
+           );
 
             // Act
             var result = sut.Unlock(
@@ -243,11 +248,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsBasicErrorResult(1).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.Unlock(
@@ -257,7 +262,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);;
+            result.ShouldHaveBasicError();
         }
 
         [Fact]
@@ -267,11 +272,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, null).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.Unlock(
@@ -297,11 +302,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 .SetupFindByIdReturnsGivenResult(1, new LockableEntity()).Object;
             var repositoryUpdateConductor = repositoryUpdateConductorMock.Object;
 
-             var sut = new LockingConductor<LockableEntity>(
-                logger: _logger,
-                repositoryReadConductor: repositoryReadConductor,
-                repositoryUpdateConductor: repositoryUpdateConductor
-            );
+            var sut = new LockingConductor<LockableEntity>(
+               logger: _logger,
+               repositoryReadConductor: repositoryReadConductor,
+               repositoryUpdateConductor: repositoryUpdateConductor
+           );
 
             // Act
             var result = sut.Unlock(
@@ -311,7 +316,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);;
+            result.ShouldHaveBasicError();
         }
 
         #endregion Unlock
@@ -339,11 +344,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
             var repositoryUpdateConductor = repositoryUpdateConductorMock.Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: repositoryUpdateConductor
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(
@@ -367,18 +372,18 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsBasicErrorResult(1).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(1, GetFifteenMinutesInTheFuture(), 1);
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);;
+            result.ShouldHaveBasicError();
         }
 
         [Fact]
@@ -388,11 +393,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, null).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(
@@ -415,11 +420,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(
@@ -446,11 +451,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(
@@ -477,11 +482,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
             var repositoryReadConductor = new Mock<IRepositoryReadConductor<LockableEntity>>()
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(
@@ -514,11 +519,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 .SetupFindByIdReturnsGivenResult(1, record).Object;
             var repositoryUpdateConductor = repositoryUpdateConductorMock.Object;
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: repositoryReadConductor,
                 repositoryUpdateConductor: repositoryUpdateConductor
-            );
+           );
 
             // Act
             var result = sut.ExtendLock(
@@ -529,7 +534,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
 
             // Assert
             result.ShouldNotBeNull();
-            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);;
+            result.ShouldHaveBasicError();
         }
 
         #endregion ExtendLock
@@ -546,11 +551,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 LockedUntil = DateTimeOffset.Now.AddMinutes(15)
             };
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: null,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ValidateLock(
@@ -568,11 +573,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
         public void ValidateLock_When_Record_Is_Null_Then_Returns_False()
         {
             // Arrange & Act
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: null,
                 repositoryUpdateConductor: null
-            );
+           );
 
             var result = sut.ValidateLock(null);
 
@@ -592,11 +597,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 LockedUntil = DateTimeOffset.Now.AddMinutes(-15)
             };
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: null,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ValidateLock(
@@ -619,11 +624,11 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
                 LockedUntil = DateTimeOffset.Now.AddMinutes(15)
             };
 
-             var sut = new LockingConductor<LockableEntity>(
+            var sut = new LockingConductor<LockableEntity>(
                 logger: _logger,
                 repositoryReadConductor: null,
                 repositoryUpdateConductor: null
-            );
+           );
 
             // Act
             var result = sut.ValidateLock(
@@ -637,17 +642,5 @@ namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
         }
 
         #endregion ValidateLock
-
-        #region Private Methods
-
-        private DateTimeOffset GetFifteenMinutesInTheFuture()
-        {
-            DateTimeOffset now = DateTimeOffset.Now;
-
-            return now.AddMinutes(15);
-        }
-
-        #endregion Helper Methods
-
     }
 }

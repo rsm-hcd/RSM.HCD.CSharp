@@ -1,13 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Conductors.Tests.Stubs;
-using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using AndcultureCode.CSharp.Testing.Tests;
 using Moq;
 using Shouldly;
@@ -15,39 +9,26 @@ using Xunit;
 using Xunit.Abstractions;
 using System.Linq.Expressions;
 using System;
-using AndcultureCode.CSharp.Testing.Factories;
+using AndcultureCode.CSharp.Testing.Models.Stubs;
 
 namespace AndcultureCode.CSharp.Conductors.Tests
 {
     public class RepositoryConductorTest : BaseUnitTest
     {
         #region Setup
+
         public RepositoryConductorTest(ITestOutputHelper output) : base(output)
         {
         }
 
-        /// <summary>
-        /// Mock class used in groupBySelector of tests below
-        /// </summary>
-        internal class GroupingResult
-        {
-            public object Key { get; set; }
-            public object Value { get; set; }
-
-        }
-        #endregion
-
-        const string BASIC_ERROR_KEY = "TESTERRORKEY";
-        const string BASIC_ERROR_MESSAGE = "TESTERRORMESSAGE";
-
-        private IRepositoryConductor<Entity> SetupSut(
-            Mock<IRepositoryCreateConductor<Entity>> createConductor = null,
-            Mock<IRepositoryDeleteConductor<Entity>> deleteConductor = null,
-            Mock<IRepositoryReadConductor<Entity>> readConductor = null,
-            Mock<IRepositoryUpdateConductor<Entity>> updateConductor = null
+        private IRepositoryConductor<UserStub> SetupSut(
+            Mock<IRepositoryCreateConductor<UserStub>> createConductor = null,
+            Mock<IRepositoryDeleteConductor<UserStub>> deleteConductor = null,
+            Mock<IRepositoryReadConductor<UserStub>> readConductor = null,
+            Mock<IRepositoryUpdateConductor<UserStub>> updateConductor = null
         )
         {
-            return new RepositoryConductor<Entity>(
+            return new RepositoryConductor<UserStub>(
                 createConductor: createConductor?.Object,
                 deleteConductor: deleteConductor?.Object,
                 readConductor: readConductor?.Object,
@@ -55,99 +36,71 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             );
         }
 
+        #endregion Setup
+
         #region BulkCreateOrUpdate
 
         [Fact]
         public void BulkCreateOrUpdate_When_Items_Is_Null_Then_Returns_Null()
         {
-            // Arrange
-
-            // Act
-            var bulkCreateOrUpdateResponse = SetupSut().BulkCreateOrUpdate(null);
+            // Arrange & Act
+            var result = SetupSut().BulkCreateOrUpdate(null);
 
             // Assert
-            bulkCreateOrUpdateResponse.ResultObject.ShouldBeNull();
+            result.ResultObject.ShouldBeNull();
         }
 
         [Fact]
         public void BulkCreateOrUpdate_When_Items_Is_Empty_Then_Returns_Empty()
         {
-            // Arrange
-
-            // Act
-            var bulkCreateOrUpdateResponse = SetupSut().BulkCreateOrUpdate(new List<TestEntity>());
+            // Arrange & Act
+            var result = SetupSut().BulkCreateOrUpdate(new List<UserStub>());
 
             // Assert
-            bulkCreateOrUpdateResponse.ResultObject.ShouldBeEmpty();
+            result.ResultObject.ShouldBeEmpty();
         }
 
         [Fact]
         public void BulkCreateOrUpdate_When_BulkUpdate_Has_Errors_Then_Result_Has_Errors_For_BulkUpdate()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
 
-            var entities = new List<TestEntity>();
-            entities.Add(new TestEntity { Id = 1, Name = "hello-world" });
+            var entities = BuildList<UserStub>(2);
+
             mockUpdateConductor.Setup(e => e.BulkUpdate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                Errors = new List<IError> {
-                        new Error
-                        {
-                            Key     = BASIC_ERROR_KEY,
-                            Message = BASIC_ERROR_MESSAGE
-                        }
-                    },
-                ResultObject = false
-            });
+            )).ReturnsBasicErrorResult();
 
             var sut = SetupSut(
                 updateConductor: mockUpdateConductor
             );
 
             // Act
-            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
+            var result = sut.BulkCreateOrUpdate(entities);
 
             // Assert
-            bulkCreateOrUpdateResponse.ShouldHaveErrors();
-            bulkCreateOrUpdateResponse.ShouldHaveBasicError();
+            result.ShouldHaveBasicError();
         }
 
         [Fact]
         public void BulkCreateOrUpdate_When_BulkCreate_Has_Errors_Then_Result_Has_Errors_For_BulkCreate()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
 
-            var entities = new List<Entity>();
-            var entity = new TestEntity { Id = 0, Name = "hello-world" };
-            entities.Add(entity);
+            var entities = BuildList<UserStub>(2);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = false
-            });
+            )).ReturnsGivenResult(false);
             mockCreateConductor.Setup(e => e.BulkCreate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                Errors = new List<IError> {
-                        new Error
-                        {
-                            Key     = BASIC_ERROR_KEY,
-                            Message = BASIC_ERROR_MESSAGE
-                        }
-                    },
-                ResultObject = new List<Entity> { entity }
-            });
+            )).ReturnsBasicErrorResult();
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
@@ -155,45 +108,29 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             );
 
             // Act
-            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities.AsEnumerable(), 1);
+            var result = sut.BulkCreateOrUpdate(entities);
 
             // Assert
-            bulkCreateOrUpdateResponse.ShouldHaveErrors();
-            bulkCreateOrUpdateResponse.ShouldHaveBasicError();
+            result.ShouldHaveBasicError();
         }
 
         [Fact]
         public void BulkCreateOrUpdate_When_BulkCreate_Returns_Null_Then_Result_Has_Errors()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
 
-            var entities = new List<Entity>();
-            var entity = new TestEntity { Id = 0, Name = "hello-world" };
-            entities.Add(entity);
+            var entities = BuildList<UserStub>(2);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = false
-            });
+            )).ReturnsGivenResult(false);
             mockCreateConductor.Setup(e => e.BulkCreate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                Errors = new List<IError> {
-                        new Error
-                        {
-                            Key     = BASIC_ERROR_KEY,
-                            Message = BASIC_ERROR_MESSAGE
-                        }
-                    },
-                ResultObject = null
-            });
+            )).ReturnsBasicErrorResult();
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
@@ -201,38 +138,29 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             );
 
             // Act
-            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
+            var result = sut.BulkCreateOrUpdate(entities);
 
             // Assert
-            bulkCreateOrUpdateResponse.ShouldHaveErrors();
-            bulkCreateOrUpdateResponse.ShouldHaveBasicError();
+            result.ShouldHaveBasicError();
         }
 
         [Fact]
-        public void BulkCreateOrUpdate_When_CreateResult_Is_Not_Null_Then_Returns_List_With_Entity()
+        public void BulkCreateOrUpdate_When_CreateResult_Is_Not_Null_Then_Returns_List_With_UserStub()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
 
-            var entities = new List<Entity>();
-            var entity = new TestEntity { Id = 0, Name = "hello-world" };
-            entities.Add(entity);
+            var entities = BuildList<UserStub>(2);
 
             mockUpdateConductor.Setup(e => e.BulkUpdate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = false
-            });
+            )).ReturnsGivenResult(false);
             mockCreateConductor.Setup(e => e.BulkCreate(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                ResultObject = entities
-            });
+            )).ReturnsGivenResult(entities);
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
@@ -240,12 +168,12 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             );
 
             // Act
-            var bulkCreateOrUpdateResponse = sut.BulkCreateOrUpdate(entities, 1);
+            var result = sut.BulkCreateOrUpdate(entities);
 
             // Assert
-            bulkCreateOrUpdateResponse.ShouldNotHaveErrors();
-            bulkCreateOrUpdateResponse.ResultObject.ShouldNotBeNull();
-            bulkCreateOrUpdateResponse.ResultObject.Count().ShouldBe(1);
+            result.ShouldNotHaveErrors();
+            result.ResultObject.ShouldNotBeNull();
+            result.ResultObject.ShouldBeOfSize(entities.Count);
         }
 
         #endregion BulkCreateOrUpdate
@@ -253,30 +181,20 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         #region CreateOrUpdate
 
         [Fact]
-        public void CreateOrUpdate_When_item_Id_Is_0_And_Create_Result_Has_Errors_Then_Returns_Null_With_Errors()
+        public void CreateOrUpdate_When_Id_Is_0_And_Create_Result_Has_Errors_Then_Returns_Null_With_Errors()
         {
             // Arrange
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entity = new TestEntity() { Id = 0, Name = "Hello-world" };
-            var createdByUserId = 1;
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
+            var entity = Build<UserStub>((e) => e.Id = 0);
 
             mockCreateConductor.Setup(e => e.Create(
-                It.IsAny<Entity>(),
+                It.IsAny<UserStub>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<Entity>
-            {
-                Errors = new List<IError>() {
-                    new Error
-                    {
-                        Key     = BASIC_ERROR_KEY,
-                        Message = BASIC_ERROR_MESSAGE
-                    }},
-                ResultObject = null
-            });
+            )).ReturnsBasicErrorResult();
             var sut = SetupSut(createConductor: mockCreateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entity, createdByUserId);
+            var result = sut.CreateOrUpdate(entity);
 
             // Assert
             result.ShouldHaveBasicError();
@@ -284,25 +202,21 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         }
 
         [Fact]
-        public void CreateOrUpdate_When_item_Id_Is_0_And_Create_Is_Successful_Then_Returns_Created_Object()
+        public void CreateOrUpdate_When_Id_Is_0_And_Create_Is_Successful_Then_Returns_Created_Object()
         {
             // Arrange
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entity = new TestEntity { Id = 0, Name = "Hello-world" };
-            var created = new TestEntity { Id = 1, Name = "Hello-world" };
-            var createdByUserId = 1;
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
+            var entity = Build<UserStub>((e) => e.Id = 0);
+            var created = Build<UserStub>((e) => e.Id = Random.Long(min: 1));
 
             mockCreateConductor.Setup(e => e.Create(
-                It.IsAny<Entity>(),
+                It.IsAny<UserStub>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<Entity>
-            {
-                ResultObject = created
-            });
+            )).ReturnsGivenResult(created);
             var sut = SetupSut(createConductor: mockCreateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entity, createdByUserId);
+            var result = sut.CreateOrUpdate(entity);
 
             // Assert
             result.ShouldNotHaveErrors();
@@ -310,31 +224,20 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         }
 
         [Fact]
-        public void CreateOrUpdate_When_item_Id_Is_Greater_Than_0_And_Update_Has_Errors_Then_Returns_Null_With_Errors()
+        public void CreateOrUpdate_When_Id_Is_Greater_Than_0_And_Update_Has_Errors_Then_Returns_Null_With_Errors()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var entityToUpdate = new TestEntity { Id = 1, Name = "Hello-world" };
-            var createdByUserId = 1;
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var entity = Build<UserStub>((e) => e.Id = Random.Long(min: 1));
 
             mockUpdateConductor.Setup(e => e.Update(
-                It.IsAny<Entity>(),
+                It.IsAny<UserStub>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                Errors = new List<IError>() {
-                    new Error
-                    {
-                        Key     = BASIC_ERROR_KEY,
-                        Message = BASIC_ERROR_MESSAGE
-                    }
-                },
-                ResultObject = false
-            });
+            )).ReturnsBasicErrorResult();
             var sut = SetupSut(updateConductor: mockUpdateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entityToUpdate, createdByUserId);
+            var result = sut.CreateOrUpdate(entity);
 
             // Assert
             result.ShouldHaveBasicError();
@@ -342,107 +245,88 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         }
 
         [Fact]
-        public void CreateOrUpdate_When_item_Id_Is_Greater_Than_0_and_Update_Is_Successful_Then_Returns_Updated_Item()
+        public void CreateOrUpdate_When_Id_Is_Greater_Than_0_and_Update_Is_Successful_Then_Returns_Updated_Item()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var entityToUpdate = new TestEntity { Id = 1, Name = "Hello-world" };
-            var createdByUserId = 1;
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var entity = Build<UserStub>((e) => e.Id = Random.Long(min: 1));
 
             mockUpdateConductor.Setup(e => e.Update(
-                It.IsAny<Entity>(),
+                It.IsAny<UserStub>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = true
-            });
+            )).ReturnsGivenResult(true);
             var sut = SetupSut(updateConductor: mockUpdateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entityToUpdate, createdByUserId);
+            var result = sut.CreateOrUpdate(entity);
 
             // Assert
             result.ShouldNotHaveErrors();
-            result.ResultObject.ShouldBe(entityToUpdate);
+            result.ResultObject.ShouldBe(entity);
         }
 
         [Fact]
         public void CreateOrUpdate_When_Exists_Items_To_Update_And_No_Items_To_Create_And_Update_HasErrors_Then_Returns_Empty_List_And_Error()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entities = new List<Entity>() {
-                new TestEntity { Id = 1, Name = "Test-1" },
-                new TestEntity { Id = 2, Name = "Test-2" }
-            };
-            var currentUserId = 1;
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
+
+            var entities = BuildList<UserStub>(2);
+            foreach (var entity in entities)
+            {
+                entity.Id = Random.Long(min: 1);
+            }
+
             mockUpdateConductor.Setup(e => e.Update(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                Errors = new List<IError>() {
-                    new Error
-                    {
-                        Key = BASIC_ERROR_KEY,
-                        Message = BASIC_ERROR_MESSAGE
-                    }
-                },
-                ResultObject = false
-            });
+            )).ReturnsBasicErrorResult();
             mockCreateConductor.Setup(e => e.Create(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                ResultObject = null
-            });
+            )).ReturnsGivenResult();
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entities, currentUserId);
+            var result = sut.CreateOrUpdate(entities);
 
             // Assert
             result.ShouldHaveErrors();
-            result.ResultObject.ShouldBeEmpty<Entity>();
+            result.ResultObject.ShouldBeEmpty();
         }
 
         [Fact]
         public void CreateOrUpdate_When_Items_To_Update_And_No_Items_To_Create_And_Update_Is_Successful_Then_Returns_Null()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entities = new List<Entity>() {
-                new TestEntity { Id = 1, Name = "Test-1" },
-                new TestEntity { Id = 2, Name = "Test-2" }
-            };
-            var currentUserId = 1;
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
+
+            var entities = BuildList<UserStub>(2);
+            foreach (var entity in entities)
+            {
+                entity.Id = Random.Long(min: 1);
+            }
+
             mockUpdateConductor.Setup(e => e.Update(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = true
-            });
+            )).ReturnsGivenResult(true);
             mockCreateConductor.Setup(e => e.Create(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                ResultObject = null
-            });
+            )).ReturnsGivenResult(null);
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entities, currentUserId);
+            var result = sut.CreateOrUpdate(entities);
 
             // Assert
             result.ShouldNotHaveErrors();
@@ -453,42 +337,28 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void CreateOrUpdate_When_Items_To_Update_Do_Not_Exist_And_Items_To_Create_Exist_And_Create_Has_Errors_Then_Returns_Null_With_Error()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entities = new List<Entity>() {
-                new TestEntity { Id = 0, Name = "Test-1" },
-                new TestEntity { Id = 0, Name = "Test-2" }
-            };
-            var currentUserId = 1;
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
+
+            var entities = BuildList<UserStub>(2);
+
             mockUpdateConductor.Setup(e => e.Update(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = true
-            });
+            )).ReturnsGivenResult(true);
             mockCreateConductor.Setup(e => e.Create(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                Errors = new List<IError>() {
-                    new Error() {
-                    Key     = BASIC_ERROR_KEY,
-                    Message = BASIC_ERROR_MESSAGE
-                }},
-                ResultObject = null
-            });
+            )).ReturnsBasicErrorResult();
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
                 updateConductor: mockUpdateConductor);
 
             // Act
-            var result = sut.CreateOrUpdate(entities, currentUserId);
+            var result = sut.CreateOrUpdate(entities);
 
             // Assert
-
             result.ShouldHaveBasicError();
             result.ResultObject.ShouldBeEmpty();
         }
@@ -497,38 +367,33 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void CreateOrUpdate_When_Items_To_Update_Do_Not_Exist_And_Items_To_Create_Exist_And_Create_is_Successful_Then_Returns_Created_Entities()
         {
             // Arrange
-            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<Entity>>();
-            var mockCreateConductor = new Mock<IRepositoryCreateConductor<Entity>>();
-            var entities = new List<Entity>() {
-                new TestEntity { Id = 0, Name = "Test-1" },
-                new TestEntity { Id = 0, Name = "Test-2" }
-            };
-            var createdEntities = new List<Entity>() {
-                new TestEntity { Id = 1, Name = "Test-1" },
-                new TestEntity { Id = 2, Name = "Test-2" }
-            };
-            var currentUserId = 1;
+            var mockUpdateConductor = new Mock<IRepositoryUpdateConductor<UserStub>>();
+            var mockCreateConductor = new Mock<IRepositoryCreateConductor<UserStub>>();
+
+            var entities = BuildList<UserStub>(2);
+
+            var createdEntities = BuildList<UserStub>(2);
+            foreach (var createdEntity in createdEntities)
+            {
+                createdEntity.Id = Random.Long(min: 1);
+            }
+
             mockUpdateConductor.Setup(e => e.Update(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<bool>
-            {
-                ResultObject = true
-            });
+            )).ReturnsGivenResult(true);
             mockCreateConductor.Setup(e => e.Create(
-                It.IsAny<IEnumerable<Entity>>(),
+                It.IsAny<IEnumerable<UserStub>>(),
                 It.IsAny<long?>()
-            )).Returns(new Result<List<Entity>>
-            {
-                ResultObject = createdEntities
-            });
+            )).ReturnsGivenResult(createdEntities);
 
             var sut = SetupSut(
                 createConductor: mockCreateConductor,
-                updateConductor: mockUpdateConductor);
+                updateConductor: mockUpdateConductor
+            );
 
             // Act
-            var result = sut.CreateOrUpdate(entities, currentUserId);
+            var result = sut.CreateOrUpdate(entities);
 
             // Assert
             result.ShouldNotHaveErrors();
@@ -543,15 +408,19 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void Delete_When_Delete_HasErrors_Then_Returns_False_With_Errors()
         {
             // Arrange
-            var entities = new List<Entity>();
-            var mockDeleteConductor = new Mock<IRepositoryDeleteConductor<Entity>>();
+            var entities = new List<UserStub>();
+            var mockDeleteConductor = new Mock<IRepositoryDeleteConductor<UserStub>>();
             mockDeleteConductor.Setup(
-                m => m.Delete(It.IsAny<IEnumerable<Entity>>(), It.IsAny<long?>(), It.IsAny<long>(), It.IsAny<bool>()
+                m => m.Delete(
+                    It.IsAny<IEnumerable<UserStub>>(),
+                    It.IsAny<long?>(),
+                    It.IsAny<long>(),
+                    It.IsAny<bool>()
             )).ReturnsBasicErrorResult();
             var sut = SetupSut(deleteConductor: mockDeleteConductor);
 
             // Act
-            var result = sut.Delete(entities, null, 100, true);
+            var result = sut.Delete(entities);
 
             // Assert
             result.ShouldHaveBasicError();
@@ -562,15 +431,19 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void Delete_When_Delete_Succeeds_Then_Returns_True()
         {
             // Arrange
-            var entities = new List<Entity>();
-            var mockDeleteConductor = new Mock<IRepositoryDeleteConductor<Entity>>();
+            var entities = new List<UserStub>();
+            var mockDeleteConductor = new Mock<IRepositoryDeleteConductor<UserStub>>();
             mockDeleteConductor.Setup(
-                m => m.Delete(It.IsAny<IEnumerable<Entity>>(), It.IsAny<long?>(), It.IsAny<long>(), It.IsAny<bool>()
+                m => m.Delete(
+                    It.IsAny<IEnumerable<UserStub>>(),
+                    It.IsAny<long?>(),
+                    It.IsAny<long>(),
+                    It.IsAny<bool>()
             )).ReturnsGivenResult(true);
             var sut = SetupSut(deleteConductor: mockDeleteConductor);
 
             // Act
-            var result = sut.Delete(entities, null, 100, true);
+            var result = sut.Delete(entities);
 
             // Assert
             result.ShouldNotHaveErrors();
@@ -579,18 +452,31 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
         #endregion Delete
 
-        #region FindAll
+        #region FindAll (groupBy)
+
+        #region Setup
+
+        /// <summary>
+        /// Mock class used in groupBySelector of tests below
+        /// </summary>
+        internal class GroupingResult
+        {
+            public object Key { get; set; }
+            public object Value { get; set; }
+        }
+
+        #endregion Setup
 
         [Fact]
         public void FindAll_GroupBy_When_FindAll_HasErrors_Then_Returns_Errors()
         {
-            // Arrange            
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
+            // Arrange
+            var mockReadConductor = new Mock<IRepositoryReadConductor<UserStub>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long>(
-                    It.IsAny<Expression<Func<Entity, bool>>>(), // filter
-                    It.IsAny<Func<IQueryable<Entity>, IOrderedQueryable<Entity>>>(), // orderBy
-                    It.IsAny<Expression<Func<Entity, long>>>(), // groupBy
+                    It.IsAny<Expression<Func<UserStub, bool>>>(), // filter
+                    It.IsAny<Func<IQueryable<UserStub>, IOrderedQueryable<UserStub>>>(), // orderBy
+                    It.IsAny<Expression<Func<UserStub, long>>>(), // groupBy
                     It.IsAny<string>(), // includeProperties
                     It.IsAny<int?>(), // skip
                     It.IsAny<int?>(), // take
@@ -613,22 +499,22 @@ namespace AndcultureCode.CSharp.Conductors.Tests
             result.ResultObject.ShouldBeNull();
         }
 
-        [Fact]        
+        [Fact]
         public void FindAll_GroupBy_When_No_Records_Found_Returns_Empty_List()
         {
-            // Arrange            
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();            
+            // Arrange
+            var mockReadConductor = new Mock<IRepositoryReadConductor<UserStub>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long>(
-                    It.IsAny<Expression<Func<Entity, bool>>>(), // filter
-                    It.IsAny<Func<IQueryable<Entity>, IOrderedQueryable<Entity>>>(), // orderBy
-                    It.IsAny<Expression<Func<Entity, long>>>(), // groupBy
+                    It.IsAny<Expression<Func<UserStub, bool>>>(), // filter
+                    It.IsAny<Func<IQueryable<UserStub>, IOrderedQueryable<UserStub>>>(), // orderBy
+                    It.IsAny<Expression<Func<UserStub, long>>>(), // groupBy
                     It.IsAny<string>(), // includeProperties
                     It.IsAny<int?>(), // skip
                     It.IsAny<int?>(), // take
                     It.IsAny<bool?>(), // ignoreQueryFilters
                     It.IsAny<bool>() // asNoTracking
-            )).ReturnsGivenResult(new List<IGrouping<long, Entity>>().AsQueryable());
+            )).ReturnsGivenResult(new List<IGrouping<long, UserStub>>().AsQueryable());
             var sut = SetupSut(readConductor: mockReadConductor);
 
             // Act
@@ -650,14 +536,13 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void FindAll_GroupBy_When_FindAll_Find_Something_And_Succeeds_Then_Returns_IQueryable()
         {
             // Arrange
-            FactoryExtensions.DefineFactory(new TestEntityFactory(), () => new TestEntity() { Id = 0, Name = "Alice" });
-            var query = BuildList<TestEntity>(10).AsQueryable().GroupBy(entity => entity.Id);
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
+            var query = BuildList<UserStub>(10).AsQueryable().GroupBy(UserStub => UserStub.Id);
+            var mockReadConductor = new Mock<IRepositoryReadConductor<UserStub>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long>(
-                    It.IsAny<Expression<Func<Entity, bool>>>(), // filter
-                    It.IsAny<Func<IQueryable<Entity>, IOrderedQueryable<Entity>>>(), // orderBy
-                    It.IsAny<Expression<Func<Entity, long>>>(), // groupBy
+                    It.IsAny<Expression<Func<UserStub, bool>>>(), // filter
+                    It.IsAny<Func<IQueryable<UserStub>, IOrderedQueryable<UserStub>>>(), // orderBy
+                    It.IsAny<Expression<Func<UserStub, long>>>(), // groupBy
                     It.IsAny<string>(), // includeProperties
                     It.IsAny<int?>(), // skip
                     It.IsAny<int?>(), // take
@@ -680,7 +565,6 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
             // Assert
             result.ShouldNotHaveErrors();
-            result.ResultObject.ShouldNotBeNull();
             result.ResultObject.ShouldNotBeEmpty();
         }
 
@@ -688,13 +572,13 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void FindAll_GroupBy_With_Selector_When_FindAll_HasErrors_Then_Returns_Errors()
         {
             // Arrange
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
+            var mockReadConductor = new Mock<IRepositoryReadConductor<UserStub>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long, GroupingResult>(
-                    It.IsAny<Expression<Func<Entity, bool>>>(), // filter
-                    It.IsAny<Func<IQueryable<Entity>, IOrderedQueryable<Entity>>>(), // orderBy
-                    It.IsAny<Expression<Func<Entity, long>>>(), // groupBy
-                    It.IsAny<Expression<Func<long, IEnumerable<Entity>, GroupingResult>>>(), // groupBySelector
+                    It.IsAny<Expression<Func<UserStub, bool>>>(), // filter
+                    It.IsAny<Func<IQueryable<UserStub>, IOrderedQueryable<UserStub>>>(), // orderBy
+                    It.IsAny<Expression<Func<UserStub, long>>>(), // groupBy
+                    It.IsAny<Expression<Func<long, IEnumerable<UserStub>, GroupingResult>>>(), // groupBySelector
                     It.IsAny<string>(), // includeProperties
                     It.IsAny<int?>(), // skip
                     It.IsAny<int?>(), // take
@@ -722,14 +606,14 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void FindAll_GroupBy_Given_Selector_When_No_Records_Found_Returns_Empty_List()
         {
             // Arrange
-            var entities = new List<Entity>();
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
+            var entities = new List<UserStub>();
+            var mockReadConductor = new Mock<IRepositoryReadConductor<UserStub>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long, GroupingResult>(
-                    It.IsAny<Expression<Func<Entity, bool>>>(), // filter
-                    It.IsAny<Func<IQueryable<Entity>, IOrderedQueryable<Entity>>>(), // orderBy
-                    It.IsAny<Expression<Func<Entity, long>>>(), // groupBy
-                    It.IsAny<Expression<Func<long, IEnumerable<Entity>, GroupingResult>>>(), // groupBySelector
+                    It.IsAny<Expression<Func<UserStub, bool>>>(), // filter
+                    It.IsAny<Func<IQueryable<UserStub>, IOrderedQueryable<UserStub>>>(), // orderBy
+                    It.IsAny<Expression<Func<UserStub, long>>>(), // groupBy
+                    It.IsAny<Expression<Func<long, IEnumerable<UserStub>, GroupingResult>>>(), // groupBySelector
                     It.IsAny<string>(), // includeProperties
                     It.IsAny<int?>(), // skip
                     It.IsAny<int?>(), // take
@@ -743,7 +627,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests
                 filter: o => o.Id == 1,
                 orderBy: o => o.OrderBy(x => x.Id),
                 groupBy: o => o.Id,
-                groupBySelector: (o, k) => new GroupingResult { Key = o, Value = k.Count() },                
+                groupBySelector: (o, k) => new GroupingResult { Key = o, Value = k.Count() },
                 ignoreQueryFilters: false,
                 asNoTracking: false
             );
@@ -758,29 +642,29 @@ namespace AndcultureCode.CSharp.Conductors.Tests
         public void FindAll_GroupBy_With_Selector_When_FindAll_Find_Something_And_Succeeds_Then_Returns_IQueryable()
         {
             // Arrange
-            FactoryExtensions.DefineFactory(new TestEntityFactory(), () => new TestEntity() { Id = 0, Name = "Alice" });
-            var query = BuildList<TestEntity>(10)
-                        .AsQueryable()
-                        .GroupBy(
-                            entity => entity.Name,
-                            (name, list) => new GroupingResult
-                            {
-                                Key = name,
-                                Value = list.Count()
-                            });
-            var mockReadConductor = new Mock<IRepositoryReadConductor<Entity>>();
+            var query = BuildList<UserStub>(10)
+                .AsQueryable()
+                .GroupBy(
+                    e => e.FirstName,
+                    (name, list) => new GroupingResult
+                    {
+                        Key = name,
+                        Value = list.Count()
+                    }
+                );
+            var mockReadConductor = new Mock<IRepositoryReadConductor<UserStub>>();
             mockReadConductor.Setup(
                 m => m.FindAll<long, GroupingResult>(
-                    It.IsAny<Expression<Func<Entity, bool>>>(), // filter
-                    It.IsAny<Func<IQueryable<Entity>, IOrderedQueryable<Entity>>>(), // orderBy
-                    It.IsAny<Expression<Func<Entity, long>>>(), // groupBy
-                    It.IsAny<Expression<Func<long, IEnumerable<Entity>, GroupingResult>>>(), // groupBySelector
+                    It.IsAny<Expression<Func<UserStub, bool>>>(), // filter
+                    It.IsAny<Func<IQueryable<UserStub>, IOrderedQueryable<UserStub>>>(), // orderBy
+                    It.IsAny<Expression<Func<UserStub, long>>>(), // groupBy
+                    It.IsAny<Expression<Func<long, IEnumerable<UserStub>, GroupingResult>>>(), // groupBySelector
                     It.IsAny<string>(), // includeProperties
                     It.IsAny<int?>(), // skip
                     It.IsAny<int?>(), // take
                     It.IsAny<bool?>(), // ignoreQueryFilters
                     It.IsAny<bool>() // asNoTracking
-            )).ReturnsGivenResult(query);                
+            )).ReturnsGivenResult(query);
             var sut = SetupSut(readConductor: mockReadConductor);
 
             // Act
@@ -798,7 +682,6 @@ namespace AndcultureCode.CSharp.Conductors.Tests
 
             // Assert
             result.ShouldNotHaveErrors();
-            result.ResultObject.ShouldNotBeNull();
             result.ResultObject.ShouldNotBeEmpty();
         }
 
