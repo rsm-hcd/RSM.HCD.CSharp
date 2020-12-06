@@ -13,7 +13,7 @@ using AndcultureCode.CSharp.Testing.Models.Stubs;
 
 namespace AndcultureCode.CSharp.Conductors.Tests
 {
-    public class RepositoryConductorTest : BaseUnitTest
+    public class RepositoryConductorTest : ProjectUnitTest
     {
         #region Setup
 
