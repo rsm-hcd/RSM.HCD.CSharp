@@ -76,6 +76,7 @@
   - [ReturnsBasicErrorResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
   - [ReturnsBasicErrorSequentialResult\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)')
   - [ReturnsGivenResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
+  - [ReturnsGivenSequentialResult\`\`1(setup,resultObject)](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)')
 - [UserStub](#T-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub')
   - [EmailAddress](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-EmailAddress 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.EmailAddress')
   - [FirstName](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-FirstName 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.FirstName')
@@ -952,7 +953,7 @@ Extension methods for mocking methods of the \`IRepositoryReadConductor\` interf
 Sets up the FindAllCommitted method on a repository read conductor.
 NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
 via parameters. There seems to be an issue around Moq and c# "Expressions". See
-https://andculture.atlassian.net/browse/CCALMS2-599
+https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing/issues/28
 
 ##### Returns
 
@@ -982,7 +983,7 @@ A setup FindAllCommitted method on the supplied mocked conductor.
 Sets up the FindAll method on a repository read conductor.
 NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
 via parameters. There seems to be an issue around Moq and c# "Expressions". See
-https://andculture.atlassian.net/browse/CCALMS2-599
+https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing/issues/28
 
 ##### Returns
 
@@ -1230,6 +1231,30 @@ This method has no parameters.
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+| TResult |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0-'></a>
+### ReturnsGivenSequentialResult\`\`1(setup,resultObject) `method`
+
+##### Summary
+
+Returns given result in sequence of the setup.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| setup | [Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}}](#T-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}} 'Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}}') |  |
+| resultObject | [\`\`0](#T-``0 '``0') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
 | TResult |  |
 
 <a name='T-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub'></a>
