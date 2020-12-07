@@ -1,10 +1,12 @@
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
+using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Testing.Constants;
 using Moq.Language;
 using Moq.Language.Flow;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AndcultureCode.CSharp.Testing.Extensions
 {
@@ -19,14 +21,16 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
-        public static IReturnsResult<T> ReturnsBasicErrorResult<T, TResult>(this ISetup<T, IResult<TResult>> setup,
+        public static IReturnsResult<T> ReturnsBasicErrorResult<T, TResult>(
+            this ISetup<T, IResult<TResult>> setup,
             TResult resultObject = default(TResult)
         ) where T : class
         {
             return setup
                 .Returns(new Result<TResult>
                 {
-                    Errors = new List<IError> {
+                    Errors = new List<IError>
+                    {
                         ErrorConstants.BasicError
                     },
                     ResultObject = resultObject
@@ -38,14 +42,16 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
-        public static ISetupSequentialResult<IResult<TResult>> ReturnsBasicErrorSequentialResult<TResult>(this ISetupSequentialResult<IResult<TResult>> setup,
-           TResult resultObject = default(TResult)
-       )
+        public static ISetupSequentialResult<IResult<TResult>> ReturnsBasicErrorSequentialResult<TResult>(
+            this ISetupSequentialResult<IResult<TResult>> setup,
+            TResult resultObject = default(TResult)
+        )
         {
             return setup
                 .Returns(new Result<TResult>
                 {
-                    Errors = new List<IError> {
+                    Errors = new List<IError>
+                    {
                         ErrorConstants.BasicError
                     },
                     ResultObject = resultObject
@@ -58,7 +64,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
-        public static IReturnsResult<T> ReturnsGivenResult<T, TResult>(this ISetup<T, IResult<TResult>> setup,
+        public static IReturnsResult<T> ReturnsGivenResult<T, TResult>(
+            this ISetup<T, IResult<TResult>> setup,
             TResult resultObject = default(TResult)
         ) where T : class
         {
@@ -70,5 +77,24 @@ namespace AndcultureCode.CSharp.Testing.Extensions
                 });
         }
 
+        /// <summary>
+        /// Returns given result in sequence of the setup.
+        /// </summary>
+        /// <param name="setup"></param>
+        /// <param name="resultObject"></param>
+        /// <typeparam name="TResult"></typeparam>
+        /// <returns></returns>
+        public static ISetupSequentialResult<IResult<TResult>> ReturnsGivenSequentialResult<TResult>(
+            this ISetupSequentialResult<IResult<TResult>> setup,
+            TResult resultObject = default(TResult)
+        )
+        {
+            return setup
+                .Returns(new Result<TResult>
+                {
+                    Errors = new List<IError>(),
+                    ResultObject = resultObject
+                });
+        }
     }
 }
