@@ -41,7 +41,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static T AsConflict<T>(this IActionResult action) where T : class
-            => action.AsHttpResult<BadRequestObjectResult, T>(StatusCodes.Status409Conflict);
+            => action.AsHttpResult<ObjectResult, T>(StatusCodes.Status409Conflict);
 
         /// <summary>
         /// Verifies the result is the correct HTTP response type of 'Created'
@@ -61,7 +61,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static T AsForbidden<T>(this IActionResult action) where T : class
-            => action.AsHttpResult<BadRequestObjectResult, T>(StatusCodes.Status403Forbidden);
+            => action.AsHttpResult<ObjectResult, T>(StatusCodes.Status403Forbidden);
 
         /// <summary>
         /// Verifies the result is the correct requested HTTP response type
