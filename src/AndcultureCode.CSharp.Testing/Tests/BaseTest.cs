@@ -104,6 +104,8 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
         #region Protected Methods
 
+        #region Build
+
         protected T Build<T>() => FactoryExtensions.Build<T>();
         protected T Build<T>(string name) => FactoryExtensions.Build<T>(name);
         protected T Build<T>(List<string> names) => FactoryExtensions.Build<T>(names);
@@ -114,6 +116,16 @@ namespace AndcultureCode.CSharp.Testing.Tests
         protected T Build<T>(string name, List<Action<T>> properties) => FactoryExtensions.Build<T>(name, properties);
         protected T Build<T>(string name, params Action<T>[] properties) => FactoryExtensions.Build<T>(name, properties.ToList());
 
+        #endregion Build
+
+        #region BuildList
+
+        /// <summary>
+        /// Builds a list of entity type T. A factory for type T must be defined.
+        /// </summary>
+        /// <param name="count"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         protected List<T> BuildList<T>(int count)
         {
             var result = new List<T>();
@@ -125,6 +137,10 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
             return result;
         }
+
+        #endregion BuildList
+
+        #region BuildResult
 
         protected Result<T> BuildResult<T>() => new Result<T> { ResultObject = FactoryExtensions.Build<T>() };
         protected Result<T> BuildResult<T>(string name) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name) };
@@ -159,6 +175,8 @@ namespace AndcultureCode.CSharp.Testing.Tests
         protected Result<T> BuildResult<T>(params Action<T>[] properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(properties.ToList()) };
         protected Result<T> BuildResult<T>(string name, List<Action<T>> properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties) };
         protected Result<T> BuildResult<T>(string name, params Action<T>[] properties) => new Result<T> { ResultObject = FactoryExtensions.Build<T>(name, properties.ToList()) };
+
+        #endregion BuildResult
 
         protected T FromJson<T>(string value) => JsonConvert.DeserializeObject<T>(value);
         protected T FromJson<T>(HttpResponseMessage response) => response.FromJson<T>();
