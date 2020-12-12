@@ -106,14 +106,72 @@ namespace AndcultureCode.CSharp.Testing.Tests
 
         #region Build
 
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>() => FactoryExtensions.Build<T>();
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="name">Named factory to be used for creation</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(string name) => FactoryExtensions.Build<T>(name);
+
         protected T Build<T>(List<string> names) => FactoryExtensions.Build<T>(names);
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="property">Function to set a specific property on the created entity</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(Action<T> property) => FactoryExtensions.Build<T>(property);
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="name">Named factory to be used for creation</param>
+        /// <param name="property">Function to set a specific property on the created entity</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(string name, Action<T> property) => FactoryExtensions.Build<T>(name, property);
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="properties">Functions to set properties on the created entity</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(List<Action<T>> properties) => FactoryExtensions.Build<T>(properties);
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="properties">Functions to set properties on the created entity</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(params Action<T>[] properties) => FactoryExtensions.Build<T>(properties.ToList());
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="name">Named factory to be used for creation</param>
+        /// <param name="properties">Functions to set properties on the created entity</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(string name, List<Action<T>> properties) => FactoryExtensions.Build<T>(name, properties);
+
+        /// <summary>
+        /// Builds entity of type T.
+        /// </summary>
+        /// <param name="name">Named factory to be used for creation</param>
+        /// <param name="properties">Functions to set properties on the created entity</param>
+        /// <typeparam name="T">Type of entity to create</typeparam>
+        /// <returns>Created entity</returns>
         protected T Build<T>(string name, params Action<T>[] properties) => FactoryExtensions.Build<T>(name, properties.ToList());
 
         #endregion Build
