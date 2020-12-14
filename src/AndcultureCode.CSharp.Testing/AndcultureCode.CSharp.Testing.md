@@ -4,14 +4,55 @@
 ## Contents
 
 - [BaseIntegrationTest](#T-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest')
+  - [BuildTo\`\`2()](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2')
+  - [BuildTo\`\`2(name)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-String- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2(System.String)')
+  - [BuildTo\`\`2(property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2(System.Action{``0})')
+  - [BuildTo\`\`2(name,property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-String,System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2(System.String,System.Action{``0})')
+  - [BuildTo\`\`2(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2(System.Collections.Generic.List{System.Action{``0}})')
+  - [BuildTo\`\`2(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2(System.Action{``0}[])')
+  - [BuildTo\`\`2(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-String,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.BuildTo``2(System.String,System.Collections.Generic.List{System.Action{``0}})')
+  - [CreateList\`\`1(count)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32)')
+  - [CreateList\`\`1(count,name)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.String)')
+  - [CreateList\`\`1(count,property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.Action{``0})')
+  - [CreateList\`\`1(count,name,property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String,System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.String,System.Action{``0})')
+  - [CreateList\`\`1(count,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.Collections.Generic.List{System.Action{``0}})')
+  - [CreateList\`\`1(count,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.Action{``0}[])')
+  - [CreateList\`\`1(count,name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.String,System.Collections.Generic.List{System.Action{``0}})')
+  - [CreateList\`\`1(count,name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String,System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.String,System.Action{``0}[])')
+  - [CreateList\`\`1(count,builderFunc)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Func{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateList``1(System.Int32,System.Func{``0})')
+  - [CreateTo\`\`2()](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2')
+  - [CreateTo\`\`2(name)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-String- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2(System.String)')
+  - [CreateTo\`\`2(property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2(System.Action{``0})')
+  - [CreateTo\`\`2(name,property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-String,System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2(System.String,System.Action{``0})')
+  - [CreateTo\`\`2(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2(System.Collections.Generic.List{System.Action{``0}})')
+  - [CreateTo\`\`2(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2(System.Action{``0}[])')
+  - [CreateTo\`\`2(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-String,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.CreateTo``2(System.String,System.Collections.Generic.List{System.Action{``0}})')
+  - [Create\`\`1()](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1')
+  - [Create\`\`1(name)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.String)')
+  - [Create\`\`1(property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.Action{``0})')
+  - [Create\`\`1(name,property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String,System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.String,System.Action{``0})')
+  - [Create\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.Collections.Generic.List{System.Action{``0}})')
+  - [Create\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.Action{``0}[])')
+  - [Create\`\`1(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.String,System.Collections.Generic.List{System.Action{``0}})')
+  - [Create\`\`1(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String,System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(System.String,System.Action{``0}[])')
   - [Create\`\`1(context,item)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-AndcultureCode-CSharp-Core-Interfaces-IContext,``0- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Create``1(AndcultureCode.CSharp.Core.Interfaces.IContext,``0)')
   - [GetRepositoryConductorDeps\`\`1(repository)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-GetRepositoryConductorDeps``1-AndcultureCode-CSharp-Core-Interfaces-Data-IRepository{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.GetRepositoryConductorDeps``1(AndcultureCode.CSharp.Core.Interfaces.Data.IRepository{``0})')
+  - [Map\`\`2(entity)](#M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Map``2-``0- 'AndcultureCode.CSharp.Testing.Tests.BaseIntegrationTest.Map``2(``0)')
 - [BaseTest](#T-AndcultureCode-CSharp-Testing-Tests-BaseTest 'AndcultureCode.CSharp.Testing.Tests.BaseTest')
   - [#ctor(output)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#ctor-Xunit-Abstractions-ITestOutputHelper- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#ctor(Xunit.Abstractions.ITestOutputHelper)')
   - [Faker](#P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Faker 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Faker')
   - [Random](#P-AndcultureCode-CSharp-Testing-Tests-BaseTest-Random 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Random')
   - [#cctor()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-#cctor 'AndcultureCode.CSharp.Testing.Tests.BaseTest.#cctor')
+  - [BuildList\`\`1(count)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildList``1-System-Int32- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildList``1(System.Int32)')
   - [BuildResult\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Errors-Result{``0}}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.BuildResult``1(System.Action{AndcultureCode.CSharp.Core.Models.Errors.Result{``0}}[])')
+  - [Build\`\`1()](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1')
+  - [Build\`\`1(name)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.String)')
+  - [Build\`\`1(property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.Action{``0})')
+  - [Build\`\`1(name,property)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Action{``0}- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.String,System.Action{``0})')
+  - [Build\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.Collections.Generic.List{System.Action{``0}})')
+  - [Build\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.Action{``0}[])')
+  - [Build\`\`1(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.String,System.Collections.Generic.List{System.Action{``0}})')
+  - [Build\`\`1(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.String,System.Action{``0}[])')
 - [ErrorFactory](#T-AndcultureCode-CSharp-Testing-Factories-ErrorFactory 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory')
   - [BASIC_ERROR](#F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-BASIC_ERROR 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.BASIC_ERROR')
   - [RESOURCE_NOT_FOUND_ERROR](#F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-RESOURCE_NOT_FOUND_ERROR 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.RESOURCE_NOT_FOUND_ERROR')
@@ -95,6 +136,745 @@
 
 AndcultureCode.CSharp.Testing.Tests
 
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2'></a>
+### BuildTo\`\`2() `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-String-'></a>
+### BuildTo\`\`2(name) `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-Action{``0}-'></a>
+### BuildTo\`\`2(property) `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-String,System-Action{``0}-'></a>
+### BuildTo\`\`2(name,property) `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-Collections-Generic-List{System-Action{``0}}-'></a>
+### BuildTo\`\`2(properties) `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-Action{``0}[]-'></a>
+### BuildTo\`\`2(properties) `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-BuildTo``2-System-String,System-Collections-Generic-List{System-Action{``0}}-'></a>
+### BuildTo\`\`2(name,properties) `method`
+
+##### Summary
+
+Builds and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32-'></a>
+### CreateList\`\`1(count) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String-'></a>
+### CreateList\`\`1(count,name) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Action{``0}-'></a>
+### CreateList\`\`1(count,property) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String,System-Action{``0}-'></a>
+### CreateList\`\`1(count,name,property) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Collections-Generic-List{System-Action{``0}}-'></a>
+### CreateList\`\`1(count,properties) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Action{``0}[]-'></a>
+### CreateList\`\`1(count,properties) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String,System-Collections-Generic-List{System-Action{``0}}-'></a>
+### CreateList\`\`1(count,name,properties) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-String,System-Action{``0}[]-'></a>
+### CreateList\`\`1(count,name,properties) `method`
+
+##### Summary
+
+Creates a list of entities of type T.
+
+##### Returns
+
+List of created entities
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of entities to be created |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateList``1-System-Int32,System-Func{``0}-'></a>
+### CreateList\`\`1(count,builderFunc) `method`
+
+##### Summary
+
+Helper function for the various CreateList method overloads
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+| builderFunc | [System.Func{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``0}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2'></a>
+### CreateTo\`\`2() `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-String-'></a>
+### CreateTo\`\`2(name) `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-Action{``0}-'></a>
+### CreateTo\`\`2(property) `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-String,System-Action{``0}-'></a>
+### CreateTo\`\`2(name,property) `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-Collections-Generic-List{System-Action{``0}}-'></a>
+### CreateTo\`\`2(properties) `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-Action{``0}[]-'></a>
+### CreateTo\`\`2(properties) `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-CreateTo``2-System-String,System-Collections-Generic-List{System-Action{``0}}-'></a>
+### CreateTo\`\`2(name,properties) `method`
+
+##### Summary
+
+Creates and maps an entity to the target type.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+| TTarget | Type to map entity to |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1'></a>
+### Create\`\`1() `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String-'></a>
+### Create\`\`1(name) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-Action{``0}-'></a>
+### Create\`\`1(property) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String,System-Action{``0}-'></a>
+### Create\`\`1(name,property) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-Collections-Generic-List{System-Action{``0}}-'></a>
+### Create\`\`1(properties) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-Action{``0}[]-'></a>
+### Create\`\`1(properties) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String,System-Collections-Generic-List{System-Action{``0}}-'></a>
+### Create\`\`1(name,properties) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-System-String,System-Action{``0}[]-'></a>
+### Create\`\`1(name,properties) `method`
+
+##### Summary
+
+Creates entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
 <a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Create``1-AndcultureCode-CSharp-Core-Interfaces-IContext,``0-'></a>
 ### Create\`\`1(context,item) `method`
 
@@ -141,6 +921,30 @@ Sets up an object containing conductor dependencies for a given Entity T returne
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseIntegrationTest-Map``2-``0-'></a>
+### Map\`\`2(entity) `method`
+
+##### Summary
+
+Maps an entity to the target type
+
+##### Returns
+
+Mapped entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Source type of entity |
+| TTarget | Destination type to map entity to |
 
 <a name='T-AndcultureCode-CSharp-Testing-Tests-BaseTest'></a>
 ## BaseTest `type`
@@ -195,6 +999,29 @@ Static constructor to set up suite-level actors
 
 This method has no parameters.
 
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildList``1-System-Int32-'></a>
+### BuildList\`\`1(count) `method`
+
+##### Summary
+
+Builds a list of entity type T. A factory for type T must be defined.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| count | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
 <a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-BuildResult``1-System-Action{AndcultureCode-CSharp-Core-Models-Errors-Result{``0}}[]-'></a>
 ### BuildResult\`\`1(properties) `method`
 
@@ -219,6 +1046,191 @@ configuration of \`T\` is required.
 | Name | Description |
 | ---- | ----------- |
 | T |  |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1'></a>
+### Build\`\`1() `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String-'></a>
+### Build\`\`1(name) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Action{``0}-'></a>
+### Build\`\`1(property) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Action{``0}-'></a>
+### Build\`\`1(name,property) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| property | [System.Action{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}') | Function to set a specific property on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Collections-Generic-List{System-Action{``0}}-'></a>
+### Build\`\`1(properties) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Action{``0}[]-'></a>
+### Build\`\`1(properties) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Collections-Generic-List{System-Action{``0}}-'></a>
+### Build\`\`1(name,properties) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Collections.Generic.List{System.Action{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Action{``0}}') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
+
+<a name='M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Action{``0}[]-'></a>
+### Build\`\`1(name,properties) `method`
+
+##### Summary
+
+Builds entity of type T.
+
+##### Returns
+
+Created entity
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Named factory to be used for creation |
+| properties | [System.Action{\`\`0}[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{``0}[]') | Functions to set properties on the created entity |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of entity to create |
 
 <a name='T-AndcultureCode-CSharp-Testing-Factories-ErrorFactory'></a>
 ## ErrorFactory `type`
