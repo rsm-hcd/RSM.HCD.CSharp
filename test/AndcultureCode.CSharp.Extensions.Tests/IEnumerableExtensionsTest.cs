@@ -1,13 +1,125 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
-    public class IEnumerableExtensionsTest
+    public class IEnumerableExtensionsTest : BaseUnitTest
     {
+        #region Setup
+
+        public IEnumerableExtensionsTest(ITestOutputHelper output) : base(output)
+        {
+        }
+
+        #endregion Setup
+
+        #region HasValues (No Arguments)
+
+        [Fact]
+        public void HasValues_Given_NoArguments_When_Null_Returns_False()
+        {
+            // Arrange
+            IEnumerable<string> source = null;
+
+            // Act
+            var result = source.HasValues();
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_NoArguments_When_Empty_Returns_False()
+        {
+            // Arrange
+            IEnumerable<string> source = new List<string>();
+
+            // Act
+            var result = source.HasValues();
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_NoArguments_When_NotEmpty_Returns_True()
+        {
+            // Arrange
+            IEnumerable<string> source = Random.WordsArray(1, 3);
+
+            // Act
+            var result = source.HasValues();
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        #endregion HasValues (No Arguments)
+
+        #region HasValues (Given Predicate)
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_Null_Returns_False()
+        {
+            // Arrange
+            IEnumerable<string> source = null;
+            var unexpected = Random.Word();
+
+            // Act
+            var result = source.HasValues((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_Empty_Returns_False()
+        {
+            // Arrange
+            IEnumerable<string> source = new List<string>();
+            var unexpected = Random.Word();
+
+            // Act
+            var result = source.HasValues((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_NotEmpty_DoesNotContainMatches_Returns_False()
+        {
+            // Arrange
+            IEnumerable<string> source = Random.WordsArray(1, 3);
+            var unexpected = $"{source.PickRandom()}-nonmatching";
+
+            // Act
+            var result = source.HasValues((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_NotEmpty_ContainsMatch_Returns_True()
+        {
+            // Arrange
+            IEnumerable<string> source = Random.WordsArray(1, 3);
+            var expected = source.PickRandom();
+
+            // Act
+            var result = source.HasValues((e) => e == expected);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        #endregion HasValues (Given Predicate)
+
         #region IsEmpty (No Arguments)
 
         [Fact]
@@ -28,35 +140,52 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion IsEmpty (No Arguments)
 
-
         #region IsEmpty (Given Predicate)
 
         [Fact]
         public void IsEmpty_Given_Predicate_When_Empty_Returns_True()
         {
-            new List<string>()       // Arrange
-                .IsEmpty()           // Act
-                    .ShouldBeTrue(); // Assert
+            // Arrange
+            var source = new List<string>();
+            var unexpected = Random.Word();
+
+            // Act
+            var result = source.IsEmpty((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void IsEmpty_Given_Predicate_When_NotEmpty_When_DoesNotContain_Matches_Returns_True()
         {
-            new List<string> { "something" }   // Arrange
-                .IsEmpty(e => e == "no match") // Act
-                    .ShouldBeTrue();           // Assert
+
+            // Arrange
+            var source = Random.WordsArray(1, 3);
+            var unexpected = $"{source.PickRandom()}-nonmatching";
+
+            // Act
+            var result = source.IsEmpty((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void IsEmpty_Given_Predicate_When_NotEmpty_When_Contains_Matches_Returns_False()
         {
-            new List<string> { "something" }    // Arrange
-                .IsEmpty(e => e == "something") // Act
-                    .ShouldBeFalse();           // Assert
+            // Arrange
+            var source = Random.WordsArray(1, 3);
+            var expected = source.PickRandom();
+
+            // Act
+            var result = source.IsEmpty((e) => e == expected);
+
+            // Assert
+            result.ShouldBeFalse();
         }
 
         #endregion IsEmpty (Given Predicate)
-
 
         #region IsNullOrEmpty (No Arguments)
 
@@ -86,18 +215,14 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion IsNullOrEmpty (No Arguments)
 
-
         #region IsNullOrEmpty (Given Predicate)
 
         [Fact]
         public void IsNullOrEmpty_Given_Predicate_When_Null_Returns_True()
         {
-            IEnumerableExtensions                         // Arrange
-                .IsNullOrEmpty<string>(                  // Act
-                        source: null,
-                        predicate: e => true
-                    )
-                    .ShouldBeTrue();                     // Assert
+            ((IEnumerable<string>)null)     // Arrange
+                .IsNullOrEmpty((e) => true) // Act
+                    .ShouldBeTrue();        // Assert
         }
 
         [Fact]
@@ -126,7 +251,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
         #endregion IsNullOrEmpty (Given Predicate)
 
-
         #region Join IEnumerable (Delimiter)
 
         [Fact]
@@ -154,7 +278,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion Join IEnumerable (Delimiter)
-
 
         #region Join List of Strings (Delimiter)
 
@@ -189,49 +312,49 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void Join_KeyValuePair_Given_Key_And_Value_Returns_Key_And_Value_With_Delimiter()
         {
-            (new KeyValuePair<string,string>("key", "value")).Join(delimiter: ":").ShouldBe("key:value");
+            (new KeyValuePair<string, string>("key", "value")).Join(delimiter: ":").ShouldBe("key:value");
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Null_Value_Returns_Key()
         {
-            (new KeyValuePair<string,string>("key", null)).Join(delimiter: ":").ShouldBe("key");
+            (new KeyValuePair<string, string>("key", null)).Join(delimiter: ":").ShouldBe("key");
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Null_Key_Returns_Value()
         {
-            (new KeyValuePair<string,string>(null, "value")).Join(delimiter: ":").ShouldBe("value");
+            (new KeyValuePair<string, string>(null, "value")).Join(delimiter: ":").ShouldBe("value");
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Null_Key_And_Value_Returns_Empty_String()
         {
-            (new KeyValuePair<string,string>(null, null)).Join(delimiter: ":").ShouldBe(string.Empty);
+            (new KeyValuePair<string, string>(null, null)).Join(delimiter: ":").ShouldBe(string.Empty);
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Empty_String_Key_And_Value_Returns_Empty_String()
         {
-            (new KeyValuePair<string,string>(string.Empty, string.Empty)).Join(delimiter: ":").ShouldBe(string.Empty);
+            (new KeyValuePair<string, string>(string.Empty, string.Empty)).Join(delimiter: ":").ShouldBe(string.Empty);
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Empty_String_Key_Returns_Value()
         {
-            (new KeyValuePair<string,string>(string.Empty, "value")).Join(delimiter: ":").ShouldBe("value");
+            (new KeyValuePair<string, string>(string.Empty, "value")).Join(delimiter: ":").ShouldBe("value");
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Empty_String_Value_Returns_Key()
         {
-            (new KeyValuePair<string,string>("key", string.Empty)).Join(delimiter: ":").ShouldBe("key");
+            (new KeyValuePair<string, string>("key", string.Empty)).Join(delimiter: ":").ShouldBe("key");
         }
-        
+
         [Fact]
         public void Join_KeyValuePair_Given_Null_Delimiter_Returns_Key_Value_Without_Delimiter()
         {
-            (new KeyValuePair<string,string>("key", "value")).Join(delimiter: null).ShouldBe("keyvalue");
+            (new KeyValuePair<string, string>("key", "value")).Join(delimiter: null).ShouldBe("keyvalue");
         }
 
         #endregion Join KeyValuePair (Delimiter)
@@ -241,65 +364,65 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_And_Delimiter_Returns_String_Of_Key_Values_With_Delimiter()
         {
-            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
-            var keyValue2 = new KeyValuePair<string,string>("key2", "value2");
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":", delimiter: "; ").ShouldBe("key1:value1; key2:value2");
+            var keyValue1 = new KeyValuePair<string, string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string, string>("key2", "value2");
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":", delimiter: "; ").ShouldBe("key1:value1; key2:value2");
         }
 
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_And_No_Delimiter_Returns_String_Of_Key_Values()
         {
-            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
-            var keyValue2 = new KeyValuePair<string,string>("key2", "value2");
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, key2:value2");
+            var keyValue1 = new KeyValuePair<string, string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string, string>("key2", "value2");
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, key2:value2");
         }
 
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_With_Null_Value_Returns_String_Of_Key_Values()
         {
-            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
-            var keyValue2 = new KeyValuePair<string,string>("key2", null);
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, key2");
+            var keyValue1 = new KeyValuePair<string, string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string, string>("key2", null);
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, key2");
         }
 
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_With_Null_Key_Returns_String_Of_Key_Values()
         {
-            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
-            var keyValue2 = new KeyValuePair<string,string>(null, "value2");
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, value2");
+            var keyValue1 = new KeyValuePair<string, string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string, string>(null, "value2");
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1, value2");
         }
 
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_With_Empty_KeyValuePair_Returns_String_Of_Key_Values()
         {
-            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
-            var keyValue2 = new KeyValuePair<string,string>(string.Empty, string.Empty);
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1");
+            var keyValue1 = new KeyValuePair<string, string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string, string>(string.Empty, string.Empty);
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1");
         }
 
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_With_Empty_KeyValuePairs_Returns_Empty_String()
         {
-            var keyValue1 = new KeyValuePair<string,string>(string.Empty, string.Empty);
-            var keyValue2 = new KeyValuePair<string,string>(string.Empty, string.Empty);
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe(string.Empty);
+            var keyValue1 = new KeyValuePair<string, string>(string.Empty, string.Empty);
+            var keyValue2 = new KeyValuePair<string, string>(string.Empty, string.Empty);
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe(string.Empty);
         }
-        
+
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_With_Null_KeyValuePair_Returns_String_Of_Key_Values()
         {
-            var keyValue1 = new KeyValuePair<string,string>("key1", "value1");
-            var keyValue2 = new KeyValuePair<string,string>(null, null);
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1");
+            var keyValue1 = new KeyValuePair<string, string>("key1", "value1");
+            var keyValue2 = new KeyValuePair<string, string>(null, null);
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe("key1:value1");
         }
 
         [Fact]
         public void Join_Given_List_Of_KeyValuePairs_With_Null_KeyValuePairs_Returns_Empty_String()
         {
-            var keyValue1 = new KeyValuePair<string,string>(null, null);
-            var keyValue2 = new KeyValuePair<string,string>(null, null);
-            new List<KeyValuePair<string, string>>{ keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe(string.Empty);
+            var keyValue1 = new KeyValuePair<string, string>(null, null);
+            var keyValue2 = new KeyValuePair<string, string>(null, null);
+            new List<KeyValuePair<string, string>> { keyValue1, keyValue2 }.Join(keyValueDelimiter: ":").ShouldBe(string.Empty);
         }
 
         #endregion Join List of KeyValuePair (Delimiter)
@@ -335,7 +458,6 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion PickRandom
-
 
         #region PickRandom (count)
 

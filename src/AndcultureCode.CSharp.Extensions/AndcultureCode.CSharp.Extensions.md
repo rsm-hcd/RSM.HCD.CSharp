@@ -57,27 +57,31 @@
     -   [GetDatabaseName(configuration)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot- "AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseName(Microsoft.Extensions.Configuration.IConfigurationRoot)")
     -   [GetVersion(configuration,isDevelopment)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean- "AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetVersion(Microsoft.Extensions.Configuration.IConfigurationRoot,System.Boolean)")
 -   [IEnumerableExtensions](#T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions "AndcultureCode.CSharp.Extensions.IEnumerableExtensions")
-    -   [IsEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})")
-    -   [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
-    -   [IsNullOrEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})")
-    -   [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
-    -   [Join(list,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)")
-    -   [Join(list,keyValueDelimiter,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)")
-    -   [Join(list,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)")
-    -   [Join(pair,delimiter)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)")
-    -   [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0})")
-    -   [PickRandom\`\`1(source,count)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0},System-Int32- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0},System.Int32)")
-    -   [Shuffle\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Shuffle``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})")
+    -   [HasValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.HasValues``1(System.Collections.Generic.IEnumerable{``0})")
+    -   [HasValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.HasValues``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
+    -   [IsEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})")
+    -   [IsEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
+    -   [IsNullOrEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})")
+    -   [IsNullOrEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
+    -   [Join()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)")
+    -   [Join()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)")
+    -   [Join()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.List{System.String},System.String)")
+    -   [Join()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Join(System.Collections.Generic.KeyValuePair{System.String,System.String},System.String)")
+    -   [PickRandom\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0})")
+    -   [PickRandom\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0},System-Int32- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0},System.Int32)")
+    -   [Shuffle\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Shuffle``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})")
 -   [IQueryableExtensions](#T-AndcultureCode-CSharp-Extensions-IQueryableExtensions "AndcultureCode.CSharp.Extensions.IQueryableExtensions")
     -   [AppendOrderByExpression\`\`1(query,propertyName,direction,isAdditionalOrderBy)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-AppendOrderByExpression``1-System-Linq-IQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection,System-Boolean- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.AppendOrderByExpression``1(System.Linq.IQueryable{``0},System.String,AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection,System.Boolean)")
-    -   [IsEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsEmpty``1(System.Linq.IQueryable{``0})")
-    -   [IsEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsEmpty``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})")
-    -   [IsNullOrEmpty\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsNullOrEmpty``1(System.Linq.IQueryable{``0})")
-    -   [IsNullOrEmpty\`\`1(source,predicate)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsNullOrEmpty``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})")
+    -   [HasValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-HasValues``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.HasValues``1(System.Linq.IQueryable{``0})")
+    -   [HasValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-HasValues``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.HasValues``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})")
+    -   [IsEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsEmpty``1(System.Linq.IQueryable{``0})")
+    -   [IsEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsEmpty``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})")
+    -   [IsNullOrEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsNullOrEmpty``1(System.Linq.IQueryable{``0})")
+    -   [IsNullOrEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.IsNullOrEmpty``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})")
     -   [OrderBy\`\`1(query,propertyName,direction)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-OrderBy``1-System-Linq-IQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.OrderBy``1(System.Linq.IQueryable{``0},System.String,AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection)")
     -   [PickRandom\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0})")
-    -   [PickRandom\`\`1(source,count)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0},System.Int32)")
-    -   [Shuffle\`\`1(source)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.Shuffle``1(System.Linq.IQueryable{``0})")
+    -   [PickRandom\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0},System.Int32)")
+    -   [Shuffle\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.Shuffle``1(System.Linq.IQueryable{``0})")
     -   [ThenBy\`\`1(query,propertyName,direction)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-ThenBy``1-System-Linq-IOrderedQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.ThenBy``1(System.Linq.IOrderedQueryable{``0},System.String,AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection)")
 -   [OrderByDirection](#T-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection "AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection")
     -   [Ascending](#F-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection-Ascending "AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection.Ascending")
@@ -876,168 +880,129 @@ AndcultureCode.CSharp.Extensions
 
 IEnumerable extension methods
 
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0}-'></a>
+
+### HasValues\`\`1() `method`
+
+##### Summary
+
+Determines if the source collection is non-null and has values
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}-'></a>
+
+### HasValues\`\`1() `method`
+
+##### Summary
+
+Determines if the source collection is non-null and has values
+
+##### Parameters
+
+This method has no parameters.
+
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}-'></a>
 
-### IsEmpty\`\`1(source) `method`
+### IsEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is empty
 
-##### Returns
-
 ##### Parameters
 
-| Name   | Type                                                                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}-'></a>
 
-### IsEmpty\`\`1(source,predicate) `method`
+### IsEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is empty
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                           | Description |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source    | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-| predicate | [System.Func{\`\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func "System.Func{``0,System.Boolean}")                                                    |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}-'></a>
 
-### IsNullOrEmpty\`\`1(source) `method`
+### IsNullOrEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is null or empty
 
-##### Returns
-
 ##### Parameters
 
-| Name   | Type                                                                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}-'></a>
 
-### IsNullOrEmpty\`\`1(source,predicate) `method`
+### IsNullOrEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is null or empty
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                           | Description |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source    | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-| predicate | [System.Func{\`\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func "System.Func{``0,System.Boolean}")                                                    |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-String},System-String-'></a>
 
-### Join(list,delimiter) `method`
+### Join() `method`
 
 ##### Summary
 
 Convenience method so joining strings reads better :)
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                                             | Description |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| list      | [System.Collections.Generic.IEnumerable{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{System.String}") |             |
-| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String "System.String")                                                                                                          |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-IEnumerable{System-Collections-Generic-KeyValuePair{System-String,System-String}},System-String,System-String-'></a>
 
-### Join(list,keyValueDelimiter,delimiter) `method`
+### Join() `method`
 
 ##### Summary
 
 Convenience method for joining dictionary key values into a string
 
-##### Returns
-
 ##### Parameters
 
-| Name              | Type                                                                                                                                                                                                                                                                                                                                           | Description |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| list              | [System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}") |             |
-| keyValueDelimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String "System.String")                                                                                                                                                                                                                        |             |
-| delimiter         | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String "System.String")                                                                                                                                                                                                                        |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-List{System-String},System-String-'></a>
 
-### Join(list,delimiter) `method`
+### Join() `method`
 
 ##### Summary
 
 Convenience method so joining a list of strings
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                        | Description |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| list      | [System.Collections.Generic.List{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List "System.Collections.Generic.List{System.String}") |             |
-| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String "System.String")                                                                                     |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Join-System-Collections-Generic-KeyValuePair{System-String,System-String},System-String-'></a>
 
-### Join(pair,delimiter) `method`
+### Join() `method`
 
 ##### Summary
 
 Convenience method for joining key value pairs
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                                                                            | Description |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| pair      | [System.Collections.Generic.KeyValuePair{System.String,System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyValuePair "System.Collections.Generic.KeyValuePair{System.String,System.String}") |             |
-| delimiter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String "System.String")                                                                                                                                         |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0}-'></a>
 
-### PickRandom\`\`1(source) `method`
+### PickRandom\`\`1() `method`
 
 ##### Summary
 
@@ -1045,19 +1010,11 @@ Returns a random value in the related IEnumerable list
 
 ##### Parameters
 
-| Name   | Type                                                                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-PickRandom``1-System-Collections-Generic-IEnumerable{``0},System-Int32-'></a>
 
-### PickRandom\`\`1(source,count) `method`
+### PickRandom\`\`1() `method`
 
 ##### Summary
 
@@ -1065,20 +1022,11 @@ Returns X number of random values in the related IEnumerable list
 
 ##### Parameters
 
-| Name   | Type                                                                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-| count  | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 "System.Int32")                                                                                           |             |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Shuffle``1-System-Collections-Generic-IEnumerable{``0}-'></a>
 
-### Shuffle\`\`1(source) `method`
+### Shuffle\`\`1() `method`
 
 ##### Summary
 
@@ -1086,15 +1034,7 @@ Returns source enumerable in randomized order
 
 ##### Parameters
 
-| Name   | Type                                                                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable "System.Collections.Generic.IEnumerable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='T-AndcultureCode-CSharp-Extensions-IQueryableExtensions'></a>
 
@@ -1133,95 +1073,77 @@ Adds an additional sorting expression to the supplied IQueryable.
 | ---- | ----------- |
 | T    |             |
 
+<a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-HasValues``1-System-Linq-IQueryable{``0}-'></a>
+
+### HasValues\`\`1() `method`
+
+##### Summary
+
+Determines if the source collection is non-null and has values
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-HasValues``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}-'></a>
+
+### HasValues\`\`1() `method`
+
+##### Summary
+
+Determines if the source collection is non-null and has values
+
+##### Parameters
+
+This method has no parameters.
+
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0}-'></a>
 
-### IsEmpty\`\`1(source) `method`
+### IsEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is empty
 
-##### Returns
-
 ##### Parameters
 
-| Name   | Type                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable "System.Linq.IQueryable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}-'></a>
 
-### IsEmpty\`\`1(source,predicate) `method`
+### IsEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is empty (based on the given predicate)
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                                                                       | Description |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source    | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable "System.Linq.IQueryable{``0}")                                                                                             |
-| predicate | [System.Linq.Expressions.Expression{System.Func{\`\`0,System.Boolean}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression "System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0}-'></a>
 
-### IsNullOrEmpty\`\`1(source) `method`
+### IsNullOrEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is null or empty
 
-##### Returns
-
 ##### Parameters
 
-| Name   | Type                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable "System.Linq.IQueryable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-IsNullOrEmpty``1-System-Linq-IQueryable{``0},System-Linq-Expressions-Expression{System-Func{``0,System-Boolean}}-'></a>
 
-### IsNullOrEmpty\`\`1(source,predicate) `method`
+### IsNullOrEmpty\`\`1() `method`
 
 ##### Summary
 
 Determines if the source list is null or empty (based on the given predicate)
 
-##### Returns
-
 ##### Parameters
 
-| Name      | Type                                                                                                                                                                                                                                                       | Description |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source    | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable "System.Linq.IQueryable{``0}")                                                                                             |
-| predicate | [System.Linq.Expressions.Expression{System.Func{\`\`0,System.Boolean}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.Expressions.Expression "System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-OrderBy``1-System-Linq-IQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection-'></a>
 
@@ -1269,7 +1191,7 @@ Returns a random value in the related IQueryable list
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32-'></a>
 
-### PickRandom\`\`1(source,count) `method`
+### PickRandom\`\`1() `method`
 
 ##### Summary
 
@@ -1277,20 +1199,11 @@ Returns X number of random values in the related IQueryable list
 
 ##### Parameters
 
-| Name   | Type                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable "System.Linq.IQueryable{``0}") |
-| count  | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 "System.Int32")                                           |             |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}-'></a>
 
-### Shuffle\`\`1(source) `method`
+### Shuffle\`\`1() `method`
 
 ##### Summary
 
@@ -1298,15 +1211,7 @@ Returns source enumerable in randomized order
 
 ##### Parameters
 
-| Name   | Type                                                                                                                                                           | Description |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| source | [System.Linq.IQueryable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Linq.IQueryable "System.Linq.IQueryable{``0}") |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
+This method has no parameters.
 
 <a name='M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-ThenBy``1-System-Linq-IOrderedQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection-'></a>
 

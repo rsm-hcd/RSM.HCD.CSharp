@@ -11,38 +11,41 @@ namespace AndcultureCode.CSharp.Extensions
     public static class IQueryableExtensions
     {
         /// <summary>
+        /// Determines if the source collection is non-null and has values
+        /// </summary>
+        public static bool HasValues<T>(this IQueryable<T> source) => !source.IsNullOrEmpty();
+
+        /// <summary>
+        /// Determines if the source collection is non-null and has values
+        /// </summary>
+        public static bool HasValues<T>(this IQueryable<T> source, Expression<Func<T, bool>> predicate) =>
+            !source.IsNullOrEmpty(predicate);
+
+        /// <summary>
         /// Determines if the source list is empty
         /// </summary>
-        /// <param name="source"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         public static bool IsEmpty<T>(this IQueryable<T> source) => !source.Any();
 
         /// <summary>
         /// Determines if the source list is empty (based on the given predicate)
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="predicate"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static bool IsEmpty<T>(this IQueryable<T> source, Expression<Func<T, bool>> predicate) => !source.Any(predicate);
+        public static bool IsEmpty<T>(
+            this IQueryable<T> source,
+            Expression<Func<T, bool>> predicate
+        ) => !source.Any(predicate);
 
         /// <summary>
         /// Determines if the source list is null or empty
         /// </summary>
-        /// <param name="source"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         public static bool IsNullOrEmpty<T>(this IQueryable<T> source) => source == null || source.IsEmpty();
 
         /// <summary>
         /// Determines if the source list is null or empty (based on the given predicate)
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="predicate"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static bool IsNullOrEmpty<T>(this IQueryable<T> source, Expression<Func<T, bool>> predicate) => source == null || source.IsEmpty(predicate);
+        public static bool IsNullOrEmpty<T>(
+            this IQueryable<T> source,
+            Expression<Func<T, bool>> predicate
+        ) => source == null || source.IsEmpty(predicate);
 
         /// <summary>
         /// Order by the string expression provided.
@@ -52,8 +55,11 @@ namespace AndcultureCode.CSharp.Extensions
         /// <param name="direction">Order by which to sort items.</param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> query,
-            string propertyName, OrderByDirection direction = OrderByDirection.Ascending) => query.AppendOrderByExpression(propertyName, direction, false);
+        public static IOrderedQueryable<T> OrderBy<T>(
+            this IQueryable<T> query,
+            string propertyName,
+            OrderByDirection direction = OrderByDirection.Ascending
+        ) => query.AppendOrderByExpression(propertyName, direction, false);
 
         /// <summary>
         /// Returns a random value in the related IQueryable list
@@ -65,16 +71,11 @@ namespace AndcultureCode.CSharp.Extensions
         /// <summary>
         /// Returns X number of random values in the related IQueryable list
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="count"></param>
-        /// <typeparam name="T"></typeparam>
         public static IQueryable<T> PickRandom<T>(this IQueryable<T> source, int count) => source.Shuffle().Take(count);
 
         /// <summary>
         /// Returns source enumerable in randomized order
         /// </summary>
-        /// <param name="source"></param>
-        /// <typeparam name="T"></typeparam>
         public static IQueryable<T> Shuffle<T>(this IQueryable<T> source) => source.OrderBy(x => Guid.NewGuid());
 
         /// <summary>
@@ -85,8 +86,11 @@ namespace AndcultureCode.CSharp.Extensions
         /// <param name="direction">Order by which to sort items.</param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static IOrderedQueryable<T> ThenBy<T>(this IOrderedQueryable<T> query,
-            string propertyName, OrderByDirection direction = OrderByDirection.Ascending) => query.AppendOrderByExpression(propertyName, direction, true);
+        public static IOrderedQueryable<T> ThenBy<T>(
+            this IOrderedQueryable<T> query,
+            string propertyName,
+            OrderByDirection direction = OrderByDirection.Ascending
+        ) => query.AppendOrderByExpression(propertyName, direction, true);
 
         #region Private Methods
 
@@ -99,7 +103,11 @@ namespace AndcultureCode.CSharp.Extensions
         /// <param name="isAdditionalOrderBy">Whether the order by is an addition to an existing OrderBy statement.</param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        private static IOrderedQueryable<T> AppendOrderByExpression<T>(this IQueryable<T> query, string propertyName, OrderByDirection direction, bool isAdditionalOrderBy)
+        private static IOrderedQueryable<T> AppendOrderByExpression<T>(
+            this IQueryable<T> query,
+            string propertyName, OrderByDirection direction,
+            bool isAdditionalOrderBy
+        )
         {
             if (string.IsNullOrWhiteSpace(propertyName))
             {
