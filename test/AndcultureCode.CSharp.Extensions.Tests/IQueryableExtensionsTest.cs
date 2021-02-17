@@ -1,14 +1,126 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using AndcultureCode.CSharp.Extensions.Enumerations;
+using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
-    public class IQueryableExtensionsTest
+    public class IQueryableExtensionsTest : BaseUnitTest
     {
+        #region Setup
+
+        public IQueryableExtensionsTest(ITestOutputHelper output) : base(output)
+        {
+        }
+
+        #endregion Setup
+
+        #region HasValues (No Arguments)
+
+        [Fact]
+        public void HasValues_Given_NoArguments_When_Null_Returns_False()
+        {
+            // Arrange
+            IQueryable<string> source = null;
+
+            // Act
+            var result = source.HasValues();
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_NoArguments_When_Empty_Returns_False()
+        {
+            // Arrange
+            IQueryable<string> source = new List<string>().AsQueryable();
+
+            // Act
+            var result = source.HasValues();
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_NoArguments_When_NotEmpty_Returns_True()
+        {
+            // Arrange
+            IQueryable<string> source = Random.WordsArray(1, 3).AsQueryable();
+
+            // Act
+            var result = source.HasValues();
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        #endregion HasValues (No Arguments)
+
+        #region HasValues (Given Predicate)
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_Null_Returns_False()
+        {
+            // Arrange
+            IQueryable<string> source = null;
+
+            // Act
+            var result = source.HasValues((e) => e == Random.Word());
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_Empty_Returns_False()
+        {
+            // Arrange
+            IQueryable<string> source = new List<string>().AsQueryable();
+
+            // Act
+            var result = source.HasValues((e) => e == Random.Word());
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_NotEmpty_DoesNotContainMatches_Returns_False()
+        {
+            // Arrange
+            IQueryable<string> source = Random.WordsArray(1, 3).AsQueryable();
+            var unexpected = $"{source.PickRandom()}-nonmatching";
+
+            // Act
+            var result = source.HasValues((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void HasValues_Given_Predicate_When_NotEmpty_ContainsMatch_Returns_True()
+        {
+            // Arrange
+            IQueryable<string> source = Random.WordsArray(1, 3).AsQueryable();
+            var expected = source.PickRandom();
+
+            // Act
+            var result = source.HasValues((e) => e == expected);
+
+            // Assert
+            result.ShouldBeTrue();
+        }
+
+        #endregion HasValues (Given Predicate)
+
         #region IsEmpty (No Arguments)
 
         [Fact]
