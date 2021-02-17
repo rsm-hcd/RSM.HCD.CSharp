@@ -10,7 +10,6 @@ namespace AndcultureCode.CSharp.Extensions
     /// </summary>
     public static class IQueryableExtensions
     {
-
         /// <summary>
         /// Determines if the source collection is non-null and has values
         /// </summary>

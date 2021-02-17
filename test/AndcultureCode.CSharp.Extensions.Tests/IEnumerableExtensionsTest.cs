@@ -145,25 +145,44 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [Fact]
         public void IsEmpty_Given_Predicate_When_Empty_Returns_True()
         {
-            new List<string>()                    // Arrange
-                .IsEmpty((e) => e == "something") // Act
-                    .ShouldBeTrue();              // Assert
+            // Arrange
+            var source = new List<string>();
+            var unexpected = Random.Word();
+
+            // Act
+            var result = source.IsEmpty((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void IsEmpty_Given_Predicate_When_NotEmpty_When_DoesNotContain_Matches_Returns_True()
         {
-            new List<string> { "something" }   // Arrange
-                .IsEmpty(e => e == "no match") // Act
-                    .ShouldBeTrue();           // Assert
+
+            // Arrange
+            var source = Random.WordsArray(1, 3);
+            var unexpected = $"{source.PickRandom()}-nonmatching";
+
+            // Act
+            var result = source.IsEmpty((e) => e == unexpected);
+
+            // Assert
+            result.ShouldBeTrue();
         }
 
         [Fact]
         public void IsEmpty_Given_Predicate_When_NotEmpty_When_Contains_Matches_Returns_False()
         {
-            new List<string> { "something" }    // Arrange
-                .IsEmpty(e => e == "something") // Act
-                    .ShouldBeFalse();           // Assert
+            // Arrange
+            var source = Random.WordsArray(1, 3);
+            var expected = source.PickRandom();
+
+            // Act
+            var result = source.IsEmpty((e) => e == expected);
+
+            // Assert
+            result.ShouldBeFalse();
         }
 
         #endregion IsEmpty (Given Predicate)
