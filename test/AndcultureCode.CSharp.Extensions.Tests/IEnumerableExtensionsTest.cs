@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using AndcultureCode.CSharp.Testing.Tests;
@@ -68,9 +67,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             IEnumerable<string> source = null;
+            var unexpected = Random.Word();
 
             // Act
-            var result = source.HasValues((e) => e == Random.Word());
+            var result = source.HasValues((e) => e == unexpected);
 
             // Assert
             result.ShouldBeFalse();
@@ -81,9 +81,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             IEnumerable<string> source = new List<string>();
+            var unexpected = Random.Word();
 
             // Act
-            var result = source.HasValues((e) => e == Random.Word());
+            var result = source.HasValues((e) => e == unexpected);
 
             // Assert
             result.ShouldBeFalse();
@@ -94,9 +95,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             IEnumerable<string> source = Random.WordsArray(1, 3);
+            var unexpected = $"{source.PickRandom()}-nonmatching";
 
             // Act
-            var result = source.HasValues((e) => e == $"{source.PickRandom()}-nonmatching");
+            var result = source.HasValues((e) => e == unexpected);
 
             // Assert
             result.ShouldBeFalse();
@@ -107,9 +109,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             IEnumerable<string> source = Random.WordsArray(1, 3);
+            var expected = source.PickRandom();
 
             // Act
-            var result = source.HasValues((e) => e == source.PickRandom());
+            var result = source.HasValues((e) => e == expected);
 
             // Assert
             result.ShouldBeTrue();

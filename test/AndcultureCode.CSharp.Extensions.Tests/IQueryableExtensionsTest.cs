@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using AndcultureCode.CSharp.Extensions.Enumerations;
 using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
@@ -70,9 +69,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             IQueryable<string> source = null;
+            var unexpected = Random.Word();
 
             // Act
-            var result = source.HasValues((e) => e == Random.Word());
+            var result = source.HasValues((e) => e == unexpected);
 
             // Assert
             result.ShouldBeFalse();
@@ -83,9 +83,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             IQueryable<string> source = new List<string>().AsQueryable();
+            var unexpected = Random.Word();
 
             // Act
-            var result = source.HasValues((e) => e == Random.Word());
+            var result = source.HasValues((e) => e == unexpected);
 
             // Assert
             result.ShouldBeFalse();
