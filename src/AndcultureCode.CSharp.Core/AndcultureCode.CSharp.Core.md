@@ -112,11 +112,13 @@
   - [SHORT_STRING_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-SHORT_STRING_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.SHORT_STRING_LENGTH')
   - [SHORT_TITLE_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-SHORT_TITLE_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.SHORT_TITLE_LENGTH')
   - [URL_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-URL_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.URL_LENGTH')
+- [DeleteMe](#T-AndcultureCode-CSharp-Core-DeleteMe 'AndcultureCode.CSharp.Core.DeleteMe')
 - [Deny](#T-AndcultureCode-CSharp-Core-Models-Security-Deny 'AndcultureCode.CSharp.Core.Models.Security.Deny')
   - [#ctor(resource,verb,subject)](#M-AndcultureCode-CSharp-Core-Models-Security-Deny-#ctor-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Models.Security.Deny.#ctor(System.String,System.String,System.String)')
   - [Permission](#P-AndcultureCode-CSharp-Core-Models-Security-Deny-Permission 'AndcultureCode.CSharp.Core.Models.Security.Deny.Permission')
 - [Do\`1](#T-AndcultureCode-CSharp-Core-Do`1 'AndcultureCode.CSharp.Core.Do`1')
   - [Finally(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Finally-Microsoft-Extensions-Logging-ILogger,System-Action{AndcultureCode-CSharp-Core-Interfaces-IResult{`0}}- 'AndcultureCode.CSharp.Core.Do`1.Finally(Microsoft.Extensions.Logging.ILogger,System.Action{AndcultureCode.CSharp.Core.Interfaces.IResult{`0}})')
+  - [Then(workload,skipIfErrors)](#M-AndcultureCode-CSharp-Core-Do`1-Then-System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0},System-Boolean- 'AndcultureCode.CSharp.Core.Do`1.Then(System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0},System.Boolean)')
   - [Try(logger,workload)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
   - [Try(logger,workload,retry)](#M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-UInt32,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}- 'AndcultureCode.CSharp.Core.Do`1.Try(Microsoft.Extensions.Logging.ILogger,System.UInt32,System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0})')
   - [TrySeed\`\`1(seeds,workload,seedName)](#M-AndcultureCode-CSharp-Core-Do`1-TrySeed``1-AndcultureCode-CSharp-Core-SeedsBase{``0},System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0},System-String- 'AndcultureCode.CSharp.Core.Do`1.TrySeed``1(AndcultureCode.CSharp.Core.SeedsBase{``0},System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0},System.String)')
@@ -1697,6 +1699,21 @@ TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
 
 IE has a max of 2083
 
+<a name='T-AndcultureCode-CSharp-Core-DeleteMe'></a>
+## DeleteMe `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Core
+
+##### Summary
+
+TODO: Documentation example scenarios
+#1 - shared data across chained methods
+#2 - arugments vs no-arguments
+#3 - general formatting
+#4 - skipping if errors when chaining
+
 <a name='T-AndcultureCode-CSharp-Core-Models-Security-Deny'></a>
 ## Deny `type`
 
@@ -1764,6 +1781,20 @@ Extension of 'Finally' that will automatically log any thrown exceptions
 | ---- | ---- | ----------- |
 | logger | [Microsoft.Extensions.Logging.ILogger](#T-Microsoft-Extensions-Logging-ILogger 'Microsoft.Extensions.Logging.ILogger') | Logger to use when an unhandled exception is caught |
 | workload | [System.Action{AndcultureCode.CSharp.Core.Interfaces.IResult{\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{AndcultureCode.CSharp.Core.Interfaces.IResult{`0}}') |  |
+
+<a name='M-AndcultureCode-CSharp-Core-Do`1-Then-System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0},System-Boolean-'></a>
+### Then(workload,skipIfErrors) `method`
+
+##### Summary
+
+Chainable method to perform additional pieces of work beyond an initial try
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| workload | [System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{\`0},\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{AndcultureCode.CSharp.Core.Interfaces.IResult{`0},`0}') | Single unit of work to attempt |
+| skipIfErrors | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Provided work will be ignored if errors exist |
 
 <a name='M-AndcultureCode-CSharp-Core-Do`1-Try-Microsoft-Extensions-Logging-ILogger,System-Func{AndcultureCode-CSharp-Core-Interfaces-IResult{`0},`0}-'></a>
 ### Try(logger,workload) `method`

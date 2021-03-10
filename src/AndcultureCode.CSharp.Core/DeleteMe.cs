@@ -3,18 +3,26 @@ using AndcultureCode.CSharp.Core.Interfaces;
 
 namespace AndcultureCode.CSharp.Core
 {
+    /// <summary>
+    /// TODO: Documentation example scenarios
+    /// #1 - shared data across chained methods
+    /// #2 - arugments vs no-arguments
+    /// #3 - general formatting
+    /// #4 - skipping if errors when chaining
+    /// </summary>
     public class DeleteMe
     {
         #region Public Methods
 
         public IResult<bool> DoWork(string name) => Do<bool>
             .Try(ValidateWithoutArguments)
-            .Next((r) => ValidateWithArguments(r, name))
-            .Next((r) =>
+            .Then((r) => ValidateWithArguments(r, name))
+            .Then((r) =>
         {
 
-            return false;
-        }).Result;
+            return true;
+        })
+        .Result;
 
         #endregion Public Methods
 
@@ -33,6 +41,5 @@ namespace AndcultureCode.CSharp.Core
         }
 
         #endregion Private Methods
-
     }
 }

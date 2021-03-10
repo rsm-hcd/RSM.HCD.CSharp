@@ -82,7 +82,7 @@ namespace AndcultureCode.CSharp.Core
         /// </summary>
         /// <param name="workload">Single unit of work to attempt</param>
         /// <param name="skipIfErrors">Provided work will be ignored if errors exist</param>
-        public Do<T> Next(Func<IResult<T>, T> workload, bool skipIfErrors = true)
+        public Do<T> Then(Func<IResult<T>, T> workload, bool skipIfErrors = true)
         {
             if (skipIfErrors && Result.HasErrors)
             {
