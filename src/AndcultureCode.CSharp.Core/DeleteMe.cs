@@ -9,6 +9,7 @@ namespace AndcultureCode.CSharp.Core
     /// #2 - arugments vs no-arguments
     /// #3 - general formatting
     /// #4 - skipping if errors when chaining
+    /// #5 - take large real-world class/method an show iterations of refactoring
     /// </summary>
     public class DeleteMe
     {
@@ -20,6 +21,8 @@ namespace AndcultureCode.CSharp.Core
             .Then((r) =>
         {
 
+
+
             return true;
         })
         .Result;
@@ -27,6 +30,8 @@ namespace AndcultureCode.CSharp.Core
         #endregion Public Methods
 
         #region Private Methods
+
+
 
         private bool ValidateWithArguments(IResult<bool> r, string name)
         {
