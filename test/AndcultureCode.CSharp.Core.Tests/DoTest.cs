@@ -110,7 +110,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
 
             // Act
             sut.Then(
-                (r) => isCalled = true, // <---- should not be executed
+                (r) => isCalled = true, // <---- should NOT be executed
                 skipIfErrors: true      // <---- because we are skipping when there are errors
             );
 
