@@ -2,7 +2,7 @@
 module.exports = {
   title: 'AndcultureCode.CSharp.Core',
   tagline: 'Commonly used interfaces, patterns and utilities by andculture engineering',
-  url: 'https://andculturecode.github.io/AndcultureCode.CSharp.Core',
+  url: 'https://andculturecode.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -11,21 +11,14 @@ module.exports = {
   projectName: 'AndcultureCode.CSharp.Core', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'AndcultureCode.CSharp.Core',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'AndcultureCode.CSharp.Core',
+        src: 'img/logo.jpg',
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
-        },
-        {to: 'blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/AndcultureCode/AndcultureCode.CSharp.Core',
           label: 'GitHub',
           position: 'right',
         },
@@ -35,40 +28,14 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Style Guide',
-              to: 'docs/',
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
-            },
-          ],
-        },
-        {
           title: 'Community',
           items: [
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/andculture',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              href: 'https://andculture.com/blog'
-            },
-            {
-              label: 'GitHub',
+              label: 'Github',
               href: 'https://github.com/AndcultureCode',
             },
           ],
-        },
+        }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} andculture, Inc. Built with Docusaurus.`,
     },
@@ -78,7 +45,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve('./sidebars.ts'),
           // Please change this to your repo.
           editUrl:
             'https://github.com/facebook/docusaurus/edit/master/website/',

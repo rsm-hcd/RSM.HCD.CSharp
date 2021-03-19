@@ -112,7 +112,6 @@
   - [SHORT_STRING_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-SHORT_STRING_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.SHORT_STRING_LENGTH')
   - [SHORT_TITLE_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-SHORT_TITLE_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.SHORT_TITLE_LENGTH')
   - [URL_LENGTH](#F-AndcultureCode-CSharp-Core-Models-Configuration-DataConfiguration-URL_LENGTH 'AndcultureCode.CSharp.Core.Models.Configuration.DataConfiguration.URL_LENGTH')
-- [DeleteMe](#T-AndcultureCode-CSharp-Core-DeleteMe 'AndcultureCode.CSharp.Core.DeleteMe')
 - [Deny](#T-AndcultureCode-CSharp-Core-Models-Security-Deny 'AndcultureCode.CSharp.Core.Models.Security.Deny')
   - [#ctor(resource,verb,subject)](#M-AndcultureCode-CSharp-Core-Models-Security-Deny-#ctor-System-String,System-String,System-String- 'AndcultureCode.CSharp.Core.Models.Security.Deny.#ctor(System.String,System.String,System.String)')
   - [Permission](#P-AndcultureCode-CSharp-Core-Models-Security-Deny-Permission 'AndcultureCode.CSharp.Core.Models.Security.Deny.Permission')
@@ -1698,21 +1697,6 @@ TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
 ##### Summary
 
 IE has a max of 2083
-
-<a name='T-AndcultureCode-CSharp-Core-DeleteMe'></a>
-## DeleteMe `type`
-
-##### Namespace
-
-AndcultureCode.CSharp.Core
-
-##### Summary
-
-TODO: Documentation example scenarios
-#1 - shared data across chained methods
-#2 - arugments vs no-arguments
-#3 - general formatting
-#4 - skipping if errors when chaining
 
 <a name='T-AndcultureCode-CSharp-Core-Models-Security-Deny'></a>
 ## Deny `type`
