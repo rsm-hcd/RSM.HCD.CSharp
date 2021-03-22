@@ -2,7 +2,7 @@
 module.exports = {
   title: 'AndcultureCode.CSharp.Core',
   tagline: 'Commonly used interfaces, patterns and utilities by andculture engineering',
-  url: 'https://andculturecode.github.io',
+  url: 'https://wintondeshong.github.io',
   baseUrl: '/AndcultureCode.CSharp.Core/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
