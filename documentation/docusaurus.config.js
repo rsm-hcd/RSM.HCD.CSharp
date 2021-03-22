@@ -3,11 +3,11 @@ module.exports = {
   title: 'AndcultureCode.CSharp.Core',
   tagline: 'Commonly used interfaces, patterns and utilities by andculture engineering',
   url: 'https://andculturecode.github.io',
-  baseUrl: '/',
+  baseUrl: '/AndcultureCode.CSharp.Core/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'AndcultureCode', // Usually your GitHub org/user name.
+  organizationName: 'wintondeshong', // Usually your GitHub org/user name.
   projectName: 'AndcultureCode.CSharp.Core', // Usually your repo name.
   themeConfig: {
     navbar: {
