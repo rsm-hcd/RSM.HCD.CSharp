@@ -10,6 +10,9 @@ module.exports = {
   organizationName: 'wintondeshong', // Usually your GitHub org/user name.
   projectName: 'AndcultureCode.CSharp.Core', // Usually your repo name.
   themeConfig: {
+    prism: {
+      additionalLanguages: ['csharp']
+    },
     navbar: {
       title: 'AndcultureCode.CSharp.Core',
       logo: {

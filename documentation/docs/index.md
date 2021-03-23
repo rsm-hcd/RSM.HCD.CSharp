@@ -18,10 +18,64 @@ that otherwise end the normal flow of execution.
 Below is documentation on the various methods available.
 
 ### Do
+All of the methods to follow stem from `Do`. While you can instantiate your own instance with the
+`new` keyword `new Do(delegateFunction)`, the preferred method to interact with this pattern
+is through the available static methods and extensions methods of `Do`.
 
+```csharp
+public IResult<bool> Validate() => Do<bool>.Try((r) =>
+{
+    // Validation logic
+    return true;
+}).Result;
+```
+
+At the end of the day, `Do.Try` is simplifying the use of `try/catch`. Through the use of expression
+bodies and the `IResult`, exceptions are handled more gracefully and their result standardized.
+
+The `Do` object contains information about the work being attempted (`Workload`) and its results
+(`Result`, `Exception`).
 
 ### Try
+The most commonly used method of `Do` is the `Try` static method. This method and its various
+overloads provide a simplified entry point into the pattern.
 
+Married with the use of C# expression bodies, the `Do<T>.Try` call can be written in a way that
+maintains the profile of standard method bodies.
+
+#### Without Expression Bodies
+```csharp
+// Long hand
+public IResult<bool> Validate()
+{
+    var result = Do<bool>.Try((r) =>
+    {
+        // Validation logic
+        return true;
+    });
+
+    return result;
+}
+
+// Single line return
+public IResult<bool> Validate()
+{
+    return Do<bool>.Try((r) =>
+    {
+        // Validation logic
+        return true;
+    }).Result;
+}
+```
+
+#### C# Expression Bodies
+```csharp
+public IResult<bool> Validate() => Do<bool>.Try((r) =>
+{
+    // Validation logic
+    return true;
+}).Result;
+```
 
 ### Then
 
