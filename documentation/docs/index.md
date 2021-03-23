@@ -37,8 +37,19 @@ The `Do` object contains information about the work being attempted (`Workload`)
 (`Result`, `Exception`).
 
 ### Try
+
 The most commonly used method of `Do` is the `Try` static method. This method and its various
 overloads provide a simplified entry point into the pattern.
+
+```csharp
+/// <summary>
+/// Attempts to run the provided delegate function
+/// </summary>
+/// <param name="workload">Single unit of work to attempt</param>
+public static Do<T> Try(Func<IResult<T>, T> workload);
+public static Do<T> Try(ILogger logger, Func<IResult<T>, T> workload);
+public static Do<T> Try(ILogger logger, uint retry, Func<IResult<T>, T> workload);
+```
 
 Married with the use of C# expression bodies, the `Do<T>.Try` call can be written in a way that
 maintains the profile of standard method bodies.
@@ -79,31 +90,114 @@ public IResult<bool> Validate() => Do<bool>.Try((r) =>
 
 ### Then
 
+There are scenarios, such as; argument validation, preloading data, etc... where preliminary work
+needs to be done before getting to the concern of your method. Naturally, we turn to writing small
+bit sized functions to handle each of these concerns. The path forward with `Do<T>.Try` alone tends
+to lead to a series of somewhat boilerplate error handling.
+
+```csharp
+/// <summary>
+/// Chainable method to perform additional pieces of work beyond an initial try
+/// </summary>
+/// <param name="workload">Single unit of work to attempt</param>
+/// <param name="skipIfErrors">Provided work will be ignored if errors exist</param>
+public Do<T> Then(Func<IResult<T>, T> workload, bool skipIfErrors = true);
+```
+
+#### Common boilerplate without `Then`
+
+```csharp
+public IResult<bool> Validate(long id) => Do<bool>.Try((r) =>
+{
+    // Example of common result handling boilerplate
+    var argumentResult = ValidateArguments(id);
+    if (argumentResult.HasErrors)
+    {
+        r.AddErrors(argumentResult);
+        return false;
+    }
+
+    // Additional method calls and/ or validation logic
+
+    return true;
+}).Result;
+
+private IResult<bool> ValidateArguments(long id) => Do<bool>.Try((r) =>
+{
+    if (id <= 0)
+    {
+        r.AddError(Errors.InvalidArgument(nameof(id)), "must be greater than zero");
+    }
+
+    return !r.HasErrors;
+}).Result;
+```
+
+#### Chaining with and without arguments using `Then`
+
+While there are situationally clever ways to cut down on this boilerplate, there is no clear path
+forward with `Try` alone.
+
+This is where the chainable `Then` method comes into play. Levering `Do.Try.Then` you can fluently
+compose your IResult handling methods without the common boilerplate.
+
+```csharp
+public IResult<bool> Validate(long id) => Do<bool>
+  .Try(ValidationMethodWithoutArguments)
+  .Then((r) => ValidateArguments(r, id))
+  .Then((r) =>
+{
+    // additonal validation logic
+
+    return true;
+}).Result;
+
+private bool ValidationMethodWithoutArguments(IResult<bool> r)
+{
+    if (_isMyFeatureEnabled)
+    {
+        r.AddError(Errors.FeaturedDisabled(nameof(_isMyFeatureEnabled), "is disabled"));
+    }
+
+    return !r.HasErrors;
+}
+
+// Notice the method signature simplification
+private bool ValidateArguments(IResult<bool> r, long id)
+{
+    if (id <= 0)
+    {
+        r.AddError(Errors.InvalidArgument(nameof(id)), "must be greater than zero");
+    }
+
+    return !r.HasErrors;
+}
+```
+
+Following this approach, in our contrived example where our concern is validation, there
+may very well likely be entirely composite methods/functions.
+
+```csharp
+public IResult<bool> Validate(long id, string name) => Do<bool>
+  .Try(ValidationMethodWithoutArguments)
+  .Then((r) => ValidateId(r, id))
+  .Then((r) => ValidateName(r, name))
+  .Result;
+
+```
+
+#### Short-circuiting the chain with `skipIfErrors`
+
+By default, delegate functions provided to `Then` will _NOT_ be executed if the associated `IResult`
+has errors. In some scenarios, you may desire to call a series of functions before determing the
+result.
+
+TODO
 
 ### Catch
 
+TODO
 
 ### Finally
 
-<!-- ## Code
-
-```javascript
-var s = 'JavaScript syntax highlighting';
-alert(s);
-```
-
-```python
-s = "Python syntax highlighting"
-print(s)
-```
-
-```
-No language indicated, so no syntax highlighting.
-But let's throw in a <b>tag</b>.
-```
-
-```js {2}
-function highlightMe() {
-  console.log('This line can be highlighted!');
-}
-``` -->
+TODO
