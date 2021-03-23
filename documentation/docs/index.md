@@ -90,11 +90,6 @@ public IResult<bool> Validate() => Do<bool>.Try((r) =>
 
 ### Then
 
-There are scenarios, such as; argument validation, preloading data, etc... where preliminary work
-needs to be done before getting to the concern of your method. Naturally, we turn to writing small
-bit sized functions to handle each of these concerns. The path forward with `Do<T>.Try` alone tends
-to lead to a series of somewhat boilerplate error handling.
-
 ```csharp
 /// <summary>
 /// Chainable method to perform additional pieces of work beyond an initial try
@@ -103,6 +98,11 @@ to lead to a series of somewhat boilerplate error handling.
 /// <param name="skipIfErrors">Provided work will be ignored if errors exist</param>
 public Do<T> Then(Func<IResult<T>, T> workload, bool skipIfErrors = true);
 ```
+
+There are scenarios, such as; argument validation, preloading data, etc... where preliminary work
+needs to be done before getting to the concern of your method. Naturally, we turn to writing small
+bit sized functions to handle each of these concerns. The path forward with `Do<T>.Try` alone tends
+to lead to a series of somewhat boilerplate error handling.
 
 #### Common boilerplate without `Then`
 
@@ -183,7 +183,6 @@ public IResult<bool> Validate(long id, string name) => Do<bool>
   .Then((r) => ValidateId(r, id))
   .Then((r) => ValidateName(r, name))
   .Result;
-
 ```
 
 #### Short-circuiting the chain with `skipIfErrors`
@@ -192,7 +191,13 @@ By default, delegate functions provided to `Then` will _NOT_ be executed if the 
 has errors. In some scenarios, you may desire to call a series of functions before determing the
 result.
 
-TODO
+```csharp
+public IResult<bool> Validate(long id, string name) => Do<bool>
+  .Try((r) => ValidateId(r, id), skipIfErrors: false)
+  .Then((r) => ValidateName(r, name), skipIfErrors: false)
+  .Then((r) => !r.HasErrors, skipIfErrors: false) // <-- Falls through allowing our last `then` to determine the result
+  .Result;
+```
 
 ### Catch
 
