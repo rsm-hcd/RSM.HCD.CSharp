@@ -198,11 +198,3 @@ public IResult<bool> Validate(long id, string name) => Do<bool>
   .Then((r) => !r.HasErrors, skipIfErrors: false) // <-- Falls through allowing our last `then` to determine the result
   .Result;
 ```
-
-### Catch
-
-TODO
-
-### Finally
-
-TODO

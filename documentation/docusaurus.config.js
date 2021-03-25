@@ -7,8 +7,8 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'wintondeshong', // Usually your GitHub org/user name.
-  projectName: 'AndcultureCode.CSharp.Core', // Usually your repo name.
+  organizationName: 'wintondeshong',
+  projectName: 'AndcultureCode.CSharp.Core',
   themeConfig: {
     prism: {
       additionalLanguages: ['csharp']
