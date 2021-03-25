@@ -2,12 +2,12 @@
 module.exports = {
   title: 'AndcultureCode.CSharp.Core',
   tagline: 'Commonly used interfaces, patterns and utilities by andculture engineering',
-  url: 'https://wintondeshong.github.io',
+  url: 'https://andculturecode.github.io',
   baseUrl: '/AndcultureCode.CSharp.Core/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'wintondeshong',
+  organizationName: 'AndcultureCode',
   projectName: 'AndcultureCode.CSharp.Core',
   themeConfig: {
     prism: {
