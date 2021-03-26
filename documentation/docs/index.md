@@ -193,7 +193,7 @@ result.
 
 ```csharp
 public IResult<bool> Validate(long id, string name) => Do<bool>
-  .Try((r) => ValidateId(r, id), skipIfErrors: false)
+  .Try((r) => ValidateId(r, id))
   .Then((r) => ValidateName(r, name), skipIfErrors: false)
   .Then((r) => !r.HasErrors, skipIfErrors: false) // <-- Falls through allowing our last `then` to determine the result
   .Result;
