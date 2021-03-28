@@ -1,7 +1,6 @@
 using System;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Utilities.Security;
 using AndcultureCode.CSharp.Testing;
 using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.CSharp.Testing.Tests;
@@ -10,7 +9,7 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
+namespace AndcultureCode.CSharp.Core.Tests.Unit
 {
     public class DoTest : CoreUnitTest
     {

@@ -11,13 +11,14 @@ slug: /
 Normal flow control should leverage error handling and exceptions remain rare. This library provides syntactic sugar
 to employ the .NET Framework `TryXXX()` pattern by way of a class called `Do`.
 
-The `Do` class is accompanied by a series of static and extension methods to essentially management
+The `Do` class is accompanied by a series of static and extension methods to essentially manage
 standard C# try/catch boilerplate and provide a safe guard against an unhandled exceptions
 that otherwise end the normal flow of execution.
 
 Below is documentation on the various methods available.
 
 ### Do
+
 All of the methods to follow stem from `Do`. While you can instantiate your own instance with the
 `new` keyword `new Do(delegateFunction)`, the preferred method to interact with this pattern
 is through the available static methods and extensions methods of `Do`.
@@ -55,6 +56,7 @@ Married with the use of C# expression bodies, the `Do<T>.Try` call can be writte
 maintains the profile of standard method bodies.
 
 #### Without Expression Bodies
+
 ```csharp
 // Long hand
 public IResult<bool> Validate()
@@ -80,6 +82,7 @@ public IResult<bool> Validate()
 ```
 
 #### C# Expression Bodies
+
 ```csharp
 public IResult<bool> Validate() => Do<bool>.Try((r) =>
 {
@@ -101,7 +104,7 @@ public Do<T> Then(Func<IResult<T>, T> workload, bool skipIfErrors = true);
 
 There are scenarios, such as; argument validation, preloading data, etc... where preliminary work
 needs to be done before getting to the concern of your method. Naturally, we turn to writing small
-bit sized functions to handle each of these concerns. The path forward with `Do<T>.Try` alone tends
+bite sized functions to handle each of these concerns. The path forward with `Do<T>.Try` alone tends
 to lead to a series of somewhat boilerplate error handling.
 
 #### Common boilerplate without `Then`
@@ -154,7 +157,7 @@ public IResult<bool> Validate(long id) => Do<bool>
 
 private bool ValidationMethodWithoutArguments(IResult<bool> r)
 {
-    if (_isMyFeatureEnabled)
+    if (!_isMyFeatureEnabled)
     {
         r.AddError(Errors.FeaturedDisabled(nameof(_isMyFeatureEnabled), "is disabled"));
     }
