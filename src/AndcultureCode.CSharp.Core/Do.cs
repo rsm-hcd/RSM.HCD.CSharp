@@ -78,6 +78,35 @@ namespace AndcultureCode.CSharp.Core
         public Do<T> Finally(Action<IResult<T>> workload) => Finally(logger: null, workload: workload);
 
         /// <summary>
+        /// Chainable method to perform additional pieces of work beyond an initial try
+        /// </summary>
+        /// <param name="workload">Single unit of work to attempt</param>
+        /// <param name="skipIfErrors">Provided work will be ignored if errors exist</param>
+        public Do<T> Then(Func<IResult<T>, T> workload, bool skipIfErrors = true)
+        {
+            if (skipIfErrors && Result.HasErrors)
+            {
+                return this;
+            }
+
+            try
+            {
+                Result.ResultObject = workload(Result);
+            }
+            catch (Exception ex)
+            {
+                Exception = ex;
+                Result.AddExceptionError(ex.GetType().Name, ex);
+            }
+
+            return this;
+        }
+
+        #endregion Public Methods
+
+        #region Public Static Methods
+
+        /// <summary>
         /// Extension of 'Try' that will automatically log any thrown exceptions
         /// </summary>
         /// <param name="logger">Logger to use when an unhandled exception is caught</param>
@@ -94,8 +123,6 @@ namespace AndcultureCode.CSharp.Core
             catch (Exception ex)
             {
                 d.Exception = ex;
-
-                // Add the exception to the IResult object by default
                 d.Result.AddExceptionError(ex.GetType().Name, ex);
                 logger?.LogError(d.Result.ListErrors());
             }
@@ -179,6 +206,6 @@ namespace AndcultureCode.CSharp.Core
             return d;
         }
 
-        #endregion Public Methods
+        #endregion Public Static Methods
     }
 }
