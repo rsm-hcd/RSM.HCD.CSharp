@@ -15,6 +15,17 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "brandongregoryscott",
+      "name": "Brandon Scott",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11774799?v=4",
+      "profile": "https://github.com/brandongregoryscott",
+      "contributions": [
+        "code",
+        "test",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
