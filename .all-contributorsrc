@@ -72,6 +72,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "snsavage",
+      "name": "Scott Savage",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6299224?v=4",
+      "profile": "http://www.snsavage.com",
+      "contributions": [
+        "code",
+        "test",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
