@@ -61,16 +61,6 @@
       ]
     },
     {
-      "login": "ghost",
-      "name": "Deleted user",
-      "avatar_url": "https://avatars.githubusercontent.com/u/10137?v=4",
-      "profile": "https://github.com/ghost",
-      "contributions": [
-        "code",
-        "test"
-      ]
-    },
-    {
       "login": "mrjones2014",
       "name": "Mat Jones",
       "avatar_url": "https://avatars.githubusercontent.com/u/8648891?v=4",
