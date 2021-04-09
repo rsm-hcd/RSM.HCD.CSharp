@@ -79,6 +79,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "fluffynuts",
+      "name": "Davyd McColl",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4669340?v=4",
+      "profile": "https://dev.to/fluffynuts",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
