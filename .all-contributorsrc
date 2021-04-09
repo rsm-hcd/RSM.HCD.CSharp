@@ -49,6 +49,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "jebediahelliott",
+      "name": "Jeb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26680652?v=4",
+      "profile": "http://jebediahelliott.com",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
