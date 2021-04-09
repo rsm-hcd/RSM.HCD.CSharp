@@ -1,6 +1,6 @@
 # AndcultureCode.CSharp.Extensions [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Extensions.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Extensions) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Extensions/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Extensions) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Commonly used CSharp extension methods used at andculture.
@@ -83,6 +83,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://jebediahelliott.com"><img src="https://avatars.githubusercontent.com/u/26680652?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeb</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=jebediahelliott" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=jebediahelliott" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/ghost"><img src="https://avatars.githubusercontent.com/u/10137?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Deleted user</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=ghost" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=ghost" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://mjones.network"><img src="https://avatars.githubusercontent.com/u/8648891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mat Jones</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=mrjones2014" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=mrjones2014" title="Tests">⚠️</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://dev.to/fluffynuts"><img src="https://avatars.githubusercontent.com/u/4669340?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Davyd McColl</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=fluffynuts" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
