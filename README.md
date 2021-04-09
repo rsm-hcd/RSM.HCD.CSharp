@@ -1,6 +1,6 @@
 # AndcultureCode.CSharp.Extensions [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Extensions.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Extensions) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Extensions/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Extensions) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Commonly used CSharp extension methods used at andculture.
@@ -86,6 +86,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://dev.to/fluffynuts"><img src="https://avatars.githubusercontent.com/u/4669340?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Davyd McColl</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=fluffynuts" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/kamal-mansouri"><img src="https://avatars.githubusercontent.com/u/31888169?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kamal-mansouri</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/commits?author=kamal-mansouri" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
