@@ -1,6 +1,6 @@
 # AndcultureCode.CSharp.Conductors [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Conductors.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Conductors) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Conductors/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Conductors)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Commonly used interfaces, patterns and utilities for writing conductors by andculture engineering
 
@@ -66,6 +66,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/jhugs"><img src="https://avatars.githubusercontent.com/u/14300627?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joshua Hughes</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=jhugs" title="Code">💻</a></td>
     <td align="center"><a href="https://www.saidshah.com"><img src="https://avatars.githubusercontent.com/u/19719299?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Said B Shah</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=SaidShah" title="Documentation">📖</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=SaidShah" title="Code">💻</a></td>
     <td align="center"><a href="https://www.davidezoccarato.cloud/"><img src="https://avatars.githubusercontent.com/u/9533250?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Davide Zoccarato</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=dzoccarato" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=dzoccarato" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=dzoccarato" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/brandongregoryscott"><img src="https://avatars.githubusercontent.com/u/11774799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brandon Scott</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors/commits?author=brandongregoryscott" title="Code">💻</a> <a href="#maintenance-brandongregoryscott" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
