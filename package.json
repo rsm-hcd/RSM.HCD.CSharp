@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "and-cli": "1.2.0"
+    "and-cli": "2.7.1"
   },
   "devDependencies": {},
   "scripts": {
