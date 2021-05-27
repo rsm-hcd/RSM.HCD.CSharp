@@ -1,5 +1,5 @@
-# AndcultureCode.CSharp.Conductors [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Conductors.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Conductors) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Conductors/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Conductors)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+# AndcultureCode.CSharp.Conductors
+[![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Conductors.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Conductors) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Conductors/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Conductors)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Commonly used interfaces, patterns and utilities for writing conductors by andculture engineering
