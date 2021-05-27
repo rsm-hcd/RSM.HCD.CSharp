@@ -1,5 +1,5 @@
-# AndcultureCode.CSharp.Testing [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Testing.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Testing) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Testing/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Testing)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+# AndcultureCode.CSharp.Testing
+[![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Testing.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.CSharp.Testing) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Testing/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp.Testing)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Commonly used CSharp testing code used at andculture.
