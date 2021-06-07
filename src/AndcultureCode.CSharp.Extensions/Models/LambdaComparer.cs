@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace AndcultureCode.CSharp.Extensions.Models
 {
     /// <summary>
     /// Generic comparator class for ease of use with comparison functions
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class LambdaComparer<T> : IEqualityComparer<T>
     {
         #region Private Members
@@ -19,7 +17,7 @@ namespace AndcultureCode.CSharp.Extensions.Models
         #region Constructor
 
         /// <summary>
-        /// Constructor
+        /// Constructor for new comparator based on expression
         /// </summary>
         /// <param name="expression">Expression to be used for equality comparison</param>
         public LambdaComparer(Func<T, T, bool> expression)

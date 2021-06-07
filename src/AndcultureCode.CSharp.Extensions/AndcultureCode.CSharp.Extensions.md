@@ -57,8 +57,10 @@
     -   [GetDatabaseName(configuration)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetDatabaseName-Microsoft-Extensions-Configuration-IConfigurationRoot- "AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetDatabaseName(Microsoft.Extensions.Configuration.IConfigurationRoot)")
     -   [GetVersion(configuration,isDevelopment)](#M-AndcultureCode-CSharp-Extensions-IConfigurationRootExtensions-GetVersion-Microsoft-Extensions-Configuration-IConfigurationRoot,System-Boolean- "AndcultureCode.CSharp.Extensions.IConfigurationRootExtensions.GetVersion(Microsoft.Extensions.Configuration.IConfigurationRoot,System.Boolean)")
 -   [IEnumerableExtensions](#T-AndcultureCode-CSharp-Extensions-IEnumerableExtensions "AndcultureCode.CSharp.Extensions.IEnumerableExtensions")
+    -   [Except\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Except``1-System-Collections-Generic-IEnumerable{``0},System-Collections-Generic-IEnumerable{``0},System-Func{``0,``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean})")
     -   [HasValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.HasValues``1(System.Collections.Generic.IEnumerable{``0})")
     -   [HasValues\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.HasValues``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
+    -   [Intersect\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Intersect``1-System-Collections-Generic-IEnumerable{``0},System-Collections-Generic-IEnumerable{``0},System-Func{``0,``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.Intersect``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean})")
     -   [IsEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})")
     -   [IsEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsEmpty``1-System-Collections-Generic-IEnumerable{``0},System-Func{``0,System-Boolean}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})")
     -   [IsNullOrEmpty\`\`1()](#M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- "AndcultureCode.CSharp.Extensions.IEnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})")
@@ -83,6 +85,10 @@
     -   [PickRandom\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-PickRandom``1-System-Linq-IQueryable{``0},System-Int32- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.PickRandom``1(System.Linq.IQueryable{``0},System.Int32)")
     -   [Shuffle\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.Shuffle``1(System.Linq.IQueryable{``0})")
     -   [ThenBy\`\`1(query,propertyName,direction)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-ThenBy``1-System-Linq-IOrderedQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.ThenBy``1(System.Linq.IOrderedQueryable{``0},System.String,AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection)")
+-   [LambdaComparer\`1](#T-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1 "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1")
+    -   [#ctor(expression)](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-#ctor-System-Func{`0,`0,System-Boolean}- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean})")
+    -   [Equals()](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-Equals-`0,`0- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.Equals(`0,`0)")
+    -   [GetHashCode()](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-GetHashCode-`0- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.GetHashCode(`0)")
 -   [OrderByDirection](#T-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection "AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection")
     -   [Ascending](#F-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection-Ascending "AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection.Ascending")
     -   [Descending](#F-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection-Descending "AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection.Descending")
@@ -880,6 +886,18 @@ AndcultureCode.CSharp.Extensions
 
 IEnumerable extension methods
 
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Except``1-System-Collections-Generic-IEnumerable{``0},System-Collections-Generic-IEnumerable{``0},System-Func{``0,``0,System-Boolean}-'></a>
+
+### Except\`\`1() `method`
+
+##### Summary
+
+Returns items in source collection that do not exist in second collection based on predicate
+
+##### Parameters
+
+This method has no parameters.
+
 <a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-HasValues``1-System-Collections-Generic-IEnumerable{``0}-'></a>
 
 ### HasValues\`\`1() `method`
@@ -899,6 +917,18 @@ This method has no parameters.
 ##### Summary
 
 Determines if the source collection is non-null and has values
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-IEnumerableExtensions-Intersect``1-System-Collections-Generic-IEnumerable{``0},System-Collections-Generic-IEnumerable{``0},System-Func{``0,``0,System-Boolean}-'></a>
+
+### Intersect\`\`1() `method`
+
+##### Summary
+
+Returns items in source collection that exist in second collection based on the predicate
 
 ##### Parameters
 
@@ -1236,6 +1266,62 @@ Order then by the string expression provided.
 | Name | Description |
 | ---- | ----------- |
 | T    |             |
+
+<a name='T-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1'></a>
+
+## LambdaComparer\`1 `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Extensions.Models
+
+##### Summary
+
+Generic comparator class for ease of use with comparison functions
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T    |             |
+
+<a name='M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-#ctor-System-Func{`0,`0,System-Boolean}-'></a>
+
+### #ctor(expression) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name       | Type                                                                                                                                                            | Description                                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| expression | [System.Func{\`0,\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func "System.Func{`0,`0,System.Boolean}") | Expression to be used for equality comparison |
+
+<a name='M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-Equals-`0,`0-'></a>
+
+### Equals() `method`
+
+##### Summary
+
+_Inherit from parent._
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-GetHashCode-`0-'></a>
+
+### GetHashCode() `method`
+
+##### Summary
+
+_Inherit from parent._
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection'></a>
 
