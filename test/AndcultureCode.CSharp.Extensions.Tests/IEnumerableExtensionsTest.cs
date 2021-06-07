@@ -27,7 +27,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = (List<UserStub>)null;
-            var second = new List<UserStub>();
+            var second = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
@@ -42,7 +42,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = new List<UserStub>();
-            var second = new List<UserStub>();
+            var second = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
@@ -79,11 +79,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Except_When_Second_Collection_Empty_Returns_Source_Collection()
         {
             // Arrange
-            var expected = Build<UserStub>();
-            var source = new List<UserStub>
-            {
-                expected,
-            };
+            var source = BuildList<UserStub>(1);
             var second = new List<UserStub>();
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
@@ -98,11 +94,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Except_When_Second_Collection_Null_Returns_Source_Collection()
         {
             // Arrange
-            var expected = Build<UserStub>();
-            var source = new List<UserStub>
-            {
-                expected,
-            };
+            var source = BuildList<UserStub>(1);
             var second = (List<UserStub>)null;
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
@@ -250,8 +242,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = (List<UserStub>)null;
-            var second = new List<UserStub>();
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            var second = BuildList<UserStub>(1);
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
             var result = source.Intersect(second, predicate);
@@ -265,7 +257,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = new List<UserStub>();
-            var second = new List<UserStub>();
+            var second = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
@@ -302,11 +294,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Intersect_When_Second_Collection_Empty_Returns_Empty_Collection()
         {
             // Arrange
-            var expected = Build<UserStub>();
-            var source = new List<UserStub>
-            {
-                expected,
-            };
+            var source = BuildList<UserStub>(1);
             var second = new List<UserStub>();
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
@@ -321,11 +309,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Intersect_When_Second_Collection_Null_Returns_Empty_Collection()
         {
             // Arrange
-            var expected = Build<UserStub>();
-            var source = new List<UserStub>
-            {
-                expected,
-            };
+            var source = BuildList<UserStub>(1);
             var second = (List<UserStub>)null;
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
