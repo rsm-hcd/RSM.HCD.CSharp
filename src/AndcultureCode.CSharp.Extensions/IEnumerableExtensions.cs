@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Extensions.Models;
 
 namespace AndcultureCode.CSharp.Extensions
 {
@@ -9,6 +10,24 @@ namespace AndcultureCode.CSharp.Extensions
     /// </summary>
     public static class IEnumerableExtensions
     {
+        /// <summary>
+        /// Returns items in source collection that do not exist in exclusion collection based on predicate
+        /// </summary>
+        public static IEnumerable<T> Except<T>(this IEnumerable<T> source, IEnumerable<T> exclusions, Func<T, T, bool> predicate)
+        {
+            if (source.IsNullOrEmpty())
+            {
+                return Enumerable.Empty<T>();
+            }
+
+            if (exclusions.IsNullOrEmpty())
+            {
+                return source;
+            }
+
+            return source.Except(exclusions, new LambdaComparer<T>(predicate));
+        }
+
         /// <summary>
         /// Determines if the source collection is non-null and has values
         /// </summary>
@@ -19,6 +38,19 @@ namespace AndcultureCode.CSharp.Extensions
         /// </summary>
         public static bool HasValues<T>(this IEnumerable<T> source, Func<T, bool> predicate) =>
             !source.IsNullOrEmpty(predicate);
+
+        /// <summary>
+        /// Returns items in source collection that exist in inclusion collection based on the predicate
+        /// </summary>
+        public static IEnumerable<T> Intersect<T>(this IEnumerable<T> source, IEnumerable<T> inclusions, Func<T, T, bool> predicate)
+        {
+            if (source.IsNullOrEmpty() || inclusions.IsNullOrEmpty())
+            {
+                return Enumerable.Empty<T>();
+            }
+
+            return source.Intersect(inclusions, new LambdaComparer<T>(predicate));
+        }
 
         /// <summary>
         /// Determines if the source list is empty

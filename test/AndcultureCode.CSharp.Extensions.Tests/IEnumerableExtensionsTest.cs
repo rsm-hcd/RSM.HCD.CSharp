@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Testing.Extensions;
+using AndcultureCode.CSharp.Testing.Models.Stubs;
 using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
@@ -16,6 +19,118 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion Setup
+
+        #region Except
+
+        [Fact]
+        public void Except_When_Source_Collection_Null_Returns_Empty_Collection()
+        {
+            // Arrange
+            var source = (List<UserStub>)null;
+            var exclusions = BuildList<UserStub>(1);
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(exclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Except_When_Source_Collection_Empty_Returns_Empty_Collection()
+        {
+            // Arrange
+            var source = new List<UserStub>();
+            var exclusions = BuildList<UserStub>(1);
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(exclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Except_When_Exclusion_Collection_Has_No_Matching_Elements_Returns_Source_Collection()
+        {
+            // Arrange
+            var expected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                expected,
+            };
+            var exclusions = new List<UserStub>
+            {
+                // This should never match the source collection
+                Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
+            };
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(exclusions, predicate);
+
+            // Assert
+            result.ShouldBe(source);
+        }
+
+        [Fact]
+        public void Except_When_Exclusion_Collection_Empty_Returns_Source_Collection()
+        {
+            // Arrange
+            var source = BuildList<UserStub>(1);
+            var exclusions = new List<UserStub>();
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(exclusions, predicate);
+
+            // Assert
+            result.ShouldBe(source);
+        }
+
+        [Fact]
+        public void Except_When_Exclusion_Collection_Null_Returns_Source_Collection()
+        {
+            // Arrange
+            var source = BuildList<UserStub>(1);
+            var exclusions = (List<UserStub>)null;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(exclusions, predicate);
+
+            // Assert
+            result.ShouldBe(source);
+        }
+
+        [Fact]
+        public void Except_When_Exclusion_Collection_Has_Matching_Elements_Returns_Collection_Without_Matching_Elements()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                Build<UserStub>(),
+                unexpected,
+            };
+            var exclusions = new List<UserStub>
+            {
+                // Based on matching email, this should be excluded from the result
+                Build<UserStub>((e) => e.EmailAddress = unexpected.EmailAddress)
+            };
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(exclusions, predicate);
+
+            // Assert
+            result.ShouldNotBeEmpty();
+            result.ShouldNotContain(unexpected);
+        }
+
+        #endregion Except
 
         #region HasValues (No Arguments)
 
@@ -119,6 +234,118 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion HasValues (Given Predicate)
+
+        #region Intersect
+
+        [Fact]
+        public void Intersect_When_Source_Collection_Null_Returns_Empty_Collection()
+        {
+            // Arrange
+            var source = (List<UserStub>)null;
+            var inclusions = BuildList<UserStub>(1);
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Intersect(inclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Intersect_When_Source_Collection_Empty_Returns_Empty_Collection()
+        {
+            // Arrange
+            var source = new List<UserStub>();
+            var inclusions = BuildList<UserStub>(1);
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Intersect(inclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Intersect_When_Inclusion_Collection_Has_No_Matching_Elements_Returns_Empty_Collection()
+        {
+            // Arrange
+            var expected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                expected,
+            };
+            var inclusions = new List<UserStub>
+            {
+                // This should never match the source collection
+                Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
+            };
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Intersect(inclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Intersect_When_Inclusion_Collection_Empty_Returns_Empty_Collection()
+        {
+            // Arrange
+            var source = BuildList<UserStub>(1);
+            var inclusions = new List<UserStub>();
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Intersect(inclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Intersect_When_Inclusion_Collection_Null_Returns_Empty_Collection()
+        {
+            // Arrange
+            var source = BuildList<UserStub>(1);
+            var inclusions = (List<UserStub>)null;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Intersect(inclusions, predicate);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Intersect_When_Inclusion_Collection_Has_Matching_Elements_Returns_Collection_With_Matching_Elements()
+        {
+            // Arrange
+            var expected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                Build<UserStub>(),
+                expected,
+            };
+            var inclusions = new List<UserStub>
+            {
+                // Based on matching email, this should be only included result
+                Build<UserStub>((e) => e.EmailAddress = expected.EmailAddress)
+            };
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Intersect(inclusions, predicate);
+
+            // Assert
+            result.ShouldBeOfSize(1);
+            result.ShouldContain(expected);
+        }
+
+        #endregion Intersect
 
         #region IsEmpty (No Arguments)
 
