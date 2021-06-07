@@ -27,11 +27,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = (List<UserStub>)null;
-            var second = BuildList<UserStub>(1);
+            var exclusions = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, predicate);
+            var result = source.Except(exclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -42,18 +42,18 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = new List<UserStub>();
-            var second = BuildList<UserStub>(1);
+            var exclusions = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, predicate);
+            var result = source.Except(exclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
         }
 
         [Fact]
-        public void Except_When_Second_Collection_Has_No_Matching_Elements_Returns_Source_Collection()
+        public void Except_When_Exclusion_Collection_Has_No_Matching_Elements_Returns_Source_Collection()
         {
             // Arrange
             var expected = Build<UserStub>();
@@ -61,7 +61,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             {
                 expected,
             };
-            var second = new List<UserStub>
+            var exclusions = new List<UserStub>
             {
                 // This should never match the source collection
                 Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
@@ -69,44 +69,44 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, predicate);
+            var result = source.Except(exclusions, predicate);
 
             // Assert
             result.ShouldBe(source);
         }
 
         [Fact]
-        public void Except_When_Second_Collection_Empty_Returns_Source_Collection()
+        public void Except_When_Exclusion_Collection_Empty_Returns_Source_Collection()
         {
             // Arrange
             var source = BuildList<UserStub>(1);
-            var second = new List<UserStub>();
+            var exclusions = new List<UserStub>();
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, predicate);
+            var result = source.Except(exclusions, predicate);
 
             // Assert
             result.ShouldBe(source);
         }
 
         [Fact]
-        public void Except_When_Second_Collection_Null_Returns_Source_Collection()
+        public void Except_When_Exclusion_Collection_Null_Returns_Source_Collection()
         {
             // Arrange
             var source = BuildList<UserStub>(1);
-            var second = (List<UserStub>)null;
+            var exclusions = (List<UserStub>)null;
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, predicate);
+            var result = source.Except(exclusions, predicate);
 
             // Assert
             result.ShouldBe(source);
         }
 
         [Fact]
-        public void Except_When_Second_Collection_Has_Matching_Elements_Returns_Collection_Without_Matching_Elements()
+        public void Except_When_Exclusion_Collection_Has_Matching_Elements_Returns_Collection_Without_Matching_Elements()
         {
             // Arrange
             var unexpected = Build<UserStub>();
@@ -115,7 +115,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 Build<UserStub>(),
                 unexpected,
             };
-            var second = new List<UserStub>
+            var exclusions = new List<UserStub>
             {
                 // Based on matching email, this should be excluded from the result
                 Build<UserStub>((e) => e.EmailAddress = unexpected.EmailAddress)
@@ -123,7 +123,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, predicate);
+            var result = source.Except(exclusions, predicate);
 
             // Assert
             result.ShouldNotBeEmpty();
@@ -242,11 +242,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = (List<UserStub>)null;
-            var second = BuildList<UserStub>(1);
+            var inclusions = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, predicate);
+            var result = source.Intersect(inclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -257,18 +257,18 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange
             var source = new List<UserStub>();
-            var second = BuildList<UserStub>(1);
+            var inclusions = BuildList<UserStub>(1);
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, predicate);
+            var result = source.Intersect(inclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
         }
 
         [Fact]
-        public void Intersect_When_Second_Collection_Has_No_Matching_Elements_Returns_Empty_Collection()
+        public void Intersect_When_Inclusion_Collection_Has_No_Matching_Elements_Returns_Empty_Collection()
         {
             // Arrange
             var expected = Build<UserStub>();
@@ -276,7 +276,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             {
                 expected,
             };
-            var second = new List<UserStub>
+            var inclusions = new List<UserStub>
             {
                 // This should never match the source collection
                 Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
@@ -284,44 +284,44 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, predicate);
+            var result = source.Intersect(inclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
         }
 
         [Fact]
-        public void Intersect_When_Second_Collection_Empty_Returns_Empty_Collection()
+        public void Intersect_When_Inclusion_Collection_Empty_Returns_Empty_Collection()
         {
             // Arrange
             var source = BuildList<UserStub>(1);
-            var second = new List<UserStub>();
+            var inclusions = new List<UserStub>();
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, predicate);
+            var result = source.Intersect(inclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
         }
 
         [Fact]
-        public void Intersect_When_Second_Collection_Null_Returns_Empty_Collection()
+        public void Intersect_When_Inclusion_Collection_Null_Returns_Empty_Collection()
         {
             // Arrange
             var source = BuildList<UserStub>(1);
-            var second = (List<UserStub>)null;
+            var inclusions = (List<UserStub>)null;
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, predicate);
+            var result = source.Intersect(inclusions, predicate);
 
             // Assert
             result.ShouldBeEmpty();
         }
 
         [Fact]
-        public void Intersect_When_Second_Collection_Has_Matching_Elements_Returns_Collection_With_Matching_Elements()
+        public void Intersect_When_Inclusion_Collection_Has_Matching_Elements_Returns_Collection_With_Matching_Elements()
         {
             // Arrange
             var expected = Build<UserStub>();
@@ -330,7 +330,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 Build<UserStub>(),
                 expected,
             };
-            var second = new List<UserStub>
+            var inclusions = new List<UserStub>
             {
                 // Based on matching email, this should be only included result
                 Build<UserStub>((e) => e.EmailAddress = expected.EmailAddress)
@@ -338,7 +338,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, predicate);
+            var result = source.Intersect(inclusions, predicate);
 
             // Assert
             result.ShouldBeOfSize(1);

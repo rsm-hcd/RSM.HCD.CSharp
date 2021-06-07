@@ -17,9 +17,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public const string AT_GMAIL_DOT_COM = "@gmail.com";
         public const string AT_YAHOO_DOT_COM = "@yahoo.com";
         public const string DOE = "Doe";
-        public const string JANE = "Jane";
-        public const string JOHN = "John";
+        Expression<Func<UserStub, bool>> GMAIL_EMAIL_FILTER = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
+        Expression<Func<UserStub, bool>> LASTNAME_SMITH_FILTER = (e) => e.LastName == SMITH;
         public const string SMITH = "Smith";
+        Expression<Func<UserStub, bool>> YAHOO_EMAIL_FILTER = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
 
         #endregion Constants
 
@@ -37,12 +38,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_Returns_Expression()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
             var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.AndAlso(YAHOO_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -53,67 +52,52 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_When_Both_Expressions_Evaluate_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            var janeSmith = Build<UserStub>(
+            var expected = Build<UserStub>(
                 // This is the important setup - entity should have 'Smith' in the name
                 // as well as an '@yahoo.com' email
                 UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = SMITH
-            );
-            var johnSmith = Build<UserStub>(
-                // Same setup as above
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JOHN,
                 (e) => e.LastName = SMITH
             );
             var entities = new List<UserStub>
             {
-                janeSmith,
-                johnSmith,
+                expected
             };
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.AndAlso(YAHOO_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldContain(janeSmith);
-            result.ShouldContain(johnSmith);
+            result.ShouldContain(expected);
         }
 
         [Fact]
         public void AndAlso_When_One_Expression_Evaluates_As_False_Returns_False()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            var janeDoe = Build<UserStub>(
+            var unexpected = Build<UserStub>(
                 // This is the important setup - entity does NOT have 'Smith' in the name and
                 // should not be returned even though it has an '@yahoo.com' email
                 UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JANE,
                 (e) => e.LastName = DOE
             );
-            var johnSmith = Build<UserStub>(
+            var expected = Build<UserStub>(
                 UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JOHN,
                 (e) => e.LastName = SMITH
             );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnSmith,
+                unexpected,
+                expected,
             };
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.AndAlso(YAHOO_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldNotContain(janeDoe);
-            result.ShouldContain(johnSmith);
+            result.ShouldNotContain(unexpected);
+            result.ShouldContain(expected);
         }
 
         #endregion AndAlso
@@ -124,12 +108,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_WithNavigationProperty_Returns_Expression()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
             var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.AndAlso(YAHOO_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -140,67 +122,52 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void AndAlso_WithNavigationProperty_Returns_True_When_Both_Expressions_Evaluate_As_True()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            var janeSmith = Build<UserStub>(
+            var expected = Build<UserStub>(
                 // This is the important setup - main entity should have 'Smith' in the name
                 // and the RelatedUserStub should have an '@yahoo.com' email
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = SMITH,
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
-            var johnSmith = Build<UserStub>(
-                // Same setup as above
-                (e) => e.FirstName = JOHN,
                 (e) => e.LastName = SMITH,
                 (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
             );
             var entities = new List<UserStub>
             {
-                janeSmith,
-                johnSmith,
+                expected,
             };
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.AndAlso(YAHOO_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldContain(janeSmith);
-            result.ShouldContain(johnSmith);
+            result.ShouldContain(expected);
         }
 
         [Fact]
         public void AndAlso_WithNavigationProperty_Returns_False_When_One_Expression_Evaluates_As_False()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            var janeDoe = Build<UserStub>(
+            var unexpected = Build<UserStub>(
                 // This is the important setup - main entity does NOT have 'Smith' in the name and
                 // should not be returned even though the RelatedUserStub has an '@yahoo.com' email
-                (e) => e.FirstName = JANE,
                 (e) => e.LastName = DOE,
                 (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
             );
-            var johnSmith = Build<UserStub>(
-                (e) => e.FirstName = JOHN,
+            var expected = Build<UserStub>(
                 (e) => e.LastName = SMITH,
                 (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
             );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnSmith,
+                unexpected,
+                expected,
             };
 
             // Act
-            var filter = smithNameFilter.AndAlso(yahooEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.AndAlso(YAHOO_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldNotContain(janeDoe);
-            result.ShouldContain(johnSmith);
+            result.ShouldNotContain(unexpected);
+            result.ShouldContain(expected);
         }
 
         #endregion AndAlso (With Navigation Property)
@@ -211,12 +178,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_Returns_Expression()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
             var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.Or(yahooEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.Or(YAHOO_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -227,59 +192,43 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var janeDoe = Build<UserStub>(
-                UserStubFactory.WITH_GMAIL_EMAIL,
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = DOE
-            );
-            // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var johnSmith = Build<UserStub>(
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JOHN,
-                (e) => e.LastName = SMITH
-            );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnSmith,
+                // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_GMAIL_EMAIL,
+                    (e) => e.LastName = DOE
+                ),
+                // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_YAHOO_EMAIL,
+                    (e) => e.LastName = SMITH
+                )
             };
 
             // Act
-            var filter = smithNameFilter.Or(gmailEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.Or(GMAIL_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldContain(janeDoe);
-            result.ShouldContain(johnSmith);
+            result.ShouldBe(entities);
         }
 
         [Fact]
         public void Or_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<UserStub>(
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = DOE
-            );
-            var johnDoe = Build<UserStub>(
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.LastName = $"{JOHN}{DOE}"
-            );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnDoe,
+                // This is the important setup: entity does not satisfy the email or name filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_YAHOO_EMAIL,
+                    (e) => e.LastName = DOE
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.Or(gmailEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.Or(GMAIL_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -294,12 +243,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_WithNavigationProperty_Returns_Expression()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
             var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.Or(yahooEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.Or(YAHOO_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -310,58 +257,43 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void Or_WithNavigationProperty_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var janeSmith = Build<UserStub>(
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = SMITH,
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
-            // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var johnDoe = Build<UserStub>(
-                (e) => e.LastName = $"{JOHN}{DOE}",
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_GMAIL_EMAIL)
-            );
             var entities = new List<UserStub>
             {
-                janeSmith,
-                johnDoe,
+                // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
+                Build<UserStub>(
+                    (e) => e.LastName = SMITH,
+                    (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
+                ),
+                // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
+                Build<UserStub>(
+                    (e) => e.LastName = DOE,
+                    (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_GMAIL_EMAIL)
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.Or(gmailEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.Or(GMAIL_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldContain(janeSmith);
-            result.ShouldContain(johnDoe);
+            result.ShouldBe(entities);
         }
 
         [Fact]
         public void Or_WithNavigationProperty_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<UserStub>(
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = DOE,
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
-            var johnDoe = Build<UserStub>(
-                (e) => e.LastName = $"{JOHN}{DOE}",
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnDoe,
+                // This is the important setup: entity does not satisfy the email or name filter
+                Build<UserStub>(
+                    (e) => e.LastName = DOE,
+                    (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.Or(gmailEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.Or(GMAIL_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -376,12 +308,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_Returns_Expression()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
             var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.OrElse(yahooEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.OrElse(YAHOO_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -392,59 +322,43 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var janeDoe = Build<UserStub>(
-                UserStubFactory.WITH_GMAIL_EMAIL,
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = DOE
-            );
-            // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var johnSmith = Build<UserStub>(
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JOHN,
-                (e) => e.LastName = SMITH
-            );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnSmith,
+                // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_GMAIL_EMAIL,
+                    (e) => e.LastName = DOE
+                ),
+                // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_YAHOO_EMAIL,
+                    (e) => e.LastName = SMITH
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.OrElse(gmailEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.OrElse(GMAIL_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldContain(janeDoe);
-            result.ShouldContain(johnSmith);
+            result.ShouldBe(entities);
         }
 
         [Fact]
         public void OrElse_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<UserStub>(
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = DOE
-            );
-            var johnDoe = Build<UserStub>(
-                UserStubFactory.WITH_YAHOO_EMAIL,
-                (e) => e.LastName = $"{JOHN}{DOE}"
-            );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnDoe,
+                // This is the important setup: entity does not satisfy the email or name filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_YAHOO_EMAIL,
+                    (e) => e.LastName = DOE
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.OrElse(gmailEmailFilter);
+            var filter = LASTNAME_SMITH_FILTER.OrElse(GMAIL_EMAIL_FILTER);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -459,12 +373,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_WithNavigationProperty_Returns_Expression()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> yahooEmailFilter = (e) => e.EmailAddress.Contains(AT_YAHOO_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
             var entities = new List<UserStub>();
 
             // Act
-            var filter = smithNameFilter.OrElse(yahooEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.OrElse(YAHOO_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
@@ -475,58 +387,44 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         public void OrElse_WithNavigationProperty_When_Either_Expression_Evaluates_As_True_Returns_True()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
-            var janeSmith = Build<UserStub>(
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = SMITH,
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
-            // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
-            var johnDoe = Build<UserStub>(
-                (e) => e.LastName = $"{JOHN}{DOE}",
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_GMAIL_EMAIL)
-            );
             var entities = new List<UserStub>
             {
-                janeSmith,
-                johnDoe,
+                // This entity satisfies the 'Smith' name filter but not the '@gmail.com' email filter
+                Build<UserStub>(
+                    (e) => e.LastName = SMITH,
+                    (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
+                ),
+                // This entity satisfies the '@gmail.com' email filter but not the 'Smith' name filter
+                Build<UserStub>(
+                    (e) => e.LastName = DOE,
+                    (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_GMAIL_EMAIL)
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.OrElse(gmailEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.OrElse(GMAIL_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert
-            result.ShouldContain(janeSmith);
-            result.ShouldContain(johnDoe);
+            result.ShouldBe(entities);
         }
 
         [Fact]
         public void OrElse_WithNavigationProperty_When_Neither_Expression_Evaluates_As_True_Returns_False()
         {
             // Arrange
-            Expression<Func<UserStub, bool>> gmailEmailFilter = (e) => e.EmailAddress.Contains(AT_GMAIL_DOT_COM);
-            Expression<Func<UserStub, bool>> smithNameFilter = (e) => e.LastName == SMITH;
-            // This is the important setup: neither entity satisfies the email or name filter
-            var janeDoe = Build<UserStub>(
-                (e) => e.FirstName = JANE,
-                (e) => e.LastName = DOE,
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
-            var johnDoe = Build<UserStub>(
-                (e) => e.LastName = $"{JOHN}{DOE}",
-                (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
-            );
             var entities = new List<UserStub>
             {
-                janeDoe,
-                johnDoe,
+                // This is the important setup: entity does not satisfy the email or name filter
+                Build<UserStub>(
+                    UserStubFactory.WITH_YAHOO_EMAIL,
+                    (e) => e.LastName = DOE,
+                    (e) => e.RelatedUserStub = Build<UserStub>(UserStubFactory.WITH_YAHOO_EMAIL)
+                ),
             };
 
             // Act
-            var filter = smithNameFilter.OrElse(gmailEmailFilter, (e) => e.RelatedUserStub);
+            var filter = LASTNAME_SMITH_FILTER.OrElse(GMAIL_EMAIL_FILTER, (e) => e.RelatedUserStub);
             var result = entities.Where(filter.Compile());
 
             // Assert

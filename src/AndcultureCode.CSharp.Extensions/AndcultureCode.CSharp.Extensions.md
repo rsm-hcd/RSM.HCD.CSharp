@@ -86,7 +86,7 @@
     -   [Shuffle\`\`1()](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-Shuffle``1-System-Linq-IQueryable{``0}- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.Shuffle``1(System.Linq.IQueryable{``0})")
     -   [ThenBy\`\`1(query,propertyName,direction)](#M-AndcultureCode-CSharp-Extensions-IQueryableExtensions-ThenBy``1-System-Linq-IOrderedQueryable{``0},System-String,AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection- "AndcultureCode.CSharp.Extensions.IQueryableExtensions.ThenBy``1(System.Linq.IOrderedQueryable{``0},System.String,AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection)")
 -   [LambdaComparer\`1](#T-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1 "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1")
-    -   [#ctor(expression)](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-#ctor-System-Func{`0,`0,System-Boolean}- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean})")
+    -   [#ctor(predicate)](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-#ctor-System-Func{`0,`0,System-Boolean}- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean})")
     -   [Equals()](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-Equals-`0,`0- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.Equals(`0,`0)")
     -   [GetHashCode()](#M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-GetHashCode-`0- "AndcultureCode.CSharp.Extensions.Models.LambdaComparer`1.GetHashCode(`0)")
 -   [OrderByDirection](#T-AndcultureCode-CSharp-Extensions-Enumerations-OrderByDirection "AndcultureCode.CSharp.Extensions.Enumerations.OrderByDirection")
@@ -892,7 +892,7 @@ IEnumerable extension methods
 
 ##### Summary
 
-Returns items in source collection that do not exist in second collection based on predicate
+Returns items in source collection that do not exist in exclusion collection based on predicate
 
 ##### Parameters
 
@@ -928,7 +928,7 @@ This method has no parameters.
 
 ##### Summary
 
-Returns items in source collection that exist in second collection based on the predicate
+Returns items in source collection that exist in inclusion collection based on the predicate
 
 ##### Parameters
 
@@ -1279,25 +1279,19 @@ AndcultureCode.CSharp.Extensions.Models
 
 Generic comparator class for ease of use with comparison functions
 
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T    |             |
-
 <a name='M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-#ctor-System-Func{`0,`0,System-Boolean}-'></a>
 
-### #ctor(expression) `constructor`
+### #ctor(predicate) `constructor`
 
 ##### Summary
 
-Constructor
+Constructor for new comparator based on predicate
 
 ##### Parameters
 
-| Name       | Type                                                                                                                                                            | Description                                   |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| expression | [System.Func{\`0,\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func "System.Func{`0,`0,System.Boolean}") | Expression to be used for equality comparison |
+| Name      | Type                                                                                                                                                            | Description                                  |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| predicate | [System.Func{\`0,\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func "System.Func{`0,`0,System.Boolean}") | Predicate to be used for equality comparison |
 
 <a name='M-AndcultureCode-CSharp-Extensions-Models-LambdaComparer`1-Equals-`0,`0-'></a>
 

@@ -11,21 +11,21 @@ namespace AndcultureCode.CSharp.Extensions
     public static class IEnumerableExtensions
     {
         /// <summary>
-        /// Returns items in source collection that do not exist in second collection based on predicate
+        /// Returns items in source collection that do not exist in exclusion collection based on predicate
         /// </summary>
-        public static IEnumerable<T> Except<T>(this IEnumerable<T> source, IEnumerable<T> second, Func<T, T, bool> predicate)
+        public static IEnumerable<T> Except<T>(this IEnumerable<T> source, IEnumerable<T> exclusions, Func<T, T, bool> predicate)
         {
             if (source.IsNullOrEmpty())
             {
                 return Enumerable.Empty<T>();
             }
 
-            if (second.IsNullOrEmpty())
+            if (exclusions.IsNullOrEmpty())
             {
                 return source;
             }
 
-            return source.Except(second, new LambdaComparer<T>(predicate));
+            return source.Except(exclusions, new LambdaComparer<T>(predicate));
         }
 
         /// <summary>
@@ -40,16 +40,16 @@ namespace AndcultureCode.CSharp.Extensions
             !source.IsNullOrEmpty(predicate);
 
         /// <summary>
-        /// Returns items in source collection that exist in second collection based on the predicate
+        /// Returns items in source collection that exist in inclusion collection based on the predicate
         /// </summary>
-        public static IEnumerable<T> Intersect<T>(this IEnumerable<T> source, IEnumerable<T> second, Func<T, T, bool> predicate)
+        public static IEnumerable<T> Intersect<T>(this IEnumerable<T> source, IEnumerable<T> inclusions, Func<T, T, bool> predicate)
         {
-            if (source.IsNullOrEmpty() || second.IsNullOrEmpty())
+            if (source.IsNullOrEmpty() || inclusions.IsNullOrEmpty())
             {
                 return Enumerable.Empty<T>();
             }
 
-            return source.Intersect(second, new LambdaComparer<T>(predicate));
+            return source.Intersect(inclusions, new LambdaComparer<T>(predicate));
         }
 
         /// <summary>
