@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Extensions.Models;
 
 namespace AndcultureCode.CSharp.Extensions
 {
@@ -9,6 +10,13 @@ namespace AndcultureCode.CSharp.Extensions
     /// </summary>
     public static class IEnumerableExtensions
     {
+        /// <summary>
+        /// Returns items in source collection that do not exist in the second collection based on
+        /// the provided predicate
+        /// </summary>
+        public static IEnumerable<T> Except<T>(this IEnumerable<T> source, IEnumerable<T> second, Func<T, T, bool> predicate) =>
+            source.Except(second, new LambdaComparer<T>(predicate));
+
         /// <summary>
         /// Determines if the source collection is non-null and has values
         /// </summary>

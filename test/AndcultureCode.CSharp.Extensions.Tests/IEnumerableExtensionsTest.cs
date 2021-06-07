@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Extensions.Tests.Stubs;
 using AndcultureCode.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
@@ -7,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Extensions.Tests
 {
-    public class IEnumerableExtensionsTest : BaseUnitTest
+    public class IEnumerableExtensionsTest : BaseExtensionsTest
     {
         #region Setup
 
@@ -16,6 +18,77 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion Setup
+
+        #region Except
+
+        [Fact]
+        public void Except_When_Second_Collection_Has_No_Matching_Elements_Returns_Source_Collection()
+        {
+            // Arrange
+            var expected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                expected,
+            };
+            var second = new List<UserStub>
+            {
+                // This should never match the source collection
+                Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
+            };
+            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(second, expression);
+
+            // Assert
+            result.ShouldBe(source);
+        }
+
+        [Fact]
+        public void Except_When_Second_Collection_Has_No_Elements_Returns_Source_Collection()
+        {
+            // Arrange
+            var expected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                expected,
+            };
+            var second = new List<UserStub>();
+            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(second, expression);
+
+            // Assert
+            result.ShouldBe(source);
+        }
+
+        [Fact]
+        public void Except_When_Second_Collection_Has_Matching_Elements_Returns_Collection_Without_Matching_Elements()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>();
+            var source = new List<UserStub>
+            {
+                Build<UserStub>(),
+                unexpected,
+            };
+            var second = new List<UserStub>
+            {
+                // Based on matching email, this should be excluded from the result
+                Build<UserStub>((e) => e.EmailAddress = unexpected.EmailAddress)
+            };
+            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+
+            // Act
+            var result = source.Except(second, expression);
+
+            // Assert
+            result.ShouldNotBeEmpty();
+            result.ShouldNotContain(unexpected);
+        }
+
+        #endregion Except
 
         #region HasValues (No Arguments)
 
