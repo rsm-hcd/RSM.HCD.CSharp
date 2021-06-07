@@ -10,19 +10,19 @@ namespace AndcultureCode.CSharp.Extensions.Models
     {
         #region Private Members
 
-        private readonly Func<T, T, bool> _expression;
+        private readonly Func<T, T, bool> _predicate;
 
         #endregion Private Members
 
         #region Constructor
 
         /// <summary>
-        /// Constructor for new comparator based on expression
+        /// Constructor for new comparator based on predicate
         /// </summary>
-        /// <param name="expression">Expression to be used for equality comparison</param>
-        public LambdaComparer(Func<T, T, bool> expression)
+        /// <param name="predicate">Predicate to be used for equality comparison</param>
+        public LambdaComparer(Func<T, T, bool> predicate)
         {
-            _expression = expression;
+            _predicate = predicate;
         }
 
         #endregion Constructor
@@ -30,7 +30,7 @@ namespace AndcultureCode.CSharp.Extensions.Models
         #region Public Methods
 
         /// <inheritdoc />
-        public bool Equals(T x, T y) => _expression(x, y);
+        public bool Equals(T x, T y) => _predicate(x, y);
 
         /// <inheritdoc />
         public int GetHashCode(T obj) => 0; // Returning the same hash will force Equals() evaluation

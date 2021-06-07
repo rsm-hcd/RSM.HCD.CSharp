@@ -28,10 +28,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var source = (List<UserStub>)null;
             var second = new List<UserStub>();
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, expression);
+            var result = source.Except(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -43,10 +43,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var source = new List<UserStub>();
             var second = new List<UserStub>();
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, expression);
+            var result = source.Except(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -66,10 +66,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 // This should never match the source collection
                 Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
             };
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, expression);
+            var result = source.Except(second, predicate);
 
             // Assert
             result.ShouldBe(source);
@@ -85,10 +85,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 expected,
             };
             var second = new List<UserStub>();
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, expression);
+            var result = source.Except(second, predicate);
 
             // Assert
             result.ShouldBe(source);
@@ -104,10 +104,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 expected,
             };
             var second = (List<UserStub>)null;
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, expression);
+            var result = source.Except(second, predicate);
 
             // Assert
             result.ShouldBe(source);
@@ -128,10 +128,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 // Based on matching email, this should be excluded from the result
                 Build<UserStub>((e) => e.EmailAddress = unexpected.EmailAddress)
             };
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Except(second, expression);
+            var result = source.Except(second, predicate);
 
             // Assert
             result.ShouldNotBeEmpty();
@@ -254,7 +254,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, expression);
+            var result = source.Intersect(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -266,10 +266,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var source = new List<UserStub>();
             var second = new List<UserStub>();
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, expression);
+            var result = source.Intersect(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -289,10 +289,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 // This should never match the source collection
                 Build<UserStub>((e) => e.EmailAddress = $"not-{expected.EmailAddress}")
             };
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, expression);
+            var result = source.Intersect(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -308,10 +308,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 expected,
             };
             var second = new List<UserStub>();
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, expression);
+            var result = source.Intersect(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -327,10 +327,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 expected,
             };
             var second = (List<UserStub>)null;
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, expression);
+            var result = source.Intersect(second, predicate);
 
             // Assert
             result.ShouldBeEmpty();
@@ -351,10 +351,10 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 // Based on matching email, this should be only included result
                 Build<UserStub>((e) => e.EmailAddress = expected.EmailAddress)
             };
-            Func<UserStub, UserStub, bool> expression = (a, b) => a.EmailAddress == b.EmailAddress;
+            Func<UserStub, UserStub, bool> predicate = (a, b) => a.EmailAddress == b.EmailAddress;
 
             // Act
-            var result = source.Intersect(second, expression);
+            var result = source.Intersect(second, predicate);
 
             // Assert
             result.ShouldBeOfSize(1);
