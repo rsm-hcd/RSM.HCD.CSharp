@@ -23,6 +23,33 @@ namespace AndcultureCode.CSharp.Testing.Extensions
 
         #region Public Methods
 
+        #region IResult<bool> Extensions
+
+        /// <summary>
+        /// Assert that the result has at least one error
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="exactCount">When supplied, asserts the result has this exact number of errors</param>
+        public static void ShouldHaveErrors(this IResult<bool> result, int? exactCount = null)
+        {
+            result.ShouldNotBeNull();
+            result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            result.Errors.Count.ShouldBeGreaterThan(0);
+            result.ErrorCount.ShouldBeGreaterThan(0);
+            result.HasErrors.ShouldBeTrue(result.ListErrors());
+            result.ResultObject.ShouldBeFalse();
+
+            if (exactCount != null)
+            {
+                result.ErrorCount.ShouldBe((int)exactCount);
+                result.Errors.Count.ShouldBe((int)exactCount);
+            }
+        }
+
+        #endregion IResult<bool> Extensions
+
+        #region IResult<T> Extensions
+
         /// <summary>
         /// Assert result has error for `BASIC_ERROR_KEY`
         /// </summary>
@@ -43,27 +70,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             result.Errors.Count.ShouldBeGreaterThan(0);
             result.ErrorCount.ShouldBeGreaterThan(0);
             result.HasErrors.ShouldBeTrue(result.ListErrors());
-
-            if (exactCount != null)
-            {
-                result.ErrorCount.ShouldBe((int)exactCount);
-                result.Errors.Count.ShouldBe((int)exactCount);
-            }
-        }
-
-        /// <summary>
-        /// Assert that the result has at least one error
-        /// </summary>
-        /// <param name="result">Result under test</param>
-        /// <param name="exactCount">When supplied, asserts the result has this exact number of errors</param>
-        public static void ShouldHaveErrors(this IResult<bool> result, int? exactCount = null)
-        {
-            result.ShouldNotBeNull();
-            result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
-            result.Errors.Count.ShouldBeGreaterThan(0);
-            result.ErrorCount.ShouldBeGreaterThan(0);
-            result.HasErrors.ShouldBeTrue(result.ListErrors());
-            result.ResultObject.ShouldBeFalse();
 
             if (exactCount != null)
             {
@@ -136,6 +142,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
 
             result.Errors.ShouldNotContain(e => e.Key == property);
         }
+
+        #endregion IResult<T> Extensions
 
         #endregion Public Methods
     }
