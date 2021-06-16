@@ -9,6 +9,7 @@ using AndcultureCode.CSharp.Testing.Factories;
 using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
 using AndcultureCode.CSharp.Testing.Models.Stubs;
+using System.Linq;
 
 namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 {
@@ -742,6 +743,83 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         }
 
         #endregion ShouldHaveResultObject
+
+        #region ShouldHaveResultObjects
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IEnumerable<object>> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IEnumerable<object>>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_Empty_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = new List<UserStub>());
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_HasValues_Given_Non_Matching_ExactCount_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = BuildList<UserStub>(2));
+            var unexpected = result.ResultObject.Count() + 1;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects(exactCount: unexpected));
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_HasValues_Given_Matching_ExactCount_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = BuildList<UserStub>(2));
+            var expected = result.ResultObject.Count();
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldHaveResultObjects(exactCount: expected));
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_Empty_Given_0_ExactCount_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = new List<UserStub>());
+            var expected = 0;
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldHaveResultObjects(exactCount: expected));
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_HasValues_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = BuildList<UserStub>(2));
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldHaveResultObjects());
+        }
+
+        #endregion ShouldHaveResultObjects
 
         #region ShouldHaveResourceNotFoundError
 

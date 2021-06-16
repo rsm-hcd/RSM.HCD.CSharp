@@ -5,6 +5,7 @@ using AndcultureCode.CSharp.Testing.Constants;
 using Shouldly;
 using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using System.Collections.Generic;
 
 namespace AndcultureCode.CSharp.Testing.Extensions
 {
@@ -147,7 +148,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Assert result has error for `BASIC_ERROR_KEY`
         /// </summary>
         /// <param name="result">Result under test</param>
-        /// <typeparam name="T"></typeparam>
         public static void ShouldHaveBasicError<T>(this IResult<T> result) => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
 
         /// <summary>
@@ -155,7 +155,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="exactCount">When supplied, asserts the result has this exact number of errors</param>
-        /// <typeparam name="T"></typeparam>
         public static void ShouldHaveErrors<T>(this IResult<T> result, int? exactCount = null)
         {
             result.ShouldNotBeNull();
@@ -174,7 +173,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <summary>
         /// Assert that there are errors for the supplied property
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="result">Result under test</param>
         /// <param name="property">Key of the error to be asserted against</param>
         /// <param name="exactCount">When supplied, asserts the exact number of errors with the property. NOT total number of errors</param>
@@ -207,15 +205,13 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Assert error exists for `ERROR_RESOURCE_NOT_FOUND_KEY`
         /// </summary>
         /// <param name="result">Result under test</param>
-        /// <typeparam name="T"></typeparam>
         public static void ShouldHaveResourceNotFoundError<T>(this IResult<T> result) =>
             result.ShouldHaveErrorsFor(CoreErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY);
 
         /// <summary>
         /// Assert that `ResultObject` is not null
         /// </summary>
-        /// <param name="result"></param>
-        /// <typeparam name="T"></typeparam>
+        /// <param name="result">Result under test</param>
         public static void ShouldHaveResultObject<T>(this IResult<T> result)
         {
             result.ShouldNotBeNull();
@@ -223,10 +219,26 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         }
 
         /// <summary>
+        /// Assert that an IEnumerable `ResultObject` has values
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="exactCount">When supplied, asserts that the collection has exactly this number of elements</param>
+        public static void ShouldHaveResultObjects<T>(this IResult<IEnumerable<T>> result, int? exactCount = null)
+        {
+            result.ShouldHaveResultObject();
+            if (exactCount != null)
+            {
+                result.ResultObject.ShouldBeOfSize((int)exactCount);
+                return;
+            }
+
+            result.ResultObject.ShouldNotBeEmpty();
+        }
+
+        /// <summary>
         /// Assert that there are no errors for the given result
         /// </summary>
         /// <param name="result">Result under test</param>
-        /// <typeparam name="T"></typeparam>
         public static void ShouldNotHaveErrors<T>(this IResult<T> result)
         {
             result.Errors?.Count.ShouldBe(0, $"Unexpected errors: {result.ListErrors()}");
@@ -237,7 +249,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <summary>
         /// Assert that there weren't any errors for the supplied property
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="result">Result under test</param>
         /// <param name="property">Key of the error to be asserted against</param>
         public static void ShouldNotHaveErrorsFor<T>(this IResult<T> result, string property)
