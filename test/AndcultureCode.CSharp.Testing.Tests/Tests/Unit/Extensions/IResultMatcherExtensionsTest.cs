@@ -124,6 +124,63 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
         #endregion ShouldBeCreatedBy(long createdById)
 
+        #region ShouldBeCreatedBy(IEntity createdBy)
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedBy_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<ICreatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedBy_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedBy_When_CreatedById_Null_Fails_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.CreatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.CreatedById = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedBy_When_CreatedById_Does_Not_Match_Fails_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.CreatedById = Random.Long(min: 1, max: 100));
+            var result = BuildResult<UserStub>((e) => e.CreatedById = unexpected.Id + 1);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedBy_When_CreatedById_Matches_Passes_Assertion()
+        {
+            // Arrange
+            var expected = Build<UserStub>((e) => e.CreatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.CreatedById = expected.Id);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeCreatedBy(createdBy: expected));
+        }
+
+        #endregion ShouldBeCreatedBy(long createdById)
+
         #region ShouldHaveBasicError
 
         [Fact]
@@ -335,6 +392,40 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         }
 
         #endregion ShouldHaveErrorsFor
+
+        #region ShouldHaveResultObject
+
+        [Fact]
+        public void ShouldHaveResultObject_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<object> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObject());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObject_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<object>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObject());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObject_When_ResultObject_HasValue_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldHaveResultObject());
+        }
+
+        #endregion ShouldHaveResultObject
 
         #region ShouldHaveResourceNotFoundError
 
