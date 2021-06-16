@@ -4,6 +4,7 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Testing.Constants;
 using Shouldly;
 using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
+using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
 namespace AndcultureCode.CSharp.Testing.Extensions
 {
@@ -37,6 +38,39 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         }
 
         #endregion IResult<bool> Extensions
+
+        #region IResult<ICreatable> Extensions
+
+        /// <summary>
+        /// Assert that the `ResultObject` has a `CreatedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldBeCreated(this IResult<ICreatable> result)
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.CreatedOn.ShouldNotBeNull();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has the expected `CreatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="createdById">Expected id of the record's creator</param>
+        public static void ShouldBeCreatedBy(this IResult<ICreatable> result, long createdById)
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.CreatedById.ShouldBe(createdById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has the expected `CreatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="createdBy">Expected record's creator</param>
+        public static void ShouldBeCreatedBy(this IResult<ICreatable> result, IEntity createdBy) =>
+            result.ShouldBeCreatedBy(createdBy.Id);
+
+        #endregion IResult<ICreatable> Extensions
 
         #region IResult<T> Extensions
 
@@ -107,6 +141,17 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <typeparam name="T"></typeparam>
         public static void ShouldHaveResourceNotFoundError<T>(this IResult<T> result) =>
             result.ShouldHaveErrorsFor(CoreErrorConstants.ERROR_RESOURCE_NOT_FOUND_KEY);
+
+        /// <summary>
+        /// Assert that `ResultObject` is not null
+        /// </summary>
+        /// <param name="result"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void ShouldHaveResultObject<T>(this IResult<T> result)
+        {
+            result.ShouldNotBeNull();
+            result.ResultObject.ShouldNotBeNull($"Expected {nameof(IResult<T>.ResultObject)} to have a value, but it was null.");
+        }
 
         /// <summary>
         /// Assert that there are no errors for the given result
