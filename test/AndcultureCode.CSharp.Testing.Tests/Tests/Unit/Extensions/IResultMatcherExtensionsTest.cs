@@ -339,6 +339,164 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
         #endregion ShouldBeDeletedBy(IEntity deletedBy)
 
+        #region ShouldBeUpdated
+
+        [Fact]
+        public void ShouldBeUpdated_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IUpdatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdated());
+        }
+
+        [Fact]
+        public void ShouldBeUpdated_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdated());
+        }
+
+        [Fact]
+        public void ShouldBeUpdated_When_UpdatedOn_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.UpdatedOn = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdated());
+        }
+
+        [Fact]
+        public void ShouldBeUpdated_When_UpdatedOn_HasValue_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.UpdatedOn = Faker.Date.RecentOffset());
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeUpdated());
+        }
+
+        #endregion ShouldBeUpdated
+
+        #region ShouldBeUpdatedBy(long updatedById)
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedById_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IUpdatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedById_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedById_When_UpdatedById_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedById_When_UpdatedById_Does_Not_Match_Fails_Assertion()
+        {
+            // Arrange
+            var updatedById = Random.Long(min: 1, max: 100);
+            var unexpected = updatedById + 1;
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = updatedById);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedById: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedById_When_UpdatedById_Matches_Passes_Assertion()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = expected);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeUpdatedBy(updatedById: expected));
+        }
+
+        #endregion ShouldBeUpdatedBy(long updatedById)
+
+        #region ShouldBeUpdatedBy(IEntity updatedBy)
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedBy_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IUpdatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedBy_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedBy_When_UpdatedById_Null_Fails_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.UpdatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedBy_When_UpdatedById_Does_Not_Match_Fails_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.UpdatedById = Random.Long(min: 1, max: 100));
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = unexpected.Id + 1);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeUpdatedBy(updatedBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeUpdatedBy_UpdatedBy_When_UpdatedById_Matches_Passes_Assertion()
+        {
+            // Arrange
+            var expected = Build<UserStub>((e) => e.UpdatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = expected.Id);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeUpdatedBy(updatedBy: expected));
+        }
+
+        #endregion ShouldBeUpdatedBy(IEntity updatedBy)
+
         #region ShouldHaveBasicError
 
         [Fact]

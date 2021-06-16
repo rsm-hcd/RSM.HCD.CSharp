@@ -107,6 +107,40 @@ namespace AndcultureCode.CSharp.Testing.Extensions
 
         #endregion IResult<IDeletable> Extensions
 
+        #region IResult<IUpdatable> Extensions
+
+        /// <summary>
+        /// Assert that the `ResultObject` has an `UpdatedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldBeUpdated<TUpdatable>(this IResult<TUpdatable> result) where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.UpdatedOn.ShouldNotBeNull();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has the expected `UpdatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="updatedById">Expected id of the record's updater</param>
+        public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, long updatedById)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.UpdatedById.ShouldBe(updatedById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has the expected `UpdatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="updatedBy">Expected record's updater</param>
+        public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
+            where TUpdatable : IUpdatable => result.ShouldBeUpdatedBy(updatedBy.Id);
+
+        #endregion IResult<IUpdatable> Extensions
+
         #region IResult<T> Extensions
 
         /// <summary>
