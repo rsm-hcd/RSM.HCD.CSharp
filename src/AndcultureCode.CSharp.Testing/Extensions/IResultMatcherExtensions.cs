@@ -32,18 +32,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <param name="exactCount">When supplied, asserts the result has this exact number of errors</param>
         public static void ShouldHaveErrors(this IResult<bool> result, int? exactCount = null)
         {
-            result.ShouldNotBeNull();
-            result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
-            result.Errors.Count.ShouldBeGreaterThan(0);
-            result.ErrorCount.ShouldBeGreaterThan(0);
-            result.HasErrors.ShouldBeTrue(result.ListErrors());
+            result.ShouldHaveErrors<bool>(exactCount);
             result.ResultObject.ShouldBeFalse();
-
-            if (exactCount != null)
-            {
-                result.ErrorCount.ShouldBe((int)exactCount);
-                result.Errors.Count.ShouldBe((int)exactCount);
-            }
         }
 
         #endregion IResult<bool> Extensions
@@ -69,12 +59,12 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
             result.Errors.Count.ShouldBeGreaterThan(0);
             result.ErrorCount.ShouldBeGreaterThan(0);
-            result.HasErrors.ShouldBeTrue(result.ListErrors());
+            result.HasErrors.ShouldBeTrue();
 
             if (exactCount != null)
             {
                 result.ErrorCount.ShouldBe((int)exactCount);
-                result.Errors.Count.ShouldBe((int)exactCount);
+                result.Errors.ShouldBeOfSize((int)exactCount);
             }
         }
 
@@ -88,22 +78,25 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <param name="containedInMessage">When supplied, asserts that the property's error message contains this string</param>
         public static void ShouldHaveErrorsFor<T>(this IResult<T> result, string property, int? exactCount = null, string containedInMessage = null)
         {
-            result.ShouldNotBeNull();
-            result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
-            result.Errors.ShouldContain(e => e.Key == property, result.ListErrors());
-            result.ErrorCount.ShouldBeGreaterThan(0);
-            result.HasErrors.ShouldBeTrue();
+            result.ShouldHaveErrors<T>();
+            result.Errors.ShouldContain(
+                elementPredicate: (e) => e.Key == property,
+                customMessage: $"Expected error '{property}' but did not: {result.ListErrors()}"
+            );
 
             if (!string.IsNullOrWhiteSpace(containedInMessage))
             {
                 containedInMessage = containedInMessage.ToLower();
 
-                result.Errors.ShouldContain(e => e.Key == property && e.Message.ToLower().Contains(containedInMessage), result.ListErrors());
+                result.Errors.ShouldContain(
+                    elementPredicate: (e) => e.Key == property && e.Message.ToLower().Contains(containedInMessage),
+                    customMessage: $"Expected error '{property}' to contain '{containedInMessage}' in message, but did not: {result.ListErrors()}"
+                );
             }
 
             if (exactCount != null)
             {
-                result.Errors.Where(e => e.Key == property).Count().ShouldBe((int)exactCount);
+                result.Errors.Where((e) => e.Key == property).ShouldBeOfSize((int)exactCount);
             }
         }
 
@@ -140,7 +133,10 @@ namespace AndcultureCode.CSharp.Testing.Extensions
                 return;
             }
 
-            result.Errors.ShouldNotContain(e => e.Key == property);
+            result.Errors.ShouldNotContain(
+                elementPredicate: (e) => e.Key == property,
+                customMessage: $"Expected not to have an error with key '{property}' but found: {result.ListErrors()}"
+            );
         }
 
         #endregion IResult<T> Extensions

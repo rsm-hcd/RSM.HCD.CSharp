@@ -258,7 +258,6 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
         }
 
-
         [Fact]
         public void ShouldHaveErrorsFor_When_Errors_Contains_Key_Passes_Assertion()
         {
@@ -344,7 +343,6 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
                 result.ShouldHaveResourceNotFoundError();
             });
         }
-
 
         #endregion ShouldHaveResourceNotFoundError
     }
