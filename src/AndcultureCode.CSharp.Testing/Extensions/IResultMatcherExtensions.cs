@@ -73,6 +73,40 @@ namespace AndcultureCode.CSharp.Testing.Extensions
 
         #endregion IResult<ICreatable> Extensions
 
+        #region IResult<IDeletable> Extensions
+
+        /// <summary>
+        /// Assert that the `ResultObject` has a `DeletedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldBeDeleted<TDeletable>(this IResult<TDeletable> result) where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.DeletedOn.ShouldNotBeNull();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has the expected `DeletedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="deletedById">Expected id of the record's deletor</param>
+        public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, long deletedById)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.DeletedById.ShouldBe(deletedById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has the expected `DeletedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="deletedBy">Expected record's deletor</param>
+        public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
+            where TDeletable : IDeletable => result.ShouldBeDeletedBy(deletedBy.Id);
+
+        #endregion IResult<IDeletable> Extensions
+
         #region IResult<T> Extensions
 
         /// <summary>

@@ -179,7 +179,165 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             Should.NotThrow(() => result.ShouldBeCreatedBy(createdBy: expected));
         }
 
-        #endregion ShouldBeCreatedBy(long createdById)
+        #endregion ShouldBeCreatedBy(IEntity createdBy)
+
+        #region ShouldBeDeleted
+
+        [Fact]
+        public void ShouldBeDeleted_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IDeletable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeleted());
+        }
+
+        [Fact]
+        public void ShouldBeDeleted_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeleted());
+        }
+
+        [Fact]
+        public void ShouldBeDeleted_When_DeletedOn_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.DeletedOn = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeleted());
+        }
+
+        [Fact]
+        public void ShouldBeDeleted_When_DeletedOn_HasValue_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.DeletedOn = Faker.Date.RecentOffset());
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeDeleted());
+        }
+
+        #endregion ShouldBeDeleted
+
+        #region ShouldBeDeletedBy(long deletedById)
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedById_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IDeletable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedById_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedById_When_DeletedById_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.DeletedById = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedById_When_DeletedById_Does_Not_Match_Fails_Assertion()
+        {
+            // Arrange
+            var deletedById = Random.Long(min: 1, max: 100);
+            var unexpected = deletedById + 1;
+            var result = BuildResult<UserStub>((e) => e.DeletedById = deletedById);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedById: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedById_When_DeletedById_Matches_Passes_Assertion()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var result = BuildResult<UserStub>((e) => e.DeletedById = expected);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeDeletedBy(deletedById: expected));
+        }
+
+        #endregion ShouldBeDeletedBy(long deletedById)
+
+        #region ShouldBeDeletedBy(IEntity deletedBy)
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedBy_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IDeletable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedBy_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedBy_When_DeletedById_Null_Fails_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.DeletedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.DeletedById = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedBy_When_DeletedById_Does_Not_Match_Fails_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.DeletedById = Random.Long(min: 1, max: 100));
+            var result = BuildResult<UserStub>((e) => e.DeletedById = unexpected.Id + 1);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeDeletedBy(deletedBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedBy_When_DeletedById_Matches_Passes_Assertion()
+        {
+            // Arrange
+            var expected = Build<UserStub>((e) => e.DeletedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.DeletedById = expected.Id);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeDeletedBy(deletedBy: expected));
+        }
+
+        #endregion ShouldBeDeletedBy(IEntity deletedBy)
 
         #region ShouldHaveBasicError
 
