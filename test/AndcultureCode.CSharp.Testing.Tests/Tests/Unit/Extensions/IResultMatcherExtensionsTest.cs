@@ -1,4 +1,3 @@
-using AndcultureCode.CSharp.Core.Models;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
@@ -7,8 +6,9 @@ using AndcultureCode.CSharp.Testing.Constants;
 using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Testing.Factories;
-using System;
 using AndcultureCode.CSharp.Core.Models.Errors;
+using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using AndcultureCode.CSharp.Testing.Models.Stubs;
 
 namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 {
@@ -23,6 +23,107 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
         #endregion Setup
 
+        #region ShouldBeCreated
+
+        [Fact]
+        public void ShouldBeCreated_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<ICreatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreated());
+        }
+
+        [Fact]
+        public void ShouldBeCreated_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreated());
+        }
+
+        [Fact]
+        public void ShouldBeCreated_When_CreatedOn_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.CreatedOn = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreated());
+        }
+
+        [Fact]
+        public void ShouldBeCreated_When_CreatedOn_HasValue_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.CreatedOn = Faker.Date.RecentOffset());
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeCreated());
+        }
+
+        #endregion ShouldBeCreated
+
+        #region ShouldBeCreatedBy(long createdById)
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedById_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<ICreatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedById_When_ResultObject_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.ResultObject = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedById_When_CreatedById_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.CreatedById = null);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedById_When_CreatedById_Does_Not_Match_Fails_Assertion()
+        {
+            // Arrange
+            var createdById = Random.Long(min: 1, max: 100);
+            var unexpected = createdById + 1;
+            var result = BuildResult<UserStub>((e) => e.CreatedById = createdById);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldBeCreatedBy(createdById: unexpected));
+        }
+
+        [Fact]
+        public void ShouldBeCreatedBy_CreatedById_When_CreatedById_Matches_Passes_Assertion()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var result = BuildResult<UserStub>((e) => e.CreatedById = expected);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldBeCreatedBy(createdById: expected));
+        }
+
+        #endregion ShouldBeCreatedBy(long createdById)
+
         #region ShouldHaveBasicError
 
         [Fact]
@@ -32,10 +133,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() =>
-            {
-                result.ShouldHaveBasicError();
-            });
+            var ex = Record.Exception(() => result.ShouldHaveBasicError());
 
             // Assert
             ex.ShouldNotBeNull();
@@ -49,10 +147,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveBasicError();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveBasicError());
         }
 
         [Fact]
@@ -65,10 +160,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveBasicError();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveBasicError());
         }
 
         [Fact]
@@ -81,10 +173,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.NotThrow(() =>
-            {
-                result.ShouldHaveBasicError();
-            });
+            Should.NotThrow(() => result.ShouldHaveBasicError());
         }
 
         #endregion ShouldHaveBasicError
@@ -115,10 +204,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveErrors();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveErrors());
         }
 
         [Fact]
@@ -131,10 +217,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.NotThrow(() =>
-            {
-                result.ShouldHaveErrors();
-            });
+            Should.NotThrow(() => result.ShouldHaveErrors());
         }
 
         #endregion ShouldHaveErrors<T>
@@ -148,10 +231,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<bool>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() =>
-            {
-                result.ShouldHaveErrors();
-            });
+            var ex = Record.Exception(() => result.ShouldHaveErrors());
 
             // Assert
             ex.ShouldNotBeNull();
@@ -165,10 +245,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<bool>((e) => e.Errors = new List<IError>());
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveErrors();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveErrors());
         }
 
         [Fact]
@@ -185,10 +262,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             );
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveErrors();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveErrors());
         }
 
         [Fact]
@@ -201,10 +275,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.NotThrow(() =>
-            {
-                result.ShouldHaveErrors();
-            });
+            Should.NotThrow(() => result.ShouldHaveErrors());
         }
 
         #endregion ShouldHaveErrors<bool>
@@ -218,10 +289,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() =>
-            {
-                result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
-            });
+            var ex = Record.Exception(() => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY));
 
             // Assert
             ex.ShouldNotBeNull();
@@ -235,10 +303,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY));
         }
 
         [Fact]
@@ -252,10 +317,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveErrorsFor($"not-{error.Key}");
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveErrorsFor($"not-{error.Key}"));
         }
 
         [Fact]
@@ -268,14 +330,8 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
                 error
             });
 
-            // Act
-            var ex = Record.Exception(() =>
-            {
-                result.ShouldHaveErrorsFor(error.Key);
-            });
-
-            // Assert
-            ex.ShouldBeNull();
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldHaveErrorsFor(error.Key));
         }
 
         #endregion ShouldHaveErrorsFor
@@ -289,10 +345,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() =>
-            {
-                result.ShouldHaveResourceNotFoundError();
-            });
+            var ex = Record.Exception(() => result.ShouldHaveResourceNotFoundError());
 
             // Assert
             ex.ShouldNotBeNull();
@@ -306,10 +359,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = new List<IError>());
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveResourceNotFoundError();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResourceNotFoundError());
         }
 
         [Fact]
@@ -322,10 +372,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.Throw<Exception>(() =>
-            {
-                result.ShouldHaveResourceNotFoundError();
-            });
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResourceNotFoundError());
         }
 
         [Fact]
@@ -338,10 +385,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             });
 
             // Act & Assert
-            Should.NotThrow(() =>
-            {
-                result.ShouldHaveResourceNotFoundError();
-            });
+            Should.NotThrow(() => result.ShouldHaveResourceNotFoundError());
         }
 
         #endregion ShouldHaveResourceNotFoundError

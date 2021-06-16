@@ -45,7 +45,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Assert that the `ResultObject` has a `CreatedOn` value
         /// </summary>
         /// <param name="result">Result under test</param>
-        public static void ShouldBeCreated(this IResult<ICreatable> result)
+        public static void ShouldBeCreated<TCreatable>(this IResult<TCreatable> result) where TCreatable : ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.CreatedOn.ShouldNotBeNull();
@@ -56,7 +56,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="createdById">Expected id of the record's creator</param>
-        public static void ShouldBeCreatedBy(this IResult<ICreatable> result, long createdById)
+        public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, long createdById)
+            where TCreatable : ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.CreatedById.ShouldBe(createdById);
@@ -67,8 +68,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="createdBy">Expected record's creator</param>
-        public static void ShouldBeCreatedBy(this IResult<ICreatable> result, IEntity createdBy) =>
-            result.ShouldBeCreatedBy(createdBy.Id);
+        public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
+            where TCreatable : ICreatable => result.ShouldBeCreatedBy(createdBy.Id);
 
         #endregion IResult<ICreatable> Extensions
 
