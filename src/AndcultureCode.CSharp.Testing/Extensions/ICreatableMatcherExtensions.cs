@@ -44,5 +44,41 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             entity.ShouldNotBeNull();
             entity.ShouldBeCreatedBy(createdBy.Id);
         }
+
+        /// <summary>
+        /// Assert that the `ICreatable` has a null `CreatedOn` value
+        /// </summary>
+        /// <param name="entity">Entity under test</param>
+        public static void ShouldNotBeCreated<TCreatable>(this TCreatable entity)
+            where TCreatable : ICreatable
+        {
+            entity.ShouldNotBeNull();
+            entity.CreatedOn.ShouldBeNull();
+        }
+
+        /// <summary>
+        /// Assert that the `ICreatable` does not match the provided `CreatedById`
+        /// </summary>
+        /// <param name="entity">Entity under test</param>
+        /// <param name="createdById">Unexpected id of the record's creator</param>
+        public static void ShouldNotBeCreatedBy<TCreatable>(this TCreatable entity, long createdById)
+            where TCreatable : ICreatable
+        {
+            entity.ShouldNotBeNull();
+            entity.CreatedById.ShouldNotBe(createdById);
+        }
+
+        /// <summary>
+        /// Assert that the `ICreatable` does not match the provided `CreatedById`
+        /// </summary>
+        /// <param name="entity">Entity under test</param>
+        /// <param name="createdBy">Unexpected record's creator</param>
+        public static void ShouldNotBeCreatedBy<TCreatable>(this TCreatable entity, IEntity createdBy)
+            where TCreatable : ICreatable
+        {
+            createdBy.ShouldNotBeNull(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+            entity.ShouldNotBeNull();
+            entity.ShouldNotBeCreatedBy(createdBy.Id);
+        }
     }
 }
