@@ -19,7 +19,12 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <summary>
         /// Detailed output message to display when expecting errors on a result that has a null `Errors` property
         /// </summary>
-        public const string ERROR_ERRORS_LIST_IS_NULL_MESSAGE = "Expected result to have errors, but instead Errors is 'null'";
+        public static string ERROR_ERRORS_LIST_IS_NULL_MESSAGE = $"Expected {typeof(IResult<>).Name} to have errors, but instead Errors is 'null'";
+
+        /// <summary>
+        /// Friendlier output message to display when expected entity is not valid for test assertion to continue
+        /// </summary>
+        public static string ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE = $"Expected {nameof(IEntity)} should have a value, but instead is 'null'. Verify your test arrangement is correct.";
 
         #endregion Constants
 
@@ -70,7 +75,11 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <param name="result">Result under test</param>
         /// <param name="createdBy">Expected record's creator</param>
         public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
-            where TCreatable : ICreatable => result.ShouldBeCreatedBy(createdBy.Id);
+            where TCreatable : ICreatable
+        {
+            createdBy.ExpectedEntityShouldNotBeNull();
+            result.ShouldBeCreatedBy(createdBy.Id);
+        }
 
         #endregion IResult<ICreatable> Extensions
 
@@ -104,7 +113,11 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <param name="result">Result under test</param>
         /// <param name="deletedBy">Expected record's deletor</param>
         public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
-            where TDeletable : IDeletable => result.ShouldBeDeletedBy(deletedBy.Id);
+            where TDeletable : IDeletable
+        {
+            deletedBy.ExpectedEntityShouldNotBeNull();
+            result.ShouldBeDeletedBy(deletedBy.Id);
+        }
 
         #endregion IResult<IDeletable> Extensions
 
@@ -138,7 +151,11 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// <param name="result">Result under test</param>
         /// <param name="updatedBy">Expected record's updater</param>
         public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
-            where TUpdatable : IUpdatable => result.ShouldBeUpdatedBy(updatedBy.Id);
+            where TUpdatable : IUpdatable
+        {
+            updatedBy.ExpectedEntityShouldNotBeNull();
+            result.ShouldBeUpdatedBy(updatedBy.Id);
+        }
 
         #endregion IResult<IUpdatable> Extensions
 
@@ -267,5 +284,12 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         #endregion IResult<T> Extensions
 
         #endregion Public Methods
+
+        #region Private Methods
+
+        private static void ExpectedEntityShouldNotBeNull(this IEntity entity) =>
+            entity.ShouldNotBeNull(ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+
+        #endregion Private Methods
     }
 }

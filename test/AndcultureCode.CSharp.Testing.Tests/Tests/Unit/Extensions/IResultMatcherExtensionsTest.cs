@@ -128,6 +128,20 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         #region ShouldBeCreatedBy(IEntity createdBy)
 
         [Fact]
+        public void ShouldBeCreatedBy_CreatedBy_When_Expected_Entity_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act
+            var exception = Record.Exception(() => result.ShouldBeCreatedBy(createdBy: (IEntity)null));
+
+            // Assert
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+        }
+
+        [Fact]
         public void ShouldBeCreatedBy_CreatedBy_When_Result_Null_Fails_Assertion()
         {
             // Arrange
@@ -284,6 +298,20 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         #endregion ShouldBeDeletedBy(long deletedById)
 
         #region ShouldBeDeletedBy(IEntity deletedBy)
+
+        [Fact]
+        public void ShouldBeDeletedBy_DeletedBy_When_Expected_Entity_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act
+            var exception = Record.Exception(() => result.ShouldBeDeletedBy(deletedBy: (IEntity)null));
+
+            // Assert
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+        }
 
         [Fact]
         public void ShouldBeDeletedBy_DeletedBy_When_Result_Null_Fails_Assertion()
@@ -444,6 +472,20 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         #region ShouldBeUpdatedBy(IEntity updatedBy)
 
         [Fact]
+        public void ShouldBeUpdatedBy_UpdatedBy_When_Expected_Entity_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act
+            var exception = Record.Exception(() => result.ShouldBeUpdatedBy(updatedBy: (IEntity)null));
+
+            // Assert
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+        }
+
+        [Fact]
         public void ShouldBeUpdatedBy_UpdatedBy_When_Result_Null_Fails_Assertion()
         {
             // Arrange
@@ -507,11 +549,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() => result.ShouldHaveBasicError());
+            var exception = Record.Exception(() => result.ShouldHaveBasicError());
 
             // Assert
-            ex.ShouldNotBeNull();
-            ex.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -561,14 +603,14 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() =>
+            var exception = Record.Exception(() =>
             {
                 result.ShouldHaveErrors();
             });
 
             // Assert
-            ex.ShouldNotBeNull();
-            ex.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -605,11 +647,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<bool>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() => result.ShouldHaveErrors());
+            var exception = Record.Exception(() => result.ShouldHaveErrors());
 
             // Assert
-            ex.ShouldNotBeNull();
-            ex.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -663,11 +705,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY));
+            var exception = Record.Exception(() => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY));
 
             // Assert
-            ex.ShouldNotBeNull();
-            ex.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -830,11 +872,11 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
             var result = BuildResult<object>((e) => e.Errors = null);
 
             // Act
-            var ex = Record.Exception(() => result.ShouldHaveResourceNotFoundError());
+            var exception = Record.Exception(() => result.ShouldHaveResourceNotFoundError());
 
             // Assert
-            ex.ShouldNotBeNull();
-            ex.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
