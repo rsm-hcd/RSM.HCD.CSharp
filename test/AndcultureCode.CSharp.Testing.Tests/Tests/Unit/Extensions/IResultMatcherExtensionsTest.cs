@@ -809,10 +809,32 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void ShouldHaveResultObjects_When_ResultObject_Empty_Fails_Assertion()
+        public void ShouldHaveResultObjects_When_ResultObject_Empty_Enumerable_Fails_Assertion()
         {
             // Arrange
-            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = new List<UserStub>());
+            var result = BuildResult<IEnumerable<UserStub>>((e) => e.ResultObject = Enumerable.Empty<UserStub>());
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_Empty_Queryable_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<IQueryable<UserStub>>(
+                (e) => e.ResultObject = Enumerable.Empty<UserStub>().AsQueryable()
+            );
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects());
+        }
+
+        [Fact]
+        public void ShouldHaveResultObjects_When_ResultObject_Empty_List_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<List<UserStub>>((e) => e.ResultObject = new List<UserStub>());
 
             // Act & Assert
             Should.Throw<ShouldAssertException>(() => result.ShouldHaveResultObjects());

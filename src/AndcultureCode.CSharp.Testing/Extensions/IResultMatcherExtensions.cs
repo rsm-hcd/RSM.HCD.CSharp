@@ -332,7 +332,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="exactCount">When supplied, asserts that the collection has exactly this number of elements</param>
-        public static void ShouldHaveResultObjects<T>(this IResult<IEnumerable<T>> result, int? exactCount = null)
+        public static void ShouldHaveResultObjects<TResultObjects>(this IResult<TResultObjects> result, int? exactCount = null)
+            where TResultObjects : IEnumerable<object>
         {
             result.ShouldHaveResultObject();
             if (exactCount != null)
