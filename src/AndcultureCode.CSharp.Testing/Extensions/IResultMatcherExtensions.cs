@@ -14,19 +14,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
     /// </summary>
     public static class IResultMatcherExtensions
     {
-        #region Constants
-
-        /// <summary>
-        /// Detailed output message to display when expecting errors on a result that has a null `Errors` property
-        /// </summary>
-        public static string ERROR_ERRORS_LIST_IS_NULL_MESSAGE = $"Expected {typeof(IResult<>).Name} to have errors, but instead Errors is 'null'";
-
-        /// <summary>
-        /// Friendlier output message to display when expected entity is not valid for test assertion to continue
-        /// </summary>
-        public static string ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE = $"Expected {nameof(IEntity)} should have a value, but instead is 'null'. Verify your test arrangement is correct.";
-
-        #endregion Constants
 
         #region Public Methods
 
@@ -54,7 +41,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeCreated<TCreatable>(this IResult<TCreatable> result) where TCreatable : ICreatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.CreatedOn.ShouldNotBeNull();
+            result.ResultObject.ShouldBeCreated();
         }
 
         /// <summary>
@@ -66,7 +53,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             where TCreatable : ICreatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.CreatedById.ShouldBe(createdById);
+            result.ResultObject.ShouldBeCreatedBy(createdById);
         }
 
         /// <summary>
@@ -77,8 +64,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
             where TCreatable : ICreatable
         {
-            createdBy.ExpectedEntityShouldNotBeNull();
-            result.ShouldBeCreatedBy(createdBy.Id);
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldBeCreatedBy(createdBy);
         }
 
         #endregion IResult<ICreatable> Extensions
@@ -92,7 +79,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeDeleted<TDeletable>(this IResult<TDeletable> result) where TDeletable : IDeletable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.DeletedOn.ShouldNotBeNull();
+            result.ResultObject.ShouldBeDeleted();
         }
 
         /// <summary>
@@ -104,7 +91,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             where TDeletable : IDeletable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.DeletedById.ShouldBe(deletedById);
+            result.ResultObject.ShouldBeDeletedBy(deletedById);
         }
 
         /// <summary>
@@ -115,8 +102,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
             where TDeletable : IDeletable
         {
-            deletedBy.ExpectedEntityShouldNotBeNull();
-            result.ShouldBeDeletedBy(deletedBy.Id);
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldBeDeletedBy(deletedBy);
         }
 
         #endregion IResult<IDeletable> Extensions
@@ -130,7 +117,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeUpdated<TUpdatable>(this IResult<TUpdatable> result) where TUpdatable : IUpdatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.UpdatedOn.ShouldNotBeNull();
+            result.ResultObject.ShouldBeUpdated();
         }
 
         /// <summary>
@@ -142,7 +129,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             where TUpdatable : IUpdatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.UpdatedById.ShouldBe(updatedById);
+            result.ResultObject.ShouldBeUpdatedBy(updatedById);
         }
 
         /// <summary>
@@ -153,8 +140,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
             where TUpdatable : IUpdatable
         {
-            updatedBy.ExpectedEntityShouldNotBeNull();
-            result.ShouldBeUpdatedBy(updatedBy.Id);
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldBeUpdatedBy(updatedBy);
         }
 
         #endregion IResult<IUpdatable> Extensions
@@ -175,7 +162,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldHaveErrors<T>(this IResult<T> result, int? exactCount = null)
         {
             result.ShouldNotBeNull();
-            result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            result.Errors.ShouldNotBeNull(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
             result.Errors.Count.ShouldBeGreaterThan(0);
             result.ErrorCount.ShouldBeGreaterThan(0);
             result.HasErrors.ShouldBeTrue();
@@ -284,12 +271,5 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         #endregion IResult<T> Extensions
 
         #endregion Public Methods
-
-        #region Private Methods
-
-        private static void ExpectedEntityShouldNotBeNull(this IEntity entity) =>
-            entity.ShouldNotBeNull(ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
-
-        #endregion Private Methods
     }
 }

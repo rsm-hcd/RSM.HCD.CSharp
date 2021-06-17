@@ -138,7 +138,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -310,7 +310,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -482,7 +482,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -553,7 +553,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -610,7 +610,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -651,7 +651,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -709,7 +709,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
@@ -876,7 +876,7 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
 
             // Assert
             exception.ShouldNotBeNull();
-            exception.Message.ShouldContain(IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            exception.Message.ShouldContain(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
         }
 
         [Fact]
