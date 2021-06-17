@@ -916,5 +916,431 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         }
 
         #endregion ShouldHaveResourceNotFoundError
+
+        #region ShouldNotBeCreated
+
+        [Fact]
+        public void ShouldNotBeCreated_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<ICreatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreated());
+        }
+
+        [Fact]
+        public void ShouldNotBeCreated_When_CreatedOn_HasValue_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.CreatedOn = Faker.Date.RecentOffset());
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreated());
+        }
+
+        [Fact]
+        public void ShouldNotBeCreated_When_CreatedOn_Null_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.CreatedOn = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeCreated());
+        }
+
+        #endregion ShouldNotBeCreated
+
+        #region ShouldNotBeCreatedBy(long createdById)
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedById_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<ICreatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreatedBy(createdById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedById_When_CreatedById_Matches_Fails_Assertion()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var result = BuildResult<UserStub>((e) => e.CreatedById = expected);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreatedBy(createdById: expected));
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedById_When_CreatedById_Null_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.CreatedById = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeCreatedBy(createdById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedById_When_CreatedById_Does_Not_Match_Passes_Assertion()
+        {
+            // Arrange
+            var createdById = Random.Long(min: 1, max: 100);
+            var unexpected = createdById + 1;
+            var result = BuildResult<UserStub>((e) => e.CreatedById = createdById);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeCreatedBy(createdById: unexpected));
+        }
+
+        #endregion ShouldNotBeCreatedBy(long createdById)
+
+        #region ShouldNotBeCreatedBy(IEntity createdBy)
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedBy_When_Expected_Entity_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act
+            var exception = Record.Exception(() => result.ShouldNotBeCreatedBy(createdBy: (IEntity)null));
+
+            // Assert
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedBy_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<ICreatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreatedBy(createdBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedBy_When_CreatedById_Matches_Fails_Assertion()
+        {
+            // Arrange
+            var expected = Build<UserStub>((e) => e.CreatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.CreatedById = expected.Id);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreatedBy(createdBy: expected));
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedBy_When_CreatedById_Null_Passes_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.CreatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.CreatedById = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeCreatedBy(createdBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldNotBeCreatedBy_CreatedBy_When_CreatedById_Does_Not_Match_Passes_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.CreatedById = Random.Long(min: 1, max: 100));
+            var result = BuildResult<UserStub>((e) => e.CreatedById = unexpected.Id + 1);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeCreatedBy(createdBy: unexpected));
+        }
+
+        #endregion ShouldNotBeCreatedBy(IEntity createdBy)
+
+        #region ShouldNotBeDeleted
+
+        [Fact]
+        public void ShouldNotBeDeleted_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IDeletable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeleted());
+        }
+
+        [Fact]
+        public void ShouldNotBeDeleted_When_DeletedOn_HasValue_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.DeletedOn = Faker.Date.RecentOffset());
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeleted());
+        }
+
+        [Fact]
+        public void ShouldNotBeDeleted_When_DeletedOn_Null_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.DeletedOn = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeDeleted());
+        }
+
+        #endregion ShouldNotBeDeleted
+
+        #region ShouldNotBeDeletedBy(long deletedById)
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedById_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IDeletable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeletedBy(deletedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedById_When_DeletedById_Matches_Fails_Assertion()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var result = BuildResult<UserStub>((e) => e.DeletedById = expected);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeletedBy(deletedById: expected));
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedById_When_DeletedById_Null_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.DeletedById = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeDeletedBy(deletedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedById_When_DeletedById_Does_Not_Match_Passes_Assertion()
+        {
+            // Arrange
+            var deletedById = Random.Long(min: 1, max: 100);
+            var unexpected = deletedById + 1;
+            var result = BuildResult<UserStub>((e) => e.DeletedById = deletedById);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeDeletedBy(deletedById: unexpected));
+        }
+
+        #endregion ShouldNotBeDeletedBy(long deletedById)
+
+        #region ShouldNotBeDeletedBy(IEntity deletedBy)
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedBy_When_Expected_Entity_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act
+            var exception = Record.Exception(() => result.ShouldNotBeDeletedBy(deletedBy: (IEntity)null));
+
+            // Assert
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedBy_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IDeletable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeletedBy(deletedBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedBy_When_DeletedById_Matches_Fails_Assertion()
+        {
+            // Arrange
+            var expected = Build<UserStub>((e) => e.DeletedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.DeletedById = expected.Id);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeletedBy(deletedBy: expected));
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedBy_When_DeletedById_Null_Passes_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.DeletedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.DeletedById = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeDeletedBy(deletedBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldNotBeDeletedBy_DeletedBy_When_DeletedById_Does_Not_Match_Passes_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.DeletedById = Random.Long(min: 1, max: 100));
+            var result = BuildResult<UserStub>((e) => e.DeletedById = unexpected.Id + 1);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeDeletedBy(deletedBy: unexpected));
+        }
+
+        #endregion ShouldNotBeDeletedBy(IEntity deletedBy)
+
+        #region ShouldNotBeUpdated
+
+        [Fact]
+        public void ShouldNotBeUpdated_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IUpdatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdated());
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdated_When_UpdatedOn_HasValue_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.UpdatedOn = Faker.Date.RecentOffset());
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdated());
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdated_When_UpdatedOn_Null_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.UpdatedOn = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeUpdated());
+        }
+
+        #endregion ShouldNotBeUpdated
+
+        #region ShouldNotBeUpdatedBy(long updatedById)
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedById_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IUpdatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdatedBy(updatedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedById_When_UpdatedById_Matches_Fails_Assertion()
+        {
+            // Arrange
+            var expected = Random.Long();
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = expected);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdatedBy(updatedById: expected));
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedById_When_UpdatedById_Null_Passes_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeUpdatedBy(updatedById: Random.Long()));
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedById_When_UpdatedById_Does_Not_Match_Passes_Assertion()
+        {
+            // Arrange
+            var updatedById = Random.Long(min: 1, max: 100);
+            var unexpected = updatedById + 1;
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = updatedById);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeUpdatedBy(updatedById: unexpected));
+        }
+
+        #endregion ShouldNotBeUpdatedBy(long updatedById)
+
+        #region ShouldNotBeUpdatedBy(IEntity updatedBy)
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedBy_When_Expected_Entity_Null_Fails_Assertion()
+        {
+            // Arrange
+            var result = BuildResult<UserStub>();
+
+            // Act
+            var exception = Record.Exception(() => result.ShouldNotBeUpdatedBy(updatedBy: (IEntity)null));
+
+            // Assert
+            exception.ShouldNotBeNull();
+            exception.Message.ShouldContain(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedBy_When_Result_Null_Fails_Assertion()
+        {
+            // Arrange
+            IResult<IUpdatable> result = null;
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdatedBy(updatedBy: Build<UserStub>()));
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedBy_When_UpdatedById_Matches_Fails_Assertion()
+        {
+            // Arrange
+            var expected = Build<UserStub>((e) => e.UpdatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = expected.Id);
+
+            // Act & Assert
+            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdatedBy(updatedBy: expected));
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedBy_When_UpdatedById_Null_Passes_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.UpdatedById = Random.Long());
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = null);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeUpdatedBy(updatedBy: unexpected));
+        }
+
+        [Fact]
+        public void ShouldNotBeUpdatedBy_UpdatedBy_When_UpdatedById_Does_Not_Match_Passes_Assertion()
+        {
+            // Arrange
+            var unexpected = Build<UserStub>((e) => e.UpdatedById = Random.Long(min: 1, max: 100));
+            var result = BuildResult<UserStub>((e) => e.UpdatedById = unexpected.Id + 1);
+
+            // Act & Assert
+            Should.NotThrow(() => result.ShouldNotBeUpdatedBy(updatedBy: unexpected));
+        }
+
+        #endregion ShouldNotBeUpdatedBy(IEntity updatedBy)
     }
 }

@@ -68,6 +68,41 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             result.ResultObject.ShouldBeCreatedBy(createdBy);
         }
 
+        /// <summary>
+        /// Assert that the `ResultObject` has a null `CreatedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldNotBeCreated<TCreatable>(this IResult<TCreatable> result)
+            where TCreatable : ICreatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeCreated();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `CreatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="createdById">Unexpected id of the record's creator</param>
+        public static void ShouldNotBeCreatedBy<TCreatable>(this IResult<TCreatable> result, long createdById)
+            where TCreatable : ICreatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeCreatedBy(createdById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `CreatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="createdBy">Unexpected record's creator</param>
+        public static void ShouldNotBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
+            where TCreatable : ICreatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeCreatedBy(createdBy);
+        }
+
         #endregion IResult<ICreatable> Extensions
 
         #region IResult<IDeletable> Extensions
@@ -106,6 +141,41 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             result.ResultObject.ShouldBeDeletedBy(deletedBy);
         }
 
+        /// <summary>
+        /// Assert that the `ResultObject` has a null `DeletedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldNotBeDeleted<TDeletable>(this IResult<TDeletable> result)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeDeleted();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `DeletedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="deletedById">Unexpected id of the record's deletor</param>
+        public static void ShouldNotBeDeletedBy<TDeletable>(this IResult<TDeletable> result, long deletedById)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeDeletedBy(deletedById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `DeletedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="deletedBy">Unexpected record's deletor</param>
+        public static void ShouldNotBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeDeletedBy(deletedBy);
+        }
+
         #endregion IResult<IDeletable> Extensions
 
         #region IResult<IUpdatable> Extensions
@@ -142,6 +212,41 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeUpdatedBy(updatedBy);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has a null `UpdatedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldNotBeUpdated<TUpdatable>(this IResult<TUpdatable> result)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeUpdated();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `UpdatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="updatedById">Unexpected id of the record's updater</param>
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, long updatedById)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeUpdatedBy(updatedById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `UpdatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="updatedBy">Unexpected record's updater</param>
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeUpdatedBy(updatedBy);
         }
 
         #endregion IResult<IUpdatable> Extensions
