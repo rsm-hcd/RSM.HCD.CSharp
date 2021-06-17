@@ -45,10 +45,10 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         public void ShouldBeUpdated_When_UpdatedOn_HasValue_Passes_Assertion()
         {
             // Arrange
-            var result = Build<UserStub>((e) => e.UpdatedOn = Faker.Date.RecentOffset());
+            var entity = Build<UserStub>((e) => e.UpdatedOn = Faker.Date.RecentOffset());
 
             // Act & Assert
-            Should.NotThrow(() => result.ShouldBeUpdated());
+            Should.NotThrow(() => entity.ShouldBeUpdated());
         }
 
         #endregion ShouldBeUpdated
@@ -177,10 +177,10 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         public void ShouldNotBeUpdated_When_UpdatedOn_HasValue_Fails_Assertion()
         {
             // Arrange
-            var result = Build<UserStub>((e) => e.UpdatedOn = Faker.Date.RecentOffset());
+            var entity = Build<UserStub>((e) => e.UpdatedOn = Faker.Date.RecentOffset());
 
             // Act & Assert
-            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeUpdated());
+            Should.Throw<ShouldAssertException>(() => entity.ShouldNotBeUpdated());
         }
 
         [Fact]

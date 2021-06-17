@@ -45,10 +45,10 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         public void ShouldBeDeleted_When_DeletedOn_HasValue_Passes_Assertion()
         {
             // Arrange
-            var result = Build<UserStub>((e) => e.DeletedOn = Faker.Date.RecentOffset());
+            var entity = Build<UserStub>((e) => e.DeletedOn = Faker.Date.RecentOffset());
 
             // Act & Assert
-            Should.NotThrow(() => result.ShouldBeDeleted());
+            Should.NotThrow(() => entity.ShouldBeDeleted());
         }
 
         #endregion ShouldBeDeleted
@@ -177,10 +177,10 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         public void ShouldNotBeDeleted_When_DeletedOn_HasValue_Fails_Assertion()
         {
             // Arrange
-            var result = Build<UserStub>((e) => e.DeletedOn = Faker.Date.RecentOffset());
+            var entity = Build<UserStub>((e) => e.DeletedOn = Faker.Date.RecentOffset());
 
             // Act & Assert
-            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeDeleted());
+            Should.Throw<ShouldAssertException>(() => entity.ShouldNotBeDeleted());
         }
 
         [Fact]

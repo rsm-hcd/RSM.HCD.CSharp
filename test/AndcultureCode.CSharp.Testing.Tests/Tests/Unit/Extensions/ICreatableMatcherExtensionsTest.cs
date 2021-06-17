@@ -45,10 +45,10 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         public void ShouldBeCreated_When_CreatedOn_HasValue_Passes_Assertion()
         {
             // Arrange
-            var result = Build<UserStub>((e) => e.CreatedOn = Faker.Date.RecentOffset());
+            var entity = Build<UserStub>((e) => e.CreatedOn = Faker.Date.RecentOffset());
 
             // Act & Assert
-            Should.NotThrow(() => result.ShouldBeCreated());
+            Should.NotThrow(() => entity.ShouldBeCreated());
         }
 
         #endregion ShouldBeCreated
@@ -177,10 +177,10 @@ namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
         public void ShouldNotBeCreated_When_CreatedOn_HasValue_Fails_Assertion()
         {
             // Arrange
-            var result = Build<UserStub>((e) => e.CreatedOn = Faker.Date.RecentOffset());
+            var entity = Build<UserStub>((e) => e.CreatedOn = Faker.Date.RecentOffset());
 
             // Act & Assert
-            Should.Throw<ShouldAssertException>(() => result.ShouldNotBeCreated());
+            Should.Throw<ShouldAssertException>(() => entity.ShouldNotBeCreated());
         }
 
         [Fact]
