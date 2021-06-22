@@ -53,6 +53,12 @@
   - [Build\`\`1(properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.Action{``0}[])')
   - [Build\`\`1(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Collections-Generic-List{System-Action{``0}}- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.String,System.Collections.Generic.List{System.Action{``0}})')
   - [Build\`\`1(name,properties)](#M-AndcultureCode-CSharp-Testing-Tests-BaseTest-Build``1-System-String,System-Action{``0}[]- 'AndcultureCode.CSharp.Testing.Tests.BaseTest.Build``1(System.String,System.Action{``0}[])')
+- [ErrorConstants](#T-AndcultureCode-CSharp-Testing-Constants-ErrorConstants 'AndcultureCode.CSharp.Testing.Constants.ErrorConstants')
+  - [BASIC_ERROR_KEY](#F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-BASIC_ERROR_KEY 'AndcultureCode.CSharp.Testing.Constants.ErrorConstants.BASIC_ERROR_KEY')
+  - [BASIC_ERROR_MESSAGE](#F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-BASIC_ERROR_MESSAGE 'AndcultureCode.CSharp.Testing.Constants.ErrorConstants.BASIC_ERROR_MESSAGE')
+  - [ERROR_ERRORS_LIST_IS_NULL_MESSAGE](#F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-ERROR_ERRORS_LIST_IS_NULL_MESSAGE 'AndcultureCode.CSharp.Testing.Constants.ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE')
+  - [ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE](#F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE 'AndcultureCode.CSharp.Testing.Constants.ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE')
+  - [BasicError](#P-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-BasicError 'AndcultureCode.CSharp.Testing.Constants.ErrorConstants.BasicError')
 - [ErrorFactory](#T-AndcultureCode-CSharp-Testing-Factories-ErrorFactory 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory')
   - [BASIC_ERROR](#F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-BASIC_ERROR 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.BASIC_ERROR')
   - [RESOURCE_NOT_FOUND_ERROR](#F-AndcultureCode-CSharp-Testing-Factories-ErrorFactory-RESOURCE_NOT_FOUND_ERROR 'AndcultureCode.CSharp.Testing.Factories.ErrorFactory.RESOURCE_NOT_FOUND_ERROR')
@@ -92,6 +98,20 @@
   - [AsNotFound\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsNotFound``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsNotFound``1(Microsoft.AspNetCore.Mvc.IActionResult)')
   - [AsOk\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsOk``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsOk``1(Microsoft.AspNetCore.Mvc.IActionResult)')
   - [AsUnauthorized\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-IActionResultMatcherExtensions-AsUnauthorized``1-Microsoft-AspNetCore-Mvc-IActionResult- 'AndcultureCode.CSharp.Testing.Extensions.IActionResultMatcherExtensions.AsUnauthorized``1(Microsoft.AspNetCore.Mvc.IActionResult)')
+- [ICreatableMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions')
+  - [ShouldBeCreatedBy\`\`1(entity,createdById)](#M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldBeCreatedBy``1-``0,System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions.ShouldBeCreatedBy``1(``0,System.Int64)')
+  - [ShouldBeCreatedBy\`\`1(entity,createdBy)](#M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldBeCreatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions.ShouldBeCreatedBy``1(``0,AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldBeCreated\`\`1(entity)](#M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldBeCreated``1-``0- 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions.ShouldBeCreated``1(``0)')
+  - [ShouldNotBeCreatedBy\`\`1(entity,createdById)](#M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldNotBeCreatedBy``1-``0,System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions.ShouldNotBeCreatedBy``1(``0,System.Int64)')
+  - [ShouldNotBeCreatedBy\`\`1(entity,createdBy)](#M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldNotBeCreatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions.ShouldNotBeCreatedBy``1(``0,AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldNotBeCreated\`\`1(entity)](#M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldNotBeCreated``1-``0- 'AndcultureCode.CSharp.Testing.Extensions.ICreatableMatcherExtensions.ShouldNotBeCreated``1(``0)')
+- [IDeletableMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions')
+  - [ShouldBeDeletedBy\`\`1(entity,deletedById)](#M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldBeDeletedBy``1-``0,System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions.ShouldBeDeletedBy``1(``0,System.Int64)')
+  - [ShouldBeDeletedBy\`\`1(entity,deletedBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldBeDeletedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions.ShouldBeDeletedBy``1(``0,AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldBeDeleted\`\`1(entity)](#M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldBeDeleted``1-``0- 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions.ShouldBeDeleted``1(``0)')
+  - [ShouldNotBeDeletedBy\`\`1(entity,deletedById)](#M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldNotBeDeletedBy``1-``0,System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions.ShouldNotBeDeletedBy``1(``0,System.Int64)')
+  - [ShouldNotBeDeletedBy\`\`1(entity,deletedBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldNotBeDeletedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions.ShouldNotBeDeletedBy``1(``0,AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldNotBeDeleted\`\`1(entity)](#M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldNotBeDeleted``1-``0- 'AndcultureCode.CSharp.Testing.Extensions.IDeletableMatcherExtensions.ShouldNotBeDeleted``1(``0)')
 - [IEnumerableMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions')
   - [ShouldBeOfSize\`\`1(items,expectedSize)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOfSize``1-System-Collections-Generic-IEnumerable{``0},System-Int32- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOfSize``1(System.Collections.Generic.IEnumerable{``0},System.Int32)')
   - [ShouldBeOrderedByDescending\`\`2(items,keySelector)](#M-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions-ShouldBeOrderedByDescending``2-System-Collections-Generic-IEnumerable{``0},System-Func{``0,``1}- 'AndcultureCode.CSharp.Testing.Extensions.IEnumerableMatcherExtensions.ShouldBeOrderedByDescending``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})')
@@ -105,8 +125,6 @@
   - [SetupFindAllCommitted\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters)](#M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions-SetupFindAllCommitted``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryReadConductorMockExtensions.SetupFindAllCommitted``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})')
   - [SetupFindAll\`\`1(mock,includeProperties,skip,take,ignoreQueryFilters,asNoTracking)](#M-AndcultureCode-CSharp-Testing-Extensions-IRepositoryReadConductorMockExtensions-SetupFindAll``1-Moq-Mock{AndcultureCode-CSharp-Core-Interfaces-Conductors-IRepositoryReadConductor{``0}},System-String,System-Nullable{System-Int32},System-Nullable{System-Int32},System-Nullable{System-Boolean},System-Nullable{System-Boolean}- 'AndcultureCode.CSharp.Testing.Extensions.IRepositoryReadConductorMockExtensions.SetupFindAll``1(Moq.Mock{AndcultureCode.CSharp.Core.Interfaces.Conductors.IRepositoryReadConductor{``0}},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean})')
 - [IResultMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions')
-  - [ERROR_ERRORS_LIST_IS_NULL_MESSAGE](#F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_ERRORS_LIST_IS_NULL_MESSAGE 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ERROR_ERRORS_LIST_IS_NULL_MESSAGE')
-  - [ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE](#F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE')
   - [ShouldBeCreatedBy\`\`1(result,createdById)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldBeCreatedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Int64)')
   - [ShouldBeCreatedBy\`\`1(result,createdBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldBeCreatedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
   - [ShouldBeCreated\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldBeCreated``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldBeCreated``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
@@ -122,7 +140,16 @@
   - [ShouldHaveErrors\`\`1(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Nullable{System.Int32})')
   - [ShouldHaveResourceNotFoundError\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResourceNotFoundError``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResourceNotFoundError``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
   - [ShouldHaveResultObject\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResultObject``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResultObject``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
-  - [ShouldHaveResultObjects\`\`1(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResultObjects``1-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Collections-Generic-IEnumerable{``0}},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResultObjects``1(AndcultureCode.CSharp.Core.Interfaces.IResult{System.Collections.Generic.IEnumerable{``0}},System.Nullable{System.Int32})')
+  - [ShouldHaveResultObjects\`\`1(result,exactCount)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResultObjects``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Nullable{System-Int32}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldHaveResultObjects``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Nullable{System.Int32})')
+  - [ShouldNotBeCreatedBy\`\`1(result,createdById)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeCreatedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Int64)')
+  - [ShouldNotBeCreatedBy\`\`1(result,createdBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeCreatedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldNotBeCreated\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeCreated``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeCreated``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
+  - [ShouldNotBeDeletedBy\`\`1(result,deletedById)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeDeletedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeDeletedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Int64)')
+  - [ShouldNotBeDeletedBy\`\`1(result,deletedBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeDeletedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeDeletedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldNotBeDeleted\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeDeleted``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeDeleted``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
+  - [ShouldNotBeUpdatedBy\`\`1(result,updatedById)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeUpdatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeUpdatedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.Int64)')
+  - [ShouldNotBeUpdatedBy\`\`1(result,updatedBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeUpdatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeUpdatedBy``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldNotBeUpdated\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeUpdated``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotBeUpdated``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
   - [ShouldNotHaveErrorsFor\`\`1(result,property)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrorsFor``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0},System.String)')
   - [ShouldNotHaveErrors\`\`1(result)](#M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrors``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}- 'AndcultureCode.CSharp.Testing.Extensions.IResultMatcherExtensions.ShouldNotHaveErrors``1(AndcultureCode.CSharp.Core.Interfaces.IResult{``0})')
 - [ISetupExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions')
@@ -130,6 +157,13 @@
   - [ReturnsBasicErrorSequentialResult\`\`1()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsBasicErrorSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsBasicErrorSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)')
   - [ReturnsGivenResult\`\`2()](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenResult``2-Moq-Language-Flow-ISetup{``0,AndcultureCode-CSharp-Core-Interfaces-IResult{``1}},``1- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenResult``2(Moq.Language.Flow.ISetup{``0,AndcultureCode.CSharp.Core.Interfaces.IResult{``1}},``1)')
   - [ReturnsGivenSequentialResult\`\`1(setup,resultObject)](#M-AndcultureCode-CSharp-Testing-Extensions-ISetupExtensions-ReturnsGivenSequentialResult``1-Moq-Language-ISetupSequentialResult{AndcultureCode-CSharp-Core-Interfaces-IResult{``0}},``0- 'AndcultureCode.CSharp.Testing.Extensions.ISetupExtensions.ReturnsGivenSequentialResult``1(Moq.Language.ISetupSequentialResult{AndcultureCode.CSharp.Core.Interfaces.IResult{``0}},``0)')
+- [IUpdatableMatcherExtensions](#T-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions')
+  - [ShouldBeUpdatedBy\`\`1(entity,updatedById)](#M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldBeUpdatedBy``1-``0,System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions.ShouldBeUpdatedBy``1(``0,System.Int64)')
+  - [ShouldBeUpdatedBy\`\`1(entity,updatedBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldBeUpdatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions.ShouldBeUpdatedBy``1(``0,AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldBeUpdated\`\`1(entity)](#M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldBeUpdated``1-``0- 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions.ShouldBeUpdated``1(``0)')
+  - [ShouldNotBeUpdatedBy\`\`1(entity,updatedById)](#M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldNotBeUpdatedBy``1-``0,System-Int64- 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions.ShouldNotBeUpdatedBy``1(``0,System.Int64)')
+  - [ShouldNotBeUpdatedBy\`\`1(entity,updatedBy)](#M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldNotBeUpdatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity- 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions.ShouldNotBeUpdatedBy``1(``0,AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity)')
+  - [ShouldNotBeUpdated\`\`1(entity)](#M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldNotBeUpdated``1-``0- 'AndcultureCode.CSharp.Testing.Extensions.IUpdatableMatcherExtensions.ShouldNotBeUpdated``1(``0)')
 - [UserStub](#T-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub')
   - [EmailAddress](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-EmailAddress 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.EmailAddress')
   - [FirstName](#P-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub-FirstName 'AndcultureCode.CSharp.Testing.Models.Stubs.UserStub.FirstName')
@@ -1244,6 +1278,52 @@ Created entity
 | ---- | ----------- |
 | T | Type of entity to create |
 
+<a name='T-AndcultureCode-CSharp-Testing-Constants-ErrorConstants'></a>
+## ErrorConstants `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Constants
+
+##### Summary
+
+Holds common error keys, messages, Error object configurations, etc.
+
+<a name='F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-BASIC_ERROR_KEY'></a>
+### BASIC_ERROR_KEY `constants`
+
+##### Summary
+
+Generic error key for testing
+
+<a name='F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-BASIC_ERROR_MESSAGE'></a>
+### BASIC_ERROR_MESSAGE `constants`
+
+##### Summary
+
+Generic error message for testing
+
+<a name='F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-ERROR_ERRORS_LIST_IS_NULL_MESSAGE'></a>
+### ERROR_ERRORS_LIST_IS_NULL_MESSAGE `constants`
+
+##### Summary
+
+Detailed output message to display when expecting errors on a result that has a null \`Errors\` property
+
+<a name='F-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE'></a>
+### ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE `constants`
+
+##### Summary
+
+Friendlier output message to display when expected entity is not valid for test assertion to continue
+
+<a name='P-AndcultureCode-CSharp-Testing-Constants-ErrorConstants-BasicError'></a>
+### BasicError `property`
+
+##### Summary
+
+Generic Error object for testing
+
 <a name='T-AndcultureCode-CSharp-Testing-Factories-ErrorFactory'></a>
 ## ErrorFactory `type`
 
@@ -1784,6 +1864,192 @@ This method has no parameters.
 | ---- | ----------- |
 | T |  |
 
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions'></a>
+## ICreatableMatcherExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Extension methods for asserting expected states of the \`ICreatable\` interface
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldBeCreatedBy``1-``0,System-Int64-'></a>
+### ShouldBeCreatedBy\`\`1(entity,createdById) `method`
+
+##### Summary
+
+Assert that the \`ICreatable\` has the expected \`CreatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| createdById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Expected id of the record's creator |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldBeCreatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldBeCreatedBy\`\`1(entity,createdBy) `method`
+
+##### Summary
+
+Assert that the \`ICreatable\` has the expected \`CreatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| createdBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Expected record's creator |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldBeCreated``1-``0-'></a>
+### ShouldBeCreated\`\`1(entity) `method`
+
+##### Summary
+
+Assert that the \`ICreatable\` has a \`CreatedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldNotBeCreatedBy``1-``0,System-Int64-'></a>
+### ShouldNotBeCreatedBy\`\`1(entity,createdById) `method`
+
+##### Summary
+
+Assert that the \`ICreatable\` does not match the provided \`CreatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| createdById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Unexpected id of the record's creator |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldNotBeCreatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldNotBeCreatedBy\`\`1(entity,createdBy) `method`
+
+##### Summary
+
+Assert that the \`ICreatable\` does not match the provided \`CreatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| createdBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Unexpected record's creator |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-ICreatableMatcherExtensions-ShouldNotBeCreated``1-``0-'></a>
+### ShouldNotBeCreated\`\`1(entity) `method`
+
+##### Summary
+
+Assert that the \`ICreatable\` has a null \`CreatedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions'></a>
+## IDeletableMatcherExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Extension methods for asserting expected states of the \`IDeletable\` interface
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldBeDeletedBy``1-``0,System-Int64-'></a>
+### ShouldBeDeletedBy\`\`1(entity,deletedById) `method`
+
+##### Summary
+
+Assert that the \`IDeletable\` has the expected \`DeletedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| deletedById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Expected id of the record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldBeDeletedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldBeDeletedBy\`\`1(entity,deletedBy) `method`
+
+##### Summary
+
+Assert that the \`IDeletable\` has the expected \`DeletedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| deletedBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Expected record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldBeDeleted``1-``0-'></a>
+### ShouldBeDeleted\`\`1(entity) `method`
+
+##### Summary
+
+Assert that the \`IDeletable\` has a \`DeletedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldNotBeDeletedBy``1-``0,System-Int64-'></a>
+### ShouldNotBeDeletedBy\`\`1(entity,deletedById) `method`
+
+##### Summary
+
+Assert that the \`IDeletable\` does not match the provided \`DeletedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| deletedById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Unexpected id of the record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldNotBeDeletedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldNotBeDeletedBy\`\`1(entity,deletedBy) `method`
+
+##### Summary
+
+Assert that the \`IDeletable\` does not match the provided \`DeletedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| deletedBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Unexpected record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IDeletableMatcherExtensions-ShouldNotBeDeleted``1-``0-'></a>
+### ShouldNotBeDeleted\`\`1(entity) `method`
+
+##### Summary
+
+Assert that the \`IDeletable\` has a null \`DeletedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+
 <a name='T-AndcultureCode-CSharp-Testing-Extensions-IEnumerableMatcherExtensions'></a>
 ## IEnumerableMatcherExtensions `type`
 
@@ -2041,20 +2307,6 @@ AndcultureCode.CSharp.Testing.Extensions
 
 Extension methods for asserting expected states of the \`IResult\` interface
 
-<a name='F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_ERRORS_LIST_IS_NULL_MESSAGE'></a>
-### ERROR_ERRORS_LIST_IS_NULL_MESSAGE `constants`
-
-##### Summary
-
-Detailed output message to display when expecting errors on a result that has a null \`Errors\` property
-
-<a name='F-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE'></a>
-### ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE `constants`
-
-##### Summary
-
-Friendlier output message to display when expected entity is not valid for test assertion to continue
-
 <a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64-'></a>
 ### ShouldBeCreatedBy\`\`1(result,createdById) `method`
 
@@ -2261,7 +2513,7 @@ Assert that \`ResultObject\` is not null
 | ---- | ---- | ----------- |
 | result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
 
-<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResultObjects``1-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Collections-Generic-IEnumerable{``0}},System-Nullable{System-Int32}-'></a>
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldHaveResultObjects``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Nullable{System-Int32}-'></a>
 ### ShouldHaveResultObjects\`\`1(result,exactCount) `method`
 
 ##### Summary
@@ -2272,8 +2524,131 @@ Assert that an IEnumerable \`ResultObject\` has values
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{System.Collections.Generic.IEnumerable{\`\`0}}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{System-Collections-Generic-IEnumerable{``0}} 'AndcultureCode.CSharp.Core.Interfaces.IResult{System.Collections.Generic.IEnumerable{``0}}') | Result under test |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
 | exactCount | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | When supplied, asserts that the collection has exactly this number of elements |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64-'></a>
+### ShouldNotBeCreatedBy\`\`1(result,createdById) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` does not match the provided \`CreatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| createdById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Unexpected id of the record's creator |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeCreatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldNotBeCreatedBy\`\`1(result,createdBy) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` does not match the provided \`CreatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| createdBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Unexpected record's creator |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeCreated``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}-'></a>
+### ShouldNotBeCreated\`\`1(result) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` has a null \`CreatedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeDeletedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64-'></a>
+### ShouldNotBeDeletedBy\`\`1(result,deletedById) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` does not match the provided \`DeletedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| deletedById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Unexpected id of the record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeDeletedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldNotBeDeletedBy\`\`1(result,deletedBy) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` does not match the provided \`DeletedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| deletedBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Unexpected record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeDeleted``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}-'></a>
+### ShouldNotBeDeleted\`\`1(result) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` has a null \`DeletedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeUpdatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-Int64-'></a>
+### ShouldNotBeUpdatedBy\`\`1(result,updatedById) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` does not match the provided \`UpdatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| updatedById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Unexpected id of the record's updater |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeUpdatedBy``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldNotBeUpdatedBy\`\`1(result,updatedBy) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` does not match the provided \`UpdatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
+| updatedBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Unexpected record's updater |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotBeUpdated``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0}-'></a>
+### ShouldNotBeUpdated\`\`1(result) `method`
+
+##### Summary
+
+Assert that the \`ResultObject\` has a null \`UpdatedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| result | [AndcultureCode.CSharp.Core.Interfaces.IResult{\`\`0}](#T-AndcultureCode-CSharp-Core-Interfaces-IResult{``0} 'AndcultureCode.CSharp.Core.Interfaces.IResult{``0}') | Result under test |
 
 <a name='M-AndcultureCode-CSharp-Testing-Extensions-IResultMatcherExtensions-ShouldNotHaveErrorsFor``1-AndcultureCode-CSharp-Core-Interfaces-IResult{``0},System-String-'></a>
 ### ShouldNotHaveErrorsFor\`\`1(result,property) `method`
@@ -2401,6 +2776,99 @@ Returns given result in sequence of the setup.
 | Name | Description |
 | ---- | ----------- |
 | TResult |  |
+
+<a name='T-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions'></a>
+## IUpdatableMatcherExtensions `type`
+
+##### Namespace
+
+AndcultureCode.CSharp.Testing.Extensions
+
+##### Summary
+
+Extension methods for asserting expected states of the \`IUpdatable\` interface
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldBeUpdatedBy``1-``0,System-Int64-'></a>
+### ShouldBeUpdatedBy\`\`1(entity,updatedById) `method`
+
+##### Summary
+
+Assert that the \`IUpdatable\` has the expected \`UpdatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| updatedById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Expected id of the record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldBeUpdatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldBeUpdatedBy\`\`1(entity,updatedBy) `method`
+
+##### Summary
+
+Assert that the \`IUpdatable\` has the expected \`UpdatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| updatedBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Expected record's deletor |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldBeUpdated``1-``0-'></a>
+### ShouldBeUpdated\`\`1(entity) `method`
+
+##### Summary
+
+Assert that the \`IUpdatable\` has a \`UpdatedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldNotBeUpdatedBy``1-``0,System-Int64-'></a>
+### ShouldNotBeUpdatedBy\`\`1(entity,updatedById) `method`
+
+##### Summary
+
+Assert that the \`IUpdatable\` does not match the provided \`UpdatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| updatedById | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | Unexpected id of the record's updater |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldNotBeUpdatedBy``1-``0,AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity-'></a>
+### ShouldNotBeUpdatedBy\`\`1(entity,updatedBy) `method`
+
+##### Summary
+
+Assert that the \`IUpdatable\` does not match the provided \`UpdatedById\`
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
+| updatedBy | [AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity](#T-AndcultureCode-CSharp-Core-Interfaces-Entity-IEntity 'AndcultureCode.CSharp.Core.Interfaces.Entity.IEntity') | Unexpected record's updater |
+
+<a name='M-AndcultureCode-CSharp-Testing-Extensions-IUpdatableMatcherExtensions-ShouldNotBeUpdated``1-``0-'></a>
+### ShouldNotBeUpdated\`\`1(entity) `method`
+
+##### Summary
+
+Assert that the \`IUpdatable\` has a null \`UpdatedOn\` value
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| entity | [\`\`0](#T-``0 '``0') | Entity under test |
 
 <a name='T-AndcultureCode-CSharp-Testing-Models-Stubs-UserStub'></a>
 ## UserStub `type`
