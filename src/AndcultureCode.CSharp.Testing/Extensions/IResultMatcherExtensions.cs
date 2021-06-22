@@ -14,19 +14,6 @@ namespace AndcultureCode.CSharp.Testing.Extensions
     /// </summary>
     public static class IResultMatcherExtensions
     {
-        #region Constants
-
-        /// <summary>
-        /// Detailed output message to display when expecting errors on a result that has a null `Errors` property
-        /// </summary>
-        public static string ERROR_ERRORS_LIST_IS_NULL_MESSAGE = $"Expected {typeof(IResult<>).Name} to have errors, but instead Errors is 'null'";
-
-        /// <summary>
-        /// Friendlier output message to display when expected entity is not valid for test assertion to continue
-        /// </summary>
-        public static string ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE = $"Expected {nameof(IEntity)} should have a value, but instead is 'null'. Verify your test arrangement is correct.";
-
-        #endregion Constants
 
         #region Public Methods
 
@@ -54,7 +41,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeCreated<TCreatable>(this IResult<TCreatable> result) where TCreatable : ICreatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.CreatedOn.ShouldNotBeNull();
+            result.ResultObject.ShouldBeCreated();
         }
 
         /// <summary>
@@ -66,7 +53,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             where TCreatable : ICreatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.CreatedById.ShouldBe(createdById);
+            result.ResultObject.ShouldBeCreatedBy(createdById);
         }
 
         /// <summary>
@@ -77,8 +64,43 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
             where TCreatable : ICreatable
         {
-            createdBy.ExpectedEntityShouldNotBeNull();
-            result.ShouldBeCreatedBy(createdBy.Id);
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldBeCreatedBy(createdBy);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has a null `CreatedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldNotBeCreated<TCreatable>(this IResult<TCreatable> result)
+            where TCreatable : ICreatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeCreated();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `CreatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="createdById">Unexpected id of the record's creator</param>
+        public static void ShouldNotBeCreatedBy<TCreatable>(this IResult<TCreatable> result, long createdById)
+            where TCreatable : ICreatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeCreatedBy(createdById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `CreatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="createdBy">Unexpected record's creator</param>
+        public static void ShouldNotBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
+            where TCreatable : ICreatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeCreatedBy(createdBy);
         }
 
         #endregion IResult<ICreatable> Extensions
@@ -92,7 +114,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeDeleted<TDeletable>(this IResult<TDeletable> result) where TDeletable : IDeletable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.DeletedOn.ShouldNotBeNull();
+            result.ResultObject.ShouldBeDeleted();
         }
 
         /// <summary>
@@ -104,7 +126,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             where TDeletable : IDeletable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.DeletedById.ShouldBe(deletedById);
+            result.ResultObject.ShouldBeDeletedBy(deletedById);
         }
 
         /// <summary>
@@ -115,8 +137,43 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
             where TDeletable : IDeletable
         {
-            deletedBy.ExpectedEntityShouldNotBeNull();
-            result.ShouldBeDeletedBy(deletedBy.Id);
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldBeDeletedBy(deletedBy);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has a null `DeletedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldNotBeDeleted<TDeletable>(this IResult<TDeletable> result)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeDeleted();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `DeletedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="deletedById">Unexpected id of the record's deletor</param>
+        public static void ShouldNotBeDeletedBy<TDeletable>(this IResult<TDeletable> result, long deletedById)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeDeletedBy(deletedById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `DeletedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="deletedBy">Unexpected record's deletor</param>
+        public static void ShouldNotBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
+            where TDeletable : IDeletable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeDeletedBy(deletedBy);
         }
 
         #endregion IResult<IDeletable> Extensions
@@ -130,7 +187,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeUpdated<TUpdatable>(this IResult<TUpdatable> result) where TUpdatable : IUpdatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.UpdatedOn.ShouldNotBeNull();
+            result.ResultObject.ShouldBeUpdated();
         }
 
         /// <summary>
@@ -142,7 +199,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
             where TUpdatable : IUpdatable
         {
             result.ShouldHaveResultObject();
-            result.ResultObject.UpdatedById.ShouldBe(updatedById);
+            result.ResultObject.ShouldBeUpdatedBy(updatedById);
         }
 
         /// <summary>
@@ -153,8 +210,43 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
             where TUpdatable : IUpdatable
         {
-            updatedBy.ExpectedEntityShouldNotBeNull();
-            result.ShouldBeUpdatedBy(updatedBy.Id);
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldBeUpdatedBy(updatedBy);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` has a null `UpdatedOn` value
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldNotBeUpdated<TUpdatable>(this IResult<TUpdatable> result)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeUpdated();
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `UpdatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="updatedById">Unexpected id of the record's updater</param>
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, long updatedById)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeUpdatedBy(updatedById);
+        }
+
+        /// <summary>
+        /// Assert that the `ResultObject` does not match the provided `UpdatedById`
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        /// <param name="updatedBy">Unexpected record's updater</param>
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
+            where TUpdatable : IUpdatable
+        {
+            result.ShouldHaveResultObject();
+            result.ResultObject.ShouldNotBeUpdatedBy(updatedBy);
         }
 
         #endregion IResult<IUpdatable> Extensions
@@ -175,7 +267,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         public static void ShouldHaveErrors<T>(this IResult<T> result, int? exactCount = null)
         {
             result.ShouldNotBeNull();
-            result.Errors.ShouldNotBeNull(ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
+            result.Errors.ShouldNotBeNull(ErrorConstants.ERROR_ERRORS_LIST_IS_NULL_MESSAGE);
             result.Errors.Count.ShouldBeGreaterThan(0);
             result.ErrorCount.ShouldBeGreaterThan(0);
             result.HasErrors.ShouldBeTrue();
@@ -240,7 +332,8 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="exactCount">When supplied, asserts that the collection has exactly this number of elements</param>
-        public static void ShouldHaveResultObjects<T>(this IResult<IEnumerable<T>> result, int? exactCount = null)
+        public static void ShouldHaveResultObjects<TResultObjects>(this IResult<TResultObjects> result, int? exactCount = null)
+            where TResultObjects : IEnumerable<object>
         {
             result.ShouldHaveResultObject();
             if (exactCount != null)
@@ -284,12 +377,5 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         #endregion IResult<T> Extensions
 
         #endregion Public Methods
-
-        #region Private Methods
-
-        private static void ExpectedEntityShouldNotBeNull(this IEntity entity) =>
-            entity.ShouldNotBeNull(ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
-
-        #endregion Private Methods
     }
 }
