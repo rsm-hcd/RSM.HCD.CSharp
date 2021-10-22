@@ -1,0 +1,94 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "wintondeshong",
+      "name": "Winton DeShong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48424?v=4",
+      "profile": "http://www.winton.me/",
+      "contributions": [
+        "code",
+        "test",
+        "doc"
+      ]
+    },
+    {
+      "login": "brandongregoryscott",
+      "name": "Brandon Scott",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11774799?v=4",
+      "profile": "https://github.com/brandongregoryscott",
+      "contributions": [
+        "code",
+        "test",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Stefanie899",
+      "name": "Stefanie Leitch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37462028?v=4",
+      "profile": "https://github.com/Stefanie899",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jebediahelliott",
+      "name": "Jeb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26680652?v=4",
+      "profile": "http://jebediahelliott.com",
+      "contributions": [
+        "test"
+      ]
+    },
+    {
+      "login": "jhugs",
+      "name": "Joshua Hughes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14300627?v=4",
+      "profile": "https://github.com/jhugs",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dylanjustice",
+      "name": "Dylan Justice",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22502365?v=4",
+      "profile": "http://resume.dylanjustice.com",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "SaidShah",
+      "name": "Said B Shah",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19719299?v=4",
+      "profile": "https://www.saidshah.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "snsavage",
+      "name": "Scott Savage",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6299224?v=4",
+      "profile": "http://www.snsavage.com",
+      "contributions": [
+        "code",
+        "test",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "AndcultureCode.CSharp.Core",
+  "projectOwner": "AndcultureCode",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
