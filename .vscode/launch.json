@@ -18,7 +18,7 @@
             "stopAtEntry": false
         },
         {
-            "name": ".NET Core Launch (console)",
+            "name": ".NET Extensions Launch (console)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -26,6 +26,19 @@
             "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Extensions.Tests.dll",
             "args": [],
             "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Testing Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Testing.Tests.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
