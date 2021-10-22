@@ -1,18 +1,22 @@
 {
-  "name": "AndcultureCode.CSharp.Core",
+  "name": "AndcultureCode.CSharp",
   "version": "0.0.1",
   "description": "Simple nodejs tooling for managing the project",
   "main": "npx and-cli",
   "private": true,
-  "scripts": {},
+  "scripts": {
+        "configure:git": "echo Ensuring git hooksPath is set to .githooks directory && git config core.hooksPath .githooks && chmod +x .githooks/*",
+        "preinstall": "npm run configure:git"
+    },
   "repository": {
     "type": "git",
-    "url": "git@github.com:AndcultureCode/AndcultureCode.CSharp.Core.git"
+    "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.git"
   },
   "author": "andculture",
   "license": "ISC",
-  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp.Core#readme",
+  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp#readme",
   "devDependencies": {
-    "and-cli": "2.7.2"
+    "and-cli": "2.7.2",
+    "prettier": "1.19.1"
   }
 }
