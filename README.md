@@ -14,7 +14,7 @@ Commonly used interfaces, patterns and utilities by andculture engineering
 
 #### Getting Started (AndcutlureCode.CSharp.Core)
 
-Paackages can be installed via NuGet
+This package is installed via NuGet
 
 ```shell
 dotnet add [<PROJECT>] package AndcultureCode.CSharp.Core
