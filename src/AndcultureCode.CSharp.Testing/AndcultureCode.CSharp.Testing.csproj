@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.0.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="Bogus" Version="28.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
