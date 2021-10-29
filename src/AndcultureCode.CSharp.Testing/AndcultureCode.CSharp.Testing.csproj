@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.0.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.6.0" />
     <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="Bogus" Version="28.0.2" />
@@ -34,6 +33,11 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndcultureCode.CSharp.Core\AndcultureCode.CSharp.Core.csproj" />
+    <ProjectReference Include="..\AndcultureCode.CSharp.Extensions\AndcultureCode.CSharp.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
