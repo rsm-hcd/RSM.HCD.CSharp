@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\AndcultureCode.CSharp.Core\AndcultureCode.CSharp.Core.csproj" />
     <ProjectReference Include="..\..\src\AndcultureCode.CSharp.Testing\AndcultureCode.CSharp.Testing.csproj" />
   </ItemGroup>
 

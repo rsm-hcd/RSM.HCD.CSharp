@@ -19,8 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Images\andculture-glyph@2x.png" Pack="true" PackagePath=""/>
-    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
+    <None Include="Images\andculture-glyph@2x.png" Pack="true" PackagePath="" />
     <PackageReference Include="MailKit" Version="2.3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.2.0" />
@@ -32,6 +31,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndcultureCode.CSharp.Extensions\AndcultureCode.CSharp.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
