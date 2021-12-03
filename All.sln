@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Testi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Testing.Tests", "test\AndcultureCode.CSharp.Testing.Tests\AndcultureCode.CSharp.Testing.Tests.csproj", "{F8EF6A7C-D61E-4D31-9804-B32FC1D339D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndcultureCode.CSharp.Conductors", "src\AndcultureCode.CSharp.Conductors\AndcultureCode.CSharp.Conductors.csproj", "{248D2479-D5FA-4825-ACAA-7C96A5DAB28D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4AA81683-2ECF-4EF2-A3F8-6B9AB53C3994}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndcultureCode.CSharp.Conductors.Tests", "test\AndcultureCode.CSharp.Conductors.Tests\AndcultureCode.CSharp.Conductors.Tests.csproj", "{10088D38-6AB7-411D-BD30-7A40AEC81AFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
