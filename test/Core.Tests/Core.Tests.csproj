@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AndcultureCode.CSharp.Core.Tests</AssemblyName>
+    <RootNamespace>AndcultureCode.CSharp.Core.Tests</RootNamespace>
+    <PackageId>AndcultureCode.CSharp.Core.Tests</PackageId>
+  </PropertyGroup>
+
+  <Import Project="../Tests.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\Core.csproj" />
+    <ProjectReference Include="..\..\src\Testing\Testing.csproj" />
+  </ItemGroup>
+
+</Project>

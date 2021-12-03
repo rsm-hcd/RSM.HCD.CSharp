@@ -5,19 +5,19 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C222F6C9-496B-42DE-8294-61EFB12E93CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Core", "src\AndcultureCode.CSharp.Core\AndcultureCode.CSharp.Core.csproj", "{D44B7EB0-BB57-4E51-BBD2-C60E18716874}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Core\Core.csproj", "{D44B7EB0-BB57-4E51-BBD2-C60E18716874}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D1B4B17B-71E7-47EA-A850-17C148732024}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Core.Tests", "test\AndcultureCode.CSharp.Core.Tests\AndcultureCode.CSharp.Core.Tests.csproj", "{6000E896-94CD-4CF1-A289-F55276276344}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "test\Core.Tests\Core.Tests.csproj", "{6000E896-94CD-4CF1-A289-F55276276344}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Extensions", "src\AndcultureCode.CSharp.Extensions\AndcultureCode.CSharp.Extensions.csproj", "{F098FE87-CA57-4823-8DD5-2FD7D0BB94D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions", "src\Extensions\Extensions.csproj", "{F098FE87-CA57-4823-8DD5-2FD7D0BB94D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Extensions.Tests", "test\AndcultureCode.CSharp.Extensions.Tests\AndcultureCode.CSharp.Extensions.Tests.csproj", "{8262761C-1371-4158-8CDF-D8F980359E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.Tests", "test\Extensions.Tests\Extensions.Tests.csproj", "{8262761C-1371-4158-8CDF-D8F980359E48}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Testing", "src\AndcultureCode.CSharp.Testing\AndcultureCode.CSharp.Testing.csproj", "{1CB21E6C-F543-4A2E-BC7E-721A8B214E12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing", "src\Testing\Testing.csproj", "{1CB21E6C-F543-4A2E-BC7E-721A8B214E12}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndcultureCode.CSharp.Testing.Tests", "test\AndcultureCode.CSharp.Testing.Tests\AndcultureCode.CSharp.Testing.Tests.csproj", "{F8EF6A7C-D61E-4D31-9804-B32FC1D339D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Tests", "test\Testing.Tests\Testing.Tests.csproj", "{F8EF6A7C-D61E-4D31-9804-B32FC1D339D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
