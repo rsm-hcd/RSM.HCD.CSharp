@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AndcultureCode.CSharp.Conductors</AssemblyName>
+    <RootNamespace>AndcultureCode.CSharp.Conductors</RootNamespace>
+    <PackageId>AndcultureCode.CSharp.Conductors</PackageId>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Commonly used interfaces, patterns and utilities when building Conductors by andculture engineering</Description>
+    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp#andcutlurecodecsharpconductors</PackageProjectUrl>
+    <IsPackable>true</IsPackable>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+</Project>

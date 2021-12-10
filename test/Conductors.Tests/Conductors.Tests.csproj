@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AndcultureCode.CSharp.Conductors.Tests</AssemblyName>
+    <RootNamespace>AndcultureCode.CSharp.Conductors.Tests</RootNamespace>
+    <PackageId>AndcultureCode.CSharp.Conductors.Tests</PackageId>
+  </PropertyGroup>
+
+  <Import Project="../Tests.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\Core.csproj" />
+    <ProjectReference Include="..\..\src\Testing\Testing.csproj" />
+    <ProjectReference Include="..\..\src\Conductors\Conductors.csproj" />
+  </ItemGroup>
+</Project>
