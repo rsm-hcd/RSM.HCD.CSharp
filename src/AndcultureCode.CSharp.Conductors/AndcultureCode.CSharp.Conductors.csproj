@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Authors>andculture</Authors>
+    <Company>andculture</Company>
+    <Description>Commonly used interfaces, patterns and utilities when building Conductors by andculture engineering</Description>
+    <DocumentationFile>$(MSBuildProjectDirectory)/AndcultureCode.CSharp.Conductors.xml</DocumentationFile>
+    <DocumentationMarkdown>$(MSBuildProjectDirectory)/AndcultureCode.CSharp.Conductors.md</DocumentationMarkdown>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>AndcultureCode.CSharp.Conductors</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp.Conductors</PackageProjectUrl>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.3.1</Version>
+    <VsxmdAutoDeleteXml>true</VsxmdAutoDeleteXml>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.8.0" />
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
