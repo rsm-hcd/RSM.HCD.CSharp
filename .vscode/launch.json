@@ -44,6 +44,19 @@
             "stopAtEntry": false
         },
         {
+            "name": ".NET Conductor Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Conductors.Tests.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
@@ -51,3 +64,4 @@
         }
     ]
 }
+        
