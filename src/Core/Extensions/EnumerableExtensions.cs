@@ -21,6 +21,8 @@ namespace AndcultureCode.CSharp.Core.Extensions
         /// Convenience method so joining strings reads better :)
         /// </summary>
         public static string Join(this IEnumerable<string> list, string delimiter = ", ") =>
-            list?.ToList().Join(delimiter);
+            list == null
+                ? null
+                : string.Join(delimiter, list);
     }
 }

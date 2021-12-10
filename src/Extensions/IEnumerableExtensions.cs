@@ -92,12 +92,6 @@ namespace AndcultureCode.CSharp.Extensions
         ) => list?.Select(e => e.Join(keyValueDelimiter)).Where(e => !string.IsNullOrEmpty(e)).Join(delimiter);
 
         /// <summary>
-        /// Convenience method so joining a list of strings
-        /// </summary>
-        public static string Join(this List<string> list, string delimiter = ", ") =>
-            list == null ? null : string.Join(delimiter, list);
-
-        /// <summary>
         /// Convenience method for joining key value pairs
         /// </summary>
         public static string Join(this KeyValuePair<string, string> pair, string delimiter) =>
