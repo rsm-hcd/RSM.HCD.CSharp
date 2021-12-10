@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <VersionPrefix>1.0.0-preview</VersionPrefix>
+    <VersionPrefix>2.0.0-preview</VersionPrefix>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl>https://github.com/AndcultureCode/AndcultureCode/blob/main/assets/andculture-glyph%402x.png</PackageIconUrl>
