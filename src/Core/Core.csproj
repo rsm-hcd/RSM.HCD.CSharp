@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AndcultureCode.CSharp.Core</AssemblyName>
+    <RootNamespace>AndcultureCode.CSharp.Core</RootNamespace>
+    <PackageId>AndcultureCode.CSharp.Core</PackageId>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Commonly used interfaces, patterns and utilities by andculture engineering</Description>
+    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp#andcutlurecodecsharpcore</PackageProjectUrl>
+    <IsPackable>true</IsPackable>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="3.1.0" />
+  </ItemGroup>
+
+</Project>

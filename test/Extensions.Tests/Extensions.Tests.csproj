@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AndcultureCode.CSharp.Extensions.Tests</AssemblyName>
+    <RootNamespace>AndcultureCode.CSharp.Extensions.Tests</RootNamespace>
+    <PackageId>AndcultureCode.CSharp.Extensions.Tests</PackageId>
+  </PropertyGroup>
+
+  <Import Project="../Tests.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Extensions\Extensions.csproj" />
+    <ProjectReference Include="..\..\src\Testing\Testing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="dotnet-reportgenerator-cli" Version="4.2.11" />
+  </ItemGroup>
+
+</Project>

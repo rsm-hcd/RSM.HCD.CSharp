@@ -1,6 +1,6 @@
 {
   "name": "AndcultureCode.CSharp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Simple nodejs tooling for managing the project",
   "main": "npx and-cli",
   "private": true,

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AndcultureCode.CSharp.Extensions</AssemblyName>
+    <RootNamespace>AndcultureCode.CSharp.Extensions</RootNamespace>
+    <PackageId>AndcultureCode.CSharp.Extensions</PackageId>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Common CSharp extension methods used at andculture</Description>
+    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp#andculturecodecsharpextensions</PackageProjectUrl>
+    <IsPackable>true</IsPackable>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+</Project>
