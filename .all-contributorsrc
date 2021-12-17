@@ -13,7 +13,8 @@
       "contributions": [
         "code",
         "test",
-        "doc"
+        "doc",
+        "review"
       ]
     },
     {
@@ -24,7 +25,9 @@
       "contributions": [
         "code",
         "test",
-        "maintenance"
+        "maintenance",
+        "review",
+        "doc"
       ]
     },
     {
@@ -42,6 +45,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/26680652?v=4",
       "profile": "http://jebediahelliott.com",
       "contributions": [
+        "code",
         "test"
       ]
     },
@@ -51,7 +55,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/14300627?v=4",
       "profile": "https://github.com/jhugs",
       "contributions": [
-        "code"
+        "code",
+        "review"
       ]
     },
     {
@@ -61,7 +66,8 @@
       "profile": "http://resume.dylanjustice.com",
       "contributions": [
         "code",
-        "test"
+        "test",
+        "doc"
       ]
     },
     {
@@ -70,7 +76,9 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/19719299?v=4",
       "profile": "https://www.saidshah.com",
       "contributions": [
-        "doc"
+        "doc",
+        "code",
+        "maintenance"
       ]
     },
     {
@@ -81,30 +89,6 @@
       "contributions": [
         "code",
         "test",
-        "doc"
-      ]
-    },
-    {
-      "login": "brandongregoryscott",
-      "name": "Brandon Scott",
-      "avatar_url": "https://avatars.githubusercontent.com/u/11774799?v=4",
-      "profile": "https://github.com/brandongregoryscott",
-      "contributions": [
-        "code",
-        "test",
-        "review",
-        "doc"
-      ]
-    },
-    {
-      "login": "wintondeshong",
-      "name": "Winton DeShong",
-      "avatar_url": "https://avatars.githubusercontent.com/u/48424?v=4",
-      "profile": "http://www.winton.me/",
-      "contributions": [
-        "code",
-        "test",
-        "review",
         "doc"
       ]
     },
@@ -124,16 +108,6 @@
       "name": "Joshua Peters",
       "avatar_url": "https://avatars.githubusercontent.com/u/9259962?v=4",
       "profile": "https://github.com/joshuapeters",
-      "contributions": [
-        "code",
-        "test"
-      ]
-    },
-    {
-      "login": "jebediahelliott",
-      "name": "Jeb",
-      "avatar_url": "https://avatars.githubusercontent.com/u/26680652?v=4",
-      "profile": "http://jebediahelliott.com",
       "contributions": [
         "code",
         "test"
@@ -168,71 +142,12 @@
       ]
     },
     {
-      "login": "dylanjustice",
-      "name": "Dylan Justice",
-      "avatar_url": "https://avatars.githubusercontent.com/u/22502365?v=4",
-      "profile": "http://resume.dylanjustice.com",
-      "contributions": [
-        "code",
-        "test"
-      ]
-    },
-    {
-      "login": "jhugs",
-      "name": "Joshua Hughes",
-      "avatar_url": "https://avatars.githubusercontent.com/u/14300627?v=4",
-      "profile": "https://github.com/jhugs",
-      "contributions": [
-        "review"
-      ]
-    },
-    {
       "login": "jstevenson",
       "name": "Jim Stevenson",
       "avatar_url": "https://avatars.githubusercontent.com/u/91424?v=4",
       "profile": "https://github.com/jstevenson",
       "contributions": [
         "review"
-      ]
-    },
-    {
-      "login": "dylanjustice",
-      "name": "Dylan Justice",
-      "avatar_url": "https://avatars.githubusercontent.com/u/22502365?v=4",
-      "profile": "http://resume.dylanjustice.com",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "wintondeshong",
-      "name": "Winton DeShong",
-      "avatar_url": "https://avatars.githubusercontent.com/u/48424?v=4",
-      "profile": "http://www.winton.me/",
-      "contributions": [
-        "code",
-        "doc",
-        "test",
-        "review"
-      ]
-    },
-    {
-      "login": "brandongregoryscott",
-      "name": "Brandon Scott",
-      "avatar_url": "https://avatars.githubusercontent.com/u/11774799?v=4",
-      "profile": "https://github.com/brandongregoryscott",
-      "contributions": [
-        "code",
-        "test"
-      ]
-    },
-    {
-      "login": "jebediahelliott",
-      "name": "Jeb",
-      "avatar_url": "https://avatars.githubusercontent.com/u/26680652?v=4",
-      "profile": "http://jebediahelliott.com",
-      "contributions": [
-        "code"
       ]
     },
     {
@@ -242,83 +157,6 @@
       "profile": "http://www.ralphjmcintyre.com",
       "contributions": [
         "maintenance"
-      ]
-    },
-    {
-      "login": "mrjones2014",
-      "name": "Mat Jones",
-      "avatar_url": "https://avatars.githubusercontent.com/u/8648891?v=4",
-      "profile": "https://mjones.network",
-      "contributions": [
-        "code",
-        "test"
-      ]
-    },
-    {
-      "login": "SaidShah",
-      "name": "Said B Shah",
-      "avatar_url": "https://avatars.githubusercontent.com/u/19719299?v=4",
-      "profile": "https://www.saidshah.com",
-      "contributions": [
-        "maintenance"
-      ]
-    },
-    {
-      "login": "jstevenson",
-      "name": "Jim Stevenson",
-      "avatar_url": "https://avatars.githubusercontent.com/u/91424?v=4",
-      "profile": "https://github.com/jstevenson",
-      "contributions": [
-        "review"
-      ]
-    },
-    {
-      "login": "jhugs",
-      "name": "Joshua Hughes",
-      "avatar_url": "https://avatars.githubusercontent.com/u/14300627?v=4",
-      "profile": "https://github.com/jhugs",
-      "contributions": [
-        "review"
-      ]
-    },
-       {
-      "login": "dylanjustice",
-      "name": "Dylan Justice",
-      "avatar_url": "https://avatars.githubusercontent.com/u/22502365?v=4",
-      "profile": "http://resume.dylanjustice.com",
-      "contributions": [
-        "code",
-        "test",
-        "doc"
-      ]
-    },
-    {
-      "login": "wintondeshong",
-      "name": "Winton DeShong",
-      "avatar_url": "https://avatars.githubusercontent.com/u/48424?v=4",
-      "profile": "http://www.winton.me/",
-      "contributions": [
-        "review",
-        "doc"
-      ]
-    },
-    {
-      "login": "jhugs",
-      "name": "Joshua Hughes",
-      "avatar_url": "https://avatars.githubusercontent.com/u/14300627?v=4",
-      "profile": "https://github.com/jhugs",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "SaidShah",
-      "name": "Said B Shah",
-      "avatar_url": "https://avatars.githubusercontent.com/u/19719299?v=4",
-      "profile": "https://www.saidshah.com",
-      "contributions": [
-        "doc",
-        "code"
       ]
     },
     {
@@ -333,13 +171,25 @@
       ]
     },
     {
-      "login": "brandongregoryscott",
-      "name": "Brandon Scott",
-      "avatar_url": "https://avatars.githubusercontent.com/u/11774799?v=4",
-      "profile": "https://github.com/brandongregoryscott",
+      "login": "klauffer",
+      "name": "Kyle Lauffer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32967525?v=4",
+      "profile": "https://github.com/klauffer",
       "contributions": [
-        "code",
-        "maintenance"
+        "maintenance",
+        "projectManagement",
+        "review"
+      ]
+    },
+    {
+      "login": "myty",
+      "name": "Michael Tyson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37794?v=4",
+      "profile": "http://mytydev.com",
+      "contributions": [
+        "maintenance",
+        "projectManagement",
+        "review"
       ]
     }
   ],
@@ -350,6 +200,3 @@
   "repoHost": "https://github.com",
   "skipCi": true
 }
-
-    
- 
