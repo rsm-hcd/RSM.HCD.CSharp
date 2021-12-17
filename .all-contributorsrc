@@ -281,7 +281,7 @@
         "review"
       ]
     },
-       {
+    {
       "login": "dylanjustice",
       "name": "Dylan Justice",
       "avatar_url": "https://avatars.githubusercontent.com/u/22502365?v=4",
@@ -341,6 +341,17 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "klauffer",
+      "name": "Kyle Lauffer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32967525?v=4",
+      "profile": "https://github.com/klauffer",
+      "contributions": [
+        "maintenance",
+        "projectManagement",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -350,6 +361,3 @@
   "repoHost": "https://github.com",
   "skipCi": true
 }
-
-    
- 
