@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace AndcultureCode.CSharp.Core
 {
     /// <summary>
-    /// workflow helper to help manage happy path and failure path logic
+    /// Workflow helper to help manage success and failure path logic
     /// </summary>
     /// <typeparam name="T">The type of the success object</typeparam>
     public class Do<T>
@@ -26,7 +26,7 @@ namespace AndcultureCode.CSharp.Core
         public IResult<T> Result { get; private set; }
 
         /// <summary>
-        /// gets the function defining the workload
+        /// Gets the function defining the workload
         /// </summary>
         public Func<IResult<T>, T> Workload { get; }
 
@@ -36,7 +36,7 @@ namespace AndcultureCode.CSharp.Core
         #region Constructor
 
         /// <summary>
-        /// constructor that allows the workload method to be set
+        /// Constructor that allows the workload method to be set
         /// </summary>
         public Do(Func<IResult<T>, T> workload)
         {
@@ -50,11 +50,11 @@ namespace AndcultureCode.CSharp.Core
         #region Public Methods
 
         /// <summary>
-        /// runs teh provided handler action if an exception has been thrown.
+        /// Runs the provided handler action if an exception has been thrown.
         /// </summary>
-        /// <typeparam name="TException">the exception type</typeparam>
-        /// <param name="handler">the action to be ran when an exception has been thrown</param>
-        /// <returns>an instance of <see cref="Do{T}"/></returns>
+        /// <typeparam name="TException">The exception type</typeparam>
+        /// <param name="handler">The action to be ran when an exception has been thrown</param>
+        /// <returns>An instance of <see cref="Do{T}"/></returns>
         public Do<T> Catch<TException>(Action<TException, IResult<T>> handler)
             where TException : Exception
         {
