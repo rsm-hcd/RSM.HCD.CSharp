@@ -2,7 +2,7 @@
 
 ![build status](https://github.com/AndcultureCode/AndcultureCode.CSharp/actions/workflows/build.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp/branch/main/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [Supplemental Documentation](https://andculturecode.github.io/AndcultureCode.CSharp)
@@ -186,6 +186,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.ralphjmcintyre.com"><img src="https://avatars.githubusercontent.com/u/8047934?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ralph J McIntyre</b></sub></a><br /><a href="#maintenance-ralphjmcintyre" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://www.davidezoccarato.cloud/"><img src="https://avatars.githubusercontent.com/u/9533250?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Davide Zoccarato</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dzoccarato" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dzoccarato" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dzoccarato" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/klauffer"><img src="https://avatars.githubusercontent.com/u/32967525?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Lauffer</b></sub></a><br /><a href="#maintenance-klauffer" title="Maintenance">🚧</a> <a href="#projectManagement-klauffer" title="Project Management">📆</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/pulls?q=is%3Apr+reviewed-by%3Aklauffer" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://mytydev.com"><img src="https://avatars.githubusercontent.com/u/37794?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Tyson</b></sub></a><br /><a href="#maintenance-myty" title="Maintenance">🚧</a> <a href="#projectManagement-myty" title="Project Management">📆</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/pulls?q=is%3Apr+reviewed-by%3Amyty" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
