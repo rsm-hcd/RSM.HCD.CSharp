@@ -2,9 +2,17 @@
 
 ![build status](https://github.com/AndcultureCode/AndcultureCode.CSharp/actions/workflows/build.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp/branch/main/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.CSharp) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+[Supplemental Documentation](https://andculturecode.github.io/AndcultureCode.CSharp)
+
+## Deploying Supplemental Documentation
+
+```shell
+$: cd documentation
+$: npx cross-env CURRENT_BRANCH=main USE_SSH=true GIT_USER={GITHUB_USERNAME} GIT_PASS={GITHUB_PASSWORD} docusaurus deploy
+```
 
 ## Packages
 
@@ -22,16 +30,7 @@ dotnet add [<PROJECT>] package AndcultureCode.CSharp.Core
 
 #### Documentation (AndcutlureCode.CSharp.Core)
 
-[Full API Documentation](src/AndcultureCode.CSharp.Core/AndcultureCode.CSharp.Core.md)
-
-[Supplemental Documentation](https://andculturecode.github.io/AndcultureCode.CSharp.Core)
-
-#### Deploying Supplemental Documentation
-
-```shell
-$: cd documentation
-$: npx cross-env CURRENT_BRANCH=main USE_SSH=true GIT_USER={GITHUB_USERNAME} GIT_PASS={GITHUB_PASSWORD} docusaurus deploy
-```
+[Full API Documentation](src/Core/Core.md)
 
 ### AndcultureCode.CSharp.Extensions
 
@@ -64,7 +63,7 @@ public class Program
 
 #### Documentation (AndcultureCode.CSharp.Extensions)
 
-[Full API Documentation](src/AndcultureCode.CSharp.Extensions/AndcultureCode.CSharp.Extensions.md)
+[Full API Documentation](src/Extensions/Extensions.md)
 
 ### AndcultureCode.CSharp.Testing
 
@@ -80,7 +79,23 @@ dotnet add [<PROJECT>] package AndcultureCode.CSharp.Testing
 
 #### Documentation (AndcultureCode.CSharp.Testing)
 
-[Full API Documentation](src/AndcultureCode.CSharp.Testing/AndcultureCode.CSharp.Testing.md)
+[Full API Documentation](src/Testing/Testing.md)
+
+### AndcultureCode.CSharp.Conductors
+
+Commonly used interfaces, patterns and utilities for writing conductors by andculture engineering.
+
+#### Getting Started (AndcultureCode.CSharp.Conductors)
+
+This package is installed via NuGet
+
+```shell
+dotnet add [<PROJECT>] package AndcultureCode.CSharp.Conductors
+```
+
+#### Documentation (AndcultureCode.CSharp.Conductors)
+
+[Full API Documentation](src/Conductors/Conductors.md)
 
 #### Features
 
@@ -98,7 +113,7 @@ To enable debug output set the `Debug` setting to `true`. Now warnings will be o
 
 ## Development Setup
 
-- Install Dotnet Core 2.x
+- Install Dotnet Core 3.1
 - Install the `and-cli` tooling found at [AndcultureCode.Cli](https://github.com/AndcultureCode/AndcultureCode.Cli)
 
 Below are a few basics to get you started, but there are many more commands and options for managing this and other projects found in the `and-cli`.
@@ -155,8 +170,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Stefanie899"><img src="https://avatars.githubusercontent.com/u/37462028?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stefanie Leitch</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=Stefanie899" title="Code">💻</a></td>
     <td align="center"><a href="http://jebediahelliott.com"><img src="https://avatars.githubusercontent.com/u/26680652?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeb</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=jebediahelliott" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=jebediahelliott" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/jhugs"><img src="https://avatars.githubusercontent.com/u/14300627?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joshua Hughes</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=jhugs" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/pulls?q=is%3Apr+reviewed-by%3Ajhugs" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://resume.dylanjustice.com"><img src="https://avatars.githubusercontent.com/u/22502365?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dylan Justice</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dylanjustice" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dylanjustice" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://www.saidshah.com"><img src="https://avatars.githubusercontent.com/u/19719299?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Said B Shah</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=SaidShah" title="Documentation">📖</a> <a href="#maintenance-SaidShah" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="http://resume.dylanjustice.com"><img src="https://avatars.githubusercontent.com/u/22502365?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dylan Justice</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dylanjustice" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dylanjustice" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dylanjustice" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.saidshah.com"><img src="https://avatars.githubusercontent.com/u/19719299?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Said B Shah</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=SaidShah" title="Documentation">📖</a> <a href="#maintenance-SaidShah" title="Maintenance">🚧</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=SaidShah" title="Code">💻</a></td>
   </tr>
   <tr>
     <td align="center"><a href="http://www.snsavage.com"><img src="https://avatars.githubusercontent.com/u/6299224?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Scott Savage</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=snsavage" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=snsavage" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=snsavage" title="Documentation">📖</a></td>
@@ -169,6 +184,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://www.ralphjmcintyre.com"><img src="https://avatars.githubusercontent.com/u/8047934?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ralph J McIntyre</b></sub></a><br /><a href="#maintenance-ralphjmcintyre" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://www.davidezoccarato.cloud/"><img src="https://avatars.githubusercontent.com/u/9533250?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Davide Zoccarato</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dzoccarato" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dzoccarato" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.CSharp/commits?author=dzoccarato" title="Documentation">📖</a></td>
   </tr>
 </table>
 <!-- markdownlint-restore -->
