@@ -180,6 +180,17 @@
         "projectManagement",
         "review"
       ]
+    },
+    {
+      "login": "myty",
+      "name": "Michael Tyson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37794?v=4",
+      "profile": "http://mytydev.com",
+      "contributions": [
+        "maintenance",
+        "projectManagement",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
