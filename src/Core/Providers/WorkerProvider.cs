@@ -25,14 +25,14 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract long DeletedCount();
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        ///  Create a new fire and forget worker task
         /// </summary>
         /// <param name="methodCall"></param>
         /// <returns></returns>
         public abstract string Enqueue(Expression<Action> methodCall);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        ///  Create a new fire and forget worker task
         /// </summary>
         /// <param name="methodCall"></param>
         /// <typeparam name="T"></typeparam>
@@ -40,7 +40,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract string Enqueue<T>(Expression<Action<T>> methodCall);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Enqueued can still mean deleted. This includes all jobs enqueued regardless of state.
         /// </summary>
         /// <param name="queue"></param>
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
 
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Create a recurring worker task
         /// </summary>
         /// <param name="id"></param>
         /// <param name="methodCall"></param>
@@ -62,7 +62,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract void Recur(string id, Expression<Action> methodCall, RecurringOption recurringOptions);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Create a recurring worker task
         /// </summary>
         /// <param name="id"></param>
         /// <param name="methodCall"></param>
@@ -71,7 +71,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract void Recur<T>(string id, Expression<Action<T>> methodCall, string chronExpression);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Create a recurring worker task
         /// </summary>
         /// <param name="id"></param>
         /// <param name="methodCall"></param>
@@ -80,19 +80,19 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract void Recur<T>(string id, Expression<Action<T>> methodCall, RecurringOption recurringOptions);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Number of jobs that have been setup for recurrence.
         /// </summary>
         /// <returns></returns>
         public abstract long RecurringCount();
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Remove a worker recurrence
         /// </summary>
         /// <param name="id"></param>
         public abstract void RemoveRecurrence(string id);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Schedule a method to be enqueued at a specific time
         /// </summary>
         /// <param name="methodCall"></param>
         /// <param name="enqueueOn"></param>
@@ -100,7 +100,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract string Schedule(Expression<Action> methodCall, DateTimeOffset enqueueOn);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Schedule a method to be enqueued at a specific time
         /// </summary>
         /// <param name="methodCall"></param>
         /// <param name="enqueueOn"></param>
@@ -109,7 +109,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract string Schedule<T>(Expression<Action<T>> methodCall, DateTimeOffset enqueueOn);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Schedule a method to be enqueued at a specific time
         /// </summary>
         /// <param name="methodCall"></param>
         /// <param name="delay"></param>
@@ -117,7 +117,7 @@ namespace AndcultureCode.CSharp.Core.Providers.Worker
         public abstract string Schedule(Expression<Action> methodCall, TimeSpan delay);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/39
+        /// Schedule a method to be enqueued at a specific time
         /// </summary>
         /// <param name="methodCall"></param>
         /// <param name="delay"></param>
