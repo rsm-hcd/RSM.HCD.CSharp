@@ -8,15 +8,26 @@ using System.Diagnostics;
 namespace AndcultureCode.CSharp.Core
 {
     /// <summary>
-    /// TODO: Backfill tests https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/15
+    /// Workflow helper to help manage success and failure path logic
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the success object</typeparam>
     public class Do<T>
     {
         #region Properties
 
+        /// <summary>
+        /// Holds a possible exception that may have been thrown
+        /// </summary>
         public Exception Exception { get; set; }
+
+        /// <summary>
+        /// Holds the successful return value of <see cref="IResult{T}"/>
+        /// </summary>
         public IResult<T> Result { get; private set; }
+
+        /// <summary>
+        /// Gets the function defining the workload
+        /// </summary>
         public Func<IResult<T>, T> Workload { get; }
 
         #endregion Properties
@@ -24,6 +35,9 @@ namespace AndcultureCode.CSharp.Core
 
         #region Constructor
 
+        /// <summary>
+        /// Constructor that allows the workload method to be set
+        /// </summary>
         public Do(Func<IResult<T>, T> workload)
         {
             Result = new Result<T>();
@@ -35,6 +49,12 @@ namespace AndcultureCode.CSharp.Core
 
         #region Public Methods
 
+        /// <summary>
+        /// Runs the provided handler action if an exception has been thrown.
+        /// </summary>
+        /// <typeparam name="TException">The exception type</typeparam>
+        /// <param name="handler">The action to be ran when an exception has been thrown</param>
+        /// <returns>An instance of <see cref="Do{T}"/></returns>
         public Do<T> Catch<TException>(Action<TException, IResult<T>> handler)
             where TException : Exception
         {
@@ -75,6 +95,9 @@ namespace AndcultureCode.CSharp.Core
             return this;
         }
 
+        /// <summary>
+        /// Extension of 'Finally' that does not have a logger
+        /// </summary>
         public Do<T> Finally(Action<IResult<T>> workload) => Finally(logger: null, workload: workload);
 
         /// <summary>
@@ -130,6 +153,11 @@ namespace AndcultureCode.CSharp.Core
             return d;
         }
 
+        /// <summary>
+        /// Extension of 'Try' that tries to run the workload
+        /// </summary>
+        /// <param name="workload"></param>
+        /// <returns></returns>
         public static Do<T> Try(Func<IResult<T>, T> workload) => Try(logger: null, workload: workload);
 
         /// <summary>
