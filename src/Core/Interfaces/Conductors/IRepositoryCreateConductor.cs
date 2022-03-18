@@ -4,7 +4,7 @@ using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
 namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 {
-    public interface IRepositoryCreateConductor<T>
+    public partial interface IRepositoryCreateConductor<T>
         where T : class, IEntity
     {
          #region Properties
@@ -19,6 +19,13 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 
         #region Methods
 
+        /// <summary>
+        /// Ability to create entities using a list in a single bulk operation.
+        /// </summary>
+        /// <param name="items">List of items to create</param>
+        /// <param name="createdById">Id of user creating the items</param>
+        /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> BulkCreate(IEnumerable<T> items, long? createdById = null);
 
         /// <summary>
