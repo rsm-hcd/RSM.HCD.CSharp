@@ -28,28 +28,18 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <summary>
         /// Perform a DbContext.BulkInsert on an enumeration of T within a single transaction
         /// </summary>
-        /// <param name="items"></param>
-        /// <param name="createdById"></param>
+        /// <param name="items">that items of type <see cref="IEnumerable{T}" to be inserted</param>
+        /// <param name="createdById">Audit field for who did this task</param>
         /// <returns></returns>
         IResult<List<T>> BulkCreate(IEnumerable<T> items, long? createdById = null);
 
-        /// <summary>
-        /// Calls BulkCreate() with a de-duped list of objects as determined by the
-        /// property (or properties) of the object for the 'property' argument
-        /// NOTE: Bulking is generally faster than batching, but locks the table.
-        /// </summary>
-        /// <param name="items">List of items to attempt to create</param>
-        /// <param name="property">Property or properties of the typed object to determine distinctness</param>
-        /// <param name="createdById">Id of the user creating the entity</param>
-        /// <typeparam name="TKey"></typeparam>
-        /// <returns></returns>
 
         /// <summary>
         /// Calls BulkCreate() after selecting a subset of 'items' based on the distinct value of 'property'
         /// </summary>
-        /// <param name="items"></param>
-        /// <param name="property"></param>
-        /// <param name="createdById"></param>
+        /// <param name="items">that items of type <see cref="IEnumerable{T}" to be inserted</param>
+        /// <param name="property">that determines distinct records</param>
+        /// <param name="createdById">Audit field for who did this task</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);

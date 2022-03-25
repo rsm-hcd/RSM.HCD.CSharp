@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
@@ -36,11 +37,21 @@ namespace AndcultureCode.CSharp.Conductors
         }
 
         /// <inheritdoc />
-        public virtual Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null) 
+        public virtual Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) 
         {
-            if(items == null) throw new ArgumentNullException(nameof(items));
+            cancellationToken.ThrowIfCancellationRequested();
+            if (items == null) throw new ArgumentNullException(nameof(items));
             if(!items.Any()) throw new ArgumentException("An empty collection was provided", nameof(items));
             return _repository.BulkCreateAsync(items, createdById);
+        }
+
+        /// <inheritdoc />
+        public Task<IResult<List<T>>> BulkCreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (items == null) throw new ArgumentNullException(nameof(items));
+            if (!items.Any()) throw new ArgumentException("An empty collection was provided", nameof(items));
+            return _repository.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
         }
     }
 }

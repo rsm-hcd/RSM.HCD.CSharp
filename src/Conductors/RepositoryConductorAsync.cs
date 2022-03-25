@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
@@ -72,7 +73,10 @@ namespace AndcultureCode.CSharp.Conductors
         #endregion Constructor
 
 
-        public Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null) => 
-            _createConductor.BulkCreateAsync(items, createdById);
+        public Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) => 
+            _createConductor.BulkCreateAsync(items, createdById, cancellationToken);
+
+        public Task<IResult<List<T>>> BulkCreateDistinctAsync<TKey>(IEnumerable<T> items, System.Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default) =>
+            _createConductor.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
     }
 }
