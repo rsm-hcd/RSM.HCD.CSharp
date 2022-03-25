@@ -23,7 +23,7 @@ namespace AndcultureCode.CSharp.Conductors
         }
 
         readonly IRepository<T> _repository;
-
+        const string ARGUMENT_EXCEPTION_MESSAGE = "An empty collection was provided";
 
         /// <summary>
         /// Constructor
@@ -41,7 +41,7 @@ namespace AndcultureCode.CSharp.Conductors
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (items == null) throw new ArgumentNullException(nameof(items));
-            if(!items.Any()) throw new ArgumentException("An empty collection was provided", nameof(items));
+            if(!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
             return _repository.BulkCreateAsync(items, createdById);
         }
 
@@ -50,7 +50,7 @@ namespace AndcultureCode.CSharp.Conductors
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (items == null) throw new ArgumentNullException(nameof(items));
-            if (!items.Any()) throw new ArgumentException("An empty collection was provided", nameof(items));
+            if (!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
             return _repository.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
         }
 
@@ -60,6 +60,22 @@ namespace AndcultureCode.CSharp.Conductors
             cancellationToken.ThrowIfCancellationRequested();
             if (item == null) throw new ArgumentNullException(nameof(item));
             return _repository.CreateAsync(item, createdById);
+        }
+
+        public Task<IResult<List<T>>> CreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (items == null) throw new ArgumentNullException(nameof(items));
+            if (!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
+            return _repository.CreateAsync(items, createdById, cancellationToken);
+        }
+
+        public Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (items == null) throw new ArgumentNullException(nameof(items));
+            if (!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
+            return _repository.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
         }
     }
 }

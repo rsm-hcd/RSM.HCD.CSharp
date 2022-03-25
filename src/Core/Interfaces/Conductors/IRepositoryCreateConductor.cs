@@ -48,7 +48,15 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="createdById">Id of user creating the item</param>
         /// <returns></returns>
         [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        IResult<T>       Create(T item, long? createdById = null);
+        IResult<T> Create(T item, long? createdById = null);
+
+        /// <summary>
+        /// Ability to create entities individually using a list 
+        /// </summary>
+        /// <param name="items">List of items to be created</param>
+        /// <param name="createdById">Id of user creating the items</param>
+        /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> Create(IEnumerable<T> items, long? createdById = null);
 
         /// <summary>
@@ -61,6 +69,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="createdById">Id of the user creating the entity</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         #endregion Methods

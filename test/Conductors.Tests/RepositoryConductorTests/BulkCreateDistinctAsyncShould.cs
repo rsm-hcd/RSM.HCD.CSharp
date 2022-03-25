@@ -7,7 +7,6 @@ using AndcultureCode.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
 
-
 namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 {
     public class BulkCreateDistinctAsyncShould : ProjectUnitTest

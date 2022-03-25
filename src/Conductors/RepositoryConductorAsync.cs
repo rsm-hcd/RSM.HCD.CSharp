@@ -83,5 +83,13 @@ namespace AndcultureCode.CSharp.Conductors
         /// <inheritdoc />
         public Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default) => 
             _createConductor.CreateAsync(item, createdById, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<List<T>>> CreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) =>
+            _createConductor.CreateAsync(items, createdById, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, System.Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default) => 
+            _createConductor.CreateDistinctAsync(items, property, createdById, cancellationToken);
     }
 }

@@ -37,25 +37,15 @@ namespace AndcultureCode.CSharp.Conductors
             return _repository.Create(item, createdById);
         }
 
-        /// <summary>
-        /// Ability to create entities individually using a list 
-        /// </summary>
-        /// <param name="items">List of items to be created</param>
-        /// <param name="createdById">Id of user creating the items</param>
-        /// <returns></returns>
+        /// <inheritdoc />
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> Create(IEnumerable<T> items, long? createdById = default(long?))
         {
             return _repository.Create(items, createdById);
         }
 
-        /// <summary>
-        /// Ability to create entities individually without duplicates
-        /// </summary>
-        /// <typeparam name="TKey"></typeparam>
-        /// <param name="items">List of items to create</param>
-        /// <param name="property">Property used to remove duplicates</param>
-        /// <param name="createdById">Id of user creating the items</param>
-        /// <returns></returns>
+        /// <inheritdoc />
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null)
         {
             return _repository.CreateDistinct(items, property, createdById);

@@ -55,6 +55,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> Create(IEnumerable<T> items, long? createdById = default(long?)) => _createConductor.Create(items, createdById);
 
         /// <summary>
@@ -65,6 +66,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="property">Property used to remove duplicates</param>
         /// <param name="createdById">Id of user creating the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null) => _createConductor.CreateDistinct(items, property, createdById);
 
         #endregion Create

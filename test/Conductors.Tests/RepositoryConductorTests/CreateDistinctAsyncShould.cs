@@ -9,9 +9,9 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 {
-    public class CreateAsyncShould : ProjectUnitTest
+    public class CreateDistinctAsyncShould : ProjectUnitTest
     {
-        public CreateAsyncShould(ITestOutputHelper output) : base(output)
+        public CreateDistinctAsyncShould(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -34,22 +34,9 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             // Arrange 
             var repositoryMock = new IRepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
-            UserStub userStub = null;
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.CreateAsync(userStub));
-        }
-
-        [Fact]
-        public async Task Throw_Argument_Null_Exception_When_Given_Null_List_Input()
-        {
-            // Arrange 
-            var repositoryMock = new IRepositoryMock<UserStub>();
-            var respositoryConductor = SetupSut(repositoryMock);
-            IEnumerable<UserStub> userStub = null;
-
-            // Act & Assert
-            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.CreateAsync(userStub));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.CreateDistinctAsync(null, (x) => x.Id));
         }
 
         [Fact]
@@ -58,10 +45,9 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             // Arrange 
             var repositoryMock = new IRepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
-            IEnumerable<UserStub> userStubs = new List<UserStub>();
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => respositoryConductor.CreateAsync(userStubs));
+            await Assert.ThrowsAsync<ArgumentException>(() => respositoryConductor.CreateDistinctAsync(new List<UserStub>(), (x) => x.Id));
         }
 
         [Fact]
@@ -73,9 +59,8 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
-            var userStub = new UserStub();
             // Act & Assert
-            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.CreateAsync(userStub, 5, cancellationToken));
+            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.CreateDistinctAsync(new List<UserStub>(), (x) => x.Id, 5, cancellationToken));
         }
     }
 }
