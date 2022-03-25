@@ -17,6 +17,7 @@ namespace AndcultureCode.CSharp.Conductors
         #region IRepositoryCreateConductor
 
         /// <inheritdoc />
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> BulkCreate(IEnumerable<T> items, long? createdById = default(long?))
         {
             return _repository.BulkCreate(items, createdById);

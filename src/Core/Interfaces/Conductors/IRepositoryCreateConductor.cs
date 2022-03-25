@@ -38,6 +38,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="createdById">Id of the user creating the entity</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         IResult<T>       Create(T item, long? createdById = null);

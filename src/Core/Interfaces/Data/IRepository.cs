@@ -31,6 +31,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="items">that items of type <see cref="IEnumerable{T}" to be inserted</param>
         /// <param name="createdById">Audit field for who did this task</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> BulkCreate(IEnumerable<T> items, long? createdById = null);
 
 
@@ -42,6 +43,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="createdById">Audit field for who did this task</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         /// <summary>
