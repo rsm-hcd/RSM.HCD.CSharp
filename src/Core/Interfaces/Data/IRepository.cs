@@ -10,7 +10,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
     ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IRepository<T>
+    public partial interface IRepository<T>
         where T : class, IEntity
     {
         #region Properties
