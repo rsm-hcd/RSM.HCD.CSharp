@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Tests;
-using Moq;
-using Shouldly;
+using AndcultureCode.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
-using System.Linq.Expressions;
-using System;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
-using System.Threading.Tasks;
 
 namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 {
