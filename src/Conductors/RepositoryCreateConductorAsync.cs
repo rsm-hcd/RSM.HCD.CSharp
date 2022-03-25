@@ -53,5 +53,13 @@ namespace AndcultureCode.CSharp.Conductors
             if (!items.Any()) throw new ArgumentException("An empty collection was provided", nameof(items));
             return _repository.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
         }
+
+        /// <inheritdoc />
+        public virtual Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (item == null) throw new ArgumentNullException(nameof(item));
+            return _repository.CreateAsync(item, createdById);
+        }
     }
 }

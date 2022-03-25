@@ -71,6 +71,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> Create(T item, long? createdById = null);
 
         /// <summary>

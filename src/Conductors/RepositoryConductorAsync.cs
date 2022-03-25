@@ -72,11 +72,16 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion Constructor
 
-
+        /// <inheritdoc />
         public Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) => 
             _createConductor.BulkCreateAsync(items, createdById, cancellationToken);
 
+        /// <inheritdoc />
         public Task<IResult<List<T>>> BulkCreateDistinctAsync<TKey>(IEnumerable<T> items, System.Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default) =>
             _createConductor.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default) => 
+            _createConductor.CreateAsync(item, createdById, cancellationToken);
     }
 }

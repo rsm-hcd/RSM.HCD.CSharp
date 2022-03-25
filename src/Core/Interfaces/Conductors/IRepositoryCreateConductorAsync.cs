@@ -31,5 +31,13 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <returns></returns>
         Task<IResult<List<T>>> BulkCreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default);
 
+        /// <summary>
+        /// Ability to create an entity 
+        /// </summary>
+        /// <param name="item">Item to be created</param>
+        /// <param name="createdById">Id of user creating the item</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default);
     }
 }
