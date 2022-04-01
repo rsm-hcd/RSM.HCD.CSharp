@@ -16,7 +16,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         }
 
         private IRepositoryConductor<UserStub> SetupSut(
-            IRepositoryMock<UserStub> repositoryMock
+            RepositoryMock<UserStub> repositoryMock
         )
         {
             var repositoryCreateConductor = new RepositoryCreateConductor<UserStub>(repositoryMock.Object);
@@ -32,7 +32,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         public async Task Throw_Argument_Null_Exception_When_Given_Null_Input()
         {
             // Arrange 
-            var repositoryMock = new IRepositoryMock<UserStub>();
+            var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             UserStub userStub = null;
 
@@ -44,7 +44,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         public async Task Throw_Argument_Null_Exception_When_Given_Null_List_Input()
         {
             // Arrange 
-            var repositoryMock = new IRepositoryMock<UserStub>();
+            var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             IEnumerable<UserStub> userStub = null;
 
@@ -56,7 +56,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         public async Task Throw_Argument_Exception_When_Given_Empty_Input()
         {
             // Arrange 
-            var repositoryMock = new IRepositoryMock<UserStub>();
+            var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             IEnumerable<UserStub> userStubs = new List<UserStub>();
 
@@ -65,10 +65,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         }
 
         [Fact]
-        public async Task Throw_Stop_If_Canceled()
+        public async Task Throw_OperationCanceledException_If_Canceled()
         {
             // Arrange 
-            var repositoryMock = new IRepositoryMock<UserStub>();
+            var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;

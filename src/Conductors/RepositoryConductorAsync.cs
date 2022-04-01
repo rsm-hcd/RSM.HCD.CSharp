@@ -72,6 +72,7 @@ namespace AndcultureCode.CSharp.Conductors
 
         #endregion Constructor
 
+        #region Create
         /// <inheritdoc />
         public Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) => 
             _createConductor.BulkCreateAsync(items, createdById, cancellationToken);
@@ -91,5 +92,35 @@ namespace AndcultureCode.CSharp.Conductors
         /// <inheritdoc />
         public Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, System.Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default) => 
             _createConductor.CreateDistinctAsync(items, property, createdById, cancellationToken);
+
+        #endregion Create
+
+        #region Delete
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> BulkDeleteAsync(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) => 
+            _deleteConductor.BulkDeleteAsync(items, deletedById, soft, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> DeleteAsync(long id, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) => 
+            _deleteConductor.DeleteAsync(id, deletedById, soft, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> DeleteAsync(T o, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) => 
+            _deleteConductor.DeleteAsync(o, deletedById, soft, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> DeleteAsync(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true, CancellationToken cancellationToken = default) => 
+            _deleteConductor.DeleteAsync(items, deletedById, batchSize, soft, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> RestoreAsync(T o, CancellationToken cancellationToken = default) => 
+            _deleteConductor.RestoreAsync(o, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> RestoreAsync(long id, CancellationToken cancellationToken = default) => 
+            _deleteConductor.RestoreAsync(id, cancellationToken);
+
+        #endregion Delete
     }
 }

@@ -9,6 +9,8 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
     public partial interface IRepository<T>
         where T : class, IEntity
     {
+        #region Create
+
         /// <summary>
         /// Perform a DbContext.BulkInsert on an enumeration of T within a single transaction
         /// </summary>
@@ -59,6 +61,70 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
         Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default);
+
+        #endregion Create
+
+        #region Delete
+        /// <summary>
+        /// Ability to delete an entity using an Id
+        /// </summary>
+        /// <param name="id">Id of item to be deleted</param>
+        /// <param name="deletedById">Id of user deleting the item</param>
+        /// <param name="soft">Boolean flag for soft-deleting the item</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> DeleteAsync(long id, long? deletedById = null, bool soft = true, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Ability to delete an entity using the entity itself
+        /// </summary>
+        /// <param name="o">Item to be deleted</param>
+        /// <param name="deletedById">Id of user deleting the item</param>
+        /// <param name="soft">Boolean flag for soft-deleting the item</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> DeleteAsync(T o, long? deletedById = null, bool soft = true, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Ability to delete a list of entities by batch size.
+        /// </summary>
+        /// <param name="items">List of items to delete</param>
+        /// <param name="deletedById">Id of user deleting the items</param>
+        /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
+        /// <param name="soft">Boolean flag for soft-deleting the items</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> DeleteAsync(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Calls BulkDelete() with a de-duped list of objects as determined by the
+        /// property (or properties) of the object for the 'property' argument
+        /// NOTE: Bulking is generally faster than batching, but locks the table.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="deletedById"></param>
+        /// <param name="soft"></param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> BulkDeleteAsync(IEnumerable<T> items, long? deletedById = null, bool soft = true, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// </summary>
+        /// <param name="o">Entity to be restored</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> RestoreAsync(T o, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Ability to restore a soft-deleted entity using the entity id.
+        /// </summary>
+        /// <param name="id">Id of entity to be restored</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> RestoreAsync(long id, CancellationToken cancellationToken = default);
+
+        #endregion Delete
 
     }
 }

@@ -184,6 +184,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the items</param>
         /// <param name="soft">Boolean flag for soft-deleting items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true) => _deleteConductor.BulkDelete(items, deletedById, soft);
 
         /// <summary>
@@ -193,6 +194,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Delete(long id, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(id, deletedById, soft);
 
         /// <summary>
@@ -202,6 +204,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(o, deletedById, soft);
 
         /// <summary>
@@ -212,6 +215,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
         /// <param name="soft">Boolean flag for soft-deleting the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Delete(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true) => _deleteConductor.Delete(items, deletedById, batchSize, soft);
 
         /// <summary>
@@ -219,6 +223,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Restore(T o) => _deleteConductor.Restore(o);
 
         /// <summary>
@@ -226,6 +231,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// </summary>
         /// <param name="id">Id of entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Restore(long id) => _deleteConductor.Restore(id);
 
         #endregion Delete

@@ -62,6 +62,7 @@ namespace AndcultureCode.CSharp.Conductors
             return _repository.CreateAsync(item, createdById);
         }
 
+        /// <inheritdoc />
         public Task<IResult<List<T>>> CreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -70,6 +71,7 @@ namespace AndcultureCode.CSharp.Conductors
             return _repository.CreateAsync(items, createdById, cancellationToken);
         }
 
+        /// <inheritdoc />
         public Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
