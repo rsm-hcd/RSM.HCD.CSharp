@@ -65,6 +65,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         #endregion Create
 
         #region Delete
+
         /// <summary>
         /// Ability to delete an entity using an Id
         /// </summary>

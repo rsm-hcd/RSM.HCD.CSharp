@@ -42,7 +42,7 @@ namespace AndcultureCode.CSharp.Conductors
             cancellationToken.ThrowIfCancellationRequested();
             if (items == null) throw new ArgumentNullException(nameof(items));
             if(!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
-            return _repository.BulkCreateAsync(items, createdById);
+            return _repository.BulkCreateAsync(items, createdById, cancellationToken);
         }
 
         /// <inheritdoc />
@@ -59,7 +59,7 @@ namespace AndcultureCode.CSharp.Conductors
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (item == null) throw new ArgumentNullException(nameof(item));
-            return _repository.CreateAsync(item, createdById);
+            return _repository.CreateAsync(item, createdById, cancellationToken);
         }
 
         /// <inheritdoc />
