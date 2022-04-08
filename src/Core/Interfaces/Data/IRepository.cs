@@ -55,6 +55,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="deletedById"></param>
         /// <param name="soft"></param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = null, bool soft = true);
 
         /// <summary>
@@ -103,6 +104,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Delete(long id, long? deletedById = null, bool soft = true);
 
         /// <summary>
@@ -112,6 +114,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Delete(T o, long? deletedById = null, bool soft = true);
 
         /// <summary>
@@ -122,6 +125,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
         /// <param name="soft">Boolean flag for soft-deleting the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Delete(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true);
 
         /// <summary>
@@ -253,6 +257,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Restore(T o);
 
         /// <summary>
@@ -260,6 +265,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// </summary>
         /// <param name="id">Id of entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Restore(long id);
 
         /// <summary>
