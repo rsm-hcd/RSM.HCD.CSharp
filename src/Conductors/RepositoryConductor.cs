@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
@@ -38,6 +37,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="property">Property used to remove duplicates</param>
         /// <param name="createdById">Id of user creating the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null) => _createConductor.BulkCreateDistinct(items, property, createdById);
 
         /// <summary>
@@ -46,6 +46,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<T> Create(T item, long? createdById = default(long?)) => _createConductor.Create(item, createdById);
 
         /// <summary>
@@ -54,6 +55,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> Create(IEnumerable<T> items, long? createdById = default(long?)) => _createConductor.Create(items, createdById);
 
         /// <summary>
@@ -64,6 +66,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="property">Property used to remove duplicates</param>
         /// <param name="createdById">Id of user creating the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null) => _createConductor.CreateDistinct(items, property, createdById);
 
         #endregion Create
@@ -181,6 +184,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the items</param>
         /// <param name="soft">Boolean flag for soft-deleting items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true) => _deleteConductor.BulkDelete(items, deletedById, soft);
 
         /// <summary>
@@ -190,6 +194,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Delete(long id, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(id, deletedById, soft);
 
         /// <summary>
@@ -199,6 +204,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _deleteConductor.Delete(o, deletedById, soft);
 
         /// <summary>
@@ -209,6 +215,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
         /// <param name="soft">Boolean flag for soft-deleting the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Delete(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true) => _deleteConductor.Delete(items, deletedById, batchSize, soft);
 
         /// <summary>
@@ -216,6 +223,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Restore(T o) => _deleteConductor.Restore(o);
 
         /// <summary>
@@ -223,6 +231,7 @@ namespace AndcultureCode.CSharp.Conductors
         /// </summary>
         /// <param name="id">Id of entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         public virtual IResult<bool> Restore(long id) => _deleteConductor.Restore(id);
 
         #endregion Delete

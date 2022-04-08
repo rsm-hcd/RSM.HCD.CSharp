@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 {
-    public class BulkCreateAsyncShould : ProjectUnitTest
+    public class CreateDistinctAsyncShould : ProjectUnitTest
     {
-        public BulkCreateAsyncShould(ITestOutputHelper output) : base(output)
+        public CreateDistinctAsyncShould(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -37,7 +36,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var respositoryConductor = SetupSut(repositoryMock);
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.BulkCreateAsync(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.CreateDistinctAsync(null, (x) => x.Id));
         }
 
         [Fact]
@@ -48,7 +47,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var respositoryConductor = SetupSut(repositoryMock);
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => respositoryConductor.BulkCreateAsync(new List<UserStub>()));
+            await Assert.ThrowsAsync<ArgumentException>(() => respositoryConductor.CreateDistinctAsync(new List<UserStub>(), (x) => x.Id));
         }
 
         [Fact]
@@ -62,28 +61,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             cancellationTokenSource.Cancel();
 
             // Act & Assert
-            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.BulkCreateAsync(new List<UserStub>(), 5, cancellationToken));
-        }
-
-        [Fact]
-        public async Task Succeed_When_Given_Proper_Input()
-        {
-            // Arrange 
-            var userId = 5;
-            var userStubs = new List<UserStub>()
-            {
-                new UserStub() { Id = userId }
-            };
-
-            var repositoryMock = new RepositoryMock<UserStub>()
-                .BulkCreateAsync(new Result<List<UserStub>>(userStubs));
-            var respositoryConductor = SetupSut(repositoryMock);
-            
-            // Act
-            var result = await respositoryConductor.BulkCreateAsync(userStubs);
-
-            // Assert
-            Assert.Contains(result.ResultObject, x => x.Id == userId);
+            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.CreateDistinctAsync(new List<UserStub>(), (x) => x.Id, 5, cancellationToken));
         }
     }
 }

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 {
-    public class BulkCreateAsyncShould : ProjectUnitTest
+    public class CreateAsyncShould : ProjectUnitTest
     {
-        public BulkCreateAsyncShould(ITestOutputHelper output) : base(output)
+        public CreateAsyncShould(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -35,9 +34,22 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             // Arrange 
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
+            UserStub userStub = null;
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.BulkCreateAsync(null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.CreateAsync(userStub));
+        }
+
+        [Fact]
+        public async Task Throw_Argument_Null_Exception_When_Given_Null_List_Input()
+        {
+            // Arrange 
+            var repositoryMock = new RepositoryMock<UserStub>();
+            var respositoryConductor = SetupSut(repositoryMock);
+            IEnumerable<UserStub> userStub = null;
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(() => respositoryConductor.CreateAsync(userStub));
         }
 
         [Fact]
@@ -46,9 +58,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             // Arrange 
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
+            IEnumerable<UserStub> userStubs = new List<UserStub>();
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => respositoryConductor.BulkCreateAsync(new List<UserStub>()));
+            await Assert.ThrowsAsync<ArgumentException>(() => respositoryConductor.CreateAsync(userStubs));
         }
 
         [Fact]
@@ -60,30 +73,10 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+            var userStub = new UserStub();
 
             // Act & Assert
-            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.BulkCreateAsync(new List<UserStub>(), 5, cancellationToken));
-        }
-
-        [Fact]
-        public async Task Succeed_When_Given_Proper_Input()
-        {
-            // Arrange 
-            var userId = 5;
-            var userStubs = new List<UserStub>()
-            {
-                new UserStub() { Id = userId }
-            };
-
-            var repositoryMock = new RepositoryMock<UserStub>()
-                .BulkCreateAsync(new Result<List<UserStub>>(userStubs));
-            var respositoryConductor = SetupSut(repositoryMock);
-            
-            // Act
-            var result = await respositoryConductor.BulkCreateAsync(userStubs);
-
-            // Assert
-            Assert.Contains(result.ResultObject, x => x.Id == userId);
+            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.CreateAsync(userStub, 5, cancellationToken));
         }
     }
 }

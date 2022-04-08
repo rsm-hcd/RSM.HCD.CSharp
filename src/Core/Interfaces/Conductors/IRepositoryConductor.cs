@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
 {
-    public interface IRepositoryConductor<T> : IConductor,
+    public partial interface IRepositoryConductor<T> : IConductor,
         IRepositoryCreateConductor<T>,
         IRepositoryDeleteConductor<T>,
         IRepositoryReadConductor<T>,
         IRepositoryUpdateConductor<T>
-    where T : AndcultureCode.CSharp.Core.Models.Entities.Entity
+    where T : Models.Entities.Entity
     {
         #region Properties
 

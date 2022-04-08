@@ -28,30 +28,22 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <summary>
         /// Perform a DbContext.BulkInsert on an enumeration of T within a single transaction
         /// </summary>
-        /// <param name="items"></param>
-        /// <param name="createdById"></param>
+        /// <param name="items">that items of type <see cref="IEnumerable{T}" to be inserted</param>
+        /// <param name="createdById">Audit field for who did this task</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> BulkCreate(IEnumerable<T> items, long? createdById = null);
 
-        /// <summary>
-        /// Calls BulkCreate() with a de-duped list of objects as determined by the
-        /// property (or properties) of the object for the 'property' argument
-        /// NOTE: Bulking is generally faster than batching, but locks the table.
-        /// </summary>
-        /// <param name="items">List of items to attempt to create</param>
-        /// <param name="property">Property or properties of the typed object to determine distinctness</param>
-        /// <param name="createdById">Id of the user creating the entity</param>
-        /// <typeparam name="TKey"></typeparam>
-        /// <returns></returns>
 
         /// <summary>
         /// Calls BulkCreate() after selecting a subset of 'items' based on the distinct value of 'property'
         /// </summary>
-        /// <param name="items"></param>
-        /// <param name="property"></param>
-        /// <param name="createdById"></param>
+        /// <param name="items">that items of type <see cref="IEnumerable{T}" to be inserted</param>
+        /// <param name="property">that determines distinct records</param>
+        /// <param name="createdById">Audit field for who did this task</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         /// <summary>
@@ -63,6 +55,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="deletedById"></param>
         /// <param name="soft"></param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> BulkDelete(IEnumerable<T> items, long? deletedById = null, bool soft = true);
 
         /// <summary>
@@ -79,6 +72,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> Create(T item, long? createdById = null);
 
         /// <summary>
@@ -87,6 +81,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> Create(IEnumerable<T> items, long? createdById = null);
 
         /// <summary>
@@ -99,6 +94,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="createdById">Id of the user creating the entity</param>
         /// <typeparam name="TKey"></typeparam>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<List<T>> CreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         /// <summary>
@@ -108,6 +104,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Delete(long id, long? deletedById = null, bool soft = true);
 
         /// <summary>
@@ -117,6 +114,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="deletedById">Id of user deleting the item</param>
         /// <param name="soft">Boolean flag for soft-deleting the item</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Delete(T o, long? deletedById = null, bool soft = true);
 
         /// <summary>
@@ -127,6 +125,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="batchSize">Number of items to include in a batch, defaults to 100</param>
         /// <param name="soft">Boolean flag for soft-deleting the items</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Delete(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true);
 
         /// <summary>
@@ -258,6 +257,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Restore(T o);
 
         /// <summary>
@@ -265,6 +265,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// </summary>
         /// <param name="id">Id of entity to be restored</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Restore(long id);
 
         /// <summary>
