@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces;
@@ -138,5 +141,156 @@ namespace AndcultureCode.CSharp.Conductors
             _updateConductor.UpdateAsync(items, updatedBy, cancellationToken);
 
         #endregion Update
+
+        #region Read
+
+        #region FindAll
+
+        /// <inheritdoc />
+        public Task<IResult<IQueryable<T>>> FindAllAsync(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false,
+            CancellationToken cancellationToken = default
+        ) => _readConductor.FindAllAsync(
+            filter,
+            orderBy,
+            includeProperties,
+            skip,
+            take,
+            ignoreQueryFilters,
+            asNoTracking,
+            cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<IQueryable<IGrouping<TKey, T>>>> FindAllAsync<TKey>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false,
+            CancellationToken cancellationToken = default
+        ) => _readConductor.FindAllAsync(
+            filter,
+            orderBy,
+            groupBy,
+            includeProperties,
+            skip,
+            take,
+            ignoreQueryFilters,
+            asNoTracking,
+            cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<IQueryable<TResult>>> FindAllAsync<TKey, TResult>(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, TKey>> groupBy = null,
+            Expression<Func<TKey, IEnumerable<T>, TResult>> groupBySelector = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false,
+            CancellationToken cancellationToken = default
+        ) => _readConductor.FindAllAsync(
+            filter,
+            orderBy,
+            groupBy,
+            groupBySelector,
+            includeProperties,
+            skip,
+            take,
+            ignoreQueryFilters,
+            asNoTracking,
+            cancellationToken);
+
+
+        /// <inheritdoc />
+        public Task<IResult<IQueryable<T>>> FindAllAsync(
+            Dictionary<string, string> nextLinkParams,
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            bool? ignoreQueryFilters = false,
+            bool asNoTracking = false,
+            CancellationToken cancellationToken = default
+        ) => _readConductor.FindAllAsync(
+            nextLinkParams,
+            filter,
+            orderBy,
+            ignoreQueryFilters,
+            asNoTracking,
+            cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<IList<T>>> FindAllCommittedAsync(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = null,
+            int? skip = default(int?),
+            int? take = default(int?),
+            bool? ignoreQueryFilters = false,
+            CancellationToken cancellationToken = default
+        ) => _readConductor.FindAllCommittedAsync(
+            filter,
+            orderBy,
+            includeProperties,
+            skip,
+            take,
+            ignoreQueryFilters,
+            cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<IList<T>>> FindAllCommittedAsync(
+            Dictionary<string, string> nextLinkParams,
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            bool? ignoreQueryFilters = false,
+            CancellationToken cancellationToken = default
+        ) => _readConductor.FindAllCommittedAsync(
+            nextLinkParams,
+            filter,
+            orderBy,
+            ignoreQueryFilters,
+            cancellationToken);
+
+        #endregion FindAll
+
+        #region FindById
+
+        /// <inheritdoc />
+        public Task<IResult<T>>FindByIdAsync(long id, bool ignoreQueryFilters = false, CancellationToken cancellationToken = default) => 
+            _readConductor.FindByIdAsync(id, ignoreQueryFilters, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<T>> FindByIdAsync(long id, Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default) => 
+            _readConductor.FindByIdAsync(id, filter, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties) => 
+            _readConductor.FindByIdAsync(id, cancellationToken, includeProperties);
+
+        /// <inheritdoc />
+        public Task<IResult<T>> FindByIdAsync(long id, bool ignoreQueryFilters, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties) => 
+            _readConductor.FindByIdAsync(id, ignoreQueryFilters, cancellationToken, includeProperties);
+
+        /// <inheritdoc />
+        public Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params string[] includeProperties) => 
+            _readConductor.FindByIdAsync(id, cancellationToken, includeProperties);
+
+        /// <inheritdoc />
+        public Task<IResult<T>> FindByIdAsync(long id, string includeProperties, CancellationToken cancellationToken = default) => 
+            _readConductor.FindByIdAsync(id, cancellationToken, includeProperties);
+
+        #endregion FindById
+
+        #endregion Read
     }
 }
