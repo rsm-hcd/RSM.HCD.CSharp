@@ -127,5 +127,37 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
 
         #endregion Delete
 
+        #region Update
+
+        /// <summary>
+        /// Ability to update a list of entities in a single bulk operation.
+        /// </summary>
+        /// <param name="entities">List of items to update</param>
+        /// <param name="updatedBy">Id of user updating the entity</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> BulkUpdateAsync(IEnumerable<T> entities, long? updatedBy = default(long?), CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Ability to create or update an entity
+        /// </summary>
+        /// <param name="item">Item to create or update</param>
+        /// <param name="updatedBy">Id of user creating or updating the entity</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns></returns>
+        Task<IResult<bool>> UpdateAsync(T item, long? updatedBy = null, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Calls Update one-by-one for each item in the enumerated entities.
+        /// For large operations, BulkUpdate() is more efficient.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="updatedBy"></param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
+        /// <returns>True if entities updated without any exceptions. False if an exception was thrown.</returns>
+        Task<IResult<bool>> UpdateAsync(IEnumerable<T> entities, long? updatedBy = default(long?), CancellationToken cancellationToken = default);
+
+        #endregion Update
+
     }
 }

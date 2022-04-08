@@ -122,5 +122,21 @@ namespace AndcultureCode.CSharp.Conductors
             _deleteConductor.RestoreAsync(id, cancellationToken);
 
         #endregion Delete
+
+        #region Update
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> BulkUpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default) => 
+            _updateConductor.BulkUpdateAsync(items, updatedBy, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> UpdateAsync(T item, long? updatedBy = default(long?), CancellationToken cancellationToken = default) => 
+            _updateConductor.UpdateAsync(item, updatedBy, cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IResult<bool>> UpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default) => 
+            _updateConductor.UpdateAsync(items, updatedBy, cancellationToken);
+
+        #endregion Update
     }
 }

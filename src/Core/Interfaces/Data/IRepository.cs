@@ -64,6 +64,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="entities">List of items to update</param>
         /// <param name="updatedBy">Id of user updating the entity</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> BulkUpdate(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         /// <summary>
@@ -274,6 +275,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="item">Item to create or update</param>
         /// <param name="updatedBy">Id of user creating or updating the entity</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Update(T item, long? updatedBy = null);
 
         /// <summary>
@@ -283,6 +285,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="entities"></param>
         /// <param name="updatedBy"></param>
         /// <returns>True if entities updated without any exceptions. False if an exception was thrown.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Update(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         #endregion Methods

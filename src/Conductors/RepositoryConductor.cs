@@ -418,29 +418,20 @@ namespace AndcultureCode.CSharp.Conductors
 
         #region Update
 
-        /// <summary>
-        /// Ability to update a list of entities in a single bulk operation.
-        /// </summary>
-        /// <param name="items">List of items to update</param>
-        /// <param name="updatedBy">Id of user updating the entity</param>
-        /// <returns></returns>
-        public virtual IResult<bool> BulkUpdate(IEnumerable<T> items, long? updatedBy = default(long?)) => _updateConductor.BulkUpdate(items, updatedBy);
+        /// <inheritdoc />
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
+        public virtual IResult<bool> BulkUpdate(IEnumerable<T> items, long? updatedBy = default(long?)) => 
+            _updateConductor.BulkUpdate(items, updatedBy);
 
-        /// <summary>
-        /// Ability to update an entity
-        /// </summary>
-        /// <param name="item">Item to update</param>
-        /// <param name="updatedBy">Id of user updating the entity</param>
-        /// <returns></returns>
-        public virtual IResult<bool> Update(T item, long? updatedBy = default(long?)) => _updateConductor.Update(item, updatedBy);
+        /// <inheritdoc />
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
+        public virtual IResult<bool> Update(T item, long? updatedBy = default(long?)) => 
+            _updateConductor.Update(item, updatedBy);
 
-        /// <summary>
-        /// Ability to update a list of items but each item is updated individually.
-        /// </summary>
-        /// <param name="items">List of items to update</param>
-        /// <param name="updatedBy">Id of user updating the entity</param>
-        /// <returns></returns>
-        public virtual IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?)) => _updateConductor.Update(items, updatedBy);
+        /// <inheritdoc />
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
+        public virtual IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?)) => 
+            _updateConductor.Update(items, updatedBy);
 
         #endregion Update
 
