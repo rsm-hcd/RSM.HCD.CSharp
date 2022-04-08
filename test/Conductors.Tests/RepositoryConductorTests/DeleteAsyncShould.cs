@@ -40,6 +40,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 
             // Act
             var result = await respositoryConductor.DeleteAsync(5);
+
             // Assert
             Assert.True(result.ResultObject);
         }
@@ -53,6 +54,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+
             // Act & Assert
             await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.DeleteAsync(5, 5, true, cancellationToken));
         }
@@ -66,9 +68,9 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var respositoryConductor = SetupSut(repositoryMock);
             var userStub = new UserStub();
 
-
             // Act
             var result = await respositoryConductor.DeleteAsync(userStub);
+
             // Assert
             Assert.True(result.ResultObject);
         }
@@ -83,6 +85,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+
             // Act & Assert
             await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.DeleteAsync(userStub, 5, true, cancellationToken));
         }
@@ -96,9 +99,9 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var respositoryConductor = SetupSut(repositoryMock);
             var userStubs = new List<UserStub>() { new UserStub() };
 
-
             // Act
             var result = await respositoryConductor.DeleteAsync(userStubs);
+
             // Assert
             Assert.True(result.ResultObject);
         }
@@ -113,6 +116,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+
             // Act & Assert
             await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.DeleteAsync(userStubs, 5,5, true, cancellationToken));
         }

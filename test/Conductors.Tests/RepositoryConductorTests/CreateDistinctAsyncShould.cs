@@ -59,6 +59,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+
             // Act & Assert
             await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.CreateDistinctAsync(new List<UserStub>(), (x) => x.Id, 5, cancellationToken));
         }

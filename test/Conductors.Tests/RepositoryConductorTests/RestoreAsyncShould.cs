@@ -39,6 +39,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
 
             // Act
             var result = await respositoryConductor.RestoreAsync(new UserStub());
+
             // Assert
             Assert.True(result.ResultObject);
         }
@@ -52,6 +53,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+
             // Act & Assert
             await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.RestoreAsync(5, cancellationToken));
         }

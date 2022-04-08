@@ -60,6 +60,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             var cancellationTokenSource = new CancellationTokenSource();
             var cancellationToken = cancellationTokenSource.Token;
             cancellationTokenSource.Cancel();
+
             // Act & Assert
             await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.BulkCreateAsync(new List<UserStub>(), 5, cancellationToken));
         }
@@ -78,9 +79,9 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
                 .BulkCreateAsync(new Result<List<UserStub>>(userStubs));
             var respositoryConductor = SetupSut(repositoryMock);
             
-
             // Act
             var result = await respositoryConductor.BulkCreateAsync(userStubs);
+
             // Assert
             Assert.Contains(result.ResultObject, x => x.Id == userId);
         }
