@@ -64,6 +64,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="entities">List of items to update</param>
         /// <param name="updatedBy">Id of user updating the entity</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> BulkUpdate(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         /// <summary>
@@ -139,6 +140,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="ignoreQueryFilters"></param>
         /// <param name="asNoTracking"></param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<IQueryable<T>> FindAll(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -161,6 +163,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -187,6 +190,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <param name="asNoTracking">Ignore change tracking on the result. Set <code>true</code> for read-only operations.</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<IQueryable<TResult>> FindAll<TKey, TResult>(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -209,6 +213,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="take"></param>
         /// <param name="ignoreQueryFilters"></param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<IList<T>> FindAllCommitted(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false);
 
         /// <summary>
@@ -217,6 +222,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="id">The entity identity value.</param>
         /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <returns>The entity with the provided identity value.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> FindById(long id, bool? ignoreQueryFilters = false);
 
         /// <summary>
@@ -225,6 +231,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="id">The entity identity value.</param>
         /// <param name="filter">Filter to be used for querying.</param>
         /// <returns>The entity witht he provided identity value and filter condition met.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> FindById(long id, Expression<Func<T, bool>> filter);
 
         /// <summary>
@@ -233,6 +240,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="id">The entity identity value.</param>
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <returns>The entity with the provided identity value.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> FindById(long id, params Expression<Func<T, object>>[] includeProperties);
 
         /// <summary>
@@ -242,6 +250,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="ignoreQueryFilters">If true, global query filters will be ignored for this query.</param>
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <returns>The entity with the provided identity value.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> FindById(long id, bool? ignoreQueryFilters = false, params Expression<Func<T, object>>[] includeProperties);
 
         /// <summary>
@@ -250,6 +259,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="id">The entity identity value.</param>
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <returns>The entity with the provided identity value.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<T> FindById(long id, params string[] includeProperties);
 
         /// <summary>
@@ -274,6 +284,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="item">Item to create or update</param>
         /// <param name="updatedBy">Id of user creating or updating the entity</param>
         /// <returns></returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Update(T item, long? updatedBy = null);
 
         /// <summary>
@@ -283,6 +294,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         /// <param name="entities"></param>
         /// <param name="updatedBy"></param>
         /// <returns>True if entities updated without any exceptions. False if an exception was thrown.</returns>
+        [Obsolete("This method is deprecated in favor of its async counter part", false)]
         IResult<bool> Update(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         #endregion Methods

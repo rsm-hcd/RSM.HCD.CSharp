@@ -1,5 +1,6 @@
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
 
 namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
@@ -8,30 +9,35 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         where T : class, IEntity
     {
         /// <summary>
+        /// Ability to set and get the underlying DbContext's command timeout
+        /// </summary>
+        int? CommandTimeout { get; set; }
+
+        /// <summary>
         /// Ability to update a list of entities in a single bulk operation.
         /// </summary>
         /// <param name="items">List of items to update</param>
         /// <param name="updatedBy">Id of user updating the entity</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
         /// <returns></returns>
-        [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        IResult<bool> BulkUpdate(IEnumerable<T> items, long? updatedBy = null);
+        Task<IResult<bool>> BulkUpdateAsync(IEnumerable<T> items, long? updatedBy = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Ability to update an entity
         /// </summary>
         /// <param name="item">Item to update</param>
         /// <param name="updatedBy">Id of user updating the entity</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
         /// <returns></returns>
-        [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        IResult<bool> Update(T item, long? updatedBy = null);
+        Task<IResult<bool>> UpdateAsync(T item, long? updatedBy = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Ability to update a list of items but each item is updated individually.
         /// </summary>
         /// <param name="items">List of items to update</param>
         /// <param name="updatedBy">Id of user updating the entity</param>
+        /// <param name="cancellationToken">a token allowing aborting of this request</param>
         /// <returns></returns>
-        [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?));
+        Task<IResult<bool>> UpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default);
     }
 }

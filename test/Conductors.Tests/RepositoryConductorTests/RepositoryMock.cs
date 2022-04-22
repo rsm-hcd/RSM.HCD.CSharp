@@ -45,5 +45,21 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
                 .Returns(Task.FromResult(output));
             return this;
         }
+
+        public RepositoryMock<T> BulkUpdateAsync(IResult<bool> output)
+        {
+            Setup(x => x.BulkUpdateAsync(It.IsAny<IEnumerable<T>>(), It.IsAny<long?>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(output));
+            return this;
+        }
+
+        public RepositoryMock<T> UpdateAsync(IResult<bool> output)
+        {
+            Setup(x => x.UpdateAsync(It.IsAny<IEnumerable<T>>(), It.IsAny<long?>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(output));
+            Setup(x => x.UpdateAsync(It.IsAny<T>(), It.IsAny<long?>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(output));
+            return this;
+        }
     }
 }
