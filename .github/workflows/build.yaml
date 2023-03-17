@@ -41,13 +41,15 @@ jobs:
         steps:
             - uses: neonidian/teams-notify-build-status@v3
               with:
-                  titleBackgroundColor: ${{ job.status }}
+                  status: ${{ job.status }}
                   webhookUrl: ${{ secrets.TEAMS_WEBHOOK_URL }}
                   title: >-
                       [Repository link](${{ github.server_url }}/${{ github.repository }})
                   message: Successful build
               env:
                   SHOULD_DISPLAY_VIEW_RUN_BUTTON: true
+                  SHOULD_DISPLAY_VIEW_COMMIT_BUTTON: true
+                  SHOULD_DISPLAY_ACTOR_LABEL: true
 
     notify_failure:
         runs-on: ubuntu-latest
@@ -56,12 +58,11 @@ jobs:
         steps:
             - uses: neonidian/teams-notify-build-status@v3
               with:
-                  titleBackgroundColor: ${{ job.status }}
+                  status: ${{ job.status }}
                   webhookUrl: ${{ secrets.TEAMS_WEBHOOK_URL }}
                   title: >-
                       [Repository link](${{ github.server_url }}/${{ github.repository }})
                   message: Build failed
-                  status: Failure
               env:
                   SHOULD_DISPLAY_VIEW_RUN_BUTTON: true
                   SHOULD_DISPLAY_VIEW_COMMIT_BUTTON: true
