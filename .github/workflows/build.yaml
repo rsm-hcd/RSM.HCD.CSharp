@@ -41,11 +41,11 @@ jobs:
         steps:
             - uses: neonidian/teams-notify-build-status@v3
               with:
-                  titleBackgroundColor: ${{ job.status }}
-                  status: ${{ job.status }}
-                  webhookUrl: ${{ secrets.TEAMS_WEBHOOK_URL }}
+                  titleBackgroundColor: ${{job.status}}
+                  status: ${{job.status}}
+                  webhookUrl: ${{secrets.TEAMS_INCOMING_WEBHOOK_URL}}
                   title: >-
-                      [Repository link](${{ github.server_url }}/${{ github.repository }})
+                      [Repository link](${{github.server_url}}/${{github.repository}})
                   message: Successful build
               env:
                   SHOULD_DISPLAY_VIEW_RUN_BUTTON: true
@@ -59,11 +59,11 @@ jobs:
         steps:
             - uses: neonidian/teams-notify-build-status@v3
               with:
-                  titleBackgroundColor: ${{ job.status }}
-                  status: ${{ job.status }}
-                  webhookUrl: ${{ secrets.TEAMS_WEBHOOK_URL }}
+                  titleBackgroundColor: ${{job.status}}
+                  status: ${{job.status}}
+                  webhookUrl: ${{secrets.TEAMS_INCOMING_WEBHOOK_URL}}
                   title: >-
-                      [Repository link](${{ github.server_url }}/${{ github.repository }})
+                      [Repository link](${{github.server_url}}/${{github.repository}})
                   message: Build failed
               env:
                   SHOULD_DISPLAY_VIEW_RUN_BUTTON: true
