@@ -2,11 +2,14 @@
   "name": "AndcultureCode.CSharp",
   "version": "1.0.0",
   "description": "Simple nodejs tooling for managing the project",
-  "main": "npx and-cli",
+  "main": "pnpx and-cli",
   "private": true,
   "scripts": {
     "postinstall": "dotnet tool restore && dotnet restore",
-    "test": "and-cli dotnet-test"
+    "test": "and-cli dotnet-test",
+    "test:coverage": "and-cli dotnet-test --coverage",
+    "build": "and-cli dotnet --build",
+    "nuget:publish": "and-cli nuget --publish"
   },
   "repository": {
     "type": "git",
