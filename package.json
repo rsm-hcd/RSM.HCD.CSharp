@@ -1,25 +1,29 @@
 {
-  "name": "AndcultureCode.CSharp",
-  "version": "1.0.0",
-  "description": "Simple nodejs tooling for managing the project",
-  "main": "pnpx and-cli",
-  "private": true,
-  "scripts": {
-    "postinstall": "dotnet tool restore && dotnet husky install && dotnet restore",
-    "test": "and-cli dotnet-test",
-    "test:coverage": "and-cli dotnet-test --coverage",
-    "build": "and-cli dotnet --build",
-    "nuget:publish": "and-cli nuget --publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.git"
-  },
-  "author": "andculture",
-  "license": "ISC",
-  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp#readme",
-  "devDependencies": {
-    "and-cli": "3.0.0-beta.1",
-    "prettier": "2.8.4"
-  }
+    "name": "@andculturecode/csharp",
+    "version": "1.0.0",
+    "description": "Simple nodejs tooling for managing the project",
+    "main": "pnpx and-cli",
+    "private": true,
+    "scripts": {
+        "postinstall": "dotnet tool restore && dotnet husky install && dotnet restore",
+        "test": "and-cli dotnet-test",
+        "test:coverage": "and-cli dotnet-test --coverage",
+        "build": "and-cli dotnet --build",
+        "nuget:publish": "and-cli nuget --publish"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.git"
+    },
+    "author": "andculture",
+    "license": "ISC",
+    "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp#readme",
+    "devDependencies": {
+        "and-cli": "3.0.0-beta.1",
+        "prettier": "2.8.4"
+    },
+    "engines": {
+        "node": ">=16.14"
+    },
+    "packageManager": "pnpm@7.29.0"
 }
