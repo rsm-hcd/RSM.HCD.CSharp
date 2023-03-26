@@ -7,6 +7,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  TEAMS_INCOMING_WEBHOOK_URL: ${{ secrets.TEAMS_INCOMING_WEBHOOK_URL }}
+
 jobs:
   build:
     env:
@@ -42,7 +45,7 @@ jobs:
           cat << EOF > message.json
           {"@type":"MessageCard","@context":"https://schema.org/extensions","summary":"Pipeline Success","themeColor":"22c55e","title":"✅ $GITHUB_REPOSITORY pipeline was successful!","sections":[{"facts":[{"name":"Repository:","value":"$GITHUB_REPOSITORY"},{"name":"Branch:","value":"$GITHUB_REF_NAME"},{"name":"Commit:","value":"$GITHUB_SHA"}]}],"potentialAction":[{"@type":"OpenUri","name":"View on GitHub","targets":[{"os":"default","uri":"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"}]}]}
           EOF
-          curl -X POST ${{ secrets.TEAMS_INCOMING_WEBHOOK_URL }} --header 'Content-Type: application/json' -d @message.json
+          curl -X POST $env.TEAMS_INCOMING_WEBHOOK_URL --header 'Content-Type: application/json' -d @message.json
 
   notify_failure:
     runs-on: ubuntu-latest
@@ -53,4 +56,4 @@ jobs:
           cat << EOF > message.json
           {"@type":"MessageCard","@context":"https://schema.org/extensions","summary":"Pipeline Failed","themeColor":"ef4444","title":"⛔ $GITHUB_REPOSITORY pipeline failed!","sections":[{"facts":[{"name":"Repository:","value":"$GITHUB_REPOSITORY"},{"name":"Branch:","value":"$GITHUB_REF_NAME"},{"name":"Commit:","value":"$GITHUB_SHA"}]}],"potentialAction":[{"@type":"OpenUri","name":"View on GitHub","targets":[{"os":"default","uri":"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"}]}]}
           EOF
-          curl -X POST ${{ secrets.TEAMS_INCOMING_WEBHOOK_URL }} --header 'Content-Type: application/json' -d @message.json
+          curl -X POST $env.TEAMS_INCOMING_WEBHOOK_URL --header 'Content-Type: application/json' -d @message.json
