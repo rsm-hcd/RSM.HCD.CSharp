@@ -43,8 +43,8 @@ jobs:
             {"@type":"MessageCard","@context":"https://schema.org/extensions","summary":"Pipeline Success","themeColor":"22c55e","title":"✅ $GITHUB_REPOSITORY pipeline was successful!","sections":[{"facts":[{"name":"Repository:","value":"$GITHUB_REPOSITORY"},{"name":"Branch:","value":"$GITHUB_REF_NAME"},{"name":"Commit:","value":"$GITHUB_SHA"}]}],"potentialAction":[{"@type":"OpenUri","name":"View on GitHub","targets":[{"os":"default","uri":"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"}]}]}
             EOF
             curl -X POST $TEAMS_WEBHOOK_URL --header 'Content-Type: application/json' -d @message.json
-          env:
-            TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+        env:
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
 
   notify_failure:
     runs-on: ubuntu-latest
