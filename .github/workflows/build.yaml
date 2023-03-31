@@ -33,8 +33,16 @@ jobs:
         - name: Upload to codecov
           uses: codecov/codecov-action@v1
 
-  notify:
+  notify_success:
     needs: [build]
     uses: ./.github/workflows/notify.yaml
+    if: success()
     with:
-      success: success()
+      success: true
+
+  notify_failure:
+    needs: [build]
+    uses: ./.github/workflows/notify.yaml
+    if: failure()
+    with:
+      failure: true

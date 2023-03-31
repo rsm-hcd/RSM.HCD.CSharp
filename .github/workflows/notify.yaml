@@ -4,7 +4,12 @@ on:
   workflow_call:
     inputs:
       success:
-        required: true
+        required: false
+        default: false
+        type: boolean
+      failure:
+        required: false
+        default: false
         type: boolean
 
 jobs:
@@ -20,7 +25,7 @@ jobs:
 
   failure:
     runs-on: ubuntu-latest
-    if: ${{ !inputs.success }}
+    if: ${{ inputs.failure }}
     steps:
       - run: |
           cat << EOF > message.json
