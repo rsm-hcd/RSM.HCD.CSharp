@@ -42,8 +42,7 @@ jobs:
           run: pnpm install
 
         - name: Unit tests
-          run: |
-            dotnet restore
-            dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0
+          run: pnpm test:coverage
+
         - name: Upload to codecov
           uses: codecov/codecov-action@v1
