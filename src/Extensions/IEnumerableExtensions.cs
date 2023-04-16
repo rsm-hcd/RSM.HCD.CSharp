@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Extensions.Models;
 using CoreExtensions = AndcultureCode.CSharp.Core.Extensions;
 
@@ -52,17 +53,6 @@ namespace AndcultureCode.CSharp.Extensions
 
             return source.Intersect(inclusions, new LambdaComparer<T>(predicate));
         }
-
-        /// <summary>
-        /// Determines if the source list is empty
-        /// </summary>
-        public static bool IsEmpty<T>(this IEnumerable<T> source) =>
-            CoreExtensions.EnumerableExtensions.IsEmpty(source);
-
-        /// <summary>
-        /// Determines if the source list is empty
-        /// </summary>
-        public static bool IsEmpty<T>(this IEnumerable<T> source, Func<T, bool> predicate) => !source.Any(predicate);
 
         /// <summary>
         /// Determines if the source list is null or empty
