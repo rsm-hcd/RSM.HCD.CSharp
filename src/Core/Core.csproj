@@ -6,7 +6,7 @@
     <PackageId>RSM.HCD.CSharp.Core</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Commonly used interfaces, patterns and utilities by andculture engineering</Description>
-    <PackageProjectUrl>https://github.com/AndcultureCode/RSM.HCD.CSharp#andcutlurecodecsharpcore</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/rsm-hcd/RSM.HCD.CSharp#andcutlurecodecsharpcore</PackageProjectUrl>
     <IsPackable>true</IsPackable>
     <IsTestProject>false</IsTestProject>
   </PropertyGroup>

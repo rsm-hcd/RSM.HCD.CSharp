@@ -1,29 +1,28 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-    title: "AndcultureCode.CSharp.Core",
+    title: "RSM.HCD.CSharp.Core",
     tagline:
         "Commonly used interfaces, patterns and utilities by andculture engineering",
     url: "https://andculturecode.github.io",
-    baseUrl: "/AndcultureCode.CSharp.Core/",
+    baseUrl: "/RSM.HCD.CSharp.Core/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
     organizationName: "AndcultureCode",
-    projectName: "AndcultureCode.CSharp.Core",
+    projectName: "RSM.HCD.CSharp.Core",
     themeConfig: {
         prism: {
             additionalLanguages: ["csharp"],
         },
         navbar: {
-            title: "AndcultureCode.CSharp.Core",
+            title: "RSM.HCD.CSharp.Core",
             logo: {
-                alt: "AndcultureCode.CSharp.Core",
+                alt: "RSM.HCD.CSharp.Core",
                 src: "img/logo.jpg",
             },
             items: [
                 {
-                    href:
-                        "https://github.com/AndcultureCode/AndcultureCode.CSharp.Core",
+                    href: "https://github.com/rsm-hcd/RSM.HCD.CSharp.Core",
                     label: "GitHub",
                     position: "right",
                 },
@@ -37,7 +36,7 @@ module.exports = {
                     items: [
                         {
                             label: "Github",
-                            href: "https://github.com/AndcultureCode",
+                            href: "https://github.com/rsm-hcd",
                         },
                     ],
                 },
