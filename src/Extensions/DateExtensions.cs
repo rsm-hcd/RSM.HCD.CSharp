@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// DateTime/Offset Extensions

@@ -1,6 +1,6 @@
 using System;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Network
+namespace RSM.HCD.CSharp.Core.Utilities.Network
 {
     /// <summary>
     /// URI related helper functions

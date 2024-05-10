@@ -4,20 +4,20 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Extensions;
-using AndcultureCode.CSharp.Logging;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Factories;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Extensions;
+using RSM.HCD.CSharp.Logging;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Factories;
 using Bogus;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests
+namespace RSM.HCD.CSharp.Testing.Tests
 {
     public class BaseTest : IDisposable
     {

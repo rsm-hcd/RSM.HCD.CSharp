@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryDeleteConductor<T>
         where T : class, IEntity
@@ -57,7 +57,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         Task<IResult<bool>> DeleteAsync(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// Ability to restore a soft-deleted entity using the entity itself.
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <param name="cancellationToken">a token allowing aborting of this request</param>

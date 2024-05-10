@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Configuration
+namespace RSM.HCD.CSharp.Core.Utilities.Configuration
 {
     /// <summary>
     /// Class used to create a <see cref="IConfigurationProvider"/> that reads Amazon Elastic Beanstalk instance environment variables

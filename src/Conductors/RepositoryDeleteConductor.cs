@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Conductors
+namespace RSM.HCD.CSharp.Conductors
 {
     /// <summary>
     /// Ability to delete an entity or list of entities
@@ -24,7 +24,7 @@ namespace AndcultureCode.CSharp.Conductors
 
         /// <inheritdoc />
         [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _repository.Delete(o,  deletedById, soft);
+        public virtual IResult<bool> Delete(T o, long? deletedById = default(long?), bool soft = true) => _repository.Delete(o, deletedById, soft);
 
         /// <inheritdoc />
         [Obsolete("This method is deprecated in favor of its async counter part", false)]

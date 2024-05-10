@@ -2,11 +2,11 @@ using System;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Tests;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 {
     public class ResourceVerbExtensionsTest : CoreUnitTest
     {

@@ -1,9 +1,9 @@
-using AndcultureCode.CSharp.Business.Core.Models.Configuration;
-using AndcultureCode.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Business.Core.Models.Configuration;
+using RSM.HCD.CSharp.Core.Constants;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
     /// Convenience extensions for registering/configuring core actors

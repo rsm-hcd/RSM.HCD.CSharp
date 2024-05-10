@@ -1,12 +1,12 @@
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Constants;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Constants;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Testing.Tests.Unit.Extensions
 {
     public class IDeletableMatcherExtensionsTest : ProjectUnitTest
     {

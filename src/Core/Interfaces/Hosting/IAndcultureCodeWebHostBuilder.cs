@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Hosting
+namespace RSM.HCD.CSharp.Core.Interfaces.Hosting
 {
-    public interface IAndcultureCodeWebHostBuilder
+    public interface IRSMWebHostBuilder
     {
         #region Properties
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Configuration
+namespace RSM.HCD.CSharp.Core.Utilities.Configuration
 {
     /// <summary>
     /// Adds support to read environment variables from an Amazon Elastic Beanstalk EC2 instance

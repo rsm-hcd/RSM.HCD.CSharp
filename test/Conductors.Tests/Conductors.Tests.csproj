@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>AndcultureCode.CSharp.Conductors.Tests</AssemblyName>
-    <RootNamespace>AndcultureCode.CSharp.Conductors.Tests</RootNamespace>
-    <PackageId>AndcultureCode.CSharp.Conductors.Tests</PackageId>
+    <AssemblyName>RSM.HCD.CSharp.Conductors.Tests</AssemblyName>
+    <RootNamespace>RSM.HCD.CSharp.Conductors.Tests</RootNamespace>
+    <PackageId>RSM.HCD.CSharp.Conductors.Tests</PackageId>
   </PropertyGroup>
 
   <Import Project="../Tests.props" />

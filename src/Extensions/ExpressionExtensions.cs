@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// Expression extension methods

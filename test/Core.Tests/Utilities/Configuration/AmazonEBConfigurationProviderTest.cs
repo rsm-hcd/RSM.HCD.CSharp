@@ -4,27 +4,27 @@ using System.IO;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Utilities.Configuration;
 using Moq;
 using Newtonsoft.Json;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing.Tests;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Utilities.Configuration
 {
     /// <summary>
     /// Test fixture MUST NOT be run in parallel
     /// </summary>
-    public class AndcultureEBConfigurationProviderTest : CoreUnitTest
+    public class RSMEBConfigurationProviderTest : CoreUnitTest
     {
         #region Setup
 
-        public AndcultureEBConfigurationProviderTest(ITestOutputHelper output) : base(output) { }
+        public RSMEBConfigurationProviderTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 

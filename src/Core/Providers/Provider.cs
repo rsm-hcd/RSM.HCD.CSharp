@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
-using AndcultureCode.CSharp.Core.Interfaces.Providers;
+using RSM.HCD.CSharp.Core.Interfaces.Providers;
 
-namespace AndcultureCode.CSharp.Core.Providers
+namespace RSM.HCD.CSharp.Core.Providers
 {
     /// <summary>
     /// Base implementation for Providers

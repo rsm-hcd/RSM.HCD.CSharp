@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using AndcultureCode.CSharp.Core;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Entities;
+using RSM.HCD.CSharp.Core;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models.Entities;
 
-namespace AndcultureCode.CSharp.Conductors
+namespace RSM.HCD.CSharp.Conductors
 {
     /// <summary>
     /// Provides CRUD operations on a given repository
@@ -41,7 +41,7 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null) => _createConductor.BulkCreateDistinct(items, property, createdById);
 
         /// <summary>
-        /// Ability to create an entity 
+        /// Ability to create an entity
         /// </summary>
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
@@ -50,7 +50,7 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<T> Create(T item, long? createdById = default(long?)) => _createConductor.Create(item, createdById);
 
         /// <summary>
-        /// Ability to create entities individually using a list 
+        /// Ability to create entities individually using a list
         /// </summary>
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>
@@ -219,7 +219,7 @@ namespace AndcultureCode.CSharp.Conductors
         public virtual IResult<bool> Delete(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true) => _deleteConductor.Delete(items, deletedById, batchSize, soft);
 
         /// <summary>
-        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// Ability to restore a soft-deleted entity using the entity itself.
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>
@@ -342,17 +342,17 @@ namespace AndcultureCode.CSharp.Conductors
 
         /// <inheritdoc />
         [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        public virtual IResult<bool> BulkUpdate(IEnumerable<T> items, long? updatedBy = default(long?)) => 
+        public virtual IResult<bool> BulkUpdate(IEnumerable<T> items, long? updatedBy = default(long?)) =>
             _updateConductor.BulkUpdate(items, updatedBy);
 
         /// <inheritdoc />
         [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        public virtual IResult<bool> Update(T item, long? updatedBy = default(long?)) => 
+        public virtual IResult<bool> Update(T item, long? updatedBy = default(long?)) =>
             _updateConductor.Update(item, updatedBy);
 
         /// <inheritdoc />
         [Obsolete("This method is deprecated in favor of its async counter part", false)]
-        public virtual IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?)) => 
+        public virtual IResult<bool> Update(IEnumerable<T> items, long? updatedBy = default(long?)) =>
             _updateConductor.Update(items, updatedBy);
 
         #endregion Update

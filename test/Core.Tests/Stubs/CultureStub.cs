@@ -1,7 +1,7 @@
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models.Localization;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models.Localization;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Stubs
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Stubs
 {
     public class CultureStub : Culture, ICulture
     {

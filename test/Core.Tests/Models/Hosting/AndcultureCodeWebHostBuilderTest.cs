@@ -3,22 +3,22 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Models.Hosting;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Models.Hosting;
+using RSM.HCD.CSharp.Testing.Tests;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Models.Hosting
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Models.Hosting
 {
-    public class AndcultureCodeWebHostBuilderTest : CoreUnitTest
+    public class RSMWebHostBuilderTest : CoreUnitTest
     {
         #region Setup
 
-        public AndcultureCodeWebHostBuilderTest(ITestOutputHelper output) : base(output) { }
+        public RSMWebHostBuilderTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
@@ -28,7 +28,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Models.Hosting
         [Fact]
         public void Constructor_Overload_With_Args_Null_Sets_Args_Null()
         {
-            new AndcultureCodeWebHostBuilder(args: null).Args.ShouldBeNull();
+            new RSMWebHostBuilder(args: null).Args.ShouldBeNull();
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Models.Hosting
             var expected = new string[] { Random.String() };
 
             // Act
-            var sut = new AndcultureCodeWebHostBuilder(args: expected);
+            var sut = new RSMWebHostBuilder(args: expected);
 
             // Assert
             sut.Args.ShouldBe(expected);
@@ -52,7 +52,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Models.Hosting
         [Fact]
         public void CreateDefaultBuilder_Returns_Builder()
         {
-            new AndcultureCodeWebHostBuilder().CreateDefaultBuilder().ShouldNotBeNull();
+            new RSMWebHostBuilder().CreateDefaultBuilder().ShouldNotBeNull();
         }
 
         #endregion CreateDefaultBuilder

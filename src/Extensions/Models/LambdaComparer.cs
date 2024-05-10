@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Extensions.Models
+namespace RSM.HCD.CSharp.Extensions.Models
 {
     /// <summary>
     /// Generic comparator class for ease of use with comparison functions

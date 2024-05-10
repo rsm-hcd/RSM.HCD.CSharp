@@ -1,6 +1,6 @@
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 
-namespace AndcultureCode.CSharp.Testing.Factories
+namespace RSM.HCD.CSharp.Testing.Factories
 {
     /// <summary>
     /// Factory for building out configurations of the `UserStub` class

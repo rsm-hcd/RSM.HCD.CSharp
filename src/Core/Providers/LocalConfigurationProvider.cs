@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace AndcultureCode.CSharp.Core.Providers.Configuration
+namespace RSM.HCD.CSharp.Core.Providers.Configuration
 {
     /// <summary>
     /// Centralized location for loading configuration settings

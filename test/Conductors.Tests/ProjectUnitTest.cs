@@ -1,8 +1,8 @@
 using System.Reflection;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing.Tests;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Conductors.Tests
+namespace RSM.HCD.CSharp.Conductors.Tests
 {
     public class ProjectUnitTest : BaseUnitTest
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using AndcultureCode.CSharp.Core.Models.Localization;
+using RSM.HCD.CSharp.Core.Models.Localization;
 using Newtonsoft.Json;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
     /// String extension methods

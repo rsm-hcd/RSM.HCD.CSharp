@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Business.Core.Models.Configuration
+namespace RSM.HCD.CSharp.Business.Core.Models.Configuration
 {
     /// <summary>
     /// Describes common configuration for OAuth providers

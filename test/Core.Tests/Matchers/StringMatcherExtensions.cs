@@ -1,7 +1,7 @@
 using System;
 using Shouldly;
 
-namespace AndcultureCode.CSharp.Core.Tests.Matchers
+namespace RSM.HCD.CSharp.Core.Tests.Matchers
 {
     public static class StringMatcherExtensions
     {

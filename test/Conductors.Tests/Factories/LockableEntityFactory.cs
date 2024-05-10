@@ -1,8 +1,8 @@
 using System;
-using AndcultureCode.CSharp.Conductors.Tests.Stubs;
-using AndcultureCode.CSharp.Testing.Factories;
+using RSM.HCD.CSharp.Conductors.Tests.Stubs;
+using RSM.HCD.CSharp.Testing.Factories;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.Factories
+namespace RSM.HCD.CSharp.Conductors.Tests.Factories
 {
     /// <summary>
     /// Factory for building out configurations of the `LockableEntity` class

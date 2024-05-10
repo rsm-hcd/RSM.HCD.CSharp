@@ -1,11 +1,11 @@
-using AndcultureCode.CSharp.Core.Utilities.Network;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Utilities.Network;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Network
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Utilities.Network
 {
     public class UriUtilsTest : CoreUnitTest
     {

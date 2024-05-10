@@ -1,8 +1,8 @@
 using Shouldly;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
-using AndcultureCode.CSharp.Testing.Constants;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Testing.Constants;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Extension methods for asserting expected states of the `ICreatable` interface

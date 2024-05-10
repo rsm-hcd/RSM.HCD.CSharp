@@ -1,14 +1,14 @@
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Testing.Factories;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Testing.Factories;
 using Bogus;
 
-namespace AndcultureCode.CSharp.Core.Tests.Factories
+namespace RSM.HCD.CSharp.Core.Tests.Factories
 {
     public class ConnectionFactory : Factory
     {
         public override void Define()
         {
-            var faker = new Faker(); // TODO: Abstract into our base Factory in AndcultureCode.CSharp.Testing
+            var faker = new Faker(); // TODO: Abstract into our base Factory in RSM.HCD.CSharp.Testing
 
             this.DefineFactory(() => new Connection
             {

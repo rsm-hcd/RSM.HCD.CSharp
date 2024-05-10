@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Models.Configuration
+namespace RSM.HCD.CSharp.Core.Models.Configuration
 {
     /// <summary>
     /// Configuration properties available when setting up Basic HTTP authentication

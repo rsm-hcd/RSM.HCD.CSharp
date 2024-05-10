@@ -3,22 +3,22 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Utilities.Hosting;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Utilities.Hosting;
+using RSM.HCD.CSharp.Testing.Tests;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Utilities.Configuration
 {
-    public class AndcultureCodeWebHostTest : CoreUnitTest
+    public class RSMWebHostTest : CoreUnitTest
     {
         #region Setup
 
-        public AndcultureCodeWebHostTest(ITestOutputHelper output) : base(output) { }
+        public RSMWebHostTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
@@ -28,19 +28,19 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Configuration
         [Fact]
         public void Preload_When_Args_Null_Returns_Builder()
         {
-            AndcultureCodeWebHost.Preload(args: null).ShouldNotBeNull();
+            RSMWebHost.Preload(args: null).ShouldNotBeNull();
         }
 
         [Fact]
         public void Preload_When_Args_Empty_Array_Returns_Builder()
         {
-            AndcultureCodeWebHost.Preload(args: new string[] { }).ShouldNotBeNull();
+            RSMWebHost.Preload(args: new string[] { }).ShouldNotBeNull();
         }
 
         [Fact]
         public void Preload_When_Args_Array_Returns_Builder()
         {
-            AndcultureCodeWebHost.Preload(args: new string[] { Random.String() }).ShouldNotBeNull();
+            RSMWebHost.Preload(args: new string[] { Random.String() }).ShouldNotBeNull();
         }
 
         #endregion Preload

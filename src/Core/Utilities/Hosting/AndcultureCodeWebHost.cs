@@ -1,19 +1,19 @@
-using AndcultureCode.CSharp.Core.Interfaces.Hosting;
-using AndcultureCode.CSharp.Core.Models.Hosting;
+using RSM.HCD.CSharp.Core.Interfaces.Hosting;
+using RSM.HCD.CSharp.Core.Models.Hosting;
 using Microsoft.AspNetCore;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Hosting
+namespace RSM.HCD.CSharp.Core.Utilities.Hosting
 {
     /// <summary>
     /// Static class related to our custom <see cref="WebHost"/> builder pattern
     /// </summary>
-    public static class AndcultureCodeWebHost
+    public static class RSMWebHost
     {
         /// <summary>
         /// Entry point to our custom WebHost builder pattern.
-        /// From here extensions methods can but hung off of IAndcultureCodeWebHostBuilder
+        /// From here extensions methods can but hung off of IRSMWebHostBuilder
         /// </summary>
         /// <returns></returns>
-        public static IAndcultureCodeWebHostBuilder Preload(string[] args) => new AndcultureCodeWebHostBuilder(args);
+        public static IRSMWebHostBuilder Preload(string[] args) => new RSMWebHostBuilder(args);
     }
 }

@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Extensions.Enumerations;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Extensions.Enumerations;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class IQueryableExtensionsTest : BaseUnitTest
     {

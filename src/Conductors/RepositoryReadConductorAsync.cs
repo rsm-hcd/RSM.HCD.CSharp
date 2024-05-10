@@ -4,12 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Interfaces.Data;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Interfaces.Data;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Conductors
+namespace RSM.HCD.CSharp.Conductors
 {
     public partial class RepositoryReadConductor<T> : Conductor, IRepositoryReadConductor<T>
         where T : class, IEntity
@@ -71,7 +71,7 @@ namespace AndcultureCode.CSharp.Conductors
             asNoTracking,
             cancellationToken);
         }
-        
+
 
         /// <inheritdoc />
         public Task<IResult<IQueryable<IGrouping<TKey, T>>>> FindAllAsync<TKey>(
@@ -98,7 +98,7 @@ namespace AndcultureCode.CSharp.Conductors
             asNoTracking,
             cancellationToken);
         }
-        
+
 
         /// <inheritdoc />
         public Task<IResult<IQueryable<TResult>>> FindAllAsync<TKey, TResult>(
@@ -127,7 +127,7 @@ namespace AndcultureCode.CSharp.Conductors
             asNoTracking,
             cancellationToken);
         }
-        
+
 
         /// <inheritdoc />
         public Task<IResult<IQueryable<T>>> FindAllAsync(
@@ -163,7 +163,7 @@ namespace AndcultureCode.CSharp.Conductors
             cancellationToken.ThrowIfCancellationRequested();
             return _repository.FindAllCommittedAsync(filter, orderBy, includeProperties, skip, take, ignoreQueryFilters, cancellationToken);
         }
-        
+
 
         /// <inheritdoc />
         public Task<IResult<IList<T>>> FindAllCommittedAsync(
@@ -181,7 +181,7 @@ namespace AndcultureCode.CSharp.Conductors
             ignoreQueryFilters: ignoreQueryFilters,
             cancellationToken: cancellationToken);
         }
-        
+
 
         #endregion FindAll
 

@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>AndcultureCode.CSharp.Core</AssemblyName>
-    <RootNamespace>AndcultureCode.CSharp.Core</RootNamespace>
-    <PackageId>AndcultureCode.CSharp.Core</PackageId>
+    <AssemblyName>RSM.HCD.CSharp.Core</AssemblyName>
+    <RootNamespace>RSM.HCD.CSharp.Core</RootNamespace>
+    <PackageId>RSM.HCD.CSharp.Core</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Commonly used interfaces, patterns and utilities by andculture engineering</Description>
-    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp#andcutlurecodecsharpcore</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/AndcultureCode/RSM.HCD.CSharp#andcutlurecodecsharpcore</PackageProjectUrl>
     <IsPackable>true</IsPackable>
     <IsTestProject>false</IsTestProject>
   </PropertyGroup>

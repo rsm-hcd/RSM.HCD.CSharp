@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Shouldly;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Extension methods for asserting expected states of `IEnumerable` types

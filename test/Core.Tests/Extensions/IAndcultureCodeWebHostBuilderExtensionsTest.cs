@@ -3,24 +3,24 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Interfaces.Hosting;
-using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Interfaces.Hosting;
+using RSM.HCD.CSharp.Core.Utilities.Configuration;
 using Moq;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing.Tests;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 {
-    public class IAndcultureCodeWebHostBuilderExtensionsTest : CoreUnitTest
+    public class IRSMWebHostBuilderExtensionsTest : CoreUnitTest
     {
         #region Setup
 
-        public IAndcultureCodeWebHostBuilderExtensionsTest(ITestOutputHelper output) : base(output) { }
+        public IRSMWebHostBuilderExtensionsTest(ITestOutputHelper output) : base(output) { }
 
         #endregion Setup
 
@@ -33,10 +33,10 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         public void PreloadAmazonElasticBeanstalk_With_Default_Arguments_Returns_Builder(bool stdoutEnabled)
         {
             // Arrange
-            var mockBuilder = new Mock<IAndcultureCodeWebHostBuilder>();
+            var mockBuilder = new Mock<IRSMWebHostBuilder>();
 
             // Act
-            var result = IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(mockBuilder.Object, stdoutEnabled);
+            var result = IRSMWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(mockBuilder.Object, stdoutEnabled);
 
             // Assert
             result.ShouldBe(mockBuilder.Object);
@@ -47,13 +47,13 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var expected = $"testValue{Random.Int()}";
-            var mockBuilder = new Mock<IAndcultureCodeWebHostBuilder>();
+            var mockBuilder = new Mock<IRSMWebHostBuilder>();
             var mockProvider = new Mock<AmazonEBConfigurationProvider>();
-            mockProvider.Setup(e => e.Has(IAndcultureCodeWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(true);
-            mockProvider.Setup(e => e.Get(IAndcultureCodeWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(expected);
+            mockProvider.Setup(e => e.Has(IRSMWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(true);
+            mockProvider.Setup(e => e.Get(IRSMWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT)).Returns(expected);
 
             // Act
-            var result = IAndcultureCodeWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(
+            var result = IRSMWebHostBuilderExtensions.PreloadAmazonElasticBeanstalk(
                 builder: mockBuilder.Object,
                 stdoutEnabled: false,
                 configurationProvider: mockProvider.Object
@@ -61,7 +61,7 @@ namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             result.ShouldNotBeNull();
-            Environment.GetEnvironmentVariable(IAndcultureCodeWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT).ShouldBe(expected);
+            Environment.GetEnvironmentVariable(IRSMWebHostBuilderExtensions.ASPNETCORE_ENVIRONMENT).ShouldBe(expected);
         }
 
         #endregion PreloadAmazonElasticBeanstalk

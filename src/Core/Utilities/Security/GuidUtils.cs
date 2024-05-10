@@ -1,6 +1,6 @@
 using System;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Security
+namespace RSM.HCD.CSharp.Core.Utilities.Security
 {
     /// <summary>
     /// Guid related helper functions

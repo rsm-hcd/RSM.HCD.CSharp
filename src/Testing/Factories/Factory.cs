@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Bogus;
 
-namespace AndcultureCode.CSharp.Testing.Factories
+namespace RSM.HCD.CSharp.Testing.Factories
 {
     /// <summary>
     /// Base factory class for building out entity configurations

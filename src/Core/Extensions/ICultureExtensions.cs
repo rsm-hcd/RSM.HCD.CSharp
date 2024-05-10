@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using AndcultureCode.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
     /// </summary>
     public static class ICultureExtensions
     {
         #region Default
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="cultures"></param>
         /// <returns></returns>
@@ -37,7 +37,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region Exists
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="cultures"></param>
         /// <param name="cultureCode"></param>
@@ -60,7 +60,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region ToCultureNames
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="cultures"></param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
              => cultures?.Select(e => e.Code).ToList();
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="cultures"></param>
         /// <param name="delimiter"></param>
@@ -95,7 +95,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region ToCultureInfo/s
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="culture"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => new CultureInfo(culture?.Code);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="cultures"></param>
         /// <returns></returns>

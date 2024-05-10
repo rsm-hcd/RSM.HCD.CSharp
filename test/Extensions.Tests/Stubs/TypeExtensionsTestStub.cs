@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Extensions.Tests.Stubs
+namespace RSM.HCD.CSharp.Extensions.Tests.Stubs
 {
     public class TypeExtensionsTestStub
     {
