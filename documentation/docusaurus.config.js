@@ -2,7 +2,7 @@
 module.exports = {
     title: "RSM.HCD.CSharp.Core",
     tagline:
-        "Commonly used interfaces, patterns and utilities by andculture engineering",
+        "Commonly used interfaces, patterns and utilities by the HCD engineering team at RSM",
     url: "https://rsm-hcd.github.io",
     baseUrl: "/RSM.HCD.CSharp.Core/",
     onBrokenLinks: "throw",
