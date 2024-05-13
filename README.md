@@ -119,44 +119,41 @@ To enable debug output set the `Debug` setting to `true`. Now warnings will be o
 ## Development Setup
 
 - Install Dotnet Core 6
-- Install the `and-cli` tooling found at [AndcultureCode.Cli](https://github.com/AndcultureCode/AndcultureCode.Cli)
 - Install pnpm and run `pnpm install`
-
-Below are a few basics to get you started, but there are many more commands and options for managing this and other projects found in the `and-cli`.
 
 ### Building project
 
--   Run the build command
+- Run the build command
 
-    ```shell
-    pnpm build
-    ```
+  ```shell
+  pnpm build
+  ```
 
 ### Running tests
 
--   Run the test command
+- Run the test command
 
-    ```shell
-    pnpm test
-    ```
+  ```shell
+  pnpm test
+  ```
 
 ### Running tests along with code coverage
 
--   Run the test command
+- Run the test command
 
-    ```shell
-    pnpm test:coverage
-    ```
+  ```shell
+  pnpm test:coverage
+  ```
 
--   Open the `coverage.opencover.xml` file in your browser
+- Open the `coverage.opencover.xml` file in your browser
 
 ### Publishing a new version
 
--   Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
+- Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
 
-    ```shell
-    pnpm nuget:publish <version>
-    ```
+  ```shell
+  pnpm nuget:publish <version>
+  ```
 
 ## Contributing
 
