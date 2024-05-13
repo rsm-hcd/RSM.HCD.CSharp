@@ -42,7 +42,7 @@ $: npx cross-env CURRENT_BRANCH=main USE_SSH=true GIT_USER={GITHUB_USERNAME} GIT
 
 Commonly used interfaces, patterns and utilities by the HCD engineering team at RSM
 
-#### Getting Started (v.CSharp.Core)
+#### Getting Started (RSM.HCD.CSharp.Core)
 
 This package is installed via NuGetRSM.HCD
 
