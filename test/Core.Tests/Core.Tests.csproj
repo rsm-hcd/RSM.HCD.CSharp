@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>AndcultureCode.CSharp.Core.Tests</AssemblyName>
-    <RootNamespace>AndcultureCode.CSharp.Core.Tests</RootNamespace>
-    <PackageId>AndcultureCode.CSharp.Core.Tests</PackageId>
+    <AssemblyName>RSM.HCD.CSharp.Core.Tests</AssemblyName>
+    <RootNamespace>RSM.HCD.CSharp.Core.Tests</RootNamespace>
+    <PackageId>RSM.HCD.CSharp.Core.Tests</PackageId>
   </PropertyGroup>
 
   <Import Project="../Tests.props" />

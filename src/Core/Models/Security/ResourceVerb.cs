@@ -1,21 +1,21 @@
 using System;
 
-namespace AndcultureCode.CSharp.Core.Models.Security
+namespace RSM.HCD.CSharp.Core.Models.Security
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
     /// </summary>
     public struct ResourceVerb
     {
         #region Properties
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public string Resource { get; set; }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public string Verb { get; set; }
 
@@ -24,7 +24,7 @@ namespace AndcultureCode.CSharp.Core.Models.Security
         #region Constructor
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="resource"></param>
         /// <param name="verb"></param>
@@ -35,7 +35,7 @@ namespace AndcultureCode.CSharp.Core.Models.Security
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="resourceVerb"></param>
         /// <exception cref="ArgumentException"></exception>
@@ -57,7 +57,7 @@ namespace AndcultureCode.CSharp.Core.Models.Security
         #region Public Methods
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $"{Resource}_{Verb}";

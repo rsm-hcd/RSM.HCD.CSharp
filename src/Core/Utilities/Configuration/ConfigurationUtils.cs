@@ -1,8 +1,8 @@
-using AndcultureCode.CSharp.Core.Constants;
-using AndcultureCode.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Core.Extensions;
 using Microsoft.Extensions.Configuration;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Configuration
+namespace RSM.HCD.CSharp.Core.Utilities.Configuration
 {
     /// <summary>
     /// Static utility class to aid in configuration

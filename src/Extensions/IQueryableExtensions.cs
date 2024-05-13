@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using AndcultureCode.CSharp.Extensions.Enumerations;
+using RSM.HCD.CSharp.Extensions.Enumerations;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// IQueryable extension methods

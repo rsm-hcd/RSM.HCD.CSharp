@@ -1,15 +1,15 @@
 using System;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Tests;
 using Moq;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit
+namespace RSM.HCD.CSharp.Core.Tests.Unit
 {
     public class DoTest : CoreUnitTest
     {

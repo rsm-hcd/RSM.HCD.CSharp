@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models.Security;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models.Security;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     /// <summary>
     /// Determines permission leveraging access control lists

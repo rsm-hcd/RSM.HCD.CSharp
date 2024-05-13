@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Configuration;
-using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using RSM.HCD.CSharp.Core.Utilities.Configuration;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
     /// </summary>
     public static class IConfigurationBuilderExtensions
     {

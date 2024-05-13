@@ -1,8 +1,8 @@
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
-using AndcultureCode.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Models.Errors;
 
-namespace AndcultureCode.CSharp.Testing.Constants
+namespace RSM.HCD.CSharp.Testing.Constants
 {
     /// <summary>
     /// Holds common error keys, messages, Error object configurations, etc.

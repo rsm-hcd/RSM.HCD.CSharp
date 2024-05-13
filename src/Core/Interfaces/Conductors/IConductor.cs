@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors 
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public interface IConductor
     {

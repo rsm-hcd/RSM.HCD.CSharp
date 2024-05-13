@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using AndcultureCode.CSharp.Core.Models.Localization;
+using RSM.HCD.CSharp.Core.Models.Localization;
 
-namespace AndcultureCode.CSharp.Core.Interfaces
+namespace RSM.HCD.CSharp.Core.Interfaces
 {
     public interface ICulture
     {

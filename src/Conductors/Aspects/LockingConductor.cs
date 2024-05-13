@@ -1,12 +1,12 @@
 using System;
-using AndcultureCode.CSharp.Core;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 using Microsoft.Extensions.Logging;
 
-namespace AndcultureCode.CSharp.Conductors.Aspects
+namespace RSM.HCD.CSharp.Conductors.Aspects
 {
     /// <summary>
     /// Repository implementation for handling ILockable entities

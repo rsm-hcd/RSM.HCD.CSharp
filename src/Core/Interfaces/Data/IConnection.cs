@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Interfaces.Data
+namespace RSM.HCD.CSharp.Core.Interfaces.Data
 {
     /// <summary>
     /// Describes standard database connection

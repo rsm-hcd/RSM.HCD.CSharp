@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Shouldly;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Testing matchers for asserting controller responses

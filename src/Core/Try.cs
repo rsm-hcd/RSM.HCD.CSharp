@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AndcultureCode.CSharp.Core
+namespace RSM.HCD.CSharp.Core
 {
     public static class Try
     {

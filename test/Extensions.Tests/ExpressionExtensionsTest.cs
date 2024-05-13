@@ -5,10 +5,10 @@ using System.Linq.Expressions;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
-using AndcultureCode.CSharp.Testing.Factories;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Testing.Factories;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class ExpressionExtensionsTest : BaseExtensionsTest
     {

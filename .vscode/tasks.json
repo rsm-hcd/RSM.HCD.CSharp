@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Core.Tests/AndcultureCode.CSharp.Core.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Core.Tests/RSM.HCD.CSharp.Core.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Core.Tests/AndcultureCode.CSharp.Core.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Core.Tests/RSM.HCD.CSharp.Core.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Core.Tests/AndcultureCode.CSharp.Core.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Core.Tests/RSM.HCD.CSharp.Core.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -44,7 +44,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests/AndcultureCode.CSharp.Extensions.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Extensions.Tests/RSM.HCD.CSharp.Extensions.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -56,7 +56,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests/AndcultureCode.CSharp.Extensions.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Extensions.Tests/RSM.HCD.CSharp.Extensions.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -69,7 +69,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests/AndcultureCode.CSharp.Extensions.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Extensions.Tests/RSM.HCD.CSharp.Extensions.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -81,7 +81,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests/AndcultureCode.CSharp.Testing.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Testing.Tests/RSM.HCD.CSharp.Testing.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -93,7 +93,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests/AndcultureCode.CSharp.Testing.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Testing.Tests/RSM.HCD.CSharp.Testing.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -106,7 +106,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests/AndcultureCode.CSharp.Testing.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Testing.Tests/RSM.HCD.CSharp.Testing.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -118,7 +118,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests/AndcultureCode.CSharp.Conductors.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Conductors.Tests/RSM.HCD.CSharp.Conductors.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -130,7 +130,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests/AndcultureCode.CSharp.Conductors.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Conductors.Tests/RSM.HCD.CSharp.Conductors.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -143,7 +143,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests/AndcultureCode.CSharp.Conductors.Tests.csproj",
+                "${workspaceFolder}/test/RSM.HCD.CSharp.Conductors.Tests/RSM.HCD.CSharp.Conductors.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

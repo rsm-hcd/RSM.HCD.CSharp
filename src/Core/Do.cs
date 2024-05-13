@@ -1,11 +1,11 @@
-﻿using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models.Errors;
+﻿using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models.Errors;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
 
-namespace AndcultureCode.CSharp.Core
+namespace RSM.HCD.CSharp.Core
 {
     /// <summary>
     /// Workflow helper to help manage success and failure path logic

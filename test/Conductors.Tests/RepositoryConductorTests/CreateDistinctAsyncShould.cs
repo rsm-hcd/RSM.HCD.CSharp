@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
+namespace RSM.HCD.CSharp.Conductors.Tests.RepositoryConductorTests
 {
     public class CreateDistinctAsyncShould : ProjectUnitTest
     {
@@ -31,7 +31,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_Argument_Null_Exception_When_Given_Null_Input()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
 
@@ -42,7 +42,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_Argument_Exception_When_Given_Empty_Input()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
 
@@ -53,7 +53,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_OperationCanceledException_If_Canceled()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             var cancellationTokenSource = new CancellationTokenSource();

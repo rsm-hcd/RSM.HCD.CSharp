@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryConductor<T> : IConductor,
         IRepositoryCreateConductor<T>,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// Extensions for Assembly

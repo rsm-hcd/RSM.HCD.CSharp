@@ -1,11 +1,11 @@
 using System;
-using AndcultureCode.CSharp.Core.Constants;
-using AndcultureCode.CSharp.Core.Tests.Unit;
+using RSM.HCD.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Core.Tests.Unit;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Constants
+namespace RSM.HCD.CSharp.Core.Tests.Constants
 {
     public class CacheOptionsTest : CoreUnitTest
     {

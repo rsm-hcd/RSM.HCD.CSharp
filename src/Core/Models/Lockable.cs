@@ -1,10 +1,10 @@
 using System;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Models
+namespace RSM.HCD.CSharp.Core.Models
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
     /// </summary>
     public abstract class Lockable : Auditable, ILockable
     {

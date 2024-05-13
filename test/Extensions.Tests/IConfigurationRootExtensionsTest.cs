@@ -5,7 +5,7 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Extensions.Tests.Unit.Extensions
 {
     public class IConfigurationRootExtensionsTest : BaseExtensionsTest
     {

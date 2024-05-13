@@ -1,7 +1,7 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests
+namespace RSM.HCD.CSharp.Testing.Tests
 {
     [Trait("Category", "Unit")]
     public class BaseUnitTest : BaseTest
@@ -16,6 +16,6 @@ namespace AndcultureCode.CSharp.Testing.Tests
         }
 
         #endregion
-        
+
     }
 }

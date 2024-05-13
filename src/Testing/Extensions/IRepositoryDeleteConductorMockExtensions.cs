@@ -1,10 +1,10 @@
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Entities;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models.Entities;
 using Moq;
 using Moq.Language.Flow;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Extension methods for mocking methods of the `IRepositoryDeleteConductor` interface

@@ -1,17 +1,17 @@
 using System;
-using AndcultureCode.CSharp.Conductors.Aspects;
-using AndcultureCode.CSharp.Conductors.Tests.Stubs;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Conductors.Aspects;
+using RSM.HCD.CSharp.Conductors.Tests.Stubs;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Testing.Extensions;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Conductors.Tests.Factories;
+using RSM.HCD.CSharp.Conductors.Tests.Factories;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.Aspects
+namespace RSM.HCD.CSharp.Conductors.Tests.Aspects
 {
     public class LockingConductorTest : ProjectUnitTest
     {

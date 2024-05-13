@@ -1,8 +1,8 @@
-using AndcultureCode.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Models;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.Stubs
+namespace RSM.HCD.CSharp.Conductors.Tests.Stubs
 {
-    public class LockableEntity: Lockable
+    public class LockableEntity : Lockable
     {
         public string Name;
     }

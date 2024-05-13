@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Extensions.Caching.Distributed;
 
-namespace AndcultureCode.CSharp.Core.Constants
+namespace RSM.HCD.CSharp.Core.Constants
 {
     /// <summary>
     /// Common cache configuration options

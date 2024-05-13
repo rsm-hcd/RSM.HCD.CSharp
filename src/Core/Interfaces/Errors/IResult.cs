@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Core.Interfaces
+namespace RSM.HCD.CSharp.Core.Interfaces
 {
     public interface IResult<T>
     {

@@ -1,14 +1,14 @@
 using System;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Tests.Stubs;
-using AndcultureCode.CSharp.Core.Tests.Unit;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Tests.Stubs;
+using RSM.HCD.CSharp.Core.Tests.Unit;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Models
+namespace RSM.HCD.CSharp.Core.Tests.Models
 {
     public class ConnectionTest : CoreUnitTest
     {

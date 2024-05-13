@@ -1,11 +1,11 @@
 using System.Net.Http;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class HttpResponseMessageExtensionsTest : BaseUnitTest
     {
@@ -25,9 +25,9 @@ namespace AndcultureCode.CSharp.Extensions.Tests
             // Arrange
             var response = new HttpResponseMessage();
             var entity = Build<UserStub>(
-                (e) => e.FirstName = "andculture",
+                (e) => e.FirstName = "rsm",
                 (e) => e.LastName = "engineering",
-                (e) => e.EmailAddress = "developer@andculture.com"
+                (e) => e.EmailAddress = "HCD-Team-Engineering@rsmus.com"
             );
 
             var jsonEntity = Newtonsoft.Json.JsonConvert.SerializeObject(entity);

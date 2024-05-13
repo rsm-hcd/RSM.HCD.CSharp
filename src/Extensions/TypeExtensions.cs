@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// Extensions for Type
@@ -60,7 +60,7 @@ namespace AndcultureCode.CSharp.Extensions
         /// <param name="propertyName"></param>
         /// <returns>The property value, if it exists, null otherwise.</returns>
         public static T GetPublicPropertyValue<T>(this object src, string propertyName) =>
-            (T) src.GetPublicPropertyValue(propertyName);
+            (T)src.GetPublicPropertyValue(propertyName);
 
         /// <summary>
         /// Retrieve all constant values for given type whose value matches type T

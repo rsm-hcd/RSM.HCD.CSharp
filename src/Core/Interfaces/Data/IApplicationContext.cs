@@ -1,7 +1,7 @@
-using AndcultureCode.CSharp.Core.Models.Entities.Acls;
+using RSM.HCD.CSharp.Core.Models.Entities.Acls;
 using System.Linq;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Data
+namespace RSM.HCD.CSharp.Core.Interfaces.Data
 {
     /// <summary>
     /// Base application context containing commonly leveraged system-level entities

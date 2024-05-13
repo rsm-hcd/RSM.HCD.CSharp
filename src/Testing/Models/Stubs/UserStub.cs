@@ -1,6 +1,6 @@
-using AndcultureCode.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Models;
 
-namespace AndcultureCode.CSharp.Testing.Models.Stubs
+namespace RSM.HCD.CSharp.Testing.Models.Stubs
 {
     /// <summary>
     /// Stub entity representing a User

@@ -1,14 +1,14 @@
 using System;
 using System.Globalization;
-using AndcultureCode.CSharp.Core.Tests.Unit.Stubs;
-using AndcultureCode.CSharp.Core.Utilities.Localization;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Tests.Unit.Stubs;
+using RSM.HCD.CSharp.Core.Utilities.Localization;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Localization
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Utilities.Localization
 {
     public class LocalizationUtilsTest : CoreUnitTest
     {

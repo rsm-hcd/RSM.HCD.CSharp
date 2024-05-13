@@ -1,13 +1,13 @@
 using System;
-using AndcultureCode.CSharp.Core.Utilities.Security;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Utilities.Security;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Core.Tests.Matchers;
+using RSM.HCD.CSharp.Core.Tests.Matchers;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Security
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Utilities.Security
 {
     public class EncryptionUtilsTest : CoreUnitTest
     {

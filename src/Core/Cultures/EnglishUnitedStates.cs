@@ -1,7 +1,7 @@
-using AndcultureCode.CSharp.Core.Constants;
-using AndcultureCode.CSharp.Core.Models.Localization;
+using RSM.HCD.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Core.Models.Localization;
 
-namespace AndcultureCode.CSharp.Core.Cultures
+namespace RSM.HCD.CSharp.Core.Cultures
 {
     /// <summary>
     /// Localization Culture for United States English (en-US)

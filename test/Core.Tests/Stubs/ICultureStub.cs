@@ -1,6 +1,6 @@
-using AndcultureCode.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Stubs
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Stubs
 {
     public interface ICultureStub : ICulture { }
 }
