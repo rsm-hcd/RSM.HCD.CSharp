@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4
         with:
@@ -30,9 +35,6 @@ jobs:
 
       - name: Output dotnet info
         run: dotnet --info
-
-      - name: Install dependencies
-        run: pnpm install
 
       - name: Unit tests
         run: pnpm test:coverage
