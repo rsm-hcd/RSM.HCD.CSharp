@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryCreateConductor<T>
         where T : class, IEntity
@@ -32,7 +32,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         Task<IResult<List<T>>> BulkCreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Ability to create an entity 
+        /// Ability to create an entity
         /// </summary>
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
@@ -41,7 +41,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Ability to create entities individually using a list 
+        /// Ability to create entities individually using a list
         /// </summary>
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>

@@ -1,7 +1,7 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests
+namespace RSM.HCD.CSharp.Testing.Tests
 {
     [Trait("Category", "Routing")]
     public class BaseRoutingTest : BaseTest

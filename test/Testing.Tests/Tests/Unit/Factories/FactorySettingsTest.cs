@@ -1,9 +1,9 @@
-using AndcultureCode.CSharp.Testing.Factories;
+using RSM.HCD.CSharp.Testing.Factories;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Unit.Factories
+namespace RSM.HCD.CSharp.Testing.Tests.Unit.Factories
 {
     public class FactorySettingsTest : ProjectUnitTest
     {

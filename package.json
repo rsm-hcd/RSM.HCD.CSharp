@@ -1,22 +1,22 @@
 {
-  "name": "AndcultureCode.CSharp",
-  "version": "1.0.0",
-  "description": "Simple nodejs tooling for managing the project",
-  "main": "npx and-cli",
-  "private": true,
-  "scripts": {
+    "name": "@rsm-hcd/csharp",
+    "version": "3.0.0",
+    "description": "Simple nodejs tooling for managing the project",
+    "main": "npx and-cli",
+    "private": true,
+    "scripts": {
         "configure:git": "echo Ensuring git hooksPath is set to .githooks directory && git config core.hooksPath .githooks && chmod +x .githooks/*",
         "preinstall": "npm run configure:git"
     },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.git"
-  },
-  "author": "andculture",
-  "license": "ISC",
-  "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp#readme",
-  "devDependencies": {
-    "and-cli": "2.8.0",
-    "prettier": "1.19.1"
-  }
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
+    },
+    "author": "rsm-hcd",
+    "license": "ISC",
+    "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
+    "devDependencies": {
+        "and-cli": "2.8.0",
+        "prettier": "1.19.1"
+    }
 }

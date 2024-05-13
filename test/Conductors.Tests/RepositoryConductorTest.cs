@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Tests;
 using Moq;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 using System.Linq.Expressions;
 using System;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 
-namespace AndcultureCode.CSharp.Conductors.Tests
+namespace RSM.HCD.CSharp.Conductors.Tests
 {
     public class RepositoryConductorTest : ProjectUnitTest
     {

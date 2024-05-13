@@ -1,8 +1,8 @@
 using System;
-using AndcultureCode.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace AndcultureCode.CSharp.Core
+namespace RSM.HCD.CSharp.Core
 {
     /// <summary>
     /// Shared functionality for configuring application data seeding

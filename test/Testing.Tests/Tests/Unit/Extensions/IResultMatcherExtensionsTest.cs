@@ -1,17 +1,17 @@
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Constants;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Constants;
 using System.Collections.Generic;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Testing.Factories;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Testing.Factories;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 using System.Linq;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Testing.Tests.Unit.Extensions
 {
     public class IResultMatcherExtensionsTest : ProjectUnitTest
     {

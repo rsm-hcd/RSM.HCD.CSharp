@@ -5,7 +5,7 @@ using System.Reflection;
 using Shouldly;
 using Xunit;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class AssemblyExtensionsTest
     {

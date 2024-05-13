@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Core.Models.Collections
+namespace RSM.HCD.CSharp.Core.Models.Collections
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
@@ -18,7 +18,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         #region Constructors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public OrderedList()
         {
@@ -26,7 +26,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="comparer"></param>
         public OrderedList(IComparer<TKey> comparer)
@@ -39,7 +39,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         #region Public Methods
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -55,7 +55,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -93,7 +93,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <returns></returns>
         public IEnumerator<TValue> GetEnumerator()
@@ -112,21 +112,21 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         void IDictionary<TKey, ICollection<TValue>>.Add(TKey key, ICollection<TValue> value) => items.Add(key, value);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         public bool ContainsKey(TKey key) => items.ContainsKey(key);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public ICollection<TKey> Keys { get => items.Keys; }
 
         bool IDictionary<TKey, ICollection<TValue>>.Remove(TKey key) => items.Remove(key);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -136,7 +136,7 @@ namespace AndcultureCode.CSharp.Core.Models.Collections
         ICollection<ICollection<TValue>> IDictionary<TKey, ICollection<TValue>>.Values { get => items.Values; }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="key"></param>
         public ICollection<TValue> this[TKey key]

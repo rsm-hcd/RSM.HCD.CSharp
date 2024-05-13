@@ -1,6 +1,6 @@
 using System;
 
-namespace AndcultureCode.CSharp.Testing.Factories
+namespace RSM.HCD.CSharp.Testing.Factories
 {
     /// <summary>
     /// Singleton test-suite wide for configuring test factory related settings
@@ -35,7 +35,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
         #region Constructors
 
-        private FactorySettings() {}
+        private FactorySettings() { }
 
         #endregion Constructors
     }

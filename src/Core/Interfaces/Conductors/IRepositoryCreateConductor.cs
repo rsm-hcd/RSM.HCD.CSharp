@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryCreateConductor<T>
         where T : class, IEntity
     {
-         #region Properties
+        #region Properties
 
         /// <summary>
         /// Ability to set and get the underlying DbContext's command timeout
@@ -42,7 +42,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null);
 
         /// <summary>
-        /// Ability to create an entity 
+        /// Ability to create an entity
         /// </summary>
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
@@ -51,7 +51,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         IResult<T> Create(T item, long? createdById = null);
 
         /// <summary>
-        /// Ability to create entities individually using a list 
+        /// Ability to create entities individually using a list
         /// </summary>
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>

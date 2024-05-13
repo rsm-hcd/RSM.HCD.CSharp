@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
     /// Extensions of IDistributedCache

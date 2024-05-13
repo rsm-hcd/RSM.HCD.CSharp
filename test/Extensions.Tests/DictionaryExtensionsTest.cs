@@ -3,7 +3,7 @@ using Xunit;
 using Xunit.Abstractions;
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Extensions.Tests.Unit.Extensions
 {
     public class DictionaryExtensionsTest : BaseExtensionsTest
     {

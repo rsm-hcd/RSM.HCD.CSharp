@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>AndcultureCode.CSharp.Testing</AssemblyName>
-    <RootNamespace>AndcultureCode.CSharp.Testing</RootNamespace>
-    <PackageId>AndcultureCode.CSharp.Testing</PackageId>
+    <AssemblyName>RSM.HCD.CSharp.Testing</AssemblyName>
+    <RootNamespace>RSM.HCD.CSharp.Testing</RootNamespace>
+    <PackageId>RSM.HCD.CSharp.Testing</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Common CSharp testing code used at andculture</Description>
-    <PackageProjectUrl>https://github.com/AndcultureCode/AndcultureCode.CSharp#andculturecodecsharptesting</PackageProjectUrl>
+    <Description>Common CSharp testing code used by the HCD engineering team at RSM</Description>
+    <PackageProjectUrl>https://github.com/rsm-hcd/RSM.HCD.CSharp#rsmhcdcsharptesting</PackageProjectUrl>
     <IsPackable>true</IsPackable>
     <IsTestProject>false</IsTestProject>
   </PropertyGroup>

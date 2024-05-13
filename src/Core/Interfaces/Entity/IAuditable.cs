@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Interfaces.Entity
+namespace RSM.HCD.CSharp.Core.Interfaces.Entity
 {
     public interface IAuditable : ICreatable, IDeletable, IUpdatable
     {

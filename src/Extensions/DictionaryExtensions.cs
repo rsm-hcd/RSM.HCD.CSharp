@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// Extension methods for Dictionary

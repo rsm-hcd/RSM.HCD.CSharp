@@ -1,7 +1,7 @@
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Security
+namespace RSM.HCD.CSharp.Core.Interfaces.Security
 {
     public interface IAcl : IAuditable
     {

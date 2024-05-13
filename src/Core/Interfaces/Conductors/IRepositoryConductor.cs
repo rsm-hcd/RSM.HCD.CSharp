@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryConductor<T> : IConductor,
         IRepositoryCreateConductor<T>,

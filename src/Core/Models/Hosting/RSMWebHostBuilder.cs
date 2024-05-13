@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using AndcultureCode.CSharp.Core.Interfaces.Hosting;
+using RSM.HCD.CSharp.Core.Interfaces.Hosting;
 
-namespace AndcultureCode.CSharp.Core.Models.Hosting
+namespace RSM.HCD.CSharp.Core.Models.Hosting
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
     /// </summary>
-    public class AndcultureCodeWebHostBuilder : IAndcultureCodeWebHostBuilder
+    public class RSMWebHostBuilder : IRSMWebHostBuilder
     {
         #region Properties
 
@@ -22,15 +22,15 @@ namespace AndcultureCode.CSharp.Core.Models.Hosting
         #region Constructors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
-        public AndcultureCodeWebHostBuilder() {}
+        public RSMWebHostBuilder() { }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <param name="args"></param>
-        public AndcultureCodeWebHostBuilder(string[] args)
+        public RSMWebHostBuilder(string[] args)
         {
             Args = args;
         }

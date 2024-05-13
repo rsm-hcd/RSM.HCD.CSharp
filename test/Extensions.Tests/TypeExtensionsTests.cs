@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Extensions.Tests.Stubs;
+using RSM.HCD.CSharp.Extensions.Tests.Stubs;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class TypeExtensionsTests : BaseExtensionsTest
     {

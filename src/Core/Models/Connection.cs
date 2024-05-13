@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces.Data;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces.Data;
 
-namespace AndcultureCode.CSharp.Core.Models
+namespace RSM.HCD.CSharp.Core.Models
 {
     /// <summary>
     /// Breaks out standard connection string params into easy to consume object

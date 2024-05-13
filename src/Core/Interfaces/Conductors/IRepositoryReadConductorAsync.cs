@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryReadConductor<T>
     where T : class, IEntity
@@ -43,7 +43,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
             int? skip = null,
             int? take = null,
             bool? ignoreQueryFilters = false,
-            bool asNoTracking = false, 
+            bool asNoTracking = false,
             CancellationToken cancellationToken = default
         );
 
@@ -68,7 +68,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
             int? skip = default(int?),
             int? take = default(int?),
             bool? ignoreQueryFilters = false,
-            bool asNoTracking = false, 
+            bool asNoTracking = false,
             CancellationToken cancellationToken = default
         );
 
@@ -117,7 +117,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             bool? ignoreQueryFilters = false,
-            bool asNoTracking = false, 
+            bool asNoTracking = false,
             CancellationToken cancellationToken = default
         );
 
@@ -158,7 +158,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
             Dictionary<string, string> nextLinkParams,
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            bool? ignoreQueryFilters = false, 
+            bool? ignoreQueryFilters = false,
             CancellationToken cancellationToken = default
         );
 
@@ -191,7 +191,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         /// <param name="includeProperties">Navigation properties that should be included.</param>
         /// <param name="cancellationToken">a token allowing aborting of this request</param>
         /// <returns>The entity with the provided identity value.</returns>
-        Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default,  params Expression<Func<T, object>>[] includeProperties);
+        Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties);
 
         /// <summary>
         /// Finds an entity by its Id.

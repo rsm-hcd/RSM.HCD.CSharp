@@ -1,29 +1,28 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-    title: "AndcultureCode.CSharp.Core",
+    title: "RSM.HCD.CSharp.Core",
     tagline:
-        "Commonly used interfaces, patterns and utilities by andculture engineering",
-    url: "https://andculturecode.github.io",
-    baseUrl: "/AndcultureCode.CSharp.Core/",
+        "Commonly used interfaces, patterns and utilities by the HCD engineering team at RSM",
+    url: "https://rsm-hcd.github.io",
+    baseUrl: "/RSM.HCD.CSharp.Core/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
-    organizationName: "AndcultureCode",
-    projectName: "AndcultureCode.CSharp.Core",
+    organizationName: "rsm-hcd",
+    projectName: "RSM.HCD.CSharp.Core",
     themeConfig: {
         prism: {
             additionalLanguages: ["csharp"],
         },
         navbar: {
-            title: "AndcultureCode.CSharp.Core",
+            title: "RSM.HCD.CSharp.Core",
             logo: {
-                alt: "AndcultureCode.CSharp.Core",
+                alt: "RSM.HCD.CSharp.Core",
                 src: "img/logo.jpg",
             },
             items: [
                 {
-                    href:
-                        "https://github.com/AndcultureCode/AndcultureCode.CSharp.Core",
+                    href: "https://github.com/rsm-hcd/RSM.HCD.CSharp.Core",
                     label: "GitHub",
                     position: "right",
                 },
@@ -37,12 +36,12 @@ module.exports = {
                     items: [
                         {
                             label: "Github",
-                            href: "https://github.com/AndcultureCode",
+                            href: "https://github.com/rsm-hcd",
                         },
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} andculture, Inc. Built with Docusaurus.`,
+            copyright: `Copyright © ${new Date().getFullYear()} RSM US, LLP. Built with Docusaurus.`,
         },
     },
     presets: [

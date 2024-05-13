@@ -4,10 +4,10 @@ using Shouldly;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
-using AndcultureCode.CSharp.Core.Utilities.Caching;
-using AndcultureCode.CSharp.Core.Tests.Unit.Stubs;
+using RSM.HCD.CSharp.Core.Utilities.Caching;
+using RSM.HCD.CSharp.Core.Tests.Unit.Stubs;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Utilities.Caching
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Utilities.Caching
 {
     public class CacheKeyTest : CoreUnitTest
     {

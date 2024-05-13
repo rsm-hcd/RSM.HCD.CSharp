@@ -1,9 +1,9 @@
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Extensions;
-using AndcultureCode.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Extensions;
+using RSM.HCD.CSharp.Testing.Extensions;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Internal;
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 {
     public class IResultExtensionsTest : CoreUnitTest
     {

@@ -1,7 +1,7 @@
 using System;
-using AndcultureCode.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Enumerations;
 
-namespace AndcultureCode.CSharp.Core.Models.Entities.Worker
+namespace RSM.HCD.CSharp.Core.Models.Entities.Worker
 {
     /// <summary>
     /// Recurrence configuration for a given worker
@@ -34,7 +34,7 @@ namespace AndcultureCode.CSharp.Core.Models.Entities.Worker
         public int Month { get; set; }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public Recurrence Recurrence { get; set; }
     }

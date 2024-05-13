@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Interfaces.Data;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Interfaces.Data;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Conductors
+namespace RSM.HCD.CSharp.Conductors
 {
     public partial class RepositoryCreateConductor<T> : Conductor, IRepositoryCreateConductor<T>
         where T : class, IEntity
@@ -37,11 +37,11 @@ namespace AndcultureCode.CSharp.Conductors
         }
 
         /// <inheritdoc />
-        public virtual Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) 
+        public virtual Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (items == null) throw new ArgumentNullException(nameof(items));
-            if(!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
+            if (!items.Any()) throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE, nameof(items));
             return _repository.BulkCreateAsync(items, createdById, cancellationToken);
         }
 

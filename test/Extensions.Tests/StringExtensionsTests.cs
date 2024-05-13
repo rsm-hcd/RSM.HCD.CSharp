@@ -3,7 +3,7 @@ using Shouldly;
 using System;
 using Xunit;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class StringExtensionsTests
     {
@@ -226,13 +226,13 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Arrange & Act
             var result = StringExtensions.IsNotValidGuid(null);
-            
+
             // Assert
             result.ShouldBeTrue();
         }
 
         #endregion IsNotValidGuid
-        
+
         #region IsValidGuid
 
         [Fact]
@@ -240,8 +240,8 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         {
             // Araange & Act
             var result = StringExtensions.IsValidGuid(null);
-            
-            // Assert 
+
+            // Assert
             result.ShouldBeFalse();
         }
 
@@ -343,7 +343,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         [InlineData("\r\n")]
         public void ToEnumerable_When_String_Is_Null_Or_WhiteSpace_Then_Returns_Null(string input)
         {
-           // Act
+            // Act
             var result = input.ToEnumerable<int>();
 
             // Assert

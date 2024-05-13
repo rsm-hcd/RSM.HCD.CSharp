@@ -1,7 +1,7 @@
 using System.Reflection;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Unit
+namespace RSM.HCD.CSharp.Testing.Tests.Unit
 {
     /// <summary>
     /// Base class wrapper around BaseUnitTest to facilitate loading of factories specific to this

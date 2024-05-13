@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
+namespace RSM.HCD.CSharp.Core.Interfaces.Conductors
 {
     public partial interface IRepositoryDeleteConductor<T>
         where T : class, IEntity
@@ -53,7 +53,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Conductors
         IResult<bool> Delete(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true);
 
         /// <summary>
-        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// Ability to restore a soft-deleted entity using the entity itself.
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>

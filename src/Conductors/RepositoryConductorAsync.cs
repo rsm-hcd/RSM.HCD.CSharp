@@ -4,11 +4,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Entities;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models.Entities;
 
-namespace AndcultureCode.CSharp.Conductors
+namespace RSM.HCD.CSharp.Conductors
 {
     public partial class RepositoryConductor<T> : Conductor, IRepositoryConductor<T>
     where T : Entity
@@ -77,7 +77,7 @@ namespace AndcultureCode.CSharp.Conductors
 
         #region Create
         /// <inheritdoc />
-        public Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) => 
+        public Task<IResult<List<T>>> BulkCreateAsync(IEnumerable<T> items, long? createdById = null, CancellationToken cancellationToken = default) =>
             _createConductor.BulkCreateAsync(items, createdById, cancellationToken);
 
         /// <inheritdoc />
@@ -85,7 +85,7 @@ namespace AndcultureCode.CSharp.Conductors
             _createConductor.BulkCreateDistinctAsync(items, property, createdById, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default) => 
+        public Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default) =>
             _createConductor.CreateAsync(item, createdById, cancellationToken);
 
         /// <inheritdoc />
@@ -93,7 +93,7 @@ namespace AndcultureCode.CSharp.Conductors
             _createConductor.CreateAsync(items, createdById, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, System.Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default) => 
+        public Task<IResult<List<T>>> CreateDistinctAsync<TKey>(IEnumerable<T> items, System.Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default) =>
             _createConductor.CreateDistinctAsync(items, property, createdById, cancellationToken);
 
         #endregion Create
@@ -101,27 +101,27 @@ namespace AndcultureCode.CSharp.Conductors
         #region Delete
 
         /// <inheritdoc />
-        public Task<IResult<bool>> BulkDeleteAsync(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> BulkDeleteAsync(IEnumerable<T> items, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) =>
             _deleteConductor.BulkDeleteAsync(items, deletedById, soft, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> DeleteAsync(long id, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> DeleteAsync(long id, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) =>
             _deleteConductor.DeleteAsync(id, deletedById, soft, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> DeleteAsync(T o, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> DeleteAsync(T o, long? deletedById = default(long?), bool soft = true, CancellationToken cancellationToken = default) =>
             _deleteConductor.DeleteAsync(o, deletedById, soft, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> DeleteAsync(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true, CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> DeleteAsync(IEnumerable<T> items, long? deletedById = default(long?), long batchSize = 100, bool soft = true, CancellationToken cancellationToken = default) =>
             _deleteConductor.DeleteAsync(items, deletedById, batchSize, soft, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> RestoreAsync(T o, CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> RestoreAsync(T o, CancellationToken cancellationToken = default) =>
             _deleteConductor.RestoreAsync(o, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> RestoreAsync(long id, CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> RestoreAsync(long id, CancellationToken cancellationToken = default) =>
             _deleteConductor.RestoreAsync(id, cancellationToken);
 
         #endregion Delete
@@ -129,15 +129,15 @@ namespace AndcultureCode.CSharp.Conductors
         #region Update
 
         /// <inheritdoc />
-        public Task<IResult<bool>> BulkUpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> BulkUpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default) =>
             _updateConductor.BulkUpdateAsync(items, updatedBy, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> UpdateAsync(T item, long? updatedBy = default(long?), CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> UpdateAsync(T item, long? updatedBy = default(long?), CancellationToken cancellationToken = default) =>
             _updateConductor.UpdateAsync(item, updatedBy, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<bool>> UpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default) => 
+        public Task<IResult<bool>> UpdateAsync(IEnumerable<T> items, long? updatedBy = default(long?), CancellationToken cancellationToken = default) =>
             _updateConductor.UpdateAsync(items, updatedBy, cancellationToken);
 
         #endregion Update
@@ -266,27 +266,27 @@ namespace AndcultureCode.CSharp.Conductors
         #region FindById
 
         /// <inheritdoc />
-        public Task<IResult<T>>FindByIdAsync(long id, bool ignoreQueryFilters = false, CancellationToken cancellationToken = default) => 
+        public Task<IResult<T>> FindByIdAsync(long id, bool ignoreQueryFilters = false, CancellationToken cancellationToken = default) =>
             _readConductor.FindByIdAsync(id, ignoreQueryFilters, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<T>> FindByIdAsync(long id, Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default) => 
+        public Task<IResult<T>> FindByIdAsync(long id, Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default) =>
             _readConductor.FindByIdAsync(id, filter, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties) => 
+        public Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties) =>
             _readConductor.FindByIdAsync(id, cancellationToken, includeProperties);
 
         /// <inheritdoc />
-        public Task<IResult<T>> FindByIdAsync(long id, bool ignoreQueryFilters, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties) => 
+        public Task<IResult<T>> FindByIdAsync(long id, bool ignoreQueryFilters, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties) =>
             _readConductor.FindByIdAsync(id, ignoreQueryFilters, cancellationToken, includeProperties);
 
         /// <inheritdoc />
-        public Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params string[] includeProperties) => 
+        public Task<IResult<T>> FindByIdAsync(long id, CancellationToken cancellationToken = default, params string[] includeProperties) =>
             _readConductor.FindByIdAsync(id, cancellationToken, includeProperties);
 
         /// <inheritdoc />
-        public Task<IResult<T>> FindByIdAsync(long id, string includeProperties, CancellationToken cancellationToken = default) => 
+        public Task<IResult<T>> FindByIdAsync(long id, string includeProperties, CancellationToken cancellationToken = default) =>
             _readConductor.FindByIdAsync(id, cancellationToken, includeProperties);
 
         #endregion FindById

@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Core.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Core.Tests.dll",
+            "program": "${workspaceFolder}/test/RSM.HCD.CSharp.Core.Tests/bin/Debug/netcoreapp2.2/RSM.HCD.CSharp.Core.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Core.Tests",
+            "cwd": "${workspaceFolder}/test/RSM.HCD.CSharp.Core.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -23,9 +23,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Extensions.Tests.dll",
+            "program": "${workspaceFolder}/test/RSM.HCD.CSharp.Extensions.Tests/bin/Debug/netcoreapp2.2/RSM.HCD.CSharp.Extensions.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Extensions.Tests",
+            "cwd": "${workspaceFolder}/test/RSM.HCD.CSharp.Extensions.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -36,9 +36,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Testing.Tests.dll",
+            "program": "${workspaceFolder}/test/RSM.HCD.CSharp.Testing.Tests/bin/Debug/netcoreapp2.2/RSM.HCD.CSharp.Testing.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Testing.Tests",
+            "cwd": "${workspaceFolder}/test/RSM.HCD.CSharp.Testing.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -49,9 +49,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests/bin/Debug/netcoreapp2.2/AndcultureCode.CSharp.Conductors.Tests.dll",
+            "program": "${workspaceFolder}/test/RSM.HCD.CSharp.Conductors.Tests/bin/Debug/netcoreapp2.2/RSM.HCD.CSharp.Conductors.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/test/AndcultureCode.CSharp.Conductors.Tests",
+            "cwd": "${workspaceFolder}/test/RSM.HCD.CSharp.Conductors.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

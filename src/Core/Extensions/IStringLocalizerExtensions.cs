@@ -1,11 +1,11 @@
 using System.Globalization;
-using AndcultureCode.CSharp.Core.Utilities.Localization;
+using RSM.HCD.CSharp.Core.Utilities.Localization;
 using Microsoft.Extensions.Localization;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
     /// </summary>
     public static class IStringLocalizerExtensions
     {

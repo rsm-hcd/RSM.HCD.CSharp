@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Data;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Data;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 using Moq;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
+namespace RSM.HCD.CSharp.Conductors.Tests.RepositoryConductorTests
 {
     internal sealed class RepositoryMock<T> : Mock<IRepository<T>>
         where T : class, IEntity

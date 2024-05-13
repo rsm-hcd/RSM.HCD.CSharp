@@ -1,11 +1,11 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
-    /// TODO: Extract to AndcultureCode.CSharp.Extensions project
-    /// https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/64
+    /// TODO: Extract to RSM.HCD.CSharp.Extensions project
+    /// https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/64
     /// </summary>
     public static class ObjectExtensions
     {

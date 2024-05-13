@@ -1,9 +1,9 @@
-﻿using AndcultureCode.CSharp.Extensions;
+﻿using RSM.HCD.CSharp.Extensions;
 using Shouldly;
 using System.Net;
 using System.Net.Http;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Testing assertion extension methods related to HttpResponseMessage objects.

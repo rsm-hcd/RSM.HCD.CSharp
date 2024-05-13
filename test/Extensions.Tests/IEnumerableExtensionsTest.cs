@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class IEnumerableExtensionsTest : BaseUnitTest
     {
