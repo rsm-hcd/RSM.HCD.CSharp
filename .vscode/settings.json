@@ -29,5 +29,7 @@
     "trailing-spaces.trimOnSave": true,
     "typescript.preferences.quoteStyle": "double",
     "typescript.tsdk": "./frontend/node_modules/typescript/lib",
-    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "markdown-toc.depthFrom": 2,
+    "markdown.extension.toc.levels": "2..6"
 }

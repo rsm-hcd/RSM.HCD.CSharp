@@ -1,6 +1,6 @@
 {
-    "name": "RSM.HCD.CSharp",
-    "version": "1.0.0",
+    "name": "@rsm-hcd/csharp",
+    "version": "3.0.0",
     "description": "Simple nodejs tooling for managing the project",
     "main": "npx and-cli",
     "private": true,
@@ -12,7 +12,7 @@
         "type": "git",
         "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
     },
-    "author": "andculture",
+    "author": "rsm-hcd",
     "license": "ISC",
     "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
     "devDependencies": {
