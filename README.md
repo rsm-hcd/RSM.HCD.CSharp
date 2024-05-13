@@ -10,16 +10,12 @@
     -   [Packages](#packages)
         -   [RSM.HCD.CSharp.Core](#rsmhcdcsharpcore)
             -   [Getting Started (v.CSharp.Core)](#getting-started-vcsharpcore)
-            -   [Documentation (RSM.HCD.CSharp.Core)](#documentation-rsmhcdcsharpcore)
         -   [RSM.HCD.CSharp.Extensions](#rsmhcdcsharpextensions)
             -   [Getting Started (RSM.HCD.CSharp.Extensions)](#getting-started-rsmhcdcsharpextensions)
-            -   [Documentation (RSM.HCD.CSharp.Extensions)](#documentation-rsmhcdcsharpextensions)
         -   [RSM.HCD.CSharp.Testing](#rsmhcdcsharptesting)
             -   [Getting Started (RSM.HCD.CSharp.Testing)](#getting-started-rsmhcdcsharptesting)
-            -   [Documentation (RSM.HCD.CSharp.Testing)](#documentation-rsmhcdcsharptesting)
         -   [RSM.HCD.CSharp.Conductors](#rsmhcdcsharpconductors)
             -   [Getting Started (RSM.HCD.CSharp.Conductors)](#getting-started-rsmhcdcsharpconductors)
-            -   [Documentation (RSM.HCD.CSharp.Conductors)](#documentation-rsmhcdcsharpconductors)
             -   [Features](#features)
                 -   [Factories](#factories)
                 -   [Configuration](#configuration)
@@ -54,10 +50,6 @@ This package is installed via NuGetRSM.HCD
 dotnet add [<PROJECT>] package RSM.HCD.CSharp.Core
 ```
 
-#### Documentation (RSM.HCD.CSharp.Core)
-
-[Full API Documentation](src/Core/Core.md)
-
 ### RSM.HCD.CSharp.Extensions
 
 Commonly used CSharp extension methods used by the HCD engineering team at RSM.
@@ -87,10 +79,6 @@ public class Program
 }
 ```
 
-#### Documentation (RSM.HCD.CSharp.Extensions)
-
-[Full API Documentation](src/Extensions/Extensions.md)
-
 ### RSM.HCD.CSharp.Testing
 
 Commonly used CSharp testing code used by the HCD engineering team at RSM.
@@ -103,10 +91,6 @@ This package is installed via NuGet
 dotnet add [<PROJECT>] package RSM.HCD.CSharp.Testing
 ```
 
-#### Documentation (RSM.HCD.CSharp.Testing)
-
-[Full API Documentation](src/Testing/Testing.md)
-
 ### RSM.HCD.CSharp.Conductors
 
 Commonly used interfaces, patterns and utilities for writing conductors by the HCD engineering team at RSM.
@@ -118,10 +102,6 @@ This package is installed via NuGet
 ```shell
 dotnet add [<PROJECT>] package RSM.HCD.CSharp.Conductors
 ```
-
-#### Documentation (RSM.HCD.CSharp.Conductors)
-
-[Full API Documentation](src/Conductors/Conductors.md)
 
 #### Features
 
