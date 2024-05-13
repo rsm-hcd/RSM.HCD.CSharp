@@ -1,22 +1,25 @@
 {
-    "name": "@rsm-hcd/csharp",
-    "version": "3.0.0",
-    "description": "Simple nodejs tooling for managing the project",
-    "main": "npx and-cli",
-    "private": true,
-    "scripts": {
-        "configure:git": "echo Ensuring git hooksPath is set to .githooks directory && git config core.hooksPath .githooks && chmod +x .githooks/*",
-        "preinstall": "npm run configure:git"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
-    },
-    "author": "rsm-hcd",
-    "license": "ISC",
-    "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
-    "devDependencies": {
-        "and-cli": "2.8.0",
-        "prettier": "1.19.1"
-    }
+  "name": "@rsm-hcd/csharp",
+  "version": "3.0.0",
+  "description": "Simple nodejs tooling for managing the project",
+  "main": "npx and-cli",
+  "private": true,
+  "scripts": {
+    "preinstall": "dotnet tool restore && dotnet husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
+  },
+  "author": "rsm-hcd",
+  "license": "ISC",
+  "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
+  "devDependencies": {
+    "and-cli": "2.8.0",
+    "prettier": "^3.2.5"
+  },
+  "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b",
+  "engines": {
+    "node": ">=20"
+  }
 }
