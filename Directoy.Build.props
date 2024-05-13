@@ -3,8 +3,8 @@
     <VersionPrefix>2.0.0-preview</VersionPrefix>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIconUrl>https://github.com/rsm-hcd/AndcultureCode/blob/main/assets/andculture-glyph%402x.png</PackageIconUrl>
-    <PackageIcon>andculture-glyph@2x.png</PackageIcon>
+    <PackageIconUrl>https://github.com/rsm-hcd/AndcultureCode/blob/main/assets/RSM-Logo.png</PackageIconUrl>
+    <PackageIcon>RSM-Logo.png</PackageIcon>
     <Copyright>andculture</Copyright>
     <Authors>andculture</Authors>
     <Company>andculture</Company>
@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="assets\images\andculture-glyph@2x.png" Pack="true" PackagePath=""/>
+    <None Include="assets\images\RSM-Logo.png" Pack="true" PackagePath=""/>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="'$(IsPackable)' == 'true'"/>
     <PackageReference Include="Vsxmd" Version="1.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
