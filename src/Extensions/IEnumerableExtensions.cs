@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Extensions.Models;
-using CoreExtensions = AndcultureCode.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Extensions.Models;
+using CoreExtensions = RSM.HCD.CSharp.Core.Extensions;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// IEnumerable extension methods

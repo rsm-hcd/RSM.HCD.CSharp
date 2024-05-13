@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Interfaces.Entity
+namespace RSM.HCD.CSharp.Core.Interfaces.Entity
 {
     /// <summary>
     /// Unique reponsibility (typically of a user) in the system

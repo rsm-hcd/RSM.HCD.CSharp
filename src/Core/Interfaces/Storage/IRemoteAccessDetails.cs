@@ -1,6 +1,6 @@
-using AndcultureCode.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Providers.Storage
+namespace RSM.HCD.CSharp.Core.Interfaces.Providers.Storage
 {
     /// <summary>
     /// Access details to access a given storage resource

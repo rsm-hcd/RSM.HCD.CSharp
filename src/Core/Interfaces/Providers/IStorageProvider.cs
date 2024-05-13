@@ -1,7 +1,7 @@
 using System;
-using AndcultureCode.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Enumerations;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Providers.Storage
+namespace RSM.HCD.CSharp.Core.Interfaces.Providers.Storage
 {
     /// <summary>
     /// Generic storage container provider

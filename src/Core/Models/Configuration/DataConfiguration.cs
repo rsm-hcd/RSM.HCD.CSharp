@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Models.Configuration
+namespace RSM.HCD.CSharp.Core.Models.Configuration
 {
     /// <summary>
     /// Commonly used string lengths for various types of data
@@ -14,27 +14,27 @@ namespace AndcultureCode.CSharp.Core.Models.Configuration
         public const int IP_ADDRESS_LENGTH = 39;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public const int EXTRA_SHORT_STRING_LENGTH = 100;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public const int LONG_DESCRIPTION_LENGTH = 1000;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public const int SHORT_DESCRIPTION_LENGTH = 500;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public const int SHORT_STRING_LENGTH = 150;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public const int SHORT_TITLE_LENGTH = 60;
 

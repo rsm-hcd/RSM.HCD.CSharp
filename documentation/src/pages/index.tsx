@@ -7,11 +7,12 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
 export default function Home() {
-    const { siteConfig } = useDocusaurusContext();
+    const context = useDocusaurusContext();
+    const { siteConfig = {} } = context;
     return (
         <Layout
-            title={siteConfig.title}
-            description="Commonly used interfaces, patterns and utilities by andculture engineering">
+            title={`${siteConfig.title}`}
+            description="Commonly used interfaces, patterns and utilities by the HCD engineering team at RSM">
             <header className={clsx("hero hero--primary", styles.heroBanner)}>
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>

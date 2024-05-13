@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Data
+namespace RSM.HCD.CSharp.Core.Interfaces.Data
 {
     public partial interface IRepository<T>
         where T : class, IEntity
@@ -34,7 +34,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         Task<IResult<List<T>>> BulkCreateDistinctAsync<TKey>(IEnumerable<T> items, Func<T, TKey> property, long? createdById = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Ability to create an entity 
+        /// Ability to create an entity
         /// </summary>
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
@@ -43,7 +43,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         Task<IResult<T>> CreateAsync(T item, long? createdById = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Ability to create entities individually using a list 
+        /// Ability to create entities individually using a list
         /// </summary>
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>
@@ -112,7 +112,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         Task<IResult<bool>> BulkDeleteAsync(IEnumerable<T> items, long? deletedById = null, bool soft = true, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// Ability to restore a soft-deleted entity using the entity itself.
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <param name="cancellationToken">a token allowing aborting of this request</param>
@@ -182,7 +182,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
             int? skip = null,
             int? take = null,
             bool? ignoreQueryFilters = false,
-            bool asNoTracking = false, 
+            bool asNoTracking = false,
             CancellationToken cancellationToken = default
         );
 

@@ -1,13 +1,13 @@
 ﻿using System.Linq;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Testing.Constants;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Testing.Constants;
 using Shouldly;
-using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using CoreErrorConstants = RSM.HCD.CSharp.Core.Constants.ErrorConstants;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 using System.Collections.Generic;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Extension methods for asserting expected states of the `IResult` interface

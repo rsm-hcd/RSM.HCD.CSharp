@@ -1,5 +1,6 @@
 {
-    "name": "@andculturecode/csharp-documentation",
+    "name": "@rsm-hcd/csharp-docs",
+    "version": "0.0.0",
     "private": true,
     "scripts": {
         "docusaurus": "docusaurus",

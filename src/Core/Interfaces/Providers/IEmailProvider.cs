@@ -1,6 +1,6 @@
 using MimeKit;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Providers.Mail
+namespace RSM.HCD.CSharp.Core.Interfaces.Providers.Mail
 {
     /// <summary>
     /// Generic email provider

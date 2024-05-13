@@ -1,8 +1,8 @@
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Testing.Constants;
-using CoreErrorConstants = AndcultureCode.CSharp.Core.Constants.ErrorConstants;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Testing.Constants;
+using CoreErrorConstants = RSM.HCD.CSharp.Core.Constants.ErrorConstants;
 
-namespace AndcultureCode.CSharp.Testing.Factories
+namespace RSM.HCD.CSharp.Testing.Factories
 {
     /// <summary>
     /// Factory for building out configurations of the `Error` class

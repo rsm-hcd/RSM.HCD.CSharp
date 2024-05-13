@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Security.Claims;
-using AndcultureCode.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Core.Constants;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// Extension methods for ClaimsPrincipal

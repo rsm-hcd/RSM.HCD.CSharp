@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Extensions.Enumerations
+namespace RSM.HCD.CSharp.Extensions.Enumerations
 {
     /// <summary>
     /// Directions for ordering items.

@@ -5,7 +5,7 @@ using Shouldly;
 using Xunit;
 
 
-namespace AndcultureCode.CSharp.Extensions.Tests
+namespace RSM.HCD.CSharp.Extensions.Tests
 {
     public class DateExtensionsTests
     {
@@ -135,7 +135,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
         }
 
         #endregion CalculateAge
-        
+
         #region SetTime
 
         [Fact]
@@ -151,7 +151,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 testDate.SetTime(hour, 0, 0);
             }).ParamName.ShouldBe(nameof(hour));
         }
-        
+
         [Fact]
         public void SetTime_Throws_Argument_Exception_When_Hour_Greater_Than_Twenty_Three()
         {
@@ -165,7 +165,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 testDate.SetTime(hour, 0, 0);
             }).ParamName.ShouldBe(nameof(hour));
         }
-        
+
         [Fact]
         public void SetTime_Throws_Argument_Exception_When_Minute_Less_Than_Zero()
         {
@@ -179,7 +179,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 testDate.SetTime(0, minute, 0);
             }).ParamName.ShouldBe(nameof(minute));
         }
-        
+
         [Fact]
         public void SetTime_Throws_Argument_Exception_When_Minute_Greater_Than_Fifty_Nine()
         {
@@ -207,7 +207,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 testDate.SetTime(0, 0, second);
             }).ParamName.ShouldBe(nameof(second));
         }
-        
+
         [Fact]
         public void SetTime_Throws_Argument_Exception_When_Second_Greater_Than_Fifty_Nine()
         {
@@ -221,7 +221,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests
                 testDate.SetTime(0, 0, second);
             }).ParamName.ShouldBe(nameof(second));
         }
-        
+
         [Fact]
         public void SetTime_With_Valid_Parameters_Sets_Time()
         {
@@ -233,13 +233,13 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
             // Act
             var result = testDate.SetTime(hour, minute, second);
-            
+
             // Assert
             result.Hour.ShouldBe(hour);
             result.Minute.ShouldBe(minute);
             result.Second.ShouldBe(second);
         }
-        
+
         [Fact]
         public void SetTime_With_Valid_Parameters_Maintains_Offset()
         {
@@ -251,11 +251,11 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
             // Act
             var result = testDate.SetTime(hour, minute, second);
-            
+
             // Assert
             result.Offset.ShouldBe(testDate.Offset);
         }
-        
+
         [Fact]
         public void SetTime_With_Valid_Parameters_Maintains_Date()
         {
@@ -267,13 +267,13 @@ namespace AndcultureCode.CSharp.Extensions.Tests
 
             // Act
             var result = testDate.SetTime(hour, minute, second);
-            
+
             // Assert
             result.Month.ShouldBe(testDate.Month);
             result.Day.ShouldBe(testDate.Day);
             result.Year.ShouldBe(testDate.Year);
         }
-        
+
         #endregion SetTime
 
         #region SubtractWeekdays -- DateTime

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using AndcultureCode.CSharp.Core.Interfaces.Entity;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Data
+namespace RSM.HCD.CSharp.Core.Interfaces.Data
 {
     /// <summary>
     ///
@@ -68,7 +68,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<bool> BulkUpdate(IEnumerable<T> entities, long? updatedBy = default(long?));
 
         /// <summary>
-        /// Ability to create an entity 
+        /// Ability to create an entity
         /// </summary>
         /// <param name="item">Item to be created</param>
         /// <param name="createdById">Id of user creating the item</param>
@@ -77,7 +77,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<T> Create(T item, long? createdById = null);
 
         /// <summary>
-        /// Ability to create entities individually using a list 
+        /// Ability to create entities individually using a list
         /// </summary>
         /// <param name="items">List of items to be created</param>
         /// <param name="createdById">Id of user creating the items</param>
@@ -263,7 +263,7 @@ namespace AndcultureCode.CSharp.Core.Interfaces.Data
         IResult<T> FindById(long id, params string[] includeProperties);
 
         /// <summary>
-        /// Ability to restore a soft-deleted entity using the entity itself. 
+        /// Ability to restore a soft-deleted entity using the entity itself.
         /// </summary>
         /// <param name="o">Entity to be restored</param>
         /// <returns></returns>

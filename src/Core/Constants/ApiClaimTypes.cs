@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Constants
+namespace RSM.HCD.CSharp.Core.Constants
 {
     /// <summary>
     /// Commonly used Claim types for APIs

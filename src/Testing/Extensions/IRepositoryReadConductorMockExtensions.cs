@@ -1,6 +1,6 @@
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Entities;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models.Entities;
 using Moq;
 using Moq.Language;
 using Moq.Language.Flow;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Extension methods for mocking methods of the `IRepositoryReadConductor` interface
@@ -24,7 +24,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Sets up the FindAll method on a repository read conductor.
         /// NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
         /// via parameters. There seems to be an issue around Moq and c# "Expressions". See
-        /// https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing/issues/28
+        /// https://github.com/rsm-hcd/RSM.HCD.CSharp.Testing/issues/28
         /// </summary>
         /// <param name="mock">The read repository conductor being mocked.</param>
         /// <param name="includeProperties">The value for includeProperties to be setup (optional)</param>
@@ -158,7 +158,7 @@ namespace AndcultureCode.CSharp.Testing.Extensions
         /// Sets up the FindAllCommitted method on a repository read conductor.
         /// NOTE: There is a known issue when trying to allow the filter and orderBy to be supplied
         /// via parameters. There seems to be an issue around Moq and c# "Expressions". See
-        /// https://github.com/AndcultureCode/AndcultureCode.CSharp.Testing/issues/28
+        /// https://github.com/rsm-hcd/RSM.HCD.CSharp.Testing/issues/28
         /// </summary>
         /// <param name="mock">The read repository conductor being mocked.</param>
         /// <param name="includeProperties">The value for includeProperties to be setup (optional)</param>

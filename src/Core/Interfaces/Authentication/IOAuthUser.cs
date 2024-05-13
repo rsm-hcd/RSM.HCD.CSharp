@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Interfaces.Authentication
+namespace RSM.HCD.CSharp.Core.Interfaces.Authentication
 {
     /// <summary>
     /// Base information used to integration OAuth provider users

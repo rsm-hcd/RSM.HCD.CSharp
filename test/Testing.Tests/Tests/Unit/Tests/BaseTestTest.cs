@@ -2,7 +2,7 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Unit.Tests
+namespace RSM.HCD.CSharp.Testing.Tests.Unit.Tests
 {
     public class BaseTestTest : ProjectUnitTest
     {

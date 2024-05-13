@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
+namespace RSM.HCD.CSharp.Conductors.Tests.RepositoryConductorTests
 {
     public class DeleteAsyncShould : ProjectUnitTest
     {
@@ -32,7 +32,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Succeed_When_Given_Proper_Id()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>()
                 .DeleteAsync(new Result<bool>(true));
             var respositoryConductor = SetupSut(repositoryMock);
@@ -48,7 +48,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_OperationCanceledException_If_Canceled_With_Valid_Id()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             var cancellationTokenSource = new CancellationTokenSource();
@@ -62,7 +62,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Succeed_When_Given_Proper_Object()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>()
                 .DeleteAsync(new Result<bool>(true));
             var respositoryConductor = SetupSut(repositoryMock);
@@ -78,7 +78,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_OperationCanceledException_If_Canceled_With_Valid_Object()
         {
-            // Arrange 
+            // Arrange
             var userStub = new UserStub();
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
@@ -93,7 +93,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Succeed_When_Given_Proper_List_Of_Objects()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>()
                 .DeleteAsync(new Result<bool>(true));
             var respositoryConductor = SetupSut(repositoryMock);
@@ -109,7 +109,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_OperationCanceledException_If_Canceled_With_Valid_List_Of_Objects()
         {
-            // Arrange 
+            // Arrange
             var userStubs = new List<UserStub>() { new UserStub() };
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
@@ -118,7 +118,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
             cancellationTokenSource.Cancel();
 
             // Act & Assert
-            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.DeleteAsync(userStubs, 5,5, true, cancellationToken));
+            await Assert.ThrowsAsync<OperationCanceledException>(() => respositoryConductor.DeleteAsync(userStubs, 5, 5, true, cancellationToken));
         }
 
     }

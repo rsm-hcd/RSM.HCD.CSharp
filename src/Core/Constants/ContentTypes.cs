@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Constants
+namespace RSM.HCD.CSharp.Core.Constants
 {
     /// <summary>
     /// Constants class to hold the various 'Content-Type' headers which indicate the media type

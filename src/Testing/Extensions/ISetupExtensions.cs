@@ -1,14 +1,14 @@
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Models.Entities;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Testing.Constants;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Models.Entities;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Testing.Constants;
 using Moq.Language;
 using Moq.Language.Flow;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AndcultureCode.CSharp.Testing.Extensions
+namespace RSM.HCD.CSharp.Testing.Extensions
 {
     /// <summary>
     /// Setup extension methods.

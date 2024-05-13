@@ -4,15 +4,15 @@ using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 using System.Globalization;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Tests.Unit.Stubs;
-using AndcultureCode.CSharp.Core.Cultures;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Testing.Tests;
-using AndcultureCode.CSharp.Core.Tests.Unit;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Tests.Unit.Stubs;
+using RSM.HCD.CSharp.Core.Cultures;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Core.Tests.Unit;
 
-namespace AndcultureCode.CSharp.Core.Tests.Extensions
+namespace RSM.HCD.CSharp.Core.Tests.Extensions
 {
     public partial class ICultureExtensionsTest : CoreUnitTest
     {

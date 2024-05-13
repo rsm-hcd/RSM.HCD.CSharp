@@ -1,7 +1,7 @@
 using System.Net.Http;
 using Newtonsoft.Json;
 
-namespace AndcultureCode.CSharp.Extensions
+namespace RSM.HCD.CSharp.Extensions
 {
     /// <summary>
     /// HttpResponseMessage extension methods

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
 using Newtonsoft.Json;
 
-namespace AndcultureCode.CSharp.Core.Models.Localization
+namespace RSM.HCD.CSharp.Core.Models.Localization
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
     /// </summary>
     public abstract class Culture : ICulture
     {
@@ -44,7 +44,7 @@ namespace AndcultureCode.CSharp.Core.Models.Localization
         public abstract string Code { get; }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         /// <exception cref="Exception"></exception>
         public List<CultureTranslation> CultureTranslations

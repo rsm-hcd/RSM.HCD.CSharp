@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Models.Localization
+namespace RSM.HCD.CSharp.Core.Models.Localization
 {
     /// <summary>
     /// Translation of a specific term/key for the related culture.
@@ -10,7 +10,7 @@ namespace AndcultureCode.CSharp.Core.Models.Localization
         #region Properties
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/38
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/38
         /// </summary>
         public string CultureCode { get; set; }
 

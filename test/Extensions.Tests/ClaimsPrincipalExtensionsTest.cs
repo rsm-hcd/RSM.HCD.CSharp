@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using AndcultureCode.CSharp.Core.Constants;
-using AndcultureCode.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Testing.Extensions;
 using Moq;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Extensions.Tests.Unit.Extensions
 {
     public class ClaimsPrincipalExtensionsTest : BaseExtensionsTest
     {

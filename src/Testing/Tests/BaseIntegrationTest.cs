@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using AndcultureCode.CSharp.Conductors;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Interfaces.Data;
-using AndcultureCode.CSharp.Core.Models.Entities;
-using AndcultureCode.CSharp.Testing.Models.Setup;
+using RSM.HCD.CSharp.Conductors;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Interfaces.Data;
+using RSM.HCD.CSharp.Core.Models.Entities;
+using RSM.HCD.CSharp.Testing.Models.Setup;
 using AutoMapper;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests
+namespace RSM.HCD.CSharp.Testing.Tests
 {
     [Trait("Category", "Integration")]
     public abstract class BaseIntegrationTest : BaseTest

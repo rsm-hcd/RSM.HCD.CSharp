@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Testing.Exceptions;
+using RSM.HCD.CSharp.Testing.Exceptions;
 
-namespace AndcultureCode.CSharp.Testing.Factories
+namespace RSM.HCD.CSharp.Testing.Factories
 {
     public static class FactoryExtensions
     {
         #region Private Members
 
-        private static readonly string                              NAME_DELIMITER = "-";
-        private static readonly IDictionary<string, FactoryBuilder> namedBuilders  = new Dictionary<string, FactoryBuilder>();
+        private static readonly string NAME_DELIMITER = "-";
+        private static readonly IDictionary<string, FactoryBuilder> namedBuilders = new Dictionary<string, FactoryBuilder>();
 
         #endregion Private Members
 
@@ -19,15 +19,15 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
         #region Build
 
-        public static T Build<T>()                                              => BuildObject<T>(new List<Action<T>>(), typeof(T).Name);
-        public static T Build<T>(params Action<T>[] properties)                 => BuildObject<T>(properties.ToList(), typeof(T).Name);
-        public static T Build<T>(string name)                                   => BuildObject<T>(new List<Action<T>>(), name);
-        public static T Build<T>(List<string> names)                            => BuildObject<T>(new List<Action<T>>(), names);
-        public static T Build<T>(Action<T> property)                            => BuildObject   (new List<Action<T>> { property }, typeof(T).Name);
-        public static T Build<T>(string name, Action<T> property)               => BuildObject   (new List<Action<T>> { property }, name);
-        public static T Build<T>(List<Action<T>> properties)                    => BuildObject   (properties, typeof(T).Name);
-        public static T Build<T>(string name, List<Action<T>> properties)       => BuildObject   (properties, name);
-        public static T Build<T>(string name, params Action<T>[] properties)    => BuildObject   (properties.ToList(), name);
+        public static T Build<T>() => BuildObject<T>(new List<Action<T>>(), typeof(T).Name);
+        public static T Build<T>(params Action<T>[] properties) => BuildObject<T>(properties.ToList(), typeof(T).Name);
+        public static T Build<T>(string name) => BuildObject<T>(new List<Action<T>>(), name);
+        public static T Build<T>(List<string> names) => BuildObject<T>(new List<Action<T>>(), names);
+        public static T Build<T>(Action<T> property) => BuildObject(new List<Action<T>> { property }, typeof(T).Name);
+        public static T Build<T>(string name, Action<T> property) => BuildObject(new List<Action<T>> { property }, name);
+        public static T Build<T>(List<Action<T>> properties) => BuildObject(properties, typeof(T).Name);
+        public static T Build<T>(string name, List<Action<T>> properties) => BuildObject(properties, name);
+        public static T Build<T>(string name, params Action<T>[] properties) => BuildObject(properties.ToList(), name);
 
         #endregion Build
 
@@ -40,7 +40,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
             Define<T>(factory, builder, keyname);
         }
 
-        public static void DefineFactory<T>(this Factory factory, List<string> names, Func<List<string>,T> builder)
+        public static void DefineFactory<T>(this Factory factory, List<string> names, Func<List<string>, T> builder)
         {
             var keyname = GetKeyName<T>(string.Join(NAME_DELIMITER, names.OrderBy(e => e)));
             Define<T>(factory, builder, names);
@@ -83,7 +83,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
                 throw new MissingFactoryException(name + " is not yet registered as a factory (Tests\\Testing\\Factories).  You can only build objects for factories that have been created");
             }
             var builder = namedBuilders[keyName];
-            var result  = (T)builder.BuildCallback();
+            var result = (T)builder.BuildCallback();
 
             properties.ForEach(p => p(result));
 
@@ -106,7 +106,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
             namedBuilders[key] = new FactoryBuilder
             {
-                Factory       = factory,
+                Factory = factory,
                 BuildCallback = () => buildCallback()
             };
         }
@@ -122,7 +122,7 @@ namespace AndcultureCode.CSharp.Testing.Factories
 
             namedBuilders[key] = new FactoryBuilder
             {
-                Factory       = factory,
+                Factory = factory,
                 BuildCallback = () => buildCallback(names)
             };
         }

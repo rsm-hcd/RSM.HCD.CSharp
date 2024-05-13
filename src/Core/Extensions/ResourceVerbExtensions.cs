@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Core.Models.Security;
+using RSM.HCD.CSharp.Core.Models.Security;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
     /// </summary>
     public static class ResourceVerbExtensions
     {
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="resourceVerbString"></param>
         /// <returns></returns>
@@ -18,7 +18,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => new ResourceVerb(resourceVerbString);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="resourceVerbStrings"></param>
         /// <returns></returns>

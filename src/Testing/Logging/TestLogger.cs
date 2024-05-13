@@ -2,14 +2,14 @@
 using System;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Logging
+namespace RSM.HCD.CSharp.Logging
 {
     public class TestLogger : ILogger
     {
         #region Properties
 
         private readonly Func<string, LogLevel, bool> _filter;
-        private readonly ITestOutputHelper            _output;
+        private readonly ITestOutputHelper _output;
 
         #endregion Properties
 
@@ -53,7 +53,7 @@ namespace AndcultureCode.CSharp.Logging
                 return;
             }
 
-            message = $"{ logLevel }: {message}";
+            message = $"{logLevel}: {message}";
 
             if (exception != null)
             {

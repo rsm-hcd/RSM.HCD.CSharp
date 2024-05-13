@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Interfaces.Providers
+namespace RSM.HCD.CSharp.Core.Interfaces.Providers
 {
     /// <summary>
     /// Foundation configuration for providers

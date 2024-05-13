@@ -1,4 +1,4 @@
-namespace AndcultureCode.CSharp.Core.Enumerations
+namespace RSM.HCD.CSharp.Core.Enumerations
 {
     /// <summary>
     /// Statuses for a given job

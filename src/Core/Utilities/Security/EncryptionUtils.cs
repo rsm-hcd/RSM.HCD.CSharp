@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Security
+namespace RSM.HCD.CSharp.Core.Utilities.Security
 {
     /// <summary>
     /// Commonly used encryption related functionality

@@ -1,14 +1,14 @@
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Extensions;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using Microsoft.Net.Http.Headers;
 using System.Collections.Generic;
 using System;
 
-namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Extensions.Tests.Unit.Extensions
 {
     public class HttpRequestExtensionsTest : BaseExtensionsTest
     {
@@ -29,7 +29,7 @@ namespace AndcultureCode.CSharp.Extensions.Tests.Unit.Extensions
             // Arrange
             var sut = null as HttpRequest;
 
-            // Act 
+            // Act
             var result = sut.GetCookie(Random.Word());
 
             // Assert

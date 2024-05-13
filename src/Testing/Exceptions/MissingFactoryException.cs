@@ -1,6 +1,6 @@
 using System;
 
-namespace AndcultureCode.CSharp.Testing.Exceptions
+namespace RSM.HCD.CSharp.Testing.Exceptions
 {
     public class MissingFactoryException : Exception
     {

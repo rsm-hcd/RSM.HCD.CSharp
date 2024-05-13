@@ -1,33 +1,22 @@
 {
-    "name": "@andculturecode/csharp",
-    "version": "1.0.0",
+    "name": "@rsm-hcd/csharp",
+    "version": "3.0.0",
     "description": "Simple nodejs tooling for managing the project",
-    "main": "pnpx and-cli",
+    "main": "npx and-cli",
     "private": true,
     "scripts": {
-        "postinstall": "dotnet tool restore && dotnet husky install && dotnet restore",
-        "test": "and-cli dotnet-test",
-        "test:coverage": "and-cli dotnet-test --coverage",
-        "build": "and-cli dotnet --build",
-        "nuget:publish": "and-cli nuget --publish"
+        "configure:git": "echo Ensuring git hooksPath is set to .githooks directory && git config core.hooksPath .githooks && chmod +x .githooks/*",
+        "preinstall": "npm run configure:git"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/AndcultureCode/AndcultureCode.CSharp.git"
+        "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
     },
-    "author": "andculture",
+    "author": "rsm-hcd",
     "license": "ISC",
-    "homepage": "https://github.com/AndcultureCode/AndcultureCode.CSharp#readme",
+    "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
     "devDependencies": {
-        "and-cli": "3.0.0-beta.1",
-        "prettier": "2.8.4"
-    },
-    "engines": {
-        "node": ">=16.14"
-    },
-    "packageManager": "pnpm@8.1.0",
-    "volta": {
-        "node": "16.14.2",
-        "pnpm": "8.1.0"
+        "and-cli": "2.8.0",
+        "prettier": "1.19.1"
     }
 }

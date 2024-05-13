@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using AndcultureCode.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Testing.Extensions;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Testing.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Testing.Tests.Unit.Extensions
 {
     public class IEnumerableMatcherExtensionsTest : BaseUnitTest
     {

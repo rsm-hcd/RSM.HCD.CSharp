@@ -3,17 +3,17 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
-using AndcultureCode.CSharp.Testing;
-using AndcultureCode.CSharp.Testing.Extensions;
-using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Extensions;
+using RSM.HCD.CSharp.Core.Models;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Enumerations;
 using Microsoft.Extensions.Configuration;
 using Moq;
-using AndcultureCode.CSharp.Testing.Tests;
+using RSM.HCD.CSharp.Testing.Tests;
 
-namespace AndcultureCode.CSharp.Core.Tests.Unit.Extensions
+namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 {
     public class IConfigurationBuilderExtensionsTest : CoreUnitTest
     {

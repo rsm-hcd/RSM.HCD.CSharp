@@ -1,9 +1,9 @@
-using AndcultureCode.CSharp.Core.Constants;
-using AndcultureCode.CSharp.Core.Models.Entities.Worker;
+using RSM.HCD.CSharp.Core.Constants;
+using RSM.HCD.CSharp.Core.Models.Entities.Worker;
 using System;
 using System.Linq.Expressions;
 
-namespace AndcultureCode.CSharp.Core.Interfaces.Providers.Worker
+namespace RSM.HCD.CSharp.Core.Interfaces.Providers.Worker
 {
     /// <summary>
     /// Background job processing provider

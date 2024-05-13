@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Localization
+namespace RSM.HCD.CSharp.Core.Utilities.Localization
 {
     /// <summary>
     /// Static class with helper functions related to localization
@@ -41,7 +41,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Localization
                     .SelectMany(x =>
                     {
                         // TODO: Provided the method gets added, update this to be a convenience method
-                        // see https://github.com/AndcultureCode/AndcultureCode.CSharp.Extensions/issues/38
+                        // see https://github.com/rsm-hcd/RSM.HCD.CSharp.Extensions/issues/38
                         try
                         {
                             return x.GetTypes();
@@ -62,7 +62,7 @@ namespace AndcultureCode.CSharp.Core.Utilities.Localization
         /// <summary>
         /// List of supported CultureInfo
         /// </summary>
-        public static List<CultureInfo> CultureInfos { get => Cultures?.ToCultureInfos(); } 
+        public static List<CultureInfo> CultureInfos { get => Cultures?.ToCultureInfos(); }
 
         /// <summary>
         /// Default culture for the application

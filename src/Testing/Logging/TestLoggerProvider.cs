@@ -2,14 +2,14 @@
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Logging
+namespace RSM.HCD.CSharp.Logging
 {
     public class TestLoggerProvider : ILoggerProvider
     {
         #region Properties
 
         private readonly Func<string, LogLevel, bool> _filter;
-        private readonly ITestOutputHelper            _output;
+        private readonly ITestOutputHelper _output;
 
         #endregion Properties
 
@@ -18,7 +18,7 @@ namespace AndcultureCode.CSharp.Logging
 
         public TestLoggerProvider(
             Func<string, LogLevel, bool> filter,
-            ITestOutputHelper            output
+            ITestOutputHelper output
         )
         {
             _filter = filter;
@@ -32,7 +32,7 @@ namespace AndcultureCode.CSharp.Logging
 
         public ILogger CreateLogger(string categoryName) => new TestLogger(_filter, _output);
 
-        public void Dispose() {}
+        public void Dispose() { }
 
         #endregion Public Methods
     }

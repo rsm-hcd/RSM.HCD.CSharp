@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using AndcultureCode.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Extensions;
 
-namespace AndcultureCode.CSharp.Core.Utilities.Caching
+namespace RSM.HCD.CSharp.Core.Utilities.Caching
 {
     /// <summary>
     /// Eased creation of cache keys

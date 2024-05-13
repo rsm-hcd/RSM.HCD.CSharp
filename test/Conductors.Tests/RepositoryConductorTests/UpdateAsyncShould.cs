@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Core.Models.Errors;
-using AndcultureCode.CSharp.Testing.Models.Stubs;
+using RSM.HCD.CSharp.Core.Interfaces.Conductors;
+using RSM.HCD.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Testing.Models.Stubs;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
+namespace RSM.HCD.CSharp.Conductors.Tests.RepositoryConductorTests
 {
     public class UpdateAsyncShould : ProjectUnitTest
     {
@@ -32,7 +32,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Succeed_When_Given_Single_Object()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>()
                 .UpdateAsync(new Result<bool>(true));
             var respositoryConductor = SetupSut(repositoryMock);
@@ -48,7 +48,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_OperationCanceledException_If_Single_Object_Is_Canceled()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             var cancellationTokenSource = new CancellationTokenSource();
@@ -62,7 +62,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Succeed_When_Given_Collection_Of_Objects()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>()
                 .UpdateAsync(new Result<bool>(true));
             var respositoryConductor = SetupSut(repositoryMock);
@@ -81,7 +81,7 @@ namespace AndcultureCode.CSharp.Conductors.Tests.RepositoryConductorTests
         [Fact]
         public async Task Throw_OperationCanceledException_If_Collection_Of_Objects_Is_Canceled()
         {
-            // Arrange 
+            // Arrange
             var repositoryMock = new RepositoryMock<UserStub>();
             var respositoryConductor = SetupSut(repositoryMock);
             var cancellationTokenSource = new CancellationTokenSource();

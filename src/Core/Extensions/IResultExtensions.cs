@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-using AndcultureCode.CSharp.Core.Enumerations;
-using AndcultureCode.CSharp.Core.Extensions;
-using AndcultureCode.CSharp.Core.Interfaces;
-using AndcultureCode.CSharp.Core.Models.Errors;
+using RSM.HCD.CSharp.Core.Enumerations;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Models.Errors;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace AndcultureCode.CSharp.Core.Extensions
+namespace RSM.HCD.CSharp.Core.Extensions
 {
     /// <summary>
-    /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+    /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
     /// </summary>
     public static class IResultExtensions
     {
@@ -30,7 +30,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.AddError(key, localizer[key, arguments]);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -52,7 +52,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -90,7 +90,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.AddError(type, key, localizer[key, arguments]);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -122,7 +122,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region AddExceptionError
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -140,7 +140,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region AddValidationError
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -164,7 +164,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region AddErrors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -186,7 +186,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TSource"></typeparam>
@@ -219,7 +219,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region AddErrorsAndLog
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -235,7 +235,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -252,7 +252,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -391,7 +391,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -438,7 +438,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region DoesNotHaveErrors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -447,7 +447,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         public static bool DoesNotHaveErrors<T>(this IResult<T> result, ErrorType errorType) => !result.HasErrors(errorType);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -460,7 +460,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region GetErrors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -477,7 +477,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -494,7 +494,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -506,7 +506,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region HasErrors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resultList"></param>
@@ -516,7 +516,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => resultList != null && resultList.Any(r => r.HasErrors(errorType));
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resultList"></param>
@@ -526,7 +526,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => resultList != null && resultList.Any(r => r.HasErrors(key));
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resultList"></param>
@@ -535,7 +535,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => resultList != null && resultList.Any(r => r.HasErrors);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -545,7 +545,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.HasErrors && result.Errors.Any(e => e.ErrorType == errorType);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -555,7 +555,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.HasErrors && result.Errors.Any(e => e.Key == key);
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
@@ -563,7 +563,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.HasErrors || !result.ResultObject;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -572,7 +572,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
             => result.HasErrors || result.ResultObject == null;
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -585,7 +585,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region ListErrors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resultList"></param>
@@ -608,7 +608,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         }
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -637,7 +637,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region ThrowIfAnyErrors
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -658,7 +658,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region ThrowIfAnyErrorsOrResultIsNull
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
@@ -690,7 +690,7 @@ namespace AndcultureCode.CSharp.Core.Extensions
         #region ThrowIfAnyErrorsOrResultIsFalse
 
         /// <summary>
-        /// TODO https://github.com/AndcultureCode/AndcultureCode.CSharp.Core/issues/37
+        /// TODO https://github.com/rsm-hcd/RSM.HCD.CSharp.Core/issues/37
         /// </summary>
         /// <param name="result"></param>
         /// <param name="hasErrorsException"></param>
