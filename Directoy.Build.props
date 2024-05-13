@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <None Include="assets\images\RSM-Logo.png" Pack="true" PackagePath=""/>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="'$(IsPackable)' == 'true'"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" Condition="'$(IsPackable)' == 'true'"/>
     <PackageReference Include="Vsxmd" Version="1.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

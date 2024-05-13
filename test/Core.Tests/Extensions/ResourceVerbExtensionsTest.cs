@@ -1,16 +1,16 @@
 using System;
+using RSM.HCD.CSharp.Core.Extensions;
+using RSM.HCD.CSharp.Core.Models.Security;
+using RSM.HCD.CSharp.Testing;
+using RSM.HCD.CSharp.Testing.Tests;
 using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
-using RSM.HCD.CSharp.Core.Extensions;
-using RSM.HCD.CSharp.Testing;
-using RSM.HCD.CSharp.Testing.Tests;
 
 namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 {
     public class ResourceVerbExtensionsTest : CoreUnitTest
     {
-
         #region Properties
 
         const string TEST_RESOURCE_READ = "TestResource_Read";
@@ -26,9 +26,8 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
         #region Setup
 
-        public ResourceVerbExtensionsTest(ITestOutputHelper output) : base(output)
-        {
-        }
+        public ResourceVerbExtensionsTest(ITestOutputHelper output)
+            : base(output) { }
 
         #endregion Setup
 
@@ -41,7 +40,6 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var result = TEST_RESOURCE_READ.ToResourceVerb();
 
             // Assert
-            result.ShouldNotBeNull();
             result.Resource.ShouldBe(TEST_RESOURCE);
             result.Verb.ShouldBe(READ_VERB);
         }
@@ -53,7 +51,6 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var result = TEST_RESOURCE_NESTED_READ.ToResourceVerb();
 
             // Assert
-            result.ShouldNotBeNull();
             result.Resource.ShouldBe(TEST_RESOURCE_NESTED);
             result.Verb.ShouldBe(READ_VERB);
         }

@@ -1,16 +1,15 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
+using Moq;
 using RSM.HCD.CSharp.Core.Enumerations;
 using RSM.HCD.CSharp.Core.Extensions;
 using RSM.HCD.CSharp.Core.Interfaces;
 using RSM.HCD.CSharp.Core.Models.Errors;
 using RSM.HCD.CSharp.Extensions;
 using RSM.HCD.CSharp.Testing.Extensions;
-using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Internal;
-using Moq;
 using Shouldly;
-using System;
-using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -18,10 +17,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 {
     public class IResultExtensionsTest : CoreUnitTest
     {
-
         #region Setup
 
-        public IResultExtensionsTest(ITestOutputHelper output) : base(output) { }
+        public IResultExtensionsTest(ITestOutputHelper output)
+            : base(output) { }
 
         #endregion Setup
 
@@ -87,7 +86,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             destinationResult.AddError(Random.String());
 
             // Assert
-            destinationResult.Errors.ShouldContain(e => e.Key.StartsWith(expectedClassName), $"Expected to startWith the class name of '{expectedClassName}', but it did not");
+            destinationResult.Errors.ShouldContain(
+                e => e.Key.StartsWith(expectedClassName),
+                $"Expected to startWith the class name of '{expectedClassName}', but it did not"
+            );
         }
 
         [Fact]
@@ -95,19 +97,22 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var expectedMethodName = "AddError_MessageOnly_Overload_Adds_Error_With_Key_Containing_Caller_MethodName";
+            var expectedMethodName =
+                "AddError_MessageOnly_Overload_Adds_Error_With_Key_Containing_Caller_MethodName";
 
             // Act
             destinationResult.AddError(Random.String());
 
             // Assert
-            destinationResult.Errors.ShouldContain(e => e.Key.EndsWith(expectedMethodName), $"Expected to endWith the method name of '{expectedMethodName}', but it did not");
+            destinationResult.Errors.ShouldContain(
+                e => e.Key.EndsWith(expectedMethodName),
+                $"Expected to endWith the method name of '{expectedMethodName}', but it did not"
+            );
         }
 
         [Fact]
-        public IResult<bool> AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_ClassName() => Do<bool>.Try((r) =>
+        public void AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_ClassName()
         {
-
             // Arrange
             var destinationResult = new Result<object>();
             var expectedClassName = typeof(IResultExtensionsTest).Name;
@@ -116,34 +121,29 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             destinationResult.AddError(Random.String());
 
             // Assert
-            destinationResult.Errors.ShouldContain(e => e.Key.StartsWith(expectedClassName), $"Expected to startWith the class name of '{expectedClassName}', but it did not");
-
-            return true;
-
-        }).Catch<Exception>((ex, r) =>
-        {
-            throw ex; // re-throw for test runner
-        }).Result;
+            destinationResult.Errors.ShouldContain(
+                e => e.Key.StartsWith(expectedClassName),
+                $"Expected to startWith the class name of '{expectedClassName}', but it did not"
+            );
+        }
 
         [Fact]
-        public IResult<bool> AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_MethodName() => Do<bool>.Try((r) =>
+        public void AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_MethodName()
         {
             // Arrange
             var destinationResult = new Result<object>();
-            var expectedMethodName = "AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_MethodName";
+            var expectedMethodName =
+                "AddError_MessageOnly_Overload_When_Within_DoTry_Adds_Error_With_Key_Containing_Caller_MethodName";
 
             // Act
             destinationResult.AddError(Random.String());
 
             // Assert
-            destinationResult.Errors.ShouldContain(e => e.Key.EndsWith(expectedMethodName), $"Expected to endWith the method name of '{expectedMethodName}', but it did not");
-
-            return true;
-
-        }).Catch<Exception>((ex, r) =>
-        {
-            throw ex; // re-throw for test runner
-        }).Result;
+            destinationResult.Errors.ShouldContain(
+                e => e.Key.EndsWith(expectedMethodName),
+                $"Expected to endWith the method name of '{expectedMethodName}', but it did not"
+            );
+        }
 
         #endregion AddError(message)
 
@@ -156,7 +156,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<object>();
             var expectedKey = Random.String();
             var expectedMessage = Random.String();
-            var expectedType = new List<ErrorType> { ErrorType.Error, ErrorType.ValidationError }.PickRandom();
+            var expectedType = new List<ErrorType>
+            {
+                ErrorType.Error,
+                ErrorType.ValidationError
+            }.PickRandom();
             var localizer = Mock.Of<IStringLocalizer>();
 
             // Act
@@ -164,9 +168,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == expectedType &&
-                e.Key == expectedKey &&
-                e.Message == null // <---- added message with null
+                e.ErrorType == expectedType && e.Key == expectedKey && e.Message == null // <---- added message with null
             );
         }
 
@@ -177,19 +179,23 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<object>();
             var expectedKey = Random.String();
             var expectedMessage = Random.String();
-            var expectedType = new List<ErrorType> { ErrorType.Error, ErrorType.ValidationError }.PickRandom();
+            var expectedType = new List<ErrorType>
+            {
+                ErrorType.Error,
+                ErrorType.ValidationError
+            }.PickRandom();
 
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
             destinationResult.AddError(localizer, expectedType, expectedKey);
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == expectedType &&
-                e.Key == expectedKey &&
-                e.Message == expectedMessage
+                e.ErrorType == expectedType && e.Key == expectedKey && e.Message == expectedMessage
             );
         }
 
@@ -211,9 +217,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == null // <---- added message with null
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == null // <---- added message with null
             );
         }
 
@@ -226,16 +233,19 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var expectedMessage = Random.String();
 
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
             destinationResult.AddError(localizer, expectedKey);
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == expectedMessage
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == expectedMessage
             );
         }
 
@@ -244,8 +254,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         #region AddErrors(source)
 
         [Fact]
-        public void
-            AddErrors_Source_Overload_When_Source_Errors_IsNull_Then_Returns_Destination_Errors_Without_Any_Additions()
+        public void AddErrors_Source_Overload_When_Source_Errors_IsNull_Then_Returns_Destination_Errors_Without_Any_Additions()
         {
             // Arrange
             var expected = new Error();
@@ -321,8 +330,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long? resourceIdentifier = null)
@@ -343,7 +360,8 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
                 errorKey: null,
                 errorMessage: null,
                 resourceIdentifier: 1,
-                errors: errors);
+                errors: errors
+            );
 
             // Assert
             result.Errors.ShouldContain(errors[0]);
@@ -381,8 +399,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, long resourceIdentifier, IEnumerable<IError> errors = null)
@@ -402,7 +428,8 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
                 logger: mockLogger.Object,
                 errorKey: null,
                 errorMessage: null,
-                errors: errorList);
+                errors: errorList
+            );
 
             // Assert
             result.Errors.ShouldContain(errorList[0]);
@@ -439,8 +466,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, string errorKey, string errorMessage, IEnumerable<IError> errors = null)
@@ -457,7 +492,13 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var mockLogger = new Mock<ILogger>();
 
             // Act
-            result.AddErrorsAndLog(mockLogger.Object, errorKey, errorMessage, "Log Message", "ResourceId");
+            result.AddErrorsAndLog(
+                mockLogger.Object,
+                errorKey,
+                errorMessage,
+                "Log Message",
+                "ResourceId"
+            );
 
             // Assert
             result.Errors.ShouldContain(e => e.Key == errorKey && e.Message == errorMessage);
@@ -490,17 +531,32 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var logMessage = "Log Message";
 
             // Act
-            result.AddErrorsAndLog(mockLogger.Object, null, null, logMessage, resourceIdentifier, null, methodName);
+            result.AddErrorsAndLog(
+                mockLogger.Object,
+                null,
+                null,
+                logMessage,
+                resourceIdentifier,
+                null,
+                methodName
+            );
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         [Fact]
-        public void
-            AddErrorsAndLog_When_MethodName_Is_Not_Provided_Then_Retrieves_MethodName_And_Adds_It_To_The_Formatted_Message()
+        public void AddErrorsAndLog_When_MethodName_Is_Not_Provided_Then_Retrieves_MethodName_And_Adds_It_To_The_Formatted_Message()
         {
             // Arrange
             var result = new Result<bool>();
@@ -509,12 +565,27 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var logMessage = "Log Message";
 
             // Act
-            result.AddErrorsAndLog(mockLogger.Object, null, null, logMessage, resourceIdentifier, null);
+            result.AddErrorsAndLog(
+                mockLogger.Object,
+                null,
+                null,
+                logMessage,
+                resourceIdentifier,
+                null
+            );
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorsAndLog
@@ -522,8 +593,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         #region AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, params object[] arguments)
 
         [Fact]
-        public void
-            AddErrorAndLog_Localizer_Without_ResourceId_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
+        public void AddErrorAndLog_Localizer_Without_ResourceId_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
         {
             // Arrange
             var destinationResult = new Result<object>();
@@ -537,9 +607,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == String.Empty
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == String.Empty
             );
         }
 
@@ -553,22 +624,24 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var translatedMessage = "translated message";
             var mockLogger = Mock.Of<ILogger>();
             var localizedString = new LocalizedString(expectedKey, translatedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
             destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, expectedMessage);
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == translatedMessage
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == translatedMessage
             );
         }
 
         [Fact]
-        public void
-            AddErrorAndLog_Localizer_Without_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        public void AddErrorAndLog_Localizer_Without_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
         {
             // Arrange
             var destinationResult = new Result<object>();
@@ -576,15 +649,30 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var expectedMessage = Random.String();
             var mockLogger = new Mock<ILogger>();
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
-            destinationResult.AddErrorAndLog(mockLogger.Object, localizer, expectedKey, expectedMessage);
+            destinationResult.AddErrorAndLog(
+                mockLogger.Object,
+                localizer,
+                expectedKey,
+                expectedMessage
+            );
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, params object[] arguments)
@@ -592,8 +680,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         #region AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, params object[] arguments)
 
         [Fact]
-        public void
-            AddErrorAndLog_Localizer_With_ResourceId_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
+        public void AddErrorAndLog_Localizer_With_ResourceId_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
         {
             // Arrange
             var destinationResult = new Result<object>();
@@ -604,13 +691,20 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var resourceId = 42;
 
             // Act
-            destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, resourceId, expectedMessage);
+            destinationResult.AddErrorAndLog(
+                mockLogger,
+                localizer,
+                expectedKey,
+                resourceId,
+                expectedMessage
+            );
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-               e.ErrorType == ErrorType.Error && // <---- Error
-               e.Key == expectedKey &&
-               e.Message == String.Empty
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == String.Empty
             );
         }
 
@@ -623,23 +717,31 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var expectedMessage = Random.String();
             var mockLogger = Mock.Of<ILogger>();
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
             var resourceId = 42;
 
             // Act
-            destinationResult.AddErrorAndLog(mockLogger, localizer, expectedKey, resourceId, expectedMessage);
+            destinationResult.AddErrorAndLog(
+                mockLogger,
+                localizer,
+                expectedKey,
+                resourceId,
+                expectedMessage
+            );
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == expectedMessage
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == expectedMessage
             );
         }
 
         [Fact]
-        public void
-            AddErrorAndLog_Localizer_With_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        public void AddErrorAndLog_Localizer_With_ResourceId_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
         {
             // Arrange
             var destinationResult = new Result<object>();
@@ -648,15 +750,31 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var resourceId = 42;
             var mockLogger = new Mock<ILogger>();
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
-            destinationResult.AddErrorAndLog(mockLogger.Object, localizer, expectedKey, resourceId, expectedMessage);
+            destinationResult.AddErrorAndLog(
+                mockLogger.Object,
+                localizer,
+                expectedKey,
+                resourceId,
+                expectedMessage
+            );
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, params object[] arguments)
@@ -678,7 +796,8 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
                 localizer: localizer,
                 errorKey: null,
                 resourceIdentifier: 1,
-                errors: errorList);
+                errors: errorList
+            );
 
             // Assert
             result.Errors.ShouldContain(errorList[0]);
@@ -686,8 +805,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void
-            AddErrorsAndLog_Localizer_With_Errors_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
+        public void AddErrorsAndLog_Localizer_With_Errors_Overload_When_No_Translation_Exists_Then_Adds_Error_Without_Message()
         {
             // Arrange
             var destinationResult = new Result<object>();
@@ -698,13 +816,21 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var resourceId = 42;
 
             // Act
-            destinationResult.AddErrorsAndLog(mockLogger, localizer, expectedKey, resourceId, null, expectedMessage);
+            destinationResult.AddErrorsAndLog(
+                mockLogger,
+                localizer,
+                expectedKey,
+                resourceId,
+                null,
+                expectedMessage
+            );
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == String.Empty
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == String.Empty
             );
         }
 
@@ -717,23 +843,32 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var expectedMessage = Random.String();
             var mockLogger = Mock.Of<ILogger>();
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
             var resourceId = 42;
 
             // Act
-            destinationResult.AddErrorsAndLog(mockLogger, localizer, expectedKey, resourceId, null, expectedMessage);
+            destinationResult.AddErrorsAndLog(
+                mockLogger,
+                localizer,
+                expectedKey,
+                resourceId,
+                null,
+                expectedMessage
+            );
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.Error && // <---- Error
-                e.Key == expectedKey &&
-                e.Message == expectedMessage
+                e.ErrorType == ErrorType.Error
+                && // <---- Error
+                e.Key == expectedKey
+                && e.Message == expectedMessage
             );
         }
 
         [Fact]
-        public void
-            AddErrorsAndLog_Localizer_With_Errors_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
+        public void AddErrorsAndLog_Localizer_With_Errors_Overload_Calls_The_Log_Method_Of_The_Logger_With_Formatted_Message()
         {
             // Arrange
             var destinationResult = new Result<object>();
@@ -742,15 +877,32 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var resourceId = 42;
             var mockLogger = new Mock<ILogger>();
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
-            destinationResult.AddErrorsAndLog(mockLogger.Object, localizer, expectedKey, resourceId, null, expectedMessage);
+            destinationResult.AddErrorsAndLog(
+                mockLogger.Object,
+                localizer,
+                expectedKey,
+                resourceId,
+                null,
+                expectedMessage
+            );
 
             // Assert
             mockLogger.Verify(
-                x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<FormattedLogValues>(), It.IsAny<Exception>(),
-                           It.IsAny<Func<object, Exception, string>>()), Times.Once);
+                x =>
+                    x.Log(
+                        LogLevel.Error,
+                        It.IsAny<EventId>(),
+                        It.IsAny<object>(),
+                        It.IsAny<Exception>(),
+                        It.IsAny<Func<object, Exception, string>>()
+                    ),
+                Times.Once
+            );
         }
 
         #endregion AddErrorsAndLog<T>(this IResult<T> result, ILogger logger, IStringLocalizer localizer, string errorKey, long resourceIdentifier, IEnumerable<IError> errors = null, params object[] arguments)
@@ -768,7 +920,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<int>(destinationErrorMessage);
 
             // Act
-            var result = destinationResult.AddErrorsAndReturnDefault(new Result<string>(sourceErrorMessage));
+            var result = destinationResult.AddErrorsAndReturnDefault(
+                new Result<string>(sourceErrorMessage)
+            );
 
             // Assert
             result.ShouldBe(0);
@@ -867,17 +1021,17 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void AddNextLinkParam_ValueAsInt_Overload_When_Result_IsNull_Return_Null()
         {
-            IResultExtensions                                                                      // Arrange
+            IResultExtensions // Arrange
                 .AddNextLinkParam<object>(result: null, key: Random.String(), value: Random.Int()) // Act
-                    .ShouldBeNull();                                                               // Assert
+                .ShouldBeNull(); // Assert
         }
 
         [Fact]
         public void AddNextLinkParam_ValueAsInt_Overload_When_Result_NextLinkParams_IsNull_Returns_Dictionary()
         {
-            new Result<object> { NextLinkParams = null }                     // Arrange
+            new Result<object> { NextLinkParams = null } // Arrange
                 .AddNextLinkParam(key: Random.String(), value: Random.Int()) // Act
-                    .ShouldNotBeNull();                                      // Assert
+                .ShouldNotBeNull(); // Assert
         }
 
         [Fact]
@@ -887,10 +1041,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<object> { NextLinkParams = null };
 
             // Act
-            var result = destinationResult.AddNextLinkParam(key: Random.String(), value: Random.Int());
+            var result = destinationResult.AddNextLinkParam(
+                key: Random.String(),
+                value: Random.Int()
+            );
 
             // Assert
-            result.ShouldBe(destinationResult.NextLinkParams, "Expected to return reference to underlying 'NextLinkParams' property, but did not");
+            result.ShouldBe(
+                destinationResult.NextLinkParams,
+                "Expected to return reference to underlying 'NextLinkParams' property, but did not"
+            );
         }
 
         [Fact]
@@ -900,7 +1060,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<object>();
 
             // Act
-            var result = Record.Exception(() => destinationResult.AddNextLinkParam(key: null, value: Random.Int()));
+            var result = Record.Exception(
+                () => destinationResult.AddNextLinkParam(key: null, value: Random.Int())
+            );
 
             // Assert
             result.ShouldBeOfType(typeof(ArgumentNullException));
@@ -942,17 +1104,17 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void AddNextLinkParam_When_Result_IsNull_Return_Null()
         {
-            IResultExtensions                                                                         // Arrange
+            IResultExtensions // Arrange
                 .AddNextLinkParam<object>(result: null, key: Random.String(), value: Random.String()) // Act
-                    .ShouldBeNull();                                                                  // Assert
+                .ShouldBeNull(); // Assert
         }
 
         [Fact]
         public void AddNextLinkParam_When_Result_NextLinkParams_IsNull_Returns_Dictionary()
         {
-            new Result<object> { NextLinkParams = null }                        // Arrange
+            new Result<object> { NextLinkParams = null } // Arrange
                 .AddNextLinkParam(key: Random.String(), value: Random.String()) // Act
-                    .ShouldNotBeNull();                                         // Assert
+                .ShouldNotBeNull(); // Assert
         }
 
         [Fact]
@@ -962,10 +1124,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<object> { NextLinkParams = null };
 
             // Act
-            var result = destinationResult.AddNextLinkParam(key: Random.String(), value: Random.String());
+            var result = destinationResult.AddNextLinkParam(
+                key: Random.String(),
+                value: Random.String()
+            );
 
             // Assert
-            result.ShouldBe(destinationResult.NextLinkParams, "Expected to return reference to underlying 'NextLinkParams' property, but did not");
+            result.ShouldBe(
+                destinationResult.NextLinkParams,
+                "Expected to return reference to underlying 'NextLinkParams' property, but did not"
+            );
         }
 
         [Fact]
@@ -975,7 +1143,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var destinationResult = new Result<object>();
 
             // Act
-            var result = Record.Exception(() => destinationResult.AddNextLinkParam(key: null, value: Random.String()));
+            var result = Record.Exception(
+                () => destinationResult.AddNextLinkParam(key: null, value: Random.String())
+            );
 
             // Assert
             result.ShouldBeOfType(typeof(ArgumentNullException));
@@ -1002,9 +1172,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void AddNextLinkParams_When_DestinationResult_IsNull_Returns_Null()
         {
-            IResultExtensions                                                           // Arrange
+            IResultExtensions // Arrange
                 .AddNextLinkParams<object>(destinationResult: null, sourceResult: null) // Act
-                    .ShouldBeNull();                                                    // Assert
+                .ShouldBeNull(); // Assert
         }
 
         [Fact]
@@ -1072,7 +1242,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var destinationResult = new Result<object>();
-            destinationResult.AddNextLinkParam("testKeyFromDestination", "testValueFromDestination");
+            destinationResult.AddNextLinkParam(
+                "testKeyFromDestination",
+                "testValueFromDestination"
+            );
 
             var sourceResult = new Result<object>();
             sourceResult.AddNextLinkParam("testKeyFromSource", "testValueFromSource");
@@ -1124,9 +1297,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.ValidationError && // <---- ValidationError
-                e.Key == expectedKey &&
-                e.Message == null // <---- added message with null
+                e.ErrorType == ErrorType.ValidationError
+                && // <---- ValidationError
+                e.Key == expectedKey
+                && e.Message == null // <---- added message with null
             );
         }
 
@@ -1139,16 +1313,19 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var expectedMessage = Random.String();
 
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
-            var localizer = Mock.Of<IStringLocalizer>(e => e[expectedKey, It.IsAny<object[]>()] == localizedString);
+            var localizer = Mock.Of<IStringLocalizer>(e =>
+                e[expectedKey, It.IsAny<object[]>()] == localizedString
+            );
 
             // Act
             destinationResult.AddValidationError(localizer, expectedKey);
 
             // Assert
             destinationResult.Errors.ShouldContain(e =>
-                e.ErrorType == ErrorType.ValidationError && // <---- ValidationError
-                e.Key == expectedKey &&
-                e.Message == expectedMessage
+                e.ErrorType == ErrorType.ValidationError
+                && // <---- ValidationError
+                e.Key == expectedKey
+                && e.Message == expectedMessage
             );
         }
 
@@ -1278,11 +1455,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var errors = new List<IError>
-                {
-                    new Error { ErrorType = ErrorType.Error },
-                    new Error { ErrorType = ErrorType.Error },
-                    new Error { ErrorType = ErrorType.ValidationError }
-                };
+            {
+                new Error { ErrorType = ErrorType.Error },
+                new Error { ErrorType = ErrorType.Error },
+                new Error { ErrorType = ErrorType.ValidationError }
+            };
 
             var sut = new Result<bool> { Errors = errors };
 
@@ -1332,11 +1509,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var errors = new List<IError>
-                {
-                    new Error { Key = "ErrorKey1" },
-                    new Error { Key = "ErrorKey1" },
-                    new Error { Key = "ErrorKey2" }
-                };
+            {
+                new Error { Key = "ErrorKey1" },
+                new Error { Key = "ErrorKey1" },
+                new Error { Key = "ErrorKey2" }
+            };
 
             var sut = new Result<bool> { Errors = errors };
 
@@ -1359,10 +1536,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var sut = new Result<bool>
             {
                 Errors = new List<IError>
-                        {
-                            new Error { ErrorType = ErrorType.ValidationError },
-                            new Error { ErrorType = ErrorType.Error }
-                        }
+                {
+                    new Error { ErrorType = ErrorType.ValidationError },
+                    new Error { ErrorType = ErrorType.Error }
+                }
             };
 
             // Act
@@ -1408,16 +1585,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         public void HasErrors_EnumerableList_When_List_Without_Errors_Returns_False()
         {
             new List<IResult<bool>> { new Result<bool>() } // Arrange
-                .HasErrors()                               // Act
-                    .ShouldBeFalse();                      // Assert
+                .HasErrors() // Act
+                .ShouldBeFalse(); // Assert
         }
 
         [Fact]
         public void HasErrors_EnumerableList_When_List_With_Errors_Returns_True()
         {
             new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                .HasErrors()                                                         // Act
-                    .ShouldBeTrue();                                                 // Assert
+                .HasErrors() // Act
+                .ShouldBeTrue(); // Assert
         }
 
         #endregion HasErrors (no arguments)
@@ -1427,7 +1604,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_IsNull_Returns_False()
         {
-            IResultExtensions.HasErrors<bool>(resultList: null, errorType: ErrorType.Error).ShouldBeFalse();
+            IResultExtensions
+                .HasErrors<bool>(resultList: null, errorType: ErrorType.Error)
+                .ShouldBeFalse();
         }
 
         [Fact]
@@ -1440,16 +1619,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_Without_Errors_Returns_False()
         {
             new List<IResult<bool>> { new Result<bool>() } // Arrange
-                .HasErrors(ErrorType.Error)                // Act
-                    .ShouldBeFalse();                      // Assert
+                .HasErrors(ErrorType.Error) // Act
+                .ShouldBeFalse(); // Assert
         }
 
         [Fact]
         public void HasErrors_EnumerableList_And_ErrorType_Overload_When_List_With_Errors_Returns_True()
         {
             new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                .HasErrors(ErrorType.Error)                                          // Act
-                    .ShouldBeTrue();                                                 // Assert
+                .HasErrors(ErrorType.Error) // Act
+                .ShouldBeTrue(); // Assert
         }
 
         #endregion HasErrors (IEnumerable<IResult<T>>, ErrorType)
@@ -1460,7 +1639,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_IsNull_Returns_False()
         {
-            IResultExtensions.HasErrors<bool>(resultList: null, key: Random.String()).ShouldBeFalse();
+            IResultExtensions
+                .HasErrors<bool>(resultList: null, key: Random.String())
+                .ShouldBeFalse();
         }
 
         [Fact]
@@ -1473,24 +1654,24 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_Without_Errors_Returns_False()
         {
             new List<IResult<bool>> { new Result<bool>() } // Arrange
-                .HasErrors(key: Random.String())           // Act
-                    .ShouldBeFalse();                      // Assert
+                .HasErrors(key: Random.String()) // Act
+                .ShouldBeFalse(); // Assert
         }
 
         [Fact]
         public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_With_Errors_When_Key_DoesNotMatch_Returns_False()
         {
             new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                .HasErrors(key: "404")                                               // Act
-                    .ShouldBeFalse();                                                // Assert
+                .HasErrors(key: "404") // Act
+                .ShouldBeFalse(); // Assert
         }
 
         [Fact]
         public void HasErrors_EnumerableList_And_ErrorKey_Overload_When_List_With_Errors_When_Key_Matches_Returns_True()
         {
             new List<IResult<bool>> { new Result<bool>("errorkey", "errormessage") } // Arrange
-                .HasErrors(key: "errorkey")                                          // Act
-                    .ShouldBeTrue();                                                 // Assert
+                .HasErrors(key: "errorkey") // Act
+                .ShouldBeTrue(); // Assert
         }
 
         #endregion HasErrors (IEnumerable<IResult<T>>, string)
@@ -1652,8 +1833,8 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         public void ListErrors_When_List_DoesNot_HaveErrors_Returns_Null()
         {
             new List<IResult<bool>> { new Result<bool>() } // Arrange
-                .ListErrors()                              // Act
-                    .ShouldBeNull();                       // Assert
+                .ListErrors() // Act
+                .ShouldBeNull(); // Assert
         }
 
         [Fact]
@@ -1676,10 +1857,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var sut = new List<IResult<bool>>
-                {
-                    new Result<bool>("testkey1", "testmessage1"),
-                    new Result<bool>("testkey2", "testmessage2")
-                };
+            {
+                new Result<bool>("testkey1", "testmessage1"),
+                new Result<bool>("testkey2", "testmessage2")
+            };
 
             // Act
             var result = sut.ListErrors();
@@ -1697,10 +1878,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             // Arrange
             var sut = new List<IResult<bool>>
-                {
-                    new Result<bool>("testkey1", "testmessage1"),
-                    new Result<bool>("testkey2", "testmessage2")
-                };
+            {
+                new Result<bool>("testkey1", "testmessage1"),
+                new Result<bool>("testkey2", "testmessage2")
+            };
 
             // Act
             var result = sut.ListErrors(delimiter: "delimiter");
@@ -1747,17 +1928,16 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         }
 
         [Fact]
-        public void
-            ThrowIfAnyErrors_When_No_Custom_Exception_Is_Provided_Then_Throws_Generic_Exception_With_Error_List()
+        public void ThrowIfAnyErrors_When_No_Custom_Exception_Is_Provided_Then_Throws_Generic_Exception_With_Error_List()
         {
             // Arrange
             var result = new Result<bool>
             {
                 Errors = new List<IError>
-                        {
-                            new Error { Key = "ErrorKey1", Message = "Error message 1" },
-                            new Error { Key = "ErrorKey2", Message = "Error message 2" }
-                        }
+                {
+                    new Error { Key = "ErrorKey1", Message = "Error message 1" },
+                    new Error { Key = "ErrorKey2", Message = "Error message 2" }
+                }
             };
             var errorList = result.ListErrors();
 
@@ -1809,7 +1989,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var errorException = new ArgumentNullException();
 
             // Act && Assert
-            Should.Throw<ArgumentNullException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(errorException); });
+            Should.Throw<ArgumentNullException>(() =>
+            {
+                result.ThrowIfAnyErrorsOrResultIsFalse(errorException);
+            });
         }
 
         [Fact]
@@ -1820,7 +2003,10 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var errorException = new ArgumentNullException();
 
             // Act && Assert
-            Should.Throw<ArgumentNullException>(() => { result.ThrowIfAnyErrorsOrResultIsFalse(null, errorException); });
+            Should.Throw<ArgumentNullException>(() =>
+            {
+                result.ThrowIfAnyErrorsOrResultIsFalse(null, errorException);
+            });
         }
 
         [Fact]
@@ -1830,22 +2016,24 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var sut = new Result<bool>
             {
                 Errors = new List<IError>
-                        {
-                            new Error { Key = "ErrorKey1", Message = "Error message 1" },
-                            new Error { Key = "ErrorKey2", Message = "Error message 2" }
-                        }
+                {
+                    new Error { Key = "ErrorKey1", Message = "Error message 1" },
+                    new Error { Key = "ErrorKey2", Message = "Error message 2" }
+                }
             };
             var errorList = sut.ListErrors();
 
             // Act && Assert
-            var exception = Should.Throw<Exception>(() => { sut.ThrowIfAnyErrorsOrResultIsFalse(); });
+            var exception = Should.Throw<Exception>(() =>
+            {
+                sut.ThrowIfAnyErrorsOrResultIsFalse();
+            });
 
             exception.Message.ShouldBe(errorList);
         }
 
         [Fact]
-        public void
-            ThrowIfAnyErrorsOrResultIsFalse_When_No_Exception_Provided_For_False_Result_Then_Throws_Generic_Exception_With_Default_Message()
+        public void ThrowIfAnyErrorsOrResultIsFalse_When_No_Exception_Provided_For_False_Result_Then_Throws_Generic_Exception_With_Default_Message()
         {
             // Arrange
             var sut = new Result<bool> { ResultObject = false };
@@ -1857,8 +2045,6 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             exception.Message.ShouldBe(defaultMessage);
         }
 
-
-
         #endregion ThrowIfAnyErrorsOrResultIsFalse
 
         #region ThrowIfAnyErrorsOrResultIsNull
@@ -1868,13 +2054,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         {
             var result = new Result<bool?>
             {
-                Errors = new List<IError>
-                {
-                    new Error
-                    {
-                        Message = "This is a test error!"
-                    }
-                },
+                Errors = new List<IError> { new Error { Message = "This is a test error!" } },
                 ResultObject = false
             };
             var thrown = false;
@@ -1900,11 +2080,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void ThrowIfAnyErrorsOrResultIsNull_Result_Has_NullResult_And_NoErrors_Throws_Exception()
         {
-            var result = new Result<bool?>
-            {
-                Errors = null,
-                ResultObject = null
-            };
+            var result = new Result<bool?> { Errors = null, ResultObject = null };
             var thrown = false;
 
             try
@@ -1914,7 +2090,9 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             catch (Exception e)
             {
                 e.ShouldNotBeNull();
-                e.Message.ShouldContain($"Result object for IResult returning {typeof(bool?).Name} is null!");
+                e.Message.ShouldContain(
+                    $"Result object for IResult returning {typeof(bool?).Name} is null!"
+                );
                 thrown = true;
             }
             finally
@@ -1928,11 +2106,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         [Fact]
         public void ThrowIfAnyErrorsOrResultIsNull_Result_IsNotNull_And_DoesNotHaveErrors_DoesNotThrowException()
         {
-            var result = new Result<bool?>
-            {
-                Errors = null,
-                ResultObject = true
-            };
+            var result = new Result<bool?> { Errors = null, ResultObject = true };
 
             result.ThrowIfAnyErrorsOrResultIsNull();
 
@@ -1941,6 +2115,5 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
         }
 
         #endregion ThrowIfAnyErrorsOrResultIsNull
-
     }
 }

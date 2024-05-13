@@ -1,6 +1,6 @@
-using Shouldly;
 using RSM.HCD.CSharp.Core.Interfaces.Entity;
 using RSM.HCD.CSharp.Testing.Constants;
+using Shouldly;
 
 namespace RSM.HCD.CSharp.Testing.Extensions
 {
@@ -14,7 +14,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         public static void ShouldBeUpdated<TUpdatable>(this TUpdatable entity)
-            where TUpdatable : IUpdatable
+            where TUpdatable : class, IUpdatable
         {
             entity.ShouldNotBeNull();
             entity.UpdatedOn.ShouldNotBeNull();
@@ -26,7 +26,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// <param name="entity">Entity under test</param>
         /// <param name="updatedById">Expected id of the record's deletor</param>
         public static void ShouldBeUpdatedBy<TUpdatable>(this TUpdatable entity, long updatedById)
-            where TUpdatable : IUpdatable
+            where TUpdatable : class, IUpdatable
         {
             entity.ShouldNotBeNull();
             entity.UpdatedById.ShouldBe(updatedById);
@@ -38,7 +38,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// <param name="entity">Entity under test</param>
         /// <param name="updatedBy">Expected record's deletor</param>
         public static void ShouldBeUpdatedBy<TUpdatable>(this TUpdatable entity, IEntity updatedBy)
-            where TUpdatable : IUpdatable
+            where TUpdatable : class, IUpdatable
         {
             updatedBy.ShouldNotBeNull(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
             entity.ShouldNotBeNull();
@@ -50,7 +50,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         public static void ShouldNotBeUpdated<TUpdatable>(this TUpdatable entity)
-            where TUpdatable : IUpdatable
+            where TUpdatable : class, IUpdatable
         {
             entity.ShouldNotBeNull();
             entity.UpdatedOn.ShouldBeNull();
@@ -61,8 +61,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         /// <param name="updatedById">Unexpected id of the record's updater</param>
-        public static void ShouldNotBeUpdatedBy<TUpdatable>(this TUpdatable entity, long updatedById)
-            where TUpdatable : IUpdatable
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(
+            this TUpdatable entity,
+            long updatedById
+        )
+            where TUpdatable : class, IUpdatable
         {
             entity.ShouldNotBeNull();
             entity.UpdatedById.ShouldNotBe(updatedById);
@@ -73,8 +76,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         /// <param name="updatedBy">Unexpected record's updater</param>
-        public static void ShouldNotBeUpdatedBy<TUpdatable>(this TUpdatable entity, IEntity updatedBy)
-            where TUpdatable : IUpdatable
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(
+            this TUpdatable entity,
+            IEntity updatedBy
+        )
+            where TUpdatable : class, IUpdatable
         {
             updatedBy.ShouldNotBeNull(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
             entity.ShouldNotBeNull();

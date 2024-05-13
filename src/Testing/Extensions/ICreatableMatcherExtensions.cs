@@ -1,6 +1,6 @@
-using Shouldly;
 using RSM.HCD.CSharp.Core.Interfaces.Entity;
 using RSM.HCD.CSharp.Testing.Constants;
+using Shouldly;
 
 namespace RSM.HCD.CSharp.Testing.Extensions
 {
@@ -14,7 +14,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         public static void ShouldBeCreated<TCreatable>(this TCreatable entity)
-            where TCreatable : ICreatable
+            where TCreatable : class, ICreatable
         {
             entity.ShouldNotBeNull();
             entity.CreatedOn.ShouldNotBeNull();
@@ -26,7 +26,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// <param name="entity">Entity under test</param>
         /// <param name="createdById">Expected id of the record's creator</param>
         public static void ShouldBeCreatedBy<TCreatable>(this TCreatable entity, long createdById)
-            where TCreatable : ICreatable
+            where TCreatable : class, ICreatable
         {
             entity.ShouldNotBeNull();
             entity.CreatedById.ShouldBe(createdById);
@@ -38,7 +38,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// <param name="entity">Entity under test</param>
         /// <param name="createdBy">Expected record's creator</param>
         public static void ShouldBeCreatedBy<TCreatable>(this TCreatable entity, IEntity createdBy)
-            where TCreatable : ICreatable
+            where TCreatable : class, ICreatable
         {
             createdBy.ShouldNotBeNull(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
             entity.ShouldNotBeNull();
@@ -50,7 +50,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         public static void ShouldNotBeCreated<TCreatable>(this TCreatable entity)
-            where TCreatable : ICreatable
+            where TCreatable : class, ICreatable
         {
             entity.ShouldNotBeNull();
             entity.CreatedOn.ShouldBeNull();
@@ -61,8 +61,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         /// <param name="createdById">Unexpected id of the record's creator</param>
-        public static void ShouldNotBeCreatedBy<TCreatable>(this TCreatable entity, long createdById)
-            where TCreatable : ICreatable
+        public static void ShouldNotBeCreatedBy<TCreatable>(
+            this TCreatable entity,
+            long createdById
+        )
+            where TCreatable : class, ICreatable
         {
             entity.ShouldNotBeNull();
             entity.CreatedById.ShouldNotBe(createdById);
@@ -73,8 +76,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="entity">Entity under test</param>
         /// <param name="createdBy">Unexpected record's creator</param>
-        public static void ShouldNotBeCreatedBy<TCreatable>(this TCreatable entity, IEntity createdBy)
-            where TCreatable : ICreatable
+        public static void ShouldNotBeCreatedBy<TCreatable>(
+            this TCreatable entity,
+            IEntity createdBy
+        )
+            where TCreatable : class, ICreatable
         {
             createdBy.ShouldNotBeNull(ErrorConstants.ERROR_EXPECTED_ENTITY_IS_NULL_MESSAGE);
             entity.ShouldNotBeNull();

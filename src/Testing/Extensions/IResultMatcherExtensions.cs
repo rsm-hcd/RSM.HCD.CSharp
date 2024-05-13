@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using RSM.HCD.CSharp.Core.Extensions;
 using RSM.HCD.CSharp.Core.Interfaces;
+using RSM.HCD.CSharp.Core.Interfaces.Entity;
 using RSM.HCD.CSharp.Testing.Constants;
 using Shouldly;
 using CoreErrorConstants = RSM.HCD.CSharp.Core.Constants.ErrorConstants;
-using RSM.HCD.CSharp.Core.Interfaces.Entity;
-using System.Collections.Generic;
 
 namespace RSM.HCD.CSharp.Testing.Extensions
 {
@@ -14,7 +14,6 @@ namespace RSM.HCD.CSharp.Testing.Extensions
     /// </summary>
     public static class IResultMatcherExtensions
     {
-
         #region Public Methods
 
         #region IResult<bool> Extensions
@@ -38,7 +37,8 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// Assert that the `ResultObject` has a `CreatedOn` value
         /// </summary>
         /// <param name="result">Result under test</param>
-        public static void ShouldBeCreated<TCreatable>(this IResult<TCreatable> result) where TCreatable : ICreatable
+        public static void ShouldBeCreated<TCreatable>(this IResult<TCreatable> result)
+            where TCreatable : class, ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeCreated();
@@ -49,8 +49,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="createdById">Expected id of the record's creator</param>
-        public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, long createdById)
-            where TCreatable : ICreatable
+        public static void ShouldBeCreatedBy<TCreatable>(
+            this IResult<TCreatable> result,
+            long createdById
+        )
+            where TCreatable : class, ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeCreatedBy(createdById);
@@ -61,8 +64,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="createdBy">Expected record's creator</param>
-        public static void ShouldBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
-            where TCreatable : ICreatable
+        public static void ShouldBeCreatedBy<TCreatable>(
+            this IResult<TCreatable> result,
+            IEntity createdBy
+        )
+            where TCreatable : class, ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeCreatedBy(createdBy);
@@ -73,7 +79,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         public static void ShouldNotBeCreated<TCreatable>(this IResult<TCreatable> result)
-            where TCreatable : ICreatable
+            where TCreatable : class, ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeCreated();
@@ -84,8 +90,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="createdById">Unexpected id of the record's creator</param>
-        public static void ShouldNotBeCreatedBy<TCreatable>(this IResult<TCreatable> result, long createdById)
-            where TCreatable : ICreatable
+        public static void ShouldNotBeCreatedBy<TCreatable>(
+            this IResult<TCreatable> result,
+            long createdById
+        )
+            where TCreatable : class, ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeCreatedBy(createdById);
@@ -96,8 +105,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="createdBy">Unexpected record's creator</param>
-        public static void ShouldNotBeCreatedBy<TCreatable>(this IResult<TCreatable> result, IEntity createdBy)
-            where TCreatable : ICreatable
+        public static void ShouldNotBeCreatedBy<TCreatable>(
+            this IResult<TCreatable> result,
+            IEntity createdBy
+        )
+            where TCreatable : class, ICreatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeCreatedBy(createdBy);
@@ -111,7 +123,8 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// Assert that the `ResultObject` has a `DeletedOn` value
         /// </summary>
         /// <param name="result">Result under test</param>
-        public static void ShouldBeDeleted<TDeletable>(this IResult<TDeletable> result) where TDeletable : IDeletable
+        public static void ShouldBeDeleted<TDeletable>(this IResult<TDeletable> result)
+            where TDeletable : class, IDeletable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeDeleted();
@@ -122,8 +135,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="deletedById">Expected id of the record's deletor</param>
-        public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, long deletedById)
-            where TDeletable : IDeletable
+        public static void ShouldBeDeletedBy<TDeletable>(
+            this IResult<TDeletable> result,
+            long deletedById
+        )
+            where TDeletable : class, IDeletable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeDeletedBy(deletedById);
@@ -134,8 +150,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="deletedBy">Expected record's deletor</param>
-        public static void ShouldBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
-            where TDeletable : IDeletable
+        public static void ShouldBeDeletedBy<TDeletable>(
+            this IResult<TDeletable> result,
+            IEntity deletedBy
+        )
+            where TDeletable : class, IDeletable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeDeletedBy(deletedBy);
@@ -146,7 +165,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         public static void ShouldNotBeDeleted<TDeletable>(this IResult<TDeletable> result)
-            where TDeletable : IDeletable
+            where TDeletable : class, IDeletable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeDeleted();
@@ -157,8 +176,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="deletedById">Unexpected id of the record's deletor</param>
-        public static void ShouldNotBeDeletedBy<TDeletable>(this IResult<TDeletable> result, long deletedById)
-            where TDeletable : IDeletable
+        public static void ShouldNotBeDeletedBy<TDeletable>(
+            this IResult<TDeletable> result,
+            long deletedById
+        )
+            where TDeletable : class, IDeletable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeDeletedBy(deletedById);
@@ -169,8 +191,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="deletedBy">Unexpected record's deletor</param>
-        public static void ShouldNotBeDeletedBy<TDeletable>(this IResult<TDeletable> result, IEntity deletedBy)
-            where TDeletable : IDeletable
+        public static void ShouldNotBeDeletedBy<TDeletable>(
+            this IResult<TDeletable> result,
+            IEntity deletedBy
+        )
+            where TDeletable : class, IDeletable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeDeletedBy(deletedBy);
@@ -184,7 +209,8 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// Assert that the `ResultObject` has an `UpdatedOn` value
         /// </summary>
         /// <param name="result">Result under test</param>
-        public static void ShouldBeUpdated<TUpdatable>(this IResult<TUpdatable> result) where TUpdatable : IUpdatable
+        public static void ShouldBeUpdated<TUpdatable>(this IResult<TUpdatable> result)
+            where TUpdatable : class, IUpdatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeUpdated();
@@ -195,8 +221,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="updatedById">Expected id of the record's updater</param>
-        public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, long updatedById)
-            where TUpdatable : IUpdatable
+        public static void ShouldBeUpdatedBy<TUpdatable>(
+            this IResult<TUpdatable> result,
+            long updatedById
+        )
+            where TUpdatable : class, IUpdatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeUpdatedBy(updatedById);
@@ -207,8 +236,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="updatedBy">Expected record's updater</param>
-        public static void ShouldBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
-            where TUpdatable : IUpdatable
+        public static void ShouldBeUpdatedBy<TUpdatable>(
+            this IResult<TUpdatable> result,
+            IEntity updatedBy
+        )
+            where TUpdatable : class, IUpdatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldBeUpdatedBy(updatedBy);
@@ -219,7 +251,7 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         public static void ShouldNotBeUpdated<TUpdatable>(this IResult<TUpdatable> result)
-            where TUpdatable : IUpdatable
+            where TUpdatable : class, IUpdatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeUpdated();
@@ -230,8 +262,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="updatedById">Unexpected id of the record's updater</param>
-        public static void ShouldNotBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, long updatedById)
-            where TUpdatable : IUpdatable
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(
+            this IResult<TUpdatable> result,
+            long updatedById
+        )
+            where TUpdatable : class, IUpdatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeUpdatedBy(updatedById);
@@ -242,8 +277,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="updatedBy">Unexpected record's updater</param>
-        public static void ShouldNotBeUpdatedBy<TUpdatable>(this IResult<TUpdatable> result, IEntity updatedBy)
-            where TUpdatable : IUpdatable
+        public static void ShouldNotBeUpdatedBy<TUpdatable>(
+            this IResult<TUpdatable> result,
+            IEntity updatedBy
+        )
+            where TUpdatable : class, IUpdatable
         {
             result.ShouldHaveResultObject();
             result.ResultObject.ShouldNotBeUpdatedBy(updatedBy);
@@ -257,7 +295,8 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// Assert result has error for `BASIC_ERROR_KEY`
         /// </summary>
         /// <param name="result">Result under test</param>
-        public static void ShouldHaveBasicError<T>(this IResult<T> result) => result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
+        public static void ShouldHaveBasicError<T>(this IResult<T> result) =>
+            result.ShouldHaveErrorsFor(ErrorConstants.BASIC_ERROR_KEY);
 
         /// <summary>
         /// Assert that the result has at least one error
@@ -286,7 +325,12 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// <param name="property">Key of the error to be asserted against</param>
         /// <param name="exactCount">When supplied, asserts the exact number of errors with the property. NOT total number of errors</param>
         /// <param name="containedInMessage">When supplied, asserts that the property's error message contains this string</param>
-        public static void ShouldHaveErrorsFor<T>(this IResult<T> result, string property, int? exactCount = null, string containedInMessage = null)
+        public static void ShouldHaveErrorsFor<T>(
+            this IResult<T> result,
+            string property,
+            int? exactCount = null,
+            string containedInMessage = null
+        )
         {
             result.ShouldHaveErrors<T>();
             result.Errors.ShouldContain(
@@ -299,7 +343,8 @@ namespace RSM.HCD.CSharp.Testing.Extensions
                 containedInMessage = containedInMessage.ToLower();
 
                 result.Errors.ShouldContain(
-                    elementPredicate: (e) => e.Key == property && e.Message.ToLower().Contains(containedInMessage),
+                    elementPredicate: (e) =>
+                        e.Key == property && e.Message.ToLower().Contains(containedInMessage),
                     customMessage: $"Expected error '{property}' to contain '{containedInMessage}' in message, but did not: {result.ListErrors()}"
                 );
             }
@@ -322,9 +367,25 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         public static void ShouldHaveResultObject<T>(this IResult<T> result)
+            where T : class
         {
             result.ShouldNotBeNull();
-            result.ResultObject.ShouldNotBeNull($"Expected {nameof(IResult<T>.ResultObject)} to have a value, but it was null.");
+            result.ResultObject.ShouldNotBeNull(
+                $"Expected {nameof(IResult<T>.ResultObject)} to have a value, but it was null."
+            );
+        }
+
+        /// <summary>
+        /// Assert that `ResultObject` is not null
+        /// </summary>
+        /// <param name="result">Result under test</param>
+        public static void ShouldHaveResultObject<T>(this IResult<T?> result)
+            where T : struct
+        {
+            result.ShouldNotBeNull();
+            result.ResultObject.ShouldNotBeNull(
+                $"Expected {nameof(IResult<T>.ResultObject)} to have a value, but it was null."
+            );
         }
 
         /// <summary>
@@ -332,8 +393,11 @@ namespace RSM.HCD.CSharp.Testing.Extensions
         /// </summary>
         /// <param name="result">Result under test</param>
         /// <param name="exactCount">When supplied, asserts that the collection has exactly this number of elements</param>
-        public static void ShouldHaveResultObjects<TResultObjects>(this IResult<TResultObjects> result, int? exactCount = null)
-            where TResultObjects : IEnumerable<object>
+        public static void ShouldHaveResultObjects<TResultObjects>(
+            this IResult<TResultObjects> result,
+            int? exactCount = null
+        )
+            where TResultObjects : class, IEnumerable<object>
         {
             result.ShouldHaveResultObject();
             if (exactCount != null)
