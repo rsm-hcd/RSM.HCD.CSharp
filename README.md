@@ -5,27 +5,26 @@
 
 <!--ts-->
 
--   [RSM.HCD.CSharp](#rsmhcdcsharp)
-    -   [Deploying Supplemental Documentation](#deploying-supplemental-documentation)
-    -   [Packages](#packages)
-        -   [RSM.HCD.CSharp.Core](#rsmhcdcsharpcore)
-            -   [Getting Started (v.CSharp.Core)](#getting-started-vcsharpcore)
-        -   [RSM.HCD.CSharp.Extensions](#rsmhcdcsharpextensions)
-            -   [Getting Started (RSM.HCD.CSharp.Extensions)](#getting-started-rsmhcdcsharpextensions)
-        -   [RSM.HCD.CSharp.Testing](#rsmhcdcsharptesting)
-            -   [Getting Started (RSM.HCD.CSharp.Testing)](#getting-started-rsmhcdcsharptesting)
-        -   [RSM.HCD.CSharp.Conductors](#rsmhcdcsharpconductors)
-            -   [Getting Started (RSM.HCD.CSharp.Conductors)](#getting-started-rsmhcdcsharpconductors)
-            -   [Features](#features)
-                -   [Factories](#factories)
-                -   [Configuration](#configuration)
-                -   [Debug (default: false)](#debug-default-false)
-    -   [Development Setup](#development-setup)
-        -   [Building project](#building-project)
-        -   [Running tests](#running-tests)
-        -   [Running tests along with code coverage](#running-tests-along-with-code-coverage)
-        -   [Publishing a new version](#publishing-a-new-version)
-    -   [Contributing](#contributing)
+-   [Deploying Supplemental Documentation](#deploying-supplemental-documentation)
+-   [Packages](#packages)
+    -   [RSM.HCD.CSharp.Core](#rsmhcdcsharpcore)
+        -   [Getting Started (RSM.HCD.CSharp.Core)](#getting-started-rsmhcdcsharpcore)
+    -   [RSM.HCD.CSharp.Extensions](#rsmhcdcsharpextensions)
+        -   [Getting Started (RSM.HCD.CSharp.Extensions)](#getting-started-rsmhcdcsharpextensions)
+    -   [RSM.HCD.CSharp.Testing](#rsmhcdcsharptesting)
+        -   [Getting Started (RSM.HCD.CSharp.Testing)](#getting-started-rsmhcdcsharptesting)
+    -   [RSM.HCD.CSharp.Conductors](#rsmhcdcsharpconductors)
+        -   [Getting Started (RSM.HCD.CSharp.Conductors)](#getting-started-rsmhcdcsharpconductors)
+        -   [Features](#features)
+            -   [Factories](#factories)
+            -   [Configuration](#configuration)
+            -   [Debug (default: false)](#debug-default-false)
+-   [Development Setup](#development-setup)
+    -   [Building project](#building-project)
+    -   [Running tests](#running-tests)
+    -   [Running tests along with code coverage](#running-tests-along-with-code-coverage)
+    -   [Publishing a new version](#publishing-a-new-version)
+-   [Contributing](#contributing)
 
 [Supplemental Documentation](https://rsm-hcd.github.io/RSM.HCD.CSharp)
 
@@ -44,7 +43,7 @@ Commonly used interfaces, patterns and utilities by the HCD engineering team at 
 
 #### Getting Started (RSM.HCD.CSharp.Core)
 
-This package is installed via NuGetRSM.HCD
+This package is installed via NuGet
 
 ```shell
 dotnet add [<PROJECT>] package RSM.HCD.CSharp.Core
