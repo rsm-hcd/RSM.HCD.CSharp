@@ -513,7 +513,7 @@ namespace RSM.HCD.CSharp.Extensions.Tests
         {
             // Arrange
             var queryable = new List<DateTime> { DateTime.MinValue, DateTime.MaxValue }.AsQueryable();
-            var orderedQueryable = queryable.OrderBy(s => s.Day);
+            var orderedQueryable = queryable.OrderBy(s => s.Date);
             string badPropertyName = "test"; // <-- This property does not exist on the string type.
 
             // Act & Assert
@@ -525,10 +525,10 @@ namespace RSM.HCD.CSharp.Extensions.Tests
         {
             // Arrange
             var queryable = new List<DateTime>().AsQueryable();
-            var orderedQueryable = queryable.OrderBy(s => s.Day);
+            var orderedQueryable = queryable.OrderBy(s => s.Date);
 
             // Act
-            var result = orderedQueryable.ThenBy<DateTime>("Day");
+            var result = orderedQueryable.ThenBy("Day");
 
             // Assert
             result.ShouldBeEmpty();
@@ -542,10 +542,10 @@ namespace RSM.HCD.CSharp.Extensions.Tests
             var midDate = DateTime.Now;
             var maxDate = DateTime.Now.AddDays(1);
             var queryable = new List<DateTime> { midDate, maxDate, minDate }.AsQueryable();
-            var orderedQueryable = queryable.OrderBy(date => date.Day);
+            var orderedQueryable = queryable.OrderBy(date => date.Date);
 
             // Act
-            var result = orderedQueryable.ThenBy<DateTime>("Hour", OrderByDirection.Ascending);
+            var result = orderedQueryable.ThenBy("Hour", OrderByDirection.Ascending);
 
             // Assert
             result.First().ShouldBe(minDate);
@@ -560,10 +560,10 @@ namespace RSM.HCD.CSharp.Extensions.Tests
             var midDate = DateTime.Now;
             var maxDate = DateTime.Now.AddDays(1);
             var queryable = new List<DateTime> { midDate, minDate, maxDate }.AsQueryable();
-            var orderedQueryable = queryable.OrderByDescending(date => date.Day);
+            var orderedQueryable = queryable.OrderByDescending(date => date.Date);
 
             // Act
-            var result = orderedQueryable.ThenBy<DateTime>("Hour", OrderByDirection.Descending);
+            var result = orderedQueryable.ThenBy("Hour", OrderByDirection.Descending);
 
             // Assert
             result.First().ShouldBe(maxDate);
@@ -577,11 +577,11 @@ namespace RSM.HCD.CSharp.Extensions.Tests
             var minDate = DateTime.MinValue;
             var maxDate = DateTime.MaxValue;
             var queryable = new List<DateTime> { maxDate, minDate }.AsQueryable();
-            var orderedQueryable = queryable.OrderBy(date => date.Day);
+            var orderedQueryable = queryable.OrderBy(date => date.Date);
             string thenByProperty = string.Empty;
 
             // Act
-            var result = orderedQueryable.ThenBy<DateTime>(thenByProperty);
+            var result = orderedQueryable.ThenBy(thenByProperty);
 
             // Assert
             result.ShouldBeSameAs(orderedQueryable);
@@ -595,11 +595,11 @@ namespace RSM.HCD.CSharp.Extensions.Tests
             var midDate = DateTime.Now;
             var maxDate = DateTime.Now.AddDays(1);
             var queryable = new List<DateTime> { midDate, minDate, maxDate }.AsQueryable();
-            var orderedQueryable = queryable.OrderBy(date => date.Day);
+            var orderedQueryable = queryable.OrderBy(date => date.Date);
             string nestedProperty = "TimeOfDay.Ticks";
 
             // Act
-            var result = orderedQueryable.ThenBy<DateTime>(nestedProperty, OrderByDirection.Ascending);
+            var result = orderedQueryable.ThenBy(nestedProperty, OrderByDirection.Ascending);
 
             // Assert
             result.First().ShouldBe(minDate);
@@ -614,11 +614,11 @@ namespace RSM.HCD.CSharp.Extensions.Tests
             var midDate = DateTime.Now;
             var maxDate = DateTime.Now.AddDays(1);
             var queryable = new List<DateTime> { midDate, minDate, maxDate }.AsQueryable();
-            var orderedQueryable = queryable.OrderByDescending(date => date.Day);
+            var orderedQueryable = queryable.OrderByDescending(date => date.Date);
             string nestedProperty = "Date.Hour";
 
             // Act
-            var result = orderedQueryable.ThenBy<DateTime>(nestedProperty, OrderByDirection.Descending);
+            var result = orderedQueryable.ThenBy(nestedProperty, OrderByDirection.Descending);
 
             // Assert
             result.First().ShouldBe(maxDate);

@@ -1,22 +1,24 @@
 {
-    "name": "@rsm-hcd/csharp",
-    "version": "3.0.0",
-    "description": "Simple nodejs tooling for managing the project",
-    "main": "npx and-cli",
-    "private": true,
-    "scripts": {
-        "configure:git": "echo Ensuring git hooksPath is set to .githooks directory && git config core.hooksPath .githooks && chmod +x .githooks/*",
-        "preinstall": "npm run configure:git"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
-    },
-    "author": "rsm-hcd",
-    "license": "ISC",
-    "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
-    "devDependencies": {
-        "and-cli": "2.8.0",
-        "prettier": "1.19.1"
-    }
+  "name": "@rsm-hcd/csharp",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "preinstall": "dotnet tool restore && dotnet husky install",
+    "test": "dotnet test -p:Threshold=0",
+    "test:coverage": "dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rsm-hcd/RSM.HCD.CSharp.git"
+  },
+  "author": "rsm-hcd",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/rsm-hcd/RSM.HCD.CSharp#readme",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "packageManager": "pnpm@9.1.2",
+  "engines": {
+    "node": ">=20"
+  }
 }

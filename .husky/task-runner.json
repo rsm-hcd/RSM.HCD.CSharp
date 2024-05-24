@@ -1,0 +1,15 @@
+{
+  "tasks": [
+    {
+      "command": "pnpx",
+      "args": ["prettier", "--ignore-unknown", "--write", "${staged}"],
+      "pathMode": "absolute"
+    },
+    {
+      "name": "csharpier",
+      "command": "dotnet",
+      "args": ["csharpier", "${staged}"],
+      "include": ["**/*.cs"]
+    }
+  ]
+}

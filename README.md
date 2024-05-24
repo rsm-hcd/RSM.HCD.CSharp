@@ -5,26 +5,26 @@
 
 <!--ts-->
 
--   [Deploying Supplemental Documentation](#deploying-supplemental-documentation)
--   [Packages](#packages)
-    -   [RSM.HCD.CSharp.Core](#rsmhcdcsharpcore)
-        -   [Getting Started (RSM.HCD.CSharp.Core)](#getting-started-rsmhcdcsharpcore)
-    -   [RSM.HCD.CSharp.Extensions](#rsmhcdcsharpextensions)
-        -   [Getting Started (RSM.HCD.CSharp.Extensions)](#getting-started-rsmhcdcsharpextensions)
-    -   [RSM.HCD.CSharp.Testing](#rsmhcdcsharptesting)
-        -   [Getting Started (RSM.HCD.CSharp.Testing)](#getting-started-rsmhcdcsharptesting)
-    -   [RSM.HCD.CSharp.Conductors](#rsmhcdcsharpconductors)
-        -   [Getting Started (RSM.HCD.CSharp.Conductors)](#getting-started-rsmhcdcsharpconductors)
-        -   [Features](#features)
-            -   [Factories](#factories)
-            -   [Configuration](#configuration)
-            -   [Debug (default: false)](#debug-default-false)
--   [Development Setup](#development-setup)
-    -   [Building project](#building-project)
-    -   [Running tests](#running-tests)
-    -   [Running tests along with code coverage](#running-tests-along-with-code-coverage)
-    -   [Publishing a new version](#publishing-a-new-version)
--   [Contributing](#contributing)
+- [Deploying Supplemental Documentation](#deploying-supplemental-documentation)
+- [Packages](#packages)
+  - [RSM.HCD.CSharp.Core](#rsmhcdcsharpcore)
+    - [Getting Started (RSM.HCD.CSharp.Core)](#getting-started-rsmhcdcsharpcore)
+  - [RSM.HCD.CSharp.Extensions](#rsmhcdcsharpextensions)
+    - [Getting Started (RSM.HCD.CSharp.Extensions)](#getting-started-rsmhcdcsharpextensions)
+  - [RSM.HCD.CSharp.Testing](#rsmhcdcsharptesting)
+    - [Getting Started (RSM.HCD.CSharp.Testing)](#getting-started-rsmhcdcsharptesting)
+  - [RSM.HCD.CSharp.Conductors](#rsmhcdcsharpconductors)
+    - [Getting Started (RSM.HCD.CSharp.Conductors)](#getting-started-rsmhcdcsharpconductors)
+    - [Features](#features)
+      - [Factories](#factories)
+      - [Configuration](#configuration)
+      - [Debug (default: false)](#debug-default-false)
+- [Development Setup](#development-setup)
+  - [Building project](#building-project)
+  - [Running tests](#running-tests)
+  - [Running tests along with code coverage](#running-tests-along-with-code-coverage)
+  - [Publishing a new version](#publishing-a-new-version)
+- [Contributing](#contributing)
 
 [Supplemental Documentation](https://rsm-hcd.github.io/RSM.HCD.CSharp)
 
@@ -118,44 +118,42 @@ To enable debug output set the `Debug` setting to `true`. Now warnings will be o
 
 ## Development Setup
 
--   Install Dotnet Core 3.1
--   Install the `and-cli` tooling found at [AndcultureCode.Cli](https://github.com/rsm-hcd/AndcultureCode.Cli)
-
-Below are a few basics to get you started, but there are many more commands and options for managing this and other projects found in the `and-cli`.
+- Install Dotnet Core 6
+- Install pnpm and run `pnpm install`
 
 ### Building project
 
--   Run the build command
+- Run the build command
 
-    ```shell
-    and-cli dotnet --build
-    ```
+  ```shell
+  pnpm build
+  ```
 
 ### Running tests
 
--   Run the test command
+- Run the test command
 
-    ```shell
-    and-cli dotnet-test
-    ```
+  ```shell
+  pnpm test
+  ```
 
 ### Running tests along with code coverage
 
--   Run the test command
+- Run the test command
 
-    ```shell
-    and-cli dotnet-test --coverage
-    ```
+  ```shell
+  pnpm test:coverage
+  ```
 
--   Open the `coverage.opencover.xml` file in your browser
+- Open the `coverage.opencover.xml` file in your browser
 
 ### Publishing a new version
 
--   Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
+- Run the publish command with the next version number ([See semver package versioning](https://docs.microsoft.com/en-us/nuget/concepts/package-versioning))
 
-    ```shell
-    and-cli nuget --publish <version>
-    ```
+  ```shell
+  pnpm nuget:publish <version>
+  ```
 
 ## Contributing
 
