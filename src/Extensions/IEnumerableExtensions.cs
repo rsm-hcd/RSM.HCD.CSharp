@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using RSM.HCD.CSharp.Core.Extensions;
 using RSM.HCD.CSharp.Extensions.Models;
 using CoreExtensions = RSM.HCD.CSharp.Core.Extensions;
 
@@ -52,52 +53,6 @@ namespace RSM.HCD.CSharp.Extensions
 
             return source.Intersect(inclusions, new LambdaComparer<T>(predicate));
         }
-
-        /// <summary>
-        /// Determines if the source list is empty
-        /// </summary>
-        public static bool IsEmpty<T>(this IEnumerable<T> source) =>
-            CoreExtensions.EnumerableExtensions.IsEmpty(source);
-
-        /// <summary>
-        /// Determines if the source list is empty
-        /// </summary>
-        public static bool IsEmpty<T>(this IEnumerable<T> source, Func<T, bool> predicate) => !source.Any(predicate);
-
-        /// <summary>
-        /// Determines if the source list is null or empty
-        /// </summary>
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source) =>
-            CoreExtensions.EnumerableExtensions.IsNullOrEmpty(source);
-
-        /// <summary>
-        /// Determines if the source list is null or empty
-        /// </summary>
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source, Func<T, bool> predicate) =>
-            source == null || source.IsEmpty(predicate);
-
-        /// <summary>
-        /// Convenience method so joining strings reads better :)
-        /// </summary>
-        public static string Join(this IEnumerable<string> list, string delimiter = ", ") =>
-            CoreExtensions.EnumerableExtensions.Join(list, delimiter);
-
-        /// <summary>
-        /// Convenience method for joining dictionary key values into a string
-        /// </summary>
-        public static string Join(
-            this IEnumerable<KeyValuePair<string, string>> list,
-            string keyValueDelimiter,
-            string delimiter = ", "
-        ) => list?.Select(e => e.Join(keyValueDelimiter)).Where(e => !string.IsNullOrEmpty(e)).Join(delimiter);
-
-        /// <summary>
-        /// Convenience method for joining key value pairs
-        /// </summary>
-        public static string Join(this KeyValuePair<string, string> pair, string delimiter) =>
-            new List<string> { pair.Key, pair.Value }
-                .Where(e => !string.IsNullOrEmpty(e))
-                .Join(delimiter);
 
         /// <summary>
         /// Returns a random value in the related IEnumerable list
