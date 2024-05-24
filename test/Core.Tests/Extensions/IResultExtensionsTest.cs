@@ -332,11 +332,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -401,11 +401,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -468,11 +468,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -545,11 +545,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -578,11 +578,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -665,11 +665,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -748,7 +748,7 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             var expectedKey = Random.String();
             var expectedMessage = Random.String();
             var resourceId = 42;
-            var mockLogger = new Mock<ILogger>();
+            var mockLogger = new Mock<ILogger<object>>();
             var localizedString = new LocalizedString(expectedKey, expectedMessage);
             var localizer = Mock.Of<IStringLocalizer>(e =>
                 e[expectedKey, It.IsAny<object[]>()] == localizedString
@@ -767,11 +767,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
@@ -895,11 +895,11 @@ namespace RSM.HCD.CSharp.Core.Tests.Unit.Extensions
             mockLogger.Verify(
                 x =>
                     x.Log(
-                        LogLevel.Error,
+                        It.Is<LogLevel>(l => l == LogLevel.Error),
                         It.IsAny<EventId>(),
-                        It.IsAny<object>(),
+                        It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
-                        It.IsAny<Func<object, Exception, string>>()
+                        It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)
                     ),
                 Times.Once
             );
