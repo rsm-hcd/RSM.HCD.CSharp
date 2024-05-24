@@ -1,11 +1,10 @@
 {
   "name": "@rsm-hcd/csharp",
   "version": "3.0.0",
-  "description": "Simple nodejs tooling for managing the project",
   "private": true,
   "scripts": {
     "preinstall": "dotnet tool restore && dotnet husky install",
-    "test": "dotnet test  -p:Threshold=0",
+    "test": "dotnet test -p:Threshold=0",
     "test:coverage": "dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0"
   },
   "repository": {
