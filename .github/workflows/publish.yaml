@@ -49,6 +49,12 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
+      - name: Build solution
+        run: dotnet build
+
+      - name: Test solution
+        run: dotnet test
+
       - name: Build solution [Release]
         run: dotnet build --no-restore -c Release -p:Version=$version
 

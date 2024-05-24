@@ -27,7 +27,7 @@
     "@docusaurus/module-type-aliases": "2.3.1",
     "@docusaurus/types": "2.3.1",
     "@tsconfig/docusaurus": "^2.0.3",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.3",
     "@types/react-helmet": "^6.1.11",
     "@types/react-router-dom": "^5.3.3",
     "cross-env": "7.0.3",
