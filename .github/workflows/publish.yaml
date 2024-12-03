@@ -33,7 +33,7 @@ jobs:
                   dotnet-version: "3.1.x"
                   source-url: https://api.nuget.org/v3/index.json
               env:
-                  NUGET_RSM_AUTH_TOKEN: ${{secrets.NUGET_RSM_AUTH_TOKEN}}
+                  NUGET_AUTH_TOKEN: ${{secrets.NUGET_RSM_AUTH_TOKEN}}
             - name: Install dependencies
               run: dotnet restore
             - name: Build solution [Release]
