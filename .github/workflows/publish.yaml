@@ -27,7 +27,7 @@ jobs:
                   version="${github_ref:10}"
                   echo version=$version
                   echo "version=$version" >> $GITHUB_ENV
-            - name: Setup .NET Core 6 SDK
+            - name: Setup .NET Core SDK
               uses: actions/setup-dotnet@v4
               with:
                   dotnet-version: "3.1.x"
@@ -51,7 +51,6 @@ jobs:
             - name: Upload Nuget packages as release artifacts
               uses: actions/github-script@v7
               with:
-                  github-token: ${{secrets.GITHUB_TOKEN}}
                   script: |
                       console.log('environment', process.versions);
                       const fs = require('fs').promises;
